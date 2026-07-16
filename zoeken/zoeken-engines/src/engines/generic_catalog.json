@@ -1,0 +1,4449 @@
+[
+  {
+    "name": "1337x",
+    "engine": "xpath",
+    "shortcut": "133",
+    "categories": [
+      "files"
+    ],
+    "paging": true,
+    "search_url": "https://1337x.to/search/{query}/{pageno}/",
+    "about": {
+      "website": "https://1337x.to/",
+      "wikidata_id": "Q28134166",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//table[contains(@class, \"table-list\")]/tbody//tr",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a",
+    "content_xpath": ".//td[contains(@class, \"size\")]/text()"
+  },
+  {
+    "name": "360search",
+    "engine": "xpath",
+    "shortcut": "360",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://www.so.com/search?q={query}",
+    "language": "zh",
+    "time_range_support": true,
+    "about": {
+      "website": "https://www.so.com/",
+      "wikidata_id": "Q10846064",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//li[contains(@class, \"res-list\")]",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a"
+  },
+  {
+    "name": "360search videos",
+    "engine": "json_engine",
+    "shortcut": "360",
+    "categories": [
+      "videos"
+    ],
+    "paging": true,
+    "search_url": "https://tv.360kan.com/search?q={query}",
+    "about": {
+      "website": "https://tv.360kan.com/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content"
+  },
+  {
+    "name": "500px",
+    "engine": "json_engine",
+    "shortcut": "500",
+    "categories": [
+      "images"
+    ],
+    "paging": true,
+    "search_url": "https://500px.com/search?q={query}",
+    "about": {
+      "website": "https://500px.com",
+      "wikidata_id": "Q354894",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "GraphQL POST with base64 cursor"
+  },
+  {
+    "name": "abcnyheter",
+    "engine": "xpath",
+    "shortcut": "abc",
+    "categories": "general",
+    "paging": true,
+    "search_url": "https://startsiden.abcnyheter.no/sok/?q={query}&page={pageno}",
+    "results_xpath": "//ul[contains(@class, \"results__list\")]/li[contains(@class, \"result\")]",
+    "url_xpath": "./a/@href",
+    "title_xpath": "./a/h3",
+    "content_xpath": "./div",
+    "language": "no",
+    "about": {
+      "website": "https://abcnyheter.no",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "acfun",
+    "engine": "xpath",
+    "shortcut": "acf",
+    "categories": [
+      "videos"
+    ],
+    "paging": true,
+    "search_url": "https://www.acfun.cn/search?q={query}",
+    "language": "zh",
+    "about": {
+      "website": "https://www.acfun.cn/",
+      "wikidata_id": "Q3077675",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//div[contains(@class, \"search-video\")]",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a",
+    "empty_result_error": "no_results",
+    "inactive": true,
+    "inactive_reason": "results embedded in inline scripts"
+  },
+  {
+    "name": "adobe stock",
+    "engine": "json_engine",
+    "shortcut": "ado",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://stock.adobe.com/search?q={query}",
+    "about": {
+      "website": "https://stock.adobe.com/",
+      "wikidata_id": "Q5977430",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content"
+  },
+  {
+    "name": "ahmia",
+    "engine": "xpath",
+    "shortcut": "ahm",
+    "categories": [
+      "onions"
+    ],
+    "paging": true,
+    "search_url": "http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/search/?{query}",
+    "time_range_support": true,
+    "about": {
+      "website": "http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion",
+      "wikidata_id": "Q18693938",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//article|//div[contains(@class, 'result')]|//li|//tr",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a"
+  },
+  {
+    "name": "alpinelinux",
+    "engine": "xpath",
+    "shortcut": "alp",
+    "categories": [
+      "packages",
+      "it"
+    ],
+    "about": {
+      "website": "https://www.alpinelinux.org",
+      "wikidata_id": "Q4033826",
+      "use_official_api": false,
+      "official_api_documentation": null,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "base_url": "https://pkgs.alpinelinux.org",
+    "search_url": "https://pkgs.alpinelinux.org/packages?name=*{query}*&page={pageno}&arch=x86_64",
+    "paging": true,
+    "results_xpath": "//table/tbody/tr",
+    "url_xpath": "./td[contains(@class, \"package\")]/a/@href",
+    "title_xpath": "./td[contains(@class, \"package\")]"
+  },
+  {
+    "name": "anaconda",
+    "engine": "json_engine",
+    "shortcut": "conda",
+    "categories": [
+      "it",
+      "packages"
+    ],
+    "paging": true,
+    "first_page_num": 0,
+    "search_url": "https://api.anaconda.org/search?name={query}&type=conda&offset={offset}&limit=20",
+    "results_query": "",
+    "url_query": "html_url",
+    "title_query": "full_name",
+    "content_query": "summary",
+    "about": {
+      "website": "https://anaconda.org/search",
+      "wikidata_id": "Q18209310",
+      "official_api_documentation": "https://api.anaconda.org/search",
+      "use_official_api": true,
+      "results": "JSON"
+    }
+  },
+  {
+    "name": "annas archive",
+    "engine": "xpath",
+    "shortcut": "ann",
+    "categories": [
+      "files",
+      "books"
+    ],
+    "paging": false,
+    "search_url": "https://annas-archive.example.invalid/search?q={query}",
+    "results_xpath": "//main//div[contains(@class, 'js-aarecord-list-outer')]/div[contains(@class, 'flex')]",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a",
+    "content_xpath": "//form//input[@name='content']",
+    "inactive": true,
+    "inactive_reason": "mirror list + custom parse"
+  },
+  {
+    "name": "ansa",
+    "engine": "xpath",
+    "shortcut": "ans",
+    "categories": [
+      "news"
+    ],
+    "paging": true,
+    "base_url": "https://www.ansa.it",
+    "search_url": "https://www.ansa.it/ricerca/ansait/search.shtml?any={query}&start={offset}&sort=data%3Adesc{time_range}",
+    "time_range_support": true,
+    "time_range_url": "&periodo={time_range_val}",
+    "time_range_map": {
+      "day": "1",
+      "week": "7",
+      "month": "31",
+      "year": "365"
+    },
+    "language": "it",
+    "results_xpath": "//div[@class='article']",
+    "url_xpath": "./div[@class='content']/h2[@class='title']/a/@href",
+    "title_xpath": "./div[@class='content']/h2[@class='title']/a",
+    "content_xpath": "./div[@class='content']/div[@class='text']",
+    "about": {
+      "website": "https://www.ansa.it",
+      "wikidata_id": "Q392934",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "apkmirror",
+    "engine": "xpath",
+    "shortcut": "apk",
+    "categories": [
+      "files",
+      "apps"
+    ],
+    "about": {
+      "website": "https://www.apkmirror.com",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "base_url": "https://www.apkmirror.com",
+    "search_url": "https://www.apkmirror.com/?post_type=app_release&searchtype=apk&page={pageno}&s={query}",
+    "paging": true,
+    "results_xpath": "//div[@id='content']//div[@class='listWidget']/div/div[@class='appRow']",
+    "url_xpath": ".//h5/a/@href",
+    "title_xpath": ".//h5/a"
+  },
+  {
+    "name": "archlinux",
+    "engine": "xpath",
+    "shortcut": "arc",
+    "categories": [
+      "it",
+      "software wikis"
+    ],
+    "paging": true,
+    "search_url": "https://wiki.archlinux.org/index.php?search={query}&title=Special%3ASearch&limit=20&offset={offset}&profile=default",
+    "about": {
+      "website": "https://wiki.archlinux.org/",
+      "wikidata_id": "Q101445877",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//ul[@class='mw-search-results']/li",
+    "url_xpath": ".//div[@class='mw-search-result-heading']/a/@href",
+    "title_xpath": ".//div[@class='mw-search-result-heading']/a",
+    "page_size": 20,
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (compatible; zoeken)"
+    },
+    "content_xpath": ".//div[@class='searchresult']",
+    "empty_result_error": "captcha"
+  },
+  {
+    "name": "artstation",
+    "engine": "json_engine",
+    "shortcut": "art",
+    "categories": [
+      "images"
+    ],
+    "paging": true,
+    "search_url": "https://www.artstation.com/api/v2/search/projects.json/search?q={query}",
+    "about": {
+      "website": "https://www.artstation.com/",
+      "wikidata_id": "Q65551500",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "requires CSRF token handshake"
+  },
+  {
+    "name": "astrophysics data system",
+    "engine": "json_engine",
+    "shortcut": "ast",
+    "categories": [
+      "science",
+      "scientific publications"
+    ],
+    "paging": true,
+    "search_url": "https://api.adsabs.harvard.edu/v1/search/query/search?q={query}",
+    "about": {
+      "website": "https://ui.adsabs.harvard.edu/",
+      "wikidata_id": "Q752099",
+      "official_api_documentation": "https://ui.adsabs.harvard.edu/help/api/api-docs.html",
+      "use_official_api": true,
+      "require_api_key": true,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "requires API key"
+  },
+  {
+    "name": "ayo",
+    "engine": "xpath",
+    "shortcut": "ayo",
+    "categories": "general",
+    "search_url": "https://search.ayo.de/search?q={query}",
+    "results_xpath": "//div[contains(@class, 'search-result')]/div",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//h3",
+    "content_xpath": ".//p",
+    "suggestion_xpath": ".//a[starts-with(@href, \"https://search.ayo.de\")]",
+    "about": {
+      "website": "https://serach.ayo.de",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "azure",
+    "engine": "json_engine",
+    "shortcut": "azu",
+    "categories": [
+      "it",
+      "cloud"
+    ],
+    "paging": false,
+    "search_url": "https://www.portal.azure.com/search?q={query}",
+    "language": "en",
+    "about": {
+      "website": "https://www.portal.azure.com",
+      "wikidata_id": "Q725967",
+      "official_api_documentation": "https://learn.microsoft.com/en-us/    rest/api/azure-resourcegraph/?view=rest-azureresourcegraph-resourcegraph-2024-04-01",
+      "use_official_api": true,
+      "require_api_key": true,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "requires OAuth token"
+  },
+  {
+    "name": "base",
+    "engine": "xpath",
+    "shortcut": "bas",
+    "categories": [
+      "science"
+    ],
+    "paging": true,
+    "search_url": "https://api.base-search.net/cgi-bin/BaseHttpSearchInterface.fcgi?func=PerformSearch&query={query}&boost=oa&hits=10&offset={offset}",
+    "about": {
+      "website": "https://base-search.net",
+      "wikidata_id": "Q448335",
+      "official_api_documentation": "https://api.base-search.net/",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "XML"
+    },
+    "results_xpath": "//result/doc",
+    "url_xpath": "./str[@name='dclink']",
+    "title_xpath": "./str[@name='dctitle']",
+    "page_size": 10,
+    "content_xpath": "./str[@name='dcdescription']",
+    "empty_result_error": "access_denied"
+  },
+  {
+    "name": "bilibili",
+    "engine": "json_engine",
+    "shortcut": "bil",
+    "categories": [
+      "videos"
+    ],
+    "time_range_support": true,
+    "about": {
+      "website": "https://www.bilibili.com",
+      "wikidata_id": "Q3077586",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://api.bilibili.com/x/web-interface/search/type?__refresh__=true&page={pageno}&page_size=20&single_column=0&keyword={query}&search_type=video",
+    "paging": true,
+    "headers": {
+      "Referer": "https://www.bilibili.com/",
+      "Accept": "application/json, text/javascript, */*; q=0.01"
+    },
+    "cookies": {
+      "innersign": "0",
+      "buvid3": "0123456789abcdefinfoc",
+      "i-wanna-go-back": "-1",
+      "b_ut": "7",
+      "FEED_LIVE_VERSION": "V8",
+      "header_theme_version": "undefined",
+      "home_feed_column": "4"
+    },
+    "results_query": "data/result",
+    "url_query": "arcurl",
+    "title_query": "title",
+    "content_query": "description",
+    "title_html_to_text": true,
+    "content_html_to_text": true
+  },
+  {
+    "name": "bing images",
+    "engine": "xpath",
+    "shortcut": "bin",
+    "categories": [
+      "images",
+      "web"
+    ],
+    "paging": true,
+    "search_url": "https://www.bing.com/images/async?q={query}&async=1&first={pageno}&count=35",
+    "page_size": 35,
+    "time_range_support": true,
+    "safesearch": true,
+    "about": {
+      "website": "https://www.bing.com/images",
+      "wikidata_id": "Q182496",
+      "official_api_documentation": "https://github.com/MicrosoftDocs/bing-docs",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//ul[contains(@class, \"dgControl_list\")]/li[.//a[@class=\"iusc\"]]",
+    "url_xpath": ".//a[@class=\"iusc\"]/@href",
+    "title_xpath": ".//div[@class=\"infnmpt\"]//a",
+    "content_xpath": ".//div[@class=\"imgpt\"]"
+  },
+  {
+    "name": "bing news",
+    "engine": "xpath",
+    "shortcut": "bin",
+    "categories": [
+      "news"
+    ],
+    "paging": true,
+    "search_url": "https://www.bing.com/news/infinitescrollajax?q={query}&InfiniteScroll=1&first={pageno}&SFX={page}&form=PTFTNR",
+    "page_size": 10,
+    "first_page_num": 1,
+    "time_range_support": true,
+    "about": {
+      "website": "https://www.bing.com/news",
+      "wikidata_id": "Q2878637",
+      "official_api_documentation": "https://github.com/MicrosoftDocs/bing-docs",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "RSS"
+    },
+    "results_xpath": "//div[contains(@class, \"newsitem\")]",
+    "url_xpath": ".//a[@class=\"title\"]/@href",
+    "title_xpath": ".//a[@class=\"title\"]",
+    "content_xpath": ".//div[@class=\"snippet\"]"
+  },
+  {
+    "name": "bing videos",
+    "engine": "xpath",
+    "shortcut": "bin",
+    "categories": [
+      "videos",
+      "web"
+    ],
+    "paging": true,
+    "search_url": "https://www.bing.com/videos/asyncv2?q={query}&async=content&first={pageno}&count=35",
+    "page_size": 35,
+    "time_range_support": true,
+    "safesearch": true,
+    "about": {
+      "website": "https://www.bing.com/videos",
+      "wikidata_id": "Q4914152",
+      "official_api_documentation": "https://github.com/MicrosoftDocs/bing-docs",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//div[contains(@id, \"mc_vtvc_video\")]",
+    "url_xpath": ".//div[@ourl]/@ourl",
+    "title_xpath": ".//div[contains(@class, \"mc_vtvc_title\")]/@title",
+    "content_xpath": ".//div[@class=\"mc_vtvc_meta_block\"]",
+    "result_css": "div[id^=mc_vtvc_video]",
+    "url_css": ".mc_vtvc_con_rc",
+    "url_attr": "ourl",
+    "title_css": ".mc_vtvc_title",
+    "content_css": ".mc_vtvc_meta_block",
+    "empty_result_error": "no_results",
+    "inactive": true,
+    "inactive_reason": "results metadata embedded in attribute JSON"
+  },
+  {
+    "name": "bitbucket",
+    "engine": "xpath",
+    "shortcut": "bb",
+    "categories": [
+      "it",
+      "repos"
+    ],
+    "paging": true,
+    "search_url": "https://bitbucket.org/repo/all/{pageno}?name={query}",
+    "empty_result_error": "access_denied",
+    "url_xpath": "//article[@class=\"repo-summary\"]//a[@class=\"repo-link\"]/@href",
+    "title_xpath": "//article[@class=\"repo-summary\"]//a[@class=\"repo-link\"]",
+    "content_xpath": "//article[@class=\"repo-summary\"]/p",
+    "about": {
+      "website": "https://bitbucket.org/",
+      "wikidata_id": "Q2493781",
+      "official_api_documentation": "https://developer.atlassian.com/bitbucket",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "bitchute",
+    "engine": "json_engine",
+    "shortcut": "bit",
+    "categories": [
+      "videos"
+    ],
+    "paging": true,
+    "search_url": "https://api.bitchute.com/api/beta/search/videos/search?q={query}",
+    "about": {
+      "website": "https://bitchute.com",
+      "wikidata_id": "Q45287179",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content"
+  },
+  {
+    "name": "boardreader",
+    "engine": "json_engine",
+    "shortcut": "boa",
+    "categories": [
+      "general",
+      "social media"
+    ],
+    "paging": true,
+    "search_url": "https://boardreader.com/search?q={query}",
+    "time_range_support": true,
+    "about": {
+      "website": "https://boardreader.com",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "requires session id"
+  },
+  {
+    "name": "bpb",
+    "engine": "json_engine",
+    "shortcut": "bpb",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://www.bpb.de/search?q={query}",
+    "language": "de",
+    "about": {
+      "website": "https://www.bpb.de",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content"
+  },
+  {
+    "name": "braveapi",
+    "engine": "json_engine",
+    "shortcut": "bra",
+    "categories": [
+      "general",
+      "web"
+    ],
+    "paging": true,
+    "search_url": "https://api.search.brave.com/res/v1/web/search/search?q={query}",
+    "time_range_support": true,
+    "safesearch": true,
+    "about": {
+      "website": "https://api.search.brave.com/",
+      "wikidata_id": null,
+      "official_api_documentation": "https://api-dashboard.search.brave.com/documentation",
+      "use_official_api": true,
+      "require_api_key": true,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "requires API key"
+  },
+  {
+    "name": "bt4g",
+    "engine": "xpath",
+    "shortcut": "bt4",
+    "categories": [
+      "files"
+    ],
+    "paging": true,
+    "search_url": "https://bt4gprx.com/search?q={query}&orderby={order_by}&category={category}&p={pageno}&page=rss",
+    "time_range_support": true,
+    "about": {
+      "website": "https://bt4gprx.com",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "XML"
+    },
+    "results_xpath": "//article|//div[contains(@class, 'result')]|//li|//tr",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a"
+  },
+  {
+    "name": "btdigg",
+    "engine": "xpath",
+    "shortcut": "btd",
+    "categories": [
+      "files"
+    ],
+    "paging": true,
+    "search_url": "https://btdig.com/search?q={query}&p={pageno}",
+    "about": {
+      "website": "https://btdig.com",
+      "wikidata_id": "Q4836698",
+      "official_api_documentation": {
+        "url": "https://btdig.com/contacts",
+        "comment": "on demand"
+      },
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//div[@class=\"one_result\"]",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a"
+  },
+  {
+    "name": "cachy os",
+    "engine": "json_engine",
+    "shortcut": "cac",
+    "categories": [
+      "packages",
+      "it"
+    ],
+    "paging": true,
+    "search_url": "https://packages.cachyos.org/api/search/search?q={query}",
+    "about": {
+      "website": "https://cachyos.org",
+      "wikidata_id": "Q116777127",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "result url must be assembled from repo/arch fields"
+  },
+  {
+    "name": "cara",
+    "engine": "json_engine",
+    "shortcut": "car",
+    "categories": [
+      "images"
+    ],
+    "paging": true,
+    "search_url": "https://cara.app/search?q={query}",
+    "about": {
+      "website": "https://cara.app",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "client-side rendered app, POST typesense API"
+  },
+  {
+    "name": "ccc media",
+    "engine": "json_engine",
+    "shortcut": "ccc",
+    "categories": [
+      "videos"
+    ],
+    "about": {
+      "website": "https://media.ccc.de",
+      "official_api_documentation": "https://github.com/voc/voctoweb",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://api.media.ccc.de/public/events/search?q={query}&page={pageno}",
+    "paging": true,
+    "results_query": "events",
+    "url_query": "frontend_link",
+    "title_query": "title",
+    "content_query": "description"
+  },
+  {
+    "name": "chatnoir",
+    "engine": "json_engine",
+    "shortcut": "cha",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://www.chatnoir.eu/search?q={query}",
+    "about": {
+      "website": "https://www.chatnoir.eu",
+      "official_api_documentation": "https://www.chatnoir.eu/docs/api-general",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "requires scraped API key"
+  },
+  {
+    "name": "chefkoch",
+    "engine": "json_engine",
+    "shortcut": "che",
+    "categories": [
+      "general"
+    ],
+    "language": "de",
+    "about": {
+      "website": "https://www.chefkoch.de",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://api.chefkoch.de/v2/search-gateway/recipes?query={query}&limit=20&offset={offset}",
+    "paging": true,
+    "page_size": 20,
+    "results_query": "results",
+    "url_query": "recipe/siteUrl",
+    "title_query": "recipe/title",
+    "content_query": "recipe/subtitle"
+  },
+  {
+    "name": "chinaso",
+    "engine": "json_engine",
+    "shortcut": "chi",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://www.chinaso.com/search?q={query}",
+    "language": "zh",
+    "time_range_support": true,
+    "about": {
+      "website": "https://www.chinaso.com/",
+      "wikidata_id": "Q10846064",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content"
+  },
+  {
+    "name": "cl0q",
+    "engine": "json_engine",
+    "shortcut": "cl",
+    "categories": "general",
+    "paging": true,
+    "first_page_num": 0,
+    "page_size": 20,
+    "search_url": "https://cl0q.com/search?q={query}&limit=20&offset={pageno}",
+    "results_query": "results",
+    "url_query": "domain",
+    "url_prefix": "https://",
+    "title_query": "title",
+    "content_query": "description",
+    "about": {
+      "website": "https://cl0q.com",
+      "description": "Open source network for searching domains",
+      "results": "JSON"
+    }
+  },
+  {
+    "name": "crowdview",
+    "engine": "json_engine",
+    "shortcut": "cv",
+    "categories": "general",
+    "paging": false,
+    "search_url": "https://crowdview-next-js.onrender.com/api/search-v3?query={query}",
+    "results_query": "results",
+    "url_query": "link",
+    "title_query": "title",
+    "content_query": "snippet",
+    "title_html_to_text": true,
+    "content_html_to_text": true,
+    "about": {
+      "website": "https://crowdview.ai/"
+    }
+  },
+  {
+    "name": "deepl",
+    "engine": "json_engine",
+    "shortcut": "dee",
+    "categories": [
+      "general",
+      "translate"
+    ],
+    "paging": false,
+    "search_url": "https://api-free.deepl.com/v2/translate/search?q={query}",
+    "about": {
+      "website": "https://deepl.com",
+      "wikidata_id": "Q43968444",
+      "official_api_documentation": "https://www.deepl.com/docs-api",
+      "use_official_api": true,
+      "require_api_key": true,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "translation API engine"
+  },
+  {
+    "name": "destatis",
+    "engine": "xpath",
+    "shortcut": "des",
+    "categories": [
+      "general"
+    ],
+    "language": "de",
+    "about": {
+      "website": "https://www.destatis.de",
+      "official_api_documentation": "https://destatis.api.bund.dev/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "base_url": "https://www.destatis.de",
+    "search_url": "https://www.destatis.de/SiteGlobals/Forms/Suche/Expertensuche_Formular.html?templateQueryString={query}",
+    "paging": false,
+    "results_xpath": "//div[@class=\"c-result\"]",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a",
+    "content_xpath": ".//p"
+  },
+  {
+    "name": "deviantart",
+    "engine": "xpath",
+    "shortcut": "dev",
+    "categories": [
+      "images"
+    ],
+    "paging": true,
+    "search_url": "https://www.deviantart.com/search?q={query}",
+    "about": {
+      "website": "https://www.deviantart.com/",
+      "wikidata_id": "Q46523",
+      "official_api_documentation": "https://www.deviantart.com/developers/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//a[contains(@href, '/art/') and not(contains(@href, '#comments')) and normalize-space(.) and not(.//img) and not(contains(normalize-space(.), ' on DeviantArt')) and not(contains(normalize-space(.), 'https://www.deviantart.com/'))]",
+    "url_xpath": "./@href",
+    "title_xpath": "."
+  },
+  {
+    "name": "devicons",
+    "engine": "json_engine",
+    "shortcut": "dev",
+    "categories": [
+      "images",
+      "icons"
+    ],
+    "paging": false,
+    "search_url": "https://devicon.dev/search?q={query}",
+    "about": {
+      "website": "https://devicon.dev/",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": true,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "client-side filtering of static JSON"
+  },
+  {
+    "name": "dictzone",
+    "engine": "xpath",
+    "shortcut": "dic",
+    "categories": [
+      "general",
+      "translate"
+    ],
+    "paging": false,
+    "search_url": "https://dictzone.com/search?q={query}",
+    "about": {
+      "website": "https://dictzone.com/",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//article|//div[contains(@class, 'result')]|//li|//tr",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a",
+    "inactive": true,
+    "inactive_reason": "translation engine"
+  },
+  {
+    "name": "digbt",
+    "engine": "xpath",
+    "shortcut": "dig",
+    "categories": [
+      "videos",
+      "music",
+      "files"
+    ],
+    "paging": true,
+    "search_url": "https://digbt.org/search?q={query}",
+    "about": {
+      "website": "https://digbt.org",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//article|//div[contains(@class, 'result')]|//li|//tr",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a"
+  },
+  {
+    "name": "discourse",
+    "engine": "json_engine",
+    "shortcut": "dis",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://discourse.org/search?q={query}",
+    "time_range_support": true,
+    "about": {
+      "website": "https://discourse.org/",
+      "wikidata_id": "Q15054354",
+      "official_api_documentation": "https://docs.discourse.org/",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "needs a configured instance"
+  },
+  {
+    "name": "doku",
+    "engine": "xpath",
+    "shortcut": "dok",
+    "categories": [
+      "general"
+    ],
+    "paging": false,
+    "search_url": "/?do=search&{query}",
+    "about": {
+      "website": "https://www.dokuwiki.org/",
+      "wikidata_id": "Q851864",
+      "official_api_documentation": "https://www.dokuwiki.org/devel:xmlrpc",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//article|//div[contains(@class, 'result')]|//li|//tr",
+    "url_xpath": ".//a[@class=\"wikilink1\"]/@href",
+    "title_xpath": ".//a[@class=\"wikilink1\"]/@title",
+    "inactive": true,
+    "inactive_reason": "needs a configured instance"
+  },
+  {
+    "name": "duckduckgo definitions",
+    "engine": "json_engine",
+    "shortcut": "duc",
+    "categories": [
+      "general"
+    ],
+    "paging": false,
+    "search_url": "https://duckduckgo.com/search?q={query}",
+    "about": {
+      "website": "https://duckduckgo.com/",
+      "wikidata_id": "Q12805",
+      "official_api_documentation": "https://duckduckgo.com/api",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "instant-answer/infobox engine"
+  },
+  {
+    "name": "duckduckgo extra",
+    "engine": "xpath",
+    "shortcut": "duc",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://duckduckgo.com/search?q={query}",
+    "safesearch": true,
+    "about": {
+      "website": "https://duckduckgo.com/",
+      "wikidata_id": "Q12805",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON (site requires js to get images)"
+    },
+    "results_xpath": "//article|//div[contains(@class, 'result')]|//li|//tr",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a",
+    "empty_result_error": "no_results",
+    "inactive": true,
+    "inactive_reason": "requires vqd token"
+  },
+  {
+    "name": "duckduckgo web",
+    "engine": "json_engine",
+    "shortcut": "duc",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://duckduckgo.com/search?q={query}",
+    "about": {
+      "website": "https://duckduckgo.com/",
+      "wikidata_id": "Q12805",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "requires vqd token"
+  },
+  {
+    "name": "duden",
+    "engine": "xpath",
+    "shortcut": "dud",
+    "categories": [
+      "dictionaries"
+    ],
+    "paging": true,
+    "search_url": "https://www.duden.de/suchen/dudenonline/{query}?search_api_fulltext=&page={offset}",
+    "language": "de",
+    "about": {
+      "website": "https://www.duden.de",
+      "wikidata_id": "Q73624591",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//section[not(contains(@class, \"essay\"))]",
+    "url_xpath": ".//a/@href",
+    "title_xpath": "string(.//h2/a)"
+  },
+  {
+    "name": "ebay",
+    "engine": "xpath",
+    "shortcut": "eba",
+    "categories": [
+      "shopping"
+    ],
+    "about": {
+      "website": "https://www.ebay.com",
+      "wikidata_id": "Q58024",
+      "official_api_documentation": "https://developer.ebay.com/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "base_url": "https://www.ebay.com",
+    "search_url": "https://www.ebay.com/sch/i.html?_nkw={query}&_pgn={pageno}",
+    "paging": true,
+    "results_xpath": "//li[contains(@class, \"s-item\")]",
+    "url_xpath": ".//a[@class=\"s-item__link\"]/@href",
+    "title_xpath": ".//h3[@class=\"s-item__title\"]",
+    "content_xpath": ".//span[@class=\"s-item__price\"]"
+  },
+  {
+    "name": "emojipedia",
+    "engine": "xpath",
+    "shortcut": "emo",
+    "categories": [
+      "general"
+    ],
+    "paging": false,
+    "search_url": "https://emojipedia.org/search?q={query}",
+    "about": {
+      "website": "https://emojipedia.org",
+      "wikidata_id": "Q22908129",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//div[contains(@class,'EmojisList_emojis-list-wrapper')]//a[contains(@class,'EmojisList_emojis-list-item')][@href]",
+    "url_xpath": "./@href",
+    "title_xpath": "./@aria-label",
+    "empty_result_error": "no_results",
+    "inactive": true,
+    "inactive_reason": "site is a client-side rendered app"
+  },
+  {
+    "name": "encyclosearch",
+    "engine": "json_engine",
+    "shortcut": "es",
+    "categories": "general",
+    "paging": true,
+    "search_url": "https://encyclosearch.org/encyclosphere/search?q={query}&page={pageno}&resultsPerPage=15",
+    "results_query": "Results",
+    "url_query": "SourceURL",
+    "title_query": "Title",
+    "content_query": "Description",
+    "about": {
+      "website": "https://encyclosearch.org",
+      "official_api_documentation": "https://encyclosearch.org/docs/#/rest-api",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    }
+  },
+  {
+    "name": "erowid",
+    "engine": "xpath",
+    "shortcut": "ew",
+    "categories": [],
+    "paging": true,
+    "first_page_num": 0,
+    "page_size": 30,
+    "search_url": "https://www.erowid.org/search.php?q={query}&s={pageno}",
+    "url_xpath": "//dl[@class=\"results-list\"]/dt[@class=\"result-title\"]/a/@href",
+    "title_xpath": "//dl[@class=\"results-list\"]/dt[@class=\"result-title\"]/a/text()",
+    "content_xpath": "//dl[@class=\"results-list\"]/dd[@class=\"result-details\"]",
+    "about": {
+      "website": "https://www.erowid.org/",
+      "wikidata_id": "Q1430691",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "etymonline",
+    "engine": "xpath",
+    "shortcut": "et",
+    "categories": [
+      "dictionaries"
+    ],
+    "paging": true,
+    "first_page_num": 1,
+    "search_url": "https://etymonline.com/search?page={pageno}&q={query}",
+    "results_xpath": "//a[starts-with(@href, \"/word/\") and starts-with(@title, \"Origin and meaning\")]/ancestor::div[contains(@class, \"flex-col\")][1]",
+    "url_xpath": ".//a[starts-with(@href, \"/word/\") and starts-with(@title, \"Origin and meaning\")]/@href",
+    "title_xpath": ".//a[starts-with(@href, \"/word/\") and starts-with(@title, \"Origin and meaning\")]",
+    "content_xpath": ".//section",
+    "about": {
+      "website": "https://www.etymonline.com/",
+      "wikidata_id": "Q1188617",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "fastbot",
+    "engine": "xpath",
+    "shortcut": "fa",
+    "categories": "general",
+    "search_url": "https://fastbot.de/search?q={query}",
+    "results_xpath": "//section[contains(@class, 'organic-results')]/div[contains(@class, 'result-item')]",
+    "url_xpath": "(./a/@href)[last()]",
+    "title_xpath": "(./a)[last()]",
+    "content_xpath": "./div[contains(@class, 'snippet')]",
+    "suggestion_xpath": "//section[contains(@class, 'related-searches')]//a/span[1]",
+    "about": {
+      "website": "https://fastbot.de",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "fdroid",
+    "engine": "xpath",
+    "shortcut": "fdr",
+    "categories": [
+      "files",
+      "apps"
+    ],
+    "paging": true,
+    "search_url": "https://search.f-droid.org/?q={query}&page={pageno}&lang=",
+    "about": {
+      "website": "https://f-droid.org/",
+      "wikidata_id": "Q1386210",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//a[@class='package-header']",
+    "url_xpath": "./@href",
+    "title_xpath": "./div/h4[@class='package-name']",
+    "content_xpath": "./div/div"
+  },
+  {
+    "name": "findfiles",
+    "engine": "xpath",
+    "shortcut": "fin",
+    "categories": [
+      "files"
+    ],
+    "about": {
+      "website": "https://findfiles.net",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "base_url": "https://findfiles.net",
+    "search_url": "https://findfiles.net/en/serp/all/?query={query}&contentguard=off&page={pageno}",
+    "paging": true,
+    "results_xpath": "//ol/li[contains(@class, 'result-item')]/article",
+    "url_xpath": ".//div[contains(@class, 'caption')]/a/@href",
+    "title_xpath": ".//div[contains(@class, 'caption')]/a"
+  },
+  {
+    "name": "findthatmeme",
+    "engine": "json_engine",
+    "shortcut": "fin",
+    "categories": [
+      "images"
+    ],
+    "about": {
+      "website": "https://findthatmeme.com",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://findthatmeme.com/api/v1/search",
+    "method": "POST",
+    "request_body": "{\"search\": \"{query}\", \"offset\": {offset}}",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "paging": false,
+    "results_query": "",
+    "url_query": "source_page_url",
+    "title_query": "source_site",
+    "content_query": "title"
+  },
+  {
+    "name": "fireball",
+    "engine": "json_engine",
+    "shortcut": "fir",
+    "categories": [
+      "general"
+    ],
+    "paging": false,
+    "search_url": "https://fireball.com/search?q={query}",
+    "safesearch": true,
+    "about": {
+      "website": "https://fireball.com",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content"
+  },
+  {
+    "name": "flaticon",
+    "engine": "json_engine",
+    "shortcut": "fla",
+    "categories": [
+      "images",
+      "icons"
+    ],
+    "about": {
+      "website": "https://www.flaticon.com",
+      "wikidata_id": "Q105283791",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://www.flaticon.com/ajax/search/{page}?word={query}",
+    "paging": true,
+    "headers": {
+      "Referer": "https://www.flaticon.com/search",
+      "X-Requested-With": "XMLHttpRequest"
+    },
+    "results_query": "items",
+    "url_query": "url",
+    "title_query": "description",
+    "inactive": true,
+    "inactive_reason": "DataDome-protected API"
+  },
+  {
+    "name": "fynd",
+    "engine": "xpath",
+    "shortcut": "fynd",
+    "categories": "general",
+    "paging": true,
+    "first_page_num": 0,
+    "page_size": 10,
+    "search_url": "https://fynd.bot/?search={query}&offset={pageno}{safe_search}",
+    "results_xpath": "//div[contains(@class, \"result-item\")]",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//div[contains(@class, \"title-line\")]",
+    "content_xpath": ".//div[contains(@class, \"description\")]",
+    "thumbnail_xpath": ".//img[contains(@class, \"preview-img\")]/@src",
+    "safesearch": true,
+    "safe_search_map": {
+      "0": "&safe=0",
+      "1": "&safe=1",
+      "2": "&safe=1"
+    },
+    "about": {
+      "website": "https://fynd.bot",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "fyyd",
+    "engine": "json_engine",
+    "shortcut": "fyy",
+    "categories": [
+      "general"
+    ],
+    "about": {
+      "website": "https://fyyd.de",
+      "official_api_documentation": "https://github.com/eazyliving/fyyd-api",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://api.fyyd.de/0.2/search/podcast?term={query}&count=10&page={pageno}",
+    "paging": true,
+    "first_page_num": 0,
+    "results_query": "data",
+    "url_query": "htmlURL",
+    "title_query": "title",
+    "content_query": "description"
+  },
+  {
+    "name": "gabanza",
+    "engine": "xpath",
+    "shortcut": "gab",
+    "categories": "general",
+    "search_url": "https://www.gabanza.com/search?query={query}",
+    "results_xpath": "//div[contains(@class, \"border-t\")]/div/div",
+    "url_xpath": "(.//a/@href)[1]",
+    "title_xpath": "./a",
+    "content_xpath": ".//p",
+    "about": {
+      "website": "https://www.gabanza.com",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "geizhals",
+    "engine": "xpath",
+    "shortcut": "gei",
+    "categories": [
+      "shopping"
+    ],
+    "paging": true,
+    "search_url": "https://geizhals.de/search?q={query}",
+    "language": "de",
+    "about": {
+      "website": "https://geizhals.de",
+      "wikidata_id": "Q15977657",
+      "use_official_api": false,
+      "official_api_documentation": null,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//article[contains(@class, 'listview__item')]",
+    "url_xpath": ".//a[contains(@class, 'listview__name-link')]/@href",
+    "title_xpath": ".//h3[contains(@class, 'listview__name')]"
+  },
+  {
+    "name": "giphy",
+    "engine": "json_engine",
+    "shortcut": "gip",
+    "categories": [
+      "images"
+    ],
+    "paging": true,
+    "search_url": "https://giphy.com/search?q={query}",
+    "about": {
+      "website": "https://giphy.com",
+      "wikidata_id": "Q17054335",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "requires scraped API key"
+  },
+  {
+    "name": "gitea",
+    "engine": "json_engine",
+    "shortcut": "git",
+    "categories": [
+      "it",
+      "repos"
+    ],
+    "about": {
+      "website": "https://about.gitea.com",
+      "wikidata_id": null,
+      "official_api_documentation": "https://docs.gitea.com/next/development/api-usage",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "base_url": "https://gitea.com",
+    "search_url": "https://gitea.com/api/v1/repos/search?q={query}&limit=10&page={pageno}",
+    "paging": true,
+    "results_query": "data",
+    "url_query": "html_url",
+    "title_query": "full_name",
+    "content_query": "description"
+  },
+  {
+    "name": "gmx",
+    "engine": "json_engine",
+    "shortcut": "gmx",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://search.gmx.com/search?q={query}",
+    "time_range_support": true,
+    "safesearch": true,
+    "about": {
+      "website": "https://search.gmx.com",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "requires computed page hash"
+  },
+  {
+    "name": "goodreads",
+    "engine": "xpath",
+    "shortcut": "goo",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://www.goodreads.com/search?q={query}&page={pageno}",
+    "about": {
+      "website": "https://www.goodreads.com",
+      "wikidata_id": "Q2359213",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//table//tr[.//a[contains(@class, 'bookTitle')]]",
+    "url_xpath": ".//a[contains(@class, 'bookTitle')]/@href",
+    "title_xpath": ".//a[contains(@class, 'bookTitle')]",
+    "content_xpath": ".//span[contains(@class, 'uitext')]",
+    "empty_result_error": "captcha"
+  },
+  {
+    "name": "google news",
+    "engine": "xpath",
+    "shortcut": "goo",
+    "categories": [
+      "news"
+    ],
+    "paging": false,
+    "search_url": "https://news.google.com/search?q={query}&hl=en-US&gl=US&ceid=US:en",
+    "safesearch": true,
+    "about": {
+      "website": "https://news.google.com",
+      "wikidata_id": "Q12020",
+      "official_api_documentation": "https://developers.google.com/custom-search",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//div[@jslog and @data-n-tid and @jsdata]",
+    "url_xpath": "./a[@target=\"_blank\"]/@href",
+    "title_xpath": "./h4",
+    "content_xpath": ".//time | .//div[contains(@class, \"vr1PYe\")]",
+    "empty_result_error": "no_results",
+    "inactive": true,
+    "inactive_reason": "internal article ids must be decoded"
+  },
+  {
+    "name": "google play",
+    "engine": "xpath",
+    "shortcut": "goo",
+    "categories": [
+      "general"
+    ],
+    "paging": false,
+    "search_url": "https://play.google.com/store/search?{query}&c={play_categ}",
+    "about": {
+      "website": "https://play.google.com/",
+      "wikidata_id": "Q79576",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//c-wiz[@jsrenderer=\"RBsfwb\"]//div[@role=\"listitem\"]",
+    "url_xpath": ".//a/@href",
+    "title_xpath": "./div[@title]",
+    "inactive": true,
+    "inactive_reason": "deeply structural c-wiz markup"
+  },
+  {
+    "name": "google scholar",
+    "engine": "xpath",
+    "shortcut": "goo",
+    "categories": [
+      "science",
+      "scientific publications"
+    ],
+    "paging": true,
+    "search_url": "https://scholar.google.com/scholar?q={query}&start={offset}&as_sdt=2007&as_vis=0",
+    "page_size": 10,
+    "time_range_support": true,
+    "about": {
+      "website": "https://scholar.google.com",
+      "wikidata_id": "Q494817",
+      "official_api_documentation": "https://developers.google.com/custom-search",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//div[@data-rp][.//h3[1]//a]",
+    "url_xpath": ".//h3[1]//a/@href",
+    "title_xpath": ".//h3[1]//a",
+    "content_xpath": ".//div[@class=\"gs_rs\"]",
+    "empty_result_error": "captcha"
+  },
+  {
+    "name": "google videos",
+    "engine": "xpath",
+    "shortcut": "goo",
+    "categories": [
+      "videos",
+      "web"
+    ],
+    "paging": true,
+    "search_url": "https://www.google.com/search?q={query}&tbm=vid&start={offset}",
+    "page_size": 10,
+    "time_range_support": true,
+    "safesearch": true,
+    "about": {
+      "website": "https://www.google.com",
+      "wikidata_id": "Q219885",
+      "official_api_documentation": "https://developers.google.com/custom-search",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//div[contains(@class, \"MjjYud\")][.//a]",
+    "url_xpath": ".//a[@jsname=\"UWckNb\"]/@href | .//a[contains(@href, \"/url?q=\")]/@href",
+    "title_xpath": ".//h3[contains(@class, \"LC20lb\")] | .//div[@role=\"heading\"]",
+    "content_xpath": ".//div[contains(@class, \"ITZIwc\")]",
+    "empty_result_error": "captcha"
+  },
+  {
+    "name": "grokipedia",
+    "engine": "json_engine",
+    "shortcut": "gro",
+    "categories": [
+      "general"
+    ],
+    "about": {
+      "website": "https://grokipedia.com",
+      "wikidata_id": "Q136410803",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://grokipedia.com/api/full-text-search?query={query}&limit=10&offset={offset}",
+    "paging": true,
+    "page_size": 10,
+    "results_query": "results",
+    "url_query": "slug",
+    "url_prefix": "https://grokipedia.com/page/",
+    "title_query": "title",
+    "content_query": "snippet",
+    "content_html_to_text": true
+  },
+  {
+    "name": "habrahabr",
+    "engine": "xpath",
+    "shortcut": "habr",
+    "categories": "it",
+    "paging": true,
+    "search_url": "https://habr.com/en/rss/search/?q={query}&order_by=relevance&target_type=posts&hl=en&fl=en",
+    "results_xpath": "//item",
+    "url_xpath": "./link",
+    "title_xpath": "./title",
+    "content_xpath": "./description",
+    "about": {
+      "website": "https://habr.com/",
+      "wikidata_id": "Q4494434",
+      "official_api_documentation": "https://habr.com/en/docs/help/api/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "heexy",
+    "engine": "json_engine",
+    "shortcut": "hee",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://heexy.org/search?q={query}",
+    "safesearch": true,
+    "about": {
+      "website": "https://heexy.org",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "requires api token cookie"
+  },
+  {
+    "name": "hex",
+    "engine": "json_engine",
+    "shortcut": "hex",
+    "categories": [
+      "it",
+      "packages"
+    ],
+    "paging": true,
+    "page_param": "page",
+    "search_url": "https://hex.pm/api/packages?search={query}&sort=recent_downloads",
+    "results_query": "",
+    "url_query": "html_url",
+    "title_query": "name",
+    "content_query": "meta.description",
+    "about": {
+      "website": "https://hex.pm/",
+      "official_api_documentation": "https://github.com/hexpm/hexpm/blob/main/lib/hexpm_web/controllers/api/package_controller.ex",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    }
+  },
+  {
+    "name": "hoogle",
+    "engine": "xpath",
+    "shortcut": "ho",
+    "categories": [
+      "it",
+      "packages"
+    ],
+    "page_size": 20,
+    "search_url": "https://hoogle.haskell.org/?hoogle={query}",
+    "results_xpath": "//div[@class=\"result\"]",
+    "url_xpath": ".//div[@class=\"ans\"]//a/@href",
+    "title_xpath": ".//div[@class=\"ans\"]//a",
+    "content_xpath": ".//div[@class=\"from\"]",
+    "about": {
+      "website": "https://hoogle.haskell.org/",
+      "wikidata_id": "Q34010",
+      "official_api_documentation": "https://hackage.haskell.org/api",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    }
+  },
+  {
+    "name": "huggingface",
+    "engine": "json_engine",
+    "shortcut": "hug",
+    "categories": [
+      "it",
+      "repos"
+    ],
+    "about": {
+      "website": "https://huggingface.co/",
+      "wikidata_id": "Q108943604",
+      "official_api_documentation": "https://huggingface.co/docs/hub/en/api",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://huggingface.co/api/models?search={query}&direction=-1",
+    "paging": false,
+    "results_query": "",
+    "url_query": "id",
+    "url_prefix": "https://huggingface.co/",
+    "title_query": "id",
+    "content_query": "pipeline_tag"
+  },
+  {
+    "name": "il post",
+    "engine": "json_engine",
+    "shortcut": "il_",
+    "categories": [
+      "news"
+    ],
+    "language": "it",
+    "time_range_support": true,
+    "about": {
+      "website": "https://www.ilpost.it",
+      "wikidata_id": "Q3792882",
+      "official_api_documentation": null,
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://api.ilpost.org/search/api/site_search/?qs={query}&pg={pageno}&sort=date_d&filters=ctype%3Aarticoli",
+    "paging": true,
+    "results_query": "docs",
+    "url_query": "link",
+    "title_query": "title",
+    "content_query": "summary",
+    "content_html_to_text": true
+  },
+  {
+    "name": "imgur",
+    "engine": "xpath",
+    "shortcut": "img",
+    "categories": [
+      "images"
+    ],
+    "time_range_support": true,
+    "about": {
+      "website": "https://imgur.com/",
+      "wikidata_id": "Q355022",
+      "official_api_documentation": "https://api.imgur.com/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "base_url": "https://imgur.com",
+    "search_url": "https://imgur.com/search/score/all?q={query}&qs=thumbs&p={pageno}",
+    "paging": true,
+    "first_page_num": 0,
+    "results_xpath": "//div[contains(@class, 'cards')]/div[contains(@class, 'post')]",
+    "url_xpath": "./a/@href",
+    "title_xpath": "./a/img/@alt"
+  },
+  {
+    "name": "ina",
+    "engine": "xpath",
+    "shortcut": "ina",
+    "categories": [
+      "videos"
+    ],
+    "paging": true,
+    "search_url": "https://www.ina.fr/ajax/recherche?q={query}&espace=1&sort=pertinence&order=desc&offset={pageno}&modified=size",
+    "page_size": 12,
+    "language": "fr",
+    "about": {
+      "website": "https://www.ina.fr/",
+      "wikidata_id": "Q1665109",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//div[@id=\"searchHits\"]/div",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//div[contains(@class,\"title-bloc-small\")]",
+    "content_xpath": ".//div[contains(@class,\"dateAgenda\")] | .//div[contains(@class,\"sous-titre-fonction\")]"
+  },
+  {
+    "name": "ipernity",
+    "engine": "xpath",
+    "shortcut": "ipe",
+    "categories": [
+      "images"
+    ],
+    "paging": true,
+    "search_url": "https://www.ipernity.com/search?q={query}",
+    "about": {
+      "website": "https://www.ipernity.com",
+      "official_api_documentation": "https://www.ipernity.com/help/api",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//a[starts-with(@href, \"/doc\")]//img",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a",
+    "content_xpath": "//script[@type=\"text/javascript\"]",
+    "empty_result_error": "no_results",
+    "inactive": true,
+    "inactive_reason": "results embedded in inline scripts"
+  },
+  {
+    "name": "iqiyi",
+    "engine": "json_engine",
+    "shortcut": "iqi",
+    "categories": [
+      "videos"
+    ],
+    "paging": true,
+    "search_url": "https://mesh.if.iqiyi.com/search?q={query}",
+    "language": "zh",
+    "time_range_support": true,
+    "about": {
+      "website": "https://www.iqiyi.com/",
+      "wikidata_id": "Q15913890",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "results nested per-album"
+  },
+  {
+    "name": "iseek",
+    "engine": "json_engine",
+    "shortcut": "ise",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://api.iseek.com/search?q={query}",
+    "about": {
+      "website": "https://www.iseek.com",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "requires per-query token"
+  },
+  {
+    "name": "jisho",
+    "engine": "json_engine",
+    "shortcut": "jis",
+    "categories": [
+      "dictionaries"
+    ],
+    "language": "ja",
+    "about": {
+      "website": "https://jisho.org",
+      "wikidata_id": "Q24568389",
+      "official_api_documentation": "https://jisho.org/forum/54fefc1f6e73340b1f160000-is-there-any-kind-of-search-api",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://jisho.org/api/v1/search/words?keyword={query}",
+    "paging": false,
+    "results_query": "data",
+    "url_query": "slug",
+    "url_prefix": "https://jisho.org/word/",
+    "title_query": "slug",
+    "content_query": "senses/0/english_definitions/0"
+  },
+  {
+    "name": "kagi",
+    "engine": "json_engine",
+    "shortcut": "kag",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://kagi.com/search?q={query}",
+    "time_range_support": true,
+    "safesearch": true,
+    "about": {
+      "website": "https://kagi.com",
+      "wikidata_id": "Q26000117",
+      "official_api_documentation": "https://kagi.com/api/docs/openapi",
+      "use_official_api": true,
+      "require_api_key": true,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "requires API key"
+  },
+  {
+    "name": "kickass",
+    "engine": "xpath",
+    "shortcut": "kic",
+    "categories": [
+      "files"
+    ],
+    "paging": true,
+    "search_url": "https://kickasstorrents.to/search?q={query}",
+    "about": {
+      "website": "https://kickasstorrents.to",
+      "wikidata_id": "Q17062285",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//table[contains(@class, \"data\")]//tr[descendant::a]",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a"
+  },
+  {
+    "name": "kozmonavt",
+    "engine": "xpath",
+    "shortcut": "koz",
+    "search_url": "https://kozmonavt.su/s?q={query}",
+    "results_xpath": "//div[contains(@class, 'list')]/section",
+    "url_xpath": "concat('https://', substring-after(.//a/@href, '?q='))",
+    "title_xpath": ".//a",
+    "content_xpath": ".//div[contains(@class, 'snip')]",
+    "about": {
+      "website": "https://kozmonavt.su",
+      "description": "Web site directory with its own index",
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "kukei",
+    "engine": "xpath",
+    "shortcut": "kuk",
+    "categories": [
+      "general",
+      "blogs"
+    ],
+    "search_url": "https://kukei.eu/?q={query}",
+    "results_xpath": "//ul/li[contains(@class, \"result-item-first-level\")]",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//h3",
+    "content_xpath": ".//p",
+    "about": {
+      "website": "https://kukei.eu",
+      "description": "Curated search for the small web",
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "lib.rs",
+    "engine": "xpath",
+    "shortcut": "lrs",
+    "categories": [
+      "it",
+      "packages"
+    ],
+    "paging": false,
+    "search_url": "https://lib.rs/search?q={query}",
+    "results_xpath": "/html/body/main/div/ol/li/a",
+    "url_xpath": "./@href",
+    "title_xpath": "./div[@class=\"h\"]/h4",
+    "content_xpath": "./div[@class=\"h\"]/p",
+    "about": {
+      "website": "https://lib.rs",
+      "wikidata_id": "Q113486010",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "library genesis",
+    "engine": "xpath",
+    "shortcut": "lg",
+    "categories": "files",
+    "search_url": "https://libgen.rs/search.php?req={query}",
+    "url_xpath": "//a[contains(@href,\"book/index.php?md5\")]/@href",
+    "title_xpath": "//a[contains(@href,\"book/\")]/text()[1]",
+    "content_xpath": "//td/a[1][contains(@href,\"=author\")]/text()",
+    "about": {
+      "website": "https://libgen.fun/",
+      "wikidata_id": "Q22017206",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "libretranslate",
+    "engine": "json_engine",
+    "shortcut": "lib",
+    "categories": [
+      "general",
+      "translate"
+    ],
+    "paging": false,
+    "search_url": "https://libretranslate.com/translate/search?q={query}",
+    "about": {
+      "website": "https://libretranslate.com",
+      "wikidata_id": null,
+      "official_api_documentation": "https://libretranslate.com/docs/",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "translation API engine"
+  },
+  {
+    "name": "lingva",
+    "engine": "xpath",
+    "shortcut": "lin",
+    "categories": [
+      "general"
+    ],
+    "paging": false,
+    "search_url": "https://lingva.ml/search?q={query}",
+    "results_xpath": "//article|//div[contains(@class, 'result')]|//li|//tr",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a",
+    "inactive": true,
+    "inactive_reason": "translation API engine"
+  },
+  {
+    "name": "lobste.rs",
+    "engine": "xpath",
+    "shortcut": "lo",
+    "categories": "it",
+    "search_url": "https://lobste.rs/search?q={query}&what=stories&order=relevance",
+    "results_xpath": "//li[contains(@class, \"story\")]",
+    "url_xpath": ".//a[@class=\"u-url\"]/@href",
+    "title_xpath": ".//a[@class=\"u-url\"]",
+    "content_xpath": ".//a[@class=\"domain\"]",
+    "about": {
+      "website": "https://lobste.rs/",
+      "wikidata_id": "Q60762874",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "loc",
+    "engine": "json_engine",
+    "shortcut": "loc",
+    "categories": [
+      "images"
+    ],
+    "paging": true,
+    "search_url": "https://www.loc.gov/search?q={query}",
+    "about": {
+      "website": "https://www.loc.gov/pictures/",
+      "wikidata_id": "Q131454",
+      "official_api_documentation": "https://www.loc.gov/api",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content"
+  },
+  {
+    "name": "lucide",
+    "engine": "json_engine",
+    "shortcut": "luc",
+    "categories": [
+      "images",
+      "icons"
+    ],
+    "paging": false,
+    "search_url": "https://lucide.dev/search?q={query}",
+    "about": {
+      "website": "https://lucide.dev/",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": true,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "client-side filtering of static JSON"
+  },
+  {
+    "name": "luxxle",
+    "engine": "xpath",
+    "shortcut": "lux",
+    "categories": [
+      "general"
+    ],
+    "paging": false,
+    "search_url": "https://luxxle.com/search?q={query}",
+    "about": {
+      "website": "https://luxxle.com",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//div[@id='mainResults']/div[contains(@class, 'resultsContainer')]",
+    "url_xpath": ".//a[contains(@class, 'imageResultSource')]/@href",
+    "title_xpath": ".//a[contains(@class, 'imageResultTitle')]",
+    "content_xpath": "./div[contains(@class, 'urlSnippet')]",
+    "empty_result_error": "no_results",
+    "inactive": true,
+    "inactive_reason": "POST form flow"
+  },
+  {
+    "name": "magnific",
+    "engine": "json_engine",
+    "shortcut": "mag",
+    "categories": [
+      "images"
+    ],
+    "about": {
+      "website": "https://www.magnific.com",
+      "wikidata_id": "Q104211654",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://www.magnific.com/api/regular/search?term={query}&filters%5Bai-generated%5D%5Bexcluded%5D=1&page={pageno}&locale=en",
+    "paging": true,
+    "headers": {
+      "Referer": "https://www.magnific.com/search"
+    },
+    "results_query": "items",
+    "url_query": "url",
+    "title_query": "name",
+    "inactive": true,
+    "inactive_reason": "DataDome-protected API"
+  },
+  {
+    "name": "mankier",
+    "engine": "json_engine",
+    "shortcut": "man",
+    "categories": "it",
+    "search_url": "https://www.mankier.com/api/v2/mans/?q={query}",
+    "results_query": "results",
+    "url_query": "url",
+    "title_query": "name",
+    "content_query": "description",
+    "about": {
+      "website": "https://www.mankier.com/",
+      "official_api_documentation": "https://www.mankier.com/api",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    }
+  },
+  {
+    "name": "mdn",
+    "engine": "json_engine",
+    "shortcut": "mdn",
+    "categories": [
+      "it"
+    ],
+    "paging": true,
+    "search_url": "https://developer.mozilla.org/api/v1/search?q={query}&page={pageno}",
+    "results_query": "documents",
+    "url_query": "mdn_url",
+    "url_prefix": "https://developer.mozilla.org",
+    "title_query": "title",
+    "content_query": "summary",
+    "about": {
+      "website": "https://developer.mozilla.org",
+      "wikidata_id": "Q3273508",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    }
+  },
+  {
+    "name": "mediawiki",
+    "engine": "json_engine",
+    "shortcut": "med",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://mediawiki.example.invalid/search?q={query}",
+    "about": {
+      "website": null,
+      "wikidata_id": null,
+      "official_api_documentation": "https://www.mediawiki.org/w/api.php?action=help&modules=query",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "needs a configured instance"
+  },
+  {
+    "name": "metacpan",
+    "engine": "json_engine",
+    "shortcut": "cpan",
+    "categories": [
+      "it",
+      "packages"
+    ],
+    "paging": true,
+    "search_url": "https://metacpan.org/search?q={query}",
+    "about": {
+      "website": "https://metacpan.org/",
+      "wikidata_id": "Q841507",
+      "official_api_documentation": "https://github.com/metacpan/metacpan-api/blob/master/docs/API-docs.md",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content"
+  },
+  {
+    "name": "microsoft learn",
+    "engine": "json_engine",
+    "shortcut": "mic",
+    "categories": [
+      "it"
+    ],
+    "about": {
+      "website": "https://learn.microsoft.com",
+      "wikidata_id": "Q123663245",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://learn.microsoft.com/api/search?search={query}&locale=en-us&%24top=10",
+    "paging": false,
+    "results_query": "results",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "description"
+  },
+  {
+    "name": "mixcloud",
+    "engine": "json_engine",
+    "shortcut": "mix",
+    "categories": [
+      "music"
+    ],
+    "about": {
+      "website": "https://www.mixcloud.com/",
+      "wikidata_id": "Q6883832",
+      "official_api_documentation": "http://www.mixcloud.com/developers/",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://api.mixcloud.com/search/?q={query}&type=cloudcast&limit=10&offset={offset}",
+    "paging": true,
+    "page_size": 10,
+    "results_query": "data",
+    "url_query": "url",
+    "title_query": "name",
+    "content_query": "user/name"
+  },
+  {
+    "name": "moviepilot",
+    "engine": "json_engine",
+    "shortcut": "mov",
+    "categories": [
+      "movies"
+    ],
+    "language": "de",
+    "about": {
+      "website": "https://www.moviepilot.de",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://www.moviepilot.de/api/search?q={query}&page={pageno}&type=suggest",
+    "paging": true,
+    "results_query": "",
+    "url_query": "path",
+    "url_prefix": "https://www.moviepilot.de",
+    "title_query": "title",
+    "content_query": "abstract",
+    "content_html_to_text": true
+  },
+  {
+    "name": "mozhi",
+    "engine": "json_engine",
+    "shortcut": "moz",
+    "categories": [
+      "general",
+      "translate"
+    ],
+    "paging": false,
+    "search_url": "https://mozhi.aryak.me/search?q={query}",
+    "about": {
+      "website": "https://codeberg.org/aryak/mozhi",
+      "wikidata_id": null,
+      "official_api_documentation": "https://mozhi.aryak.me/api/swagger/index.html",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "translation API engine"
+  },
+  {
+    "name": "mrs",
+    "engine": "json_engine",
+    "shortcut": "mrs",
+    "categories": [
+      "social media"
+    ],
+    "paging": true,
+    "search_url": "https://matrixrooms.info/search?q={query}",
+    "about": {
+      "website": "https://matrixrooms.info",
+      "wikidata_id": null,
+      "official_api_documentation": "https://gitlab.com/etke.cc/mrs/api/-/blob/main/openapi.yml?ref_type=heads",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "needs a configured instance"
+  },
+  {
+    "name": "mwmbl",
+    "engine": "json_engine",
+    "shortcut": "mwm",
+    "categories": [
+      "general"
+    ],
+    "about": {
+      "website": "https://github.com/mwmbl/mwmbl",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://api.mwmbl.org/api/v1/search/?s={query}",
+    "paging": false,
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title/0/value",
+    "content_query": "extract/0/value"
+  },
+  {
+    "name": "naver",
+    "engine": "xpath",
+    "shortcut": "nav",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://search.naver.com/search?q={query}",
+    "language": "ko",
+    "time_range_support": true,
+    "about": {
+      "website": "https://search.naver.com",
+      "wikidata_id": "Q485639",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//div[contains(@class, 'fds-web-normal-doc-root')]",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a[contains(@class, 'info_title')]",
+    "content_xpath": ".//span[contains(@class, 'sds-comps-text-type-headline1')]",
+    "inactive": true,
+    "inactive_reason": "per-category structural markup"
+  },
+  {
+    "name": "neocities",
+    "engine": "xpath",
+    "shortcut": "neo",
+    "categories": [
+      "general",
+      "blogs"
+    ],
+    "paging": true,
+    "search_url": "https://neocities.org/search?q={query}",
+    "about": {
+      "website": "https://neocities.org/",
+      "wikidata_id": "Q17071099",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//article|//div[contains(@class, 'result')]|//li|//tr",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a"
+  },
+  {
+    "name": "niconico",
+    "engine": "xpath",
+    "shortcut": "nic",
+    "categories": [
+      "videos"
+    ],
+    "paging": true,
+    "search_url": "https://www.nicovideo.jp/search?q={query}",
+    "language": "ja",
+    "time_range_support": true,
+    "about": {
+      "website": "https://www.nicovideo.jp/",
+      "wikidata_id": "Q697233",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//article|//div[contains(@class, 'result')]|//li|//tr",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a"
+  },
+  {
+    "name": "npm",
+    "engine": "json_engine",
+    "shortcut": "npm",
+    "categories": [
+      "it",
+      "packages"
+    ],
+    "paging": true,
+    "page_size": 25,
+    "search_url": "https://api.npms.io/v2/search?q={query}&size=25&from={offset}",
+    "results_query": "results",
+    "url_query": "package.links.npm",
+    "title_query": "package.name",
+    "content_query": "package.description",
+    "about": {
+      "website": "https://npms.io/",
+      "wikidata_id": "Q7067518",
+      "official_api_documentation": "https://api-docs.npms.io/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    }
+  },
+  {
+    "name": "nvd",
+    "engine": "json_engine",
+    "shortcut": "nvd",
+    "categories": [
+      "it"
+    ],
+    "paging": true,
+    "search_url": "https://nvd.nist.gov/extensions/nudp/services/json/nvd/cve/search/results/search?q={query}",
+    "about": {
+      "website": "https://nvd.nist.gov",
+      "wikidata_id": "Q6979334",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content"
+  },
+  {
+    "name": "odysee",
+    "engine": "json_engine",
+    "shortcut": "ody",
+    "categories": [
+      "videos"
+    ],
+    "paging": true,
+    "search_url": "https://lighthouse.odysee.tv/search/search?q={query}",
+    "time_range_support": true,
+    "about": {
+      "website": "https://odysee.com/",
+      "wikidata_id": "Q102046570",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "result url assembled from name and claim id"
+  },
+  {
+    "name": "ollama",
+    "engine": "xpath",
+    "shortcut": "ol",
+    "categories": [
+      "it",
+      "repos"
+    ],
+    "search_url": "https://ollama.com/search?q={query}",
+    "results_xpath": "//li[@x-test-model]",
+    "url_xpath": "./a/@href",
+    "title_xpath": ".//span[@x-test-search-response-title]",
+    "content_xpath": ".//p[contains(@class, \"text-neutral-800\")]",
+    "about": {
+      "website": "https://ollama.com",
+      "wikidata_id": "Q124636097",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "open meteo",
+    "engine": "json_engine",
+    "shortcut": "ope",
+    "categories": [
+      "weather"
+    ],
+    "paging": false,
+    "search_url": "https://open-meteo.com/search?q={query}",
+    "about": {
+      "website": "https://open-meteo.com",
+      "wikidata_id": null,
+      "official_api_documentation": "https://open-meteo.com/en/docs",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "two-step geocoding flow"
+  },
+  {
+    "name": "openairedatasets",
+    "engine": "json_engine",
+    "shortcut": "oad",
+    "categories": "science",
+    "paging": true,
+    "search_url": "https://api.openaire.eu/search/datasets?format=json&page={pageno}&size=10&title={query}",
+    "results_query": "response/results/result",
+    "url_query": "metadata/oaf:entity/oaf:result/children/instance/webresource/url/$",
+    "title_query": "metadata/oaf:entity/oaf:result/title/$",
+    "content_query": "metadata/oaf:entity/oaf:result/description/$",
+    "content_html_to_text": true,
+    "about": {
+      "website": "https://www.openaire.eu/",
+      "wikidata_id": "Q25106053",
+      "official_api_documentation": "https://api.openaire.eu/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    }
+  },
+  {
+    "name": "openairepublications",
+    "engine": "json_engine",
+    "shortcut": "oap",
+    "categories": "science",
+    "paging": true,
+    "search_url": "https://api.openaire.eu/search/publications?format=json&page={pageno}&size=10&title={query}",
+    "results_query": "response/results/result",
+    "url_query": "metadata/oaf:entity/oaf:result/children/instance/webresource/url/$",
+    "title_query": "metadata/oaf:entity/oaf:result/title/$",
+    "content_query": "metadata/oaf:entity/oaf:result/description/$",
+    "content_html_to_text": true,
+    "about": {
+      "website": "https://www.openaire.eu/",
+      "wikidata_id": "Q25106053",
+      "official_api_documentation": "https://api.openaire.eu/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    }
+  },
+  {
+    "name": "openalex",
+    "engine": "json_engine",
+    "shortcut": "ope",
+    "categories": [
+      "science",
+      "scientific publications"
+    ],
+    "about": {
+      "website": "https://openalex.org/",
+      "wikidata_id": "Q110718454",
+      "official_api_documentation": "https://docs.openalex.org/how-to-use-the-api/api-overview",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://api.openalex.org/works?search={query}&page={pageno}&per-page=10",
+    "paging": true,
+    "results_query": "results",
+    "url_query": "id",
+    "title_query": "display_name"
+  },
+  {
+    "name": "openclipart",
+    "engine": "xpath",
+    "shortcut": "ope",
+    "categories": [
+      "images"
+    ],
+    "paging": true,
+    "search_url": "https://openclipart.org/search/?query={query}&p={pageno}",
+    "about": {
+      "website": "https://openclipart.org/",
+      "wikidata_id": "Q979593",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//div[contains(@class, 'gallery')]/div[contains(@class, 'artwork')]",
+    "url_xpath": "./a/@href",
+    "title_xpath": "./a/img/@alt"
+  },
+  {
+    "name": "openlibrary",
+    "engine": "json_engine",
+    "shortcut": "ope",
+    "categories": [
+      "general",
+      "books"
+    ],
+    "about": {
+      "website": "https://openlibrary.org",
+      "wikidata_id": "Q1201876",
+      "require_api_key": false,
+      "use_official_api": false,
+      "official_api_documentation": "https://openlibrary.org/developers/api"
+    },
+    "search_url": "https://openlibrary.org/search.json?q={query}&page={pageno}&limit=10",
+    "paging": true,
+    "results_query": "docs",
+    "url_query": "key",
+    "url_prefix": "https://openlibrary.org",
+    "title_query": "title",
+    "content_query": "first_sentence/0"
+  },
+  {
+    "name": "openrepos",
+    "engine": "xpath",
+    "shortcut": "or",
+    "categories": "files",
+    "paging": true,
+    "search_url": "https://openrepos.net/search/node/{query}?page={pageno}",
+    "url_xpath": "//li[@class=\"search-result\"]//h3[@class=\"title\"]/a/@href",
+    "title_xpath": "//li[@class=\"search-result\"]//h3[@class=\"title\"]/a",
+    "content_xpath": "//li[@class=\"search-result\"]//div[@class=\"search-snippet-info\"]//p[@class=\"search-snippet\"]",
+    "about": {
+      "website": "https://openrepos.net/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "packagist",
+    "engine": "json_engine",
+    "shortcut": "pack",
+    "categories": [
+      "it",
+      "packages"
+    ],
+    "paging": true,
+    "search_url": "https://packagist.org/search.json?q={query}&page={pageno}",
+    "results_query": "results",
+    "url_query": "url",
+    "title_query": "name",
+    "content_query": "description",
+    "about": {
+      "website": "https://packagist.org",
+      "wikidata_id": "Q108311377",
+      "official_api_documentation": "https://packagist.org/apidoc",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    }
+  },
+  {
+    "name": "pexels",
+    "engine": "json_engine",
+    "shortcut": "pex",
+    "categories": [
+      "images"
+    ],
+    "paging": true,
+    "search_url": "https://www.pexels.com/search?q={query}",
+    "time_range_support": true,
+    "about": {
+      "website": "https://www.pexels.com",
+      "wikidata_id": "Q101240504",
+      "official_api_documentation": "https://www.pexels.com/api/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "requires API key"
+  },
+  {
+    "name": "picjumbo",
+    "engine": "xpath",
+    "shortcut": "pic",
+    "categories": [
+      "images"
+    ],
+    "paging": true,
+    "search_url": "https://picjumbo.com/search?q={query}",
+    "about": {
+      "website": "https://picjumbo.com",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//div[contains(@class, 'photo_query')]/div[contains(@class, 'photo_item')]",
+    "url_xpath": ".//a[contains(@class, 'image')]/@href",
+    "title_xpath": ".//h3",
+    "content_xpath": ".//meta[@itemprop='keywords']/@content"
+  },
+  {
+    "name": "pinterest",
+    "engine": "json_engine",
+    "shortcut": "pin",
+    "categories": [
+      "images"
+    ],
+    "about": {
+      "website": "https://www.pinterest.com/",
+      "wikidata_id": "Q255381",
+      "official_api_documentation": "https://developers.pinterest.com/docs/api/v5/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://www.pinterest.com/resource/BaseSearchResource/get/?data=%7B%22options%22%3A%7B%22query%22%3A%22{query}%22%2C%22bookmarks%22%3A%5B%22%22%5D%7D%2C%22context%22%3A%7B%7D%7D",
+    "paging": false,
+    "headers": {
+      "X-Pinterest-AppState": "active",
+      "X-Pinterest-Source-Url": "/ideas/",
+      "X-Pinterest-PWS-Handler": "www/ideas.js"
+    },
+    "results_query": "resource_response/data/results",
+    "url_query": "link",
+    "title_query": "title",
+    "content_query": "rich_summary/display_description"
+  },
+  {
+    "name": "pixabay",
+    "engine": "json_engine",
+    "shortcut": "pix",
+    "categories": [
+      "images"
+    ],
+    "paging": true,
+    "search_url": "https://pixabay.com/search?q={query}",
+    "time_range_support": true,
+    "safesearch": true,
+    "about": {
+      "website": "https://pixabay.com",
+      "wikidata_id": "Q1746538",
+      "official_api_documentation": "https://pixabay.com/api/docs/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "requires CSRF bootstrap headers"
+  },
+  {
+    "name": "pixiv",
+    "engine": "json_engine",
+    "shortcut": "pix",
+    "categories": [
+      "images"
+    ],
+    "about": {
+      "website": "https://www.pixiv.net/",
+      "wikidata_id": "Q306956",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://www.pixiv.net/ajax/search/illustrations/{query}?word={query}&order=date_d&mode=all&p={pageno}&s_mode=s_tag_full&type=illust_and_ugoira&lang=en",
+    "paging": true,
+    "headers": {
+      "Referer": "https://www.pixiv.net/"
+    },
+    "results_query": "body/illust/data",
+    "url_query": "id",
+    "url_prefix": "https://www.pixiv.net/artworks/",
+    "title_query": "title",
+    "content_query": "alt"
+  },
+  {
+    "name": "pkg go dev",
+    "engine": "xpath",
+    "shortcut": "pkg",
+    "categories": [
+      "packages",
+      "it"
+    ],
+    "paging": false,
+    "search_url": "https://pkg.go.dev/search?q={query}",
+    "about": {
+      "website": "https://pkg.go.dev/",
+      "use_official_api": false,
+      "official_api_documentation": null,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//article|//div[contains(@class, 'result')]|//li|//tr",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a"
+  },
+  {
+    "name": "podchaser",
+    "engine": "json_engine",
+    "shortcut": "pod",
+    "categories": [
+      "general"
+    ],
+    "about": {
+      "website": "https://www.podchaser.com",
+      "official_api_documentation": "https://www.podchaser.com/api",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://api.podchaser.com/podcasts?filters%5Bterm%5D={query}&limit=10&offset={offset}&sort_direction=desc&sort_order=SORT_ORDER_RELEVANCE",
+    "paging": true,
+    "page_size": 10,
+    "headers": {
+      "Accept": "application/prs.podchaser.v2+json"
+    },
+    "results_query": "entities",
+    "url_query": "feed_url",
+    "title_query": "title",
+    "content_query": "description"
+  },
+  {
+    "name": "privacywall",
+    "engine": "xpath",
+    "shortcut": "pri",
+    "categories": [
+      "general"
+    ],
+    "paging": false,
+    "search_url": "https://www.privacywall.org/search/secure/?q={query}&safesearch=off",
+    "time_range_support": true,
+    "safesearch": true,
+    "about": {
+      "website": "https://privacywall.org",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//div[@id='pw-results-main']/div[contains(@class, 'result-card')]",
+    "url_xpath": ".//a[contains(@class, 'result-url-anchor')]/@href",
+    "title_xpath": ".//div[contains(@class, 'result_title')]",
+    "content_xpath": ".//div[contains(@class, 'result-description')]"
+  },
+  {
+    "name": "pub.dev",
+    "engine": "xpath",
+    "shortcut": "pd",
+    "categories": [
+      "packages",
+      "it"
+    ],
+    "paging": true,
+    "first_page_num": 1,
+    "search_url": "https://pub.dev/packages?q={query}&page={pageno}",
+    "results_xpath": "//div[contains(@class,\"packages-item\")]",
+    "url_xpath": "./div/h3/a/@href",
+    "title_xpath": "./div/h3/a",
+    "content_xpath": "./div/div/div[contains(@class,\"packages-description\")]/span",
+    "about": {
+      "website": "https://pub.dev/",
+      "official_api_documentation": "https://pub.dev/help/api",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "public domain image archive",
+    "engine": "json_engine",
+    "shortcut": "pub",
+    "categories": [
+      "images"
+    ],
+    "paging": true,
+    "search_url": "https://pdimagearchive.org/search?q={query}",
+    "about": {
+      "website": "https://pdimagearchive.org",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "dynamic Algolia endpoint"
+  },
+  {
+    "name": "pubmed",
+    "engine": "xpath",
+    "shortcut": "pub",
+    "categories": [
+      "science",
+      "scientific publications"
+    ],
+    "paging": false,
+    "search_url": "https://www.ncbi.nlm.nih.gov/pubmed/search?q={query}",
+    "about": {
+      "website": "https://www.ncbi.nlm.nih.gov/pubmed/",
+      "wikidata_id": "Q1540899",
+      "official_api_documentation": {
+        "url": "https://www.ncbi.nlm.nih.gov/home/develop/api/",
+        "comment": "More info on api: https://www.ncbi.nlm.nih.gov/books/NBK25501/"
+      },
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "XML"
+    },
+    "results_xpath": "//PubmedArticle",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a",
+    "inactive": true,
+    "inactive_reason": "two-step esearch/efetch XML flow"
+  },
+  {
+    "name": "radio browser",
+    "engine": "json_engine",
+    "shortcut": "rad",
+    "categories": [
+      "music",
+      "radio"
+    ],
+    "paging": true,
+    "search_url": "https://www.radio-browser.info/search?q={query}",
+    "about": {
+      "website": "https://www.radio-browser.info/",
+      "wikidata_id": "Q111664849",
+      "official_api_documentation": "https://de1.api.radio-browser.info/",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "dynamic server list"
+  },
+  {
+    "name": "rawweb",
+    "engine": "json_engine",
+    "shortcut": "rw",
+    "categories": [
+      "general",
+      "blogs"
+    ],
+    "paging": true,
+    "search_url": "https://api.rawweb.org/api/search?keyword={query}&page={pageno}&lang=*",
+    "results_query": "data",
+    "url_query": "link",
+    "title_query": "title",
+    "content_query": "content",
+    "title_html_to_text": true,
+    "content_html_to_text": true,
+    "about": {
+      "website": "https://rawweb.org",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    }
+  },
+  {
+    "name": "recoll",
+    "engine": "json_engine",
+    "shortcut": "rec",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://recoll.example.invalid/search?q={query}",
+    "time_range_support": true,
+    "about": {
+      "website": null,
+      "wikidata_id": "Q15735774",
+      "official_api_documentation": "https://www.lesbonscomptes.com/recoll/",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "needs a configured instance"
+  },
+  {
+    "name": "reloado",
+    "engine": "xpath",
+    "shortcut": "rel",
+    "categories": "general",
+    "paging": true,
+    "search_url": "https://reloado.com/search?q={query}&page={pageno}",
+    "results_xpath": "//div[contains(@class, 'result-item')]",
+    "url_xpath": ".//div[contains(@class, 'result-title')]/a/@href",
+    "title_xpath": ".//div[contains(@class, 'result-title')]/a",
+    "content_xpath": ".//div[contains(@class, 'result-excerpt')]",
+    "language": "de",
+    "about": {
+      "website": "https://reloado.com",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "repology",
+    "engine": "json_engine",
+    "shortcut": "rep",
+    "categories": [
+      "general"
+    ],
+    "paging": false,
+    "search_url": "https://repology.org/search?q={query}",
+    "about": {
+      "website": "https://repology.org",
+      "wikidata_id": "Q107409859",
+      "use_official_api": true,
+      "official_api_documentation": "https://repology.org/api/v1",
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "results are JSON map keys"
+  },
+  {
+    "name": "resulthunter",
+    "engine": "xpath",
+    "shortcut": "res",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://resulthunter.com/search?q={query}",
+    "time_range_support": true,
+    "safesearch": true,
+    "about": {
+      "website": "https://resulthunter.com",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//div[contains(@class, 'organic-results-container')]/div/div[contains(@class, 'group')]",
+    "url_xpath": "./@href",
+    "title_xpath": ".//a/h3"
+  },
+  {
+    "name": "reuters",
+    "engine": "json_engine",
+    "shortcut": "reu",
+    "categories": [
+      "news"
+    ],
+    "paging": true,
+    "search_url": "https://www.reuters.com/search?q={query}",
+    "time_range_support": true,
+    "about": {
+      "website": "https://www.reuters.com",
+      "wikidata_id": "Q130879",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "DataDome-protected, complex fetch API"
+  },
+  {
+    "name": "rottentomatoes",
+    "engine": "xpath",
+    "shortcut": "rot",
+    "categories": [
+      "movies"
+    ],
+    "about": {
+      "website": "https://www.rottentomatoes.com/",
+      "wikidata_id": "Q105584",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "base_url": "https://www.rottentomatoes.com",
+    "search_url": "https://www.rottentomatoes.com/search?search={query}",
+    "paging": false,
+    "results_xpath": "//search-page-media-row",
+    "url_xpath": "./a[1]/@href",
+    "title_xpath": "./a/img/@alt"
+  },
+  {
+    "name": "rubygems",
+    "engine": "xpath",
+    "shortcut": "rbg",
+    "categories": [
+      "it",
+      "packages"
+    ],
+    "paging": true,
+    "first_page_num": 1,
+    "search_url": "https://rubygems.org/search?page={pageno}&query={query}",
+    "results_xpath": "//a[@href and .//*[@data-testid=\"rubygem-name\"]]",
+    "url_xpath": "./@href",
+    "title_xpath": ".//*[@data-testid=\"rubygem-name\"]",
+    "content_xpath": ".//p",
+    "suggestion_xpath": "/html/body/main/div/div[@class=\"search__suggestions\"]/p/a",
+    "about": {
+      "website": "https://rubygems.org/",
+      "wikidata_id": "Q1853420",
+      "official_api_documentation": "https://guides.rubygems.org/rubygems-org-api/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "rumble",
+    "engine": "xpath",
+    "shortcut": "rum",
+    "categories": [
+      "videos"
+    ],
+    "about": {
+      "website": "https://rumble.com/",
+      "wikidata_id": "Q104765127",
+      "official_api_documentation": "https://help.rumble.com/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "base_url": "https://rumble.com",
+    "search_url": "https://rumble.com/search/video?q={query}&page={pageno}",
+    "paging": true,
+    "results_xpath": "//li[contains(@class, \"video-listing-entry\")]",
+    "url_xpath": ".//a[@class=\"video-item--a\"]/@href",
+    "title_xpath": ".//h3[@class=\"video-item--title\"]"
+  },
+  {
+    "name": "s1search",
+    "engine": "xpath",
+    "shortcut": "s1s",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://s1search.co/search?q={query}",
+    "about": {
+      "website": "https://s1search.co",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//div[@class='aylf-yahoo-bottom' or @class='aylf-yahoo-sidebar']/div",
+    "url_xpath": ".//a[contains(@class, 'title')]/@href",
+    "title_xpath": ".//a[contains(@class, 'title')]",
+    "content_xpath": ".//span[contains(@class, 'description') or @class='']"
+  },
+  {
+    "name": "searchch",
+    "engine": "xpath",
+    "shortcut": "sch",
+    "paging": true,
+    "search_url": "https://search.ch/web/api/loadmore.html?path=/web/&q={query}&page={pageno}",
+    "results_xpath": "//div[contains(@class, 'www-feed-web-result')]",
+    "url_xpath": "concat('https://', substring-after(.//a[contains(@class, 'sl-gus-result-url')]/@href, '://'))",
+    "title_xpath": ".//a[contains(@class, 'sl-gus-result-title')]",
+    "content_xpath": ".//div[contains(@class, 'sl-gus-result-body')]",
+    "language": "ch",
+    "about": {
+      "website": "https://search.ch/web",
+      "description": "Swiss search engine with its own Swiss index",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "searchmysite",
+    "engine": "xpath",
+    "shortcut": "sms",
+    "categories": [
+      "general",
+      "blogs"
+    ],
+    "paging": true,
+    "search_url": "https://searchmysite.net/search/?q={query}&page={pageno}",
+    "results_xpath": "//div[contains(@class,'search-result')]",
+    "url_xpath": ".//a[contains(@class,'result-link')]/@href",
+    "title_xpath": ".//span[contains(@class,'result-title-txt')]/text()",
+    "content_xpath": "./p[@id='result-hightlight']",
+    "about": {
+      "website": "https://searchmysite.net"
+    }
+  },
+  {
+    "name": "searchzee",
+    "engine": "json_engine",
+    "shortcut": "sea",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://searchzee.com/search?q={query}",
+    "about": {
+      "website": "https://searchzee.com",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON",
+      "description": "SearchZee is a small, indie project, the web and news results are pulled from an independent search infrastructure."
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "requires api token"
+  },
+  {
+    "name": "selfhst",
+    "engine": "json_engine",
+    "shortcut": "sel",
+    "categories": [
+      "images",
+      "icons"
+    ],
+    "paging": false,
+    "search_url": "https://selfh.st/icons/search?q={query}",
+    "about": {
+      "website": "https://selfh.st/icons/",
+      "official_api_documentation": "https://selfh.st/icons-about/",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "client-side filtering of static JSON"
+  },
+  {
+    "name": "seznam",
+    "engine": "xpath",
+    "shortcut": "sez",
+    "categories": [
+      "general",
+      "web"
+    ],
+    "paging": false,
+    "search_url": "https://search.seznam.cz/search?q={query}",
+    "language": "cz",
+    "about": {
+      "website": "https://www.seznam.cz/",
+      "wikidata_id": "Q3490485",
+      "official_api_documentation": "https://api.sklik.cz/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//input[@type=\"hidden\"]",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a",
+    "empty_result_error": "no_results",
+    "inactive": true,
+    "inactive_reason": "requires per-session tokens"
+  },
+  {
+    "name": "shopify stock",
+    "engine": "xpath",
+    "shortcut": "sho",
+    "categories": [
+      "images"
+    ],
+    "paging": true,
+    "search_url": "https://www.shopify.com/stock-photos/photos/search?q={query}&page={pageno}",
+    "about": {
+      "website": "https://www.shopify.com/stock-photos",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//div[contains(@class, 'js-masonry-grid')]/div",
+    "url_xpath": ".//a[contains(@class, 'photo-tile')]/@href",
+    "title_xpath": ".//p[contains(@class, 'photo-tile__title')]"
+  },
+  {
+    "name": "sina",
+    "engine": "json_engine",
+    "shortcut": "sina",
+    "categories": "news",
+    "paging": true,
+    "first_page_num": 1,
+    "search_url": "https://search.sina.com.cn/api/search?q={query}&tp=mix&sort=0&page={pageno}&size=10&from=search_result",
+    "results_query": "data/list",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "intro",
+    "thumbnail_query": "thumb",
+    "title_html_to_text": true,
+    "time_range_support": true,
+    "time_range_url": "&from=advanced_search&time={time_range_val}",
+    "time_range_map": {
+      "day": "d",
+      "week": "w",
+      "month": "m",
+      "year": "y"
+    },
+    "language": "zh",
+    "about": {
+      "website": "https://search.sina.com.cn",
+      "wikidata_id": "Q938668",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    }
+  },
+  {
+    "name": "sogou",
+    "engine": "xpath",
+    "shortcut": "sog",
+    "categories": [
+      "general"
+    ],
+    "language": "zh",
+    "time_range_support": true,
+    "about": {
+      "website": "https://www.sogou.com/",
+      "wikidata_id": "Q7554565",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "base_url": "https://www.sogou.com",
+    "search_url": "https://www.sogou.com/web?query={query}&page={pageno}",
+    "paging": true,
+    "results_xpath": "//div[contains(@class, \"vrwrap\")]",
+    "url_xpath": ".//h3/a/@href",
+    "title_xpath": ".//h3/a"
+  },
+  {
+    "name": "sogou videos",
+    "engine": "json_engine",
+    "shortcut": "sog",
+    "categories": [
+      "videos"
+    ],
+    "paging": true,
+    "search_url": "https://v.sogou.com/search?q={query}",
+    "language": "zh",
+    "about": {
+      "website": "https://v.sogou.com/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content"
+  },
+  {
+    "name": "sogou wechat",
+    "engine": "xpath",
+    "shortcut": "sog",
+    "categories": [
+      "news"
+    ],
+    "language": "zh",
+    "about": {
+      "website": "https://weixin.sogou.com/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "base_url": "https://weixin.sogou.com",
+    "search_url": "https://weixin.sogou.com/weixin?query={query}&page={pageno}&type=2",
+    "paging": true,
+    "results_xpath": "//li[contains(@id, \"sogou_vr_\")]",
+    "url_xpath": ".//h3/a/@href",
+    "title_xpath": ".//h3/a",
+    "content_xpath": ".//p[@class='txt-info']"
+  },
+  {
+    "name": "solr",
+    "engine": "xpath",
+    "shortcut": "sol",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "http://localhost:8983/search?q={query}",
+    "results_xpath": "//article|//div[contains(@class, 'result')]|//li|//tr",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a",
+    "inactive": true,
+    "inactive_reason": "needs a configured instance"
+  },
+  {
+    "name": "sourcehut",
+    "engine": "xpath",
+    "shortcut": "sou",
+    "categories": [
+      "it",
+      "repos"
+    ],
+    "about": {
+      "website": "https://sourcehut.org",
+      "wikidata_id": "Q78514485",
+      "official_api_documentation": "https://man.sr.ht/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "base_url": "https://sr.ht",
+    "search_url": "https://sr.ht/projects?search={query}&page={pageno}&sort=recently-updated",
+    "paging": true,
+    "results_xpath": "(//div[@class='event-list'])[1]/div[contains(@class, 'event')]",
+    "url_xpath": "./h4/a[2]/@href",
+    "title_xpath": "./h4",
+    "content_xpath": "./p",
+    "headers": {
+      "User-Agent": "searxng/1.0"
+    }
+  },
+  {
+    "name": "springer",
+    "engine": "json_engine",
+    "shortcut": "spr",
+    "categories": [
+      "science",
+      "scientific publications"
+    ],
+    "paging": true,
+    "search_url": "https://api.springernature.com/meta/v2/json/search?q={query}",
+    "about": {
+      "website": "https://www.springernature.com/",
+      "wikidata_id": "Q21096327",
+      "official_api_documentation": "https://dev.springernature.com/docs/live-documentation/",
+      "use_official_api": true,
+      "require_api_key": true,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "requires API key"
+  },
+  {
+    "name": "startpagina",
+    "engine": "json_engine",
+    "shortcut": "sta",
+    "categories": [
+      "general"
+    ],
+    "language": "ne",
+    "safesearch": true,
+    "about": {
+      "website": "https://startpagina.nl",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://search.kompas.services/api/v2/search/web/?q={query}&page_size=10&page={pageno}",
+    "paging": true,
+    "results_query": "results",
+    "url_query": "original_url",
+    "title_query": "title",
+    "content_query": "description"
+  },
+  {
+    "name": "steam",
+    "engine": "json_engine",
+    "shortcut": "ste",
+    "categories": [
+      "general"
+    ],
+    "about": {
+      "website": "https://store.steampowered.com/",
+      "wikidata_id": "Q337535",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://store.steampowered.com/api/storesearch/?term={query}&cc=us&l=en",
+    "paging": false,
+    "results_query": "items",
+    "url_query": "id",
+    "url_prefix": "https://store.steampowered.com/app/",
+    "title_query": "name"
+  },
+  {
+    "name": "stocksnap",
+    "engine": "json_engine",
+    "shortcut": "sto",
+    "categories": [
+      "images"
+    ],
+    "about": {
+      "website": "https://stocksnap.io",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://stocksnap.io/api/search-photos/{query}/relevance/desc/{pageno}",
+    "paging": true,
+    "results_query": "results",
+    "url_query": "img_id",
+    "url_prefix": "https://stocksnap.io/photo/",
+    "title_query": "tags/0"
+  },
+  {
+    "name": "tagesschau",
+    "engine": "json_engine",
+    "shortcut": "tag",
+    "categories": [
+      "general",
+      "news"
+    ],
+    "language": "de",
+    "about": {
+      "website": "https://tagesschau.de",
+      "wikidata_id": "Q703907",
+      "official_api_documentation": null,
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://www.tagesschau.de/api2u/search?searchText={query}&pageSize=10&resultPage={pageno}",
+    "paging": true,
+    "first_page_num": 0,
+    "results_query": "searchResults",
+    "url_query": "shareURL",
+    "title_query": "title",
+    "content_query": "firstSentence"
+  },
+  {
+    "name": "tiger",
+    "engine": "xpath",
+    "shortcut": "tig",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://tiger.ch/search?q={query}",
+    "about": {
+      "website": "https://tiger.ch",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//div[@id='mainContainer']//table/tr",
+    "url_xpath": ".//a[contains(@class, 'webLink')]/@href",
+    "title_xpath": ".//a",
+    "inactive": true,
+    "inactive_reason": "requires session code"
+  },
+  {
+    "name": "tineye",
+    "engine": "json_engine",
+    "shortcut": "tin",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://tineye.com/search?q={query}",
+    "about": {
+      "website": "https://tineye.com",
+      "wikidata_id": "Q2382535",
+      "official_api_documentation": "https://api.tineye.com/python/docs/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "reverse image search requires image upload"
+  },
+  {
+    "name": "tmdb",
+    "engine": "xpath",
+    "shortcut": "tm",
+    "categories": "movies",
+    "paging": true,
+    "search_url": "https://www.themoviedb.org/search?page={pageno}&query={query}",
+    "results_xpath": "//div[contains(@class,\"comp:media-card\")]",
+    "url_xpath": ".//a[@data-media-type]/@href",
+    "title_xpath": ".//h2",
+    "content_xpath": ".//div[contains(@class,\"line-clamp\")]/p",
+    "thumbnail_xpath": ".//img/@src"
+  },
+  {
+    "name": "tokyotoshokan",
+    "engine": "xpath",
+    "shortcut": "tok",
+    "categories": [
+      "files"
+    ],
+    "paging": true,
+    "search_url": "https://www.tokyotosho.info/search.php?{query}",
+    "about": {
+      "website": "https://www.tokyotosho.info/",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//table[@class=\"listing\"]//tr[contains(@class, \"category_0\")]",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a"
+  },
+  {
+    "name": "tonline",
+    "engine": "xpath",
+    "shortcut": "ton",
+    "categories": [
+      "general"
+    ],
+    "language": "de",
+    "time_range_support": true,
+    "base_url": "https://suche.t-online.de",
+    "search_url": "https://suche.t-online.de/web?q={query}&mandant=toi&dia=suche&ptl=std&page={pageno}",
+    "paging": true,
+    "results_xpath": "//div[@id='google_re']/div[contains(@class, 'doc')]",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a"
+  },
+  {
+    "name": "torch",
+    "engine": "xpath",
+    "shortcut": "tch",
+    "categories": "onions",
+    "paging": true,
+    "search_url": "http://xmh57jrknzkhv6y3ls3ubitzfqnkrwxhopf5aygthi7d6rplyvk3noyd.onion/cgi-bin/omega/omega?P={query}&DEFAULTOP=and",
+    "results_xpath": "//table//tr",
+    "url_xpath": "./td[2]/a",
+    "title_xpath": "./td[2]/b",
+    "content_xpath": "./td[2]/small"
+  },
+  {
+    "name": "translated",
+    "engine": "json_engine",
+    "shortcut": "tra",
+    "categories": [
+      "general",
+      "translate"
+    ],
+    "paging": false,
+    "search_url": "https://mymemory.translated.net/search?q={query}",
+    "about": {
+      "website": "https://mymemory.translated.net/",
+      "wikidata_id": null,
+      "official_api_documentation": "https://mymemory.translated.net/doc/spec.php",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "translation API engine"
+  },
+  {
+    "name": "tubearchivist",
+    "engine": "json_engine",
+    "shortcut": "tub",
+    "categories": [
+      "videos"
+    ],
+    "paging": true,
+    "search_url": "https://www.tubearchivist.com/search?q={query}",
+    "about": {
+      "website": "https://www.tubearchivist.com",
+      "official_api_documentation": "https://docs.tubearchivist.com/api/introduction/",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "self-hosted, needs token"
+  },
+  {
+    "name": "tusksearch",
+    "engine": "json_engine",
+    "shortcut": "tus",
+    "categories": [
+      "general"
+    ],
+    "about": {
+      "website": "https://tusksearch.com",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://api.tusksearch.com/Search/Web?q={query}&p={pageno}&l=center",
+    "paging": true,
+    "headers": {
+      "Referer": "https://tusksearch.com/",
+      "Origin": "https://tusksearch.com"
+    },
+    "results_query": "results/web/results",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "description",
+    "title_html_to_text": true,
+    "content_html_to_text": true,
+    "inactive": true,
+    "inactive_reason": "requires per-request x-sid token"
+  },
+  {
+    "name": "unobtanium",
+    "engine": "xpath",
+    "shortcut": "uno",
+    "categories": [
+      "general",
+      "blogs"
+    ],
+    "paging": true,
+    "first_page_num": 0,
+    "search_url": "https://unobtanium.rocks/search?search={query}&page={pageno}",
+    "results_xpath": "//ul[contains(@class, 'search-results')]/li",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a/b",
+    "content_xpath": ".//p[2]",
+    "about": {
+      "website": "https://unobtanium.rocks",
+      "description": "Personal websites focused search engine.",
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "uxwing",
+    "engine": "xpath",
+    "shortcut": "uxw",
+    "categories": [
+      "images",
+      "icons"
+    ],
+    "paging": false,
+    "search_url": "https://uxwing.com/?s={query}",
+    "about": {
+      "website": "https://uxwing.com",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//article[starts-with(@id, 'post')]",
+    "url_xpath": "./a/@href",
+    "title_xpath": ".//img/@alt",
+    "content_xpath": "./@class"
+  },
+  {
+    "name": "voidlinux",
+    "engine": "json_engine",
+    "shortcut": "voi",
+    "categories": [
+      "packages",
+      "it"
+    ],
+    "about": {
+      "website": "https://voidlinux.org/packages/",
+      "wikidata_id": "Q19310966",
+      "use_official_api": true,
+      "official_api_documentation": null,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://xq-api.voidlinux.org/v1/query/x86_64?q={query}",
+    "paging": false,
+    "results_query": "data",
+    "url_query": "name",
+    "url_prefix": "https://voidlinux.org/packages/?arch=x86_64&q=",
+    "title_query": "name",
+    "content_query": "short_desc"
+  },
+  {
+    "name": "vuhuv",
+    "engine": "xpath",
+    "shortcut": "vuh",
+    "categories": [
+      "general"
+    ],
+    "about": {
+      "website": "https://vuhuv.com",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "base_url": "https://vuhuv.com",
+    "search_url": "https://vuhuv.com/veri2/?k=1&p={pageno}&q={query}&d=1&dh=1",
+    "paging": true,
+    "headers": {
+      "Referer": "https://vuhuv.com/"
+    },
+    "results_xpath": "//div[contains(@class, 'sonuc')]/div",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a"
+  },
+  {
+    "name": "wallhaven",
+    "engine": "json_engine",
+    "shortcut": "wal",
+    "categories": [
+      "images"
+    ],
+    "about": {
+      "website": "https://wallhaven.cc/",
+      "official_api_documentation": "https://wallhaven.cc/help/api",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://wallhaven.cc/api/v1/search?q={query}&page={pageno}",
+    "paging": true,
+    "results_query": "data",
+    "url_query": "url",
+    "title_query": "id",
+    "content_query": "resolution"
+  },
+  {
+    "name": "wiby",
+    "engine": "json_engine",
+    "shortcut": "wib",
+    "categories": [
+      "general",
+      "blogs"
+    ],
+    "paging": true,
+    "search_url": "https://wiby.me/json/?q={query}&p={pageno}",
+    "url_query": "URL",
+    "title_query": "Title",
+    "content_query": "Snippet",
+    "about": {
+      "website": "https://wiby.me/"
+    }
+  },
+  {
+    "name": "wikicommons",
+    "engine": "json_engine",
+    "shortcut": "wik",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://commons.wikimedia.org/search?q={query}",
+    "about": {
+      "website": "https://commons.wikimedia.org/",
+      "wikidata_id": "Q565",
+      "official_api_documentation": "https://commons.wikimedia.org/w/api.php",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "results are JSON map keys"
+  },
+  {
+    "name": "wikimini",
+    "engine": "xpath",
+    "shortcut": "wkmn",
+    "categories": "general",
+    "search_url": "https://fr.wikimini.org/w/index.php?search={query}&title=Sp%C3%A9cial%3ASearch&fulltext=Search",
+    "url_xpath": "//li/div[@class=\"mw-search-result-heading\"]/a/@href",
+    "title_xpath": "//li//div[@class=\"mw-search-result-heading\"]/a",
+    "content_xpath": "//li/div[@class=\"searchresult\"]",
+    "language": "fr",
+    "about": {
+      "website": "https://wikimini.org/",
+      "wikidata_id": "Q3568032",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "wolframalpha api",
+    "engine": "xpath",
+    "shortcut": "wol",
+    "categories": [
+      "general"
+    ],
+    "paging": false,
+    "search_url": "https://api.wolframalpha.com/v2/query?appid={api_key}&{query}",
+    "about": {
+      "website": "https://www.wolframalpha.com",
+      "wikidata_id": "Q207006",
+      "official_api_documentation": "https://products.wolframalpha.com/api/",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "XML"
+    },
+    "results_xpath": "//article|//div[contains(@class, 'result')]|//li|//tr",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a",
+    "inactive": true,
+    "inactive_reason": "requires API key"
+  },
+  {
+    "name": "wolframalpha noapi",
+    "engine": "json_engine",
+    "shortcut": "wol",
+    "categories": [
+      "general"
+    ],
+    "paging": false,
+    "search_url": "https://www.wolframalpha.com/input/json.jsp?async=false&banners=raw&debuggingdata=false&format=image,plaintext,imagemap,minput,moutput&formattimeout=2&{query}&output=JSON&parsetimeout=2&proxycode={token}&scantimeout=0.5&sponsorcategories=true&statemethod=deploybutton",
+    "about": {
+      "website": "https://www.wolframalpha.com/",
+      "wikidata_id": "Q207006",
+      "official_api_documentation": "https://products.wolframalpha.com/api/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "requires computed api tokens"
+  },
+  {
+    "name": "wordnik",
+    "engine": "xpath",
+    "shortcut": "wor",
+    "categories": [
+      "dictionaries",
+      "define"
+    ],
+    "paging": false,
+    "search_url": "https://www.wordnik.com/search?q={query}",
+    "about": {
+      "website": "https://www.wordnik.com",
+      "wikidata_id": "Q8034401",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//*[@id=\"define\"]//h3[@class=\"source\"]",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a",
+    "empty_result_error": "no_results",
+    "inactive": true,
+    "inactive_reason": "dictionary definition parse"
+  },
+  {
+    "name": "woxikon.de synonyme",
+    "engine": "xpath",
+    "shortcut": "woxi",
+    "categories": [
+      "dictionaries"
+    ],
+    "search_url": "https://synonyme.woxikon.de/synonyme/{query}.php",
+    "url_xpath": "//div[@class=\"upper-synonyms\"]/a/@href",
+    "title_xpath": "//div[@class=\"upper-synonyms\"]/a",
+    "content_xpath": "//div[@class=\"synonyms-list-group\"]",
+    "language": "de",
+    "about": {
+      "website": "https://www.woxikon.de/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "wttr",
+    "engine": "json_engine",
+    "shortcut": "wtt",
+    "categories": [
+      "weather"
+    ],
+    "paging": false,
+    "search_url": "https://wttr.in/{query}?format=j1&lang={lang}/search&q={query}",
+    "about": {
+      "website": "https://wttr.in",
+      "wikidata_id": "Q107586666",
+      "official_api_documentation": "https://github.com/chubin/wttr.in#json-output",
+      "use_official_api": true,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "weather answer engine"
+  },
+  {
+    "name": "www1x",
+    "engine": "xpath",
+    "shortcut": "www",
+    "categories": [
+      "images"
+    ],
+    "paging": false,
+    "search_url": "https://1x.com/backend/search.php?{query}",
+    "about": {
+      "website": "https://1x.com/",
+      "wikidata_id": null,
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//a",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a",
+    "empty_result_error": "no_results",
+    "inactive": true,
+    "inactive_reason": "XML wrapping HTML parse"
+  },
+  {
+    "name": "xonaly",
+    "engine": "xpath",
+    "shortcut": "xo",
+    "categories": "general",
+    "search_url": "https://xonaly.com/?query={query}",
+    "results_xpath": "//div[contains(@class, 'results-block')]/ul/li",
+    "url_xpath": "./div[contains(@class, 'result-title')]/a/@href",
+    "title_xpath": "./div[contains(@class, 'result-title')]/a",
+    "content_xpath": "./p[contains(@class, 'excerpt')]",
+    "about": {
+      "website": "https://xonaly.com",
+      "description": "Canadian search engine with its own index",
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "xpath",
+    "engine": "xpath",
+    "shortcut": "xpa",
+    "categories": [
+      "general"
+    ],
+    "paging": false,
+    "search_url": "https://xpath.example.invalid/search?q={query}",
+    "results_xpath": "//article|//div[contains(@class, 'result')]|//li|//tr",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a",
+    "inactive": true,
+    "inactive_reason": "generic template, needs configuration"
+  },
+  {
+    "name": "yahoo",
+    "engine": "xpath",
+    "shortcut": "yah",
+    "categories": [
+      "general",
+      "web"
+    ],
+    "paging": true,
+    "search_url": "https://search.yahoo.com/search?q={query}",
+    "time_range_support": true,
+    "about": {
+      "website": "https://search.yahoo.com/",
+      "wikidata_id": null,
+      "official_api_documentation": "https://developer.yahoo.com/api/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//div[contains(@class,\"algo-sr\")]",
+    "url_xpath": ".//a/@href",
+    "title_xpath": ".//a"
+  },
+  {
+    "name": "yahoo news",
+    "engine": "xpath",
+    "shortcut": "yah",
+    "categories": [
+      "news"
+    ],
+    "paging": true,
+    "search_url": "https://news.search.yahoo.com/search?p={query}&b={pageno}",
+    "about": {
+      "website": "https://news.yahoo.com",
+      "wikidata_id": "Q3044717",
+      "official_api_documentation": "https://developer.yahoo.com/api/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//ol[contains(@class,'searchCenterMiddle')]//li[.//h4/a]",
+    "url_xpath": ".//h4/a/@href",
+    "title_xpath": ".//h4/a",
+    "page_size": 10,
+    "content_xpath": ".//p"
+  },
+  {
+    "name": "yandex",
+    "engine": "xpath",
+    "shortcut": "yan",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://yandex.com/search/site/?tmpl_version=releases&text={query}&web=1&frame=1&searchid=3131712",
+    "about": {
+      "website": "https://yandex.com/",
+      "wikidata_id": "Q5281",
+      "official_api_documentation": "?",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    },
+    "results_xpath": "//li[contains(@class, 'serp-item')]",
+    "url_xpath": ".//a[@class='b-serp-item__title-link']/@href",
+    "title_xpath": ".//h3[@class='b-serp-item__title']/a[@class='b-serp-item__title-link']/span",
+    "cookies": {
+      "yp": "1716337604.sp.family%3A0#1685406411.szm.1:1920x1080:1920x999"
+    },
+    "content_xpath": ".//div[@class='b-serp-item__content']//div[@class='b-serp-item__text']"
+  },
+  {
+    "name": "yandex music",
+    "engine": "json_engine",
+    "shortcut": "yan",
+    "categories": [
+      "music"
+    ],
+    "paging": true,
+    "search_url": "https://music.yandex.ru/handlers/music-search.jsx",
+    "about": {
+      "website": "https://music.yandex.ru",
+      "wikidata_id": "Q4537983",
+      "official_api_documentation": null,
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "content",
+    "inactive": true,
+    "inactive_reason": "result url assembled from album/track ids"
+  },
+  {
+    "name": "yep",
+    "engine": "json_engine",
+    "shortcut": "yep",
+    "categories": [
+      "general"
+    ],
+    "safesearch": true,
+    "about": {
+      "website": "https://yep.com/",
+      "official_api_documentation": "https://docs.developer.yelp.com",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "search_url": "https://api.yep.com/search?query={query}&safeSearch=off&limit=20",
+    "paging": false,
+    "headers": {
+      "Referer": "https://yep.com/",
+      "Origin": "https://yep.com"
+    },
+    "results_query": "1/results",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "snippet",
+    "content_html_to_text": true
+  },
+  {
+    "name": "zapmeta",
+    "engine": "xpath",
+    "shortcut": "zpm",
+    "categories": "general",
+    "paging": true,
+    "send_page_num_on_first_page": false,
+    "search_url": "https://www.zapmeta.com/search?q={query}&pg={pageno}",
+    "results_xpath": "//article[contains(@class, \"organic-results-item\")]",
+    "url_xpath": "./h2/a/@href",
+    "title_xpath": "./h2",
+    "content_xpath": "./p",
+    "about": {
+      "website": "https://www.zapmeta.com/",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "HTML"
+    }
+  },
+  {
+    "name": "zlibrary",
+    "engine": "xpath",
+    "shortcut": "zli",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://zlibrary-global.se/s/{query}/?page={pageno}",
+    "base_url": "https://zlibrary-global.se",
+    "results_xpath": "//div[@id=\"searchResultBox\"]//div[contains(@class, \"resItemBox\")]",
+    "url_xpath": ".//h3[@itemprop=\"name\"]/a/@href",
+    "title_xpath": ".//h3[@itemprop=\"name\"]/a"
+  }
+]

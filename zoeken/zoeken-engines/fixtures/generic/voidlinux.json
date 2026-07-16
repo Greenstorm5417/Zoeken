@@ -1,0 +1,2619 @@
+{
+  "engine": "voidlinux",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://xq-api.voidlinux.org/v1/query/x86_64?q=rust",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://xq-api.voidlinux.org/v1/query/x86_64?q=rust",
+    "headers": {
+      "vary": "Accept-Encoding",
+      "date": "Thu, 09 Jul 2026 14:06:43 GMT",
+      "content-type": "application/json",
+      "etag": "W/\"ffhHXB-kTo9OnQkcaeUbohBLa8M\"",
+      "server": "nginx",
+      "cache-control": "public, max-age=300"
+    },
+    "body": "{\"data\":[{\"name\":\"arti\",\"version\":\"2.2.0\",\"revision\":1,\"filename_size\":4442780,\"repository\":\"current\",\"short_desc\":\"Tor implementation in Rust\"},{\"name\":\"arti-dbg\",\"version\":\"2.2.0\",\"revision\":1,\"filename_size\":510429,\"repository\":\"debug\",\"short_desc\":\"Tor implementation in Rust (debug files)\"},{\"name\":\"cargo\",\"version\":\"1.96.0\",\"revision\":1,\"filename_size\":9764132,\"repository\":\"current\",\"short_desc\":\"Rust package manager\"},{\"name\":\"cargo-aoc\",\"version\":\"0.3.4\",\"revision\":2,\"filename_size\":1778374,\"repository\":\"current\",\"short_desc\":\"CLI helper tool for advent of code in rust\"},{\"name\":\"cargo-aoc-dbg\",\"version\":\"0.3.4\",\"revision\":2,\"filename_size\":300462,\"repository\":\"debug\",\"short_desc\":\"CLI helper tool for advent of code in rust (debug files)\"},{\"name\":\"cargo-auditable\",\"version\":\"0.7.5\",\"revision\":1,\"filename_size\":474191,\"repository\":\"current\",\"short_desc\":\"Tool for embedding dependency information in rust binaries\"},{\"name\":\"cargo-auditable-dbg\",\"version\":\"0.7.5\",\"revision\":1,\"filename_size\":57092,\"repository\":\"debug\",\"short_desc\":\"Tool for embedding dependency information in rust binaries (debug files)\"},{\"name\":\"cargo-bootstrap\",\"version\":\"1.96.0\",\"revision\":1,\"filename_size\":13601243,\"repository\":\"bootstrap\",\"short_desc\":\"Bootstrap binaries of Rust package manager\"},{\"name\":\"cargo-c\",\"version\":\"0.10.19\",\"revision\":1,\"filename_size\":31322373,\"repository\":\"current\",\"short_desc\":\"Build and install C-compatible rust libraries\"},{\"name\":\"cargo-c-dbg\",\"version\":\"0.10.19\",\"revision\":1,\"filename_size\":4649628,\"repository\":\"debug\",\"short_desc\":\"Build and install C-compatible rust libraries (debug files)\"},{\"name\":\"cargo-dbg\",\"version\":\"1.96.0\",\"revision\":1,\"filename_size\":3856721,\"repository\":\"debug\",\"short_desc\":\"Rust package manager (debug files)\"},{\"name\":\"cargo-flamegraph\",\"version\":\"0.6.8\",\"revision\":1,\"filename_size\":1199501,\"repository\":\"current\",\"short_desc\":\"Easy flamegraphs for Rust projects and everything else\"},{\"name\":\"cargo-flamegraph-dbg\",\"version\":\"0.6.8\",\"revision\":1,\"filename_size\":188053,\"repository\":\"debug\",\"short_desc\":\"Easy flamegraphs for Rust projects and everything else (debug files)\"},{\"name\":\"cargo-geiger\",\"version\":\"0.11.7\",\"revision\":1,\"filename_size\":7328157,\"repository\":\"current\",\"short_desc\":\"Detects usage of unsafe Rust in a Rust crate and its dependencies\"},{\"name\":\"cargo-geiger-dbg\",\"version\":\"0.11.7\",\"revision\":1,\"filename_size\":5192970,\"repository\":\"debug\",\"short_desc\":\"Detects usage of unsafe Rust in a Rust crate and its dependencies (debug files)\"},{\"name\":\"cargo-machete\",\"version\":\"0.8.0\",\"revision\":1,\"filename_size\":1888251,\"repository\":\"current\",\"short_desc\":\"Remove unused Rust dependencies\"},{\"name\":\"cargo-machete-dbg\",\"version\":\"0.8.0\",\"revision\":1,\"filename_size\":253085,\"repository\":\"debug\",\"short_desc\":\"Remove unused Rust dependencies (debug files)\"},{\"name\":\"castor\",\"version\":\"0.9.0\",\"revision\":3,\"filename_size\":1025473,\"repository\":\"current\",\"short_desc\":\"Graphical client for plain-text protocols written in Rust with GTK\"},{\"name\":\"castor-dbg\",\"version\":\"0.9.0\",\"revision\":3,\"filename_size\":221912,\"repository\":\"debug\",\"short_desc\":\"Graphical client for plain-text protocols written in Rust with GTK (debug files)\"},{\"name\":\"cbindgen\",\"version\":\"0.29.2\",\"revision\":1,\"filename_size\":1792496,\"repository\":\"current\",\"short_desc\":\"Tool to generate C bindings for Rust code\"},{\"name\":\"cbindgen-dbg\",\"version\":\"0.29.2\",\"revision\":1,\"filename_size\":212321,\"repository\":\"debug\",\"short_desc\":\"Tool to generate C bindings for Rust code (debug files)\"},{\"name\":\"corrosion\",\"version\":\"0.5.2\",\"revision\":1,\"filename_size\":33363,\"repository\":\"current\",\"short_desc\":\"Tool for integrating Rust into an existing CMake project\"},{\"name\":\"diskonaut\",\"version\":\"0.11.0\",\"revision\":2,\"filename_size\":630116,\"repository\":\"current\",\"short_desc\":\"TUI disk space navigator written in rust\"},{\"name\":\"diskonaut-dbg\",\"version\":\"0.11.0\",\"revision\":2,\"filename_size\":119554,\"repository\":\"debug\",\"short_desc\":\"TUI disk space navigator written in rust (debug files)\"},{\"name\":\"dnssec-anchors\",\"version\":\"20260505\",\"revision\":1,\"filename_size\":1567,\"repository\":\"current\",\"short_desc\":\"DNSSEC trust anchors for the root zone\"},{\"name\":\"dutree\",\"version\":\"0.2.18\",\"revision\":2,\"filename_size\":553827,\"repository\":\"current\",\"short_desc\":\"Tool to analyze file system usage written in Rust\"},{\"name\":\"dutree-dbg\",\"version\":\"0.2.18\",\"revision\":2,\"filename_size\":102135,\"repository\":\"debug\",\"short_desc\":\"Tool to analyze file system usage written in Rust (debug files)\"},{\"name\":\"fclones\",\"version\":\"0.35.0\",\"revision\":1,\"filename_size\":1768959,\"repository\":\"current\",\"short_desc\":\"Efficient Duplicate File Finder written in Rust\"},{\"name\":\"fclones-dbg\",\"version\":\"0.35.0\",\"revision\":1,\"filename_size\":121221,\"repository\":\"debug\",\"short_desc\":\"Efficient Duplicate File Finder written in Rust (debug files)\"},{\"name\":\"gemserv\",\"version\":\"0.6.6\",\"revision\":1,\"filename_size\":1640670,\"repository\":\"current\",\"short_desc\":\"Gemini server written in rust\"},{\"name\":\"gemserv-dbg\",\"version\":\"0.6.6\",\"revision\":1,\"filename_size\":286570,\"repository\":\"debug\",\"short_desc\":\"Gemini server written in rust (debug files)\"},{\"name\":\"gitoxide\",\"version\":\"0.55.0\",\"revision\":1,\"filename_size\":8865925,\"repository\":\"current\",\"short_desc\":\"Idiomatic, lean, fast and safe pure Rust implementation of Git\"},{\"name\":\"gitoxide-dbg\",\"version\":\"0.55.0\",\"revision\":1,\"filename_size\":1243727,\"repository\":\"debug\",\"short_desc\":\"Idiomatic, lean, fast and safe pure Rust implementation of Git (debug files)\"},{\"name\":\"gst-plugins-rs1\",\"version\":\"0.13.4\",\"revision\":2,\"filename_size\":28502309,\"repository\":\"current\",\"short_desc\":\"GStreamer plugins and elements written in the Rust programming language\"},{\"name\":\"gst-plugins-rs1-32bit\",\"version\":\"0.13.4\",\"revision\":2,\"filename_size\":26899533,\"repository\":\"multilib\",\"short_desc\":\"GStreamer plugins and elements written in the Rust programming language (32bit)\"},{\"name\":\"gst-plugins-rs1-dbg\",\"version\":\"0.13.4\",\"revision\":2,\"filename_size\":235728922,\"repository\":\"debug\",\"short_desc\":\"GStreamer plugins and elements written in the Rust programming language (debug files)\"},{\"name\":\"gxi\",\"version\":\"0.12.0\",\"revision\":2,\"filename_size\":580,\"repository\":\"current\",\"short_desc\":\"GTK frontend for the Xi text editor, written in Rust (transitional dummy package)\"},{\"name\":\"i3status-rust\",\"version\":\"0.36.1\",\"revision\":1,\"filename_size\":5544199,\"repository\":\"current\",\"short_desc\":\"Replacement for i3status, written in Rust\"},{\"name\":\"i3status-rust-dbg\",\"version\":\"0.36.1\",\"revision\":1,\"filename_size\":731823,\"repository\":\"debug\",\"short_desc\":\"Replacement for i3status, written in Rust (debug files)\"},{\"name\":\"ion\",\"version\":\"1.0.5.20201230\",\"revision\":1,\"filename_size\":1122328,\"repository\":\"current\",\"short_desc\":\"Ion shell, written in Rust\"},{\"name\":\"ion-dbg\",\"version\":\"1.0.5.20201230\",\"revision\":1,\"filename_size\":1177688,\"repository\":\"debug\",\"short_desc\":\"Ion shell, written in Rust (debug files)\"},{\"name\":\"ironbar\",\"version\":\"0.19.0\",\"revision\":1,\"filename_size\":8179950,\"repository\":\"current\",\"short_desc\":\"Customisable Wayland GTK4 bar written in Rust\"},{\"name\":\"ironbar-dbg\",\"version\":\"0.19.0\",\"revision\":1,\"filename_size\":2770150,\"repository\":\"debug\",\"short_desc\":\"Customisable Wayland GTK4 bar written in Rust (debug files)\"},{\"name\":\"irust\",\"version\":\"1.76.1\",\"revision\":1,\"filename_size\":742537,\"repository\":\"current\",\"short_desc\":\"Cross Platform Rust Repl\"},{\"name\":\"irust-dbg\",\"version\":\"1.76.1\",\"revision\":1,\"filename_size\":65729,\"repository\":\"debug\",\"short_desc\":\"Cross Platform Rust Repl (debug files)\"},{\"name\":\"lemurs\",\"version\":\"0.4.0\",\"revision\":1,\"filename_size\":896073,\"repository\":\"current\",\"short_desc\":\"Customizable TUI display/login manager written in Rust 🐒\"},{\"name\":\"lemurs-dbg\",\"version\":\"0.4.0\",\"revision\":1,\"filename_size\":101357,\"repository\":\"debug\",\"short_desc\":\"Customizable TUI display/login manager written in Rust 🐒 (debug files)\"},{\"name\":\"libresvg-devel\",\"version\":\"0.46.0\",\"revision\":1,\"filename_size\":4487132,\"repository\":\"current\",\"short_desc\":\"SVG rendering library written in Rust - development files\"},{\"name\":\"libresvg-devel-32bit\",\"version\":\"0.46.0\",\"revision\":1,\"filename_size\":4727728,\"repository\":\"multilib\",\"short_desc\":\"SVG rendering library written in Rust - development files (32bit)\"},{\"name\":\"libresvg0\",\"version\":\"0.46.0\",\"revision\":1,\"filename_size\":1422650,\"repository\":\"current\",\"short_desc\":\"SVG rendering library written in Rust - resvg library\"},{\"name\":\"libresvg0-32bit\",\"version\":\"0.46.0\",\"revision\":1,\"filename_size\":1540811,\"repository\":\"multilib\",\"short_desc\":\"SVG rendering library written in Rust - resvg library (32bit)\"},{\"name\":\"libresvg0-dbg\",\"version\":\"0.46.0\",\"revision\":1,\"filename_size\":127595,\"repository\":\"debug\",\"short_desc\":\"SVG rendering library written in Rust - resvg library (debug files)\"},{\"name\":\"libtpm2-totp\",\"version\":\"0.3.0\",\"revision\":3,\"filename_size\":9891,\"repository\":\"current\",\"short_desc\":\"Attest the trustworthiness of a device using TOTP - library files\"},{\"name\":\"libtpm2-totp-32bit\",\"version\":\"0.3.0\",\"revision\":3,\"filename_size\":9637,\"repository\":\"multilib\",\"short_desc\":\"Attest the trustworthiness of a device using TOTP - library files (32bit)\"},{\"name\":\"libtpm2-totp-dbg\",\"version\":\"0.3.0\",\"revision\":3,\"filename_size\":17482,\"repository\":\"debug\",\"short_desc\":\"Attest the trustworthiness of a device using TOTP - library files (debug files)\"},{\"name\":\"libtpms\",\"version\":\"0.10.2\",\"revision\":1,\"filename_size\":403884,\"repository\":\"current\",\"short_desc\":\"Software emulation of a Trusted Platform Module (TPM 1.2 and TPM 2.0)\"},{\"name\":\"libtpms-32bit\",\"version\":\"0.10.2\",\"revision\":1,\"filename_size\":426235,\"repository\":\"multilib\",\"short_desc\":\"Software emulation of a Trusted Platform Module (TPM 1.2 and TPM 2.0) (32bit)\"},{\"name\":\"libtpms-dbg\",\"version\":\"0.10.2\",\"revision\":1,\"filename_size\":1363025,\"repository\":\"debug\",\"short_desc\":\"Software emulation of a Trusted Platform Module (TPM 1.2 and TPM 2.0) (debug files)\"},{\"name\":\"libtpms-devel\",\"version\":\"0.10.2\",\"revision\":1,\"filename_size\":534341,\"repository\":\"current\",\"short_desc\":\"Software emulation of a Trusted Platform Module (TPM 1.2 and TPM 2.0) - development files\"},{\"name\":\"libtpms-devel-32bit\",\"version\":\"0.10.2\",\"revision\":1,\"filename_size\":554041,\"repository\":\"multilib\",\"short_desc\":\"Software emulation of a Trusted Platform Module (TPM 1.2 and TPM 2.0) - development files (32bit)\"},{\"name\":\"lychee\",\"version\":\"0.20.1\",\"revision\":1,\"filename_size\":6163472,\"repository\":\"current\",\"short_desc\":\"Fast, async, stream-based link checker written in Rust\"},{\"name\":\"lychee-dbg\",\"version\":\"0.20.1\",\"revision\":1,\"filename_size\":59014785,\"repository\":\"debug\",\"short_desc\":\"Fast, async, stream-based link checker written in Rust (debug files)\"},{\"name\":\"mdBook\",\"version\":\"0.5.2\",\"revision\":1,\"filename_size\":4170078,\"repository\":\"current\",\"short_desc\":\"Create book from markdown files. Like Gitbook but implemented in Rust\"},{\"name\":\"mdBook-dbg\",\"version\":\"0.5.2\",\"revision\":1,\"filename_size\":422032,\"repository\":\"debug\",\"short_desc\":\"Create book from markdown files. Like Gitbook but implemented in Rust (debug files)\"},{\"name\":\"mdBook-legacy\",\"version\":\"0.4.35\",\"revision\":1,\"filename_size\":4108150,\"repository\":\"current\",\"short_desc\":\"Create book from markdown files. Like Gitbook but implemented in Rust - legacy version for void-docs\"},{\"name\":\"mdBook-legacy-dbg\",\"version\":\"0.4.35\",\"revision\":1,\"filename_size\":418600,\"repository\":\"debug\",\"short_desc\":\"Create book from markdown files. Like Gitbook but implemented in Rust - legacy version for void-docs (debug files)\"},{\"name\":\"mise\",\"version\":\"2026.6.0\",\"revision\":1,\"filename_size\":25021744,\"repository\":\"current\",\"short_desc\":\"Polyglot runtime manager (asdf rust clone)\"},{\"name\":\"mise-dbg\",\"version\":\"2026.6.0\",\"revision\":1,\"filename_size\":5841210,\"repository\":\"debug\",\"short_desc\":\"Polyglot runtime manager (asdf rust clone) (debug files)\"},{\"name\":\"neovide\",\"version\":\"0.16.2\",\"revision\":1,\"filename_size\":6867675,\"repository\":\"current\",\"short_desc\":\"No Nonsense Neovim Client in Rust\"},{\"name\":\"neovide-dbg\",\"version\":\"0.16.2\",\"revision\":1,\"filename_size\":1581906,\"repository\":\"debug\",\"short_desc\":\"No Nonsense Neovim Client in Rust (debug files)\"},{\"name\":\"ox\",\"version\":\"0.7.7\",\"revision\":2,\"filename_size\":1606188,\"repository\":\"current\",\"short_desc\":\"Independent Rust text editor that runs in your terminal\"},{\"name\":\"ox-dbg\",\"version\":\"0.7.7\",\"revision\":2,\"filename_size\":672883,\"repository\":\"debug\",\"short_desc\":\"Independent Rust text editor that runs in your terminal (debug files)\"},{\"name\":\"probe-rs\",\"version\":\"0.31.0\",\"revision\":1,\"filename_size\":9893600,\"repository\":\"current\",\"short_desc\":\"Modern, embedded debugging toolkit, written in Rust\"},{\"name\":\"probe-rs-dbg\",\"version\":\"0.31.0\",\"revision\":1,\"filename_size\":26188459,\"repository\":\"debug\",\"short_desc\":\"Modern, embedded debugging toolkit, written in Rust (debug files)\"},{\"name\":\"procs\",\"version\":\"0.14.10\",\"revision\":1,\"filename_size\":1963364,\"repository\":\"current\",\"short_desc\":\"Modern replacement for ps written in Rust\"},{\"name\":\"procs-dbg\",\"version\":\"0.14.10\",\"revision\":1,\"filename_size\":166346,\"repository\":\"debug\",\"short_desc\":\"Modern replacement for ps written in Rust (debug files)\"},{\"name\":\"prs\",\"version\":\"0.5.7\",\"revision\":1,\"filename_size\":2823336,\"repository\":\"current\",\"short_desc\":\"Pass compatible password manager written in Rust\"},{\"name\":\"prs-dbg\",\"version\":\"0.5.7\",\"revision\":1,\"filename_size\":468068,\"repository\":\"debug\",\"short_desc\":\"Pass compatible password manager written in Rust (debug files)\"},{\"name\":\"python3-itsdangerous\",\"version\":\"2.2.0\",\"revision\":2,\"filename_size\":14517,\"repository\":\"current\",\"short_desc\":\"Various helpers to pass trusted data to untrusted enviroments and back\"},{\"name\":\"python3-mitmproxy-rs\",\"version\":\"0.11.1\",\"revision\":2,\"filename_size\":1394385,\"repository\":\"current\",\"short_desc\":\"Rust bits in mitmproxy\"},{\"name\":\"python3-mitmproxy-rs-dbg\",\"version\":\"0.11.1\",\"revision\":2,\"filename_size\":176832,\"repository\":\"debug\",\"short_desc\":\"Rust bits in mitmproxy (debug files)\"},{\"name\":\"python3-pillow-jxl\",\"version\":\"1.3.6\",\"revision\":1,\"filename_size\":2172909,\"repository\":\"current\",\"short_desc\":\"JPEG XL pillow plugin using Rust for bindings\"},{\"name\":\"python3-pillow-jxl-dbg\",\"version\":\"1.3.6\",\"revision\":1,\"filename_size\":109104,\"repository\":\"debug\",\"short_desc\":\"JPEG XL pillow plugin using Rust for bindings (debug files)\"},{\"name\":\"python3-puccinialin\",\"version\":\"0.1.8\",\"revision\":1,\"filename_size\":12411,\"repository\":\"current\",\"short_desc\":\"Install rust into a cache dir for rust-based builds\"},{\"name\":\"python3-rpds-py\",\"version\":\"0.30.0\",\"revision\":1,\"filename_size\":301667,\"repository\":\"current\",\"short_desc\":\"Python bindings to Rust's persistent data structures (rpds)\"},{\"name\":\"python3-rpds-py-dbg\",\"version\":\"0.30.0\",\"revision\":1,\"filename_size\":56944,\"repository\":\"debug\",\"short_desc\":\"Python bindings to Rust's persistent data structures (rpds) (debug files)\"},{\"name\":\"python3-setuptools-rust\",\"version\":\"1.13.0\",\"revision\":1,\"filename_size\":27568,\"repository\":\"current\",\"short_desc\":\"Setuptools plugin for Rust support\"},{\"name\":\"python3-trustme\",\"version\":\"1.2.1\",\"revision\":2,\"filename_size\":16339,\"repository\":\"current\",\"short_desc\":\"Fake CA for testing\"},{\"name\":\"python3-truststore\",\"version\":\"0.10.4\",\"revision\":1,\"filename_size\":17765,\"repository\":\"current\",\"short_desc\":\"Verify certificates using OS trust stores\"},{\"name\":\"python3-virustotal-api\",\"version\":\"1.1.11\",\"revision\":8,\"filename_size\":15486,\"repository\":\"current\",\"short_desc\":\"Virus Total Public/Private/Intel API \"},{\"name\":\"python3-zxcvbn-rs-py\",\"version\":\"0.3.0\",\"revision\":1,\"filename_size\":1304285,\"repository\":\"current\",\"short_desc\":\"Python bindings for zxcvbn-rs, the Rust implementation of zxcvbn\"},{\"name\":\"python3-zxcvbn-rs-py-dbg\",\"version\":\"0.3.0\",\"revision\":1,\"filename_size\":136085,\"repository\":\"debug\",\"short_desc\":\"Python bindings for zxcvbn-rs, the Rust implementation of zxcvbn (debug files)\"},{\"name\":\"rage\",\"version\":\"0.11.2\",\"revision\":1,\"filename_size\":3174482,\"repository\":\"current\",\"short_desc\":\"Simple, modern and secure encryption tool, written in Rust\"},{\"name\":\"rage-dbg\",\"version\":\"0.11.2\",\"revision\":1,\"filename_size\":440692,\"repository\":\"debug\",\"short_desc\":\"Simple, modern and secure encryption tool, written in Rust (debug files)\"},{\"name\":\"resvg\",\"version\":\"0.46.0\",\"revision\":1,\"filename_size\":1717939,\"repository\":\"current\",\"short_desc\":\"SVG rendering library written in Rust\"},{\"name\":\"resvg-dbg\",\"version\":\"0.46.0\",\"revision\":1,\"filename_size\":181180,\"repository\":\"debug\",\"short_desc\":\"SVG rendering library written in Rust (debug files)\"},{\"name\":\"ripdrag\",\"version\":\"0.4.12\",\"revision\":1,\"filename_size\":438749,\"repository\":\"current\",\"short_desc\":\"Drag and Drop utilty written in Rust and GTK4\"},{\"name\":\"ripdrag-dbg\",\"version\":\"0.4.12\",\"revision\":1,\"filename_size\":50573,\"repository\":\"debug\",\"short_desc\":\"Drag and Drop utilty written in Rust and GTK4 (debug files)\"},{\"name\":\"rsClock\",\"version\":\"0.1.12\",\"revision\":1,\"filename_size\":214368,\"repository\":\"current\",\"short_desc\":\"Simple terminal clock written in Rust\"},{\"name\":\"rsClock-dbg\",\"version\":\"0.1.12\",\"revision\":1,\"filename_size\":30018,\"repository\":\"debug\",\"short_desc\":\"Simple terminal clock written in Rust (debug files)\"},{\"name\":\"rsv\",\"version\":\"1.3.3\",\"revision\":3,\"filename_size\":608784,\"repository\":\"current\",\"short_desc\":\"Runit sv command rewritten in rust with nice new features\"},{\"name\":\"rsv-dbg\",\"version\":\"1.3.3\",\"revision\":3,\"filename_size\":101379,\"repository\":\"debug\",\"short_desc\":\"Runit sv command rewritten in rust with nice new features (debug files)\"},{\"name\":\"rtx\",\"version\":\"2026.6.0\",\"revision\":1,\"filename_size\":594,\"repository\":\"current\",\"short_desc\":\"Polyglot runtime manager (asdf rust clone) (transitional dummy package)\"},{\"name\":\"rust\",\"version\":\"1.96.0\",\"revision\":1,\"filename_size\":11217990,\"repository\":\"current\",\"short_desc\":\"Safe, concurrent, practical systems language\"},{\"name\":\"rust-analyzer\",\"version\":\"2026.03.23\",\"revision\":1,\"filename_size\":11618890,\"repository\":\"current\",\"short_desc\":\"Rust compiler front-end for IDEs\"},{\"name\":\"rust-analyzer-dbg\",\"version\":\"2026.03.23\",\"revision\":1,\"filename_size\":1925917,\"repository\":\"debug\",\"short_desc\":\"Rust compiler front-end for IDEs (debug files)\"},{\"name\":\"rust-audit-info\",\"version\":\"0.5.4\",\"revision\":1,\"filename_size\":203193,\"repository\":\"current\",\"short_desc\":\"CLI tool for extracting cargo-auditable dependency trees\"},{\"name\":\"rust-audit-info-dbg\",\"version\":\"0.5.4\",\"revision\":1,\"filename_size\":29935,\"repository\":\"debug\",\"short_desc\":\"CLI tool for extracting cargo-auditable dependency trees (debug files)\"},{\"name\":\"rust-bacon\",\"version\":\"3.22.0\",\"revision\":1,\"filename_size\":2404429,\"repository\":\"current\",\"short_desc\":\"Background rust code checker\"},{\"name\":\"rust-bacon-dbg\",\"version\":\"3.22.0\",\"revision\":1,\"filename_size\":186226,\"repository\":\"debug\",\"short_desc\":\"Background rust code checker (debug files)\"},{\"name\":\"rust-bindgen\",\"version\":\"0.72.1\",\"revision\":1,\"filename_size\":2292955,\"repository\":\"current\",\"short_desc\":\"Tool to generate Rust FFI bindings to C (and some C++) libraries\"},{\"name\":\"rust-bindgen-dbg\",\"version\":\"0.72.1\",\"revision\":1,\"filename_size\":290022,\"repository\":\"debug\",\"short_desc\":\"Tool to generate Rust FFI bindings to C (and some C++) libraries (debug files)\"},{\"name\":\"rust-bootstrap\",\"version\":\"1.96.0\",\"revision\":1,\"filename_size\":157723690,\"repository\":\"bootstrap\",\"short_desc\":\"Rust programming language bootstrap toolchain\"},{\"name\":\"rust-cargo-audit\",\"version\":\"0.22.1\",\"revision\":1,\"filename_size\":5943089,\"repository\":\"current\",\"short_desc\":\"Audit Cargo.lock for crates with security vulnerabilities\"},{\"name\":\"rust-cargo-audit-dbg\",\"version\":\"0.22.1\",\"revision\":1,\"filename_size\":2354782,\"repository\":\"debug\",\"short_desc\":\"Audit Cargo.lock for crates with security vulnerabilities (debug files)\"},{\"name\":\"rust-cargo-bloat\",\"version\":\"0.12.1\",\"revision\":1,\"filename_size\":537657,\"repository\":\"current\",\"short_desc\":\"Find out what takes most of the space in your executable\"},{\"name\":\"rust-cargo-bloat-dbg\",\"version\":\"0.12.1\",\"revision\":1,\"filename_size\":70109,\"repository\":\"debug\",\"short_desc\":\"Find out what takes most of the space in your executable (debug files)\"},{\"name\":\"rust-dbg\",\"version\":\"1.96.0\",\"revision\":1,\"filename_size\":760174,\"repository\":\"debug\",\"short_desc\":\"Safe, concurrent, practical systems language (debug files)\"},{\"name\":\"rust-doc\",\"version\":\"1.96.0\",\"revision\":1,\"filename_size\":45069808,\"repository\":\"current\",\"short_desc\":\"Safe, concurrent, practical systems language - documentation\"},{\"name\":\"rust-sccache\",\"version\":\"0.10.0\",\"revision\":1,\"filename_size\":6004531,\"repository\":\"current\",\"short_desc\":\"Sccache is a ccache-like tool\"},{\"name\":\"rust-sccache-dbg\",\"version\":\"0.10.0\",\"revision\":1,\"filename_size\":743371,\"repository\":\"debug\",\"short_desc\":\"Sccache is a ccache-like tool (debug files)\"},{\"name\":\"rust-src\",\"version\":\"1.96.0\",\"revision\":1,\"filename_size\":4635588,\"repository\":\"current\",\"short_desc\":\"Safe, concurrent, practical systems language - source code\"},{\"name\":\"rust-std\",\"version\":\"1.96.0\",\"revision\":1,\"filename_size\":174025057,\"repository\":\"current\",\"short_desc\":\"Safe, concurrent, practical systems language - standard library\"},{\"name\":\"rust-std-32bit\",\"version\":\"1.96.0\",\"revision\":1,\"filename_size\":32984020,\"repository\":\"multilib\",\"short_desc\":\"Safe, concurrent, practical systems language - standard library (32bit)\"},{\"name\":\"rust-std-dbg\",\"version\":\"1.96.0\",\"revision\":1,\"filename_size\":8228025,\"repository\":\"debug\",\"short_desc\":\"Safe, concurrent, practical systems language - standard library (debug files)\"},{\"name\":\"rustnet\",\"version\":\"1.4.0\",\"revision\":1,\"filename_size\":2206792,\"repository\":\"current\",\"short_desc\":\"Cross-platform network monitoring terminal UI tool built with Rust\"},{\"name\":\"rustnet-dbg\",\"version\":\"1.4.0\",\"revision\":1,\"filename_size\":712971,\"repository\":\"debug\",\"short_desc\":\"Cross-platform network monitoring terminal UI tool built with Rust (debug files)\"},{\"name\":\"rustup\",\"version\":\"1.29.0\",\"revision\":1,\"filename_size\":3106273,\"repository\":\"current\",\"short_desc\":\"Rust toolchain installer\"},{\"name\":\"rustup-dbg\",\"version\":\"1.29.0\",\"revision\":1,\"filename_size\":267629,\"repository\":\"debug\",\"short_desc\":\"Rust toolchain installer (debug files)\"},{\"name\":\"rusty-diceware\",\"version\":\"0.5.8\",\"revision\":1,\"filename_size\":894857,\"repository\":\"current\",\"short_desc\":\"Commandline diceware, sans dice, written in rustlang\"},{\"name\":\"rusty-diceware-dbg\",\"version\":\"0.5.8\",\"revision\":1,\"filename_size\":34714,\"repository\":\"debug\",\"short_desc\":\"Commandline diceware, sans dice, written in rustlang (debug files)\"},{\"name\":\"rustypaste\",\"version\":\"0.17.0\",\"revision\":1,\"filename_size\":3502885,\"repository\":\"current\",\"short_desc\":\"Minimal file upload/pastebin service\"},{\"name\":\"rustypaste-cli\",\"version\":\"0.9.5\",\"revision\":1,\"filename_size\":1321013,\"repository\":\"current\",\"short_desc\":\"CLI tool for rustypaste\"},{\"name\":\"rustypaste-cli-dbg\",\"version\":\"0.9.5\",\"revision\":1,\"filename_size\":372227,\"repository\":\"debug\",\"short_desc\":\"CLI tool for rustypaste (debug files)\"},{\"name\":\"rustypaste-dbg\",\"version\":\"0.17.0\",\"revision\":1,\"filename_size\":514859,\"repository\":\"debug\",\"short_desc\":\"Minimal file upload/pastebin service (debug files)\"},{\"name\":\"scryer-prolog\",\"version\":\"0.10.0\",\"revision\":1,\"filename_size\":3370340,\"repository\":\"current\",\"short_desc\":\"Modern Prolog implementation written mostly in Rust\"},{\"name\":\"scryer-prolog-dbg\",\"version\":\"0.10.0\",\"revision\":1,\"filename_size\":18909865,\"repository\":\"debug\",\"short_desc\":\"Modern Prolog implementation written mostly in Rust (debug files)\"},{\"name\":\"sedutil\",\"version\":\"1.20.0\",\"revision\":1,\"filename_size\":229959,\"repository\":\"current\",\"short_desc\":\"Drive Trust Alliance Self Encrypting Drive Utility\"},{\"name\":\"sedutil-dbg\",\"version\":\"1.20.0\",\"revision\":1,\"filename_size\":2752923,\"repository\":\"debug\",\"short_desc\":\"Drive Trust Alliance Self Encrypting Drive Utility (debug files)\"},{\"name\":\"shadowsocks-rust\",\"version\":\"1.24.0\",\"revision\":1,\"filename_size\":15461987,\"repository\":\"current\",\"short_desc\":\"Rust port of shadowsocks, a fast lightweight obfuscated tunnel proxy\"},{\"name\":\"shadowsocks-rust-dbg\",\"version\":\"1.24.0\",\"revision\":1,\"filename_size\":1750085,\"repository\":\"debug\",\"short_desc\":\"Rust port of shadowsocks, a fast lightweight obfuscated tunnel proxy (debug files)\"},{\"name\":\"skim\",\"version\":\"0.20.5\",\"revision\":1,\"filename_size\":1486551,\"repository\":\"current\",\"short_desc\":\"Fuzzy Finder in rust\"},{\"name\":\"skim-dbg\",\"version\":\"0.20.5\",\"revision\":1,\"filename_size\":119272,\"repository\":\"debug\",\"short_desc\":\"Fuzzy Finder in rust (debug files)\"},{\"name\":\"step-cli\",\"version\":\"0.30.6\",\"revision\":1,\"filename_size\":12216831,\"repository\":\"current\",\"short_desc\":\"Zero trust swiss army knife\"},{\"name\":\"step-cli-dbg\",\"version\":\"0.30.6\",\"revision\":1,\"filename_size\":12500571,\"repository\":\"debug\",\"short_desc\":\"Zero trust swiss army knife (debug files)\"},{\"name\":\"taplo\",\"version\":\"0.10.0\",\"revision\":1,\"filename_size\":3823997,\"repository\":\"current\",\"short_desc\":\"TOML toolkit written in Rust\"},{\"name\":\"taplo-dbg\",\"version\":\"0.10.0\",\"revision\":1,\"filename_size\":384751,\"repository\":\"debug\",\"short_desc\":\"TOML toolkit written in Rust (debug files)\"},{\"name\":\"tarpaulin\",\"version\":\"0.25.0\",\"revision\":2,\"filename_size\":2865195,\"repository\":\"current\",\"short_desc\":\"Code coverage tool for Rust/Cargo projects\"},{\"name\":\"tarpaulin-dbg\",\"version\":\"0.25.0\",\"revision\":2,\"filename_size\":3663598,\"repository\":\"debug\",\"short_desc\":\"Code coverage tool for Rust/Cargo projects (debug files)\"},{\"name\":\"tau\",\"version\":\"0.12.0\",\"revision\":2,\"filename_size\":2925144,\"repository\":\"current\",\"short_desc\":\"GTK frontend for the Xi text editor, written in Rust\"},{\"name\":\"tau-dbg\",\"version\":\"0.12.0\",\"revision\":2,\"filename_size\":241432,\"repository\":\"debug\",\"short_desc\":\"GTK frontend for the Xi text editor, written in Rust (debug files)\"},{\"name\":\"tealdeer\",\"version\":\"1.8.1\",\"revision\":1,\"filename_size\":1039551,\"repository\":\"current\",\"short_desc\":\"Very fast implementation of tldr in Rust\"},{\"name\":\"tealdeer-dbg\",\"version\":\"1.8.1\",\"revision\":1,\"filename_size\":80927,\"repository\":\"debug\",\"short_desc\":\"Very fast implementation of tldr in Rust (debug files)\"},{\"name\":\"tlrc\",\"version\":\"1.13.1\",\"revision\":1,\"filename_size\":1344322,\"repository\":\"current\",\"short_desc\":\"Official tldr client written in Rust\"},{\"name\":\"tlrc-dbg\",\"version\":\"1.13.1\",\"revision\":1,\"filename_size\":372808,\"repository\":\"debug\",\"short_desc\":\"Official tldr client written in Rust (debug files)\"},{\"name\":\"tpm-tools\",\"version\":\"1.3.9.1\",\"revision\":9,\"filename_size\":108916,\"repository\":\"current\",\"short_desc\":\"Manage and diagnose tools for a Trusted Platform Module (TPM)\"},{\"name\":\"tpm-tools-32bit\",\"version\":\"1.3.9.1\",\"revision\":9,\"filename_size\":16659,\"repository\":\"multilib\",\"short_desc\":\"Manage and diagnose tools for a Trusted Platform Module (TPM) (32bit)\"},{\"name\":\"tpm-tools-dbg\",\"version\":\"1.3.9.1\",\"revision\":9,\"filename_size\":49956,\"repository\":\"debug\",\"short_desc\":\"Manage and diagnose tools for a Trusted Platform Module (TPM) (debug files)\"},{\"name\":\"tpm2-tools\",\"version\":\"5.7\",\"revision\":1,\"filename_size\":347678,\"repository\":\"current\",\"short_desc\":\"Trusted Platform Module (TPM2.0) tools\"},{\"name\":\"tpm2-tools-dbg\",\"version\":\"5.7\",\"revision\":1,\"filename_size\":1121510,\"repository\":\"debug\",\"short_desc\":\"Trusted Platform Module (TPM2.0) tools (debug files)\"},{\"name\":\"tpm2-totp\",\"version\":\"0.3.0\",\"revision\":3,\"filename_size\":11682,\"repository\":\"current\",\"short_desc\":\"Attest the trustworthiness of a device using TOTP\"},{\"name\":\"tpm2-totp-dbg\",\"version\":\"0.3.0\",\"revision\":3,\"filename_size\":14984,\"repository\":\"debug\",\"short_desc\":\"Attest the trustworthiness of a device using TOTP (debug files)\"},{\"name\":\"tpm2-totp-devel\",\"version\":\"0.3.0\",\"revision\":3,\"filename_size\":9627,\"repository\":\"current\",\"short_desc\":\"Attest the trustworthiness of a device using TOTP - development files\"},{\"name\":\"tpm2-totp-devel-32bit\",\"version\":\"0.3.0\",\"revision\":3,\"filename_size\":8094,\"repository\":\"multilib\",\"short_desc\":\"Attest the trustworthiness of a device using TOTP - development files (32bit)\"},{\"name\":\"tree-sitter-rust\",\"version\":\"0.24.2\",\"revision\":1,\"filename_size\":113132,\"repository\":\"current\",\"short_desc\":\"Rust grammar for tree-sitter\"},{\"name\":\"tree-sitter-rust-dbg\",\"version\":\"0.24.2\",\"revision\":1,\"filename_size\":34293,\"repository\":\"debug\",\"short_desc\":\"Rust grammar for tree-sitter (debug files)\"},{\"name\":\"trousers\",\"version\":\"0.3.15\",\"revision\":2,\"filename_size\":294073,\"repository\":\"current\",\"short_desc\":\"Trusted Computing Software Stack for the TPM\"},{\"name\":\"trousers-32bit\",\"version\":\"0.3.15\",\"revision\":2,\"filename_size\":190955,\"repository\":\"multilib\",\"short_desc\":\"Trusted Computing Software Stack for the TPM (32bit)\"},{\"name\":\"trousers-dbg\",\"version\":\"0.3.15\",\"revision\":2,\"filename_size\":971436,\"repository\":\"debug\",\"short_desc\":\"Trusted Computing Software Stack for the TPM (debug files)\"},{\"name\":\"trousers-devel\",\"version\":\"0.3.15\",\"revision\":2,\"filename_size\":79531,\"repository\":\"current\",\"short_desc\":\"Trusted Computing Software Stack for the TPM - development files\"},{\"name\":\"trousers-devel-32bit\",\"version\":\"0.3.15\",\"revision\":2,\"filename_size\":4915,\"repository\":\"multilib\",\"short_desc\":\"Trusted Computing Software Stack for the TPM - development files (32bit)\"},{\"name\":\"uncrustify\",\"version\":\"0.81.0\",\"revision\":1,\"filename_size\":652695,\"repository\":\"current\",\"short_desc\":\"Source Code Beautifier for multiple languages\"},{\"name\":\"uncrustify-dbg\",\"version\":\"0.81.0\",\"revision\":1,\"filename_size\":9139447,\"repository\":\"debug\",\"short_desc\":\"Source Code Beautifier for multiple languages (debug files)\"},{\"name\":\"vaultwarden\",\"version\":\"1.36.0\",\"revision\":1,\"filename_size\":10747525,\"repository\":\"current\",\"short_desc\":\"Unofficial Bitwarden compatible server written in Rust\"},{\"name\":\"vaultwarden-dbg\",\"version\":\"1.36.0\",\"revision\":1,\"filename_size\":1099602,\"repository\":\"debug\",\"short_desc\":\"Unofficial Bitwarden compatible server written in Rust (debug files)\"},{\"name\":\"wasm-tools\",\"version\":\"1.252.0\",\"revision\":1,\"filename_size\":5067918,\"repository\":\"current\",\"short_desc\":\"CLI and Rust libraries for low-level manipulation of WebAssembly modules\"},{\"name\":\"wasm-tools-dbg\",\"version\":\"1.252.0\",\"revision\":1,\"filename_size\":875107,\"repository\":\"debug\",\"short_desc\":\"CLI and Rust libraries for low-level manipulation of WebAssembly modules (debug files)\"},{\"name\":\"wired-notify\",\"version\":\"0.10.6\",\"revision\":1,\"filename_size\":2200926,\"repository\":\"current\",\"short_desc\":\"Lightweight notification daemon written in Rust\"},{\"name\":\"wired-notify-dbg\",\"version\":\"0.10.6\",\"revision\":1,\"filename_size\":343046,\"repository\":\"debug\",\"short_desc\":\"Lightweight notification daemon written in Rust (debug files)\"},{\"name\":\"xi-editor\",\"version\":\"0.3.0\",\"revision\":2,\"filename_size\":1671941,\"repository\":\"current\",\"short_desc\":\"Modern editor with a Rust backend\"},{\"name\":\"xi-editor-dbg\",\"version\":\"0.3.0\",\"revision\":2,\"filename_size\":331780,\"repository\":\"debug\",\"short_desc\":\"Modern editor with a Rust backend (debug files)\"},{\"name\":\"xsv\",\"version\":\"0.13.0\",\"revision\":3,\"filename_size\":803780,\"repository\":\"current\",\"short_desc\":\"Fast CSV toolkit written in Rust\"},{\"name\":\"xsv-dbg\",\"version\":\"0.13.0\",\"revision\":3,\"filename_size\":5738200,\"repository\":\"debug\",\"short_desc\":\"Fast CSV toolkit written in Rust (debug files)\"}]}\n"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=arti",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=arti",
+          "title": "arti",
+          "content": "Tor implementation in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=arti-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=arti-dbg",
+          "title": "arti-dbg",
+          "content": "Tor implementation in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo",
+          "title": "cargo",
+          "content": "Rust package manager",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-aoc",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-aoc",
+          "title": "cargo-aoc",
+          "content": "CLI helper tool for advent of code in rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-aoc-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-aoc-dbg",
+          "title": "cargo-aoc-dbg",
+          "content": "CLI helper tool for advent of code in rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-auditable",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-auditable",
+          "title": "cargo-auditable",
+          "content": "Tool for embedding dependency information in rust binaries",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-auditable-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-auditable-dbg",
+          "title": "cargo-auditable-dbg",
+          "content": "Tool for embedding dependency information in rust binaries (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-bootstrap",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-bootstrap",
+          "title": "cargo-bootstrap",
+          "content": "Bootstrap binaries of Rust package manager",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-c",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-c",
+          "title": "cargo-c",
+          "content": "Build and install C-compatible rust libraries",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-c-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-c-dbg",
+          "title": "cargo-c-dbg",
+          "content": "Build and install C-compatible rust libraries (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-dbg",
+          "title": "cargo-dbg",
+          "content": "Rust package manager (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-flamegraph",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-flamegraph",
+          "title": "cargo-flamegraph",
+          "content": "Easy flamegraphs for Rust projects and everything else",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-flamegraph-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-flamegraph-dbg",
+          "title": "cargo-flamegraph-dbg",
+          "content": "Easy flamegraphs for Rust projects and everything else (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-geiger",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-geiger",
+          "title": "cargo-geiger",
+          "content": "Detects usage of unsafe Rust in a Rust crate and its dependencies",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-geiger-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-geiger-dbg",
+          "title": "cargo-geiger-dbg",
+          "content": "Detects usage of unsafe Rust in a Rust crate and its dependencies (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-machete",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-machete",
+          "title": "cargo-machete",
+          "content": "Remove unused Rust dependencies",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-machete-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=cargo-machete-dbg",
+          "title": "cargo-machete-dbg",
+          "content": "Remove unused Rust dependencies (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=castor",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=castor",
+          "title": "castor",
+          "content": "Graphical client for plain-text protocols written in Rust with GTK",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=castor-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=castor-dbg",
+          "title": "castor-dbg",
+          "content": "Graphical client for plain-text protocols written in Rust with GTK (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=cbindgen",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=cbindgen",
+          "title": "cbindgen",
+          "content": "Tool to generate C bindings for Rust code",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=cbindgen-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=cbindgen-dbg",
+          "title": "cbindgen-dbg",
+          "content": "Tool to generate C bindings for Rust code (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=corrosion",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=corrosion",
+          "title": "corrosion",
+          "content": "Tool for integrating Rust into an existing CMake project",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=diskonaut",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=diskonaut",
+          "title": "diskonaut",
+          "content": "TUI disk space navigator written in rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=diskonaut-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=diskonaut-dbg",
+          "title": "diskonaut-dbg",
+          "content": "TUI disk space navigator written in rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=dnssec-anchors",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=dnssec-anchors",
+          "title": "dnssec-anchors",
+          "content": "DNSSEC trust anchors for the root zone",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=dutree",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=dutree",
+          "title": "dutree",
+          "content": "Tool to analyze file system usage written in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=dutree-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=dutree-dbg",
+          "title": "dutree-dbg",
+          "content": "Tool to analyze file system usage written in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=fclones",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=fclones",
+          "title": "fclones",
+          "content": "Efficient Duplicate File Finder written in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=fclones-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=fclones-dbg",
+          "title": "fclones-dbg",
+          "content": "Efficient Duplicate File Finder written in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=gemserv",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=gemserv",
+          "title": "gemserv",
+          "content": "Gemini server written in rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=gemserv-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=gemserv-dbg",
+          "title": "gemserv-dbg",
+          "content": "Gemini server written in rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=gitoxide",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=gitoxide",
+          "title": "gitoxide",
+          "content": "Idiomatic, lean, fast and safe pure Rust implementation of Git",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=gitoxide-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=gitoxide-dbg",
+          "title": "gitoxide-dbg",
+          "content": "Idiomatic, lean, fast and safe pure Rust implementation of Git (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=gst-plugins-rs1",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=gst-plugins-rs1",
+          "title": "gst-plugins-rs1",
+          "content": "GStreamer plugins and elements written in the Rust programming language",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=gst-plugins-rs1-32bit",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=gst-plugins-rs1-32bit",
+          "title": "gst-plugins-rs1-32bit",
+          "content": "GStreamer plugins and elements written in the Rust programming language (32bit)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=gst-plugins-rs1-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=gst-plugins-rs1-dbg",
+          "title": "gst-plugins-rs1-dbg",
+          "content": "GStreamer plugins and elements written in the Rust programming language (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=gxi",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=gxi",
+          "title": "gxi",
+          "content": "GTK frontend for the Xi text editor, written in Rust (transitional dummy package)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=i3status-rust",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=i3status-rust",
+          "title": "i3status-rust",
+          "content": "Replacement for i3status, written in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=i3status-rust-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=i3status-rust-dbg",
+          "title": "i3status-rust-dbg",
+          "content": "Replacement for i3status, written in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=ion",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=ion",
+          "title": "ion",
+          "content": "Ion shell, written in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=ion-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=ion-dbg",
+          "title": "ion-dbg",
+          "content": "Ion shell, written in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=ironbar",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=ironbar",
+          "title": "ironbar",
+          "content": "Customisable Wayland GTK4 bar written in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=ironbar-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=ironbar-dbg",
+          "title": "ironbar-dbg",
+          "content": "Customisable Wayland GTK4 bar written in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=irust",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=irust",
+          "title": "irust",
+          "content": "Cross Platform Rust Repl",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=irust-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=irust-dbg",
+          "title": "irust-dbg",
+          "content": "Cross Platform Rust Repl (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=lemurs",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=lemurs",
+          "title": "lemurs",
+          "content": "Customizable TUI display/login manager written in Rust 🐒",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=lemurs-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=lemurs-dbg",
+          "title": "lemurs-dbg",
+          "content": "Customizable TUI display/login manager written in Rust 🐒 (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=libresvg-devel",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=libresvg-devel",
+          "title": "libresvg-devel",
+          "content": "SVG rendering library written in Rust - development files",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=libresvg-devel-32bit",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=libresvg-devel-32bit",
+          "title": "libresvg-devel-32bit",
+          "content": "SVG rendering library written in Rust - development files (32bit)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=libresvg0",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=libresvg0",
+          "title": "libresvg0",
+          "content": "SVG rendering library written in Rust - resvg library",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=libresvg0-32bit",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=libresvg0-32bit",
+          "title": "libresvg0-32bit",
+          "content": "SVG rendering library written in Rust - resvg library (32bit)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=libresvg0-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=libresvg0-dbg",
+          "title": "libresvg0-dbg",
+          "content": "SVG rendering library written in Rust - resvg library (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=libtpm2-totp",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=libtpm2-totp",
+          "title": "libtpm2-totp",
+          "content": "Attest the trustworthiness of a device using TOTP - library files",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=libtpm2-totp-32bit",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=libtpm2-totp-32bit",
+          "title": "libtpm2-totp-32bit",
+          "content": "Attest the trustworthiness of a device using TOTP - library files (32bit)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=libtpm2-totp-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=libtpm2-totp-dbg",
+          "title": "libtpm2-totp-dbg",
+          "content": "Attest the trustworthiness of a device using TOTP - library files (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=libtpms",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=libtpms",
+          "title": "libtpms",
+          "content": "Software emulation of a Trusted Platform Module (TPM 1.2 and TPM 2.0)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=libtpms-32bit",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=libtpms-32bit",
+          "title": "libtpms-32bit",
+          "content": "Software emulation of a Trusted Platform Module (TPM 1.2 and TPM 2.0) (32bit)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=libtpms-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=libtpms-dbg",
+          "title": "libtpms-dbg",
+          "content": "Software emulation of a Trusted Platform Module (TPM 1.2 and TPM 2.0) (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=libtpms-devel",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=libtpms-devel",
+          "title": "libtpms-devel",
+          "content": "Software emulation of a Trusted Platform Module (TPM 1.2 and TPM 2.0) - development files",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=libtpms-devel-32bit",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=libtpms-devel-32bit",
+          "title": "libtpms-devel-32bit",
+          "content": "Software emulation of a Trusted Platform Module (TPM 1.2 and TPM 2.0) - development files (32bit)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=lychee",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=lychee",
+          "title": "lychee",
+          "content": "Fast, async, stream-based link checker written in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=lychee-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=lychee-dbg",
+          "title": "lychee-dbg",
+          "content": "Fast, async, stream-based link checker written in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=mdBook",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=mdBook",
+          "title": "mdBook",
+          "content": "Create book from markdown files. Like Gitbook but implemented in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=mdBook-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=mdBook-dbg",
+          "title": "mdBook-dbg",
+          "content": "Create book from markdown files. Like Gitbook but implemented in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=mdBook-legacy",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=mdBook-legacy",
+          "title": "mdBook-legacy",
+          "content": "Create book from markdown files. Like Gitbook but implemented in Rust - legacy version for void-docs",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=mdBook-legacy-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=mdBook-legacy-dbg",
+          "title": "mdBook-legacy-dbg",
+          "content": "Create book from markdown files. Like Gitbook but implemented in Rust - legacy version for void-docs (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=mise",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=mise",
+          "title": "mise",
+          "content": "Polyglot runtime manager (asdf rust clone)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=mise-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=mise-dbg",
+          "title": "mise-dbg",
+          "content": "Polyglot runtime manager (asdf rust clone) (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=neovide",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=neovide",
+          "title": "neovide",
+          "content": "No Nonsense Neovim Client in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=neovide-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=neovide-dbg",
+          "title": "neovide-dbg",
+          "content": "No Nonsense Neovim Client in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=ox",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=ox",
+          "title": "ox",
+          "content": "Independent Rust text editor that runs in your terminal",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=ox-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=ox-dbg",
+          "title": "ox-dbg",
+          "content": "Independent Rust text editor that runs in your terminal (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=probe-rs",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=probe-rs",
+          "title": "probe-rs",
+          "content": "Modern, embedded debugging toolkit, written in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=probe-rs-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=probe-rs-dbg",
+          "title": "probe-rs-dbg",
+          "content": "Modern, embedded debugging toolkit, written in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=procs",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=procs",
+          "title": "procs",
+          "content": "Modern replacement for ps written in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=procs-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=procs-dbg",
+          "title": "procs-dbg",
+          "content": "Modern replacement for ps written in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=prs",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=prs",
+          "title": "prs",
+          "content": "Pass compatible password manager written in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=prs-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=prs-dbg",
+          "title": "prs-dbg",
+          "content": "Pass compatible password manager written in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-itsdangerous",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-itsdangerous",
+          "title": "python3-itsdangerous",
+          "content": "Various helpers to pass trusted data to untrusted enviroments and back",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-mitmproxy-rs",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-mitmproxy-rs",
+          "title": "python3-mitmproxy-rs",
+          "content": "Rust bits in mitmproxy",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-mitmproxy-rs-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-mitmproxy-rs-dbg",
+          "title": "python3-mitmproxy-rs-dbg",
+          "content": "Rust bits in mitmproxy (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-pillow-jxl",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-pillow-jxl",
+          "title": "python3-pillow-jxl",
+          "content": "JPEG XL pillow plugin using Rust for bindings",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-pillow-jxl-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-pillow-jxl-dbg",
+          "title": "python3-pillow-jxl-dbg",
+          "content": "JPEG XL pillow plugin using Rust for bindings (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-puccinialin",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-puccinialin",
+          "title": "python3-puccinialin",
+          "content": "Install rust into a cache dir for rust-based builds",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-rpds-py",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-rpds-py",
+          "title": "python3-rpds-py",
+          "content": "Python bindings to Rust's persistent data structures (rpds)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-rpds-py-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-rpds-py-dbg",
+          "title": "python3-rpds-py-dbg",
+          "content": "Python bindings to Rust's persistent data structures (rpds) (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-setuptools-rust",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-setuptools-rust",
+          "title": "python3-setuptools-rust",
+          "content": "Setuptools plugin for Rust support",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-trustme",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-trustme",
+          "title": "python3-trustme",
+          "content": "Fake CA for testing",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-truststore",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-truststore",
+          "title": "python3-truststore",
+          "content": "Verify certificates using OS trust stores",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-virustotal-api",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-virustotal-api",
+          "title": "python3-virustotal-api",
+          "content": "Virus Total Public/Private/Intel API",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-zxcvbn-rs-py",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-zxcvbn-rs-py",
+          "title": "python3-zxcvbn-rs-py",
+          "content": "Python bindings for zxcvbn-rs, the Rust implementation of zxcvbn",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-zxcvbn-rs-py-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=python3-zxcvbn-rs-py-dbg",
+          "title": "python3-zxcvbn-rs-py-dbg",
+          "content": "Python bindings for zxcvbn-rs, the Rust implementation of zxcvbn (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rage",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rage",
+          "title": "rage",
+          "content": "Simple, modern and secure encryption tool, written in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rage-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rage-dbg",
+          "title": "rage-dbg",
+          "content": "Simple, modern and secure encryption tool, written in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=resvg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=resvg",
+          "title": "resvg",
+          "content": "SVG rendering library written in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=resvg-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=resvg-dbg",
+          "title": "resvg-dbg",
+          "content": "SVG rendering library written in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=ripdrag",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=ripdrag",
+          "title": "ripdrag",
+          "content": "Drag and Drop utilty written in Rust and GTK4",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=ripdrag-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=ripdrag-dbg",
+          "title": "ripdrag-dbg",
+          "content": "Drag and Drop utilty written in Rust and GTK4 (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rsClock",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rsClock",
+          "title": "rsClock",
+          "content": "Simple terminal clock written in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rsClock-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rsClock-dbg",
+          "title": "rsClock-dbg",
+          "content": "Simple terminal clock written in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rsv",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rsv",
+          "title": "rsv",
+          "content": "Runit sv command rewritten in rust with nice new features",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rsv-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rsv-dbg",
+          "title": "rsv-dbg",
+          "content": "Runit sv command rewritten in rust with nice new features (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rtx",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rtx",
+          "title": "rtx",
+          "content": "Polyglot runtime manager (asdf rust clone) (transitional dummy package)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust",
+          "title": "rust",
+          "content": "Safe, concurrent, practical systems language",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-analyzer",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-analyzer",
+          "title": "rust-analyzer",
+          "content": "Rust compiler front-end for IDEs",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-analyzer-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-analyzer-dbg",
+          "title": "rust-analyzer-dbg",
+          "content": "Rust compiler front-end for IDEs (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-audit-info",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-audit-info",
+          "title": "rust-audit-info",
+          "content": "CLI tool for extracting cargo-auditable dependency trees",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-audit-info-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-audit-info-dbg",
+          "title": "rust-audit-info-dbg",
+          "content": "CLI tool for extracting cargo-auditable dependency trees (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-bacon",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-bacon",
+          "title": "rust-bacon",
+          "content": "Background rust code checker",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-bacon-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-bacon-dbg",
+          "title": "rust-bacon-dbg",
+          "content": "Background rust code checker (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-bindgen",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-bindgen",
+          "title": "rust-bindgen",
+          "content": "Tool to generate Rust FFI bindings to C (and some C++) libraries",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-bindgen-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-bindgen-dbg",
+          "title": "rust-bindgen-dbg",
+          "content": "Tool to generate Rust FFI bindings to C (and some C++) libraries (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-bootstrap",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-bootstrap",
+          "title": "rust-bootstrap",
+          "content": "Rust programming language bootstrap toolchain",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-cargo-audit",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-cargo-audit",
+          "title": "rust-cargo-audit",
+          "content": "Audit Cargo.lock for crates with security vulnerabilities",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-cargo-audit-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-cargo-audit-dbg",
+          "title": "rust-cargo-audit-dbg",
+          "content": "Audit Cargo.lock for crates with security vulnerabilities (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-cargo-bloat",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-cargo-bloat",
+          "title": "rust-cargo-bloat",
+          "content": "Find out what takes most of the space in your executable",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-cargo-bloat-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-cargo-bloat-dbg",
+          "title": "rust-cargo-bloat-dbg",
+          "content": "Find out what takes most of the space in your executable (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-dbg",
+          "title": "rust-dbg",
+          "content": "Safe, concurrent, practical systems language (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-doc",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-doc",
+          "title": "rust-doc",
+          "content": "Safe, concurrent, practical systems language - documentation",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-sccache",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-sccache",
+          "title": "rust-sccache",
+          "content": "Sccache is a ccache-like tool",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-sccache-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-sccache-dbg",
+          "title": "rust-sccache-dbg",
+          "content": "Sccache is a ccache-like tool (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-src",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-src",
+          "title": "rust-src",
+          "content": "Safe, concurrent, practical systems language - source code",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-std",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-std",
+          "title": "rust-std",
+          "content": "Safe, concurrent, practical systems language - standard library",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-std-32bit",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-std-32bit",
+          "title": "rust-std-32bit",
+          "content": "Safe, concurrent, practical systems language - standard library (32bit)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-std-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rust-std-dbg",
+          "title": "rust-std-dbg",
+          "content": "Safe, concurrent, practical systems language - standard library (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rustnet",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rustnet",
+          "title": "rustnet",
+          "content": "Cross-platform network monitoring terminal UI tool built with Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rustnet-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rustnet-dbg",
+          "title": "rustnet-dbg",
+          "content": "Cross-platform network monitoring terminal UI tool built with Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rustup",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rustup",
+          "title": "rustup",
+          "content": "Rust toolchain installer",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rustup-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rustup-dbg",
+          "title": "rustup-dbg",
+          "content": "Rust toolchain installer (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rusty-diceware",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rusty-diceware",
+          "title": "rusty-diceware",
+          "content": "Commandline diceware, sans dice, written in rustlang",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rusty-diceware-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rusty-diceware-dbg",
+          "title": "rusty-diceware-dbg",
+          "content": "Commandline diceware, sans dice, written in rustlang (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rustypaste",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rustypaste",
+          "title": "rustypaste",
+          "content": "Minimal file upload/pastebin service",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rustypaste-cli",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rustypaste-cli",
+          "title": "rustypaste-cli",
+          "content": "CLI tool for rustypaste",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rustypaste-cli-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rustypaste-cli-dbg",
+          "title": "rustypaste-cli-dbg",
+          "content": "CLI tool for rustypaste (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=rustypaste-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=rustypaste-dbg",
+          "title": "rustypaste-dbg",
+          "content": "Minimal file upload/pastebin service (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=scryer-prolog",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=scryer-prolog",
+          "title": "scryer-prolog",
+          "content": "Modern Prolog implementation written mostly in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=scryer-prolog-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=scryer-prolog-dbg",
+          "title": "scryer-prolog-dbg",
+          "content": "Modern Prolog implementation written mostly in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=sedutil",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=sedutil",
+          "title": "sedutil",
+          "content": "Drive Trust Alliance Self Encrypting Drive Utility",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=sedutil-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=sedutil-dbg",
+          "title": "sedutil-dbg",
+          "content": "Drive Trust Alliance Self Encrypting Drive Utility (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=shadowsocks-rust",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=shadowsocks-rust",
+          "title": "shadowsocks-rust",
+          "content": "Rust port of shadowsocks, a fast lightweight obfuscated tunnel proxy",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=shadowsocks-rust-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=shadowsocks-rust-dbg",
+          "title": "shadowsocks-rust-dbg",
+          "content": "Rust port of shadowsocks, a fast lightweight obfuscated tunnel proxy (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=skim",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=skim",
+          "title": "skim",
+          "content": "Fuzzy Finder in rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=skim-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=skim-dbg",
+          "title": "skim-dbg",
+          "content": "Fuzzy Finder in rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=step-cli",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=step-cli",
+          "title": "step-cli",
+          "content": "Zero trust swiss army knife",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=step-cli-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=step-cli-dbg",
+          "title": "step-cli-dbg",
+          "content": "Zero trust swiss army knife (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=taplo",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=taplo",
+          "title": "taplo",
+          "content": "TOML toolkit written in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=taplo-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=taplo-dbg",
+          "title": "taplo-dbg",
+          "content": "TOML toolkit written in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tarpaulin",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tarpaulin",
+          "title": "tarpaulin",
+          "content": "Code coverage tool for Rust/Cargo projects",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tarpaulin-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tarpaulin-dbg",
+          "title": "tarpaulin-dbg",
+          "content": "Code coverage tool for Rust/Cargo projects (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tau",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tau",
+          "title": "tau",
+          "content": "GTK frontend for the Xi text editor, written in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tau-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tau-dbg",
+          "title": "tau-dbg",
+          "content": "GTK frontend for the Xi text editor, written in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tealdeer",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tealdeer",
+          "title": "tealdeer",
+          "content": "Very fast implementation of tldr in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tealdeer-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tealdeer-dbg",
+          "title": "tealdeer-dbg",
+          "content": "Very fast implementation of tldr in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tlrc",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tlrc",
+          "title": "tlrc",
+          "content": "Official tldr client written in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tlrc-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tlrc-dbg",
+          "title": "tlrc-dbg",
+          "content": "Official tldr client written in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tpm-tools",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tpm-tools",
+          "title": "tpm-tools",
+          "content": "Manage and diagnose tools for a Trusted Platform Module (TPM)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tpm-tools-32bit",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tpm-tools-32bit",
+          "title": "tpm-tools-32bit",
+          "content": "Manage and diagnose tools for a Trusted Platform Module (TPM) (32bit)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tpm-tools-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tpm-tools-dbg",
+          "title": "tpm-tools-dbg",
+          "content": "Manage and diagnose tools for a Trusted Platform Module (TPM) (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tpm2-tools",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tpm2-tools",
+          "title": "tpm2-tools",
+          "content": "Trusted Platform Module (TPM2.0) tools",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tpm2-tools-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tpm2-tools-dbg",
+          "title": "tpm2-tools-dbg",
+          "content": "Trusted Platform Module (TPM2.0) tools (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tpm2-totp",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tpm2-totp",
+          "title": "tpm2-totp",
+          "content": "Attest the trustworthiness of a device using TOTP",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tpm2-totp-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tpm2-totp-dbg",
+          "title": "tpm2-totp-dbg",
+          "content": "Attest the trustworthiness of a device using TOTP (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tpm2-totp-devel",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tpm2-totp-devel",
+          "title": "tpm2-totp-devel",
+          "content": "Attest the trustworthiness of a device using TOTP - development files",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tpm2-totp-devel-32bit",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tpm2-totp-devel-32bit",
+          "title": "tpm2-totp-devel-32bit",
+          "content": "Attest the trustworthiness of a device using TOTP - development files (32bit)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tree-sitter-rust",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tree-sitter-rust",
+          "title": "tree-sitter-rust",
+          "content": "Rust grammar for tree-sitter",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=tree-sitter-rust-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=tree-sitter-rust-dbg",
+          "title": "tree-sitter-rust-dbg",
+          "content": "Rust grammar for tree-sitter (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=trousers",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=trousers",
+          "title": "trousers",
+          "content": "Trusted Computing Software Stack for the TPM",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=trousers-32bit",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=trousers-32bit",
+          "title": "trousers-32bit",
+          "content": "Trusted Computing Software Stack for the TPM (32bit)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=trousers-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=trousers-dbg",
+          "title": "trousers-dbg",
+          "content": "Trusted Computing Software Stack for the TPM (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=trousers-devel",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=trousers-devel",
+          "title": "trousers-devel",
+          "content": "Trusted Computing Software Stack for the TPM - development files",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=trousers-devel-32bit",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=trousers-devel-32bit",
+          "title": "trousers-devel-32bit",
+          "content": "Trusted Computing Software Stack for the TPM - development files (32bit)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=uncrustify",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=uncrustify",
+          "title": "uncrustify",
+          "content": "Source Code Beautifier for multiple languages",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=uncrustify-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=uncrustify-dbg",
+          "title": "uncrustify-dbg",
+          "content": "Source Code Beautifier for multiple languages (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=vaultwarden",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=vaultwarden",
+          "title": "vaultwarden",
+          "content": "Unofficial Bitwarden compatible server written in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=vaultwarden-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=vaultwarden-dbg",
+          "title": "vaultwarden-dbg",
+          "content": "Unofficial Bitwarden compatible server written in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=wasm-tools",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=wasm-tools",
+          "title": "wasm-tools",
+          "content": "CLI and Rust libraries for low-level manipulation of WebAssembly modules",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=wasm-tools-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=wasm-tools-dbg",
+          "title": "wasm-tools-dbg",
+          "content": "CLI and Rust libraries for low-level manipulation of WebAssembly modules (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=wired-notify",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=wired-notify",
+          "title": "wired-notify",
+          "content": "Lightweight notification daemon written in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=wired-notify-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=wired-notify-dbg",
+          "title": "wired-notify-dbg",
+          "content": "Lightweight notification daemon written in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=xi-editor",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=xi-editor",
+          "title": "xi-editor",
+          "content": "Modern editor with a Rust backend",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=xi-editor-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=xi-editor-dbg",
+          "title": "xi-editor-dbg",
+          "content": "Modern editor with a Rust backend (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=xsv",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=xsv",
+          "title": "xsv",
+          "content": "Fast CSV toolkit written in Rust",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://voidlinux.org/packages/?arch=x86_64&q=xsv-dbg",
+          "normalized_url": "https://voidlinux.org/packages/?arch=x86_64&q=xsv-dbg",
+          "title": "xsv-dbg",
+          "content": "Fast CSV toolkit written in Rust (debug files)",
+          "engine": "voidlinux",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

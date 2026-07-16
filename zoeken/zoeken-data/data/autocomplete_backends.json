@@ -1,0 +1,13 @@
+{
+  "backends": [
+    "brave",
+    "dbpedia",
+    "duckduckgo",
+    "google",
+    "mwmbl",
+    "qwant",
+    "startpage",
+    "swisscows",
+    "wikipedia"
+  ]
+}

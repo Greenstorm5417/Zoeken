@@ -1,0 +1,125 @@
+[workspace]
+resolver = "3"
+members = [
+    "zoeken/zoeken-settings",
+    "zoeken/zoeken-data",
+    "zoeken/zoeken-network",
+    "zoeken/zoeken-results",
+    "zoeken/zoeken-engine-core",
+    "zoeken/zoeken-engines",
+    "zoeken/zoeken-query",
+    "zoeken/zoeken-search",
+    "zoeken/zoeken-answerers",
+    "zoeken/zoeken-plugins",
+    "zoeken/zoeken-autocomplete",
+    "zoeken/zoeken-favicons",
+    "zoeken/zoeken-botdetect",
+    "zoeken/zoeken-prefs",
+    "zoeken/zoeken-server",
+    "zoeken/zoeken-metrics",
+]
+
+[workspace.package]
+version = "1.0.0"
+edition = "2024"
+license = "AGPL-3.0-or-later"
+authors = ["Greenstorm <sdussinger1007@gmail.com>"]
+repository = "https://github.com/Greenstorm5417/zoeken"
+homepage = "https://github.com/Greenstorm5417/zoeken"
+documentation = "https://github.com/Greenstorm5417/zoeken#readme"
+description = "SearXNG-compatible metasearch engine (Rust backend + React SPA)"
+keywords = ["metasearch", "searxng", "search"]
+categories = ["web-programming"]
+
+# Centralized lint policy. Every crate opts in with `[lints] workspace = true`.
+# CI additionally runs clippy with `-D warnings` to catch rustc warnings too.
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+all = { level = "deny", priority = -1 }
+dbg_macro = "deny"
+todo = "deny"
+unimplemented = "deny"
+
+[workspace.dependencies]
+zoeken-settings = { path = "zoeken/zoeken-settings" }
+zoeken-data = { path = "zoeken/zoeken-data" }
+zoeken-network = { path = "zoeken/zoeken-network" }
+zoeken-results = { path = "zoeken/zoeken-results" }
+zoeken-engine-core = { path = "zoeken/zoeken-engine-core" }
+zoeken-engines = { path = "zoeken/zoeken-engines" }
+zoeken-query = { path = "zoeken/zoeken-query" }
+zoeken-search = { path = "zoeken/zoeken-search" }
+zoeken-answerers = { path = "zoeken/zoeken-answerers" }
+zoeken-plugins = { path = "zoeken/zoeken-plugins" }
+zoeken-autocomplete = { path = "zoeken/zoeken-autocomplete" }
+zoeken-favicons = { path = "zoeken/zoeken-favicons" }
+zoeken-botdetect = { path = "zoeken/zoeken-botdetect" }
+zoeken-prefs = { path = "zoeken/zoeken-prefs" }
+zoeken-metrics = { path = "zoeken/zoeken-metrics" }
+
+# Async runtime
+tokio = { version = "1.52.3", features = [
+    "rt-multi-thread",
+    "macros",
+    "net",
+    "time",
+    "sync",
+    "io-util",
+] }
+wreq = { version = "6.0.0-rc.29", features = ["stream"] }
+wreq-util = "3.0.0-rc.14"
+futures-util = "0.3.32"
+axum = "0.8.9"
+tower = { version = "0.5.3", features = ["util", "timeout", "limit"] }
+tower-http = { version = "0.7.0", features = [
+    "trace",
+    "compression-full",
+    "timeout",
+    "fs",
+    "set-header",
+    "limit",
+] }
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = { version = "1.0.150", features = ["float_roundtrip"] }
+serde_yaml_ng = "0.10.0"
+anyhow = "1.0.100"
+scraper = "0.27.0"
+ego-tree = "0.11.0"
+sxd-document = "0.3.2"
+sxd-xpath = "0.4.2"
+chrono = { version = "0.4.45", default-features = false, features = [
+    "std",
+    "alloc",
+] }
+quick-xml = { version = "0.41.0", features = ["serialize", "overlapped-lists"] }
+csv = "1.4.0"
+moka = { version = "0.12.15", features = ["future", "sync"] }
+rusqlite = { version = "0.40.1", features = ["bundled"] }
+fred = "10.1.0"
+thiserror = "2.0.18"
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
+metrics = "0.24.6"
+metrics-exporter-prometheus = { version = "0.18.3", default-features = false }
+whatlang = "0.18.0"
+rand = "0.9.4"
+fasteval = "0.2.4"
+proptest = "1.11.0"
+regex = "1.13.1"
+phf = "0.14.0"
+phf_codegen = "0.14.0"
+url = "2.5.8"
+base64 = "0.22.1"
+flate2 = "1.1.9"
+http = "1.4.2"
+ipnet = "2.12.0"
+toml = "1.1.3"
+mlua = { version = "0.12", features = ["anyhow", "lua55", "vendored", "send", "serialize"] }
+md5 = { package = "md-5", version = "0.10.6" }
+sha1 = "0.11.0"
+sha2 = "0.11.0"
+hmac = "0.13.0"
+hex = "0.4.3"
+tempfile = "3.23.0"

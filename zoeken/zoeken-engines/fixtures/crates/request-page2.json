@@ -1,0 +1,49 @@
+{
+  "engine": "crates",
+  "case": "request-page2",
+  "query": {
+    "query": "serde",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "serde",
+    "category": "",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://crates.io/api/v1/crates?page=2&q=serde&per_page=10",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://crates.io/api/v1/crates",
+    "headers": {},
+    "body": "{\"crates\":[]}"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

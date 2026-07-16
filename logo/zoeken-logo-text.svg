@@ -1,0 +1,109 @@
+<svg viewBox="0 0 600 240" width="600" height="240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zoekin logo with leaf magnifying glass icon and text">
+  <defs>
+    <linearGradient id="prefix__a" gradientUnits="userSpaceOnUse" x1="95" y1="90" x2="318" y2="318">
+      <stop offset="0" stop-color="#a8d86b" />
+      <stop offset=".52" stop-color="#5fa437" />
+      <stop offset="1" stop-color="#2f6b1d" />
+    </linearGradient>
+    <linearGradient id="prefix__b" gradientUnits="userSpaceOnUse" x1="90" y1="90" x2="320" y2="320">
+      <stop offset="0" stop-color="#477f2a" />
+      <stop offset="1" stop-color="#204f16" />
+    </linearGradient>
+    <linearGradient id="prefix__d" gradientUnits="userSpaceOnUse" x1="300" y1="278" x2="452" y2="454">
+      <stop offset="0" stop-color="#b18a69" />
+      <stop offset=".32" stop-color="#8a6246" />
+      <stop offset=".66" stop-color="#6b4a34" />
+      <stop offset="1" stop-color="#4d3526" />
+    </linearGradient>
+    <linearGradient id="prefix__c" gradientUnits="userSpaceOnUse" x1="330" y1="300" x2="440" y2="445">
+      <stop offset="0" stop-color="#8b6548" />
+      <stop offset="1" stop-color="#4f3828" />
+    </linearGradient>
+    <radialGradient id="prefix__f" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#3a271b" />
+      <stop offset=".45" stop-color="#5a4030" />
+      <stop offset=".8" stop-color="#8a6246" />
+      <stop offset="1" stop-color="#9c7355" />
+    </radialGradient>
+    <clipPath id="prefix__e">
+      <path d="M313 295l143 149q6 6 0 12t-12 0L296 313q-3-11 1-16 5-4 16-2z" />
+    </clipPath>
+    <linearGradient id="textGrad" gradientUnits="userSpaceOnUse" x1="220" y1="180" x2="470" y2="330">
+      <stop offset="0" stop-color="#5fa437" />
+      <stop offset="1" stop-color="#2f6b1d" />
+    </linearGradient>
+  </defs>
+
+  <!-- Icon block -->
+  <g transform="translate(18 14) scale(0.82)">
+    <path d="M300 300C200 350 90 260 90 90c170 0 260 110 210 210z" fill="url(#prefix__a)" stroke="url(#prefix__b)"
+      stroke-width="7" stroke-linejoin="round" transform="matrix(.635 0 0 .635 -45.975 -45.975)" />
+    <path d="M141.731 141.731Q74.675 79.755 13.715 13.715" fill="none" stroke="#2c5e1a" stroke-width="3.175"
+      stroke-linecap="round" />
+    <path
+      d="M112.775 112.775q-20.32 13.97-40.64 15.24M89.915 89.915q-24.765 16.51-48.26 19.05M67.055 67.055q-20.955 12.7-40.64 10.16M112.775 112.775q13.97-20.32 15.24-40.64M89.915 89.915q16.51-24.765 19.05-48.26M67.055 67.055q12.7-20.955 10.16-40.64"
+      fill="none" stroke="#2c5e1a" stroke-width="1.651" stroke-linecap="round" opacity=".85" />
+    <path
+      d="M101.345 101.345q-16.51 11.43-30.48 12.7M101.345 101.345q11.43-16.51 12.7-30.48M78.485 78.485q-17.78 13.97-33.02 13.97M78.485 78.485q13.97-17.78 13.97-33.02"
+      fill="none" stroke="#2c5e1a" stroke-width=".762" stroke-linecap="round" opacity=".5" />
+    <g>
+      <path d="M360 344q17-16 34-25" fill="none" stroke="url(#prefix__c)" stroke-width="5" stroke-linecap="round"
+        transform="matrix(.635 0 0 .635 -49.15 -49.15)" />
+      <g stroke="#3f7a24">
+        <path d="M201.04 153.415q1.939-10.358 14.123-12.114-4.908 12.073-14.123 12.114z" fill="#5c9e34"
+          stroke-width=".74295" />
+        <path d="M202.24 152.063q4.719-6.685 10.944-9.619" fill="none" stroke-linecap="round" stroke-width=".5715" />
+      </g>
+      <path d="M375 331l3-6" fill="none" stroke="url(#prefix__c)" stroke-width="2.4" stroke-linecap="round"
+        transform="matrix(.635 0 0 .635 -49.15 -49.15)" />
+      <g stroke="#3f7a24">
+        <path d="M190.88 157.225q-4.88-7.995 2.125-16.402 3.938 10.894-2.125 16.402z" fill="#6bab3f"
+          stroke-width=".6604" />
+        <path d="M190.868 155.619q-.858-7.223 1.509-12.864" fill="none" stroke-linecap="round" stroke-width=".508" />
+      </g>
+      <g stroke="#3f7a24">
+        <path d="M203.58 210.565q.94 8.378-7.972 12.57.932-10.383 7.972-12.57z" fill="#5c9e34" stroke-width=".59436" />
+        <path d="M202.979 211.88q-2.047 6.218-6.123 9.918" fill="none" stroke-linecap="round" stroke-width=".4572" />
+      </g>
+      <path d="M340 330q-5-22-1-33" fill="none" stroke="url(#prefix__c)" stroke-width="3.5" stroke-linecap="round"
+        transform="matrix(.635 0 0 .635 -49.15 -49.15)" />
+      <g stroke="#3f7a24">
+        <path d="M166.115 139.445q-4.483-7.957 2.628-15.91 3.467 10.75-2.628 15.91z" fill="#6bab3f"
+          stroke-width=".6438900000000001" />
+        <path d="M166.158 137.88q-.59-7.068 1.908-12.483" fill="none" stroke-linecap="round" stroke-width=".4953" />
+      </g>
+      <path d="M313 295l143 149q6 6 0 12t-12 0L296 313q-3-11 1-16 5-4 16-2z" fill="url(#prefix__d)"
+        transform="matrix(.635 0 0 .635 -49.15 -49.15)" />
+      <g clip-path="url(#prefix__e)" transform="matrix(.635 0 0 .635 -49.15 -49.15)">
+        <path d="M306 302q66 70 146 146" fill="none" stroke="#a07a5a" stroke-width="1.3" stroke-linecap="round"
+          opacity=".4" />
+        <path d="M302 306q66 70 146 146" fill="none" stroke="#3f2a1c" stroke-width="1.4" stroke-linecap="round"
+          opacity=".35" />
+        <path d="M311 300q67 66 145 144" fill="none" stroke="#3f2a1c" stroke-width="1.1" stroke-linecap="round"
+          opacity=".3" />
+        <path d="M300 311q66 67 144 145" fill="none" stroke="#a07a5a" stroke-width="1.1" stroke-linecap="round"
+          opacity=".32" />
+        <path d="M314 305q70 63 144 135M305 314q57 70 135 144" fill="none" stroke="#5a3d29" stroke-width=".9"
+          stroke-linecap="round" opacity=".3" />
+        <g transform="rotate(45 -248.109 606.23)">
+          <ellipse rx="8" ry="5" fill="url(#prefix__f)" stroke="#33221680" stroke-width="1.2" />
+          <ellipse rx="3" ry="1.8" fill="#2c1c12" />
+        </g>
+        <g transform="rotate(45 -286.085 695.5)">
+          <ellipse rx="6" ry="3.8" fill="url(#prefix__f)" stroke="#33221680" />
+          <ellipse rx="2.2" ry="1.3" fill="#2c1c12" />
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- Text block -->
+  <g>
+    <text x="220" y="152"
+      font-family="Sora, Inter, Arial, Helvetica, sans-serif"
+      font-size="104"
+      font-weight="600"
+      letter-spacing="0"
+      fill="url(#textGrad)">Zoekin</text>
+  </g>
+</svg>

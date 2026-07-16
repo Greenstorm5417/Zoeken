@@ -1,0 +1,42 @@
+{
+  "engine": "tootfinder",
+  "case": "basic",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://www.tootfinder.ch",
+    "headers": {},
+    "body": "some server debug preamble\n[{\"url\": \"https://mastodon.social/@a/1\", \"content\": \"<p>Hello <b>Rust</b></p>\", \"card\": {\"title\": \"\"}, \"media_attachments\": []}]\ntrailing garbage"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://mastodon.social/@a/1",
+          "normalized_url": "https://mastodon.social/@a/1",
+          "title": "Hello Rust",
+          "content": "Hello Rust",
+          "engine": "tootfinder",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

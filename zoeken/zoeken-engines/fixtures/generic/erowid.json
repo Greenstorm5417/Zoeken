@@ -1,0 +1,487 @@
+{
+  "engine": "erowid",
+  "case": "live",
+  "query": {
+    "query": "cannabis",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "cannabis",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://www.erowid.org/search.php?q=cannabis&s=0",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://www.erowid.org/search.php?q=cannabis&s=0",
+    "headers": {
+      "content-security-policy": "script-src 'self' *.erowid.org 'unsafe-inline' 'unsafe-eval' ; media-src www.erowid.org erowid.org media.erowid.org; frame-ancestors 'self'",
+      "date": "Thu, 09 Jul 2026 14:05:37 GMT",
+      "x-frame-options": "DENY",
+      "cf-ray": "a187e271cc94d9ad-MIA",
+      "x-content-type-options": "nosniff",
+      "server": "cloudflare",
+      "expires": "Mon, 13 Jul 2026 01:25:37 GMT",
+      "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=DTdHGw1pMXXy73pKCuik3pIMniW%2F3Lo9HS7S23UEDKst8SkIpoXyAxPdDTPYM4Llu7B2cycssXj%2FaXOLFOIQvmvzfvqxrqr5aA%2BiJ5ZwpPBvk2b5BwYBamzANFq7gliZ\"}]}",
+      "cache-control": "max-age=300000",
+      "vary": "Accept-Encoding",
+      "strict-transport-security": "max-age=2592000",
+      "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+      "cf-cache-status": "DYNAMIC",
+      "x-xss-protection": "1; mode=block",
+      "access-control-allow-origin": "origin-list",
+      "content-type": "text/html; charset=iso-8859-1"
+    },
+    "body": "<!--\n\n \n\n/* search.php init done */ -->\n\n<html>\n  <head>\n<title>Erowid Search Results for cannabis</title>\n    <meta name=\"description\" content=\"Robot generated results for a search\">\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"/includes/general_default.css\" />\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"/includes/index_default.css\">\n\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"/includes/styles/search.css\" />  </head>\n  <body>\n    <script language=\"Javascript\" src=\"/includes/headers/menu_data.js\" type=\"text/javascript\"></script>\r\n<script language=\"Javascript\" src=\"/includes/headers/mmenu.js\" type=\"text/javascript\"></script>\r\n\r\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" bgcolor=\"#000000\"><tr>\r\n<td><a href=\"/index.shtml\"><img src=\"/includes/headers/images/h_sun1.gif\" width=\"122\" height=\"25\" alt=\"\" border=\"0\"></a></td>\r\n<td background=\"/includes/headers/images/bar_squiggle.gif\" width=\"100%\" colspan=\"4\">&nbsp;</td>\r\n</tr><tr>\r\n<td><a href=\"/index.shtml\"><img src=\"/includes/headers/images/h_sun2.gif\" width=\"122\" height=\"70\" alt=\"Erowid\" border=\"0\"></a></td>\r\n<td><a href=\"/index.shtml\"><img src=\"/includes/headers/images/h_vaults.gif\" width=\"120\" height=\"70\" alt=\"\" border=\"0\"></a></td>\r\n<td width=\"100%\">\r\n\t<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100\" bgcolor=\"#000000\" height=\"70\"><tr>\r\n\t<td>&nbsp;</td>\r\n\t</tr></table>\r\n</td><td>\r\n\t<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"316\" height=\"70\" background=\"/includes/headers/images/center_spirit_1-1.jpg\"><tr>\r\n\t<td valign=\"top\" align=\"right\">&nbsp;</td>\r\n\t</tr></table>\r\n</td><td>\r\n\t<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"130\" height=\"70\" background=\"/includes/headers/images/center_spirit_1-2.jpg\">\r\n\t<tr height=\"30\"><td align=\"left\" valign=\"bottom\">\r\n<!-- Sperowider <include>\r\n\t<form name=\"SearchForm\" method=\"get\" action=\"https://www.erowid.org/search.shtml\">\r\n</include> <exclude> -->\r\n\t<form name=\"SearchForm\" method=\"get\" action=\"/search.php\">\r\n<!-- Sperowider </exclude> -->\r\n\t<input type=\"hidden\" name=\"exclude\" value=\"\">\r\n\t<input type=\"text\" size=\"13\" name=\"q\" value=\"\" id=\"header-search\">\r\n\t<input type=\"image\" src=\"/includes/headers/images/go2.gif\" border=\"0\" alt=\"Search\">\r\n\t</td></form></tr>\r\n\t<tr height=\"4\"><td></td></tr>\r\n\t<tr height=\"16\">\r\n\t<td align=\"left\"><a href=\"/general/about/\" onMouseOver=\"popup('about')\" onMouseOut=\"popdn()\"><img src=\"/includes/headers/images/h_about.gif\" width=\"89\" height=\"13\" alt=\"\" border=\"0\"></a></td>\r\n\t</tr><tr height=\"16\">\r\n\t<td align=\"left\"><a href=\"/donations/\" onMouseOver=\"popup('donations')\" onMouseOut=\"popdn()\"><img src=\"/includes/headers/images/h_join.gif\" width=\"89\" height=\"13\" alt=\"\" border=\"0\"></a></td>\r\n\t</tr><tr height=\"4\"><td></td>\r\n\t</tr></table>\t\r\n</td></tr><tr><td colspan=\"6\">\r\n\t<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"><tr>\r\n\t<td width=\"101\"><img src=\"/includes/headers/images/bar_solid_left.gif\" width=\"101\" height=\"22\" alt=\"\"></td>\r\n\t<td align=\"left\" width=\"114\"><a href=\"/psychoactives/\" onMouseOver=\"popup('drugs')\" onMouseOut=\"popdn()\">\r\n\t<img src=\"/includes/headers/images/menu_1.gif\" width=\"114\" height=\"22\" border=\"0\" alt=\"Plants - Drugs\"></a></td>\r\n\t<td align=\"left\" width=\"103\"><a href=\"/spirit/\" onMouseOver=\"popup('mind')\" onMouseOut=\"popdn()\">\r\n\t<img src=\"/includes/headers/images/menu_2.gif\" width=\"103\" height=\"22\" border=\"0\" alt=\"Mind - Spirit\"></a></td>\r\n\t<td align=\"left\" width=\"117\"><a href=\"/freedom/\" onMouseOver=\"popup('freedom')\" onMouseOut=\"popdn()\">\r\n\t<img src=\"/includes/headers/images/menu_3.gif\" width=\"117\" height=\"22\" border=\"0\" alt=\"Freedom - Law\"></a></td>\r\n\t<td align=\"left\" width=\"110\"><a href=\"/culture/\" onMouseOver=\"popup('arts')\" onMouseOut=\"popdn()\">\r\n\t<img src=\"/includes/headers/images/menu_4.gif\" width=\"104\" height=\"22\" border=\"0\" alt=\"Arts - Culture\"></a></td>\r\n\t<td align=\"left\" width=\"77\"><a href=\"/library/\" onMouseOver=\"popup('library')\" onMouseOut=\"popdn()\">\r\n\t<img src=\"/includes/headers/images/menu_5.gif\" width=\"77\" height=\"22\" border=\"0\" alt=\"Library\"></a></td>\r\n\t<td width=\"100%\" background=\"/includes/headers/images/bar_solid_right.gif\">&nbsp;</td>\r\n\t</tr></table>\r\n</td></tr></table>\r\n<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a187e274fe452271',t:'MTc4MzYwNTkzNw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>    <div id=\"content\">\n                    <h1 class=\"title\">\n\t  \t  Erowid Search Results for: <q>cannabis</q> (new 2022 march 29)\n\t  \t</h1>\n\n\t<form method=\"get\" id=\"searchform\">\n\t  <fieldset>\n\t    <label for=\"q\" style=\"font-weight:bold;\">Search:</label>\n\t    <input type=\"text\" size=\"50\" name=\"q\" value=\"cannabis\" />\n\t    <input type=\"submit\" value=\"Search\" />\n\t  </fieldset>\n\n\n\t</form>\n\t\n\n\t<div class=\"section\">\n\t  <h2 id=\"instructions-title\">Search Tips</h2>\n\t  <ul id=\"instructions\">\n         <li>Group words that should appear close to each other with quotation marks: <span class=\"example\">\"bath salts\"</span>.</li>\n         <li>Exclude terms by prefixing them with a minus: <span class=\"example\">-hearsay</span>.</li>\n         <li>Require terms by prefixing them with a plus: <span class=\"example\">+research</span>.</li>\n\t  </ul>\n\t</div>\n\n\t     \n\t     \n\t  <div class=\"section\" id=\"pivot-surround\">\n\t    <h2>Topics with Matches</h2>\n\n         <div class=\"topic-section-surround\">\n   <div class=\"pivot\">\n     <div class=\"topic-section\" data-field=\"section\">\n     <a href=\"?q=cannabis&fq=section:%22plants%22\">PLANTS (219)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-vault\" data-field=\"vault\">\n     <a href=\"?q=cannabis&fq=section:%22PLANTS%22&fq=vault:%22cannabis%22\">CANNABIS (184)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22basics%22\">Basics (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22cannabis%22\">Cannabis (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22chemistry%22\">Chemistry (3)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22cultivation%22\">Cultivation (16)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22culture%22\">Culture (12)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22dose%22\">Dose (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22driving%22\">Driving (6)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22effects%22\">Effects (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22faq%22\">Faq (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22faq_consumption%22\">Faq_consumption (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22faq_eat%22\">Faq_eat (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22faq_growlight%22\">Faq_growlight (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22faq_harvest%22\">Faq_harvest (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22faq_laws%22\">Faq_laws (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22faqs%22\">Faqs (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22flyer%22\">Flyer (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22health%22\">Health (5)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22history%22\">History (2)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22history_hashish%22\">History_hashish (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22history_media%22\">History_media (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22images%22\">Images (10)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22info%22\">Info (21)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22journal%22\">Journal (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22law%22\">Law (6)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22magazine%22\">Magazine (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22media%22\">Media (17)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22medical%22\">Medical (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22medical_info%22\">Medical_info (5)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22medical_journal%22\">Medical_journal (2)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22medical_law%22\">Medical_law (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22medical_media%22\">Medical_media (11)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22myth%22\">Myth (18)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22myth_notes%22\">Myth_notes (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22pharmacology%22\">Pharmacology (2)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22potleafs%22\">Potleafs (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22recipe%22\">Recipe (7)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22research%22\">Research (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22science%22\">Science (3)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22spirit%22\">Spirit (6)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22spirit_media%22\">Spirit_media (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22stats%22\">Stats (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22testing%22\">Testing (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22timeline%22\">Timeline (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CANNABIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22writings%22\">Writings (7)</a>\n   </div>\n   </div>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-vault\" data-field=\"vault\">\n     <a href=\"?q=cannabis&fq=section:%22PLANTS%22&fq=vault:%22datura%22\">DATURA (25)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22DATURA%22&fq=section:%22PLANTS%22&fq=subtopic:%22basics%22\">Basics (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22DATURA%22&fq=section:%22PLANTS%22&fq=subtopic:%22bits%22\">Bits (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22DATURA%22&fq=section:%22PLANTS%22&fq=subtopic:%22chemistry%22\">Chemistry (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22DATURA%22&fq=section:%22PLANTS%22&fq=subtopic:%22datura%22\">Datura (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22DATURA%22&fq=section:%22PLANTS%22&fq=subtopic:%22effects%22\">Effects (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22DATURA%22&fq=section:%22PLANTS%22&fq=subtopic:%22faq%22\">Faq (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22DATURA%22&fq=section:%22PLANTS%22&fq=subtopic:%22fastuosa%22\">Fastuosa (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22DATURA%22&fq=section:%22PLANTS%22&fq=subtopic:%22health%22\">Health (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22DATURA%22&fq=section:%22PLANTS%22&fq=subtopic:%22images%22\">Images (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22DATURA%22&fq=section:%22PLANTS%22&fq=subtopic:%22info%22\">Info (10)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22DATURA%22&fq=section:%22PLANTS%22&fq=subtopic:%22inoxia%22\">Inoxia (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22DATURA%22&fq=section:%22PLANTS%22&fq=subtopic:%22journal%22\">Journal (2)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22DATURA%22&fq=section:%22PLANTS%22&fq=subtopic:%22law%22\">Law (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22DATURA%22&fq=section:%22PLANTS%22&fq=subtopic:%22stramonium%22\">Stramonium (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22DATURA%22&fq=section:%22PLANTS%22&fq=subtopic:%22timeline%22\">Timeline (1)</a>\n   </div>\n   </div>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-vault\" data-field=\"vault\">\n     <a href=\"?q=cannabis&fq=section:%22PLANTS%22&fq=vault:%22phalaris%22\">PHALARIS (5)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22PHALARIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22faq%22\">Faq (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22PHALARIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22images%22\">Images (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22PHALARIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22journal%22\">Journal (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22PHALARIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22law%22\">Law (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22PHALARIS%22&fq=section:%22PLANTS%22&fq=subtopic:%22phalaris%22\">Phalaris (1)</a>\n   </div>\n   </div>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-vault\" data-field=\"vault\">\n     <a href=\"?q=cannabis&fq=section:%22PLANTS%22&fq=vault:%22stipa%22\">STIPA (4)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22STIPA%22&fq=section:%22PLANTS%22&fq=subtopic:%22images%22\">Images (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22STIPA%22&fq=section:%22PLANTS%22&fq=subtopic:%22info%22\">Info (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22STIPA%22&fq=section:%22PLANTS%22&fq=subtopic:%22journal%22\">Journal (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22STIPA%22&fq=section:%22PLANTS%22&fq=subtopic:%22stipa%22\">Stipa (1)</a>\n   </div>\n   </div>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-vault\" data-field=\"vault\">\n     <a href=\"?q=cannabis&fq=section:%22PLANTS%22&fq=vault:%22tobacco%22\">TOBACCO (1)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22TOBACCO%22&fq=section:%22PLANTS%22&fq=subtopic:%22timeline%22\">Timeline (1)</a>\n   </div>\n   </div>\n   </div>\n   </div>\n   </div>\n   </div>\n</div> <!-- close topic-section-surround -->\n<div class=\"topic-section-surround\">\n   <div class=\"pivot\">\n     <div class=\"topic-section\" data-field=\"section\">\n     <a href=\"?q=cannabis&fq=section:%22library%22\">LIBRARY (92)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-vault\" data-field=\"vault\">\n     <a href=\"?q=cannabis&fq=section:%22LIBRARY%22&fq=vault:%22books%22\">BOOKS (78)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-vault\" data-field=\"vault\">\n     <a href=\"?q=cannabis&fq=section:%22LIBRARY%22&fq=vault:%22books_online%22\">BOOKS_ONLINE (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-vault\" data-field=\"vault\">\n     <a href=\"?q=cannabis&fq=section:%22LIBRARY%22&fq=vault:%22periodicals%22\">PERIODICALS (1)</a>\n   </div>\n   </div>\n   </div>\n   </div>\n</div> <!-- close topic-section-surround -->\n<div class=\"topic-section-surround\">\n   <div class=\"pivot\">\n     <div class=\"topic-section\" data-field=\"section\">\n     <a href=\"?q=cannabis&fq=section:%22chemicals%22\">CHEMICALS (6)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-vault\" data-field=\"vault\">\n     <a href=\"?q=cannabis&fq=section:%22CHEMICALS%22&fq=vault:%22ayahuasca%22\">AYAHUASCA (2)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22AYAHUASCA%22&fq=section:%22CHEMICALS%22&fq=subtopic:%22law%22\">Law (2)</a>\n   </div>\n   </div>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-vault\" data-field=\"vault\">\n     <a href=\"?q=cannabis&fq=section:%22CHEMICALS%22&fq=vault:%22pcp%22\">PCP (1)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22PCP%22&fq=section:%22CHEMICALS%22&fq=subtopic:%22info%22\">Info (1)</a>\n   </div>\n   </div>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-vault\" data-field=\"vault\">\n     <a href=\"?q=cannabis&fq=section:%22CHEMICALS%22&fq=vault:%22spice_product%22\">SPICE_PRODUCT (3)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22SPICE_PRODUCT%22&fq=section:%22CHEMICALS%22&fq=subtopic:%22article%22\">Article (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22SPICE_PRODUCT%22&fq=section:%22CHEMICALS%22&fq=subtopic:%22images%22\">Images (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22SPICE_PRODUCT%22&fq=section:%22CHEMICALS%22&fq=subtopic:%22law%22\">Law (1)</a>\n   </div>\n   </div>\n   </div>\n   </div>\n   </div>\n   </div>\n</div> <!-- close topic-section-surround -->\n<div class=\"topic-section-surround\">\n   <div class=\"pivot\">\n     <div class=\"topic-section\" data-field=\"section\">\n     <a href=\"?q=cannabis&fq=section:%22psychoactives%22\">PSYCHOACTIVES (6)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-vault\" data-field=\"vault\">\n     <a href=\"?q=cannabis&fq=section:%22PSYCHOACTIVES%22&fq=vault:%22families%22\">FAMILIES (2)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22FAMILIES%22&fq=section:%22PSYCHOACTIVES%22&fq=subtopic:%22interview%22\">Interview (1)</a>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22FAMILIES%22&fq=section:%22PSYCHOACTIVES%22&fq=subtopic:%22quotes%22\">Quotes (1)</a>\n   </div>\n   </div>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-vault\" data-field=\"vault\">\n     <a href=\"?q=cannabis&fq=section:%22PSYCHOACTIVES%22&fq=vault:%22humor%22\">HUMOR (1)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22HUMOR%22&fq=section:%22PSYCHOACTIVES%22&fq=subtopic:%22scoobydoo%22\">Scoobydoo (1)</a>\n   </div>\n   </div>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-vault\" data-field=\"vault\">\n     <a href=\"?q=cannabis&fq=section:%22PSYCHOACTIVES%22&fq=vault:%22prohibition%22\">PROHIBITION (1)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22PROHIBITION%22&fq=section:%22PSYCHOACTIVES%22&fq=subtopic:%22terrorism%22\">Terrorism (1)</a>\n   </div>\n   </div>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-vault\" data-field=\"vault\">\n     <a href=\"?q=cannabis&fq=section:%22PSYCHOACTIVES%22&fq=vault:%22statistics%22\">STATISTICS (1)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22STATISTICS%22&fq=section:%22PSYCHOACTIVES%22&fq=subtopic:%22info%22\">Info (1)</a>\n   </div>\n   </div>\n   </div>\n   </div>\n   <div class=\"pivot\">\n     <div class=\"topic-vault\" data-field=\"vault\">\n     <a href=\"?q=cannabis&fq=section:%22PSYCHOACTIVES%22&fq=vault:%22testing%22\">TESTING (1)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22TESTING%22&fq=section:%22PSYCHOACTIVES%22&fq=subtopic:%22info%22\">Info (1)</a>\n   </div>\n   </div>\n   </div>\n   </div>\n   </div>\n   </div>\n</div> <!-- close topic-section-surround -->\n<div class=\"topic-section-surround\">\n   <div class=\"pivot\">\n     <div class=\"topic-section\" data-field=\"section\">\n     <a href=\"?q=cannabis&fq=section:%22culture%22\">CULTURE (1)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-vault\" data-field=\"vault\">\n     <a href=\"?q=cannabis&fq=section:%22CULTURE%22&fq=vault:%22characters%22\">CHARACTERS (1)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-subtopic\" data-field=\"subtopic\">\n     <a href=\"?q=cannabis&fq=vault:%22CHARACTERS%22&fq=section:%22CULTURE%22&fq=subtopic:%22grinspoon_lester%22\"> Grinspoon, Lester (1)</a>\n   </div>\n   </div>\n   </div>\n   </div>\n   </div>\n   </div>\n</div> <!-- close topic-section-surround -->\n<div class=\"topic-section-surround\">\n   <div class=\"pivot\">\n     <div class=\"topic-section\" data-field=\"section\">\n     <a href=\"?q=cannabis&fq=section:%22freedom%22\">FREEDOM (1)</a>\n   <div class=\"pivot\">\n     <div class=\"topic-vault\" data-field=\"vault\">\n     <a href=\"?q=cannabis&fq=section:%22FREEDOM%22&fq=vault:%22police%22\">POLICE (1)</a>\n   </div>\n   </div>\n   </div>\n   </div>\n</div> <!-- close topic-section-surround -->\n\n\t  </div><!-- end pivot-surround -->\n\n\t  <div class=\"section\" id=\"result-surround\">\n\n<h2 class=\"results-title\">\n\n\t      <div class=\"summary\">Displaying Results 1 to 30 of 3012</div>\n\t      <ol class=\"navigation\"><li class=\"selected\">1</li>&nbsp;<li><a href=\"?q=cannabis&s=30&n=30\">2</a></li><li><a href=\"?q=cannabis&s=60&n=30\">3</a></li><li><a href=\"?q=cannabis&s=90&n=30\">4</a></li><li><a href=\"?q=cannabis&s=120&n=30\">5</a></li><li><a href=\"?q=cannabis&s=150&n=30\">6</a></li><li><a href=\"?q=cannabis&s=180&n=30\">7</a></li><li><a href=\"?q=cannabis&s=210&n=30\">8</a></li><li><a href=\"?q=cannabis&s=240&n=30\">9</a></li><li><a href=\"?q=cannabis&s=270&n=30\">10</a></li><li class=\"next\"><a class=\"next\" href=\"?q=cannabis&s=30&n=30\">&gt;</a></li></ol> \n\n\t    </h2>\n\n\t    \n\t    <dl class=\"results-list\">\n  \t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/\">\n                   Cannabis (Marijuana) Vault\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Information about Cannabis and Hemp including basics, effects, dosage, history, legal status, photos, research, media coverage, and links to other resources.\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_dose.shtml\">\n                   Cannabis Vault : Dosage\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Information on Cannabis and Synthetic THC dosages.\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_faqs.shtml\">\n                   Cannabis Vault : FAQs\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Frequently Asked Questions about Cannabis & Hemp\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_health.shtml\">\n                   Cannabis (Marijuana) Vault : Health\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Information on health affects and concerns related to Cannabis.\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_faq_growlight.shtml\">\n                   Cannabis Vault : Growlight FAQ\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Frequently Asked Questions about Growlights\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_faq_laws.shtml\">\n                   Cannabis Vault : Cannabis Law FAQ\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Frequently Asked Questions about cannabis laws in the united states.\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_faq_consumption.shtml\">\n                   Cannabis Vault : Cannabis Consumption FAQ\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Frequently Asked Questions about Cannabis Consumption\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_faq_harvest.shtml\">\n                   Psychoactive Vaults\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   \t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_faq_eat.shtml\">\n                   Cannabis Vault : Cannabis Eating FAQ\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Frequently Asked Questions about Eating Cannabis\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_faq1.shtml\">\n                   Cannabis Vault : Cannabis FAQ\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Frequently Asked Questions about Cannabis & Hemp\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_info15.shtml\">\n                   /plants/cannabis/cannabis_info15.shtml\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   \t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_images.shtml\">\n                   Cannabis Vault : Images\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Photographs and drawings of Cannabis Sativa & Indica... plants, buds, and related items\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_myth8.shtml\">\n                   Cannabis Vault : Exposing Marijuana Myths\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Exposing Marijuana Myths - from the Lindesmith Center\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_writings.shtml\">\n                   Cannabis Vault : Articles & Writings\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Magazine articles, book excerpts and general writings about Cannabis.\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_medical.shtml\">\n                   Cannabis Vault : Medical Use\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Links to medical marijuana sites and select media articles about medical marijuana.\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_testing.shtml\">\n                   Cannabis (Marijuana) Vault : Drug Testing\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Information about cannabis in drug tests.\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_journal.shtml\">\n                   Cannabis Vault : Journal Articles & Abstracts\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Journal articles and abstracts on various topics related to cannabis and hemp.\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_basics.shtml\">\n                   Cannabis Vault: Basics\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   A summary of basic information about Cannabis and its use.\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_effects.shtml\">\n                   Cannabis (Marijuana) Vault : Effects\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Information about the mental and physical effects of Cannabis (Marijuana).\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_media.shtml\">\n                   Cannabis Vault : News & Media Articles\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   News & Media articles on various topics related to Cannabis.\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_timeline.php\">\n                   Cannabis Vault : Timeline\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   A timeline of events in the history of cannabis\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_media6.shtml\">\n                   Cannabis Vault : Article #6\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Federal Foolishness and Marijuana : New England Journal of Medicine - Jan 30, 1997\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_info3.shtml\">\n                   Cannabis Vault : Info on Smoke composition\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Marijuana v.s. Tobacco smoke compositions\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_media11.shtml\">\n                   Psychoactive Vaults\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   \t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_recipe2.shtml\">\n                   Psychoactive Vaults\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   \t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_spirit4.shtml\">\n                   Cannabis Vault : Spiritual Use #4\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   On Indications of the Hachish-Vice in the Old Testament\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_spirit_media1.shtml\">\n                   Psychoactive Vaults\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   \t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_magazine1.shtml\">\n                   Cannabis  Vault : 'Marijuana: the law vs. 12 million people'\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                    'Marijuana: the law vs. 12 million people', published in Life magazine Oct 31, 1969\t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_myth16.shtml\">\n                   Psychoactive Vaults\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   \t      </dd>\n\t      \t      \n\t      <dt class=\"result-title\">\n\t\t<a href=\"/plants/cannabis/cannabis_myth.shtml\">\n                   Cannabis Vault : Exposing Marijuana Myths\t\t</a>\n\t      </dt>\n\t      <dd class=\"result-details\">\n                   Exposing Marijuana Myths - from the Lindesmith Center\t      </dd>\n\t      \t    </dl>\n\n\n<h2 class=\"results-title\">\n\t      <div class=\"summary\">Displaying Results 1 to 30 of 3012</div>\n\t      <ol class=\"navigation\"><li class=\"selected\">1</li>&nbsp;<li><a href=\"?q=cannabis&s=30&n=30\">2</a></li><li><a href=\"?q=cannabis&s=60&n=30\">3</a></li><li><a href=\"?q=cannabis&s=90&n=30\">4</a></li><li><a href=\"?q=cannabis&s=120&n=30\">5</a></li><li><a href=\"?q=cannabis&s=150&n=30\">6</a></li><li><a href=\"?q=cannabis&s=180&n=30\">7</a></li><li><a href=\"?q=cannabis&s=210&n=30\">8</a></li><li><a href=\"?q=cannabis&s=240&n=30\">9</a></li><li><a href=\"?q=cannabis&s=270&n=30\">10</a></li><li class=\"next\"><a class=\"next\" href=\"?q=cannabis&s=30&n=30\">&gt;</a></li></ol> \n</h2>\n\n\t     \n\t  </div> <!-- end here -->\n\t                  </div>\n\n    <div id=\"footer-frame\">\n<div class=\"footer-backto\">\n</div><!--end footer-backto-->\n\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"><tr>\n<td width=\"10\" background=\"/includes/headers/images/bar_solid_footer.gif\">&nbsp;</td>\n<td width=\"140\" background=\"/includes/headers/images/bar_solid_footer.gif\" valign=\"top\">\n\t<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\" width=\"140\"><tr>\n\t<td valign=\"top\" id=\"footer-menu\"><script language=\"JavaScript\">PlaceMenu(\"footer\")</script></td>\n\t</tr></table>\n</td>\n<td align=\"center\">\n\t<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\" width=\"100%\" background=\"/includes/headers/images/bar_solid_footer.gif\" height=\"22\"><tr>\n\t<td align=\"center\"><div class=\"footer1\">Created by Erowid - Dec 29, 2022</div></td>\n\t</tr></table>\n</td>\n<td width=\"10\" background=\"/includes/headers/images/bar_solid_footer.gif\">&nbsp;</td>\n<td width=\"140\" background=\"/includes/headers/images/bar_solid_footer.gif\" align=\"right\"><div class=\"footer2\">Modified&nbsp;-&nbsp;Dec 28, 2022</div></td>\n</tr></table>\n\n<div class=\"footer-copyright\">Content &amp; design &copy; 1995-2025 Erowid.org. Permission required before publicly reproducing Erowid info.</div>\n</div><!-- end footer-frame-->\n\n\n    \n    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a187e271cc94d9ad',t:'MTc4MzYwNTkzNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n\n\n"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/",
+          "title": "Cannabis (Marijuana) Vault",
+          "content": "Information about Cannabis and Hemp including basics, effects, dosage, history, legal status, photos, research, media coverage, and links to other resources.",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_dose.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_dose.shtml",
+          "title": "Cannabis Vault : Dosage",
+          "content": "Information on Cannabis and Synthetic THC dosages.",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_faqs.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_faqs.shtml",
+          "title": "Cannabis Vault : FAQs",
+          "content": "Frequently Asked Questions about Cannabis & Hemp",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_health.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_health.shtml",
+          "title": "Cannabis (Marijuana) Vault : Health",
+          "content": "Information on health affects and concerns related to Cannabis.",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_faq_growlight.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_faq_growlight.shtml",
+          "title": "Cannabis Vault : Growlight FAQ",
+          "content": "Frequently Asked Questions about Growlights",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_faq_laws.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_faq_laws.shtml",
+          "title": "Cannabis Vault : Cannabis Law FAQ",
+          "content": "Frequently Asked Questions about cannabis laws in the united states.",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_faq_consumption.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_faq_consumption.shtml",
+          "title": "Cannabis Vault : Cannabis Consumption FAQ",
+          "content": "Frequently Asked Questions about Cannabis Consumption",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_faq_harvest.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_faq_harvest.shtml",
+          "title": "Psychoactive Vaults",
+          "content": "",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_faq_eat.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_faq_eat.shtml",
+          "title": "Cannabis Vault : Cannabis Eating FAQ",
+          "content": "Frequently Asked Questions about Eating Cannabis",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_faq1.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_faq1.shtml",
+          "title": "Cannabis Vault : Cannabis FAQ",
+          "content": "Frequently Asked Questions about Cannabis & Hemp",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_info15.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_info15.shtml",
+          "title": "/plants/cannabis/cannabis_info15.shtml",
+          "content": "",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_images.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_images.shtml",
+          "title": "Cannabis Vault : Images",
+          "content": "Photographs and drawings of Cannabis Sativa & Indica... plants, buds, and related items",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_myth8.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_myth8.shtml",
+          "title": "Cannabis Vault : Exposing Marijuana Myths",
+          "content": "Exposing Marijuana Myths - from the Lindesmith Center",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_writings.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_writings.shtml",
+          "title": "Cannabis Vault : Articles",
+          "content": "Magazine articles, book excerpts and general writings about Cannabis.",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_medical.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_medical.shtml",
+          "title": "&",
+          "content": "Links to medical marijuana sites and select media articles about medical marijuana.",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_testing.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_testing.shtml",
+          "title": "Writings",
+          "content": "Information about cannabis in drug tests.",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_journal.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_journal.shtml",
+          "title": "Cannabis Vault : Medical Use",
+          "content": "Journal articles and abstracts on various topics related to cannabis and hemp.",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_basics.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_basics.shtml",
+          "title": "Cannabis (Marijuana) Vault : Drug Testing",
+          "content": "A summary of basic information about Cannabis and its use.",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_effects.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_effects.shtml",
+          "title": "Cannabis Vault : Journal Articles",
+          "content": "Information about the mental and physical effects of Cannabis (Marijuana).",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_media.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_media.shtml",
+          "title": "&",
+          "content": "News & Media articles on various topics related to Cannabis.",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_timeline.php",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_timeline.php",
+          "title": "Abstracts",
+          "content": "A timeline of events in the history of cannabis",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_media6.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_media6.shtml",
+          "title": "Cannabis Vault: Basics",
+          "content": "Federal Foolishness and Marijuana : New England Journal of Medicine - Jan 30, 1997",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_info3.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_info3.shtml",
+          "title": "Cannabis (Marijuana) Vault : Effects",
+          "content": "Marijuana v.s. Tobacco smoke compositions",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_media11.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_media11.shtml",
+          "title": "Cannabis Vault : News",
+          "content": "",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_recipe2.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_recipe2.shtml",
+          "title": "&",
+          "content": "",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_spirit4.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_spirit4.shtml",
+          "title": "Media Articles",
+          "content": "On Indications of the Hachish-Vice in the Old Testament",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_spirit_media1.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_spirit_media1.shtml",
+          "title": "Cannabis Vault : Timeline",
+          "content": "",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_magazine1.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_magazine1.shtml",
+          "title": "Cannabis Vault : Article #6",
+          "content": "'Marijuana: the law vs. 12 million people', published in Life magazine Oct 31, 1969",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_myth16.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_myth16.shtml",
+          "title": "Cannabis Vault : Info on Smoke composition",
+          "content": "",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.erowid.org/plants/cannabis/cannabis_myth.shtml",
+          "normalized_url": "https://www.erowid.org/plants/cannabis/cannabis_myth.shtml",
+          "title": "Psychoactive Vaults",
+          "content": "Exposing Marijuana Myths - from the Lindesmith Center",
+          "engine": "erowid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

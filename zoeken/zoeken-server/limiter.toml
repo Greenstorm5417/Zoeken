@@ -1,0 +1,53 @@
+# Zoeken botdetection / rate-limit config (TOML).
+# Debian: /etc/zoeken/limiter.toml  ·  pointed at by settings.yml → limiter.file
+#
+# `deployment.trusted_proxies` in settings.yml is always unioned into
+# trusted_proxies below at boot.
+
+[botdetection]
+
+# Leading bits compared when grouping client IPs into networks.
+ipv4_prefix = 32
+ipv6_prefix = 48
+
+# Bound per-client state and evict networks that have gone idle.
+state_capacity = 100000
+state_idle_seconds = 3600
+
+# If the TCP peer is in trusted_proxies, the client IP is taken from
+# X-Forwarded-For / X-Real-IP. Otherwise those headers are ignored.
+trusted_proxies = [
+  '127.0.0.0/8',
+  '::1',
+]
+
+[botdetection.ip_limit]
+
+filter_link_local = false
+link_token = false
+
+[botdetection.ip_lists]
+
+block_ip = []
+pass_ip = []
+
+# Activate passlist of (hardcoded) IPs from the SearXNG organization.
+pass_reserved_nets = true
+
+[botdetection.rate_limit]
+
+# Token bucket for normal clients (capacity, refill per second).
+capacity = 15.0
+refill_per_second = 0.25
+# Tighter bucket when header heuristics mark the client suspicious.
+suspicious_capacity = 2.0
+suspicious_refill_per_second = 0.016666666666666666
+
+[botdetection.header_heuristics]
+
+accept = true
+accept_encoding = true
+accept_language = true
+connection = true
+sec_fetch = true
+user_agent = true

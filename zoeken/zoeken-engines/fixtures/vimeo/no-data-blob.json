@@ -1,0 +1,27 @@
+{
+  "engine": "vimeo",
+  "case": "no-data-blob",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://vimeo.com/",
+    "headers": {},
+    "body": "<html><body>no data here</body></html>"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

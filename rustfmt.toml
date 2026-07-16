@@ -1,0 +1,5 @@
+# Formatting rules for the whole workspace.
+# Run `cargo fmt --all` to apply, `cargo fmt --all --check` to verify (CI gate).
+edition = "2024"
+style_edition = "2024"
+max_width = 100

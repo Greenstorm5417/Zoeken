@@ -1,0 +1,42 @@
+{
+  "engine": "wikibooks",
+  "case": "redirect-skipped",
+  "query": {
+    "query": "title",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://en.wikibooks.org/",
+    "headers": {},
+    "body": "{\n      \"query\": {\n        \"search\": [\n          {\n            \"ns\": 0,\n            \"title\": \"Old Title\",\n            \"snippet\": \"#REDIRECT [[New Title]]\",\n            \"timestamp\": \"2024-01-02T03:04:05Z\"\n          },\n          {\n            \"ns\": 0,\n            \"title\": \"New Title\",\n            \"snippet\": \"Actual <span class=\\\"searchmatch\\\">content</span> here\",\n            \"timestamp\": \"2024-01-02T03:04:05Z\"\n          }\n        ]\n      }\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://en.wikibooks.org/wiki/New_Title",
+          "normalized_url": "https://en.wikibooks.org/wiki/New_Title",
+          "title": "New Title",
+          "content": "Actual content here",
+          "engine": "wikibooks",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

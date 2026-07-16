@@ -1,0 +1,17 @@
+Package: zoeken
+Version: __VERSION__
+Architecture: __ARCH__
+Maintainer: Greenstorm <sdussinger1007@gmail.com>
+Depends: ca-certificates, adduser
+Section: web
+Priority: optional
+Homepage: https://github.com/Greenstorm5417/zoeken
+Vcs-Git: https://github.com/Greenstorm5417/zoeken.git
+Vcs-Browser: https://github.com/Greenstorm5417/zoeken
+Description: SearXNG-compatible metasearch engine
+ Zoeken is a metasearch engine with a Rust backend and React SPA,
+ developed by Greenstorm.
+ .
+ This package installs the server binary, frontend assets, a systemd
+ unit, configuration under /etc/zoeken, and the AGPL-3.0-or-later
+ license texts under /usr/share/doc/zoeken.

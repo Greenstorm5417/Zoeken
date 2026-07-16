@@ -1,0 +1,27 @@
+{
+  "engine": "9gag",
+  "case": "empty",
+  "query": {
+    "query": "nothing",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://9gag.com/v1/search-posts",
+    "headers": {},
+    "body": "{\"data\": {\"posts\": []}}"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

@@ -1,0 +1,647 @@
+{
+  "engine": "pkg go dev",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://pkg.go.dev/search?q=rust",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://pkg.go.dev/search?q=rust",
+    "headers": {
+      "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "content-security-policy": "object-src 'none'; base-uri 'none'; script-src 'unsafe-inline' 'strict-dynamic' https: http: 'sha256-DVdvl49HC0iGx/YKQq/kVNATnEdzGfExbJVTHqT95l8=' 'sha256-CoGrkqEM1Kjjf5b1bpcnDLl8ZZLAsVX+BoAzZ5+AOmc=' 'sha256-QqhlxKosyquihHG/Jahbski3BB1pDss2/CDgLzKKbmE=' 'sha256-karKh1IrXOF1g+uoSxK+k9BuciCwYY/ytGuQVUiRzcM=' 'sha256-mxm3e8M0u3nPPBmLIBgGuMvGUIL5LGv+HzV3bLAIBgw=' 'sha256-+iS8jRq15Ez/Kzz0/G+SNc0geLNvTyf2NZC7MyJgpRE=' 'sha256-UiVwSVJIK9udADqG5GZe+nRUXWK9wEot2vrxL4D2pQs=' 'sha256-cB+y/oSfWGFf7lHk8KX+ZX2CZQz/dPamIICuPvHcB6w=' 'sha256-7mi5SPcD1cogj2+ju8J/+/qJG99F6Qo+3pO4xQkRf6Q=' 'sha256-rEbn/zvLCsDDvDrVWQuUkKGEQsjQjFvIvJK4NVIMqZ4='",
+      "server": "Google Frontend",
+      "content-type": "text/html; charset=utf-8",
+      "date": "Thu, 09 Jul 2026 14:06:16 GMT",
+      "x-frame-options": "deny",
+      "via": "1.1 google",
+      "x-content-type-options": "nosniff"
+    },
+    "body": "\n\n<!DOCTYPE html>\n<html lang=\"en\" data-layout=\"\" data-local=\"\">\n  <head>\n    \n    <script>\n      window.addEventListener('error', window.__err=function f(e){f.p=f.p||[];f.p.push(e)});\n    </script>\n    <script>\n      (function() {\n        const theme = document.cookie.match(/prefers-color-scheme=(light|dark|auto)/)?.[1]\n        if (theme) {\n          document.querySelector('html').setAttribute('data-theme', theme);\n        }\n      }())\n    </script>\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    \n      <meta name=\"description\" content=\"Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.\">\n    \n    \n  <meta name=\"robots\" content=\"noindex\">\n\n    <meta class=\"js-gtmID\" data-gtmid=\"GTM-W8MVQXG\">\n    <link rel=\"shortcut icon\" href=\"/static/shared/icon/favicon.ico\">\n    \n    <link href=\"/static/frontend/frontend.min.css?version=prod-frontend-00217-kl6\" rel=\"stylesheet\">\n    \n    <link rel=\"search\" type=\"application/opensearchdescription+xml\" href=\"/opensearch.xml\" title=\"Go Packages\">\n    \n    \n  <title>rust - Search Results - Go Packages</title>\n\n    \n  <link href=\"/static/frontend/search/search.min.css?version=prod-frontend-00217-kl6\" rel=\"stylesheet\">\n\n  </head>\n  <body>\n    \n    <script>\n      function loadScript(src, mod = true) {\n        let s = document.createElement('script');\n        s.src = src;\n        if (mod) {\n          s.type = 'module';\n          s.async = true;\n          s.defer = true\n        }\n        document.head.appendChild(s);\n      }\n      loadScript(\"/third_party/dialog-polyfill/dialog-polyfill.js\", false)\n      loadScript(\"/static/frontend/frontend.js\");\n    </script>\n    \n  <header class=\"go-Header js-siteHeader\">\n    <div class=\"go-Header-inner go-Header-inner--dark\">\n      <nav class=\"go-Header-nav\">\n        <a href=\"https://go.dev/\" class=\"js-headerLogo\" data-gtmc=\"nav link\"\n            data-test-id=\"go-header-logo-link\" role=\"heading\" aria-level=\"1\">\n          <img class=\"go-Header-logo\" src=\"/static/shared/logo/go-white.svg\" alt=\"Go\">\n        </a>\n         <div class=\"skip-navigation-wrapper\">\n            <a class=\"skip-to-content-link\" aria-label=\"Skip to main content\" href=\"#main-content\"> Skip to Main Content </a>\n          </div>\n        <div class=\"go-Header-rightContent\">\n          \n<div class=\"go-SearchForm js-searchForm\">\n  <form\n    class=\"go-InputGroup go-ShortcutKey go-SearchForm-form\"\n    action=\"/search\"\n    data-shortcut=\"/\"\n    data-shortcut-alt=\"search\"\n    data-gtmc=\"search form\"\n    aria-label=\"Search for a package\"\n    role=\"search\"\n  >\n    <input name=\"q\" class=\"go-Input js-searchFocus\" aria-label=\"Search for a package\" type=\"search\"\n        autocapitalize=\"off\" autocomplete=\"off\" autocorrect=\"off\" spellcheck=\"false\"\n        placeholder=\"Search packages or symbols\"\n        value=\"rust\" />\n    <input name=\"m\" value=\"package\" hidden>\n    <button class=\"go-Button go-Button--inverted\" aria-label=\"Submit search\">\n      <img\n        class=\"go-Icon\"\n        height=\"24\"\n        width=\"24\"\n        src=\"/static/shared/icon/search_gm_grey_24dp.svg\"\n        alt=\"\"\n      />\n    </button>\n  </form>\n  <button class=\"go-SearchForm-expandSearch js-expandSearch\" data-gtmc=\"nav button\"\n      aria-label=\"Open search\" data-test-id=\"expand-search\">\n    <img class=\"go-Icon go-Icon--inverted\" height=\"24\" width=\"24\"\n        src=\"/static/shared/icon/search_gm_grey_24dp.svg\" alt=\"\">\n\n  </button>\n</div>\n\n          <ul class=\"go-Header-menu\">\n            <li class=\"go-Header-menuItem\">\n              <a class=\"js-desktop-menu-hover\" href=\"#\" data-gtmc=\"nav link\">\n                Why Go\n                <img class=\"go-Icon\" height=\"24\" width=\"24\" src=\"/static/shared/icon/arrow_drop_down_gm_grey_24dp.svg\" alt=\"submenu dropdown icon\">\n              </a>\n              <ul class=\"go-Header-submenu go-Header-submenu--why js-desktop-submenu-hover\" aria-label=\"submenu\">\n                  <li class=\"go-Header-submenuItem\">\n                    <div>\n                      <a href=\"https://go.dev/solutions#case-studies\">\n                        <span>Case Studies</span>\n                      </a>\n                    </div>\n                    <p>Common problems companies solve with Go</p>\n                  </li>\n                  <li class=\"go-Header-submenuItem\">\n                    <div>\n                      <a href=\"https://go.dev/solutions#use-cases\">\n                        <span>Use Cases</span>\n                      </a>\n                    </div>\n                    <p>Stories about how and why companies use Go</p>\n                  </li>\n                  <li class=\"go-Header-submenuItem\">\n                    <div>\n                      <a href=\"https://go.dev/security/\">\n                        <span>Security</span>\n                      </a>\n                    </div>\n                    <p>How Go can help keep you secure by default</p>\n                  </li>\n              </ul>\n            </li>\n            <li class=\"go-Header-menuItem\">\n              <a href=\"https://go.dev/learn/\" data-gtmc=\"nav link\">Learn</a>\n            </li>\n            <li class=\"go-Header-menuItem\">\n              <a class=\"js-desktop-menu-hover\" href=\"#\" data-gtmc=\"nav link\">\n                Docs\n                <img class=\"go-Icon\" height=\"24\" width=\"24\" src=\"/static/shared/icon/arrow_drop_down_gm_grey_24dp.svg\" alt=\"submenu dropdown icon\">\n              </a>\n              <ul class=\"go-Header-submenu go-Header-submenu--docs js-desktop-submenu-hover\" aria-label=\"submenu\">\n                <li class=\"go-Header-submenuItem\">\n                  <div>\n                    <a href=\"https://go.dev/doc/effective_go\">\n                      <span>Effective Go</span>\n                    </a>\n                  </div>\n                  <p>Tips for writing clear, performant, and idiomatic Go code</p>\n                </li>\n                <li class=\"go-Header-submenuItem\">\n                  <div>\n                    <a href=\"https://go.dev/doc/\">\n                      <span>Go User Manual</span>\n                    </a>\n                  </div>\n                  <p>A complete introduction to building software with Go</p>\n                </li>\n                <li class=\"go-Header-submenuItem\">\n                  <div>\n                    <a href=\"https://pkg.go.dev/std\">\n                      <span>Standard library</span>\n                    </a>\n                  </div>\n                  <p>Reference documentation for Go's standard library</p>\n                </li>\n                <li class=\"go-Header-submenuItem\">\n                  <div>\n                    <a href=\"https://go.dev/doc/devel/release\">\n                      <span>Release Notes</span>\n                    </a>\n                  </div>\n                  <p>Learn what's new in each Go release</p>\n                </li>\n                <li class=\"go-Header-submenuItem\">\n                  <div>\n                    <a href=\"/api\">\n                      <span>API</span>\n                    </a>\n                  </div>\n                  <p>Reference documentation for the pkg.go.dev API</p>\n                </li>\n              </ul>\n            </li>\n            <li class=\"go-Header-menuItem go-Header-menuItem--active\">\n              <a href=\"/\" data-gtmc=\"nav link\">Packages</a>\n            </li>\n            <li class=\"go-Header-menuItem\">\n              <a class=\"js-desktop-menu-hover\" href=\"#\" data-gtmc=\"nav link\">\n                Community\n                <img class=\"go-Icon\" height=\"24\" width=\"24\" src=\"/static/shared/icon/arrow_drop_down_gm_grey_24dp.svg\" alt=\"submenu dropdown icon\">\n              </a>\n              <ul class=\"go-Header-submenu go-Header-submenu--community js-desktop-submenu-hover\" aria-label=\"submenu\">\n                <li class=\"go-Header-submenuItem\">\n                  <div>\n                    <a href=\"https://go.dev/talks/\">\n                      <span>Recorded Talks</span>\n                    </a>\n                  </div>\n                  <p>Videos from prior events</p>\n                </li>\n                <li class=\"go-Header-submenuItem\">\n                  <div>\n                    <a href=\"https://www.meetup.com/pro/go\">\n                      <span>Meetups</span>\n                      <i class=\"material-icons\">\n                        <img class=\"go-Icon\" height=\"24\" width=\"24\"\n                            src=\"/static/shared/icon/launch_gm_grey_24dp.svg\" alt=\"\">\n                      </i>\n                    </a>\n                  </div>\n                  <p>Meet other local Go developers</p>\n                </li>\n                <li class=\"go-Header-submenuItem\">\n                  <div>\n                    <a href=\"https://github.com/golang/go/wiki/Conferences\">\n                      <span>Conferences</span>\n                      <i class=\"material-icons\">\n                        <img class=\"go-Icon\" height=\"24\" width=\"24\"\n                            src=\"/static/shared/icon/launch_gm_grey_24dp.svg\" alt=\"\">\n                      </i>\n                    </a>\n                  </div>\n                  <p>Learn and network with Go developers from around the world</p>\n                </li>\n                <li class=\"go-Header-submenuItem\">\n                  <div>\n                    <a href=\"https://go.dev/blog\">\n                      <span>Go blog</span>\n                    </a>\n                  </div>\n                  <p>The Go project's official blog.</p>\n                </li>\n                <li class=\"go-Header-submenuItem\">\n                  <div>\n                    <a href=\"https://go.dev/help\">\n                      <span>Go project</span>\n                    </a>\n                  </div>\n                  <p>Get help and stay informed from Go</p>\n                </li>\n                <li class=\"go-Header-submenuItem\">\n                  <div>\n                    Get connected\n                  </div>\n                  <p></p>\n                  <div class=\"go-Header-socialIcons\">\n                      <a\n                        class=\"go-Header-socialIcon\"\n                        aria-label=\"Get connected with google-groups (Opens in new window)\"\n                        title=\"Get connected with google-groups (Opens in new window)\"\n                        href=\"https://groups.google.com/g/golang-nuts\">\n                        <img src=\"/static/shared/logo/social/google-groups.svg\" />\n                      </a>\n                      <a\n                        class=\"go-Header-socialIcon\"\n                        aria-label=\"Get connected with github (Opens in new window)\"\n                        title=\"Get connected with github (Opens in new window)\"\n                        href=\"https://github.com/golang\">\n                        <img src=\"/static/shared/logo/social/github.svg\" />\n                      </a>\n                      <a\n                        class=\"go-Header-socialIcon\"\n                        aria-label=\"Get connected with twitter (Opens in new window)\"\n                        title=\"Get connected with twitter (Opens in new window)\"\n                        href=\"https://twitter.com/golang\">\n                        <img src=\"/static/shared/logo/social/twitter.svg\" />\n                      </a>\n                      <a\n                        class=\"go-Header-socialIcon\"\n                        aria-label=\"Get connected with reddit (Opens in new window)\"\n                        title=\"Get connected with reddit (Opens in new window)\"\n                        href=\"https://www.reddit.com/r/golang/\">\n                        <img src=\"/static/shared/logo/social/reddit.svg\" />\n                      </a>\n                      <a\n                        class=\"go-Header-socialIcon\"\n                        aria-label=\"Get connected with slack (Opens in new window)\"\n                        title=\"Get connected with slack (Opens in new window)\"\n                        href=\"https://invite.slack.golangbridge.org/\">\n                        <img src=\"/static/shared/logo/social/slack.svg\" />\n                      </a>\n                      <a\n                        class=\"go-Header-socialIcon\"\n                        aria-label=\"Get connected with stack-overflow (Opens in new window)\"\n                        title=\"\"\n                        href=\"https://stackoverflow.com/collectives/go\">\n                        <img src=\"/static/shared/logo/social/stack-overflow.svg\" />\n                      </a>\n                  </div>\n                </li>\n              </ul>\n            </li>\n          </ul>\n          <button class=\"go-Header-navOpen js-headerMenuButton go-Header-navOpen--white\" data-gtmc=\"nav button\" aria-label=\"Open navigation\">\n          </button>\n        </div>\n      </nav>\n    </div>\n  </header>\n  <aside class=\"go-NavigationDrawer js-header\">\n    <nav class=\"go-NavigationDrawer-nav\">\n      <div class=\"go-NavigationDrawer-header\">\n        <a href=\"https://go.dev/\">\n          <img class=\"go-NavigationDrawer-logo\" src=\"/static/shared/logo/go-blue.svg\" alt=\"Go.\">\n        </a>\n      </div>\n      <ul class=\"go-NavigationDrawer-list\">\n          <li class=\"go-NavigationDrawer-listItem js-mobile-subnav-trigger go-NavigationDrawer-hasSubnav\">\n            <a href=\"#\">\n              <span>Why Go</span>\n              <i class=\"material-icons\">\n                <img class=\"go-Icon\" height=\"24\" width=\"24\"\n                  src=\"/static/shared/icon/navigate_next_gm_grey_24dp.svg\" alt=\"\">\n              </i>\n            </a>\n\n            <div class=\"go-NavigationDrawer go-NavigationDrawer-submenuItem\">\n              <div class=\"go-NavigationDrawer-nav\">\n                <div class=\"go-NavigationDrawer-header\">\n                  <a href=\"#\">\n                    <i class=\"material-icons\">\n                      <img class=\"go-Icon\" height=\"24\" width=\"24\"\n                        src=\"/static/shared/icon/navigate_before_gm_grey_24dp.svg\" alt=\"\">\n                      </i>\n                      Why Go\n                  </a>\n                </div>\n                <ul class=\"go-NavigationDrawer-list\">\n                  <li class=\"go-NavigationDrawer-listItem\">\n                    <a href=\"https://go.dev/solutions#case-studies\">\n                      Case Studies\n                    </a>\n                  </li>\n                  <li class=\"go-NavigationDrawer-listItem\">\n                    <a href=\"https://go.dev/solutions#use-cases\">\n                      Use Cases\n                    </a>\n                  </li>\n                  <li class=\"go-NavigationDrawer-listItem\">\n                    <a href=\"https://go.dev/security/\">\n                      Security\n                    </a>\n                  </li>\n                </ul>\n              </div>\n            </div>\n          </li>\n          <li class=\"go-NavigationDrawer-listItem\">\n            <a href=\"https://go.dev/learn/\">Learn</a>\n          </li>\n          <li class=\"go-NavigationDrawer-listItem js-mobile-subnav-trigger go-NavigationDrawer-hasSubnav\">\n            <a href=\"#\">\n              <span>Docs</span>\n              <i class=\"material-icons\">\n                <img class=\"go-Icon\" height=\"24\" width=\"24\"\n                  src=\"/static/shared/icon/navigate_next_gm_grey_24dp.svg\" alt=\"\">\n              </i>\n            </a>\n\n            <div class=\"go-NavigationDrawer go-NavigationDrawer-submenuItem\">\n              <div class=\"go-NavigationDrawer-nav\">\n                <div class=\"go-NavigationDrawer-header\">\n                  <a href=\"#\"><i class=\"material-icons\">\n                    <img class=\"go-Icon\" height=\"24\" width=\"24\"\n                      src=\"/static/shared/icon/navigate_before_gm_grey_24dp.svg\" alt=\"\">\n                    </i>\n                    Docs\n                  </a>\n                </div>\n                <ul class=\"go-NavigationDrawer-list\">\n                  <li class=\"go-NavigationDrawer-listItem\">\n                    <a href=\"https://go.dev/doc/effective_go\">\n                      Effective Go\n                    </a>\n                  </li>\n                  <li class=\"go-NavigationDrawer-listItem\">\n                    <a href=\"https://go.dev/doc/\">\n                      Go User Manual\n                    </a>\n                  </li>\n                  <li class=\"go-NavigationDrawer-listItem\">\n                    <a href=\"https://pkg.go.dev/std\">\n                      Standard library\n                    </a>\n                  </li>\n                  <li class=\"go-NavigationDrawer-listItem\">\n                    <a href=\"https://go.dev/doc/devel/release\">\n                      Release Notes\n                    </a>\n                  </li>\n                  <li class=\"go-NavigationDrawer-listItem\">\n                    <a href=\"/api\">\n                      API\n                    </a>\n                  </li>\n                </ul>\n              </div>\n            </div>\n          </li>\n          <li class=\"go-NavigationDrawer-listItem go-NavigationDrawer-listItem--active\">\n            <a href=\"/\">Packages</a>\n          </li>\n          <li class=\"go-NavigationDrawer-listItem js-mobile-subnav-trigger go-NavigationDrawer-hasSubnav\">\n            <a href=\"#\">\n              <span>Community</span>\n              <i class=\"material-icons\">\n                <img class=\"go-Icon\" height=\"24\" width=\"24\"\n                  src=\"/static/shared/icon/navigate_next_gm_grey_24dp.svg\" alt=\"\">\n              </i>\n            </a>\n            <div class=\"go-NavigationDrawer go-NavigationDrawer-submenuItem\">\n              <div class=\"go-NavigationDrawer-nav\">\n                <div class=\"go-NavigationDrawer-header\">\n                  <a href=\"#\">\n                    <i class=\"material-icons\">\n                      <img class=\"go-Icon\" height=\"24\" width=\"24\"\n                        src=\"/static/shared/icon/navigate_before_gm_grey_24dp.svg\" alt=\"\">\n                    </i>\n                    Community\n                  </a>\n                </div>\n                <ul class=\"go-NavigationDrawer-list\">\n                  <li class=\"go-NavigationDrawer-listItem\">\n                    <a href=\"https://go.dev/talks/\">\n                      Recorded Talks\n                    </a>\n                  </li>\n                  <li class=\"go-NavigationDrawer-listItem\">\n                    <a href=\"https://www.meetup.com/pro/go\">\n                      Meetups\n                      <i class=\"material-icons\">\n                      <img class=\"go-Icon\" height=\"24\" width=\"24\"\n                          src=\"/static/shared/icon/launch_gm_grey_24dp.svg\" alt=\"\">\n                      </i>\n                    </a>\n                  </li>\n                  <li class=\"go-NavigationDrawer-listItem\">\n                    <a href=\"https://github.com/golang/go/wiki/Conferences\">\n                      Conferences\n                      <i class=\"material-icons\">\n                        <img class=\"go-Icon\" height=\"24\" width=\"24\" src=\"/static/shared/icon/launch_gm_grey_24dp.svg\" alt=\"\">\n                      </i>\n                    </a>\n                  </li>\n                  <li class=\"go-NavigationDrawer-listItem\">\n                    <a href=\"https://go.dev/blog\">\n                      Go blog\n                    </a>\n                  </li>\n                  <li class=\"go-NavigationDrawer-listItem\">\n                    <a href=\"https://go.dev/help\">\n                      Go project\n                    </a>\n                  </li>\n                  <li class=\"go-NavigationDrawer-listItem\">\n                    <div>Get connected</div>\n                    <div class=\"go-Header-socialIcons\">\n                        <a class=\"go-Header-socialIcon\" href=\"https://groups.google.com/g/golang-nuts\"><img src=\"/static/shared/logo/social/google-groups.svg\" /></a>\n                        <a class=\"go-Header-socialIcon\" href=\"https://github.com/golang\"><img src=\"/static/shared/logo/social/github.svg\" /></a>\n                        <a class=\"go-Header-socialIcon\" href=\"https://twitter.com/golang\"><img src=\"/static/shared/logo/social/twitter.svg\" /></a>\n                        <a class=\"go-Header-socialIcon\" href=\"https://www.reddit.com/r/golang/\"><img src=\"/static/shared/logo/social/reddit.svg\" /></a>\n                        <a class=\"go-Header-socialIcon\" href=\"https://invite.slack.golangbridge.org/\"><img src=\"/static/shared/logo/social/slack.svg\" /></a>\n                        <a class=\"go-Header-socialIcon\" href=\"https://stackoverflow.com/collectives/go\"><img src=\"/static/shared/logo/social/stack-overflow.svg\" /></a>\n                    </div>\n                  </li>\n                </ul>\n              </div>\n            </div>\n          </li>\n      </ul>\n    </nav>\n  </aside>\n  <div class=\"go-NavigationDrawer-scrim js-scrim\" role=\"presentation\"></div>\n\n    \n  <main class=\"go-Container\" id=\"main-content\">\n    \n  <header class=\"SearchResults-header js-searchHeader\">\n    <div class=\"SearchResults-headerContent\">\n      <a class=\"SearchResults-headerLogo\" href=\"https://go.dev/\" aria-hidden=\"true\" tabindex=\"-1\" data-gtmc=\"header link\"\n          aria-label=\"Link to Go Homepage\">\n        <img height=\"78\" width=\"207\" src=\"/static/shared/logo/go-blue.svg\" alt=\"Go\">\n      </a>\n      <form\n        class=\"go-InputGroup go-ShortcutKey SearchResults-search\"\n        action=\"/search\"\n        data-shortcut=\"/\"\n        data-shortcut-alt=\"search\"\n        data-gtmc=\"search form\"\n        aria-label=\"Search for a package\"\n        role=\"search\"\n      >\n        <input name=\"q\" class=\"go-Input js-searchFocus\" aria-label=\"Search for a package\" type=\"search\"\n            autocapitalize=\"off\" autocomplete=\"off\" autocorrect=\"off\" spellcheck=\"false\"\n            placeholder=\"Search packages or symbols\" value=\"rust\" />\n        <input name=\"m\" value=\"package\" hidden>\n        <button class=\"go-Button go-Button--inverted\" aria-label=\"Submit search\">\n          <img\n            class=\"go-Icon\"\n            height=\"24\"\n            width=\"24\"\n            src=\"/static/shared/icon/search_gm_grey_24dp.svg\"\n            alt=\"\"\n          />\n        </button>\n      </form>\n    </div>\n  </header>\n\n    \n  <div class=\"SearchResults-tabs\">\n    <nav class=\"go-TabNav\">\n      <ul>\n        <li aria-current=\"page\">\n          <a href=\"/search?limit=25&amp;m=package&amp;q=rust\">Packages</a>\n        </li>\n        <li >\n          <a href=\"/search?limit=25&amp;m=symbol&amp;q=rust\">Symbols</a>\n        </li>\n      </ul>\n    </nav>\n  </div>\n\n    <div class=\"go-Content SearchResults\">\n      \n        \n  <div class=\"SearchResults-summary\" role=\"heading\" aria-level=\"1\">\n    Showing <strong>25</strong> modules with matching packages. <a href=\"/search-help\">Search help</a>\n  </div>\n  \n    \n  <div>\n    \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/gagliardetto/binary\" data-gtmc=\"search result\" data-gtmv=\"0\"\n                data-test-id=\"snippet-title\">\n              bin\n              <span class=\"SearchSnippet-header-path\">(github.com/gagliardetto/binary)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/gagliardetto/binary?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>1,590</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v0.8.0</strong> published on <span data-test-id=\"snippet-published\"><strong>Apr  1, 2024</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/gagliardetto/binary?tab=licenses\" aria-label=\"Go to Licenses\">\n        Apache-2.0\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/Dreamacro/protobytes\" data-gtmc=\"search result\" data-gtmv=\"1\"\n                data-test-id=\"snippet-title\">\n              protobytes\n              <span class=\"SearchSnippet-header-path\">(github.com/Dreamacro/protobytes)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/Dreamacro/protobytes?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>204</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v0.0.0-...-26d5983</strong> published on <span data-test-id=\"snippet-published\"><strong>Mar 22, 2025</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/Dreamacro/protobytes?tab=licenses\" aria-label=\"Go to Licenses\">\n        MIT\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/ianlancetaylor/demangle\" data-gtmc=\"search result\" data-gtmv=\"2\"\n                data-test-id=\"snippet-title\">\n              demangle\n              <span class=\"SearchSnippet-header-path\">(github.com/ianlancetaylor/demangle)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n          <p class=\"SearchSnippet-synopsis\" data-test-id=\"snippet-synopsis\">\n            Package demangle defines functions that demangle GCC/LLVM C++ and Rust symbol names.\n          </p>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/ianlancetaylor/demangle?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>67</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v0.0.0-...-1ff4bf4</strong> published on <span data-test-id=\"snippet-published\"><strong>May  5, 2026</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/ianlancetaylor/demangle?tab=licenses\" aria-label=\"Go to Licenses\">\n        BSD-3-Clause\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/filecoin-project/filecoin-ffi\" data-gtmc=\"search result\" data-gtmv=\"3\"\n                data-test-id=\"snippet-title\">\n              ffi\n              <span class=\"SearchSnippet-header-path\">(github.com/filecoin-project/filecoin-ffi)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/filecoin-project/filecoin-ffi?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>69</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v1.36.1</strong> published on <span data-test-id=\"snippet-published\"><strong>Jun 10, 2026</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/filecoin-project/filecoin-ffi?tab=licenses\" aria-label=\"Go to Licenses\">\n        Apache-2.0, MIT\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/Code-Hex/synchro\" data-gtmc=\"search result\" data-gtmv=\"4\"\n                data-test-id=\"snippet-title\">\n              synchro\n              <span class=\"SearchSnippet-header-path\">(github.com/Code-Hex/synchro)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/Code-Hex/synchro?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>36</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v0.5.4</strong> published on <span data-test-id=\"snippet-published\"><strong>Sep 23, 2025</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/Code-Hex/synchro?tab=licenses\" aria-label=\"Go to Licenses\">\n        MIT\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/smacker/go-tree-sitter/rust\" data-gtmc=\"search result\" data-gtmv=\"5\"\n                data-test-id=\"snippet-title\">\n              rust\n              <span class=\"SearchSnippet-header-path\">(github.com/smacker/go-tree-sitter/rust)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/smacker/go-tree-sitter/rust?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>32</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v0.0.0-...-a85ceeb</strong> published on <span data-test-id=\"snippet-published\"><strong>Aug 27, 2024</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/smacker/go-tree-sitter/rust?tab=licenses\" aria-label=\"Go to Licenses\">\n        MIT\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/rust-secure-code/go-rustaudit\" data-gtmc=\"search result\" data-gtmv=\"6\"\n                data-test-id=\"snippet-title\">\n              rustaudit\n              <span class=\"SearchSnippet-header-path\">(github.com/rust-secure-code/go-rustaudit)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/rust-secure-code/go-rustaudit?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>9</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v0.0.0-...-e20ec32</strong> published on <span data-test-id=\"snippet-published\"><strong>Feb 26, 2025</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/rust-secure-code/go-rustaudit?tab=licenses\" aria-label=\"Go to Licenses\">\n        MIT\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/apex/apex/plugins/rust_gnu\" data-gtmc=\"search result\" data-gtmv=\"7\"\n                data-test-id=\"snippet-title\">\n              rust_gnu\n              <span class=\"SearchSnippet-header-path\">(github.com/apex/apex/plugins/rust_gnu)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n          <p class=\"SearchSnippet-synopsis\" data-test-id=\"snippet-synopsis\">\n            Package rust_gnu implements the &#34;rust&#34; runtime with gnu libc dependencies.\n          </p>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/apex/apex/plugins/rust_gnu?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>20</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v0.16.0</strong> published on <span data-test-id=\"snippet-published\"><strong>Oct 14, 2017</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/apex/apex/plugins/rust_gnu?tab=licenses\" aria-label=\"Go to Licenses\">\n        MIT\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n          \n          <div class=\"SearchSnippet-sub go-textSubtle\">\n            <strong>Other packages in module github.com/apex/apex:</strong>\n            \n              \n                <a class=\"go-Chip go-Chip--subtle\"\n                    href=\"/github.com/apex/apex/plugins/rust_musl\"\n                    \n                    data-gtmc=\"search result same module\">\n                  plugins/rust_musl\n                </a>\n              \n            \n            \n            \n          </div>\n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/gen2brain/heic\" data-gtmc=\"search result\" data-gtmv=\"8\"\n                data-test-id=\"snippet-title\">\n              heic\n              <span class=\"SearchSnippet-header-path\">(github.com/gen2brain/heic)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n          <p class=\"SearchSnippet-synopsis\" data-test-id=\"snippet-synopsis\">\n            Package heic implements an HEIC image decoder based on the pure-Rust heic crate compiled to WASM (run via wazero, or transpiled with the wasm2go build tag), or libheif/libde265 via a dynamic library.\n          </p>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/gen2brain/heic?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>11</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v0.7.1</strong> published on <span data-test-id=\"snippet-published\"><strong>4 days ago</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/gen2brain/heic?tab=licenses\" aria-label=\"Go to Licenses\">\n        MIT\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/fuck-clash/protobytes\" data-gtmc=\"search result\" data-gtmv=\"9\"\n                data-test-id=\"snippet-title\">\n              protobytes\n              <span class=\"SearchSnippet-header-path\">(github.com/fuck-clash/protobytes)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/fuck-clash/protobytes?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>9</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v0.0.0-...-c0033f3</strong> published on <span data-test-id=\"snippet-published\"><strong>Nov  6, 2023</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/fuck-clash/protobytes?tab=licenses\" aria-label=\"Go to Licenses\">\n        MIT\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/dusk-network/bls12_381-sign/go/cgo/bls\" data-gtmc=\"search result\" data-gtmv=\"10\"\n                data-test-id=\"snippet-title\">\n              bls\n              <span class=\"SearchSnippet-header-path\">(github.com/dusk-network/bls12_381-sign/go/cgo/bls)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/dusk-network/bls12_381-sign/go/cgo/bls?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>9</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v0.1.5</strong> published on <span data-test-id=\"snippet-published\"><strong>Jan 25, 2022</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/dusk-network/bls12_381-sign/go/cgo/bls?tab=licenses\" aria-label=\"Go to Licenses\">\n        MPL-2.0\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/tree-sitter/tree-sitter-rust/bindings/go\" data-gtmc=\"search result\" data-gtmv=\"11\"\n                data-test-id=\"snippet-title\">\n              tree_sitter_rust\n              <span class=\"SearchSnippet-header-path\">(github.com/tree-sitter/tree-sitter-rust/bindings/go)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/tree-sitter/tree-sitter-rust/bindings/go?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>9</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v0.24.2</strong> published on <span data-test-id=\"snippet-published\"><strong>Mar 27, 2026</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/tree-sitter/tree-sitter-rust/bindings/go?tab=licenses\" aria-label=\"Go to Licenses\">\n        MIT\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/eyslce/protobytes\" data-gtmc=\"search result\" data-gtmv=\"12\"\n                data-test-id=\"snippet-title\">\n              protobytes\n              <span class=\"SearchSnippet-header-path\">(github.com/eyslce/protobytes)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/eyslce/protobytes?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>9</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v0.1.0</strong> published on <span data-test-id=\"snippet-published\"><strong>Dec 20, 2023</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/eyslce/protobytes?tab=licenses\" aria-label=\"Go to Licenses\">\n        MIT\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/siding9241/protobytes\" data-gtmc=\"search result\" data-gtmv=\"13\"\n                data-test-id=\"snippet-title\">\n              protobytes\n              <span class=\"SearchSnippet-header-path\">(github.com/siding9241/protobytes)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/siding9241/protobytes?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>9</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v1.0.1</strong> published on <span data-test-id=\"snippet-published\"><strong>May  8, 2024</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/siding9241/protobytes?tab=licenses\" aria-label=\"Go to Licenses\">\n        MIT\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/git.hiifong.cc/mirrors/protobytes\" data-gtmc=\"search result\" data-gtmv=\"14\"\n                data-test-id=\"snippet-title\">\n              protobytes\n              <span class=\"SearchSnippet-header-path\">(git.hiifong.cc/mirrors/protobytes)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/git.hiifong.cc/mirrors/protobytes?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>9</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v0.0.0-...-daaf63b</strong> published on <span data-test-id=\"snippet-published\"><strong>Nov 25, 2023</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/git.hiifong.cc/mirrors/protobytes?tab=licenses\" aria-label=\"Go to Licenses\">\n        MIT\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/vistone/fingerprint/modules/ml\" data-gtmc=\"search result\" data-gtmv=\"15\"\n                data-test-id=\"snippet-title\">\n              ml\n              <span class=\"SearchSnippet-header-path\">(github.com/vistone/fingerprint/modules/ml)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n          <p class=\"SearchSnippet-synopsis\" data-test-id=\"snippet-synopsis\">\n            Package ml provides machine learning fingerprint classification functionality Implements three-layer hierarchical classifier architecture, ported from Rust version ML design\n          </p>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/vistone/fingerprint/modules/ml?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>9</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v1.0.28</strong> published on <span data-test-id=\"snippet-published\"><strong>Mar 17, 2026</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/vistone/fingerprint/modules/ml?tab=licenses\" aria-label=\"Go to Licenses\">\n        BSD-3-Clause\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/aquasecurity/go-dep-parser/pkg/rust/cargo\" data-gtmc=\"search result\" data-gtmv=\"16\"\n                data-test-id=\"snippet-title\">\n              cargo\n              <span class=\"SearchSnippet-header-path\">(github.com/aquasecurity/go-dep-parser/pkg/rust/cargo)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/aquasecurity/go-dep-parser/pkg/rust/cargo?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>9</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v0.0.0-...-1de9a37</strong> published on <span data-test-id=\"snippet-published\"><strong>Jun  6, 2024</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/aquasecurity/go-dep-parser/pkg/rust/cargo?tab=licenses\" aria-label=\"Go to Licenses\">\n        MIT\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n          \n          <div class=\"SearchSnippet-sub go-textSubtle\">\n            <strong>Other packages in module github.com/aquasecurity/go-dep-parser:</strong>\n            \n              \n                <a class=\"go-Chip go-Chip--subtle\"\n                    href=\"/github.com/aquasecurity/go-dep-parser/pkg/rust/binary\"\n                    \n                    data-gtmc=\"search result same module\">\n                  pkg/rust/binary\n                </a>\n              \n            \n            \n            \n          </div>\n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/karim-w/gopts\" data-gtmc=\"search result\" data-gtmv=\"17\"\n                data-test-id=\"snippet-title\">\n              gopts\n              <span class=\"SearchSnippet-header-path\">(github.com/karim-w/gopts)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/karim-w/gopts?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>7</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v1.2.0</strong> published on <span data-test-id=\"snippet-published\"><strong>Jul 10, 2025</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/karim-w/gopts?tab=licenses\" aria-label=\"Go to Licenses\">\n        BSD-3-Clause\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/nixberg/chacha-rng-go\" data-gtmc=\"search result\" data-gtmv=\"18\"\n                data-test-id=\"snippet-title\">\n              chacha\n              <span class=\"SearchSnippet-header-path\">(github.com/nixberg/chacha-rng-go)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n          <p class=\"SearchSnippet-synopsis\" data-test-id=\"snippet-synopsis\">\n            Package chacha implements a ChaCha-based cryptographically secure pseudo-random number generator intended to be compatible with Rust crate rand_chacha.\n          </p>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/nixberg/chacha-rng-go?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>6</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v0.1.0</strong> published on <span data-test-id=\"snippet-published\"><strong>May 23, 2020</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/nixberg/chacha-rng-go?tab=licenses\" aria-label=\"Go to Licenses\">\n        MIT\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/LiuZ0814/protobytes\" data-gtmc=\"search result\" data-gtmv=\"19\"\n                data-test-id=\"snippet-title\">\n              protobytes\n              <span class=\"SearchSnippet-header-path\">(github.com/LiuZ0814/protobytes)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/LiuZ0814/protobytes?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>9</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v1.0.0</strong> published on <span data-test-id=\"snippet-published\"><strong>Mar 14, 2024</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/LiuZ0814/protobytes?tab=licenses\" aria-label=\"Go to Licenses\">\n        MIT\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/khulnasoft-lab/go-dep-parser/pkg/rust/binary\" data-gtmc=\"search result\" data-gtmv=\"20\"\n                data-test-id=\"snippet-title\">\n              binary\n              <span class=\"SearchSnippet-header-path\">(github.com/khulnasoft-lab/go-dep-parser/pkg/rust/binary)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n          <p class=\"SearchSnippet-synopsis\" data-test-id=\"snippet-synopsis\">\n            Detects dependencies from Rust binaries built with https://github.com/rust-secure-code/cargo-auditable\n          </p>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/khulnasoft-lab/go-dep-parser/pkg/rust/binary?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>2</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v1.0.2</strong> published on <span data-test-id=\"snippet-published\"><strong>Sep 26, 2023</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/khulnasoft-lab/go-dep-parser/pkg/rust/binary?tab=licenses\" aria-label=\"Go to Licenses\">\n        MIT\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n          \n          <div class=\"SearchSnippet-sub go-textSubtle\">\n            <strong>Other packages in module github.com/khulnasoft-lab/go-dep-parser:</strong>\n            \n              \n                <a class=\"go-Chip go-Chip--subtle\"\n                    href=\"/github.com/khulnasoft-lab/go-dep-parser/pkg/rust/cargo\"\n                    \n                    data-gtmc=\"search result same module\">\n                  pkg/rust/cargo\n                </a>\n              \n            \n            \n            \n          </div>\n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/aquasecurity/trivy/pkg/dependency/parser/rust/binary\" data-gtmc=\"search result\" data-gtmv=\"21\"\n                data-test-id=\"snippet-title\">\n              binary\n              <span class=\"SearchSnippet-header-path\">(github.com/aquasecurity/trivy/pkg/dependency/parser/rust/binary)</span>\n            </a>\n          </h2>\n          \n          \n  \n    \n  \n  <span class=\"go-Chip go-Chip--alert\">GO-2026-4919</span>\n\n\n  \n  \n\n        </div>\n        \n          <p class=\"SearchSnippet-synopsis\" data-test-id=\"snippet-synopsis\">\n            Detects dependencies from Rust binaries built with https://github.com/rust-secure-code/cargo-auditable\n          </p>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/aquasecurity/trivy/pkg/dependency/parser/rust/binary?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>2</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v0.72.0</strong> published on <span data-test-id=\"snippet-published\"><strong>Jun 30, 2026</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/aquasecurity/trivy/pkg/dependency/parser/rust/binary?tab=licenses\" aria-label=\"Go to Licenses\">\n        Apache-2.0\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n          \n          <div class=\"SearchSnippet-sub go-textSubtle\">\n            <strong>Other packages in module github.com/aquasecurity/trivy:</strong>\n            \n              \n                <a class=\"go-Chip go-Chip--subtle\"\n                    href=\"/github.com/aquasecurity/trivy/pkg/fanal/analyzer/language/rust/binary\"\n                    \n                    data-gtmc=\"search result same module\">\n                  pkg/fanal/analyzer/language/rust/binary\n                </a>\n              \n            \n              \n                <a class=\"go-Chip go-Chip--subtle\"\n                    href=\"/github.com/aquasecurity/trivy/pkg/fanal/analyzer/language/rust/cargo\"\n                    \n                    data-gtmc=\"search result same module\">\n                  pkg/fanal/analyzer/language/rust/cargo\n                </a>\n              \n            \n              \n                <a class=\"go-Chip go-Chip--subtle\"\n                    href=\"/github.com/aquasecurity/trivy/pkg/dependency/parser/rust/cargo\"\n                    \n                    data-gtmc=\"search result same module\">\n                  pkg/dependency/parser/rust/cargo\n                </a>\n              \n            \n            \n            \n          </div>\n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/nmstate/nmstate/rust/src/go/nmstate/v2\" data-gtmc=\"search result\" data-gtmv=\"22\"\n                data-test-id=\"snippet-title\">\n              nmstate\n              <span class=\"SearchSnippet-header-path\">(github.com/nmstate/nmstate/rust/src/go/nmstate/v2)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/nmstate/nmstate/rust/src/go/nmstate/v2?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>4</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v2.0.0-...-05a39f9</strong> published on <span data-test-id=\"snippet-published\"><strong>Jul  2, 2026</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/nmstate/nmstate/rust/src/go/nmstate/v2?tab=licenses\" aria-label=\"Go to Licenses\">\n        Apache-2.0\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" >\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/mevitae/redis-work-queue/go\" data-gtmc=\"search result\" data-gtmv=\"23\"\n                data-test-id=\"snippet-title\">\n              workqueue\n              <span class=\"SearchSnippet-header-path\">(github.com/mevitae/redis-work-queue/go)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n          <p class=\"SearchSnippet-synopsis\" data-test-id=\"snippet-synopsis\">\n            Package workqueue is the Go implementation of a work queue, on top of a redis database, with implementations in Python, Rust, Go, Node.js (TypeScript) and Dotnet (C#).\n          </p>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/mevitae/redis-work-queue/go?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>4</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v0.3.0</strong> published on <span data-test-id=\"snippet-published\"><strong>Sep 16, 2024</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/mevitae/redis-work-queue/go?tab=licenses\" aria-label=\"Go to Licenses\">\n        MIT\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n      \n      \n      <div class=\"SearchSnippet\" id=\"more-results\">\n        <div class=\"SearchSnippet-headerContainer\">\n          <h2>\n            <a href=\"/github.com/brave-intl/challenge-bypass-ristretto-ffi\" data-gtmc=\"search result\" data-gtmv=\"24\"\n                data-test-id=\"snippet-title\">\n              challengebypassristrettoffi\n              <span class=\"SearchSnippet-header-path\">(github.com/brave-intl/challenge-bypass-ristretto-ffi)</span>\n            </a>\n          </h2>\n          \n          \n  \n  \n\n        </div>\n        \n        \n  <div class=\"SearchSnippet-infoLabel\">\n    <a href=\"/github.com/brave-intl/challenge-bypass-ristretto-ffi?tab=importedby\" aria-label=\"Go to Imported By\">\n       <span class=\"go-textSubtle\">Imported by </span><strong>4</strong>\n    </a>\n    <span class=\"go-textSubtle\">|</span>\n    <span class=\"go-textSubtle\">\n      <strong>v0.0.0-...-8c47604</strong> published on <span data-test-id=\"snippet-published\"><strong>Dec 10, 2025</strong></span>\n    </span>\n    <span class=\"go-textSubtle\">|</span>\n    <span data-test-id=\"snippet-license\">\n    \n      <a href=\"/github.com/brave-intl/challenge-bypass-ristretto-ffi?tab=licenses\" aria-label=\"Go to Licenses\">\n        MPL-2.0\n      </a>\n    \n    </span>\n  </div>\n\n        \n        \n      </div> \n    \n  </div>\n\n  \n\n      \n      \n        \n  \n  <div class=\"SearchPagination\" data-test-id=\"pagination\">\n    Didn't find what you were looking for?\n    <a href=\"/search?limit=100&amp;m=package&amp;q=rust#more-results\" data-gtmc=\"search more results\">Show more results.</a></div>\n\n      \n    </div>\n  </main>\n\n    \n  <footer class=\"go-Footer\">\n    \n    <div class=\"go-Footer-links\">\n      <div class=\"go-Footer-linkColumn\">\n        <a href=\"https://go.dev/solutions\" class=\"go-Footer-link go-Footer-link--primary\"\n            data-gtmc=\"footer link\">\n          Why Go\n        </a>\n        <a href=\"https://go.dev/solutions#use-cases\" class=\"go-Footer-link\"\n            data-gtmc=\"footer link\">\n          Use Cases\n        </a>\n        <a href=\"https://go.dev/solutions#case-studies\" class=\"go-Footer-link\"\n            data-gtmc=\"footer link\">\n          Case Studies\n        </a>\n      </div>\n      <div class=\"go-Footer-linkColumn\">\n        <a href=\"https://learn.go.dev/\" class=\"go-Footer-link go-Footer-link--primary\"\n            data-gtmc=\"footer link\">\n          Get Started\n        </a>\n        <a href=\"https://play.golang.org\" class=\"go-Footer-link\" data-gtmc=\"footer link\">\n          Playground\n        </a>\n        <a href=\"https://tour.golang.org\" class=\"go-Footer-link\" data-gtmc=\"footer link\">\n          Tour\n        </a>\n        <a href=\"https://stackoverflow.com/questions/tagged/go?tab=Newest\" class=\"go-Footer-link\"\n            data-gtmc=\"footer link\">\n          Stack Overflow\n        </a>\n        <a href=\"https://go.dev/help\" class=\"go-Footer-link\"\n            data-gtmc=\"footer link\">\n          Help\n        </a>\n      </div>\n      <div class=\"go-Footer-linkColumn\">\n        <a href=\"https://pkg.go.dev\" class=\"go-Footer-link go-Footer-link--primary\"\n            data-gtmc=\"footer link\">\n          Packages\n        </a>\n        <a href=\"/std\" class=\"go-Footer-link\" data-gtmc=\"footer link\">\n          Standard Library\n        </a>\n        <a href=\"/golang.org/x\" class=\"go-Footer-link\" data-gtmc=\"footer link\">\n          Sub-repositories\n        </a>\n        <a href=\"https://pkg.go.dev/about\" class=\"go-Footer-link\" data-gtmc=\"footer link\">\n          About Go Packages\n        </a>\n         <a href=\"/api\" class=\"go-Footer-link\" data-gtmc=\"footer link\">\n          pkg.go.dev API\n        </a>\n      </div>\n      <div class=\"go-Footer-linkColumn\">\n        <a href=\"https://go.dev/project\" class=\"go-Footer-link go-Footer-link--primary\"\n            data-gtmc=\"footer link\">\n          About\n        </a>\n        <a href=\"https://go.dev/dl/\" class=\"go-Footer-link\" data-gtmc=\"footer link\">Download</a>\n        <a href=\"https://go.dev/blog\" class=\"go-Footer-link\" data-gtmc=\"footer link\">Blog</a>\n        <a href=\"https://github.com/golang/go/issues\" class=\"go-Footer-link\" data-gtmc=\"footer link\">\n          Issue Tracker\n        </a>\n        <a href=\"https://go.dev/doc/devel/release.html\" class=\"go-Footer-link\"\n            data-gtmc=\"footer link\">\n          Release Notes\n        </a>\n        <a href=\"https://go.dev/brand\" class=\"go-Footer-link\" data-gtmc=\"footer link\">\n          Brand Guidelines\n        </a>\n        <a href=\"https://go.dev/conduct\" class=\"go-Footer-link\" data-gtmc=\"footer link\">\n          Code of Conduct\n        </a>\n      </div>\n      <div class=\"go-Footer-linkColumn\">\n        <a href=\"https://www.twitter.com/golang\" class=\"go-Footer-link go-Footer-link--primary\"\n            data-gtmc=\"footer link\">\n          Connect\n        </a>\n        <a href=\"https://www.twitter.com/golang\" class=\"go-Footer-link\" data-gtmc=\"footer link\">\n          Twitter\n        </a>\n        <a href=\"https://github.com/golang\" class=\"go-Footer-link\" data-gtmc=\"footer link\">GitHub</a>\n        <a href=\"https://invite.slack.golangbridge.org/\" class=\"go-Footer-link\"\n            data-gtmc=\"footer link\">\n          Slack\n        </a>\n        <a href=\"https://reddit.com/r/golang\" class=\"go-Footer-link\" data-gtmc=\"footer link\">\n          r/golang\n        </a>\n        <a href=\"https://www.meetup.com/pro/go\" class=\"go-Footer-link\" data-gtmc=\"footer link\">\n          Meetup\n        </a>\n        <a href=\"https://golangweekly.com/\" class=\"go-Footer-link\" data-gtmc=\"footer link\">\n          Golang Weekly\n        </a>\n      </div>\n    </div>\n    <div class=\"go-Footer-bottom\">\n      <img class=\"go-Footer-gopher\"  width=\"1431\" height=\"901\"\n          src=\"/static/shared/gopher/pilot-bust-1431x901.svg\" alt=\"Gopher in flight goggles\">\n      <ul class=\"go-Footer-listRow\">\n        <li class=\"go-Footer-listItem\">\n          <a href=\"https://go.dev/copyright\" data-gtmc=\"footer link\">Copyright</a>\n        </li>\n        <li class=\"go-Footer-listItem\">\n          <a href=\"https://go.dev/tos\" data-gtmc=\"footer link\">Terms of Service</a>\n        </li>\n        <li class=\"go-Footer-listItem\">\n          <a href=\"http://www.google.com/intl/en/policies/privacy/\" data-gtmc=\"footer link\"\n              target=\"_blank\" rel=\"noopener\">\n            Privacy Policy\n          </a>\n        </li>\n        <li class=\"go-Footer-listItem\">\n          <a href=\"https://go.dev/s/pkgsite-feedback\" target=\"_blank\" rel=\"noopener\"\n              data-gtmc=\"footer link\">\n            Report an Issue\n          </a>\n        </li>\n        <li class=\"go-Footer-listItem\">\n          <button class=\"go-Button go-Button--text go-Footer-toggleTheme js-toggleTheme\" aria-label=\"Theme Toggle\">\n            <img data-value=\"auto\" class=\"go-Icon go-Icon--inverted\" height=\"24\" width=\"24\" src=\"/static/shared/icon/brightness_6_gm_grey_24dp.svg\" alt=\"System theme\">\n            <img data-value=\"dark\" class=\"go-Icon go-Icon--inverted\" height=\"24\" width=\"24\" src=\"/static/shared/icon/brightness_2_gm_grey_24dp.svg\" alt=\"Dark theme\">\n            <img data-value=\"light\" class=\"go-Icon go-Icon--inverted\" height=\"24\" width=\"24\" src=\"/static/shared/icon/light_mode_gm_grey_24dp.svg\" alt=\"Light theme\">\n            <p> Theme Toggle </p>\n          </button>\n        </li>\n        <li class=\"go-Footer-listItem\">\n          <button class=\"go-Button go-Button--text go-Footer-keyboard js-openShortcuts\" aria-label=\"Shorcuts Modal\">\n            <img class=\"go-Icon go-Icon--inverted\" height=\"24\" width=\"24\" src=\"/static/shared/icon/keyboard_grey_24dp.svg\" alt=\"\">\n            <p> Shortcuts Modal </p>\n          </button>\n        </li>\n      </ul>\n      <a class=\"go-Footer-googleLogo\" href=\"https://google.com\" target=\"_blank\"rel=\"noopener\"\n          data-gtmc=\"footer link\">\n        <img class=\"go-Footer-googleLogoImg\" height=\"24\" width=\"72\"\n            src=\"/static/shared/logo/google-white.svg\" alt=\"Google logo\">\n      </a>\n    </div>\n  </footer>\n\n    \n  <dialog id=\"jump-to-modal\" class=\"JumpDialog go-Modal go-Modal--md js-modal\">\n    <form method=\"dialog\" data-gmtc=\"jump to form\" aria-label=\"Jump to Identifier\">\n      <div class=\"Dialog-title go-Modal-header\">\n        <h2>Jump to</h2>\n        <button\n          class=\"go-Button go-Button--inline\"\n          type=\"button\"\n          data-modal-close\n          data-gtmc=\"modal button\"\n          aria-label=\"Close\"\n        >\n          <img\n            class=\"go-Icon\"\n            height=\"24\"\n            width=\"24\"\n            src=\"/static/shared/icon/close_gm_grey_24dp.svg\"\n            alt=\"\"\n          />\n        </button>\n      </div>\n      <div class=\"JumpDialog-filter\">\n        <input class=\"JumpDialog-input go-Input\" autocomplete=\"off\" type=\"text\">\n      </div>\n      <div class=\"JumpDialog-body go-Modal-body\">\n        <div class=\"JumpDialog-list\"></div>\n      </div>\n      <div class=\"go-Modal-actions\">\n        <button class=\"go-Button\" data-test-id=\"close-dialog\">Close</button>\n      </div>\n    </form>\n  </dialog>\n\n  <dialog class=\"ShortcutsDialog go-Modal go-Modal--sm js-modal\">\n    <form method=\"dialog\">\n      <div class=\"go-Modal-header\">\n        <h2>Keyboard shortcuts</h2>\n        <button\n          class=\"go-Button go-Button--inline\"\n          type=\"button\"\n          data-modal-close\n          data-gtmc=\"modal button\"\n          aria-label=\"Close\"\n        >\n          <img\n            class=\"go-Icon\"\n            height=\"24\"\n            width=\"24\"\n            src=\"/static/shared/icon/close_gm_grey_24dp.svg\"\n            alt=\"\"\n          />\n        </button>\n      </div>\n      <div class=\"go-Modal-body\">\n        <table>\n          <tbody>\n            <tr><td class=\"ShortcutsDialog-key\">\n              <strong>?</strong></td><td> : This menu</td>\n            </tr>\n            <tr><td class=\"ShortcutsDialog-key\">\n              <strong>/</strong></td><td> : Search site</td>\n            </tr>\n            <tr><td class=\"ShortcutsDialog-key\">\n              <strong>f</strong> or <strong>F</strong></td><td> : Jump to</td>\n            </tr>\n            <tr>\n              <td class=\"ShortcutsDialog-key\"><strong>y</strong> or <strong>Y</strong></td>\n              <td> : Canonical URL</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n      <div class=\"go-Modal-actions\">\n        <button class=\"go-Button\" data-test-id=\"close-dialog\">Close</button>\n      </div>\n    </form>\n  </dialog>\n\n    \n      <section class=\"Cookie-notice js-cookieNotice\">\n        <div>go.dev uses cookies from Google to deliver and enhance the quality of its services and to\n        analyze traffic. <a target=_blank href=\"https://policies.google.com/technologies/cookies\">Learn more.</a></div>\n        <div><button class=\"go-Button\">Okay</button></div>\n      </section>\n    \n    \n      <script>\n        // this will throw if the querySelector can’t find the element\n        const gtmId = document.querySelector('.js-gtmID').dataset.gtmid;\n        if (!gtmId) {\n          throw new Error('Google Tag Manager ID not found');\n        }\n        loadScript(`https://www.googletagmanager.com/gtm.js?id=${gtmId}`);\n      </script>\n      <noscript>\n        <iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-W8MVQXG\"\n                height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\">\n        </iframe>\n      </noscript>\n    \n    \n  <script>\n    loadScript('/static/frontend/search/search.js')\n  </script>\n\n  </body>\n</html>\n"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://pkg.go.dev/#",
+          "normalized_url": "https://pkg.go.dev/#",
+          "title": "Why Go",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/solutions#case-studies",
+          "normalized_url": "https://go.dev/solutions#case-studies",
+          "title": "Case Studies",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/solutions#use-cases",
+          "normalized_url": "https://go.dev/solutions#use-cases",
+          "title": "Use Cases",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/security/",
+          "normalized_url": "https://go.dev/security/",
+          "title": "Security",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/learn/",
+          "normalized_url": "https://go.dev/learn/",
+          "title": "Learn",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pkg.go.dev/#",
+          "normalized_url": "https://pkg.go.dev/#",
+          "title": "Docs",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/doc/effective_go",
+          "normalized_url": "https://go.dev/doc/effective_go",
+          "title": "Effective Go",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/doc/",
+          "normalized_url": "https://go.dev/doc/",
+          "title": "Go User Manual",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pkg.go.dev/std",
+          "normalized_url": "https://pkg.go.dev/std",
+          "title": "Standard library",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/doc/devel/release",
+          "normalized_url": "https://go.dev/doc/devel/release",
+          "title": "Release Notes",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pkg.go.dev/api",
+          "normalized_url": "https://pkg.go.dev/api",
+          "title": "API",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pkg.go.dev/",
+          "normalized_url": "https://pkg.go.dev/",
+          "title": "Packages",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pkg.go.dev/#",
+          "normalized_url": "https://pkg.go.dev/#",
+          "title": "Community",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/talks/",
+          "normalized_url": "https://go.dev/talks/",
+          "title": "Recorded Talks",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.meetup.com/pro/go",
+          "normalized_url": "https://www.meetup.com/pro/go",
+          "title": "Meetups",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/golang/go/wiki/Conferences",
+          "normalized_url": "https://github.com/golang/go/wiki/Conferences",
+          "title": "Conferences",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/blog",
+          "normalized_url": "https://go.dev/blog",
+          "title": "Go blog",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/help",
+          "normalized_url": "https://go.dev/help",
+          "title": "Go project",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pkg.go.dev/#",
+          "normalized_url": "https://pkg.go.dev/#",
+          "title": "Why Go",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/solutions#case-studies",
+          "normalized_url": "https://go.dev/solutions#case-studies",
+          "title": "Case Studies",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/solutions#use-cases",
+          "normalized_url": "https://go.dev/solutions#use-cases",
+          "title": "Use Cases",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/security/",
+          "normalized_url": "https://go.dev/security/",
+          "title": "Security",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/learn/",
+          "normalized_url": "https://go.dev/learn/",
+          "title": "Learn",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pkg.go.dev/#",
+          "normalized_url": "https://pkg.go.dev/#",
+          "title": "Docs",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/doc/effective_go",
+          "normalized_url": "https://go.dev/doc/effective_go",
+          "title": "Effective Go",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/doc/",
+          "normalized_url": "https://go.dev/doc/",
+          "title": "Go User Manual",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pkg.go.dev/std",
+          "normalized_url": "https://pkg.go.dev/std",
+          "title": "Standard library",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/doc/devel/release",
+          "normalized_url": "https://go.dev/doc/devel/release",
+          "title": "Release Notes",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pkg.go.dev/api",
+          "normalized_url": "https://pkg.go.dev/api",
+          "title": "API",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pkg.go.dev/",
+          "normalized_url": "https://pkg.go.dev/",
+          "title": "Packages",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pkg.go.dev/#",
+          "normalized_url": "https://pkg.go.dev/#",
+          "title": "Community",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/talks/",
+          "normalized_url": "https://go.dev/talks/",
+          "title": "Recorded Talks",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.meetup.com/pro/go",
+          "normalized_url": "https://www.meetup.com/pro/go",
+          "title": "Meetups",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/golang/go/wiki/Conferences",
+          "normalized_url": "https://github.com/golang/go/wiki/Conferences",
+          "title": "Conferences",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/blog",
+          "normalized_url": "https://go.dev/blog",
+          "title": "Go blog",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/help",
+          "normalized_url": "https://go.dev/help",
+          "title": "Go project",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pkg.go.dev/search?limit=25&m=package&q=rust",
+          "normalized_url": "https://pkg.go.dev/search?limit=25&m=package&q=rust",
+          "title": "Packages",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pkg.go.dev/search?limit=25&m=symbol&q=rust",
+          "normalized_url": "https://pkg.go.dev/search?limit=25&m=symbol&q=rust",
+          "title": "Symbols",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/copyright",
+          "normalized_url": "https://go.dev/copyright",
+          "title": "Copyright",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/tos",
+          "normalized_url": "https://go.dev/tos",
+          "title": "Terms of Service",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://www.google.com/intl/en/policies/privacy/",
+          "normalized_url": "http://www.google.com/intl/en/policies/privacy/",
+          "title": "Privacy Policy",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://go.dev/s/pkgsite-feedback",
+          "normalized_url": "https://go.dev/s/pkgsite-feedback",
+          "title": "Report an Issue",
+          "content": "",
+          "engine": "pkg go dev",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

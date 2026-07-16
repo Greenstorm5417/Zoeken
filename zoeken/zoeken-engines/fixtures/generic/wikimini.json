@@ -1,0 +1,620 @@
+{
+  "engine": "wikimini",
+  "case": "live",
+  "query": {
+    "query": "chat",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "chat",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://fr.wikimini.org/w/index.php?search=chat&title=Sp%C3%A9cial%3ASearch&fulltext=Search",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://fr.wikimini.org/w/index.php?search=chat&title=Sp%C3%A9cial%3ASearch&fulltext=Search",
+    "headers": {
+      "date": "Thu, 09 Jul 2026 14:06:44 GMT",
+      "vary": "Accept-Encoding,Cookie",
+      "x-content-type-options": "nosniff",
+      "server": "Apache/2.4.38 (Debian)",
+      "cache-control": "private, must-revalidate, max-age=0",
+      "content-type": "text/html; charset=UTF-8",
+      "x-ua-compatible": "IE=Edge",
+      "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+      "content-language": "fr"
+    },
+    "body": "        <!DOCTYPE html>\n<html class=\"client-nojs\" lang=\"fr\" dir=\"ltr\">\n<head>\n<meta charset=\"UTF-8\"/>\n<title>Résultats de recherche pour « chat » — Wikimini, l’encyclopédie pour enfants</title>\n<script>document.documentElement.className = document.documentElement.className.replace( /(^|\\s)client-nojs(\\s|$)/, \"$1client-js$2\" );</script>\n<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({\"wgCanonicalNamespace\":\"Special\",\"wgCanonicalSpecialPageName\":\"Search\",\"wgNamespaceNumber\":-1,\"wgPageName\":\"Spécial:Recherche\",\"wgTitle\":\"Recherche\",\"wgCurRevisionId\":0,\"wgRevisionId\":0,\"wgArticleId\":0,\"wgIsArticle\":false,\"wgIsRedirect\":false,\"wgAction\":\"view\",\"wgUserName\":null,\"wgUserGroups\":[\"*\"],\"wgCategories\":[],\"wgBreakFrames\":false,\"wgPageContentLanguage\":\"fr\",\"wgPageContentModel\":\"wikitext\",\"wgSeparatorTransformTable\":[\",\\t.\",\" \\t,\"],\"wgDigitTransformTable\":[\"\",\"\"],\"wgDefaultDateFormat\":\"dmy\",\"wgMonthNames\":[\"\",\"janvier\",\"février\",\"mars\",\"avril\",\"mai\",\"juin\",\"juillet\",\"août\",\"septembre\",\"octobre\",\"novembre\",\"décembre\"],\"wgMonthNamesShort\":[\"\",\"jan\",\"fév\",\"mar\",\"avr\",\"mai\",\"juin\",\"juil\",\"août\",\"sep\",\"oct\",\"nov\",\"déc\"],\"wgRelevantPageName\":\"Spécial:Recherche\",\"wgRelevantArticleId\":0,\"wgRequestId\":\"0549b5e5c9c844b8e57548dc\",\"wgIsProbablyEditable\":false,\"wgMediaViewerOnClick\":true,\"wgMediaViewerEnabledByDefault\":true,\"wgULSAcceptLanguageList\":[\"en-us\",\"en\"],\"wgULSCurrentAutonym\":\"français\",\"wgWikiEditorEnabledModules\":{\"toolbar\":true,\"dialogs\":true,\"hidesig\":true,\"preview\":true,\"publish\":true},\"wgVisualEditor\":{\"pageLanguageCode\":\"fr\",\"pageLanguageDir\":\"ltr\",\"usePageImages\":false,\"usePageDescriptions\":false},\"wgCategoryTreePageCategoryOptions\":\"{\\\"mode\\\":0,\\\"hideprefix\\\":20,\\\"showcount\\\":true,\\\"namespaces\\\":false}\",\"searchTerm\":\"chat\",\"wgVisualEditorToolbarScrollOffset\":0,\"wgEditSubmitButtonLabelPublish\":false});mw.loader.state({\"site.styles\":\"ready\",\"noscript\":\"ready\",\"user.styles\":\"ready\",\"user.cssprefs\":\"ready\",\"user\":\"ready\",\"user.options\":\"loading\",\"user.tokens\":\"loading\",\"mediawiki.special\":\"ready\",\"mediawiki.special.search.styles\":\"ready\",\"mediawiki.ui\":\"ready\",\"mediawiki.ui.button\":\"ready\",\"mediawiki.ui.input\":\"ready\",\"mediawiki.widgets.SearchInputWidget.styles\":\"ready\",\"mediawiki.helplink\":\"ready\",\"oojs-ui-core.styles\":\"ready\",\"oojs-ui.styles.icons\":\"ready\",\"oojs-ui.styles.indicators\":\"ready\",\"oojs-ui.styles.textures\":\"ready\",\"mediawiki.widgets.styles\":\"ready\",\"ext.uls.nojs\":\"ready\",\"ext.visualEditor.desktopArticleTarget.noscript\":\"ready\",\"mediawiki.legacy.shared\":\"ready\",\"mediawiki.legacy.commonPrint\":\"ready\",\"mediawiki.sectionAnchor\":\"ready\",\"mediawiki.skinning.interface\":\"ready\",\"skins.wikimini.styles\":\"ready\"});mw.loader.implement(\"user.options@1x2qlv5\",function($,jQuery,require,module){mw.user.options.set({\"variant\":\"fr\"});});mw.loader.implement(\"user.tokens@078r9hw\",function ( $, jQuery, require, module ) {\nmw.user.tokens.set({\"editToken\":\"+\\\\\",\"patrolToken\":\"+\\\\\",\"watchToken\":\"+\\\\\",\"csrfToken\":\"+\\\\\"});/*@nomin*/;\n\n});mw.loader.load([\"mediawiki.special.search\",\"mediawiki.page.startup\",\"mmv.head\",\"ext.uls.init\",\"ext.visualEditor.desktopArticleTarget.init\",\"swiffy.fr.js\",\"skins.wikimini.js\"]);});</script>\n<link rel=\"stylesheet\" href=\"/w/load.php?debug=false&amp;lang=fr&amp;modules=ext.uls.nojs%7Cext.visualEditor.desktopArticleTarget.noscript%7Cmediawiki.helplink%2CsectionAnchor%2Cspecial%2Cui%7Cmediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.skinning.interface%7Cmediawiki.special.search.styles%7Cmediawiki.ui.button%2Cinput%7Cmediawiki.widgets.SearchInputWidget.styles%7Cmediawiki.widgets.styles%7Coojs-ui-core.styles%7Coojs-ui.styles.icons%2Cindicators%2Ctextures%7Cskins.wikimini.styles&amp;only=styles&amp;skin=wikimini\"/>\n<script async=\"\" src=\"/w/load.php?debug=false&amp;lang=fr&amp;modules=startup&amp;only=scripts&amp;skin=wikimini\"></script>\n<meta name=\"ResourceLoaderDynamicStyles\" content=\"\"/>\n<link rel=\"stylesheet\" href=\"/w/load.php?debug=false&amp;lang=fr&amp;modules=site.styles&amp;only=styles&amp;skin=wikimini\"/>\n<meta name=\"generator\" content=\"MediaWiki 1.28.0\"/>\n<meta name=\"robots\" content=\"noindex,nofollow\"/>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n<link rel=\"canonical\" href=\"https://fr.wikimini.org/wiki/Sp%C3%A9cial:Recherche\"/>\n<link rel=\"shortcut icon\" href=\"/favicon.ico\"/>\n<link rel=\"search\" type=\"application/opensearchdescription+xml\" href=\"/w/opensearch_desc.php\" title=\"Wikimini, l’encyclopédie pour enfants (fr)\"/>\n<link rel=\"EditURI\" type=\"application/rsd+xml\" href=\"https://fr.wikimini.org/w/api.php?action=rsd\"/>\n<!--[if lt IE 7]><style type=\"text/css\">body{behavior:url(\"/w/skins/Wikimini/resources/htc/csshover.min.htc\")}</style><![endif]-->\n</head>\n<body class=\"mediawiki ltr sitedir-ltr mw-hide-empty-elt ns--1 ns-special mw-special-Search page-Spécial_Recherche rootpage-Spécial_Recherche skin-wikimini action-view\">\t<script>\n\t\tvar flashButton ='button=1'\n\t</script>\n    <!-- modal -->\n    <div class=\"modal\" id=\"uploadModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\n        <div class=\"modal-dialog\">\n            <div class=\"modal-content\">\n                <div class=\"modal-header\">\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n                     <h4 class=\"modal-title\">Upload</h4>\n\n                </div>\n                <div class=\"modal-body\">\n                    <iframe id=\"stockIframe\" data-src=\"https://stock.wikimini.org/wiki/Special:Upload\" src=\"\" width=\"770\" height=\"500\"></iframe>\n                </div>\n                <div class=\"modal-footer\">\n                    <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n                </div>\n            </div>\n            <!-- /.modal-content -->\n        </div>\n        <!-- /.modal-dialog -->\n    </div>\n    <!-- /.modal -->\n\t<div class=\"mw-body container\" role=\"main\">\n\t\t    \t\t        \t<div id=\"mobile-p-search\" role=\"search\" class=\"mobile-search-box text-left\">\n    \t\t        \t\t<div class=\"search-content\">\n\n    \t\t\t\t\t\t\t<form action=\"/w/index.php\" id=\"searchform\">\n    \t\t\t\t\t\t\t\t    \t\t\t\t\t\t\t\t<div id=\"simpleSearch\">\n    \t\t\t\t\t\t\t\t\t    \t\t\t\t\t\t\t\t<input type=\"search\" name=\"search\" placeholder=\"Rechercher sur Wikimini\" value=\"chat\" title=\"Chercher dans Wikimini [f]\" accesskey=\"f\" id=\"searchInput\"/><input type=\"hidden\" value=\"Spécial:Recherche\" name=\"title\"/><input type=\"submit\" name=\"fulltext\" value=\"Rechercher\" title=\"Rechercher les pages comportant ce texte.\" id=\"mw-searchButton\" class=\"searchButton mw-fallbackSearchButton\"/><input type=\"submit\" name=\"go\" value=\"Lire\" title=\"Aller vers une page portant exactement ce nom si elle existe.\" id=\"searchButton\" class=\"searchButton\"/>    \t\t\t\t\t\t\t\t\t</div>\n    \t\t\t\t\t\t\t</form>\n    \t\t\t\t\t\t</div>\n    \t\t\t\t\t</div>\n\n    \t    \t\t\t<div class=\"row hidden-xs\">\n\t\t\t<div id=\"swiffycontainer\" style=\"width: 760px; height: 278px\">\n            \t\t</div>\n\t\t</div>\n        <div class=\"row visible-xs-block\" id=\"mobileNav\">\n\t\t\t<nav class=\"navbar navbar-default navbar-wikimini\">\n\t\t\t  <div class=\"container-fluid\">\n\t\t\t    <div class=\"navbar-header\">\n\t\t\t      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#mainNav\" aria-expanded=\"false\">\n\t\t\t        <span class=\"sr-only\">Toggle navigation</span>\n\t\t\t        <span class=\"icon-bar\"></span>\n\t\t\t        <span class=\"icon-bar\"></span>\n\t\t\t        <span class=\"icon-bar\"></span>\n\t\t\t      </button>\n\n\t\t\t\t<a href=\"/wiki/Accueil\" class=\"navbar-brand\">\n\t\t\t\t\t<img src=\"/w/skins/Wikimini/resources/images/logofr.png\"\talt=\"Wikimini, l’encyclopédie pour enfants\"/>\n\t\t\t\t</a>\n\n\t\t\t    </div>\n\n\t\t\t    <!-- Nav -->\n\t\t\t    <div class=\"collapse navbar-collapse\" id=\"mainNav\">\n\t\t\t      <ul class=\"nav navbar-nav\">\n\t\t\t        <li class=\"active wm-home\"><a href=\"/\" title=\"Wikimini, l&#039;encyclopédie pour enfants et adolescents\">Accueil</a></li>\n\t\t\t        <li class=\"wm-children\"><a href=\"/wiki/Wikimini:Enfants_et_ados\" title=\"Pour les enfants et les adolescents\">Coin des enfants</a></li>\n\t\t\t        <li class=\"wm-adults\"><a href=\"/wiki/Wikimini:Adultes\" title=\"Pour les adultes et grands adolescents\">Coin des adultes</a></li>\n\t\t\t        <li class=\"wm-teachers\"><a href=\"/wiki/Wikimini:Enseignants\" title=\"Pour les enseignants et professionnels de l&#039;éducation\">Coin des enseignants</a></li>\n\t\t\t        <li class=\"wm-forum\"><a href=\"/wiki/Special:AWCforum\" title=\"Forum de discussion de Wikimini\" title=\"Forum de discussion\">Forum de discussion</a></li>\n\t\t\t        <li class=\"wm-help\"><a href=\"/wiki/Aide:Accueil\" title=\"Besoin d&#039;aide?\">Aide</a></li>\n\t\t\t      </ul>\n\t\t\t    </div>\n\t\t\t  </div>\n\t\t\t</nav>\n        </div>\n        <div class=\"row\">\n\n\t                <div id=\"siteNotice\"><div id=\"localNotice\" lang=\"fr\" dir=\"ltr\"><div class=\"center\"><div class=\"floatnone\"><div class=\"noresize\"><a href=\"/wiki/Sp%C3%A9cial:UserLogin/signup\" title=\"Cr&#xe9;e un compte pour modifier l'encyclop&#xe9;die\"><img alt=\"Inscris-toi pour &#xe9;crire dans l'encyclop&#xe9;die Wikimini!\" src=\"https://stock.wikimini.org/w/images/d/d0/Wikimini-anonnotice-create_an_account-fr.gif\" width=\"710\" height=\"13\" data-file-width=\"710\" data-file-height=\"13\"/></a></div></div></div>\n</div></div>\n                        <div class=\"mw-indicators\">\n<div id=\"mw-indicator-mw-helplink\" class=\"mw-indicator\"><a href=\"//www.mediawiki.org/wiki/Special:MyLanguage/Help:Searching\" target=\"_blank\" class=\"mw-helplink\">Aide</a></div>\n</div>\n\n      </div>\n      <div class=\"row\">\n      \t\t\t<div class=\"mobile-tool-box text-center\">\n\t\t\t<div>\n\t    \t\t<div class=\"dropdown\">\n\t\t\t\t\t  <button class=\"btn btn-default dropdown-toggle\" type=\"button\" id=\"dropdownMenu1\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"true\">\n\t\t\t\t\t    Ce que tu peux faire\t\t\t\t\t    <span class=\"caret\"></span>\n\t\t\t\t\t  </button>\n\t\t\t\t\t  <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">\n\n\t\t\t\t\t\t\t\t\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li class=\"ca-home\"><a href=\"/\" title=\"Retourner à la page principale de Wikimini [z]\" accesskey=\"z\">Retourner à l’accueil</a></li>\n\n\n\t\t\t\t\t  </ul>\n\t\t\t\t</div>\n\t\t\t</div>\n\t    </div>\n\t    \t\t      </div>\n\n\t        <div id=\"fluid-row\" class=\"row  fluid-candidate\">\n\n\t\t\t\t        <div id=\"fluid-content\" class=\"col-md-7\">\n\t\t\t\t        <div  id=\"content\">\n\t\t\t<h1 id=\"firstHeading\" class=\"firstHeading\" lang=\"fr\">\n\t\t\tRésultats de la recherche\t\t\t</h1>\n\n\t\t\t</h1>\n\t\t\t\t\t\t<div id=\"bodyContent\" class=\"mw-body-content\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div id=\"contentSub\"></div>\n\t\t\t\t\t\t\t\t\t\t\t\t<div id=\"jump-to-nav\" class=\"mw-jump\">\n\t\t\t\t\tAller à :\t\t\t\t\t<a href=\"#mw-head\">navigation</a>, \t\t\t\t\t<a href=\"#p-search\">rechercher</a>\n\t\t\t\t</div>\n\t\t\t\t<div id=\"mw-content-text\"><form id=\"search\" method=\"get\" action=\"/w/index.php\"><div id=\"mw-search-top-table\"><input type=\"hidden\" value=\"Spécial:Recherche\" name=\"title\"/><input type=\"hidden\" value=\"default\" name=\"profile\"/><input type=\"hidden\" value=\"Search\" name=\"fulltext\"/><div class='oo-ui-layout oo-ui-fieldLayout oo-ui-fieldLayout-align-top oo-ui-actionFieldLayout'><label class='oo-ui-fieldLayout-body'><span class='oo-ui-labelElement-label'></span><div class='oo-ui-fieldLayout-field'><div class='oo-ui-actionFieldLayout-input'><div id='searchText' aria-disabled='false' class='oo-ui-widget oo-ui-widget-enabled oo-ui-inputWidget oo-ui-iconElement oo-ui-textInputWidget oo-ui-textInputWidget-type-search mw-widget-titleInputWidget mw-widget-searchInputWidget' data-ooui='{\"_\":\"mw.widgets.SearchInputWidget\",\"pushPending\":false,\"performSearchOnClick\":true,\"dataLocation\":\"content\",\"highlightFirst\":false,\"validateTitle\":false,\"type\":\"search\",\"name\":\"search\",\"value\":\"chat\",\"icon\":\"search\"}'><input type='search' tabindex='0' aria-disabled='false' name='search' value='chat' class='oo-ui-inputWidget-input'></input><span class='oo-ui-iconElement-icon oo-ui-icon-search'></span><span class='oo-ui-indicatorElement-indicator'></span></div></div><div class='oo-ui-actionFieldLayout-button'><div aria-disabled='false' class='oo-ui-widget oo-ui-widget-enabled oo-ui-flaggedElement-progressive oo-ui-flaggedElement-primary oo-ui-inputWidget oo-ui-buttonElement oo-ui-buttonElement-framed oo-ui-labelElement oo-ui-buttonInputWidget'><button type='submit' tabindex='0' aria-disabled='false' value='' role='button' class='oo-ui-inputWidget-input oo-ui-buttonElement-button'><span class='oo-ui-iconElement-icon oo-ui-image-invert'></span><span class='oo-ui-labelElement-label'>Rechercher</span><span class='oo-ui-indicatorElement-indicator oo-ui-image-invert'></span></button></div></div></div></label></div><div class=\"results-info\">Résultats <strong>1 à 40</strong> parmi <strong>406</strong></div></div><div class=\"mw-search-visualclear\"></div><div class=\"mw-search-profile-tabs\"><div class=\"search-types\"><ul><li class=\"current\"><a href=\"/w/index.php?title=Sp%C3%A9cial:Recherche&amp;search=chat&amp;fulltext=Rechercher&amp;profile=default\" title=\"Rechercher dans Principal (articles)\">Pages de contenu (articles)</a></li><li class=\"normal\"><a href=\"/w/index.php?title=Sp%C3%A9cial:Recherche&amp;search=chat&amp;fulltext=Rechercher&amp;profile=images\" title=\"Rechercher des fichiers multimédias\">Multimédia</a></li><li class=\"normal\"><a href=\"/w/index.php?title=Sp%C3%A9cial:Recherche&amp;search=chat&amp;fulltext=Rechercher&amp;profile=threads\" title=\"Rechercher dans les fils de discussion et les pages de discussion\">Discussions</a></li><li class=\"normal\"><a href=\"/w/index.php?title=Sp%C3%A9cial:Recherche&amp;search=chat&amp;fulltext=Rechercher&amp;profile=all\" title=\"Rechercher dans tout le site (y compris dans les pages de discussion)\">Tout</a></li><li class=\"normal\"><a href=\"/w/index.php?title=Sp%C3%A9cial:Recherche&amp;search=chat&amp;fulltext=Rechercher&amp;profile=advanced\" title=\"Chercher dans les espaces de noms clients\">Recherche avancée</a></li></ul></div><div style=\"clear:both\"></div></div></form><div class='searchresults'><p class=\"mw-search-exists\">\n<strong>Il existe une page nommée «&#160;<a href=\"/wiki/Chat\" title=\"Chat\">Chat</a>&#160;» sur ce wiki.</strong> Voyez également les autres résultats de votre recherche.</p>\n<h2><span class=\"mw-headline\" id=\"Articles_ou_pages_qui_contiennent_cette_expression_dans_leur_TITRE\"><div class=\"floatleft\"><img alt=\"Wikiboo détective\" src=\"https://stock.wikimini.org/w/images/thumb/4/40/Wikiboo08_128x128.jpg/36px-Wikiboo08_128x128.jpg\" title=\"Wikiboo détective\" width=\"36\" height=\"36\" srcset=\"https://stock.wikimini.org/w/images/thumb/4/40/Wikiboo08_128x128.jpg/54px-Wikiboo08_128x128.jpg 1.5x, https://stock.wikimini.org/w/images/thumb/4/40/Wikiboo08_128x128.jpg/72px-Wikiboo08_128x128.jpg 2x\" data-file-width=\"128\" data-file-height=\"128\" /></div>Articles ou pages qui contiennent cette expression dans leur TITRE</span></h2>\n<ul class='mw-search-results'>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Chat_domestique\" title=\"Chat domestique\" data-serp-pos=\"0\">Chat domestique</a>    </div> <div class='searchresult'>{{Autres significations|<span class='searchmatch'>Chat</span> (Internet)}} \n...rès d'une cinquantaine de races de chats domestiques différentes.]]Le '''<span class='searchmatch'>chat</span> domestique (''Felis silvetris catus'') '''est un [[Mammifère|mammifère]] \n</div>\n<div class='mw-search-result-data'>13 Kio (2 191 mots) - 5 mai 2026 à 11:08</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Requin-chat_pygm%C3%A9\" title=\"Requin-chat pygmé\" data-serp-pos=\"1\">Requin-chat pygmé</a>    </div> <div class='searchresult'>Le '''requin-<span class='searchmatch'>chat</span> pygmé''' est une espèce de [[Requin|requin]]. C'est l'un des plus petits \n</div>\n<div class='mw-search-result-data'>167 o (27 mots) - 25 juillet 2012 à 11:31</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Requin-chat_pygm%C3%A9e\" class=\"mw-redirect\" title=\"Requin-chat pygmée\" data-serp-pos=\"2\">Requin-chat pygmée</a>    </div> <div class='searchresult'>#REDIRECTION [[Requin-<span class='searchmatch'>chat</span> pygmé]]\n</div>\n<div class='mw-search-result-data'>35 o (3 mots) - 20 décembre 2009 à 19:41</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Siamois_(chat)\" title=\"Siamois (chat)\" data-serp-pos=\"3\">Siamois (chat)</a>    </div> <div class='searchresult'>...t.jpg|thumb|right|Un <span class='searchmatch'>chat</span> siamois]]Le '''siamois''' est une race de [[<span class='searchmatch'>Chat</span>|<span class='searchmatch'>chat</span>]] originaire de [[Thaïlande|Thaïlande]], caractérisé par une tête tria\nLe <span class='searchmatch'>chat</span> siamois est de taille moyenne. Il est long et svelte, ses pattes sont fines\n</div>\n<div class='mw-search-result-data'>2 Kio (304 mots) - 20 août 2013 à 06:47</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Chat_perch%C3%A9\" title=\"Chat perché\" data-serp-pos=\"4\">Chat perché</a>    </div> <div class='searchresult'>...ne [[Souris|souris]] qui, lorsqu'elle sera touchée par le <span class='searchmatch'>chat</span>, deviendra <span class='searchmatch'>chat</span> à son tour. \n...re, une pierre, un banc... Qu'importe l'endroit où vous êtes perché, le <span class='searchmatch'>chat</span> ne pourra pas vous toucher. Mais attention&amp;nbsp;! pour que le jeu se poursu\n</div>\n<div class='mw-search-result-data'>661 o (105 mots) - 28 mai 2013 à 07:00</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Chat-tigre\" class=\"mw-redirect\" title=\"Chat-tigre\" data-serp-pos=\"5\">Chat-tigre</a>    </div> <div class='searchresult'></div>\n<div class='mw-search-result-data'>23 o (2 mots) - 4 avril 2010 à 01:42</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Chat_(Internet)\" title=\"Chat (Internet)\" data-serp-pos=\"6\">Chat (Internet)</a>    </div> <div class='searchresult'>{{Autres significations|<span class='searchmatch'>Chat</span>}} \nUn '''''<span class='searchmatch'>chat</span>''''' ou un '''Tchat''' (du verbe anglais ''to <span class='searchmatch'>chat</span>'' ce qui veut dire discuter) est un moyen de communication par [[Internet|i\n</div>\n<div class='mw-search-result-data'>934 o (119 mots) - 22 juin 2025 à 19:36</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Chat_Guigna\" title=\"Chat Guigna\" data-serp-pos=\"7\">Chat Guigna</a>    </div> <div class='searchresult'>&lt;br&gt;Le '''<span class='searchmatch'>Chat</span> Guigna''' a, à peine la taille d'un petit <span class='searchmatch'>chat</span> [[Animaux domestiques|domestique]]. Son pelage est parsemé de points et de\n&lt;br&gt;Le <span class='searchmatch'>Chat</span> Guigna est réparti dans les [[Forêt|fôrets]] humides du Sud des Andes et\n</div>\n<div class='mw-search-result-data'>2 Kio (296 mots) - 2 février 2022 à 15:28</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Chat_sauvage\" title=\"Chat sauvage\" data-serp-pos=\"8\">Chat sauvage</a>    </div> <div class='searchresult'>Le '''<span class='searchmatch'>chat</span> sauvage''' est l'unique cousin du [[Lynx|lynx]] et se rencontre encore dans\nLa robe du <span class='searchmatch'>chat</span> sauvage a parfois des grosses taches . Le dos est marqué d’une ligne noi\n</div>\n<div class='mw-search-result-data'>1 Kio (206 mots) - 2 février 2022 à 15:29</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Chartreux_(chat)\" title=\"Chartreux (chat)\" data-serp-pos=\"9\">Chartreux (chat)</a>    </div> <div class='searchresult'>'''Le chartreux '''est un [[<span class='searchmatch'>Chat</span>|<span class='searchmatch'>chat</span>]] originaire de France. Ses yeux sont d'une couleur cuivrée&amp;nbsp;et son pe\n</div>\n<div class='mw-search-result-data'>331 o (51 mots) - 2 février 2022 à 15:24</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Le_Chat_(bande-dessin%C3%A9e)\" title=\"Le Chat (bande-dessinée)\" data-serp-pos=\"10\">Le Chat (bande-dessinée)</a>    </div> <div class='searchresult'>{{Autres significations|<span class='searchmatch'>Chat</span>}} \n\n</div>\n<div class='mw-search-result-data'>547 o (85 mots) - 30 janvier 2015 à 16:45</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Chat_des_pampas\" title=\"Chat des pampas\" data-serp-pos=\"11\">Chat des pampas</a>    </div> <div class='searchresult'>[[Image:<span class='searchmatch'>Chat</span> des pampas.JPG|thumb|right|Dessin d'un <span class='searchmatch'>chat</span> des pampas]]Le '''<span class='searchmatch'>chat</span> des pampas''', aussi appelé '''colocolo''',&amp;nbsp;est une [[Espèce|espèce\n</div>\n<div class='mw-search-result-data'>1 Kio (174 mots) - 2 février 2022 à 15:26</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Chat_ligne\" title=\"Chat ligne\" data-serp-pos=\"12\">Chat ligne</a>    </div> <div class='searchresult'>Le jeu du '''<span class='searchmatch'>Chat</span> ligne''' est un jeu principalemment joué en récréation&lt;br&gt; \n</div>\n<div class='mw-search-result-data'>556 o (100 mots) - 24 octobre 2024 à 20:29</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Femme-chat\" title=\"Femme-chat\" data-serp-pos=\"13\">Femme-chat</a>    </div> <div class='searchresult'>...age|personnage]] [[Imaginaire|imaginaire]]. La légende dit que les femmes-<span class='searchmatch'>chat</span> sont des créatures, mais surtout des femmes qui ne respectent jamais la [[\n</div>\n<div class='mw-search-result-data'>422 o (67 mots) - 12 juin 2014 à 18:29</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Chat_glac%C3%A9\" title=\"Chat glacé\" data-serp-pos=\"14\">Chat glacé</a>    </div> <div class='searchresult'>'''<span class='searchmatch'>Chat</span> glacé''' est un [[Jeu|jeu]] qui repose sur la rapidité. \n\n</div>\n<div class='mw-search-result-data'>677 o (123 mots) - 6 avril 2013 à 17:39</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Moustache_de_chat\" class=\"mw-redirect\" title=\"Moustache de chat\" data-serp-pos=\"15\">Moustache de chat</a>    </div> <div class='searchresult'></div>\n<div class='mw-search-result-data'>25 o (2 mots) - 28 avril 2013 à 17:10</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Chat_marbr%C3%A9\" title=\"Chat marbré\" data-serp-pos=\"16\">Chat marbré</a>    </div> <div class='searchresult'>...noires qui recouvrent son pelage, puis sa queue est tachetée. '''&lt;u&gt;''Le <span class='searchmatch'>Chat</span> Marbré''&lt;/u&gt;''' mesure de 80 à 115cm et pèse de 4 à 8kg. \n&lt;u&gt;'''''L'''''&lt;b&gt;''e <span class='searchmatch'>Chat</span> Marbré''&lt;/b&gt;&lt;/u&gt; est présent sur les territoire suivants: \n</div>\n<div class='mw-search-result-data'>2 Kio (307 mots) - 11 juin 2013 à 15:32</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Chat_des_Andes\" title=\"Chat des Andes\" data-serp-pos=\"17\">Chat des Andes</a>    </div> <div class='searchresult'>Le <span class='searchmatch'>chat</span> des Andes vit dans une zone restreinte dans l'Amérique du Sud. \nLe <span class='searchmatch'>chat</span> des andes a été chasser de leurs habitat par les humains. \n</div>\n<div class='mw-search-result-data'>1 Kio (229 mots) - 2 février 2022 à 15:26</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Arbre_%C3%A0_chat\" title=\"Arbre à chat\" data-serp-pos=\"18\">Arbre à chat</a>    </div> <div class='searchresult'>Un '''arbre à <span class='searchmatch'>chat</span>''' est un [[accessoire]] permettant aux [[<span class='searchmatch'>Chat</span>|chats]] de griffer.&lt;br /&gt;\n</div>\n<div class='mw-search-result-data'>144 o (19 mots) - 30 janvier 2022 à 18:15</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Internet_Relay_Chat\" title=\"Internet Relay Chat\" data-serp-pos=\"19\">Internet Relay Chat</a>    </div> <div class='searchresult'>...tocole de [[Messagerie instantanée|messagerie]]&amp;nbsp;par texte ou [[Tchat|<span class='searchmatch'>chat</span>]]. \n...s instantanées]], comme [[Skype|Skype]], [[MSN|MSN]], [[Facebook|Facebook <span class='searchmatch'>Chat</span>]]... mais il reste toujours utilisé par des personnes n'aimant pas les pla\n</div>\n<div class='mw-search-result-data'>2 Kio (284 mots) - 22 juin 2025 à 19:52</div></li>\n</ul>\n<div class=\"mw-search-visualclear\"></div><h2><span class=\"mw-headline\" id=\"Certaines_pages_contiennent_cette_expression_dans_leur_texte\"><div class=\"floatleft\"><img alt=\"Wikiboo détective\" src=\"https://stock.wikimini.org/w/images/thumb/4/40/Wikiboo08_128x128.jpg/36px-Wikiboo08_128x128.jpg\" title=\"Wikiboo détective\" width=\"36\" height=\"36\" srcset=\"https://stock.wikimini.org/w/images/thumb/4/40/Wikiboo08_128x128.jpg/54px-Wikiboo08_128x128.jpg 1.5x, https://stock.wikimini.org/w/images/thumb/4/40/Wikiboo08_128x128.jpg/72px-Wikiboo08_128x128.jpg 2x\" data-file-width=\"128\" data-file-height=\"128\" /></div>Certaines pages contiennent cette expression dans leur texte</span></h2>\n<ul class='mw-search-results'>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Requin\" title=\"Requin\" data-serp-pos=\"0\">Requin</a>    </div> <div class='searchresult'>...[[Grand requin blanc|grand requin blanc]], le [[Requin-<span class='searchmatch'>chat</span> pygmée|requin-<span class='searchmatch'>chat</span> pygmée]] etc. Il en existe plus de 450 espèces différentes.\n</div>\n<div class='mw-search-result-data'>4 Kio (599 mots) - 26 octobre 2020 à 00:19</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Carnivore_(r%C3%A9gime_alimentaire)\" title=\"Carnivore (régime alimentaire)\" data-serp-pos=\"1\">Carnivore (régime alimentaire)</a>    </div> <div class='searchresult'>*le [[<span class='searchmatch'>Chat</span>|<span class='searchmatch'>chat</span>]] \n</div>\n<div class='mw-search-result-data'>1 Kio (172 mots) - 5 février 2015 à 18:25</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Batman\" title=\"Batman\" data-serp-pos=\"2\">Batman</a>    </div> <div class='searchresult'>...e Batman est composé d'une cape pointue, d'un masque avec des oreilles de <span class='searchmatch'>chat</span>. Le héros porte aussi des bottes, des gants et une ceinture avec des gadge\n</div>\n<div class='mw-search-result-data'>2 Kio (314 mots) - 19 décembre 2018 à 09:30</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Tigre\" title=\"Tigre\" data-serp-pos=\"3\">Tigre</a>    </div> <div class='searchresult'>...st habitué à recouvrir ses [[Excrément|excréments]] de terre(comme les <span class='searchmatch'>chat</span>) et à tirer les restes d'une proie dans les fourrés pour les cacher et le\n</div>\n<div class='mw-search-result-data'>6 Kio (1 089 mots) - 26 mars 2022 à 22:01</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Jean_de_La_Fontaine\" title=\"Jean de La Fontaine\" data-serp-pos=\"4\">Jean de La Fontaine</a>    </div> <div class='searchresult'>*Le Cochet, le <span class='searchmatch'>Chat</span> et le Souriceau \n</div>\n<div class='mw-search-result-data'>4 Kio (695 mots) - 15 février 2025 à 05:43</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Lynx\" title=\"Lynx\" data-serp-pos=\"5\">Lynx</a>    </div> <div class='searchresult'>...geur|rongeurs]], de [[Chamois|chamois]], de [[Chevreuil|chevreuils]], de [[<span class='searchmatch'>Chat</span>|chats]], d'[[Oiseau|oiseaux]], d'[[Insecte|insectes]], de [[Reptile|reptile\n</div>\n<div class='mw-search-result-data'>2 Kio (348 mots) - 23 janvier 2024 à 11:30</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Liste_des_races_de_chats\" title=\"Liste des races de chats\" data-serp-pos=\"6\">Liste des races de chats</a>    </div> <div class='searchresult'>[[Image:<span class='searchmatch'>Chat</span>.félins-6282.jpg|thumb|Chaton ''mackerel tabby'']]Voici la '''liste des rac\nLes [[<span class='searchmatch'>Chat</span>|chats]] issus d'une lignée d'ancêtres de la même [[Race|race]] sont dits\n</div>\n<div class='mw-search-result-data'>3 Kio (391 mots) - 7 septembre 2024 à 11:48</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Internet\" title=\"Internet\" data-serp-pos=\"7\">Internet</a>    </div> <div class='searchresult'>*'''La [[Messagerie instantanée|messagerie instantanée]]''' (ou ''<span class='searchmatch'>chat</span>'')&lt;br&gt;C'est le service qui te permet de dialoguer en temps réel avec d'aut\n</div>\n<div class='mw-search-result-data'>4 Kio (671 mots) - 24 février 2026 à 18:55</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/%C3%89cureuil\" title=\"Écureuil\" data-serp-pos=\"8\">Écureuil</a>    </div> <div class='searchresult'>...il etait la [[Martre|martre]] qui le poursuit jusque dans les branches. Le <span class='searchmatch'>chat</span> domestique est aussi très dangereux pour lui cat il existe presque dans to\n</div>\n<div class='mw-search-result-data'>3 Kio (515 mots) - 28 août 2025 à 23:27</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Ha%C3%AFku\" title=\"Haïku\" data-serp-pos=\"9\">Haïku</a>    </div> <div class='searchresult'>...uvent aussi être amusants, légers voire provocateurs:&lt;br&gt;''Il chie&lt;br&gt;le <span class='searchmatch'>chat</span> errant&lt;br&gt;dans le jardin tout blanc''&lt;br&gt;''Masuoka Shiki'' \n</div>\n<div class='mw-search-result-data'>3 Kio (466 mots) - 9 mai 2021 à 19:31</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Luck_(film_d%27animation)\" title=\"Luck (film d'animation)\" data-serp-pos=\"10\">Luck (film d&#039;animation)</a>    </div> <div class='searchresult'>...’avoir de la chance, mais elle la perd aux toilettes. Elle suit alors le <span class='searchmatch'>chat</span> noir à qui la pièce appartient et qui est une sorte de ''pass'' pour voya\n</div>\n<div class='mw-search-result-data'>685 o (128 mots) - 2 novembre 2025 à 12:17</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/M%C3%A9kong\" title=\"Mékong\" data-serp-pos=\"11\">Mékong</a>    </div> <div class='searchresult'>*Poisson-<span class='searchmatch'>chat</span> géant \n</div>\n<div class='mw-search-result-data'>1 Kio (145 mots) - 4 janvier 2013 à 16:32</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Superstition\" title=\"Superstition\" data-serp-pos=\"12\">Superstition</a>    </div> <div class='searchresult'>*Voir un [[<span class='searchmatch'>Chat</span>|<span class='searchmatch'>chat</span>]] noir est un mauvais signe.\n</div>\n<div class='mw-search-result-data'>727 o (103 mots) - 30 juillet 2014 à 21:00</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Bleach\" title=\"Bleach\" data-serp-pos=\"13\">Bleach</a>    </div> <div class='searchresult'>...Sado (jeune lycéen avec des pouvoirs) et Yoruichi (qui a pris la forme de <span class='searchmatch'>chat</span>).&amp;nbsp;&amp;nbsp; \n</div>\n<div class='mw-search-result-data'>3 Kio (493 mots) - 1 février 2014 à 10:47</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Aphrodite\" title=\"Aphrodite\" data-serp-pos=\"14\">Aphrodite</a>    </div> <div class='searchresult'>Bélier, Bouc, Coquillage, Lièvre, Colombe, Cygne, Tourterelle, <span class='searchmatch'>Chat</span>. \n</div>\n<div class='mw-search-result-data'>4 Kio (782 mots) - 10 février 2026 à 22:56</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Marilyn_Manson\" title=\"Marilyn Manson\" data-serp-pos=\"15\">Marilyn Manson</a>    </div> <div class='searchresult'>...ait jamais de mal à des êtres sans défense, et il possède lui-même un <span class='searchmatch'>chat</span>.\n</div>\n<div class='mw-search-result-data'>2 Kio (282 mots) - 3 janvier 2013 à 15:42</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Rondoudou\" title=\"Rondoudou\" data-serp-pos=\"16\">Rondoudou</a>    </div> <div class='searchresult'>...sa couleur rose barbapapa et ses oreilles, très ressemblants à ceux d'un <span class='searchmatch'>chat</span>. Il est jouable dans [[Super Smash Bros.]] en tant que personnage débloqua\n</div>\n<div class='mw-search-result-data'>647 o (105 mots) - 24 juillet 2013 à 09:05</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Fauve_(animal)\" title=\"Fauve (animal)\" data-serp-pos=\"17\">Fauve (animal)</a>    </div> <div class='searchresult'>...rd|guépard]], etc. pour les distinguer des petits félins comme le [[<span class='searchmatch'>Chat</span>|<span class='searchmatch'>chat</span> domestique]] par exemple.&lt;br /&gt;\n</div>\n<div class='mw-search-result-data'>320 o (48 mots) - 11 février 2022 à 19:24</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/American_wirehair\" title=\"American wirehair\" data-serp-pos=\"18\">American wirehair</a>    </div> <div class='searchresult'>...n wirehair''' est une nouvelle [[Liste des races de chats|race]] de [[<span class='searchmatch'>Chat</span>|<span class='searchmatch'>chat</span>]] apparue spontanément en 1966 dans l'[[État de New York|État de New Yor\n</div>\n<div class='mw-search-result-data'>1 Kio (199 mots) - 30 janvier 2022 à 17:22</div></li>\n<li><div class='mw-search-result-heading'><a href=\"/wiki/Bobtail_japonais\" title=\"Bobtail japonais\" data-serp-pos=\"19\">Bobtail japonais</a>    </div> <div class='searchresult'>Le '''bobtail japonais''' est une [[Liste des races de chats|race]] de [[<span class='searchmatch'>Chat</span>|<span class='searchmatch'>chat</span>]] originaire du [[Japon|Japon]] où elle est connue depuis 2000 ans. Elle a\n</div>\n<div class='mw-search-result-data'>574 o (87 mots) - 31 janvier 2022 à 20:10</div></li>\n</ul>\n<div class=\"mw-search-visualclear\"></div><p class='mw-search-pager-bottom'> -- Voir 20 précédents | <a href=\"/w/index.php?title=Sp%C3%A9cial:Recherche&amp;limit=20&amp;offset=20&amp;profile=default&amp;search=chat\" title=\"20 résultats suivants\" class=\"mw-nextlink\">20 suivants</a>.</p>\n</div></div>\t\t\t\t<div id=\"catlinks\"><div id=\"catlinks\" class=\"catlinks catlinks-allhidden\" data-mw=\"interface\"></div></div><!-- end content -->\n\n\n\t\t\t\t\t        \t</div>\n\t        </div>\n\n\n\n\t        </div>\n\n\t\t\t\t        <div  id=\"fluid-sidebar\" class=\"col-md-5  text-center\"  id=\"bodyTools\">\n\n\n\t\t\t<!-- Options (print, home, etc.)  -->\n\t\t\t\t<div class=\"OptionsBox\">\n\t\t\t\t   <div class=\"visualClear\"><span id=\"OptionsTexte\" class=\"OptionsTexte_Hidden\"></span></div>\n\t\t\t\t   <div id=\"MenuOptions\">\n\t\t\t\t  <!--   -->\n             <a id=\"HeaderButton\" data-toggle=\"tooltip\" data-original-title=\"Réduire l&#039;en-tête\" data-text1=\"Réduire l&#039;en-tête\"  data-text2=\"Afficher l&#039;en-tête\">\n              <img class=\"MenuOptionsBouton\" src=\"/w/skins/Wikimini/resources/images/hide-header-b.png\" alt=\"$this->msg( 'wikimini-tooltip-reduce-header' ) ?>\"></a>\n\n\t\t\t\t\t   <img src=\"/w/skins/Wikimini/resources/images/blank-18x18.png\" width=\"9\">\n\n\t\t\t\t\t   <a id=\"SiteWidth\" data-toggle=\"tooltip\" data-original-title=\"Afficher le site en pleine largeur\" data-text1=\"Afficher le site en pleine largeur\"  data-text2=\"Afficher le site en largeur réduite\">\n             <img class=\"MenuOptionsBouton\" src=\"/w/skins/Wikimini/resources/images/expand-b.png\" alt=\"Afficher le site en pleine largeur\"></a>\n\n\n\t\t\t\t\t   <img src=\"/w/skins/Wikimini/resources/images/blank-18x18.png\" width=\"9\">\n\n\t\t\t\t\t   <a id=\"IncreaseFont\" data-toggle=\"tooltip\" data-original-title=\"Augmenter la taille de la police\">\n             <img class=\"MenuOptionsBouton\" src=\"/w/skins/Wikimini/resources/images/font-plus-b.png\" alt=\"Augmenter la taille de la police\"></a>\n\t\t\t\t\t   <a id=\"DecreaseFont\" data-toggle=\"tooltip\" data-original-title=\"Diminuer la taille de la police\">\n              <img class=\"MenuOptionsBouton\" src=\"/w/skins/Wikimini/resources/images/font-minus-b.png\" alt=\"Diminuer la taille de la police\"></a>\n\t\t\t\t\t   <a id=\"DefaultFontSize\" data-toggle=\"tooltip\" data-original-title=\"Rétablir la taille de la police\">\n\t\t\t\t\t   \t<img class=\"MenuOptionsBouton\" src=\"/w/skins/Wikimini/resources/images/font-default-b.png\" alt=\"Rétablir la taille de la police\"></a>\n\n\t\t\t\t\t   <img src=\"/w/skins/Wikimini/resources/images/blank-18x18.png\" width=\"9\">\n\n\t\t\t\t\t   <a id=\"PrintVersion\" data-toggle=\"tooltip\" data-original-title=\"Version imprimable\">\n\t\t\t\t\t   \t<img class=\"MenuOptionsBouton\" src=\"/w/skins/Wikimini/resources/images/printer-b.png\" alt=\"Version imprimable\"></a>\n\t\t\t\t   </div>\n\t\t\t\t</div>\n\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"option-box text-center\">\n\t\t\t\t\t\t\t\t\t<div class=\"text-left\">\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t<h5><img src=\"/w/skins/Wikimini/resources/images/wikiboo06_36x36_trans.png\"  alt=\"Wikiboo\" /> Ce que tu peux faire</h5>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<br />\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"p1\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<img src=\"/w/skins/Wikimini/resources/images/home.png\" alt=\"Retourner à l’accueil\" />&nbsp;&nbsp;\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a class=\"blackbold\" href=\"/w\" title=\"Retourner à la page principale de Wikimini [z]\" accesskey=\"z\">Retourner à l’accueil</a>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t        </div>\n            \n        </div>\n          \n        <div class=\"row   fluid-candidate\">\n\n\t        \t<div class=\"content-bottom\">\n\t\t\t\t\t<h5><img src=\"/w/skins/Wikimini/resources/images/wikiboo12_36x36_trans.png\" alt=\"Wikiboo\" />&nbsp;Outils personnels</h5>\n\t\t\t\t\t<div class=\"box-bottom\">\n\n\t\t\t\t\t\t<div class=\"\" style=\"padding: 15px;\">\n\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<li id=\"pt-login\"><a href=\"/w/index.php?title=Sp%C3%A9cial:Connexion&amp;returnto=Sp%C3%A9cial%3ARecherche&amp;returntoquery=search%3Dchat%26fulltext%3DSearch\"pt-login>Créer un compte ou me connecter</a></li>\n\t\t\t\t\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t</div>\n\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n        <div class=\"row   fluid-candidate\">\n\t\t\t\t<!--footer -->\n\t\t\t\t<div class=\"col-md-12 text-center\" id=\"footer\">\n\t\t\t\t\t<ul id=\"f-list\" style=\"padding-bottom:8px;\">\n\t\t\t\t\t\t\t\t<li id=\"about\"><a href=\"/wiki/Wikimini:%C3%80_propos\" title=\"Wikimini:À propos\">À propos de Wikimini</a></li>\n\t\t\t\t\t\t\t\t<li id=\"disclaimer\"><a href=\"/wiki/Wikimini:Avertissements_g%C3%A9n%C3%A9raux\" title=\"Wikimini:Avertissements généraux\">Avertissements</a></li>\n\t\t\t\t\t\t\t\t<li id=\"privacy\"><a href=\"/wiki/Wikimini:Confidentialit%C3%A9\" title=\"Wikimini:Confidentialité\">Confidentialité</a></li>\n\t\t\t\t\t\t                   \t\t<li><a href=\"/wiki/Wikimini:Accessibilité\">Accessibilité</a></li><li><a href=\"/wiki/Wikimini:Droits_d'utilisation\">Droits d'utilisation</a></li><li><a href=\"/wiki/Wikimini:Presse\">Presse & médias</a></li>\n\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t<p class=\"center\" style=\"font-size:90%;\">Wikimini, l’<a href=\"https://fr.wikimini.org\">encyclopédie pour enfants</a> écrite <a href=\"https://fr.wikimini.org/wiki/Wikimini:Enfants_et_ados\">par les enfants</a> | Partagé sur l’<a href=\"https://hepicerie.com\" title=\"Plateforme d’échange de ressources pédagogiques libres et gratuites pour l’enseignement\">Hepicerie - Ressources pédagogiques</a>\t\t\t\t\t\t\t<!--&nbsp;|&nbsp;\n\t\t\t\t\t\t\t<a rel=\"nofollow\" href=\"http://validator.w3.org/check/referer\"><img src=\"/w/skins/Wikimini/resources/images/validator-xhtml.gif\" alt=\"Wiki valide XHTML 1.0\" /></a>&nbsp;\n\t\t\t\t\t\t\t<a rel=\"nofollow\" href=\"http://jigsaw.w3.org/css-validator/check/referer?profile=css3\"><img src=\"/w/skins/Wikimini/resources/images/validator-css.gif\" alt=\"Wiki valide CSS 3\" /></a>&nbsp;\n\t\t\t\t\t\t\t<a rel=\"nofollow\" href=\"http://www.w3.org/WAI/WCAG1A-Conformance\"><img src=\"/w/skins/Wikimini/resources/images/validator-aaa.gif\" alt=\"Wiki valide WCAG1A\" /></a>&nbsp;\n\t\t\t\t\t\t\t<a href=\"/wiki/Wikimini:Syndication\"><img src=\"/w/skins/Wikimini/resources/images/rss-xml.gif\" alt=\"Flux de syndication RSS et Atom du wiki\" /></a>-->\n\t\t\t\t\t\t\t</p>\n\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<!--footer end-->\n\n\n\n        </div>\n\t</div>\n\n<!-- AddThis Button BEGIN -->\n<script type=\"text/javascript\">\n\tvar addthis_config = {\n\tdata_track_addressbar:false,\n\tui_language: \"fr\"\n\t}\n\n</script>\n<!--\n<script type=\"text/javascript\" src=\"//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50b8ff8752329ed7\"></script>\n-->\n<!-- AddThis Button END -->\n\n<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({\"wgBackendResponseTime\":1163});});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.load([\"site\",\"mediawiki.user\",\"mediawiki.hidpi\",\"mediawiki.page.ready\",\"mediawiki.searchSuggest\",\"mmv.bootstrap.autostart\",\"ext.uls.pt\",\"ext.visualEditor.targetLoader\",\"skins.wikimini.js2\"]);});</script>\n<script src=\"//bits.wikimedia.org/geoiplookup\"></script><!-- Matomo -->\n<script type=\"text/javascript\">\n  var _paq = _paq || [];\n_paq.push([\"setDocumentTitle\", document.domain + \"/\" + document.title]);_paq.push([\"setCookieDomain\", \"*.wikimini.org\", \"*.wikimini.wikimedia.ch\"]);\n  _paq.push([\"trackSiteSearch\",\"chat\",\"default\",40]);\n  _paq.push([\"enableLinkTracking\"]);\n\n  (function() {\n    var u = ((\"https:\" == document.location.protocol) ? \"https\" : \"http\") + \"://\"+\"matomo.wikimedia.ch/\";\n    _paq.push([\"setTrackerUrl\", u+\"piwik.php\"]);\n    _paq.push([\"setSiteId\", \"1\"]);\n    var d=document, g=d.createElement(\"script\"), s=d.getElementsByTagName(\"script\")[0]; g.type=\"text/javascript\";\n    g.defer=true; g.async=true; g.src=u+\"piwik.js\"; s.parentNode.insertBefore(g,s);\n  })();\n</script>\n<!-- End Matomo Code -->\n\n<!-- Matomo Image Tracker -->\n<noscript><img src=\"https://matomo.wikimedia.ch/piwik.php?idsite=1&rec=1&search=chat&search_cat=default&search_count=40\" style=\"border:0\" alt=\"\" /></noscript>\n<!-- End Matomo --><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({\"wgBackendResponseTime\":1163});});</script><!--\n <script type=\"text/javascript\">\n \t\t  var _gaq = _gaq || [];\n \t\t  _gaq.push(['_setAccount', 'UA-6055853-1']);\n \t\t  _gaq.push(['_trackPageview']);\n\n \t\t  (function() {\n \t\t    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;\n \t\t    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\n \t\t    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);\n  \t\t })();\n </script>\n-->\n     </body>\n</html>\n"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Chat_domestique",
+          "normalized_url": "https://fr.wikimini.org/wiki/Chat_domestique",
+          "title": "Chat domestique",
+          "content": "{{Autres significations|Chat (Internet)}} ...rès d'une cinquantaine de races de chats domestiques différentes.]]Le '''chat domestique (''Felis silvetris catus'') '''est un [[Mammifère|mammifère]]",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Requin-chat_pygm%C3%A9",
+          "normalized_url": "https://fr.wikimini.org/wiki/Requin-chat_pygm%C3%A9",
+          "title": "Requin-chat pygmé",
+          "content": "Le '''requin-chat pygmé''' est une espèce de [[Requin|requin]]. C'est l'un des plus petits",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Requin-chat_pygm%C3%A9e",
+          "normalized_url": "https://fr.wikimini.org/wiki/Requin-chat_pygm%C3%A9e",
+          "title": "Requin-chat pygmée",
+          "content": "#REDIRECTION [[Requin-chat pygmé]]",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Siamois_(chat)",
+          "normalized_url": "https://fr.wikimini.org/wiki/Siamois_(chat)",
+          "title": "Siamois (chat)",
+          "content": "...t.jpg|thumb|right|Un chat siamois]]Le '''siamois''' est une race de [[Chat|chat]] originaire de [[Thaïlande|Thaïlande]], caractérisé par une tête tria Le chat siamois est de taille moyenne. Il est long et svelte, ses pattes sont fines",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Chat_perch%C3%A9",
+          "normalized_url": "https://fr.wikimini.org/wiki/Chat_perch%C3%A9",
+          "title": "Chat perché",
+          "content": "...ne [[Souris|souris]] qui, lorsqu'elle sera touchée par le chat, deviendra chat à son tour. ...re, une pierre, un banc... Qu'importe l'endroit où vous êtes perché, le chat ne pourra pas vous toucher. Mais attention ! pour que le jeu se poursu",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Chat-tigre",
+          "normalized_url": "https://fr.wikimini.org/wiki/Chat-tigre",
+          "title": "Chat-tigre",
+          "content": "",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Chat_(Internet)",
+          "normalized_url": "https://fr.wikimini.org/wiki/Chat_(Internet)",
+          "title": "Chat (Internet)",
+          "content": "{{Autres significations|Chat}} Un '''''chat''''' ou un '''Tchat''' (du verbe anglais ''to chat'' ce qui veut dire discuter) est un moyen de communication par [[Internet|i",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Chat_Guigna",
+          "normalized_url": "https://fr.wikimini.org/wiki/Chat_Guigna",
+          "title": "Chat Guigna",
+          "content": "Le '''Chat Guigna''' a, à peine la taille d'un petit chat [[Animaux domestiques|domestique]]. Son pelage est parsemé de points et de Le Chat Guigna est réparti dans les [[Forêt|fôrets]] humides du Sud des Andes et",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Chat_sauvage",
+          "normalized_url": "https://fr.wikimini.org/wiki/Chat_sauvage",
+          "title": "Chat sauvage",
+          "content": "Le '''chat sauvage''' est l'unique cousin du [[Lynx|lynx]] et se rencontre encore dans La robe du chat sauvage a parfois des grosses taches . Le dos est marqué d’une ligne noi",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Chartreux_(chat)",
+          "normalized_url": "https://fr.wikimini.org/wiki/Chartreux_(chat)",
+          "title": "Chartreux (chat)",
+          "content": "'''Le chartreux '''est un [[Chat|chat]] originaire de France. Ses yeux sont d'une couleur cuivrée et son pe",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Le_Chat_(bande-dessin%C3%A9e)",
+          "normalized_url": "https://fr.wikimini.org/wiki/Le_Chat_(bande-dessin%C3%A9e)",
+          "title": "Le Chat (bande-dessinée)",
+          "content": "{{Autres significations|Chat}}",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Chat_des_pampas",
+          "normalized_url": "https://fr.wikimini.org/wiki/Chat_des_pampas",
+          "title": "Chat des pampas",
+          "content": "[[Image:Chat des pampas.JPG|thumb|right|Dessin d'un chat des pampas]]Le '''chat des pampas''', aussi appelé '''colocolo''', est une [[Espèce|espèce",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Chat_ligne",
+          "normalized_url": "https://fr.wikimini.org/wiki/Chat_ligne",
+          "title": "Chat ligne",
+          "content": "Le jeu du '''Chat ligne''' est un jeu principalemment joué en récréation",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Femme-chat",
+          "normalized_url": "https://fr.wikimini.org/wiki/Femme-chat",
+          "title": "Femme-chat",
+          "content": "...age|personnage]] [[Imaginaire|imaginaire]]. La légende dit que les femmes-chat sont des créatures, mais surtout des femmes qui ne respectent jamais la [[",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Chat_glac%C3%A9",
+          "normalized_url": "https://fr.wikimini.org/wiki/Chat_glac%C3%A9",
+          "title": "Chat glacé",
+          "content": "'''Chat glacé''' est un [[Jeu|jeu]] qui repose sur la rapidité.",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Moustache_de_chat",
+          "normalized_url": "https://fr.wikimini.org/wiki/Moustache_de_chat",
+          "title": "Moustache de chat",
+          "content": "",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Chat_marbr%C3%A9",
+          "normalized_url": "https://fr.wikimini.org/wiki/Chat_marbr%C3%A9",
+          "title": "Chat marbré",
+          "content": "...noires qui recouvrent son pelage, puis sa queue est tachetée. '''''Le Chat Marbré''''' mesure de 80 à 115cm et pèse de 4 à 8kg. '''''L'''''''e Chat Marbré'' est présent sur les territoire suivants:",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Chat_des_Andes",
+          "normalized_url": "https://fr.wikimini.org/wiki/Chat_des_Andes",
+          "title": "Chat des Andes",
+          "content": "Le chat des Andes vit dans une zone restreinte dans l'Amérique du Sud. Le chat des andes a été chasser de leurs habitat par les humains.",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Arbre_%C3%A0_chat",
+          "normalized_url": "https://fr.wikimini.org/wiki/Arbre_%C3%A0_chat",
+          "title": "Arbre à chat",
+          "content": "Un '''arbre à chat''' est un [[accessoire]] permettant aux [[Chat|chats]] de griffer.",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Internet_Relay_Chat",
+          "normalized_url": "https://fr.wikimini.org/wiki/Internet_Relay_Chat",
+          "title": "Internet Relay Chat",
+          "content": "...tocole de [[Messagerie instantanée|messagerie]] par texte ou [[Tchat|chat]]. ...s instantanées]], comme [[Skype|Skype]], [[MSN|MSN]], [[Facebook|Facebook Chat]]... mais il reste toujours utilisé par des personnes n'aimant pas les pla",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Requin",
+          "normalized_url": "https://fr.wikimini.org/wiki/Requin",
+          "title": "Requin",
+          "content": "...[[Grand requin blanc|grand requin blanc]], le [[Requin-chat pygmée|requin-chat pygmée]] etc. Il en existe plus de 450 espèces différentes.",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Carnivore_(r%C3%A9gime_alimentaire)",
+          "normalized_url": "https://fr.wikimini.org/wiki/Carnivore_(r%C3%A9gime_alimentaire)",
+          "title": "Carnivore (régime alimentaire)",
+          "content": "*le [[Chat|chat]]",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Batman",
+          "normalized_url": "https://fr.wikimini.org/wiki/Batman",
+          "title": "Batman",
+          "content": "...e Batman est composé d'une cape pointue, d'un masque avec des oreilles de chat. Le héros porte aussi des bottes, des gants et une ceinture avec des gadge",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Tigre",
+          "normalized_url": "https://fr.wikimini.org/wiki/Tigre",
+          "title": "Tigre",
+          "content": "...st habitué à recouvrir ses [[Excrément|excréments]] de terre(comme les chat) et à tirer les restes d'une proie dans les fourrés pour les cacher et le",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Jean_de_La_Fontaine",
+          "normalized_url": "https://fr.wikimini.org/wiki/Jean_de_La_Fontaine",
+          "title": "Jean de La Fontaine",
+          "content": "*Le Cochet, le Chat et le Souriceau",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Lynx",
+          "normalized_url": "https://fr.wikimini.org/wiki/Lynx",
+          "title": "Lynx",
+          "content": "...geur|rongeurs]], de [[Chamois|chamois]], de [[Chevreuil|chevreuils]], de [[Chat|chats]], d'[[Oiseau|oiseaux]], d'[[Insecte|insectes]], de [[Reptile|reptile",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Liste_des_races_de_chats",
+          "normalized_url": "https://fr.wikimini.org/wiki/Liste_des_races_de_chats",
+          "title": "Liste des races de chats",
+          "content": "[[Image:Chat.félins-6282.jpg|thumb|Chaton ''mackerel tabby'']]Voici la '''liste des rac Les [[Chat|chats]] issus d'une lignée d'ancêtres de la même [[Race|race]] sont dits",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Internet",
+          "normalized_url": "https://fr.wikimini.org/wiki/Internet",
+          "title": "Internet",
+          "content": "*'''La [[Messagerie instantanée|messagerie instantanée]]''' (ou ''chat'')C'est le service qui te permet de dialoguer en temps réel avec d'aut",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/%C3%89cureuil",
+          "normalized_url": "https://fr.wikimini.org/wiki/%C3%89cureuil",
+          "title": "Écureuil",
+          "content": "...il etait la [[Martre|martre]] qui le poursuit jusque dans les branches. Le chat domestique est aussi très dangereux pour lui cat il existe presque dans to",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Ha%C3%AFku",
+          "normalized_url": "https://fr.wikimini.org/wiki/Ha%C3%AFku",
+          "title": "Haïku",
+          "content": "...uvent aussi être amusants, légers voire provocateurs:''Il chiele chat errantdans le jardin tout blanc''''Masuoka Shiki''",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Luck_(film_d%27animation)",
+          "normalized_url": "https://fr.wikimini.org/wiki/Luck_(film_d%27animation)",
+          "title": "Luck (film d'animation)",
+          "content": "...’avoir de la chance, mais elle la perd aux toilettes. Elle suit alors le chat noir à qui la pièce appartient et qui est une sorte de ''pass'' pour voya",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/M%C3%A9kong",
+          "normalized_url": "https://fr.wikimini.org/wiki/M%C3%A9kong",
+          "title": "Mékong",
+          "content": "*Poisson-chat géant",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Superstition",
+          "normalized_url": "https://fr.wikimini.org/wiki/Superstition",
+          "title": "Superstition",
+          "content": "*Voir un [[Chat|chat]] noir est un mauvais signe.",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Bleach",
+          "normalized_url": "https://fr.wikimini.org/wiki/Bleach",
+          "title": "Bleach",
+          "content": "...Sado (jeune lycéen avec des pouvoirs) et Yoruichi (qui a pris la forme de chat).",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Aphrodite",
+          "normalized_url": "https://fr.wikimini.org/wiki/Aphrodite",
+          "title": "Aphrodite",
+          "content": "Bélier, Bouc, Coquillage, Lièvre, Colombe, Cygne, Tourterelle, Chat.",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Marilyn_Manson",
+          "normalized_url": "https://fr.wikimini.org/wiki/Marilyn_Manson",
+          "title": "Marilyn Manson",
+          "content": "...ait jamais de mal à des êtres sans défense, et il possède lui-même un chat.",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Rondoudou",
+          "normalized_url": "https://fr.wikimini.org/wiki/Rondoudou",
+          "title": "Rondoudou",
+          "content": "...sa couleur rose barbapapa et ses oreilles, très ressemblants à ceux d'un chat. Il est jouable dans [[Super Smash Bros.]] en tant que personnage débloqua",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Fauve_(animal)",
+          "normalized_url": "https://fr.wikimini.org/wiki/Fauve_(animal)",
+          "title": "Fauve (animal)",
+          "content": "...rd|guépard]], etc. pour les distinguer des petits félins comme le [[Chat|chat domestique]] par exemple.",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/American_wirehair",
+          "normalized_url": "https://fr.wikimini.org/wiki/American_wirehair",
+          "title": "American wirehair",
+          "content": "...n wirehair''' est une nouvelle [[Liste des races de chats|race]] de [[Chat|chat]] apparue spontanément en 1966 dans l'[[État de New York|État de New Yor",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fr.wikimini.org/wiki/Bobtail_japonais",
+          "normalized_url": "https://fr.wikimini.org/wiki/Bobtail_japonais",
+          "title": "Bobtail japonais",
+          "content": "Le '''bobtail japonais''' est une [[Liste des races de chats|race]] de [[Chat|chat]] originaire du [[Japon|Japon]] où elle est connue depuis 2000 ans. Elle a",
+          "engine": "wikimini",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

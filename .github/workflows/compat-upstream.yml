@@ -1,0 +1,25 @@
+name: Upstream compatibility refresh
+
+on:
+  schedule:
+    - cron: "23 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+
+      - name: Refresh compatibility inventory from upstream
+        run: uv run --no-project --python 3.13 tools/compat_inventory.py --fetch-upstream
+
+      - name: Fail when checked-in compatibility data is stale
+        run: git diff --exit-code -- docs/compatibility

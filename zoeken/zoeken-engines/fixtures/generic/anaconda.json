@@ -1,0 +1,344 @@
+{
+  "engine": "anaconda",
+  "case": "live",
+  "query": {
+    "query": "numpy",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "numpy",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://api.anaconda.org/search?name=numpy&type=conda&offset=0&limit=20",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://api.anaconda.org/search?name=numpy&type=conda&offset=0&limit=20",
+    "headers": {
+      "set-cookie": "__cf_bm=_B4Ewi.2XIuz8Cmt6EdTLZC13cvgMinUL0vHXHAO4Lo-1783605920.657518-1.0.1.1-zJeVJw1Q0JrjannFVNBsoaT_DILLkVmlW9wGwXQYJ5ywvKB6Q1t8mVJY6LIO3GXR_QQq11CDZAMhbN1gJpHIloPDwA83slkG5XrjyFiOv2.hiotJkC83W04z3suZpXte4OMwTi3Yrqq_EtWTV4HvVA; HttpOnly; SameSite=None; Secure; Path=/; Domain=anaconda.org; Expires=Thu, 09 Jul 2026 14:35:21 GMT",
+      "server-timing": "cfEdge;dur=11,cfOrigin;dur=381",
+      "referrer-policy": "same-origin",
+      "cf-ray": "a187e20c19b50b08-MIA",
+      "content-type": "application/json",
+      "date": "Thu, 09 Jul 2026 14:05:21 GMT",
+      "strict-transport-security": "max-age=15552000",
+      "x-binstar-api-version": "0.2.1",
+      "server": "cloudflare",
+      "cf-cache-status": "DYNAMIC",
+      "content-security-policy": "frame-ancestors 'self';",
+      "x-content-type-options": "nosniff",
+      "x-download-options": "noopen"
+    },
+    "body": "[\n  {\n    \"name\": \"_a_python-fix_search_results_numpy\",\n    \"id\": \"69a5d351884c7b607d2adebd\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"python numpy pandas tensorflow scikit azure aws llm ai model claude chat\",\n    \"description\": \"python numpy pandas tensorflow scikit azure aws llm ai model claude chat\",\n    \"home\": null,\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"bkreider\",\n    \"full_name\": \"bkreider/_a_python-fix_search_results_numpy\",\n    \"url\": \"http://api.anaconda.org/packages/bkreider/_a_python-fix_search_results_numpy\",\n    \"html_url\": \"http://anaconda.org/bkreider/_a_python-fix_search_results_numpy\",\n    \"versions\": [\n      \"2.1\"\n    ],\n    \"latest_version\": \"2.1\",\n    \"platforms\": {\n      \"osx-arm64\": \"2.1\"\n    },\n    \"conda_platforms\": [\n      \"osx-arm64\"\n    ],\n    \"revision\": 3,\n    \"license\": null,\n    \"license_url\": null,\n    \"dev_url\": null,\n    \"doc_url\": null,\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"2\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"_numpy_rc\",\n    \"id\": \"6630cca49dc53b3c64a16424\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"Dummy package to force selection of numpy_rc channel when channel_priority is set to strict\",\n    \"description\": \"See https://github.com/conda-forge/conda-forge-ci-setup-feedstock/issues/280\",\n    \"home\": \"https://github.com/conda-forge/_numpy_rc-feedstock\",\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"conda-forge\",\n    \"full_name\": \"conda-forge/_numpy_rc\",\n    \"url\": \"http://api.anaconda.org/packages/conda-forge/_numpy_rc\",\n    \"html_url\": \"http://anaconda.org/conda-forge/_numpy_rc\",\n    \"versions\": [\n      \"1\"\n    ],\n    \"latest_version\": null,\n    \"platforms\": {},\n    \"conda_platforms\": [\n      \"noarch\"\n    ],\n    \"revision\": 5,\n    \"license\": \"Unlicense\",\n    \"license_url\": \"\",\n    \"dev_url\": \"\",\n    \"doc_url\": \"\",\n    \"source_git_url\": \"\",\n    \"source_git_tag\": \"\",\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"h23db71c_0\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"afnumpy\",\n    \"id\": \"5b1596cc5d3358120d1ab1f7\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"GPU-ready drop-in replacement for numpy\",\n    \"description\": \"Aims to be a GPU-ready drop-in replacement for numpy. Uses ArrayFire to do the actual computing.\",\n    \"home\": \"https://github.com/FilipeMaia/afnumpy\",\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"FXIhub\",\n    \"full_name\": \"FXIhub/afnumpy\",\n    \"url\": \"http://api.anaconda.org/packages/FXIhub/afnumpy\",\n    \"html_url\": \"http://anaconda.org/FXIhub/afnumpy\",\n    \"versions\": [\n      \"1.1.dev\"\n    ],\n    \"latest_version\": \"1.1.dev\",\n    \"platforms\": {\n      \"osx-64\": \"1.1.dev\"\n    },\n    \"conda_platforms\": [\n      \"osx-64\"\n    ],\n    \"revision\": 2,\n    \"license\": \"BSD\",\n    \"license_url\": null,\n    \"dev_url\": null,\n    \"doc_url\": null,\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"py36_0\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"android-numpy\",\n    \"id\": \"661b2ef515f862b868877637\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"\",\n    \"description\": \"\",\n    \"home\": \"http://github.com/codelv/enaml-native\",\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"rodgomesc\",\n    \"full_name\": \"rodgomesc/android-numpy\",\n    \"url\": \"http://api.anaconda.org/packages/rodgomesc/android-numpy\",\n    \"html_url\": \"http://anaconda.org/rodgomesc/android-numpy\",\n    \"versions\": [\n      \"1.26.3\"\n    ],\n    \"latest_version\": \"1.26.3\",\n    \"platforms\": {\n      \"noarch\": \"1.26.3\"\n    },\n    \"conda_platforms\": [\n      \"noarch\"\n    ],\n    \"revision\": 5,\n    \"license\": \"GPLv3\",\n    \"license_url\": null,\n    \"dev_url\": null,\n    \"doc_url\": null,\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"py312\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"bionumpy\",\n    \"id\": \"63b69ef5d0e8c095e2f62671\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"Library for working with biological sequence data as numpy arrays.\",\n    \"description\": \"\",\n    \"home\": \"https://github.com/bionumpy/bionumpy\",\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"bioconda\",\n    \"full_name\": \"bioconda/bionumpy\",\n    \"url\": \"http://api.anaconda.org/packages/bioconda/bionumpy\",\n    \"html_url\": \"http://anaconda.org/bioconda/bionumpy\",\n    \"versions\": [\n      \"0.2.12\",\n      \"0.2.13\",\n      \"0.2.15\",\n      \"0.2.16\",\n      \"0.2.17\",\n      \"0.2.18\",\n      \"0.2.19\",\n      \"0.2.20\",\n      \"0.2.22\",\n      \"0.2.23\",\n      \"0.2.24\",\n      \"0.2.25\",\n      \"0.2.26\",\n      \"0.2.27\",\n      \"0.2.29\",\n      \"0.2.31\",\n      \"1.0.0\",\n      \"1.0.1\",\n      \"1.0.2\",\n      \"1.0.4\",\n      \"1.0.7\",\n      \"1.0.8\",\n      \"1.0.9\",\n      \"1.0.10\",\n      \"1.0.11\",\n      \"1.0.12\",\n      \"1.0.13\",\n      \"1.0.14\"\n    ],\n    \"latest_version\": \"1.0.14\",\n    \"platforms\": {\n      \"noarch\": \"1.0.14\"\n    },\n    \"conda_platforms\": [\n      \"noarch\"\n    ],\n    \"revision\": 66,\n    \"license\": \"MIT\",\n    \"license_url\": null,\n    \"dev_url\": \"https://github.com/bionumpy/bionumpy\",\n    \"doc_url\": \"https://bionumpy.github.io/bionumpy\",\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"pyha8f3691_0\",\n      \"pyh05cac1d_0\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"conda-build-test-numpy-build\",\n    \"id\": \"5755e869f7b1d06f065cf378\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"\",\n    \"description\": \"\",\n    \"home\": null,\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"msarahan\",\n    \"full_name\": \"msarahan/conda-build-test-numpy-build\",\n    \"url\": \"http://api.anaconda.org/packages/msarahan/conda-build-test-numpy-build\",\n    \"html_url\": \"http://anaconda.org/msarahan/conda-build-test-numpy-build\",\n    \"versions\": [\n      \"1.0\"\n    ],\n    \"latest_version\": \"1.0\",\n    \"platforms\": {\n      \"linux-64\": \"1.0\",\n      \"osx-64\": \"1.0\"\n    },\n    \"conda_platforms\": [\n      \"linux-64\",\n      \"osx-64\"\n    ],\n    \"revision\": 2,\n    \"license\": null,\n    \"license_url\": null,\n    \"dev_url\": null,\n    \"doc_url\": null,\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"0\",\n      \"h07eef3d_0\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"conda-build-test-numpy-build-run\",\n    \"id\": \"5755e87289a5e06a3d5b584a\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"\",\n    \"description\": \"\",\n    \"home\": null,\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"msarahan\",\n    \"full_name\": \"msarahan/conda-build-test-numpy-build-run\",\n    \"url\": \"http://api.anaconda.org/packages/msarahan/conda-build-test-numpy-build-run\",\n    \"html_url\": \"http://anaconda.org/msarahan/conda-build-test-numpy-build-run\",\n    \"versions\": [\n      \"1.0\"\n    ],\n    \"latest_version\": \"1.0\",\n    \"platforms\": {\n      \"linux-64\": \"1.0\",\n      \"osx-64\": \"1.0\"\n    },\n    \"conda_platforms\": [\n      \"linux-64\",\n      \"osx-64\"\n    ],\n    \"revision\": 2,\n    \"license\": null,\n    \"license_url\": null,\n    \"dev_url\": null,\n    \"doc_url\": null,\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"py36h9eae471_0\",\n      \"py36hdd5fb48_0\",\n      \"py27_0\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"conda-build-test-numpy-run\",\n    \"id\": \"5755e87a89a5e06a975b482e\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"\",\n    \"description\": \"\",\n    \"home\": null,\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"msarahan\",\n    \"full_name\": \"msarahan/conda-build-test-numpy-run\",\n    \"url\": \"http://api.anaconda.org/packages/msarahan/conda-build-test-numpy-run\",\n    \"html_url\": \"http://anaconda.org/msarahan/conda-build-test-numpy-run\",\n    \"versions\": [\n      \"1.0\"\n    ],\n    \"latest_version\": \"1.0\",\n    \"platforms\": {\n      \"linux-64\": \"1.0\",\n      \"osx-64\": \"1.0\"\n    },\n    \"conda_platforms\": [\n      \"linux-64\",\n      \"osx-64\"\n    ],\n    \"revision\": 2,\n    \"license\": null,\n    \"license_url\": null,\n    \"dev_url\": null,\n    \"doc_url\": null,\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"py27_0\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"danse.ins.numpyext\",\n    \"id\": \"5753158df7b1d05545c62d40\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"\",\n    \"description\": \"\",\n    \"home\": null,\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"mcvine\",\n    \"full_name\": \"mcvine/danse.ins.numpyext\",\n    \"url\": \"http://api.anaconda.org/packages/mcvine/danse.ins.numpyext\",\n    \"html_url\": \"http://anaconda.org/mcvine/danse.ins.numpyext\",\n    \"versions\": [\n      \"0.1\",\n      \"0.1.1unstable\",\n      \"0.1.1\",\n      \"0.1.2\",\n      \"0.1.3\",\n      \"0.1.4rc1\",\n      \"0.1.4\"\n    ],\n    \"latest_version\": \"0.1.4\",\n    \"platforms\": {\n      \"linux-64\": \"0.1.4\",\n      \"osx-64\": \"0.1.3\"\n    },\n    \"conda_platforms\": [\n      \"linux-64\",\n      \"osx-64\"\n    ],\n    \"revision\": 17,\n    \"license\": null,\n    \"license_url\": null,\n    \"dev_url\": null,\n    \"doc_url\": null,\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"py36hc63f411_0\",\n      \"py27hc63f411_0\",\n      \"py310h103b0f4_1\",\n      \"py27_0\",\n      \"py37hb893eb9_0\",\n      \"py27hdff1601_0\",\n      \"py310h103b0f4_0\",\n      \"py39hb893eb9_0\",\n      \"py27hf76e4a6_0\",\n      \"py38hb893eb9_0\",\n      \"py38h46eb94c_0\",\n      \"py27h7b7c402_0\",\n      \"py27h2c12828_0\",\n      \"np113py27_0\",\n      \"py27hc87ccf8_0\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"gnumpy\",\n    \"id\": \"532935b25e76835ad44698d1\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"http://www.cs.toronto.edu/~tijmen/gnumpy.html\",\n    \"description\": \"http://www.cs.toronto.edu/~tijmen/gnumpy.html\",\n    \"home\": null,\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"auto\",\n    \"full_name\": \"auto/gnumpy\",\n    \"url\": \"http://api.anaconda.org/packages/auto/gnumpy\",\n    \"html_url\": \"http://anaconda.org/auto/gnumpy\",\n    \"versions\": [\n      \"0.2\"\n    ],\n    \"latest_version\": \"0.2\",\n    \"platforms\": {\n      \"linux-64\": \"0.2\",\n      \"linux-32\": \"0.2\"\n    },\n    \"conda_platforms\": [\n      \"linux-64\",\n      \"linux-32\"\n    ],\n    \"revision\": 3,\n    \"license\": \"BSD-derived (see LICENSE.txt)\",\n    \"license_url\": null,\n    \"dev_url\": null,\n    \"doc_url\": null,\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"py27_0\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"gnumpy\",\n    \"id\": \"5547c7f03273af4205ef67ef\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"Gnumpy is a simple Python module that interfaces in a way almost identical to numpy, but does its computations on your computer's  GPU, using Cudamat.\",\n    \"description\": \"\",\n    \"home\": null,\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"akode\",\n    \"full_name\": \"akode/gnumpy\",\n    \"url\": \"http://api.anaconda.org/packages/akode/gnumpy\",\n    \"html_url\": \"http://anaconda.org/akode/gnumpy\",\n    \"versions\": [\n      \"0.2\"\n    ],\n    \"latest_version\": \"0.2\",\n    \"platforms\": {\n      \"osx-64\": \"0.2\"\n    },\n    \"conda_platforms\": [\n      \"osx-64\"\n    ],\n    \"revision\": 2,\n    \"license\": \"BSD-derived (see LICENSE.txt)\",\n    \"license_url\": null,\n    \"dev_url\": null,\n    \"doc_url\": null,\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"py27_0\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"gnumpy\",\n    \"id\": \"55d4c1fba6f5e50dad9a8ccd\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"Gnumpy is a simple Python module that interfaces in a way almost identical to numpy, but does its computations on your computer's  GPU, using Cudamat.\",\n    \"description\": \"\",\n    \"home\": null,\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"ericmjl\",\n    \"full_name\": \"ericmjl/gnumpy\",\n    \"url\": \"http://api.anaconda.org/packages/ericmjl/gnumpy\",\n    \"html_url\": \"http://anaconda.org/ericmjl/gnumpy\",\n    \"versions\": [\n      \"0.2\"\n    ],\n    \"latest_version\": \"0.2\",\n    \"platforms\": {\n      \"linux-64\": \"0.2\",\n      \"osx-64\": \"0.2\"\n    },\n    \"conda_platforms\": [\n      \"linux-64\",\n      \"osx-64\"\n    ],\n    \"revision\": 3,\n    \"license\": \"BSD-derived (see LICENSE.txt)\",\n    \"license_url\": null,\n    \"dev_url\": null,\n    \"doc_url\": null,\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"py34_0\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"gnumpy\",\n    \"id\": \"56c5d7195b48926d4bd42a48\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"Gnumpy is a simple Python module that interfaces in a way almost identical to numpy, but does its computations on your computer's  GPU, using Cudamat.\",\n    \"description\": \"\",\n    \"home\": null,\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"Toli\",\n    \"full_name\": \"Toli/gnumpy\",\n    \"url\": \"http://api.anaconda.org/packages/Toli/gnumpy\",\n    \"html_url\": \"http://anaconda.org/Toli/gnumpy\",\n    \"versions\": [\n      \"0.2\"\n    ],\n    \"latest_version\": \"0.2\",\n    \"platforms\": {\n      \"linux-64\": \"0.2\"\n    },\n    \"conda_platforms\": [\n      \"linux-64\"\n    ],\n    \"revision\": 2,\n    \"license\": \"BSD-derived (see LICENSE.txt)\",\n    \"license_url\": null,\n    \"dev_url\": null,\n    \"doc_url\": null,\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"py27_0\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"gnumpy\",\n    \"id\": \"56d3b0405b4892035ed49627\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"Gnumpy is a simple Python module that interfaces in a way almost identical to numpy, but does its computations on your computer's  GPU, using Cudamat.\",\n    \"description\": \"\",\n    \"home\": null,\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"hobs\",\n    \"full_name\": \"hobs/gnumpy\",\n    \"url\": \"http://api.anaconda.org/packages/hobs/gnumpy\",\n    \"html_url\": \"http://anaconda.org/hobs/gnumpy\",\n    \"versions\": [\n      \"0.2\"\n    ],\n    \"latest_version\": \"0.2\",\n    \"platforms\": {\n      \"linux-64\": \"0.2\",\n      \"win-64\": \"0.2\"\n    },\n    \"conda_platforms\": [\n      \"linux-64\",\n      \"win-64\"\n    ],\n    \"revision\": 3,\n    \"license\": \"BSD-derived (see LICENSE.txt)\",\n    \"license_url\": null,\n    \"dev_url\": null,\n    \"doc_url\": null,\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"py27_0\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"gnumpy\",\n    \"id\": \"5714e0be878cc65fd9ca418f\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"Gnumpy is a simple Python module that interfaces in a way almost identical to numpy, but does its computations on your computer's  GPU, using Cudamat.\",\n    \"description\": \"\",\n    \"home\": null,\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"jamalsenouci\",\n    \"full_name\": \"jamalsenouci/gnumpy\",\n    \"url\": \"http://api.anaconda.org/packages/jamalsenouci/gnumpy\",\n    \"html_url\": \"http://anaconda.org/jamalsenouci/gnumpy\",\n    \"versions\": [\n      \"0.2\"\n    ],\n    \"latest_version\": \"0.2\",\n    \"platforms\": {\n      \"win-64\": \"0.2\"\n    },\n    \"conda_platforms\": [\n      \"win-64\"\n    ],\n    \"revision\": 2,\n    \"license\": \"BSD-derived (see LICENSE.txt)\",\n    \"license_url\": null,\n    \"dev_url\": null,\n    \"doc_url\": null,\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"py34_0\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"gnumpy\",\n    \"id\": \"57dbdd8da05b443d11cf306e\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"\",\n    \"description\": \"\",\n    \"home\": null,\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"sdaxen\",\n    \"full_name\": \"sdaxen/gnumpy\",\n    \"url\": \"http://api.anaconda.org/packages/sdaxen/gnumpy\",\n    \"html_url\": \"http://anaconda.org/sdaxen/gnumpy\",\n    \"versions\": [\n      \"0.2\"\n    ],\n    \"latest_version\": \"0.2\",\n    \"platforms\": {\n      \"linux-64\": \"0.2\",\n      \"win-32\": \"0.2\",\n      \"osx-64\": \"0.2\",\n      \"linux-32\": \"0.2\",\n      \"win-64\": \"0.2\"\n    },\n    \"conda_platforms\": [\n      \"osx-64\",\n      \"win-32\",\n      \"linux-32\",\n      \"win-64\",\n      \"linux-64\"\n    ],\n    \"revision\": 1,\n    \"license\": null,\n    \"license_url\": null,\n    \"dev_url\": null,\n    \"doc_url\": null,\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"py27_0\",\n      \"py35_0\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"gnumpy\",\n    \"id\": \"5d9a2b5e778a870c377940a1\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"Similar to numpy but computes on GPUs by using Cudamat\",\n    \"description\": \"Similar to numpy but computes on GPUs by using Cudamat\",\n    \"home\": \"http://www.cs.toronto.edu/~tijmen/gnumpy.html\",\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"conda-forge\",\n    \"full_name\": \"conda-forge/gnumpy\",\n    \"url\": \"http://api.anaconda.org/packages/conda-forge/gnumpy\",\n    \"html_url\": \"http://anaconda.org/conda-forge/gnumpy\",\n    \"versions\": [\n      \"0.2\"\n    ],\n    \"latest_version\": \"0.2\",\n    \"platforms\": {\n      \"noarch\": \"0.2\"\n    },\n    \"conda_platforms\": [\n      \"noarch\"\n    ],\n    \"revision\": 2,\n    \"license\": \"MIT\",\n    \"license_url\": null,\n    \"dev_url\": null,\n    \"doc_url\": null,\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"py_0\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"gsn_numpy_util\",\n    \"id\": \"532a88fa5e768373c9f98fcb\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"http://pypi.python.org/pypi/gsn_numpy_util/\",\n    \"description\": \"http://pypi.python.org/pypi/gsn_numpy_util/\",\n    \"home\": null,\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"auto\",\n    \"full_name\": \"auto/gsn_numpy_util\",\n    \"url\": \"http://api.anaconda.org/packages/auto/gsn_numpy_util\",\n    \"html_url\": \"http://anaconda.org/auto/gsn_numpy_util\",\n    \"versions\": [\n      \"0.1.0\"\n    ],\n    \"latest_version\": \"0.1.0\",\n    \"platforms\": {\n      \"linux-64\": \"0.1.0\"\n    },\n    \"conda_platforms\": [\n      \"linux-64\"\n    ],\n    \"revision\": 2,\n    \"license\": \"MIT (X11) License\",\n    \"license_url\": null,\n    \"dev_url\": null,\n    \"doc_url\": null,\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"py27_0\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"hello-numpy\",\n    \"id\": \"685c01c1bb7c3d6388318aa5\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"A simple hello world package with numpy\",\n    \"description\": \"\",\n    \"home\": null,\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"Mayou36\",\n    \"full_name\": \"Mayou36/hello-numpy\",\n    \"url\": \"http://api.anaconda.org/packages/Mayou36/hello-numpy\",\n    \"html_url\": \"http://anaconda.org/Mayou36/hello-numpy\",\n    \"versions\": [\n      \"0.1.0\"\n    ],\n    \"latest_version\": \"0.1.0\",\n    \"platforms\": {\n      \"noarch\": \"0.1.0\"\n    },\n    \"conda_platforms\": [\n      \"noarch\"\n    ],\n    \"revision\": 3,\n    \"license\": \"MIT\",\n    \"license_url\": null,\n    \"dev_url\": null,\n    \"doc_url\": null,\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"pyh2b07374_0\"\n    ],\n    \"ndownloads\": 0\n  },\n  {\n    \"name\": \"json-numpy\",\n    \"id\": \"68a78f0871c9f5580c1284f6\",\n    \"package_types\": [\n      \"conda\"\n    ],\n    \"summary\": \"JSON encoding/decoding for Numpy arrays and scalars\",\n    \"description\": \"\",\n    \"home\": \"https://github.com/Crimson-Crow/json-numpy\",\n    \"public\": true,\n    \"access\": \"public\",\n    \"owner\": \"conda-forge\",\n    \"full_name\": \"conda-forge/json-numpy\",\n    \"url\": \"http://api.anaconda.org/packages/conda-forge/json-numpy\",\n    \"html_url\": \"http://anaconda.org/conda-forge/json-numpy\",\n    \"versions\": [\n      \"2.1.1\"\n    ],\n    \"latest_version\": \"2.1.1\",\n    \"platforms\": {\n      \"noarch\": \"2.1.1\"\n    },\n    \"conda_platforms\": [\n      \"noarch\"\n    ],\n    \"revision\": 11,\n    \"license\": \"MIT\",\n    \"license_url\": null,\n    \"dev_url\": null,\n    \"doc_url\": null,\n    \"source_git_url\": null,\n    \"source_git_tag\": null,\n    \"app_entry\": {},\n    \"app_type\": {},\n    \"app_summary\": {},\n    \"builds\": [\n      \"pyhd8ed1ab_0\"\n    ],\n    \"ndownloads\": 0\n  }\n]"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "http://anaconda.org/bkreider/_a_python-fix_search_results_numpy",
+          "normalized_url": "http://anaconda.org/bkreider/_a_python-fix_search_results_numpy",
+          "title": "bkreider/_a_python-fix_search_results_numpy",
+          "content": "python numpy pandas tensorflow scikit azure aws llm ai model claude chat",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/conda-forge/_numpy_rc",
+          "normalized_url": "http://anaconda.org/conda-forge/_numpy_rc",
+          "title": "conda-forge/_numpy_rc",
+          "content": "Dummy package to force selection of numpy_rc channel when channel_priority is set to strict",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/FXIhub/afnumpy",
+          "normalized_url": "http://anaconda.org/FXIhub/afnumpy",
+          "title": "FXIhub/afnumpy",
+          "content": "GPU-ready drop-in replacement for numpy",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/rodgomesc/android-numpy",
+          "normalized_url": "http://anaconda.org/rodgomesc/android-numpy",
+          "title": "rodgomesc/android-numpy",
+          "content": "",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/bioconda/bionumpy",
+          "normalized_url": "http://anaconda.org/bioconda/bionumpy",
+          "title": "bioconda/bionumpy",
+          "content": "Library for working with biological sequence data as numpy arrays.",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/msarahan/conda-build-test-numpy-build",
+          "normalized_url": "http://anaconda.org/msarahan/conda-build-test-numpy-build",
+          "title": "msarahan/conda-build-test-numpy-build",
+          "content": "",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/msarahan/conda-build-test-numpy-build-run",
+          "normalized_url": "http://anaconda.org/msarahan/conda-build-test-numpy-build-run",
+          "title": "msarahan/conda-build-test-numpy-build-run",
+          "content": "",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/msarahan/conda-build-test-numpy-run",
+          "normalized_url": "http://anaconda.org/msarahan/conda-build-test-numpy-run",
+          "title": "msarahan/conda-build-test-numpy-run",
+          "content": "",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/mcvine/danse.ins.numpyext",
+          "normalized_url": "http://anaconda.org/mcvine/danse.ins.numpyext",
+          "title": "mcvine/danse.ins.numpyext",
+          "content": "",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/auto/gnumpy",
+          "normalized_url": "http://anaconda.org/auto/gnumpy",
+          "title": "auto/gnumpy",
+          "content": "http://www.cs.toronto.edu/~tijmen/gnumpy.html",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/akode/gnumpy",
+          "normalized_url": "http://anaconda.org/akode/gnumpy",
+          "title": "akode/gnumpy",
+          "content": "Gnumpy is a simple Python module that interfaces in a way almost identical to numpy, but does its computations on your computer's GPU, using Cudamat.",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/ericmjl/gnumpy",
+          "normalized_url": "http://anaconda.org/ericmjl/gnumpy",
+          "title": "ericmjl/gnumpy",
+          "content": "Gnumpy is a simple Python module that interfaces in a way almost identical to numpy, but does its computations on your computer's GPU, using Cudamat.",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/Toli/gnumpy",
+          "normalized_url": "http://anaconda.org/Toli/gnumpy",
+          "title": "Toli/gnumpy",
+          "content": "Gnumpy is a simple Python module that interfaces in a way almost identical to numpy, but does its computations on your computer's GPU, using Cudamat.",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/hobs/gnumpy",
+          "normalized_url": "http://anaconda.org/hobs/gnumpy",
+          "title": "hobs/gnumpy",
+          "content": "Gnumpy is a simple Python module that interfaces in a way almost identical to numpy, but does its computations on your computer's GPU, using Cudamat.",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/jamalsenouci/gnumpy",
+          "normalized_url": "http://anaconda.org/jamalsenouci/gnumpy",
+          "title": "jamalsenouci/gnumpy",
+          "content": "Gnumpy is a simple Python module that interfaces in a way almost identical to numpy, but does its computations on your computer's GPU, using Cudamat.",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/sdaxen/gnumpy",
+          "normalized_url": "http://anaconda.org/sdaxen/gnumpy",
+          "title": "sdaxen/gnumpy",
+          "content": "",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/conda-forge/gnumpy",
+          "normalized_url": "http://anaconda.org/conda-forge/gnumpy",
+          "title": "conda-forge/gnumpy",
+          "content": "Similar to numpy but computes on GPUs by using Cudamat",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/auto/gsn_numpy_util",
+          "normalized_url": "http://anaconda.org/auto/gsn_numpy_util",
+          "title": "auto/gsn_numpy_util",
+          "content": "http://pypi.python.org/pypi/gsn_numpy_util/",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/Mayou36/hello-numpy",
+          "normalized_url": "http://anaconda.org/Mayou36/hello-numpy",
+          "title": "Mayou36/hello-numpy",
+          "content": "A simple hello world package with numpy",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://anaconda.org/conda-forge/json-numpy",
+          "normalized_url": "http://anaconda.org/conda-forge/json-numpy",
+          "title": "conda-forge/json-numpy",
+          "content": "JSON encoding/decoding for Numpy arrays and scalars",
+          "engine": "anaconda",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

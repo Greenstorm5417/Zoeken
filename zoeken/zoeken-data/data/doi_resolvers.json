@@ -1,0 +1,7 @@
+{
+  "default": "doi.org",
+  "resolvers": {
+    "doi.org": "https://doi.org/",
+    "oadoi.org": "https://oadoi.org/"
+  }
+}

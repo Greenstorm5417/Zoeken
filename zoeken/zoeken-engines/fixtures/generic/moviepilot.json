@@ -1,0 +1,87 @@
+{
+  "engine": "moviepilot",
+  "case": "live",
+  "query": {
+    "query": "inception",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "inception",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://www.moviepilot.de/api/search?q=inception&page=1&type=suggest",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://www.moviepilot.de/api/search?q=inception&page=1&type=suggest",
+    "headers": {
+      "x-permitted-cross-domain-policies": "none",
+      "referrer-policy": "no-referrer-when-downgrade",
+      "cf-ray": "a187f39c1c71de1b-MIA",
+      "status": "200 OK",
+      "date": "Thu, 09 Jul 2026 14:17:20 GMT",
+      "vary": "accept-encoding",
+      "set-cookie": "_cfuvid=Rd9S5QlG3Bsbv9SBLg2t5_WVv1RpTQZpm_zJCjgviA4-1783606640.0195441-1.0.1.1-891odBVRV3.lZLc8cbFhlaaxdJeOjAgR7tWVh7uwo9w; HttpOnly; SameSite=None; Secure; Path=/; Domain=moviepilot.de",
+      "cache-control": "max-age=0, private, must-revalidate",
+      "x-xss-protection": "1; mode=block",
+      "cf-cache-status": "BYPASS",
+      "server": "cloudflare",
+      "x-runtime": "0.020667",
+      "x-content-type-options": "nosniff",
+      "content-security-policy": "default-src https:; script-src https: 'unsafe-inline' 'unsafe-eval' data:; style-src https: 'unsafe-inline'; media-src http: 'unsafe-inline' https: data: blob:; connect-src https: wss: data: blob:; img-src * data: https: android-webview-video-poster:",
+      "content-type": "application/json; charset=utf-8",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "etag": "W/\"63d03c47ff8bf72c30ac13388e015c7f\"",
+      "x-frame-options": "SAMEORIGIN",
+      "server-timing": "cfEdge;dur=138,cfOrigin;dur=29",
+      "x-request-id": "99f8aaf3-224b-4be4-858d-e2fa879bc26c",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "x-download-options": "noopen"
+    },
+    "body": "[{\"id\":\"32173\",\"type\":\"movie\",\"class\":\"Movie\",\"index\":0,\"class_id\":\"Movie-32173\",\"title\":\"Inception\",\"original_title\":\"Inception\",\"image\":\"https://cdn.moviepilot.de/files/ad80c7fc37d21465c789665bcf9ea729ded95ad9923876438fd864395409/limit/70/100/inception.jpg\",\"poster\":{\"id\":\"ad80c7fc37d21465c789665bcf9ea729ded95ad9923876438fd864395409\",\"filename\":\"Inception.jpg\"},\"immutable\":null,\"path\":\"/movies/inception\",\"url\":\"https://www.moviepilot.de/movies/inception\",\"code\":\"[[m:inception|l]]\",\"info\":\"Film · US/GB 2010\",\"more\":\"von Christopher Nolan mit Leonardo DiCaprio, Joseph Gordon-Levitt\",\"is_promoted\":null}]"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://www.moviepilot.de/movies/inception",
+          "normalized_url": "https://www.moviepilot.de/movies/inception",
+          "title": "Inception",
+          "content": "",
+          "engine": "moviepilot",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

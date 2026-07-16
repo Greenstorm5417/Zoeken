@@ -1,0 +1,2 @@
+# Placeholder so `zoeken-server/assets/` exists for DirAssets in tests/dev.
+# Overwritten by `bun run build` in zoeken-client (or `make client`).

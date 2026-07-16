@@ -1,0 +1,352 @@
+{
+  "engine": "bilibili",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://api.bilibili.com/x/web-interface/search/type?__refresh__=true&page=1&page_size=20&single_column=0&keyword=rust&search_type=video",
+    "headers": {
+      "Accept": "application/json, text/javascript, */*; q=0.01",
+      "Referer": "https://www.bilibili.com/"
+    },
+    "cookies": {
+      "FEED_LIVE_VERSION": "V8",
+      "buvid3": "0123456789abcdefinfoc",
+      "header_theme_version": "undefined",
+      "b_ut": "7",
+      "i-wanna-go-back": "-1",
+      "innersign": "0",
+      "home_feed_column": "4"
+    },
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://api.bilibili.com/x/web-interface/search/type?__refresh__=true&page=1&page_size=20&single_column=0&keyword=rust&search_type=video",
+    "headers": {
+      "date": "Thu, 09 Jul 2026 14:17:18 GMT",
+      "x-bili-trace-id": "4ae201fd4e2ca4a92ca92d8de36a4fad",
+      "cpu_usage": "143",
+      "bili-status-code": "0",
+      "content-type": "application/json; charset=utf-8",
+      "access-control-expose-headers": "X-Cache-Webcdn",
+      "cache-control": "no-cache",
+      "x-cache-webcdn": "BYPASS from blzone02",
+      "bili-trace-id": "2ca92d8de36a4fad",
+      "expires": "Thu, 09 Jul 2026 14:17:17 GMT"
+    },
+    "body": "{\"code\":0,\"message\":\"OK\",\"ttl\":1,\"data\":{\"seid\":\"13705345852695057409\",\"page\":1,\"pagesize\":20,\"numResults\":1000,\"numPages\":50,\"suggest_keyword\":\"\",\"rqt_type\":\"search\",\"exp_list\":{\"100010\":true,\"161300\":true,\"161502\":true,\"5515\":true,\"6607\":true,\"9902\":true,\"9924\":true,\"9931\":true,\"9944\":true,\"9961\":true,\"9987\":true},\"is_hit_web_inf\":false,\"egg_hit\":0,\"result\":[{\"type\":\"video\",\"id\":116253322647343,\"author\":\"Yor1ck6\",\"mid\":272005662,\"typeid\":\"65\",\"typename\":\"网络游戏\",\"arcurl\":\"http://www.bilibili.com/video/av116253322647343\",\"aid\":116253322647343,\"bvid\":\"BV1Xvwrz4ESZ\",\"title\":\"\\u003cem class=\\\"keyword\\\"\\u003eRust\\u003c/em\\u003e腐蚀-适合三人bunker，简单不错的房型\",\"description\":\"-\",\"pic\":\"//i2.hdslb.com/bfs/archive/601286bdfac727bb132137a360abcd2454382ec2.jpg\",\"play\":5860,\"video_review\":3,\"favorites\":182,\"tag\":\"rust,RUST腐蚀,沙盒游戏,生存游戏,生存,建筑,腐蚀,三人\",\"review\":19,\"pubdate\":1773885172,\"senddate\":1773885173,\"duration\":\"16:5\",\"badgepay\":false,\"hit_columns\":[\"title\",\"tag\"],\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":[],\"like\":61,\"upic\":\"https://i0.hdslb.com/bfs/face/6951386895c29d9ce42ddb373102f41b7bd70817.jpg\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":3,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"\",\"episode_count_text\":\"\",\"release_status\":0,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":1,\"rank_offset\":1,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"video\",\"id\":116890370317786,\"author\":\"珞佰u7\",\"mid\":97496469,\"typeid\":\"21\",\"typename\":\"日常\",\"arcurl\":\"http://www.bilibili.com/video/av116890370317786\",\"aid\":116890370317786,\"bvid\":\"BV1EzMn61EaX\",\"title\":\"真心推荐所有喜欢SOC类玩法的来玩\\u003cem class=\\\"keyword\\\"\\u003erust\\u003c/em\\u003e国服的安全区模式❤️\",\"description\":\"-\",\"pic\":\"//i0.hdslb.com/bfs/archive/c1b6f83ae3bde581173dd5cc1042ef4f91c1b95e.jpg\",\"play\":0,\"video_review\":0,\"favorites\":0,\"tag\":\"失控进化上线,游戏CG,游戏杂谈,射击游戏,RPG,手机游戏,失控进化,必剪创作,游戏\",\"review\":0,\"pubdate\":1783605835,\"senddate\":1783605841,\"duration\":\"0:32\",\"badgepay\":false,\"hit_columns\":[\"title\"],\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":[],\"like\":0,\"upic\":\"https://i0.hdslb.com/bfs/face/5b0a13c505498cf535cadc67ffe29701707d4347.jpg\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":0,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"\",\"episode_count_text\":\"\",\"release_status\":0,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":2,\"rank_offset\":2,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"video\",\"id\":116890370376215,\"author\":\"大象db\",\"mid\":306901642,\"typeid\":\"122\",\"typename\":\"野生技能协会\",\"arcurl\":\"http://www.bilibili.com/video/av116890370376215\",\"aid\":116890370376215,\"bvid\":\"BV1BzMn61EQP\",\"title\":\"\\u003cem class=\\\"keyword\\\"\\u003eRust\\u003c/em\\u003e 入门｜类型推导｜类型如同约束｜应该是绝对且明确的｜拒绝编译器自作聪明隐式变更\",\"description\":\"好好学习，天天向上\\n为什么要爬山，因为山在那里\\n为学日益，为道日损\\nvx: coreele\\nhttps://google.github.io/comprehensive-rust/types-and-values/arithmetic.html\",\"pic\":\"//i2.hdslb.com/bfs/archive/aefc806298430c72b9d0e6e33c45e7b55dd02540.jpg\",\"play\":5,\"video_review\":0,\"favorites\":0,\"tag\":\"类型推导,架构,rust,编程语言,入门,C++,软件,计算机,编程\",\"review\":0,\"pubdate\":1783605851,\"senddate\":1783605854,\"duration\":\"6:3\",\"badgepay\":false,\"hit_columns\":[\"title\",\"tag\"],\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":[],\"like\":12,\"upic\":\"https://i1.hdslb.com/bfs/face/5637bbf4a81343413fb16d287db743b56e2af173.jpg\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":0,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"\",\"episode_count_text\":\"\",\"release_status\":0,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":3,\"rank_offset\":3,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"video\",\"id\":116886545111573,\"author\":\"Bone骨头碎片\",\"mid\":403368159,\"typeid\":\"17\",\"typename\":\"单机游戏\",\"arcurl\":\"http://www.bilibili.com/video/av116886545111573\",\"aid\":116886545111573,\"bvid\":\"BV14LMj61Ehg\",\"title\":\"「\\u003cem class=\\\"keyword\\\"\\u003eRust\\u003c/em\\u003e腐蚀」最好的燃烧瓶使用者！\",\"description\":\"我用燃烧瓶疯狂抄家！\",\"pic\":\"//i2.hdslb.com/bfs/archive/bc15c2f67a7bf7987dcff33e484832aa36ff72e8.jpg\",\"play\":4903,\"video_review\":73,\"favorites\":92,\"tag\":\"生存游戏,实况解说,搞笑,沙雕老外,沉浸式体验,rust,腐蚀,独狼,抄家,开荒\",\"review\":54,\"pubdate\":1783594800,\"senddate\":1783594809,\"duration\":\"33:20\",\"badgepay\":false,\"hit_columns\":[\"title\",\"tag\"],\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":[],\"like\":312,\"upic\":\"https://i0.hdslb.com/bfs/face/4cb788aa5965d32c8faf3a8cfe5b84a0705a2d57.jpg\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":74,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"\",\"episode_count_text\":\"\",\"release_status\":0,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":4,\"rank_offset\":4,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"ketang\",\"id\":111295489,\"author\":\"郭宏志-老郭\",\"mid\":474769086,\"typeid\":\"\",\"typename\":\"\",\"arcurl\":\"https://www.bilibili.com/cheese/play/ss111295489?query_from=0\\u0026search_id=13705345852695057409\\u0026search_query=rust\",\"aid\":111295489,\"bvid\":\"\",\"title\":\"\\u003cem class=\\\"keyword\\\"\\u003eRust\\u003c/em\\u003e编程实战：打造高并发、高性能\\u003cem class=\\\"keyword\\\"\\u003eRust\\u003c/em\\u003e系统\",\"description\":\"\",\"pic\":\"https://archive.biliimg.com/bfs/archive/bf6156404e217c18356f57c5249f4ec8a956caa4.jpg\",\"play\":3501,\"video_review\":0,\"favorites\":0,\"tag\":\"\",\"review\":0,\"pubdate\":0,\"senddate\":0,\"duration\":\"\",\"badgepay\":false,\"hit_columns\":null,\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":null,\"like\":0,\"upic\":\"\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":0,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"从零掌握Rust核心语法与实战开发能力(附全套文档）\",\"episode_count_text\":\"共145课时\",\"release_status\":2,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":5,\"rank_offset\":1,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"video\",\"id\":970073238,\"author\":\"软件工艺师\",\"mid\":361469957,\"typeid\":\"231\",\"typename\":\"计算机技术\",\"arcurl\":\"http://www.bilibili.com/video/av970073238\",\"aid\":970073238,\"bvid\":\"BV1hp4y1k7SV\",\"title\":\"\\u003cem class=\\\"keyword\\\"\\u003eRust\\u003c/em\\u003e编程语言入门教程（\\u003cem class=\\\"keyword\\\"\\u003eRust\\u003c/em\\u003e语言/\\u003cem class=\\\"keyword\\\"\\u003eRust\\u003c/em\\u003e权威指南配套）【已完结】\",\"description\":\"配套教材：《The Rust Programming Language》v1\\n2025新版视频（更新ing）：https://b23.tv/bCo2OtB\",\"pic\":\"//i1.hdslb.com/bfs/archive/3bcd51d8e8035931e282079a7a256ec7e1e8e80d.jpg\",\"play\":1671918,\"video_review\":24668,\"favorites\":58423,\"tag\":\"视频教程,RUST,Rust,教学视频,杨旭,程序员,Rust语言,Rust编程,#编程vlog#,编程\",\"review\":2539,\"pubdate\":1603285176,\"senddate\":1740318048,\"duration\":\"729:37\",\"badgepay\":false,\"hit_columns\":[\"title\",\"description\",\"tag\"],\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":[],\"like\":25460,\"upic\":\"https://i2.hdslb.com/bfs/face/b9156496b6f7a934731143e57f7eb89a19ca0aff.jpg\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":24668,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"\",\"episode_count_text\":\"\",\"release_status\":0,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":6,\"rank_offset\":5,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"video\",\"id\":1802771739,\"author\":\"宇宙无敌帅狗蛋\",\"mid\":245833292,\"typeid\":\"17\",\"typename\":\"单机游戏\",\"arcurl\":\"http://www.bilibili.com/video/av1802771739\",\"aid\":1802771739,\"bvid\":\"BV1Ct421E7js\",\"title\":\"【\\u003cem class=\\\"keyword\\\"\\u003eRUST\\u003c/em\\u003e腐蚀生存】10000小时的独狼玩家，如何利喷子统治服务器！！\",\"description\":\"\",\"pic\":\"//i1.hdslb.com/bfs/archive/5e00c1cc2c48cb1afe865efc5d404a554c633140.jpg\",\"play\":1128109,\"video_review\":2143,\"favorites\":6834,\"tag\":\"生存游戏,steam,老外,统治,推荐宝藏游戏,生存,腐蚀,游戏\",\"review\":847,\"pubdate\":1712394000,\"senddate\":1712394009,\"duration\":\"20:17\",\"badgepay\":false,\"hit_columns\":[\"title\"],\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":[],\"like\":26962,\"upic\":\"https://i2.hdslb.com/bfs/face/3ec363ec96df2b2fb2ffc5dee38dcd0843fb8ec0.jpg\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":2143,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"\",\"episode_count_text\":\"\",\"release_status\":0,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":7,\"rank_offset\":6,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"video\",\"id\":116813849500222,\"author\":\"Dea极光\",\"mid\":373032796,\"typeid\":\"65\",\"typename\":\"网络游戏\",\"arcurl\":\"http://www.bilibili.com/video/av116813849500222\",\"aid\":116813849500222,\"bvid\":\"BV1CE7B6xEFH\",\"title\":\"【失控进化】从零开始教学入门篇#1 服务器选择\",\"description\":\"BGM：Starboy(Remix)\\n           The Hills (Amice Remix)\\n不懂的评论区问，我看到就回\",\"pic\":\"//i0.hdslb.com/bfs/archive/567a9a554964bd86d149fd1023a3d3ae0c171615.jpg\",\"play\":66479,\"video_review\":60,\"favorites\":1087,\"tag\":\"失控进化教学,教学,攻略,失控进化挑战模式,RUST授权失控进化,失控进化,生存对抗,教程攻略,从零开始\",\"review\":274,\"pubdate\":1782437971,\"senddate\":1783341071,\"duration\":\"6:14\",\"badgepay\":false,\"hit_columns\":[\"tag\"],\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":[],\"like\":1204,\"upic\":\"https://i1.hdslb.com/bfs/face/7207d6a9b8b8339cc28156526fd02032a1732763.jpg\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":60,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"\",\"episode_count_text\":\"\",\"release_status\":0,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":8,\"rank_offset\":7,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"video\",\"id\":116867486189339,\"author\":\"熄月liss\",\"mid\":100228046,\"typeid\":\"65\",\"typename\":\"网络游戏\",\"arcurl\":\"http://www.bilibili.com/video/av116867486189339\",\"aid\":116867486189339,\"bvid\":\"BV19sT16MEhq\",\"title\":\"【\\u003cem class=\\\"keyword\\\"\\u003eRust\\u003c/em\\u003e】TT-最快的独狼开荒竞速！\",\"description\":\"1\",\"pic\":\"//i0.hdslb.com/bfs/archive/9d5e70c721fefe7f181d932d35edd82ea715c39c.jpg\",\"play\":13798,\"video_review\":117,\"favorites\":155,\"tag\":\"rust,沙盒游戏,生存游戏,生存,腐蚀,独狼,熟肉\",\"review\":40,\"pubdate\":1783257129,\"senddate\":1783258839,\"duration\":\"51:23\",\"badgepay\":false,\"hit_columns\":[\"title\",\"tag\"],\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":[],\"like\":248,\"upic\":\"https://i2.hdslb.com/bfs/face/ade9931bac5b8299728db0a0380352aa1f2e33f5.jpg\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":117,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"\",\"episode_count_text\":\"\",\"release_status\":0,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":9,\"rank_offset\":8,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"video\",\"id\":116877502188935,\"author\":\"失控进化\",\"mid\":3546785396034301,\"typeid\":\"17\",\"typename\":\"单机游戏\",\"arcurl\":\"http://www.bilibili.com/video/av116877502188935\",\"aid\":116877502188935,\"bvid\":\"BV1NjMt6yEnM\",\"title\":\"《失控进化》明日上线！开服必做清单来了！\",\"description\":\"倒计时最后一天！兄弟伙们马上就要登岛了！小黄连夜整理了一份\\u0026quot;登岛必做清单\\u0026quot;。\\n \\n别等到别人领满福利上岛，你还在原地打转。\\n \\n明日10点，正式登岛，先领福利再开冲！\\n \\n☢《失控进化》7月9日全平台上线，PC、安卓、iOS、鸿蒙、平板多端互通！\",\"pic\":\"//i1.hdslb.com/bfs/archive/c643c91a4853152387fde2246259d24dc98dd77f.jpg\",\"play\":177814,\"video_review\":105,\"favorites\":951,\"tag\":\"FPS,失控进化7月9日正式上线,Rust正版玩法授权,失控进化,RUST授权失控进化,rust,腐蚀,开放世界\",\"review\":646,\"pubdate\":1783490400,\"senddate\":1783501789,\"duration\":\"1:58\",\"badgepay\":false,\"hit_columns\":[\"tag\"],\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":[],\"like\":6329,\"upic\":\"https://i1.hdslb.com/bfs/face/ff844808cffa13406adf8e2698eb33ba774a98ca.jpg\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":105,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"\",\"episode_count_text\":\"\",\"release_status\":0,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":10,\"rank_offset\":9,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"video\",\"id\":113819535872183,\"author\":\"Utaoki丶苦药\",\"mid\":35550166,\"typeid\":\"65\",\"typename\":\"网络游戏\",\"arcurl\":\"http://www.bilibili.com/video/av113819535872183\",\"aid\":113819535872183,\"bvid\":\"BV1XXcyeuE7m\",\"title\":\"【\\u003cem class=\\\"keyword\\\"\\u003eRust\\u003c/em\\u003e腐蚀 新手教程】2026保姆级教程    实时更新！！！\",\"description\":\"服务器直连：connect 103.39.66.146:40127\\n群：1022694496，有什么不懂的可以直接来群里\\n2026保姆级新手教程，争取做成全网最详细的教程！！！\",\"pic\":\"//i2.hdslb.com/bfs/archive/c478a94b3addecd0042d14ec21fb9462b439822c.jpg\",\"play\":139347,\"video_review\":120,\"favorites\":1753,\"tag\":\"沙盒游戏,新手教程,生存游戏,教程,rust,教程攻略,RUST腐蚀,腐蚀,新手\",\"review\":408,\"pubdate\":1736751029,\"senddate\":1774860445,\"duration\":\"168:34\",\"badgepay\":false,\"hit_columns\":[\"title\",\"tag\"],\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":[],\"like\":1686,\"upic\":\"http://i1.hdslb.com/bfs/face/41c3be96ade9ae2525c78bd21c824908c673dc3d.jpg\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":120,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"\",\"episode_count_text\":\"\",\"release_status\":0,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":11,\"rank_offset\":10,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"video\",\"id\":116883172953400,\"author\":\"壹伊EE\",\"mid\":536532831,\"typeid\":\"171\",\"typename\":\"电子竞技\",\"arcurl\":\"http://www.bilibili.com/video/av116883172953400\",\"aid\":116883172953400,\"bvid\":\"BV1C9Mv6aEDu\",\"title\":\"\\u003cem class=\\\"keyword\\\"\\u003eRUST\\u003c/em\\u003e - 3分钟告诉你新的公寓大楼究竟该如何使用!! 租房?开商店?\",\"description\":\"\",\"pic\":\"//i2.hdslb.com/bfs/archive/c5189ac5d654860aa352c0b39c239860ab61e58e.jpg\",\"play\":380,\"video_review\":1,\"favorites\":2,\"tag\":\"生存游戏,建筑,rust,教程攻略,腐蚀,商店,公寓\",\"review\":4,\"pubdate\":1783495757,\"senddate\":1783495758,\"duration\":\"3:41\",\"badgepay\":false,\"hit_columns\":[\"title\",\"tag\"],\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":[],\"like\":13,\"upic\":\"https://i0.hdslb.com/bfs/face/ffbe22838c4c8f4dcca8996c93887870ae3665e2.jpg\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":1,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"\",\"episode_count_text\":\"\",\"release_status\":0,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":12,\"rank_offset\":11,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"video\",\"id\":876636,\"author\":\"两仪滚\",\"mid\":183430,\"typeid\":\"17\",\"typename\":\"单机游戏\",\"arcurl\":\"http://www.bilibili.com/video/av876636\",\"aid\":876636,\"bvid\":\"BV1ks411o7wo\",\"title\":\"【\\u003cem class=\\\"keyword\\\"\\u003erust\\u003c/em\\u003e】裸男的荒野求生 第一天 （半夜遇悍匪）\",\"description\":\"自制 \",\"pic\":\"//i2.hdslb.com/bfs/archive/4b85b144b63ca89907a1e8ad8942032bb933d506.jpg\",\"play\":40759,\"video_review\":225,\"favorites\":55,\"tag\":\"荒野求生,腐蚀,游戏集锦,RUST\",\"review\":87,\"pubdate\":1387331216,\"senddate\":1513351107,\"duration\":\"40:4\",\"badgepay\":false,\"hit_columns\":[\"title\",\"tag\"],\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":[],\"like\":142,\"upic\":\"https://i1.hdslb.com/bfs/face/8511424dfd5b9ec60e242584c11195abc6acb2b1.jpg\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":225,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"\",\"episode_count_text\":\"\",\"release_status\":0,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":13,\"rank_offset\":12,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"video\",\"id\":116884347358590,\"author\":\"DL游戏王\",\"mid\":385177544,\"typeid\":\"17\",\"typename\":\"单机游戏\",\"arcurl\":\"http://www.bilibili.com/video/av116884347358590\",\"aid\":116884347358590,\"bvid\":\"BV1LgMV6pEjf\",\"title\":\"我在失控进化里当起了火车大亨！\",\"description\":\"\",\"pic\":\"//i2.hdslb.com/bfs/archive/7fc57613baff6b90b7e2641b20c97d58ab3e55c8.jpg\",\"play\":9494,\"video_review\":82,\"favorites\":322,\"tag\":\"失控进化荒岛求生,游戏实况,游戏解说,失控进化上线,失控进化建筑大师,攻略,搞笑,失控进化小剧场,失控进化,rust\",\"review\":38,\"pubdate\":1783562400,\"senddate\":1783562402,\"duration\":\"44:39\",\"badgepay\":false,\"hit_columns\":[\"tag\"],\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":[],\"like\":288,\"upic\":\"https://i2.hdslb.com/bfs/face/64b5a3e6ff6aa163f54364fec59737c03e588061.jpg\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":82,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"\",\"episode_count_text\":\"\",\"release_status\":0,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":14,\"rank_offset\":13,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"video\",\"id\":116888843591202,\"author\":\"壹赢天三角洲行动\",\"mid\":512593873,\"typeid\":\"65\",\"typename\":\"网络游戏\",\"arcurl\":\"http://www.bilibili.com/video/av116888843591202\",\"aid\":116888843591202,\"bvid\":\"BV1CUMJ6SEW3\",\"title\":\"（\\u003cem class=\\\"keyword\\\"\\u003eRUST\\u003c/em\\u003e腐蚀生存）新手如何正确选择服务器\",\"description\":\"-\",\"pic\":\"//i0.hdslb.com/bfs/archive/eb9c5b2239d620672d3c17eacb12afbfb8dc2da3.jpg\",\"play\":429,\"video_review\":0,\"favorites\":1,\"tag\":\"腐蚀,沙盒游戏,生存游戏\",\"review\":1,\"pubdate\":1783582490,\"senddate\":1783585180,\"duration\":\"8:58\",\"badgepay\":false,\"hit_columns\":[\"title\"],\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":[],\"like\":16,\"upic\":\"https://i1.hdslb.com/bfs/face/59c15f5bc9b13d545dfad4e31dbbe582eb188af0.jpg\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":0,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"\",\"episode_count_text\":\"\",\"release_status\":0,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":15,\"rank_offset\":14,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"video\",\"id\":116877938394941,\"author\":\"巴别塔工作室-PDOG\",\"mid\":6852233,\"typeid\":\"17\",\"typename\":\"单机游戏\",\"arcurl\":\"http://www.bilibili.com/video/av116877938394941\",\"aid\":116877938394941,\"bvid\":\"BV1NpM86EE5d\",\"title\":\"0基础小白\\u003cem class=\\\"keyword\\\"\\u003eRust\\u003c/em\\u003e开服教程,从入门到精通!\",\"description\":\"超级简单的Rust开服教程，使用雨云服务器和LinuxGSM工具进行开服，方便后期管理和维护，价格低廉，性能强劲，是服主的不二之选。\",\"pic\":\"//i0.hdslb.com/bfs/archive/9cfdb0df919f511ebe4a06afb94396237b6778d5.jpg\",\"play\":206,\"video_review\":0,\"favorites\":6,\"tag\":\"RUST授权失控进化,LinuxGSM,沙盒游戏,服务器,Linux,生存游戏,教程攻略,雨云,腐蚀,基础\",\"review\":2,\"pubdate\":1783418400,\"senddate\":1783418427,\"duration\":\"10:4\",\"badgepay\":false,\"hit_columns\":[\"title\",\"description\",\"tag\"],\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":[],\"like\":5,\"upic\":\"https://i2.hdslb.com/bfs/face/d59457fb74ff36a96cf64801f3fc3730299bf6fa.jpg\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":0,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"\",\"episode_count_text\":\"\",\"release_status\":0,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":16,\"rank_offset\":15,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"video\",\"id\":116768550949009,\"author\":\"Bone骨头碎片\",\"mid\":403368159,\"typeid\":\"17\",\"typename\":\"单机游戏\",\"arcurl\":\"http://www.bilibili.com/video/av116768550949009\",\"aid\":116768550949009,\"bvid\":\"BV1GyjF6cE5p\",\"title\":\"「\\u003cem class=\\\"keyword\\\"\\u003eRust\\u003c/em\\u003e腐蚀」当我开局摸到一把弩！\",\"description\":\"开局一把弩，装备全靠抢！\",\"pic\":\"//i0.hdslb.com/bfs/archive/d3e7c874bcd8a6e3bf7bca8e1e394ede85d84b11.jpg\",\"play\":86586,\"video_review\":357,\"favorites\":618,\"tag\":\"整点电子榨菜,沙雕老外,沉浸式体验,rust,独狼,抄家,生存游戏,开荒,实况解说,搞笑\",\"review\":102,\"pubdate\":1781780400,\"senddate\":1781814475,\"duration\":\"58:24\",\"badgepay\":false,\"hit_columns\":[\"title\",\"tag\"],\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":[],\"like\":2406,\"upic\":\"https://i0.hdslb.com/bfs/face/4cb788aa5965d32c8faf3a8cfe5b84a0705a2d57.jpg\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":357,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"\",\"episode_count_text\":\"\",\"release_status\":0,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":17,\"rank_offset\":16,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"video\",\"id\":116844451137478,\"author\":\"失控进化\",\"mid\":3546785396034301,\"typeid\":\"17\",\"typename\":\"单机游戏\",\"arcurl\":\"http://www.bilibili.com/video/av116844451137478\",\"aid\":116844451137478,\"bvid\":\"BV1VKTv6rEp2\",\"title\":\"一口气看完《失控进化》荒岛进化三部曲！\",\"description\":\"从一块石头开始，他能在荒岛上走多远？\\n\\n第一步，活下去。\\n砍树、采矿、探索、建家，从零开始攒出自己的安全感。\\n\\n第二步，抢回来。\\n资源点、争夺、组队，抱团取暖，才是荒岛里的最高通行证。\\n\\n第三步，打到底。\\n联盟集结，火力倾泻，王座易主。\\n荒岛没有永远的胜利者，争霸的故事永不落幕。\\n\\n生存、争夺、称霸、轮回。\\n这就是《失控进化》的荒岛故事。\\n\\n7月9日，登岛开荒。\\n从一块石头开始，来做野人。\\n\\n☢️《失控进化》7月9日全平台上线，PC、安卓、iOS、鸿蒙、平板多端互通，PC抢先预下载，现已开启！\",\"pic\":\"//i0.hdslb.com/bfs/archive/f276dc679257d0b6c8bb4152e99d2efd585799cd.jpg\",\"play\":8162213,\"video_review\":62241,\"favorites\":32850,\"tag\":\"失控进化7月9日正式上线,失控进化不养闲人,Rust正版玩法授权,RUST授权失控进化,失控进化,rust,fps,腐蚀,开放世界\",\"review\":4224,\"pubdate\":1783299600,\"senddate\":1783308738,\"duration\":\"7:40\",\"badgepay\":false,\"hit_columns\":[\"tag\"],\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":[],\"like\":126563,\"upic\":\"https://i1.hdslb.com/bfs/face/ff844808cffa13406adf8e2698eb33ba774a98ca.jpg\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":62241,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"\",\"episode_count_text\":\"\",\"release_status\":0,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":18,\"rank_offset\":17,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"video\",\"id\":116870942299982,\"author\":\"莘花\",\"mid\":95869298,\"typeid\":\"230\",\"typename\":\"软件应用\",\"arcurl\":\"http://www.bilibili.com/video/av116870942299982\",\"aid\":116870942299982,\"bvid\":\"BV16ATD6ZEcL\",\"title\":\"\\u003cem class=\\\"keyword\\\"\\u003eRust\\u003c/em\\u003e 开发 Windows GUI 的新时代？微软官方 WinUI 3 库体验\",\"description\":\"https://github.com/microsoft/windows-rs\",\"pic\":\"//i1.hdslb.com/bfs/archive/2c5b5933d67714df5b64bdabd1717ddad22f3ddf.jpg\",\"play\":8915,\"video_review\":2,\"favorites\":164,\"tag\":\"我的世界,微软,winui3,分享我的专业知识,原神,gui,rust\",\"review\":58,\"pubdate\":1783309180,\"senddate\":1783309181,\"duration\":\"7:14\",\"badgepay\":false,\"hit_columns\":[\"title\",\"tag\"],\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":[],\"like\":131,\"upic\":\"https://i2.hdslb.com/bfs/face/687c53413430bbc361a0a3a3679c4c87fe6669b7.jpg\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":2,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"\",\"episode_count_text\":\"\",\"release_status\":0,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":19,\"rank_offset\":18,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0},{\"type\":\"ketang\",\"id\":64561,\"author\":\"猩猩程序员\",\"mid\":159372264,\"typeid\":\"\",\"typename\":\"\",\"arcurl\":\"https://www.bilibili.com/cheese/play/ss64561?query_from=0\\u0026search_id=13705345852695057409\\u0026search_query=rust\",\"aid\":64561,\"bvid\":\"\",\"title\":\"\\u003cem class=\\\"keyword\\\"\\u003eRust\\u003c/em\\u003e语言 Slint教程，非tauri\",\"description\":\"\",\"pic\":\"https://archive.biliimg.com/bfs/archive/0edb2dd2c3bbfdb028a7cabf324f7ea73b11d65a.jpg\",\"play\":6857,\"video_review\":0,\"favorites\":0,\"tag\":\"\",\"review\":0,\"pubdate\":0,\"senddate\":0,\"duration\":\"\",\"badgepay\":false,\"hit_columns\":null,\"view_type\":\"\",\"is_pay\":0,\"is_union_video\":0,\"rec_tags\":null,\"new_rec_tags\":null,\"like\":0,\"upic\":\"\",\"corner\":\"\",\"cover\":\"\",\"desc\":\"\",\"url\":\"\",\"rec_reason\":\"\",\"danmaku\":0,\"biz_data\":null,\"is_charge_video\":0,\"vt\":0,\"enable_vt\":0,\"vt_display\":\"\",\"subtitle\":\"Rust语言教程之Slint教程，非tauri教程\",\"episode_count_text\":\"共103课时\",\"release_status\":2,\"is_intervene\":0,\"area\":0,\"style\":0,\"cate_name\":\"\",\"is_live_room_inline\":0,\"live_status\":0,\"live_time\":\"\",\"online\":0,\"rank_index\":20,\"rank_offset\":2,\"roomid\":0,\"short_id\":0,\"spread_id\":0,\"tags\":\"\",\"uface\":\"\",\"uid\":0,\"uname\":\"\",\"user_cover\":\"\",\"parent_area_id\":0,\"parent_area_name\":\"\",\"watched_show\":null,\"cny_flag\":0,\"card_status\":0}],\"show_column\":0,\"in_black_key\":0,\"in_white_key\":0,\"next\":2}}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "http://www.bilibili.com/video/av116253322647343",
+          "normalized_url": "http://www.bilibili.com/video/av116253322647343",
+          "title": "Rust腐蚀-适合三人bunker，简单不错的房型",
+          "content": "-",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://www.bilibili.com/video/av116890370317786",
+          "normalized_url": "http://www.bilibili.com/video/av116890370317786",
+          "title": "真心推荐所有喜欢SOC类玩法的来玩rust国服的安全区模式❤️",
+          "content": "-",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://www.bilibili.com/video/av116890370376215",
+          "normalized_url": "http://www.bilibili.com/video/av116890370376215",
+          "title": "Rust 入门｜类型推导｜类型如同约束｜应该是绝对且明确的｜拒绝编译器自作聪明隐式变更",
+          "content": "好好学习，天天向上 为什么要爬山，因为山在那里 为学日益，为道日损 vx: coreele https://google.github.io/comprehensive-rust/types-and-values/arithmetic.html",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://www.bilibili.com/video/av116886545111573",
+          "normalized_url": "http://www.bilibili.com/video/av116886545111573",
+          "title": "「Rust腐蚀」最好的燃烧瓶使用者！",
+          "content": "我用燃烧瓶疯狂抄家！",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.bilibili.com/cheese/play/ss111295489?query_from=0&search_id=13705345852695057409&search_query=rust",
+          "normalized_url": "https://www.bilibili.com/cheese/play/ss111295489?query_from=0&search_id=13705345852695057409&search_query=rust",
+          "title": "Rust编程实战：打造高并发、高性能Rust系统",
+          "content": "",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://www.bilibili.com/video/av970073238",
+          "normalized_url": "http://www.bilibili.com/video/av970073238",
+          "title": "Rust编程语言入门教程（Rust语言/Rust权威指南配套）【已完结】",
+          "content": "配套教材：《The Rust Programming Language》v1 2025新版视频（更新ing）：https://b23.tv/bCo2OtB",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://www.bilibili.com/video/av1802771739",
+          "normalized_url": "http://www.bilibili.com/video/av1802771739",
+          "title": "【RUST腐蚀生存】10000小时的独狼玩家，如何利喷子统治服务器！！",
+          "content": "",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://www.bilibili.com/video/av116813849500222",
+          "normalized_url": "http://www.bilibili.com/video/av116813849500222",
+          "title": "【失控进化】从零开始教学入门篇#1 服务器选择",
+          "content": "BGM：Starboy(Remix) The Hills (Amice Remix) 不懂的评论区问，我看到就回",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://www.bilibili.com/video/av116867486189339",
+          "normalized_url": "http://www.bilibili.com/video/av116867486189339",
+          "title": "【Rust】TT-最快的独狼开荒竞速！",
+          "content": "1",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://www.bilibili.com/video/av116877502188935",
+          "normalized_url": "http://www.bilibili.com/video/av116877502188935",
+          "title": "《失控进化》明日上线！开服必做清单来了！",
+          "content": "倒计时最后一天！兄弟伙们马上就要登岛了！小黄连夜整理了一份\"登岛必做清单\"。 别等到别人领满福利上岛，你还在原地打转。 明日10点，正式登岛，先领福利再开冲！ ☢《失控进化》7月9日全平台上线，PC、安卓、iOS、鸿蒙、平板多端互通！",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://www.bilibili.com/video/av113819535872183",
+          "normalized_url": "http://www.bilibili.com/video/av113819535872183",
+          "title": "【Rust腐蚀 新手教程】2026保姆级教程 实时更新！！！",
+          "content": "服务器直连：connect 103.39.66.146:40127 群：1022694496，有什么不懂的可以直接来群里 2026保姆级新手教程，争取做成全网最详细的教程！！！",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://www.bilibili.com/video/av116883172953400",
+          "normalized_url": "http://www.bilibili.com/video/av116883172953400",
+          "title": "RUST - 3分钟告诉你新的公寓大楼究竟该如何使用!! 租房?开商店?",
+          "content": "",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://www.bilibili.com/video/av876636",
+          "normalized_url": "http://www.bilibili.com/video/av876636",
+          "title": "【rust】裸男的荒野求生 第一天 （半夜遇悍匪）",
+          "content": "自制",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://www.bilibili.com/video/av116884347358590",
+          "normalized_url": "http://www.bilibili.com/video/av116884347358590",
+          "title": "我在失控进化里当起了火车大亨！",
+          "content": "",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://www.bilibili.com/video/av116888843591202",
+          "normalized_url": "http://www.bilibili.com/video/av116888843591202",
+          "title": "（RUST腐蚀生存）新手如何正确选择服务器",
+          "content": "-",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://www.bilibili.com/video/av116877938394941",
+          "normalized_url": "http://www.bilibili.com/video/av116877938394941",
+          "title": "0基础小白Rust开服教程,从入门到精通!",
+          "content": "超级简单的Rust开服教程，使用雨云服务器和LinuxGSM工具进行开服，方便后期管理和维护，价格低廉，性能强劲，是服主的不二之选。",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://www.bilibili.com/video/av116768550949009",
+          "normalized_url": "http://www.bilibili.com/video/av116768550949009",
+          "title": "「Rust腐蚀」当我开局摸到一把弩！",
+          "content": "开局一把弩，装备全靠抢！",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://www.bilibili.com/video/av116844451137478",
+          "normalized_url": "http://www.bilibili.com/video/av116844451137478",
+          "title": "一口气看完《失控进化》荒岛进化三部曲！",
+          "content": "从一块石头开始，他能在荒岛上走多远？ 第一步，活下去。 砍树、采矿、探索、建家，从零开始攒出自己的安全感。 第二步，抢回来。 资源点、争夺、组队，抱团取暖，才是荒岛里的最高通行证。 第三步，打到底。 联盟集结，火力倾泻，王座易主。 荒岛没有永远的胜利者，争霸的故事永不落幕。 生存、争夺、称霸、轮回。 这就是《失控进化》的荒岛故事。 7月9日，登岛开荒。 从一块石头开始，来做野人。 ☢️《失控进化》7月9日全平台上线，PC、安卓、iOS、鸿蒙、平板多端互通，PC抢先预下载，现已开启！",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://www.bilibili.com/video/av116870942299982",
+          "normalized_url": "http://www.bilibili.com/video/av116870942299982",
+          "title": "Rust 开发 Windows GUI 的新时代？微软官方 WinUI 3 库体验",
+          "content": "https://github.com/microsoft/windows-rs",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.bilibili.com/cheese/play/ss64561?query_from=0&search_id=13705345852695057409&search_query=rust",
+          "normalized_url": "https://www.bilibili.com/cheese/play/ss64561?query_from=0&search_id=13705345852695057409&search_query=rust",
+          "title": "Rust语言 Slint教程，非tauri",
+          "content": "",
+          "engine": "bilibili",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

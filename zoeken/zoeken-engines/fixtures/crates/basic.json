@@ -1,0 +1,56 @@
+{
+  "engine": "crates",
+  "case": "basic",
+  "query": {
+    "query": "serde",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://crates.io/api/v1/crates",
+    "headers": {},
+    "body": "{\n      \"crates\": [\n        {\n          \"name\": \"serde\",\n          \"description\": \"A generic serialization/deserialization framework\",\n          \"newest_version\": \"1.0.0\",\n          \"max_version\": \"1.0.0\",\n          \"keywords\": [\"serde\", \"serialization\"],\n          \"updated_at\": \"2024-01-02T03:04:05.000000+00:00\"\n        },\n        {\n          \"name\": \"tokio\",\n          \"description\": \"An asynchronous runtime for Rust\",\n          \"newest_version\": \"1.35.0\",\n          \"keywords\": [\"async\"],\n          \"updated_at\": \"2024-02-03T04:05:06.000000+00:00\"\n        }\n      ]\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://crates.io/crates/serde",
+          "normalized_url": "https://crates.io/crates/serde",
+          "title": "serde",
+          "content": "A generic serialization/deserialization framework",
+          "engine": "crates",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://crates.io/crates/tokio",
+          "normalized_url": "https://crates.io/crates/tokio",
+          "title": "tokio",
+          "content": "An asynchronous runtime for Rust",
+          "engine": "crates",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

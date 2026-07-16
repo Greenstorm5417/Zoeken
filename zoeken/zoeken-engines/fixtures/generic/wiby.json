@@ -1,0 +1,224 @@
+{
+  "engine": "wiby",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://wiby.me/json/?q=rust&p=1",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://wiby.me/json/?q=rust&p=1",
+    "headers": {
+      "date": "Thu, 09 Jul 2026 14:06:44 GMT",
+      "server": "nginx",
+      "transfer-encoding": "chunked",
+      "content-type": "application/json",
+      "connection": "keep-alive"
+    },
+    "body": "[\n  {\n    \"URL\": \"http://moros.cc/\",\n    \"Title\": \"MOROS: Obscure Rust Operating System\",\n    \"Snippet\": \" MOROS: Obscure Rust Operating System MOROS is a hobby operating system written in Rust by Vincent Ollivier . It targets computers with an x86-64 architecture and a BIOS, typically\",\n    \"Description\": \"\"\n  },\n  {\n    \"URL\": \"https://www.scattered-thoughts.net/writing/assorted-thoughts-on-zig-and-rust/\",\n    \"Title\": \"Assorted thoughts on zig (and rust)\",\n    \"Snippet\": \" Assorted thoughts on zig (and rust) Published 2020-10-19 I&#39;ve been using zig for ~4 months worth of side projects, including a toy text editor and an interpreter for a relational \",\n    \"Description\": \"\"\n  },\n  {\n    \"URL\": \"https://kevinlynagh.com/rust-zig/\",\n    \"Title\": \"Why I rewrote my Rust keyboard firmware in Zig: consistency, mastery, and fun\",\n    \"Snippet\": \" Why I rewrote my Rust keyboard firmware in Zig: consistency, mastery, and fun ← Back to Kevin&#39;s homepage Published: 2021 March 7 I’ve spent the last year building keybo\",\n    \"Description\": \"\"\n  },\n  {\n    \"URL\": \"https://cj.rs/cv/\",\n    \"Title\": \"Résumé · Clément Joly – Open-Source, Rust &amp; SQLite\",\n    \"Snippet\": \" in particular in Rust and Python. Employment Apr. 2024 - Now   Software Engineer, Rothesay, London : StratOS team Responsibilities: improve tooling for quants designing model\",\n    \"Description\": \"\"\n  },\n  {\n    \"URL\": \"https://rust-osdev.com/this-month/2022-11/\",\n    \"Title\": \"This Month in Rust OSDev: November 2022 | Rust OSDev\",\n    \"Snippet\": \" Rust OSDev Operating System Development in Rust This Month in Rust OSDev: November 2022 Published on Dec 07, 2022 (edited by @phil-opp ) Welcome to a new issue of &#34;This Month in R\",\n    \"Description\": \"Operating System Development in Rust\"\n  },\n  {\n    \"URL\": \"https://rustredriver.com/\",\n    \"Title\": \"Rust Red River\",\n    \"Snippet\": \" Or Ill use it for you. Rust Red River Stop a while. Does the web feel too large for you? Do you feel the tremor of the cybergoliath as it picks a path along the tender cables of t\",\n    \"Description\": \"\"\n  },\n  {\n    \"URL\": \"https://cj.rs/\",\n    \"Title\": \"Clément Joly – Open-Source, Rust &amp; SQLite\",\n    \"Snippet\": \" tools in Python and Rust to make other developers more productive. Before that, at Paxos , I was building a smart order router for crypto markets in Rust . And before that, I was \",\n    \"Description\": \"Clément Joly’s personal website: blog and CV of a software engineer\"\n  },\n  {\n    \"URL\": \"https://www.rustjobs.com/blog/the-rust-jobs-market.html\",\n    \"Title\": \"Rust Jobs - The Rust Jobs Market\",\n    \"Snippet\": \"x21FD; Blog ⇽ The Rust Jobs Market The Rust Jobs Market Alfie John : 2022-05-29 At the moment it&#39;s kind of hard to find many jobs using Rust because there&#39;s no one go-to pla\",\n    \"Description\": \"\"\n  },\n  {\n    \"URL\": \"https://astharoshe.net/2025-06-18-Rust_compile_time_reflections.html\",\n    \"Title\": \"Rust compile time reflections\",\n    \"Snippet\": \" Index RSS Rust compile time reflections Since my last post, I have experimented with uv and uvx for Python and I am very happy with them for the most parts. I am still using twine\",\n    \"Description\": \"\"\n  },\n  {\n    \"URL\": \"https://doc.rust-lang.org/stable/\",\n    \"Title\": \"Rust Documentation\",\n    \"Snippet\": \" Rust Documentation Welcome to an overview of the documentation provided by the Rust project . This page contains links to various helpful references, most of which are available o\",\n    \"Description\": \"\"\n  },\n  {\n    \"URL\": \"http://lambdalemon.gay/posts/grist-lens\",\n    \"Title\": \"Lenses in Rust and My Solution\",\n    \"Snippet\": \" -- Home Blog Posts Lenses in Rust and My Solution Started: April 16, 2026 Finished: April 17, 2026 Released: April 17, 2026 Last Revision: April 18, 2026 Rust Programming Librarie\",\n    \"Description\": \"Information about a lens library written in rust\"\n  },\n  {\n    \"URL\": \"https://lib.rs/\",\n    \"Title\": \"Lib.rs — home for Rust crates // Lib.rs\",\n    \"Snippet\": \" Lib.rs Index of 294,268 Rust libraries and applications. Lightweight, opinionated, curated, unofficial alternative to crates.io. More… Search Categories New and trending Stats Pop\",\n    \"Description\": \"\"\n  }\n]\n"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "http://moros.cc/",
+          "normalized_url": "http://moros.cc/",
+          "title": "MOROS: Obscure Rust Operating System",
+          "content": "MOROS: Obscure Rust Operating System MOROS is a hobby operating system written in Rust by Vincent Ollivier . It targets computers with an x86-64 architecture and a BIOS, typically",
+          "engine": "wiby",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.scattered-thoughts.net/writing/assorted-thoughts-on-zig-and-rust/",
+          "normalized_url": "https://www.scattered-thoughts.net/writing/assorted-thoughts-on-zig-and-rust/",
+          "title": "Assorted thoughts on zig (and rust)",
+          "content": "Assorted thoughts on zig (and rust) Published 2020-10-19 I&#39;ve been using zig for ~4 months worth of side projects, including a toy text editor and an interpreter for a relational",
+          "engine": "wiby",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://kevinlynagh.com/rust-zig/",
+          "normalized_url": "https://kevinlynagh.com/rust-zig/",
+          "title": "Why I rewrote my Rust keyboard firmware in Zig: consistency, mastery, and fun",
+          "content": "Why I rewrote my Rust keyboard firmware in Zig: consistency, mastery, and fun ← Back to Kevin&#39;s homepage Published: 2021 March 7 I’ve spent the last year building keybo",
+          "engine": "wiby",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://cj.rs/cv/",
+          "normalized_url": "https://cj.rs/cv/",
+          "title": "Résumé · Clément Joly – Open-Source, Rust &amp; SQLite",
+          "content": "in particular in Rust and Python. Employment Apr. 2024 - Now Software Engineer, Rothesay, London : StratOS team Responsibilities: improve tooling for quants designing model",
+          "engine": "wiby",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust-osdev.com/this-month/2022-11/",
+          "normalized_url": "https://rust-osdev.com/this-month/2022-11/",
+          "title": "This Month in Rust OSDev: November 2022 | Rust OSDev",
+          "content": "Rust OSDev Operating System Development in Rust This Month in Rust OSDev: November 2022 Published on Dec 07, 2022 (edited by @phil-opp ) Welcome to a new issue of &#34;This Month in R",
+          "engine": "wiby",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rustredriver.com/",
+          "normalized_url": "https://rustredriver.com/",
+          "title": "Rust Red River",
+          "content": "Or Ill use it for you. Rust Red River Stop a while. Does the web feel too large for you? Do you feel the tremor of the cybergoliath as it picks a path along the tender cables of t",
+          "engine": "wiby",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://cj.rs/",
+          "normalized_url": "https://cj.rs/",
+          "title": "Clément Joly – Open-Source, Rust &amp; SQLite",
+          "content": "tools in Python and Rust to make other developers more productive. Before that, at Paxos , I was building a smart order router for crypto markets in Rust . And before that, I was",
+          "engine": "wiby",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.rustjobs.com/blog/the-rust-jobs-market.html",
+          "normalized_url": "https://www.rustjobs.com/blog/the-rust-jobs-market.html",
+          "title": "Rust Jobs - The Rust Jobs Market",
+          "content": "x21FD; Blog ⇽ The Rust Jobs Market The Rust Jobs Market Alfie John : 2022-05-29 At the moment it&#39;s kind of hard to find many jobs using Rust because there&#39;s no one go-to pla",
+          "engine": "wiby",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://astharoshe.net/2025-06-18-Rust_compile_time_reflections.html",
+          "normalized_url": "https://astharoshe.net/2025-06-18-Rust_compile_time_reflections.html",
+          "title": "Rust compile time reflections",
+          "content": "Index RSS Rust compile time reflections Since my last post, I have experimented with uv and uvx for Python and I am very happy with them for the most parts. I am still using twine",
+          "engine": "wiby",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://doc.rust-lang.org/stable/",
+          "normalized_url": "https://doc.rust-lang.org/stable/",
+          "title": "Rust Documentation",
+          "content": "Rust Documentation Welcome to an overview of the documentation provided by the Rust project . This page contains links to various helpful references, most of which are available o",
+          "engine": "wiby",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://lambdalemon.gay/posts/grist-lens",
+          "normalized_url": "http://lambdalemon.gay/posts/grist-lens",
+          "title": "Lenses in Rust and My Solution",
+          "content": "-- Home Blog Posts Lenses in Rust and My Solution Started: April 16, 2026 Finished: April 17, 2026 Released: April 17, 2026 Last Revision: April 18, 2026 Rust Programming Librarie",
+          "engine": "wiby",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://lib.rs/",
+          "normalized_url": "https://lib.rs/",
+          "title": "Lib.rs — home for Rust crates // Lib.rs",
+          "content": "Lib.rs Index of 294,268 Rust libraries and applications. Lightweight, opinionated, curated, unofficial alternative to crates.io. More… Search Categories New and trending Stats Pop",
+          "engine": "wiby",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

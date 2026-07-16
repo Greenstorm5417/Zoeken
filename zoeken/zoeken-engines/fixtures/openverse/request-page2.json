@@ -1,0 +1,49 @@
+{
+  "engine": "openverse",
+  "case": "request-page2",
+  "query": {
+    "query": "blue cat",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "blue cat",
+    "category": "",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://api.openverse.org/v1/images/?page=2&page_size=20&format=json&q=blue+cat",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://api.openverse.org/v1/images/",
+    "headers": {},
+    "body": "{\"results\":[]}"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

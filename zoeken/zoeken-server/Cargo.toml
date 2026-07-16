@@ -1,0 +1,61 @@
+[package]
+name = "zoeken-server"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description.workspace = true
+
+[[bin]]
+name = "zoeken-server"
+path = "src/main.rs"
+
+[lib]
+name = "zoeken_server"
+path = "src/lib.rs"
+
+[dependencies]
+zoeken-search = { workspace = true }
+zoeken-answerers = { workspace = true }
+zoeken-plugins = { workspace = true }
+zoeken-query = { workspace = true }
+zoeken-results = { workspace = true }
+zoeken-engine-core = { workspace = true }
+zoeken-engines = { workspace = true }
+zoeken-network = { workspace = true }
+zoeken-settings = { workspace = true }
+zoeken-data = { workspace = true }
+zoeken-prefs = { workspace = true }
+zoeken-botdetect = { workspace = true }
+zoeken-favicons = { workspace = true }
+zoeken-autocomplete = { workspace = true }
+zoeken-metrics = { workspace = true }
+axum = { workspace = true }
+tower = { workspace = true }
+tower-http = { workspace = true }
+tokio = { workspace = true, features = ["signal"] }
+wreq = { workspace = true }
+futures-util = { workspace = true }
+url = { workspace = true }
+ipnet = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+serde_yaml_ng = { workspace = true }
+quick-xml = { workspace = true }
+csv = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+metrics = { workspace = true }
+metrics-exporter-prometheus = { workspace = true }
+base64 = { workspace = true }
+
+[dev-dependencies]
+tokio = { workspace = true }
+proptest = { workspace = true }
+flate2 = { workspace = true }
+
+[lints]
+workspace = true

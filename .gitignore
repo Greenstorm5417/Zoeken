@@ -1,0 +1,19 @@
+/target
+/.kiro
+/.claude
+/searxng
+/dist
+*.deb
+
+# Frontend build output (Vite). Keep placeholders for a bare checkout.
+/zoeken/zoeken-server/assets/**
+!/zoeken/zoeken-server/assets/.gitkeep
+!/zoeken/zoeken-server/assets/rss.xsl
+!/zoeken/zoeken-server/assets/zoeken-logo.svg
+
+# Optional runtime data override directory (APP_DATA_DIR).
+/data
+
+# Local compose secrets
+.env
+.env.local

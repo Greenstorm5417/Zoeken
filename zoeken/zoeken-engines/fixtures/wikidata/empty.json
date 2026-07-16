@@ -1,0 +1,27 @@
+{
+  "engine": "wikidata",
+  "case": "empty",
+  "query": {
+    "query": "nothing",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://query.wikidata.org/sparql",
+    "headers": {},
+    "body": "{\"results\": {\"bindings\": []}}"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

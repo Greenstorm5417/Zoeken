@@ -1,0 +1,7 @@
+# Seeds for failure cases proptest has generated in the past. It is
+# automatically read and these particular cases re-run before any
+# novel cases are generated.
+#
+# It is recommended to check this file in to source control so that
+# everyone who runs the test benefits from these saved cases.
+cc ab03deb59e48066f513cf7750604939e7320c4d68960e3633b78310dcc741528 # shrinks to scenario = OversizedBody, cfg = DeploymentConfig { log_level: "info", shutdown_grace_seconds: 30, max_request_body_bytes: 32, request_timeout_seconds: 30, hsts: false, content_security_policy: None, metrics_enabled: true, trusted_proxies: [] }

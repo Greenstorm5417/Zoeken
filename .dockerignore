@@ -1,0 +1,42 @@
+# Keep the Docker build context small and reproducible.
+
+# Rust build output (rebuilt in the backend stage).
+target/
+**/target/
+
+# Frontend deps (rebuilt in the client stage).
+zoeken-client/node_modules/
+**/node_modules/
+
+# Local SPA build output (rebuilt in client stage).
+zoeken/zoeken-server/assets/**
+!zoeken/zoeken-server/assets/.gitkeep
+!zoeken/zoeken-server/assets/rss.xsl
+!zoeken/zoeken-server/assets/zoeken-logo.svg
+
+# Version control / tooling / vendored reference.
+.git/
+.gitignore
+.vscode/
+.claude/
+.kiro/
+.cursor/
+searxng/
+dist/
+*.deb
+
+# Docs / tests stay out of the image context; packaging/debian holds the
+# runtime settings.yml + limiter.toml copied into the image.
+docs/
+tests/integration/
+*.md
+!zoeken-client/README.md
+!LICENSE
+packaging/**
+!packaging/debian/
+!packaging/debian/**
+
+# Env secrets must never enter the image context.
+.env
+.env.*
+!.env.example

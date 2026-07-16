@@ -1,0 +1,49 @@
+{
+  "engine": "wikibooks",
+  "case": "request-page2",
+  "query": {
+    "query": "rust",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://en.wikibooks.org/w/api.php?action=query&list=search&format=json&srsearch=rust&sroffset=5&srlimit=5&srwhat=text&srprop=sectiontitle%7Csnippet%7Ctimestamp%7Ccategorysnippet&srsort=relevance&srenablerewrites=1",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://en.wikibooks.org/",
+    "headers": {},
+    "body": "{\"batchcomplete\":\"\",\"query\":{\"searchinfo\":{\"totalhits\":0}}}"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

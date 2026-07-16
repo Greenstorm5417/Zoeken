@@ -1,0 +1,49 @@
+{
+  "engine": "hackernews",
+  "case": "request-search",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://hn.algolia.com/api/v1/search?query=rust&page=0&hitsPerPage=30&minWordSizefor1Typo=4&minWordSizefor2Typos=8&advancedSyntax=true&ignorePlurals=false&minProximity=7&numericFilters=%5B%5D&tagFilters=%5B%22story%22%2C%5B%5D%5D&typoTolerance=true&queryType=prefixLast&restrictSearchableAttributes=%5B%22title%22%2C%22comment_text%22%2C%22url%22%2C%22story_text%22%2C%22author%22%5D&getRankingInfo=true",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://hn.algolia.com/api/v1",
+    "headers": {},
+    "body": "{\"hits\":[]}"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

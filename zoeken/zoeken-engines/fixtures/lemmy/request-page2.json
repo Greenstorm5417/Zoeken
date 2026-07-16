@@ -1,0 +1,49 @@
+{
+  "engine": "lemmy",
+  "case": "request-page2",
+  "query": {
+    "query": "rust",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://lemmy.ml/api/v3/search?q=rust&page=2&type_=Communities",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://lemmy.ml/",
+    "headers": {},
+    "body": "{\"communities\":[]}"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

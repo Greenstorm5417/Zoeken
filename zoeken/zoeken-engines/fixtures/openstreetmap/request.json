@@ -1,0 +1,49 @@
+{
+  "engine": "openstreetmap",
+  "case": "request",
+  "query": {
+    "query": "berlin cafe",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "berlin cafe",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://nominatim.openstreetmap.org/search?q=berlin+cafe&polygon_geojson=1&format=jsonv2&addressdetails=1&extratags=1&dedupe=1",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://nominatim.openstreetmap.org/",
+    "headers": {},
+    "body": "[]"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

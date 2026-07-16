@@ -1,0 +1,245 @@
+# Zoeken complete configuration reference.
+#
+# Zoeken uses YAML. Every active value in this file equals the typed application
+# default. Optional collection entries are documented as comments because adding
+# one would change the effective configuration.
+#
+# Load with:
+#   APP_SETTINGS_PATH=default.config.yml
+#
+# Environment variables override this file. See docs/settings.yml.example for
+# deployment-oriented examples and the supported APP_* names.
+
+# false replaces built-ins with this complete document. true deep-merges a
+# partial document onto defaults. It can also be a mapping with engine filters.
+use_default_settings: false
+# use_default_settings:
+#   engines:
+#     remove: []
+#     keep_only: []
+
+general:
+  debug: false
+  instance_name: "Search"
+  # null, false, or a URL string
+  privacypolicy_url: null
+  contact_url: null
+  donation_url: null
+  enable_metrics: true
+  # Empty disables /metrics. A non-empty value is its HTTP Basic password.
+  open_metrics: ""
+
+brand:
+  issue_url: ""
+  docs_url: ""
+  public_instances: ""
+  wiki_url: null
+  new_issue_url: ""
+  custom:
+    links: {}
+    # links:
+    #   Source: "https://example.test/source"
+  pwa_colors:
+    theme_color_light: "#3050ff"
+    background_color_light: "#fff"
+    theme_color_dark: "#58f"
+    background_color_dark: "#222428"
+    theme_color_black: "#3050ff"
+    background_color_black: "#000"
+
+search:
+  # 0 = off, 1 = moderate, 2 = strict
+  safe_search: 0
+  # Empty disables autocomplete.
+  autocomplete: "duckduckgo"
+  autocomplete_min: 1
+  # Empty disables result favicons. Allowed providers: allesedv, duckduckgo,
+  # google, yandex.
+  favicon_resolver: ""
+  # Empty means all languages.
+  default_lang: ""
+  languages: []
+  ban_time_on_fail: 5.0
+  max_ban_time_on_fail: 120.0
+  suspended_times:
+    SearxEngineAccessDenied: 86400.0
+    SearxEngineCaptcha: 86400.0
+    SearxEngineTooManyRequests: 3600.0
+    cf_SearxEngineCaptcha: 1296000.0
+    cf_SearxEngineAccessDenied: 86400.0
+    recaptcha_SearxEngineCaptcha: 604800.0
+  formats:
+    - html
+    - csv
+    - json
+    - rss
+  # 0 means unlimited.
+  max_page: 0
+
+server:
+  # Integer or numeric string.
+  port: 8888
+  bind_address: "127.0.0.1"
+  limiter: false
+  public_instance: false
+  # Public binds require at least 16 non-placeholder characters.
+  secret_key: ""
+  # false or an absolute public URL.
+  base_url: false
+  image_proxy: false
+  # 1.0 or 1.1
+  http_protocol_version: "1.0"
+  # POST or GET
+  method: "POST"
+  default_http_headers: {}
+  # default_http_headers:
+  #   X-Robots-Tag: "noindex, nofollow"
+
+deployment:
+  # trace, debug, info, warn, or error
+  log_level: "info"
+  shutdown_grace_seconds: 30
+  max_request_body_bytes: 1048576
+  request_timeout_seconds: 30
+  hsts: false
+  content_security_policy: "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+  metrics_enabled: true
+  trusted_proxies: []
+
+ui:
+  static_path: ""
+  templates_path: ""
+  default_theme: "simple"
+  default_locale: ""
+  theme_args:
+    # auto, light, dark, or black
+    simple_style: "auto"
+  center_alignment: false
+  results_on_new_tab: false
+  query_in_title: false
+  cache_url: "https://web.archive.org/web/"
+  search_on_category_select: true
+  # default or vim
+  hotkeys: "default"
+  # pretty, full, or host
+  url_formatting: "pretty"
+
+outgoing:
+  useragent_suffix: ""
+  request_timeout: 3.0
+  enable_http2: true
+  # true, false, or a CA bundle path
+  verify: true
+  max_request_timeout: null
+  pool_connections: 100
+  pool_maxsize: 10
+  keepalive_expiry: 5.0
+  max_response_bytes: 10485760
+  max_redirects: 30
+  retries: 0
+  # null, one proxy URL, or a map with all/http/https URL values.
+  proxies: null
+  # null, one IP, or a list of IPs.
+  source_ips: null
+  using_tor_proxy: false
+  extra_proxy_timeout: 0
+  networks: {}
+  # Named profiles inherit outgoing values. Every accepted override is shown:
+  # networks:
+  #   example:
+  #     request_timeout: null
+  #     enable_http2: null
+  #     verify: null
+  #     max_request_timeout: null
+  #     pool_connections: null
+  #     pool_maxsize: null
+  #     keepalive_expiry: null
+  #     max_redirects: null
+  #     retries: null
+  #     retry_on_http_error: null
+  #     proxies: null
+  #     source_ips: null
+  #     using_tor_proxy: null
+  #     extra_proxy_timeout: null
+  #     network: null
+
+# An empty list selects the built-in engine catalog. A non-empty entry accepts
+# every typed field below plus engine-specific flattened keys.
+engines: []
+# engines:
+#   - name: "example"
+#     engine: null
+#     shortcut: null
+#     categories: null
+#     timeout: null
+#     disabled: null
+#     weight: null
+#     tokens: null
+#     network: null
+#     inactive: null
+#     # Engine-specific keys include base_url, api_key, and generic parser
+#     # selectors documented by that engine.
+
+# Keys are plugin ids. Entries accept active plus plugin-specific flattened keys.
+plugins: {}
+# plugins:
+#   calculator:
+#     active: null
+
+lua_plugins:
+  enabled: true
+  directory: null
+  order: []
+
+categories_as_tabs:
+  files: {}
+  general: {}
+  images: {}
+  it: {}
+  map: {}
+  music: {}
+  news: {}
+  science: {}
+  social media: {}
+  videos: {}
+
+# Remote storage is schema-compatible but this server build rejects enabled
+# Redis/Valkey URLs at startup rather than silently ignoring them.
+redis:
+  url: false
+valkey:
+  url: false
+
+preferences:
+  # Supported lock names: theme, locale, language, categories, engines,
+  # safesearch, autocomplete, image_proxy, method, plugins.
+  lock: []
+
+doi_resolvers: {}
+# doi_resolvers:
+#   doi.org: "https://doi.org/"
+default_doi_resolver: null
+
+# Flattened hostname plugin settings: replace map and remove/high_priority/
+# low_priority string lists.
+hostnames: {}
+# hostnames:
+#   replace: {}
+#   remove: []
+#   high_priority: []
+#   low_priority: []
+
+# Empty uses the bundled limiter data asset. Optional keys are file, toml, and
+# link_token. file and toml are mutually prioritized, with toml first.
+limiter: {}
+# limiter:
+#   file: "path/to/limiter.toml"
+#   toml: |
+#     [botdetection]
+#   link_token: ""
+
+# Empty uses ImageProxyPolicy defaults. max_image_bytes and max_bytes are aliases
+# for the 5 MiB default.
+favicons: {}
+# favicons:
+#   max_image_bytes: 5242880

@@ -1,0 +1,27 @@
+{
+  "engine": "unsplash",
+  "case": "empty",
+  "query": {
+    "query": "cat",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://unsplash.com/napi/search/photos?",
+    "headers": {},
+    "body": "{\"results\":[]}"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

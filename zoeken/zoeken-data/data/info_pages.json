@@ -1,0 +1,61 @@
+{
+  "default_locale": "en",
+  "locales": {
+    "de": {
+      "about": {
+        "title": "Ueber Zoeken",
+        "content": "Zoeken ist eine datenschutzfreundliche Metasuchmaschine. Sie kombiniert Ergebnisse der konfigurierten Suchdienste, ohne ein Profil Ihrer Suchanfragen zu erstellen."
+      },
+      "privacy": {
+        "title": "Datenschutz",
+        "content": "Zoeken erfordert kein Konto und verwendet keine Werbe-Tracker. Suchanfragen werden vom Server an die konfigurierten Suchmaschinen gesendet. Einstellungen werden in einem Browser-Cookie gespeichert."
+      },
+      "license": {
+        "title": "Lizenz",
+        "content": "Zoeken ist freie Software unter der GNU Affero General Public License, Version 3 oder neuer."
+      }
+    },
+    "en": {
+      "about": {
+        "title": "About",
+        "content": "Zoeken is a privacy-respecting metasearch engine. It combines results from configured search services without building a profile of your searches."
+      },
+      "privacy": {
+        "title": "Privacy",
+        "content": "Zoeken does not require an account and does not use advertising trackers. Search requests are sent to configured engines by the server. Preferences are stored in your browser cookie."
+      },
+      "license": {
+        "title": "License",
+        "content": "Zoeken is free software licensed under the GNU Affero General Public License, version 3 or later."
+      }
+    },
+    "es": {
+      "about": {
+        "title": "Acerca de Zoeken",
+        "content": "Zoeken es un metabuscador que respeta la privacidad. Combina resultados de los servicios de busqueda configurados sin crear un perfil de sus busquedas."
+      },
+      "privacy": {
+        "title": "Privacidad",
+        "content": "Zoeken no requiere una cuenta ni utiliza rastreadores publicitarios. El servidor envia las consultas a los motores configurados. Las preferencias se guardan en una cookie del navegador."
+      },
+      "license": {
+        "title": "Licencia",
+        "content": "Zoeken es software libre bajo la Licencia Publica General Affero de GNU, version 3 o posterior."
+      }
+    },
+    "fr": {
+      "about": {
+        "title": "A propos de Zoeken",
+        "content": "Zoeken est un metamoteur de recherche respectueux de la vie privee. Il combine les resultats des services configures sans creer de profil de vos recherches."
+      },
+      "privacy": {
+        "title": "Vie privee",
+        "content": "Zoeken ne demande pas de compte et n'utilise pas de traceurs publicitaires. Le serveur envoie les recherches aux moteurs configures. Les preferences sont conservees dans un cookie du navigateur."
+      },
+      "license": {
+        "title": "Licence",
+        "content": "Zoeken est un logiciel libre distribue sous la licence GNU Affero General Public License, version 3 ou ulterieure."
+      }
+    }
+  }
+}

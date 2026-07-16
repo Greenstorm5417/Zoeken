@@ -1,0 +1,305 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+	--font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+
+	--color-zoeken-50: #f3f8ef;
+	--color-zoeken-100: #e4f0d9;
+	--color-zoeken-200: #c8e0b0;
+	--color-zoeken-400: #7cbc4a;
+	--color-zoeken-500: #5fa437;
+	--color-zoeken-600: #4a8a2b;
+	--color-zoeken-700: #2f6b1d;
+	--color-zoeken-800: #245416;
+	--color-zoeken-900: #1a3d12;
+
+	--color-surface: var(--surface);
+	--color-surface-raised: var(--surface-raised);
+	--color-ink: var(--ink);
+	--color-ink-muted: var(--ink-muted);
+	--color-ink-subtle: var(--ink-subtle);
+	--color-line: var(--line);
+	--color-accent: var(--accent);
+	--color-accent-soft: var(--accent-soft);
+	--color-focus: var(--focus);
+}
+
+:root {
+	color-scheme: light dark;
+
+	/* Higher-contrast light theme: dark ink + deep green links on a pale ground. */
+	--surface: #f2f5ee;
+	--surface-raised: #ffffff;
+	--ink: #0b140e;
+	--ink-muted: #2a382e;
+	--ink-subtle: #445548;
+	--line: #b4c4b2;
+	--accent: #246018;
+	--accent-soft: #cfe6bf;
+	--focus: #246018;
+	--atmosphere: radial-gradient(
+			ellipse 90% 60% at 50% -10%,
+			rgba(36, 96, 24, 0.12),
+			transparent 55%
+		),
+		radial-gradient(
+			ellipse 50% 40% at 90% 80%,
+			rgba(36, 96, 24, 0.07),
+			transparent 50%
+		),
+		linear-gradient(180deg, #f2f5ee 0%, #e6ede1 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--surface: #0f1410;
+		--surface-raised: #171d18;
+		--ink: #e8efe6;
+		--ink-muted: #a3b3a6;
+		--ink-subtle: #7a8a7c;
+		--line: #2a342c;
+		--accent: #7cbc4a;
+		--accent-soft: #1a2a16;
+		--focus: #7cbc4a;
+		--atmosphere: radial-gradient(
+				ellipse 90% 60% at 50% -10%,
+				rgba(124, 188, 74, 0.14),
+				transparent 55%
+			),
+			radial-gradient(
+				ellipse 50% 40% at 10% 90%,
+				rgba(47, 107, 29, 0.12),
+				transparent 50%
+			),
+			linear-gradient(180deg, #0f1410 0%, #121812 100%);
+	}
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+	min-height: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: var(--font-sans);
+	background: var(--atmosphere);
+	background-color: var(--surface);
+	color: var(--ink);
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Results page: flat reading surface, Google-style */
+.zoeken-serp {
+	background: var(--surface);
+}
+
+@keyframes rise {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.animate-rise {
+	animation: rise 0.55s ease-out both;
+}
+
+.animate-fade {
+	animation: fade-in 0.4s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.animate-rise,
+	.animate-fade {
+		animation: none;
+	}
+}
+
+/* Native search input chrome fights the custom bar */
+.zoeken-search-input::-webkit-search-decoration,
+.zoeken-search-input::-webkit-search-cancel-button,
+.zoeken-search-input::-webkit-search-results-button,
+.zoeken-search-input::-webkit-search-results-decoration {
+	display: none;
+}
+
+.zoeken-search-input[type="search"] {
+	appearance: none;
+}
+
+/* Compact search on results header */
+.zoeken-serp .zoeken-search-input {
+	border-color: transparent;
+	background: var(--surface-raised);
+	box-shadow:
+		0 1px 2px rgba(20, 32, 24, 0.06),
+		0 0 0 1px var(--line);
+}
+
+.zoeken-serp .zoeken-search-input:focus {
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* Custom dropdown menus (native <select> stays OS-chrome on Windows) */
+.zoeken-menu {
+	position: relative;
+	display: inline-flex;
+	vertical-align: middle;
+}
+
+.zoeken-menu--full {
+	display: block;
+	width: 100%;
+}
+
+.zoeken-menu-trigger {
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+	min-height: 2.125rem;
+	padding: 0.375rem 0.75rem;
+	border: 1px solid var(--line);
+	border-radius: 0.625rem;
+	background: var(--surface-raised);
+	color: var(--ink-muted);
+	font: inherit;
+	font-size: 0.8125rem;
+	line-height: 1.25;
+	cursor: pointer;
+	outline: none;
+	transition:
+		border-color 0.15s ease,
+		box-shadow 0.15s ease,
+		color 0.15s ease,
+		background 0.15s ease;
+}
+
+.zoeken-menu--full .zoeken-menu-trigger {
+	width: 100%;
+	min-height: 2.75rem;
+	padding: 0.625rem 0.875rem;
+	font-size: 0.9375rem;
+	color: var(--ink);
+}
+
+.zoeken-menu-trigger:hover {
+	color: var(--ink);
+	border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+}
+
+.zoeken-menu-trigger:focus-visible,
+.zoeken-menu-trigger[aria-expanded="true"] {
+	color: var(--ink);
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.zoeken-menu-value {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 11rem;
+}
+
+.zoeken-menu--full .zoeken-menu-value {
+	max-width: none;
+}
+
+.zoeken-menu-chevron {
+	width: 0.875rem;
+	height: 0.875rem;
+	flex-shrink: 0;
+	color: var(--ink-subtle);
+	transition: transform 0.15s ease;
+}
+
+.zoeken-menu-chevron.is-open {
+	transform: rotate(180deg);
+}
+
+.zoeken-menu-list {
+	position: absolute;
+	top: calc(100% + 0.35rem);
+	right: 0;
+	z-index: 40;
+	margin: 0;
+	padding: 0.35rem;
+	list-style: none;
+	min-width: 100%;
+	width: max-content;
+	max-width: min(18rem, 90vw);
+	max-height: 16rem;
+	overflow-y: auto;
+	border: 1px solid var(--line);
+	border-radius: 0.75rem;
+	background: var(--surface-raised);
+	box-shadow:
+		0 4px 6px rgba(20, 32, 24, 0.04),
+		0 16px 40px rgba(20, 32, 24, 0.12);
+	animation: fade-in 0.12s ease-out;
+}
+
+.zoeken-menu--full .zoeken-menu-list {
+	left: 0;
+	right: 0;
+	width: 100%;
+	max-width: none;
+}
+
+.zoeken-menu-option {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+	padding: 0.5rem 0.65rem;
+	border: 0;
+	border-radius: 0.5rem;
+	background: transparent;
+	color: var(--ink);
+	font: inherit;
+	font-size: 0.8125rem;
+	text-align: left;
+	cursor: pointer;
+	outline: none;
+}
+
+.zoeken-menu-option:hover,
+.zoeken-menu-option:focus-visible {
+	background: var(--accent-soft);
+}
+
+.zoeken-menu-option.is-selected {
+	color: var(--accent);
+	font-weight: 500;
+}
+
+@media (prefers-color-scheme: dark) {
+	.zoeken-menu-list {
+		box-shadow:
+			0 4px 6px rgba(0, 0, 0, 0.2),
+			0 16px 40px rgba(0, 0, 0, 0.35);
+	}
+}

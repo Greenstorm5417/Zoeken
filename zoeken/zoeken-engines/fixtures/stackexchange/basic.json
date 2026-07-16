@@ -1,0 +1,56 @@
+{
+  "engine": "stackoverflow",
+  "case": "basic",
+  "query": {
+    "query": "rust python",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://api.stackexchange.com/2.3/search/advanced",
+    "headers": {},
+    "body": "{\n      \"items\": [\n        {\n          \"tags\": [\"python\", \"rust\"],\n          \"owner\": {\"display_name\": \"Ferris & Guido\"},\n          \"is_answered\": true,\n          \"score\": 42,\n          \"question_id\": 123,\n          \"title\": \"How to call Rust from Python &amp; back?\"\n        },\n        {\n          \"tags\": [\"c\"],\n          \"owner\": {\"display_name\": \"Dennis\"},\n          \"is_answered\": false,\n          \"score\": 7,\n          \"question_id\": 456,\n          \"title\": \"Pointers explained\"\n        }\n      ]\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://stackoverflow.com/q/123",
+          "normalized_url": "https://stackoverflow.com/q/123",
+          "title": "How to call Rust from Python & back?",
+          "content": "[python, rust] Ferris & Guido // is answered // score: 42",
+          "engine": "stackoverflow",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://stackoverflow.com/q/456",
+          "normalized_url": "https://stackoverflow.com/q/456",
+          "title": "Pointers explained",
+          "content": "[c] Dennis // score: 7",
+          "engine": "stackoverflow",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

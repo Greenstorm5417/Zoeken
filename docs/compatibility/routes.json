@@ -1,0 +1,273 @@
+{
+  "routes": [
+    {
+      "notes": "implemented path; status/header/body parity needs route tests",
+      "path": "/",
+      "rust_methods": [
+        "GET",
+        "POST"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET",
+        "POST"
+      ]
+    },
+    {
+      "notes": "implemented path; status/header/body parity needs route tests",
+      "path": "/about",
+      "rust_methods": [
+        "GET"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET"
+      ]
+    },
+    {
+      "notes": "implemented path; status/header/body parity needs route tests",
+      "path": "/autocompleter",
+      "rust_methods": [
+        "GET",
+        "POST"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET",
+        "POST"
+      ]
+    },
+    {
+      "notes": "implemented path; status/header/body parity needs route tests",
+      "path": "/clear_cookies",
+      "rust_methods": [
+        "GET"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET"
+      ]
+    },
+    {
+      "notes": "implemented path; status/header/body parity needs route tests",
+      "path": "/client<token>.css",
+      "rust_methods": [
+        "GET",
+        "POST"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET",
+        "POST"
+      ]
+    },
+    {
+      "notes": "implemented; schema parity needs golden tests",
+      "path": "/config",
+      "rust_methods": [
+        "GET"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET"
+      ]
+    },
+    {
+      "notes": "implemented path; status/header/body parity needs route tests",
+      "path": "/engine_descriptions.json",
+      "rust_methods": [
+        "GET"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET"
+      ]
+    },
+    {
+      "notes": "implemented path; status/header/body parity needs route tests",
+      "path": "/favicon.ico",
+      "rust_methods": [
+        "GET"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET"
+      ]
+    },
+    {
+      "notes": "implemented path; status/header/body parity needs route tests",
+      "path": "/favicon_proxy",
+      "rust_methods": [
+        "GET"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET"
+      ]
+    },
+    {
+      "notes": "implemented path; status/header/body parity needs route tests",
+      "path": "/healthz",
+      "rust_methods": [
+        "GET"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET"
+      ]
+    },
+    {
+      "notes": "implemented path; status/header/body parity needs route tests",
+      "path": "/image_proxy",
+      "rust_methods": [
+        "GET"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET"
+      ]
+    },
+    {
+      "notes": "implemented path; status/header/body parity needs route tests",
+      "path": "/info/<locale>/<pagename>",
+      "rust_methods": [
+        "GET"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET"
+      ]
+    },
+    {
+      "notes": "implemented path; status/header/body parity needs route tests",
+      "path": "/logo/<resolution>",
+      "rust_methods": [
+        "GET"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET"
+      ]
+    },
+    {
+      "notes": "implemented path; status/header/body parity needs route tests",
+      "path": "/manifest.json",
+      "rust_methods": [
+        "GET"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET"
+      ]
+    },
+    {
+      "notes": "implemented; schema parity needs golden tests",
+      "path": "/metrics",
+      "rust_methods": [
+        "GET"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET"
+      ]
+    },
+    {
+      "notes": "implemented path; status/header/body parity needs route tests",
+      "path": "/opensearch.xml",
+      "rust_methods": [
+        "GET"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET"
+      ]
+    },
+    {
+      "notes": "implemented path; status/header/body parity needs route tests",
+      "path": "/preferences",
+      "rust_methods": [
+        "GET",
+        "POST"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET",
+        "POST"
+      ]
+    },
+    {
+      "notes": "Zoeken health/readiness or implementation-specific route",
+      "path": "/readyz",
+      "rust_methods": [
+        "GET"
+      ],
+      "status": "rust-only",
+      "upstream_methods": []
+    },
+    {
+      "notes": "implemented path; status/header/body parity needs route tests",
+      "path": "/robots.txt",
+      "rust_methods": [
+        "GET"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET"
+      ]
+    },
+    {
+      "notes": "implemented path; status/header/body parity needs route tests",
+      "path": "/rss.xsl",
+      "rust_methods": [
+        "GET",
+        "POST"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET",
+        "POST"
+      ]
+    },
+    {
+      "notes": "schema/content negotiation parity still needs conformance fixtures",
+      "path": "/search",
+      "rust_methods": [
+        "GET",
+        "POST"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET",
+        "POST"
+      ]
+    },
+    {
+      "notes": "implemented; schema parity needs golden tests",
+      "path": "/stats",
+      "rust_methods": [
+        "GET"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET"
+      ]
+    },
+    {
+      "notes": "implemented; schema parity needs golden tests",
+      "path": "/stats/errors",
+      "rust_methods": [
+        "GET"
+      ],
+      "status": "ported",
+      "upstream_methods": [
+        "GET"
+      ]
+    }
+  ],
+  "summary": {
+    "matching_paths": 22,
+    "missing": 0,
+    "rust_routes": 23,
+    "upstream_routes": 22
+  }
+}

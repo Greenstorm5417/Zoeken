@@ -1,0 +1,198 @@
+{
+  "engine": "sina",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://search.sina.com.cn/api/search?q=rust&tp=mix&sort=0&page=1&size=10&from=search_result",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://search.sina.com.cn/api/search?q=rust&tp=mix&sort=0&page=1&size=10&from=search_result",
+    "headers": {
+      "content-length": "11284",
+      "x-via-ssl": "ssl.25.sinag1.yf.lb.sinanode.com",
+      "content-type": "application/json; charset=utf-8",
+      "set-cookie": "beegosessionID=04a0bc6a30dc933f1c6de60adcdc9838; Path=/; HttpOnly",
+      "x-ratelimit-limit": "200",
+      "server": "nginx",
+      "date": "Thu, 09 Jul 2026 14:06:26 GMT"
+    },
+    "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"list\": [\n      {\n        \"author\": \"\",\n        \"ctime\": 1783419300,\n        \"dataTime\": \"2026-07-07 18:15:00\",\n        \"dataid\": \"comos:nifyquv1613229\",\n        \"docType\": \"news\",\n        \"intro\": \"【#TIOBE指数2026年7月排行榜公布#：Rust 编程语言首次进入全球第 10 名】TIOBE 7 月排行榜显示，Rust 首次进入全球前十，占比 1.34%...\",\n        \"media\": \"\",\n        \"media_show\": \"IT之家\",\n        \"searchSummary\": \"【#TIOBE指数2026年7月排行榜公布#：Rust 编程语言首次进入全球第 10 名】TIOBE 7 月排行榜显示，Rust 首次进入全球前十，占比 1.34%...\",\n        \"source\": {\n          \"media\": \"\"\n        },\n        \"thumb\": \"https://n.sinaimg.cn/sinakd/sni/445/w1440h605/20260707/a860-30a253abe97064c636c34ab6cf302fc8.jpg\",\n        \"time\": \"2026-07-07 18:15:00\",\n        \"title\": \"TIOBE七月榜\\u003cfont color='red'\\u003eRust\\u003c/font\\u003e首进前十，占比1.34%\",\n        \"type\": 9,\n        \"url\": \"https://t.cj.sina.com.cn/articles/view/1826017320/6cd6d02804001pgzi\"\n      },\n      {\n        \"author\": \"\",\n        \"ctime\": 1783038413,\n        \"dataTime\": \"2026-07-03 08:26:53\",\n        \"dataid\": \"comos:nifntfk0451811\",\n        \"docType\": \"news\",\n        \"intro\": \"Jamf 表示该恶意软件滥用合法 macOS 框架，在用户输入密码后确认凭据是否可用，攻击者可据此剔除无效凭据，再继续窃取数据...\",\n        \"media\": \"\",\n        \"media_show\": \"行业动态\",\n        \"searchSummary\": \"Jamf 表示该恶意软件滥用合法 macOS 框架，在用户输入密码后确认凭据是否可用，攻击者可据此剔除无效凭据，再继续窃取数据...\",\n        \"source\": {\n          \"media\": \"\"\n        },\n        \"thumb\": \"https://n.sinaimg.cn/spider20260703/186/w660h326/20260703/0215-2d31e9b66c5851e40907cc02fb4d1bf9.jpg\",\n        \"time\": \"2026-07-03 08:26:53\",\n        \"title\": \"PamStealer恶意软件披露：针对苹果Mac用户，\\u003cfont color='red'\\u003eRust\\u003c/font\\u003e收集隐私数据\",\n        \"type\": 9,\n        \"url\": \"https://k.sina.com.cn/article_5953466437_162dab0450670awepg.html\"\n      },\n      {\n        \"author\": \"\",\n        \"ctime\": 1783413222,\n        \"dataTime\": \"2026-07-07 16:33:42\",\n        \"dataid\": \"comos:nifyquw8329846\",\n        \"docType\": \"news\",\n        \"intro\": \"而本月，这一势头仍在延续，Rust 首次进入 TIOBE 编程语言指数前 10 名，继续创下历史新高...\",\n        \"media\": \"\",\n        \"media_show\": \"IT之家\",\n        \"searchSummary\": \"而本月，这一势头仍在延续，Rust 首次进入 TIOBE 编程语言指数前 10 名，继续创下历史新高...\",\n        \"source\": {\n          \"media\": \"\"\n        },\n        \"thumb\": \"https://n.sinaimg.cn/spider20260707/445/w1440h605/20260707/372c-cf39c5621901256287713dba1e7bd5d2.jpg\",\n        \"time\": \"2026-07-07 16:33:42\",\n        \"title\": \"TIOBE 指数 2026 年 7 月排行榜公布：\\u003cfont color='red'\\u003eRust\\u003c/font\\u003e 编程语言首次进入全球第 10 名\",\n        \"type\": 1,\n        \"url\": \"https://finance.sina.com.cn/tech/digi/2026-07-07/doc-inifyquw8329846.shtml\"\n      },\n      {\n        \"author\": \"\",\n        \"ctime\": 1782863124,\n        \"dataTime\": \"2026-07-01 07:45:24\",\n        \"dataid\": \"comos:nifheze6376696\",\n        \"docType\": \"news\",\n        \"intro\": \"当编译耗时拖慢迭代节奏，当虚拟机卡顿打断调试思路，当多任务切换频繁触发内存告急，一颗真正懂开发流程的CPU，远不止是频率数字的堆砌，而是响应速度、多线程调度、缓存带宽与功耗控制的精密协同...\",\n        \"media\": \"\",\n        \"media_show\": \"中关村在线\",\n        \"searchSummary\": \"当编译耗时拖慢迭代节奏，当虚拟机卡顿打断调试思路，当多任务切换频繁触发内存告急，一颗真正懂开发流程的CPU，远不止是频率数字的堆砌，而是响应速度、多线程调度、缓存带宽与功耗控制的精密协同...\",\n        \"source\": {\n          \"media\": \"\"\n        },\n        \"thumb\": \"\",\n        \"time\": \"2026-07-01 07:45:24\",\n        \"title\": \"AM5平台CPU划算选购指南 Python/Java/\\u003cfont color='red'\\u003eRust\\u003c/font\\u003e多语言编译优化配置\",\n        \"type\": 1,\n        \"url\": \"https://finance.sina.com.cn/roll/2026-07-01/doc-inifheze6376696.shtml\"\n      },\n      {\n        \"author\": \"\",\n        \"ctime\": 1781772072,\n        \"dataTime\": \"2026-06-18 16:41:12\",\n        \"dataid\": \"comos:nicvmmp6506818\",\n        \"docType\": \"news\",\n        \"intro\": \"IT之家 6 月 18 日消息，非营利组织 Rust 基金会昨天宣布，美国人工智能公司 OpenAI 现已正式加入基金会，并成为白金会员...\",\n        \"media\": \"\",\n        \"media_show\": \"IT之家\",\n        \"searchSummary\": \"IT之家 6 月 18 日消息，非营利组织 Rust 基金会昨天宣布，美国人工智能公司 OpenAI 现已正式加入基金会，并成为白金会员...\",\n        \"source\": {\n          \"media\": \"\"\n        },\n        \"thumb\": \"https://n.sinaimg.cn/sinakd20260618s/0/w512h288/20260618/1df8-437897db55f7d112586d0d4b876c932f.png\",\n        \"time\": \"2026-06-18 16:41:12\",\n        \"title\": \"OpenAI成为\\u003cfont color='red'\\u003eRust\\u003c/font\\u003e基金会白金会员，合计赞助60万美元\",\n        \"type\": 9,\n        \"url\": \"https://t.cj.sina.com.cn/articles/view/1826017320/6cd6d02802001lonk\"\n      },\n      {\n        \"author\": \"\",\n        \"ctime\": 1781704330,\n        \"dataTime\": \"2026-06-17 21:52:10\",\n        \"dataid\": \"comos:nicttai6912921\",\n        \"docType\": \"news\",\n        \"intro\": \"新系统能自动监测网络状态并智能重连，大幅提升开发者体验……...\",\n        \"media\": \"\",\n        \"media_show\": \"IT之家\",\n        \"searchSummary\": \"新系统能自动监测网络状态并智能重连，大幅提升开发者体验……...\",\n        \"source\": {\n          \"media\": \"\"\n        },\n        \"thumb\": \"https://n.sinaimg.cn/sinakd/sni/400/w1280h720/20260617/29b7-43c9aad7109d623287b7fa8f54ed1989.jpg\",\n        \"time\": \"2026-06-17 21:52:10\",\n        \"title\": \"谷歌用4000行\\u003cfont color='red'\\u003eRust\\u003c/font\\u003e代码重写Android17无线调试堆栈解决断连问题\",\n        \"type\": 9,\n        \"url\": \"https://t.cj.sina.com.cn/articles/view/1826017320/6cd6d02804001lo0s\"\n      },\n      {\n        \"author\": \"\",\n        \"ctime\": 1781998800,\n        \"dataTime\": \"2026-06-21 07:40:00\",\n        \"dataid\": \"comos:niecmtc8063479\",\n        \"docType\": \"news\",\n        \"intro\": \"近日，OpenAI 工程师 Charlie Marsh 透露公司继续押注 Rust 编程语言。并且宣布向 Rust 基金会捐赠 60 万美元...\",\n        \"media\": \"\",\n        \"media_show\": \"程序员的那些事\",\n        \"searchSummary\": \"近日，OpenAI 工程师 Charlie Marsh 透露公司继续押注 Rust 编程语言。并且宣布向 Rust 基金会捐赠 60 万美元...\",\n        \"source\": {\n          \"media\": \"\"\n        },\n        \"thumb\": \"https://n.sinaimg.cn/spider20260621/239/w1080h759/20260621/7a8b-5afd9517698eae9a745f677f21b0a4a5.png\",\n        \"time\": \"2026-06-21 07:40:00\",\n        \"title\": \"押注 \\u003cfont color='red'\\u003eRust\\u003c/font\\u003e！OpenAI 骄傲地承诺捐赠 60 万美刀\",\n        \"type\": 1,\n        \"url\": \"https://finance.sina.com.cn/wm/2026-06-21/doc-iniecmtc8063479.shtml\"\n      },\n      {\n        \"author\": \"\",\n        \"ctime\": 1781062200,\n        \"dataTime\": \"2026-06-10 11:30:00\",\n        \"dataid\": \"comos:niawxzv4528165\",\n        \"docType\": \"news\",\n        \"intro\": \"小米下半年重磅系统迭代正式浮出水面。据数码博主最新爆料，小米将于今年下半年推出全新澎湃OS 4，本次更新不再是常规的功能修补，而是实现了「表层UI审美革新+底层架构重构」的双重升级...\",\n        \"media\": \"\",\n        \"media_show\": \"泡泡网\",\n        \"searchSummary\": \"小米下半年重磅系统迭代正式浮出水面。据数码博主最新爆料，小米将于今年下半年推出全新澎湃OS 4，本次更新不再是常规的功能修补，而是实现了「表层UI审美革新+底层架构重构」的双重升级...\",\n        \"source\": {\n          \"media\": \"\"\n        },\n        \"thumb\": \"https://n.sinaimg.cn/spider20260610/724/w730h794/20260610/b42c-e4f6d7b0c23a20b97ef1ff02437308bb.jpg\",\n        \"time\": \"2026-06-10 11:30:00\",\n        \"title\": \"小米澎湃OS 4或引入液态玻璃设计，底层\\u003cfont color='red'\\u003eRust\\u003c/font\\u003e重构质变升级\",\n        \"type\": 1,\n        \"url\": \"https://finance.sina.com.cn/roll/2026-06-10/doc-iniawxzv4528165.shtml\"\n      },\n      {\n        \"author\": \"\",\n        \"ctime\": 1780887523,\n        \"dataTime\": \"2026-06-08 10:58:43\",\n        \"dataid\": \"comos:niasfpu5652091\",\n        \"docType\": \"news\",\n        \"intro\": \"然而，Rust 近期的变化推翻了其判断，在最新一期排行榜中，Rust 创下历史新高，首次进入全球第 12 名。尽管如此，技术发展的走向往往难以精确预测，Rust 当前的发展势头已经超出此前预期，未来几年其增长曲线是否能够延续，仍值得持续观察...\",\n        \"media\": \"\",\n        \"media_show\": \"IT之家\",\n        \"searchSummary\": \"然而，Rust 近期的变化推翻了其判断，在最新一期排行榜中，Rust 创下历史新高，首次进入全球第 12 名。尽管如此，技术发展的走向往往难以精确预测，Rust 当前的发展势头已经超出此前预期，未来几年其增长曲线是否能够延续，仍值得持续观察...\",\n        \"source\": {\n          \"media\": \"\"\n        },\n        \"thumb\": \"https://n.sinaimg.cn/spider20260608/560/w1440h720/20260608/12a7-da657411c62f0bbe19e9e8a7dd082735.png\",\n        \"time\": \"2026-06-08 10:58:43\",\n        \"title\": \"TIOBE 指数 2026 年 6 月排行榜公布：\\u003cfont color='red'\\u003eRust\\u003c/font\\u003e 编程语言首次进入全球第 12 名\",\n        \"type\": 1,\n        \"url\": \"https://finance.sina.com.cn/tech/digi/2026-06-08/doc-iniasfpu5652091.shtml\"\n      },\n      {\n        \"author\": \"\",\n        \"ctime\": 1779774000,\n        \"dataTime\": \"2026-05-26 13:40:00\",\n        \"dataid\": \"comos:nhzezkr2364499\",\n        \"docType\": \"news\",\n        \"intro\": \"（来源：弘讯科技）2026年5月20日至22日，宁波弘讯科技股份有限公司于成都子公司举办为期两天半的Rust技术专题闭门研讨会...\",\n        \"media\": \"\",\n        \"media_show\": \"市场资讯\",\n        \"searchSummary\": \"（来源：弘讯科技）2026年5月20日至22日，宁波弘讯科技股份有限公司于成都子公司举办为期两天半的Rust技术专题闭门研讨会...\",\n        \"source\": {\n          \"media\": \"\"\n        },\n        \"thumb\": \"https://n.sinaimg.cn/spider20260526/7/w1080h527/20260526/ad8e-3b581294cb9eca0d964e1e1c785d98fa.png\",\n        \"time\": \"2026-05-26 13:40:00\",\n        \"title\": \"弘讯科技举办\\u003cfont color='red'\\u003eRust\\u003c/font\\u003e技术闭门研讨会，以芯片可信基础与安全软件架构协同探索工业控制系统下一代技术路径\",\n        \"type\": 1,\n        \"url\": \"https://finance.sina.com.cn/wm/2026-05-26/doc-inhzezkr2364499.shtml\"\n      }\n    ],\n    \"total\": 184,\n    \"page\": 1,\n    \"size\": 10,\n    \"search_time\": 14\n  }\n}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://t.cj.sina.com.cn/articles/view/1826017320/6cd6d02804001pgzi",
+          "normalized_url": "https://t.cj.sina.com.cn/articles/view/1826017320/6cd6d02804001pgzi",
+          "title": "TIOBE七月榜Rust首进前十，占比1.34%",
+          "content": "【#TIOBE指数2026年7月排行榜公布#：Rust 编程语言首次进入全球第 10 名】TIOBE 7 月排行榜显示，Rust 首次进入全球前十，占比 1.34%...",
+          "engine": "sina",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://k.sina.com.cn/article_5953466437_162dab0450670awepg.html",
+          "normalized_url": "https://k.sina.com.cn/article_5953466437_162dab0450670awepg.html",
+          "title": "PamStealer恶意软件披露：针对苹果Mac用户，Rust收集隐私数据",
+          "content": "Jamf 表示该恶意软件滥用合法 macOS 框架，在用户输入密码后确认凭据是否可用，攻击者可据此剔除无效凭据，再继续窃取数据...",
+          "engine": "sina",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://finance.sina.com.cn/tech/digi/2026-07-07/doc-inifyquw8329846.shtml",
+          "normalized_url": "https://finance.sina.com.cn/tech/digi/2026-07-07/doc-inifyquw8329846.shtml",
+          "title": "TIOBE 指数 2026 年 7 月排行榜公布：Rust 编程语言首次进入全球第 10 名",
+          "content": "而本月，这一势头仍在延续，Rust 首次进入 TIOBE 编程语言指数前 10 名，继续创下历史新高...",
+          "engine": "sina",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://finance.sina.com.cn/roll/2026-07-01/doc-inifheze6376696.shtml",
+          "normalized_url": "https://finance.sina.com.cn/roll/2026-07-01/doc-inifheze6376696.shtml",
+          "title": "AM5平台CPU划算选购指南 Python/Java/Rust多语言编译优化配置",
+          "content": "当编译耗时拖慢迭代节奏，当虚拟机卡顿打断调试思路，当多任务切换频繁触发内存告急，一颗真正懂开发流程的CPU，远不止是频率数字的堆砌，而是响应速度、多线程调度、缓存带宽与功耗控制的精密协同...",
+          "engine": "sina",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://t.cj.sina.com.cn/articles/view/1826017320/6cd6d02802001lonk",
+          "normalized_url": "https://t.cj.sina.com.cn/articles/view/1826017320/6cd6d02802001lonk",
+          "title": "OpenAI成为Rust基金会白金会员，合计赞助60万美元",
+          "content": "IT之家 6 月 18 日消息，非营利组织 Rust 基金会昨天宣布，美国人工智能公司 OpenAI 现已正式加入基金会，并成为白金会员...",
+          "engine": "sina",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://t.cj.sina.com.cn/articles/view/1826017320/6cd6d02804001lo0s",
+          "normalized_url": "https://t.cj.sina.com.cn/articles/view/1826017320/6cd6d02804001lo0s",
+          "title": "谷歌用4000行Rust代码重写Android17无线调试堆栈解决断连问题",
+          "content": "新系统能自动监测网络状态并智能重连，大幅提升开发者体验……...",
+          "engine": "sina",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://finance.sina.com.cn/wm/2026-06-21/doc-iniecmtc8063479.shtml",
+          "normalized_url": "https://finance.sina.com.cn/wm/2026-06-21/doc-iniecmtc8063479.shtml",
+          "title": "押注 Rust！OpenAI 骄傲地承诺捐赠 60 万美刀",
+          "content": "近日，OpenAI 工程师 Charlie Marsh 透露公司继续押注 Rust 编程语言。并且宣布向 Rust 基金会捐赠 60 万美元...",
+          "engine": "sina",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://finance.sina.com.cn/roll/2026-06-10/doc-iniawxzv4528165.shtml",
+          "normalized_url": "https://finance.sina.com.cn/roll/2026-06-10/doc-iniawxzv4528165.shtml",
+          "title": "小米澎湃OS 4或引入液态玻璃设计，底层Rust重构质变升级",
+          "content": "小米下半年重磅系统迭代正式浮出水面。据数码博主最新爆料，小米将于今年下半年推出全新澎湃OS 4，本次更新不再是常规的功能修补，而是实现了「表层UI审美革新+底层架构重构」的双重升级...",
+          "engine": "sina",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://finance.sina.com.cn/tech/digi/2026-06-08/doc-iniasfpu5652091.shtml",
+          "normalized_url": "https://finance.sina.com.cn/tech/digi/2026-06-08/doc-iniasfpu5652091.shtml",
+          "title": "TIOBE 指数 2026 年 6 月排行榜公布：Rust 编程语言首次进入全球第 12 名",
+          "content": "然而，Rust 近期的变化推翻了其判断，在最新一期排行榜中，Rust 创下历史新高，首次进入全球第 12 名。尽管如此，技术发展的走向往往难以精确预测，Rust 当前的发展势头已经超出此前预期，未来几年其增长曲线是否能够延续，仍值得持续观察...",
+          "engine": "sina",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://finance.sina.com.cn/wm/2026-05-26/doc-inhzezkr2364499.shtml",
+          "normalized_url": "https://finance.sina.com.cn/wm/2026-05-26/doc-inhzezkr2364499.shtml",
+          "title": "弘讯科技举办Rust技术闭门研讨会，以芯片可信基础与安全软件架构协同探索工业控制系统下一代技术路径",
+          "content": "（来源：弘讯科技）2026年5月20日至22日，宁波弘讯科技股份有限公司于成都子公司举办为期两天半的Rust技术专题闭门研讨会...",
+          "engine": "sina",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

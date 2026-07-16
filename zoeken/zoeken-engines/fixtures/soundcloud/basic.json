@@ -1,0 +1,56 @@
+{
+  "engine": "soundcloud",
+  "case": "basic",
+  "query": {
+    "query": "cool",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://api-v2.soundcloud.com/search",
+    "headers": {},
+    "body": "{\n      \"collection\": [\n        {\n          \"kind\": \"track\",\n          \"title\": \"Cool Track\",\n          \"permalink_url\": \"https://soundcloud.com/artist/cool-track\",\n          \"description\": \"A cool track\",\n          \"label_name\": \"Cool Records\"\n        },\n        {\n          \"kind\": \"playlist\",\n          \"title\": \"Chill Playlist\",\n          \"permalink_url\": \"https://soundcloud.com/artist/chill-playlist\",\n          \"description\": \"Chill vibes\"\n        },\n        {\n          \"kind\": \"user\",\n          \"title\": \"Some Artist\",\n          \"permalink_url\": \"https://soundcloud.com/artist\"\n        },\n        {\n          \"kind\": \"track\",\n          \"title\": \"No URL Track\",\n          \"description\": \"This track has no permalink_url\"\n        }\n      ],\n      \"total_results\": 4\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://soundcloud.com/artist/cool-track",
+          "normalized_url": "https://soundcloud.com/artist/cool-track",
+          "title": "Cool Track",
+          "content": "A cool track / Cool Records",
+          "engine": "soundcloud",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://soundcloud.com/artist/chill-playlist",
+          "normalized_url": "https://soundcloud.com/artist/chill-playlist",
+          "title": "Chill Playlist",
+          "content": "Chill vibes",
+          "engine": "soundcloud",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

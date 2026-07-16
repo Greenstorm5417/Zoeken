@@ -1,0 +1,67 @@
+{
+  "engine": "swisscows",
+  "case": "basic",
+  "query": {
+    "query": "rust search",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "en-US",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust search",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "en-US",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://api.swisscows.com/v5/web/search?freshness=All&itemsCount=20&locale=en-US&offset=0&query=rust+search&spellcheck=true",
+    "headers": {
+      "X-Request-Nonce": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdef",
+      "X-Request-Signature": "_eO5HEZGcB4wbV3o8w2zSHIi0j55MO5iBtOYRgbaRv8"
+    },
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://api.swisscows.com/v5/web/search",
+    "headers": {},
+    "body": "{\"items\":[{\"type\":\"WebPage\",\"url\":\"https://example.com/rust\",\"name\":\"Rust Search\",\"description\":\"<b>Private</b> search result\"}]}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://example.com/rust",
+          "normalized_url": "https://example.com/rust",
+          "title": "Rust Search",
+          "content": "Private search result",
+          "engine": "swisscows",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

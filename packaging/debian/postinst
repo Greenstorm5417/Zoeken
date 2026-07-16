@@ -1,0 +1,25 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+  configure)
+    if ! getent group zoeken >/dev/null; then
+      addgroup --system zoeken
+    fi
+    if ! getent passwd zoeken >/dev/null; then
+      adduser --system --ingroup zoeken --home /var/lib/zoeken \
+        --no-create-home --shell /usr/sbin/nologin zoeken
+    fi
+    if [ ! -d /var/lib/zoeken ]; then
+      mkdir -p /var/lib/zoeken
+      chown zoeken:zoeken /var/lib/zoeken
+    fi
+    if command -v systemctl >/dev/null 2>&1; then
+      systemctl daemon-reload || true
+      systemctl enable zoeken.service >/dev/null 2>&1 || true
+    fi
+    echo "Zoeken installed. Edit /etc/default/zoeken then: systemctl start zoeken"
+    ;;
+esac
+
+exit 0

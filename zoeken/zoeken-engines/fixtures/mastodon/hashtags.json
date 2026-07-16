@@ -1,0 +1,42 @@
+{
+  "engine": "mastodon hashtags",
+  "case": "hashtags",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://mastodon.social",
+    "headers": {},
+    "body": "{\n      \"accounts\": [],\n      \"hashtags\": [\n        {\n          \"name\": \"rust\",\n          \"url\": \"https://mastodon.social/tags/rust\",\n          \"history\": [\n            {\"day\": \"1700000000\", \"uses\": \"10\", \"accounts\": \"5\"},\n            {\"day\": \"1699913600\", \"uses\": \"20\", \"accounts\": \"8\"}\n          ]\n        }\n      ],\n      \"statuses\": []\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://mastodon.social/tags/rust",
+          "normalized_url": "https://mastodon.social/tags/rust",
+          "title": "rust",
+          "content": "Hashtag has been used 30 times by 13 different users",
+          "engine": "mastodon hashtags",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

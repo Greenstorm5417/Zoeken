@@ -1,0 +1,25 @@
+# Zoeken environment (sourced by systemd via EnvironmentFile).
+# Full YAML config: /etc/zoeken/settings.yml
+# Limiter TOML:     /etc/zoeken/limiter.toml
+# See docs/deployment.md and docs/settings.yml.example.
+
+# Default: loopback only (safe for first install).
+# These override matching keys in settings.yml when set.
+APP_BIND_ADDRESS=127.0.0.1
+APP_PORT=8888
+
+# For a public instance, set a strong secret (>=16 random chars) and bind:
+# APP_BIND_ADDRESS=0.0.0.0
+# APP_SECRET_KEY=
+# APP_PUBLIC_INSTANCE=true
+
+# Optional overrides (already set in the unit if unset):
+# APP_ASSETS_DIR=/usr/share/zoeken/assets
+# APP_SETTINGS_PATH=/etc/zoeken/settings.yml
+# Only set APP_DATA_DIR when the directory contains a full JSON data bundle
+# (external_bangs.json, currencies.json, …). Defaults are precompiled.
+# APP_DATA_DIR=/var/lib/zoeken
+# APP_LOG_LEVEL=info
+# APP_METRICS_ENABLED=true
+# APP_IMAGE_PROXY=false
+# APP_BASE_URL=https://search.example.com

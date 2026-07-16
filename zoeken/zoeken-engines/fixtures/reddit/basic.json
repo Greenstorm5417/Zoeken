@@ -1,0 +1,61 @@
+{
+  "engine": "reddit",
+  "case": "basic",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://www.reddit.com/search.json",
+    "headers": {},
+    "body": "{\n      \"data\": {\n        \"children\": [\n          {\n            \"data\": {\n              \"permalink\": \"/r/rust/comments/1/text_post/\",\n              \"title\": \"A text post\",\n              \"thumbnail\": \"self\",\n              \"selftext\": \"Some discussion text\",\n              \"url\": \"https://www.reddit.com/r/rust/comments/1/text_post/\",\n              \"created_utc\": 1700000000\n            }\n          },\n          {\n            \"data\": {\n              \"permalink\": \"/r/pics/comments/2/an_image/\",\n              \"title\": \"An image post\",\n              \"thumbnail\": \"https://b.thumbs.redditmedia.com/abc.jpg\",\n              \"selftext\": \"\",\n              \"url\": \"https://i.redd.it/abc.jpg\",\n              \"created_utc\": 1700000100\n            }\n          }\n        ]\n      }\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Image": {
+          "url": "https://www.reddit.com/r/pics/comments/2/an_image/",
+          "normalized_url": "https://www.reddit.com/r/pics/comments/2/an_image/",
+          "title": "An image post",
+          "content": "",
+          "engine": "reddit",
+          "img_src": "https://i.redd.it/abc.jpg",
+          "thumbnail_src": "https://b.thumbs.redditmedia.com/abc.jpg",
+          "resolution": "",
+          "img_format": "",
+          "source": "",
+          "filesize": "",
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.reddit.com/r/rust/comments/1/text_post/",
+          "normalized_url": "https://www.reddit.com/r/rust/comments/1/text_post/",
+          "title": "A text post",
+          "content": "Some discussion text",
+          "engine": "reddit",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

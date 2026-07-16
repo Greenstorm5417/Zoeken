@@ -1,0 +1,82 @@
+{
+  "engine": "elasticsearch",
+  "case": "match-basic",
+  "query": {
+    "query": "city:berlin",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "city:berlin",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "",
+    "engine_data": {},
+    "method": "Get",
+    "url": "http://localhost:9200/my-index/_search",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": {
+      "from": 0,
+      "query": {
+        "match": {
+          "city": {
+            "query": "berlin"
+          }
+        }
+      },
+      "size": 10
+    },
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "http://localhost:9200/my-index/_search",
+    "headers": {},
+    "body": "{\"hits\":{\"hits\":[{\"_id\":\"1\",\"_index\":\"my-index\",\"_score\":1.5,\"_source\":{\"city\":\"berlin\"}}]}}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "KeyValue": {
+          "url": "",
+          "normalized_url": "",
+          "title": "",
+          "content": "",
+          "engine": "elasticsearch",
+          "kvmap": [
+            [
+              "city",
+              "berlin"
+            ]
+          ],
+          "caption": "",
+          "key_title": "",
+          "value_title": "",
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

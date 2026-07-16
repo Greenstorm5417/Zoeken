@@ -1,0 +1,103 @@
+{
+  "systems": [
+    {
+      "rust": "zoeken/zoeken-engines",
+      "rust_count": 381,
+      "system": "engines",
+      "upstream": "searx/engines",
+      "upstream_count": 248
+    },
+    {
+      "rust": "zoeken/zoeken-plugins",
+      "rust_count": 15,
+      "system": "plugins",
+      "upstream": "searx/plugins",
+      "upstream_count": 12
+    },
+    {
+      "rust": "zoeken/zoeken-search",
+      "rust_count": 14,
+      "system": "search",
+      "upstream": "searx/search",
+      "upstream_count": 2
+    },
+    {
+      "rust": "zoeken/zoeken-results",
+      "rust_count": 3,
+      "system": "results",
+      "upstream": "searx/results.py",
+      "upstream_count": 1
+    },
+    {
+      "rust": "zoeken/zoeken-settings",
+      "rust_count": 9,
+      "system": "settings",
+      "upstream": "searx/settings*.py, searx/settings.yml",
+      "upstream_count": 3
+    },
+    {
+      "rust": "zoeken/zoeken-prefs, zoeken/zoeken-server/src/preferences.rs",
+      "rust_count": 6,
+      "system": "preferences",
+      "upstream": "searx/preferences.py, searx/webapp.py",
+      "upstream_count": 2
+    },
+    {
+      "rust": "zoeken/zoeken-server/src/lib.rs",
+      "rust_count": 1,
+      "system": "routes",
+      "upstream": "searx/webapp.py",
+      "upstream_count": 1
+    },
+    {
+      "rust": "zoeken/zoeken-data/data",
+      "rust_count": 13,
+      "system": "data",
+      "upstream": "searx/data",
+      "upstream_count": 14
+    },
+    {
+      "rust": "zoeken/zoeken-network",
+      "rust_count": 9,
+      "system": "network",
+      "upstream": "searx/network",
+      "upstream_count": 3
+    },
+    {
+      "rust": "zoeken/zoeken-botdetect",
+      "rust_count": 15,
+      "system": "limiter",
+      "upstream": "searx/limiter.py, searx/botdetection",
+      "upstream_count": 14
+    },
+    {
+      "rust": "zoeken/zoeken-server/src/static_assets.rs",
+      "rust_count": 1,
+      "system": "templates",
+      "upstream": "searx/templates",
+      "upstream_count": 1
+    },
+    {
+      "rust": "zoeken/zoeken-server/src/static_assets.rs, logo/",
+      "rust_count": 3,
+      "system": "static assets",
+      "upstream": "searx/static",
+      "upstream_count": 1
+    },
+    {
+      "rust": "zoeken/zoeken-autocomplete",
+      "rust_count": 4,
+      "system": "autocomplete",
+      "upstream": "searx/autocomplete.py",
+      "upstream_count": 1
+    },
+    {
+      "rust": "zoeken/zoeken-data/data/locales.json",
+      "rust_count": 1,
+      "system": "translations",
+      "upstream": "searx/translations.py, searx/languages.py",
+      "upstream_count": 0
+    }
+  ],
+  "upstream": "C:\\tmp\\zoeken-searxng-tree"
+}

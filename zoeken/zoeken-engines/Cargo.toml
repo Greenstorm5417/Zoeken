@@ -1,0 +1,31 @@
+[package]
+name = "zoeken-engines"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description.workspace = true
+
+[dependencies]
+zoeken-engine-core = { workspace = true }
+zoeken-results = { workspace = true }
+zoeken-data = { workspace = true }
+scraper = { workspace = true }
+ego-tree = { workspace = true }
+url = { workspace = true }
+chrono = { workspace = true, features = ["clock"] }
+serde = { workspace = true }
+serde_json = { workspace = true }
+quick-xml = { workspace = true }
+thiserror = { workspace = true }
+rusqlite = { workspace = true }
+base64 = { workspace = true }
+sha2 = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }
+
+[lints]
+workspace = true

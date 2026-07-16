@@ -1,0 +1,486 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  verify:
+    name: Verify version + backend
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      image_name: ${{ steps.version.outputs.image_name }}
+    container:
+      image: rust:1-bookworm
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Install native build dependencies
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends cmake clang curl libclang-dev
+          rm -rf /var/lib/apt/lists/*
+
+      - name: Resolve and gate version
+        id: version
+        run: |
+          set -euo pipefail
+          TAG="${GITHUB_REF_NAME}"
+          VERSION="${TAG#v}"
+          CARGO_VER="$(sed -n '/^\[workspace\.package\]/,/^\[/{s/^version *= *"\([^"]*\)".*/\1/p;}' Cargo.toml | head -n1)"
+          CLIENT_VER="$(sed -n 's/^[[:space:]]*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' zoeken-client/package.json | head -n1)"
+          if [ -z "${CARGO_VER}" ]; then
+            echo "::error::could not read workspace.package.version from Cargo.toml"
+            exit 1
+          fi
+          if [ -z "${CLIENT_VER}" ]; then
+            echo "::error::could not read version from zoeken-client/package.json"
+            exit 1
+          fi
+          if [ "${VERSION}" != "${CARGO_VER}" ]; then
+            echo "::error::tag v${VERSION} does not match Cargo.toml version ${CARGO_VER}"
+            exit 1
+          fi
+          if [ "${VERSION}" != "${CLIENT_VER}" ]; then
+            echo "::error::tag v${VERSION} does not match zoeken-client version ${CLIENT_VER}"
+            exit 1
+          fi
+          IMAGE_NAME="$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "image_name=${IMAGE_NAME}" >> "$GITHUB_OUTPUT"
+          echo "Publishing Zoeken ${VERSION} → ghcr.io/${IMAGE_NAME}"
+
+      - name: Ensure clippy and rustfmt
+        run: rustup component add clippy rustfmt
+
+      - name: Format check
+        run: cargo fmt --all --check
+
+      - name: Build workspace
+        run: cargo build --workspace --locked
+
+      - name: Clippy
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+
+      - name: Test workspace
+        run: cargo test --workspace --locked
+
+  client:
+    name: Build SPA assets
+    runs-on: ubuntu-latest
+    needs: [verify]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: "1.3.14"
+
+      - name: Build client
+        run: |
+          set -euo pipefail
+          mkdir -p zoeken/zoeken-server/assets
+          cp -f logo/zoeken-logo.svg zoeken/zoeken-server/assets/zoeken-logo.svg
+          cd zoeken-client
+          bun install --frozen-lockfile
+          bun run build
+          cd ..
+          cp -f logo/zoeken-logo.svg zoeken/zoeken-server/assets/zoeken-logo.svg
+          if [ ! -f zoeken/zoeken-server/assets/rss.xsl ]; then
+            printf '%s\n' '<?xml version="1.0" encoding="UTF-8"?>' \
+              '<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">' \
+              '  <xsl:output method="html"/>' \
+              '  <xsl:template match="/"><html><body><xsl:apply-templates/></body></html></xsl:template>' \
+              '</xsl:stylesheet>' > zoeken/zoeken-server/assets/rss.xsl
+          fi
+          test -f zoeken/zoeken-server/assets/index.html
+
+      - name: Upload assets
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: spa-assets
+          path: zoeken/zoeken-server/assets/
+          retention-days: 7
+
+  binary:
+    name: Release binary (${{ matrix.deb_arch }})
+    runs-on: ${{ matrix.runner }}
+    needs: [verify, client]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - deb_arch: amd64
+            rust_target: x86_64-unknown-linux-gnu
+            runner: ubuntu-latest
+          - deb_arch: arm64
+            rust_target: aarch64-unknown-linux-gnu
+            runner: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Install native build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            cmake clang libclang-dev pkg-config
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@4cda84d5c5c54efe2404f9d843567869ab1699d4 # stable
+        with:
+          targets: ${{ matrix.rust_target }}
+
+      - name: Build zoeken-server (${{ matrix.rust_target }})
+        run: cargo build --release --locked --bin zoeken-server --target ${{ matrix.rust_target }}
+
+      - name: Upload release binary
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: bin-${{ matrix.deb_arch }}
+          path: target/${{ matrix.rust_target }}/release/zoeken-server
+          retention-days: 7
+          if-no-files-found: error
+
+  deb:
+    name: Debian package (${{ matrix.deb_arch }})
+    runs-on: ${{ matrix.runner }}
+    needs: [verify, client, binary]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - deb_arch: amd64
+            runner: ubuntu-latest
+          - deb_arch: arm64
+            runner: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Download SPA assets
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: spa-assets
+          path: zoeken/zoeken-server/assets
+
+      - name: Download binary
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: bin-${{ matrix.deb_arch }}
+          path: packaging-bin
+
+      - name: Install packaging tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends dpkg-dev file
+
+      - name: Build .deb
+        env:
+          VERSION: ${{ needs.verify.outputs.version }}
+          ARCH: ${{ matrix.deb_arch }}
+          BINARY: packaging-bin/zoeken-server
+          ASSETS: zoeken/zoeken-server/assets
+          OUT_DIR: dist
+        run: |
+          chmod +x packaging/scripts/*.sh packaging-bin/zoeken-server
+          ./packaging/scripts/build-deb.sh
+
+      - name: Upload .deb
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: deb-${{ matrix.deb_arch }}
+          path: dist/*.deb
+          retention-days: 30
+          if-no-files-found: error
+
+  nix:
+    name: Nix archive (${{ matrix.nix_system }})
+    runs-on: ${{ matrix.runner }}
+    needs: [verify, client, binary]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - deb_arch: amd64
+            nix_system: x86_64-linux
+            runner: ubuntu-latest
+          - deb_arch: arm64
+            nix_system: aarch64-linux
+            runner: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@630ae543ea3a38a9a4166f03376c02c50f408342 # v31
+
+      - name: Download SPA assets
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: spa-assets
+          path: nix-context/assets
+
+      - name: Download binary
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: bin-${{ matrix.deb_arch }}
+          path: nix-context
+
+      - name: Prepare Nix package context
+        run: |
+          set -euo pipefail
+          cp LICENSE nix-context/LICENSE
+          cp default.config.yml nix-context/default.config.yml
+          cp packaging/debian/zoeken.settings.yml nix-context/settings.yml
+          cp packaging/debian/limiter.toml nix-context/limiter.toml
+          mkdir -p nix-context/plugins
+          cp -a zoeken/zoeken-plugins/plugins/. nix-context/plugins/
+          chmod 755 nix-context/zoeken-server
+
+      - name: Build Nix package and release archive
+        env:
+          VERSION: ${{ needs.verify.outputs.version }}
+          NIX_SYSTEM: ${{ matrix.nix_system }}
+        run: |
+          set -euo pipefail
+          nix-build packaging/nix/package.nix \
+            --arg src ./nix-context \
+            --argstr version "${VERSION}" \
+            --out-link result
+          test -x result/bin/zoeken-server
+          mkdir -p dist
+          ARCHIVE_ROOT="zoeken-${VERSION}-${NIX_SYSTEM}"
+          mkdir -p "dist/${ARCHIVE_ROOT}"
+          cp -a nix-context/. "dist/${ARCHIVE_ROOT}/"
+          tar -C dist -czf "dist/zoeken_${VERSION}_${NIX_SYSTEM}.tar.gz" "${ARCHIVE_ROOT}"
+          rm -rf "dist/${ARCHIVE_ROOT}"
+          tar -tzf "dist/zoeken_${VERSION}_${NIX_SYSTEM}.tar.gz" >/dev/null
+
+      - name: Upload Nix package
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: nix-${{ matrix.deb_arch }}
+          path: dist/*
+          retention-days: 30
+          if-no-files-found: error
+
+  docker:
+    name: Docker (${{ matrix.platform }})
+    runs-on: ${{ matrix.runner }}
+    needs: [verify, client, binary]
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: linux/amd64
+            deb_arch: amd64
+            runner: ubuntu-latest
+          - platform: linux/arm64
+            deb_arch: arm64
+            runner: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Download binary
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: bin-${{ matrix.deb_arch }}
+          path: docker-context
+
+      - name: Download SPA assets
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: spa-assets
+          path: docker-context/assets
+
+      - name: Prepare context
+        run: |
+          set -euo pipefail
+          cp LICENSE docker-context/LICENSE
+          cp packaging/debian/zoeken.settings.yml docker-context/settings.yml
+          cp packaging/debian/limiter.toml docker-context/limiter.toml
+          cp default.config.yml docker-context/default.config.yml
+          mkdir -p docker-context/plugins
+          cp -a zoeken/zoeken-plugins/plugins/. docker-context/plugins/
+          chmod 755 docker-context/zoeken-server
+          test -x docker-context/zoeken-server
+          test -f docker-context/assets/index.html
+          test -f docker-context/settings.yml
+          test -f docker-context/limiter.toml
+          test -f docker-context/default.config.yml
+          test -n "$(ls -A docker-context/plugins/*.lua 2>/dev/null)"
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@af1e73f918a031802d376d3c8bbc3fe56130a9b0 # v4
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push by digest
+        id: build
+        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7
+        with:
+          context: docker-context
+          file: ./Dockerfile.runtime
+          platforms: ${{ matrix.platform }}
+          push: true
+          outputs: type=image,name=${{ env.REGISTRY }}/${{ needs.verify.outputs.image_name }},push-by-digest=true,name-canonical=true,push=true
+          build-args: |
+            VERSION=${{ needs.verify.outputs.version }}
+            REVISION=${{ github.sha }}
+            CREATED=${{ github.event.head_commit.timestamp }}
+          cache-from: type=gha,scope=docker-${{ matrix.deb_arch }}
+          cache-to: type=gha,mode=max,scope=docker-${{ matrix.deb_arch }}
+
+      - name: Export digest
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/digests
+          digest="${{ steps.build.outputs.digest }}"
+          touch "/tmp/digests/${digest#sha256:}"
+
+      - name: Upload digest
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: digests-${{ matrix.deb_arch }}
+          path: /tmp/digests/*
+          if-no-files-found: error
+          retention-days: 1
+
+  docker-manifest:
+    name: Docker manifest (GHCR)
+    runs-on: ubuntu-latest
+    needs: [verify, docker]
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Download digests
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          pattern: digests-*
+          path: /tmp/digests
+          merge-multiple: true
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@af1e73f918a031802d376d3c8bbc3fe56130a9b0 # v4
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker metadata
+        id: meta
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6
+        with:
+          images: ${{ env.REGISTRY }}/${{ needs.verify.outputs.image_name }}
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=raw,value=latest
+
+      - name: Create manifest list and push
+        working-directory: /tmp/digests
+        run: |
+          set -euo pipefail
+          docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
+            $(printf '${{ env.REGISTRY }}/${{ needs.verify.outputs.image_name }}@sha256:%s ' *)
+
+  github-release:
+    name: GitHub Release
+    runs-on: ubuntu-latest
+    needs: [verify, deb, nix, docker-manifest]
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Download amd64 deb
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: deb-amd64
+          path: dist
+
+      - name: Download arm64 deb
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: deb-arm64
+          path: dist
+
+      - name: Download Nix packages
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          pattern: nix-*
+          path: dist
+          merge-multiple: true
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Zoeken ${{ needs.verify.outputs.version }}
+          generate_release_notes: true
+          files: |
+            dist/*.deb
+            dist/*.tar.gz
+          body: |
+            Release notes: [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/v${{ needs.verify.outputs.version }}/CHANGELOG.md)
+
+            ## Install
+
+            ### Debian / Ubuntu (`.deb`)
+
+            ```sh
+            sudo apt install ./zoeken_${{ needs.verify.outputs.version }}_amd64.deb
+            # or: ./zoeken_${{ needs.verify.outputs.version }}_arm64.deb
+            sudoedit /etc/default/zoeken   # set APP_SECRET_KEY for public binds
+            sudo systemctl start zoeken
+            ```
+
+            Assets live under `/usr/share/zoeken/assets`. Unit: `zoeken.service`.
+
+            ### Nix (`x86_64-linux` / `aarch64-linux`)
+
+            ```sh
+            nix run github:Greenstorm5417/nixos-pkgs#zoeken
+            ```
+
+            The rolling package automatically selects the current release for the host
+            system. A flake-based NixOS/Home Manager configuration is optional.
+
+            ### Docker (GHCR)
+
+            ```sh
+            docker pull ghcr.io/${{ needs.verify.outputs.image_name }}:${{ needs.verify.outputs.version }}
+            docker run --rm -p 8888:8888 \
+              -e APP_BIND_ADDRESS=0.0.0.0 \
+              -e APP_SECRET_KEY="$(openssl rand -hex 24)" \
+              -e APP_PUBLIC_INSTANCE=true \
+              ghcr.io/${{ needs.verify.outputs.image_name }}:${{ needs.verify.outputs.version }}
+            ```
+
+            See [docs/deployment.md](https://github.com/${{ github.repository }}/blob/v${{ needs.verify.outputs.version }}/docs/deployment.md).

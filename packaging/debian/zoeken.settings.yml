@@ -1,0 +1,343 @@
+# Zoeken settings — full option reference (YAML).
+#
+# Installed as /etc/zoeken/settings.yml (Debian conffile).
+# Loaded via APP_SETTINGS_PATH (systemd sets this automatically).
+#
+# Precedence: defaults → this file → APP_* environment overrides
+# (/etc/default/zoeken). Env wins for the keys it covers.
+#
+# Rate limiting / botdetection lives in a separate TOML file:
+#   limiter.file → /etc/zoeken/limiter.toml
+#
+# Docs: docs/deployment.md · docs/compatibility/intentional-differences.md
+
+# ---------------------------------------------------------------------------
+# general
+# ---------------------------------------------------------------------------
+general:
+  debug: false
+  instance_name: "Zoeken"
+  # false | "https://example.com/privacy"
+  privacypolicy_url: false
+  contact_url: false
+  donation_url: false
+  enable_metrics: true
+  # Prometheus scrape path label (empty = default /metrics handling)
+  open_metrics: ""
+
+# ---------------------------------------------------------------------------
+# brand (about page / PWA metadata)
+# ---------------------------------------------------------------------------
+brand:
+  issue_url: "https://github.com/Greenstorm5417/zoeken/issues"
+  docs_url: "https://github.com/Greenstorm5417/zoeken#readme"
+  public_instances: ""
+  wiki_url: false
+  new_issue_url: "https://github.com/Greenstorm5417/zoeken/issues/new"
+  custom:
+    links: {}
+    # Example:
+    # links:
+    #   Source: "https://github.com/Greenstorm5417/zoeken"
+  pwa_colors:
+    theme_color_light: "#3050ff"
+    background_color_light: "#fff"
+    theme_color_dark: "#58f"
+    background_color_dark: "#222428"
+    theme_color_black: "#3050ff"
+    background_color_black: "#000"
+
+# ---------------------------------------------------------------------------
+# search
+# ---------------------------------------------------------------------------
+search:
+  # 0=none, 1=moderate, 2=strict
+  safe_search: 0
+  # Backend name, or "" to disable. Known: duckduckgo, google, brave, …
+  autocomplete: "duckduckgo"
+  autocomplete_min: 1
+  favicon_resolver: ""
+  # "" = all languages; or e.g. "en"
+  default_lang: "en"
+  # Restrict selectable languages (empty = all bundled)
+  languages: []
+  ban_time_on_fail: 5.0
+  max_ban_time_on_fail: 120.0
+  suspended_times:
+    SearxEngineAccessDenied: 86400.0
+    SearxEngineCaptcha: 86400.0
+    SearxEngineTooManyRequests: 3600.0
+    cf_SearxEngineCaptcha: 1296000.0
+    cf_SearxEngineAccessDenied: 86400.0
+    recaptcha_SearxEngineCaptcha: 604800.0
+  # Allowed output formats for /search
+  formats:
+    - html
+    - csv
+    - json
+    - rss
+  # 0 = unlimited
+  max_page: 0
+
+# ---------------------------------------------------------------------------
+# server (bind / secrets / proxies)
+# Prefer APP_BIND_ADDRESS / APP_PORT / APP_SECRET_KEY in /etc/default/zoeken
+# for production binds — those override the values below.
+# ---------------------------------------------------------------------------
+server:
+  port: 8888
+  bind_address: "127.0.0.1"
+  limiter: false
+  public_instance: false
+  # Required (≥16 random chars) for non-loopback binds. Prefer APP_SECRET_KEY.
+  secret_key: ""
+  # false | "https://search.example.com"
+  base_url: false
+  image_proxy: false
+  # "1.0" | "1.1"
+  http_protocol_version: "1.0"
+  # Default search form method: "POST" | "GET"
+  method: "POST"
+  default_http_headers: {}
+  # Example:
+  # default_http_headers:
+  #   X-Robots-Tag: "noindex, nofollow"
+
+# ---------------------------------------------------------------------------
+# deployment (process hardening / reverse-proxy trust)
+# ---------------------------------------------------------------------------
+deployment:
+  # info | debug | warn | error | trace (also APP_LOG_LEVEL)
+  log_level: "info"
+  shutdown_grace_seconds: 30
+  max_request_body_bytes: 1048576
+  request_timeout_seconds: 30
+  hsts: false
+  # null = built-in CSP; or set a custom policy string
+  content_security_policy: null
+  metrics_enabled: true
+  # Unioned into limiter.toml trusted_proxies at boot (X-Forwarded-For trust).
+  # Add your nginx/Caddy / Docker bridge CIDRs when terminating TLS upstream.
+  trusted_proxies: []
+  # Example:
+  # trusted_proxies:
+  #   - 10.0.0.0/8
+  #   - 172.16.0.0/12
+  #   - 192.168.0.0/16
+
+# ---------------------------------------------------------------------------
+# ui (mostly SPA / prefs cookie compatibility)
+# ---------------------------------------------------------------------------
+ui:
+  static_path: ""
+  templates_path: ""
+  default_theme: "simple"
+  default_locale: ""
+  theme_args:
+    # auto | light | dark | black  (SPA still follows OS prefers-color-scheme)
+    simple_style: "auto"
+  center_alignment: false
+  results_on_new_tab: false
+  query_in_title: false
+  cache_url: "https://web.archive.org/web/"
+  search_on_category_select: true
+  # default | vim
+  hotkeys: "default"
+  # pretty | full | host
+  url_formatting: "pretty"
+
+# ---------------------------------------------------------------------------
+# outgoing (HTTP client to upstream engines)
+# ---------------------------------------------------------------------------
+outgoing:
+  useragent_suffix: ""
+  request_timeout: 3.0
+  enable_http2: true
+  verify: true
+  max_request_timeout: null
+  # Reject larger engine responses before buffering them in memory.
+  max_response_bytes: 10485760
+  pool_connections: 100
+  pool_maxsize: 10
+  keepalive_expiry: 5.0
+  max_redirects: 30
+  retries: 0
+  # null | "http://proxy:8080" | { all: "...", http: "...", https: "..." }
+  proxies: null
+  # null | "1.2.3.4" | ["1.2.3.4", "2001:db8::1"]
+  source_ips: null
+  using_tor_proxy: false
+  extra_proxy_timeout: 0
+  # Named network profiles engines can select with `network: name`
+  networks: {}
+  # Example:
+  # networks:
+  #   tor:
+  #     request_timeout: 10.0
+  #     using_tor_proxy: true
+  #     proxies: "socks5h://127.0.0.1:9050"
+  #     retries: 1
+  #     retry_on_http_error: [429, 503]
+  #     enable_http2: false
+  #     verify: true
+  #     max_request_timeout: 30.0
+  #     pool_connections: 20
+  #     pool_maxsize: 5
+  #     keepalive_expiry: 5.0
+  #     max_redirects: 10
+  #     source_ips: null
+  #     extra_proxy_timeout: 0
+  #     network: null
+
+# ---------------------------------------------------------------------------
+# engines
+#
+# Empty list → built-in default catalog (common engines enabled; the rest
+# available but disabled until toggled in preferences / listed here).
+#
+# Non-empty list → ONLY the engines you list are registered.
+# Typed fields: name, engine, shortcut, categories, timeout, disabled,
+# weight, tokens, network, inactive. Any other key is engine-specific
+# (base_url, xpath/json generic fields, …).
+# ---------------------------------------------------------------------------
+engines: []
+# Example overrides (uncomment + set engines: to a non-empty list to use):
+# engines:
+#   - name: duckduckgo
+#     engine: duckduckgo
+#     shortcut: ddg
+#     categories: [general]
+#     timeout: 3.0
+#     disabled: false
+#     weight: 1.0
+#     tokens: []
+#     network: null
+#     inactive: false
+#   - name: google
+#     engine: google
+#     disabled: true
+#   - name: wikipedia
+#     engine: wikipedia
+#     disabled: false
+
+# ---------------------------------------------------------------------------
+# plugins (preference defaults for plugin toggles)
+# Keys are plugin ids; `active` seeds user prefs. Extra keys are plugin-specific.
+# ---------------------------------------------------------------------------
+plugins:
+  ahmia_filter:
+    active: true
+  calculator:
+    active: true
+  hash:
+    active: true
+  hostnames:
+    active: true
+  infinite_scroll:
+    active: false
+  oa_doi_rewrite:
+    active: true
+  self_info:
+    active: true
+  time_zone:
+    active: true
+  tor_check:
+    active: true
+  tracker_url_remover:
+    active: true
+  unit_converter:
+    active: true
+
+# ---------------------------------------------------------------------------
+# lua_plugins (load Lua plugins from disk)
+# ---------------------------------------------------------------------------
+lua_plugins:
+  enabled: true
+  # Debian packages plugins here; override if you install elsewhere.
+  directory: "/usr/share/zoeken/plugins"
+  # Empty = filesystem order; otherwise load in this order (stems without .lua)
+  order: []
+  # Example:
+  # order:
+  #   - tracker_url_remover
+  #   - hostnames
+  #   - calculator
+
+# ---------------------------------------------------------------------------
+# categories_as_tabs (SPA category tabs)
+# ---------------------------------------------------------------------------
+categories_as_tabs:
+  general: {}
+  images: {}
+  videos: {}
+  news: {}
+  map: {}
+  music: {}
+  it: {}
+  science: {}
+  files: {}
+  social media: {}
+
+# ---------------------------------------------------------------------------
+# redis / valkey (schema-compatible; this server build requires false)
+# Also APP_REDIS_URL / APP_VALKEY_URL
+# ---------------------------------------------------------------------------
+redis:
+  url: false
+valkey:
+  url: false
+
+# ---------------------------------------------------------------------------
+# preferences (locked preference keys users cannot change)
+# ---------------------------------------------------------------------------
+preferences:
+  lock: []
+  # Example:
+  # lock:
+  #   - language
+  #   - safesearch
+
+# ---------------------------------------------------------------------------
+# doi_resolvers
+# ---------------------------------------------------------------------------
+doi_resolvers: {}
+# Example:
+# doi_resolvers:
+#   oadoi.org: "https://oadoi.org/"
+#   doi.org: "https://doi.org/"
+default_doi_resolver: null
+
+# ---------------------------------------------------------------------------
+# hostnames (result URL rewrite / priority)
+# ---------------------------------------------------------------------------
+hostnames: {}
+# Example:
+# hostnames:
+#   replace:
+#     "(www\\.)?example\\.com$": "example.org"
+#   remove:
+#     - "(tracking)\\."
+#   high_priority:
+#     - "(^|\\.)wikipedia\\.org$"
+#   low_priority:
+#     - "(^|\\.)pinterest\\."
+
+# ---------------------------------------------------------------------------
+# limiter (bridge to TOML botdetection config)
+# ---------------------------------------------------------------------------
+limiter:
+  # Path to limiter.toml (Debian packages this as a conffile).
+  file: "/etc/zoeken/limiter.toml"
+  # Optional: inline TOML string instead of `file` (takes precedence if set).
+  # toml: |
+  #   [botdetection]
+  #   trusted_proxies = ['10.0.0.0/8']
+  # Optional HMAC link-token secret for /client{token}.css style checks
+  link_token: ""
+
+# ---------------------------------------------------------------------------
+# favicons / image proxy size caps
+# ---------------------------------------------------------------------------
+favicons:
+  # Max bytes for proxied images (also accepted as max_bytes)
+  max_image_bytes: 5242880

@@ -1,0 +1,66 @@
+{
+  "engine": "openverse",
+  "case": "basic",
+  "query": {
+    "query": "cat",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://api.openverse.org/v1/images/",
+    "headers": {},
+    "body": "{\n      \"result_count\": 2,\n      \"results\": [\n        {\n          \"title\": \"Blue Cat\",\n          \"foreign_landing_url\": \"https://example.com/photos/1\",\n          \"url\": \"https://images.example.com/1.jpg\"\n        },\n        {\n          \"title\": \"Green Cat\",\n          \"foreign_landing_url\": \"https://example.com/photos/2\",\n          \"url\": \"https://images.example.com/2.jpg\"\n        }\n      ]\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Image": {
+          "url": "https://example.com/photos/1",
+          "normalized_url": "https://example.com/photos/1",
+          "title": "Blue Cat",
+          "content": "",
+          "engine": "openverse",
+          "img_src": "https://images.example.com/1.jpg",
+          "thumbnail_src": "",
+          "resolution": "",
+          "img_format": "",
+          "source": "",
+          "filesize": "",
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Image": {
+          "url": "https://example.com/photos/2",
+          "normalized_url": "https://example.com/photos/2",
+          "title": "Green Cat",
+          "content": "",
+          "engine": "openverse",
+          "img_src": "https://images.example.com/2.jpg",
+          "thumbnail_src": "",
+          "resolution": "",
+          "img_format": "",
+          "source": "",
+          "filesize": "",
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

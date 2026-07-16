@@ -1,0 +1,272 @@
+{
+  "engine": "sourcehut",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://sr.ht/projects?search=rust&page=1&sort=recently-updated",
+    "headers": {
+      "User-Agent": "searxng/1.0"
+    },
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://sr.ht/projects?search=rust&page=1&sort=recently-updated",
+    "headers": {
+      "server": "nginx",
+      "vary": "Accept-Encoding",
+      "content-type": "text/html; charset=utf-8",
+      "date": "Thu, 09 Jul 2026 14:17:22 GMT",
+      "x-clacks-overhead": "GNU Terry Pratchett",
+      "via": "HTTP/1.0 git.gammaspectra.live/git/go-away@(devel)",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+      "permissions-policy": "interest-cohort=()",
+      "content-security-policy": "default-src 'none'; style-src 'self' 'unsafe-inline'; img-src * data:; script-src 'self' 'unsafe-inline'; frame-src docs.sourcehut.org; frame-ancestors 'none'"
+    },
+    "body": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    \n<title>Browse projects on sourcehut</title>\n\n    \n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/static/logo.svg\" />\n    <link rel=\"icon\" type=\"image/png\" href=\"/static/logo.png\" sizes=\"any\" />\n    \n    <link rel=\"stylesheet\" href=\"/static/hub.sr.ht/main.min.1fe096f4.css\">\n    \n    \n    <link rel=\"next\" href=\"?page=2&amp;search=rust&amp;sort=recently-updated\" />\n    \n    \n    \n  </head>\n  <body>\n    \n    \n    \n    \n<nav class=\"navbar navbar-light navbar-expand-sm\">\n  \n<span class=\"navbar-brand\">\n  <span class=\"icon icon-circle \" aria-hidden=\"true\"><svg width=\"22\" height=\"22\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><path d=\"M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200z\"/></svg>\n</span>\n  <a href=\"https://sr.ht\">\n    sourcehut\n  </a>\n</span>\n\n<ul class=\"navbar-nav\">\n  \n</ul>\n<div class=\"login\">\n  \n  <span class=\"navbar-text\">\n    \n    <a href=\"https://meta.sr.ht/login?return_to=https%3A%2F%2Fsr.ht%2Fprojects%3Fpage%3D1%26search%3Drust%26sort%3Drecently-updated\" rel=\"nofollow\">Log in</a>\n    &mdash;\n    <a href=\"https://meta.sr.ht\">Register</a>\n    \n  </span>\n  \n</div>\n</nav>\n\n    \n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-lg-8\">\n      <h3>Browse public projects</h3>\n      <form>\n        <input\n          name=\"search\"\n          type=\"text\"\n          placeholder=\"Search all public projects\"\n          class=\"form-control \"\n          value=\"rust\" />\n        \n        <fieldset class=\"pull-right d-none d-sm-block\" style=\"margin-top: 0.25rem\">\n          <legend class=\"inline-legend\">Sort results by</legend>\n          <div class=\"form-check form-check-inline\">\n            <input\n              class=\"form-check-input\"\n              type=\"radio\"\n              name=\"sort\"\n              id=\"sort-recently-updated\"\n              value=\"recently-updated\"\n              \n              checked\n              \n              >\n            <label class=\"form-check-label\" for=\"sort-recently-updated\">\n              Recently updated\n            </label>\n          </div>\n          <div class=\"form-check form-check-inline\">\n            <input\n              class=\"form-check-input\"\n              type=\"radio\"\n              name=\"sort\"\n              id=\"sort-longest-active\"\n              value=\"longest-active\"\n              \n              >\n            <label class=\"form-check-label\" for=\"sort-longest-active\">\n              Longest active\n            </label>\n          </div>\n          <button type=\"submit\" class=\"btn btn-default\">\n            Apply <span class=\"icon icon-caret-right \" aria-hidden=\"true\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 192 512\"><path d=\"M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z\"/></svg>\n</span>\n          </button>\n        </fieldset>\n        <div class=\"clearfix\"></div>\n      </form>\n      <div class=\"event-list\">\n        \n        <div class=\"event\">\n          <h4>\n            <a href=\"/~taum/\"\n            >~taum</a>/<a\n              href=\"/~taum/dedup-sr/\"\n            >dedup-sr</a>\n          </h4>\n          <p>rewrite of the java dedup in rust</p>\n          \n        </div>\n        \n        <div class=\"event\">\n          <h4>\n            <a href=\"/~greenmike/\"\n            >~greenmike</a>/<a\n              href=\"/~greenmike/rust_course/\"\n            >rust_course</a>\n          </h4>\n          <p>learning rust from Jakub Beránek</p>\n          \n        </div>\n        \n        <div class=\"event\">\n          <h4>\n            <a href=\"/~johnhamelink/\"\n            >~johnhamelink</a>/<a\n              href=\"/~johnhamelink/Rust/\"\n            >Rust</a>\n          </h4>\n          <p>Applications I&#39;ve written in Rust</p>\n          \n          <div class=\"tags\">\n          \n            <a href=\"/projects?search=%23rust\"\n               class=\"tag\" rel=\"nofollow\">#rust</a>\n          \n          </div>\n          \n        </div>\n        \n        <div class=\"event\">\n          <h4>\n            <a href=\"/~medzernik/\"\n            >~medzernik</a>/<a\n              href=\"/~medzernik/Rust-FIT-CVUT/\"\n            >Rust-FIT-CVUT</a>\n          </h4>\n          <p>FIT CVUT Course for Rust</p>\n          \n          <div class=\"tags\">\n          \n            <a href=\"/projects?search=%23rust\"\n               class=\"tag\" rel=\"nofollow\">#rust</a>\n          \n            <a href=\"/projects?search=%23fit\"\n               class=\"tag\" rel=\"nofollow\">#fit</a>\n          \n            <a href=\"/projects?search=%23cvut\"\n               class=\"tag\" rel=\"nofollow\">#cvut</a>\n          \n          </div>\n          \n        </div>\n        \n        <div class=\"event\">\n          <h4>\n            <a href=\"/~iosonofabio/\"\n            >~iosonofabio</a>/<a\n              href=\"/~iosonofabio/ilayoutx/\"\n            >ilayoutx</a>\n          </h4>\n          <p>Graph layout algorithms in Rust/Python</p>\n          \n          <div class=\"tags\">\n          \n            <a href=\"/projects?search=%23networks\"\n               class=\"tag\" rel=\"nofollow\">#networks</a>\n          \n            <a href=\"/projects?search=%23layout\"\n               class=\"tag\" rel=\"nofollow\">#layout</a>\n          \n            <a href=\"/projects?search=%23routing\"\n               class=\"tag\" rel=\"nofollow\">#routing</a>\n          \n          </div>\n          \n        </div>\n        \n        <div class=\"event\">\n          <h4>\n            <a href=\"/~madbid/\"\n            >~madbid</a>/<a\n              href=\"/~madbid/MadBid.com/\"\n            >MadBid.com</a>\n          </h4>\n          <p>MadBid.com – A Trusted Marketplace for Digital and Social Media Assets</p>\n          \n          <div class=\"tags\">\n          \n            <a href=\"/projects?search=%23socialmedia\"\n               class=\"tag\" rel=\"nofollow\">#socialmedia</a>\n          \n          </div>\n          \n        </div>\n        \n        <div class=\"event\">\n          <h4>\n            <a href=\"/~danprobst/\"\n            >~danprobst</a>/<a\n              href=\"/~danprobst/rust-crates/\"\n            >rust-crates</a>\n          </h4>\n          <p>rust crates published on crates.io</p>\n          \n        </div>\n        \n        <div class=\"event\">\n          <h4>\n            <a href=\"/~iliayar/\"\n            >~iliayar</a>/<a\n              href=\"/~iliayar/RLALR/\"\n            >RLALR</a>\n          </h4>\n          <p>LALR parser generator for Rust</p>\n          \n        </div>\n        \n        <div class=\"event\">\n          <h4>\n            <a href=\"/~ap-1/\"\n            >~ap-1</a>/<a\n              href=\"/~ap-1/saml-mdq/\"\n            >saml-mdq</a>\n          </h4>\n          <p>A Rust client for the SAML Metadata Query (MDQ) Protocol (RFC 8484)</p>\n          \n        </div>\n        \n        <div class=\"event\">\n          <h4>\n            <a href=\"/~gotlou/\"\n            >~gotlou</a>/<a\n              href=\"/~gotlou/sshield/\"\n            >sshield</a>\n          </h4>\n          <p> An SSH agent written in Rust with more security features and sandboxing </p>\n          \n          <div class=\"tags\">\n          \n            <a href=\"/projects?search=%23rust\"\n               class=\"tag\" rel=\"nofollow\">#rust</a>\n          \n            <a href=\"/projects?search=%23ssh\"\n               class=\"tag\" rel=\"nofollow\">#ssh</a>\n          \n          </div>\n          \n        </div>\n        \n        <div class=\"event\">\n          <h4>\n            <a href=\"/~gheartsfield/\"\n            >~gheartsfield</a>/<a\n              href=\"/~gheartsfield/nostr-rs-relay/\"\n            >nostr-rs-relay</a>\n          </h4>\n          <p>Nostr relay in rust</p>\n          \n          <div class=\"tags\">\n          \n            <a href=\"/projects?search=%23rust\"\n               class=\"tag\" rel=\"nofollow\">#rust</a>\n          \n            <a href=\"/projects?search=%23nostr\"\n               class=\"tag\" rel=\"nofollow\">#nostr</a>\n          \n          </div>\n          \n        </div>\n        \n        <div class=\"event\">\n          <h4>\n            <a href=\"/~mistodon/\"\n            >~mistodon</a>/<a\n              href=\"/~mistodon/mist_engine/\"\n            >mist_engine</a>\n          </h4>\n          <p>A collection of game engine related tools (primarily in Rust)</p>\n          \n        </div>\n        \n        <div class=\"event\">\n          <h4>\n            <a href=\"/~jplatte/\"\n            >~jplatte</a>/<a\n              href=\"/~jplatte/rust-libproxy/\"\n            >rust-libproxy</a>\n          </h4>\n          <p>libproxy bindings for Rust – automatic proxy configuration management</p>\n          \n        </div>\n        \n        <div class=\"event\">\n          <h4>\n            <a href=\"/~ludeed/\"\n            >~ludeed</a>/<a\n              href=\"/~ludeed/caiano/\"\n            >caiano</a>\n          </h4>\n          <p>rust web framework</p>\n          \n          <div class=\"tags\">\n          \n            <a href=\"/projects?search=%23rust\"\n               class=\"tag\" rel=\"nofollow\">#rust</a>\n          \n            <a href=\"/projects?search=%23web\"\n               class=\"tag\" rel=\"nofollow\">#web</a>\n          \n          </div>\n          \n        </div>\n        \n        <div class=\"event\">\n          <h4>\n            <a href=\"/~flender/\"\n            >~flender</a>/<a\n              href=\"/~flender/cobalt/\"\n            >cobalt</a>\n          </h4>\n          <p>Minecraft: Java Edition server implementation written in Rust</p>\n          \n          <div class=\"tags\">\n          \n            <a href=\"/projects?search=%23minecraft\"\n               class=\"tag\" rel=\"nofollow\">#minecraft</a>\n          \n            <a href=\"/projects?search=%23server\"\n               class=\"tag\" rel=\"nofollow\">#server</a>\n          \n          </div>\n          \n        </div>\n        \n      </div>\n      \n<div class=\"row\">\n  <div class=\"col-4\">\n  \n  </div>\n  <div class=\"col-4 text-centered\">\n    1 / 19\n  </div>\n  <div class=\"col-4 text-right\">\n  \n    <a\n      class=\"btn btn-default\"\n      href=\"?page=2&amp;search=rust&amp;sort=recently-updated\"\n    >\n      next\n      <span class=\"icon icon-caret-right \" aria-hidden=\"true\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 192 512\"><path d=\"M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z\"/></svg>\n</span>\n    </a>\n  \n  </div>\n</div>\n\n    </div>\n    <div class=\"col-lg-4\">\n      <h3>Featured projects</h3>\n      <div class=\"event-list\">\n        \n        <h5>\n          <span class=\"text-muted\"\n          >~transkb/</span><a\n            href=\"/~transkb/transkb/\"\n          >transkb</a>\n          \n        </h5>\n        <blockquote style=\"margin-top: 0.5rem\">\n          <style>.highlight { background: inherit; }</style><div class='markdown'><p>Collection of important resources for transgender people</p>\n</div>\n        </blockquote>\n        \n        <h5>\n          <span class=\"text-muted\"\n          >~vicho/</span><a\n            href=\"/~vicho/el_poblador/\"\n          >el_poblador</a>\n          \n          <span class=\"tags pull-right\">\n          \n            <a href=\"/projects?search=rust+%23board-games\"\n               class=\"tag\" rel=\"nofollow\">#board-games</a>\n          \n            <a href=\"/projects?search=rust+%23tui\"\n               class=\"tag\" rel=\"nofollow\">#tui</a>\n          \n            <a href=\"/projects?search=rust+%23catan\"\n               class=\"tag\" rel=\"nofollow\">#catan</a>\n          \n          </span>\n          \n        </h5>\n        <blockquote style=\"margin-top: 0.5rem\">\n          <style>.highlight { background: inherit; }</style><div class='markdown'><p>A terminal-based implementation of Settlers of Catan</p>\n</div>\n        </blockquote>\n        \n        <h5>\n          <span class=\"text-muted\"\n          >~sheepy/</span><a\n            href=\"/~sheepy/3ds-homebrew/\"\n          >3ds-homebrew</a>\n          \n          <span class=\"tags pull-right\">\n          \n            <a href=\"/projects?search=rust+%233ds\"\n               class=\"tag\" rel=\"nofollow\">#3ds</a>\n          \n            <a href=\"/projects?search=rust+%23homebrew\"\n               class=\"tag\" rel=\"nofollow\">#homebrew</a>\n          \n            <a href=\"/projects?search=rust+%23rust\"\n               class=\"tag\" rel=\"nofollow\">#rust</a>\n          \n          </span>\n          \n        </h5>\n        <blockquote style=\"margin-top: 0.5rem\">\n          <style>.highlight { background: inherit; }</style><div class='markdown'><p>A collection of \"silly\" 3DS homebrew projects.</p>\n</div>\n        </blockquote>\n        \n        <h5>\n          <span class=\"text-muted\"\n          >~reykjalin/</span><a\n            href=\"/~reykjalin/Fonn/\"\n          >Fonn</a>\n          \n          <span class=\"tags pull-right\">\n          \n            <a href=\"/projects?search=rust+%23editor\"\n               class=\"tag\" rel=\"nofollow\">#editor</a>\n          \n            <a href=\"/projects?search=rust+%23tui\"\n               class=\"tag\" rel=\"nofollow\">#tui</a>\n          \n            <a href=\"/projects?search=rust+%23zig\"\n               class=\"tag\" rel=\"nofollow\">#zig</a>\n          \n          </span>\n          \n        </h5>\n        <blockquote style=\"margin-top: 0.5rem\">\n          <style>.highlight { background: inherit; }</style><div class='markdown'><p>Fönn is a code editor powered by libfn, a text editor engine as a library.</p>\n</div>\n        </blockquote>\n        \n        <h5>\n          <span class=\"text-muted\"\n          >~mlb/</span><a\n            href=\"/~mlb/linkhut/\"\n          >linkhut</a>\n          \n          <span class=\"tags pull-right\">\n          \n            <a href=\"/projects?search=rust+%23social\"\n               class=\"tag\" rel=\"nofollow\">#social</a>\n          \n            <a href=\"/projects?search=rust+%23bookmarks\"\n               class=\"tag\" rel=\"nofollow\">#bookmarks</a>\n          \n          </span>\n          \n        </h5>\n        <blockquote style=\"margin-top: 0.5rem\">\n          <style>.highlight { background: inherit; }</style><div class='markdown'><p>A social bookmarking website</p>\n</div>\n        </blockquote>\n        \n        <a\n          href=\"/projects/featured\"\n          class=\"btn btn-default btn-block\"\n        >More featured projects <span class=\"icon icon-caret-right \" aria-hidden=\"true\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 192 512\"><path d=\"M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z\"/></svg>\n</span></a>\n      </div>\n    </div>\n  </div>\n</div>\n\n    \n    \n  </body>\n</html>"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://sr.ht/~taum/dedup-sr/",
+          "normalized_url": "https://sr.ht/~taum/dedup-sr/",
+          "title": "~taum/dedup-sr",
+          "content": "rewrite of the java dedup in rust",
+          "engine": "sourcehut",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://sr.ht/~greenmike/rust_course/",
+          "normalized_url": "https://sr.ht/~greenmike/rust_course/",
+          "title": "~greenmike/rust_course",
+          "content": "learning rust from Jakub Beránek",
+          "engine": "sourcehut",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://sr.ht/~johnhamelink/Rust/",
+          "normalized_url": "https://sr.ht/~johnhamelink/Rust/",
+          "title": "~johnhamelink/Rust",
+          "content": "Applications I've written in Rust",
+          "engine": "sourcehut",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://sr.ht/~medzernik/Rust-FIT-CVUT/",
+          "normalized_url": "https://sr.ht/~medzernik/Rust-FIT-CVUT/",
+          "title": "~medzernik/Rust-FIT-CVUT",
+          "content": "FIT CVUT Course for Rust",
+          "engine": "sourcehut",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://sr.ht/~iosonofabio/ilayoutx/",
+          "normalized_url": "https://sr.ht/~iosonofabio/ilayoutx/",
+          "title": "~iosonofabio/ilayoutx",
+          "content": "Graph layout algorithms in Rust/Python",
+          "engine": "sourcehut",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://sr.ht/~madbid/MadBid.com/",
+          "normalized_url": "https://sr.ht/~madbid/MadBid.com/",
+          "title": "~madbid/MadBid.com",
+          "content": "MadBid.com – A Trusted Marketplace for Digital and Social Media Assets",
+          "engine": "sourcehut",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://sr.ht/~danprobst/rust-crates/",
+          "normalized_url": "https://sr.ht/~danprobst/rust-crates/",
+          "title": "~danprobst/rust-crates",
+          "content": "rust crates published on crates.io",
+          "engine": "sourcehut",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://sr.ht/~iliayar/RLALR/",
+          "normalized_url": "https://sr.ht/~iliayar/RLALR/",
+          "title": "~iliayar/RLALR",
+          "content": "LALR parser generator for Rust",
+          "engine": "sourcehut",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://sr.ht/~ap-1/saml-mdq/",
+          "normalized_url": "https://sr.ht/~ap-1/saml-mdq/",
+          "title": "~ap-1/saml-mdq",
+          "content": "A Rust client for the SAML Metadata Query (MDQ) Protocol (RFC 8484)",
+          "engine": "sourcehut",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://sr.ht/~gotlou/sshield/",
+          "normalized_url": "https://sr.ht/~gotlou/sshield/",
+          "title": "~gotlou/sshield",
+          "content": "An SSH agent written in Rust with more security features and sandboxing",
+          "engine": "sourcehut",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://sr.ht/~gheartsfield/nostr-rs-relay/",
+          "normalized_url": "https://sr.ht/~gheartsfield/nostr-rs-relay/",
+          "title": "~gheartsfield/nostr-rs-relay",
+          "content": "Nostr relay in rust",
+          "engine": "sourcehut",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://sr.ht/~mistodon/mist_engine/",
+          "normalized_url": "https://sr.ht/~mistodon/mist_engine/",
+          "title": "~mistodon/mist_engine",
+          "content": "A collection of game engine related tools (primarily in Rust)",
+          "engine": "sourcehut",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://sr.ht/~jplatte/rust-libproxy/",
+          "normalized_url": "https://sr.ht/~jplatte/rust-libproxy/",
+          "title": "~jplatte/rust-libproxy",
+          "content": "libproxy bindings for Rust – automatic proxy configuration management",
+          "engine": "sourcehut",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://sr.ht/~ludeed/caiano/",
+          "normalized_url": "https://sr.ht/~ludeed/caiano/",
+          "title": "~ludeed/caiano",
+          "content": "rust web framework",
+          "engine": "sourcehut",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://sr.ht/~flender/cobalt/",
+          "normalized_url": "https://sr.ht/~flender/cobalt/",
+          "title": "~flender/cobalt",
+          "content": "Minecraft: Java Edition server implementation written in Rust",
+          "engine": "sourcehut",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}
