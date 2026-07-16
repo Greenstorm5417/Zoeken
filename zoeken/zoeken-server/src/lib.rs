@@ -207,7 +207,11 @@ fn merge_deployment_trusted_proxies(config: &mut LimiterConfig, settings: &Setti
     let from_settings =
         crate::middleware::parse_trusted_proxies(&settings.deployment.trusted_proxies);
     for net in from_settings {
-        if !config.trusted_proxies.iter().any(|existing| existing == &net) {
+        if !config
+            .trusted_proxies
+            .iter()
+            .any(|existing| existing == &net)
+        {
             config.trusted_proxies.push(net);
         }
     }

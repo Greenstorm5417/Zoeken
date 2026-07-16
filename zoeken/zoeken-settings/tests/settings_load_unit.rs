@@ -392,7 +392,10 @@ fn packaged_debian_settings_yml_loads() {
         settings.lua_plugins.directory.as_deref(),
         Some("/usr/share/zoeken/plugins")
     );
-    assert!(settings.engines.is_empty(), "empty engines → built-in catalog");
+    assert!(
+        settings.engines.is_empty(),
+        "empty engines → built-in catalog"
+    );
     assert!(settings.plugins.0.contains_key("calculator"));
     assert_eq!(settings.search.safe_search, 0);
     assert_eq!(settings.outgoing.request_timeout, 3.0);
