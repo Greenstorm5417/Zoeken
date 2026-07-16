@@ -1,0 +1,70 @@
+{
+  "engine": "9gag",
+  "case": "basic",
+  "query": {
+    "query": "cats",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://9gag.com/v1/search-posts",
+    "headers": {},
+    "body": "{\n      \"data\": {\n        \"posts\": [\n          {\n            \"type\": \"Photo\",\n            \"url\": \"https://9gag.com/gag/a1\",\n            \"title\": \"Funny cat\",\n            \"description\": \"a cat\",\n            \"creationTs\": 1000,\n            \"images\": {\n              \"image700\": {\"url\": \"https://img.9gag.com/a1_700.jpg\", \"height\": 300},\n              \"imageFbThumbnail\": {\"url\": \"https://img.9gag.com/a1_fb.jpg\"}\n            }\n          },\n          {\n            \"type\": \"Animated\",\n            \"url\": \"https://9gag.com/gag/a2\",\n            \"title\": \"Funny gif\",\n            \"description\": \"a gif\",\n            \"creationTs\": 1000,\n            \"images\": {\n              \"image700\": {\"url\": \"https://img.9gag.com/a2_700.jpg\", \"height\": 500},\n              \"imageFbThumbnail\": {\"url\": \"https://img.9gag.com/a2_fb.jpg\"}\n            }\n          },\n          {\n            \"type\": \"Article\",\n            \"url\": \"https://9gag.com/gag/a3\",\n            \"title\": \"unsupported\",\n            \"description\": \"\",\n            \"images\": {}\n          }\n        ],\n        \"tags\": [{\"key\": \"funny\"}, {\"key\": \"cats\"}]\n      }\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Image": {
+          "url": "https://9gag.com/gag/a1",
+          "normalized_url": "https://9gag.com/gag/a1",
+          "title": "Funny cat",
+          "content": "a cat",
+          "engine": "9gag",
+          "img_src": "https://img.9gag.com/a1_700.jpg",
+          "thumbnail_src": "https://img.9gag.com/a1_700.jpg",
+          "resolution": "",
+          "img_format": "",
+          "source": "",
+          "filesize": "",
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://9gag.com/gag/a2",
+          "normalized_url": "https://9gag.com/gag/a2",
+          "title": "Funny gif",
+          "content": "a gif",
+          "engine": "9gag",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [
+      {
+        "suggestion": "funny",
+        "engine": "9gag"
+      },
+      {
+        "suggestion": "cats",
+        "engine": "9gag"
+      }
+    ],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

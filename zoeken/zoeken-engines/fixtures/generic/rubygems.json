@@ -1,0 +1,495 @@
+{
+  "engine": "rubygems",
+  "case": "live",
+  "query": {
+    "query": "rails",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rails",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://rubygems.org/search?page=1&query=rails",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://rubygems.org/search?page=1&query=rails",
+    "headers": {
+      "cache-control": "no-cache",
+      "x-xss-protection": "0",
+      "x-runtime": "0.067126",
+      "x-served-by": "cache-mia-kmia1760098-MIA",
+      "accept-ranges": "bytes",
+      "x-request-id": "1af7accf-29e5-4ac1-96d2-a05620debdd1",
+      "x-backend": "F_Rails 16.148.236.35:443",
+      "vary": "Accept-Encoding",
+      "content-security-policy": "default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src 'none'; script-src 'self' 'sha256-J1m+80RG0mG/S0JN8s5UOfkCWBKKuSyKiU8uwGUpNVY=' https://secure.gaug.es https://www.fastly-insights.com 'nonce-PVziVzJExBTfCwnXGd/W0g=='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com https://fastly-insights.com https://api.github.com http://localhost:*; form-action 'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri 'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ad3d11c0ecfb3827778e1e1499372e351edaa83cc%2Cenv%3Aproduction%2Ctrace_id%3A6a4fa1230000000036e7bf3fdb6fbb06",
+      "x-content-type-options": "nosniff",
+      "x-permitted-cross-domain-policies": "none",
+      "x-cache-hits": "0",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-cache": "HIT",
+      "content-type": "text/html; charset=utf-8",
+      "x-frame-options": "SAMEORIGIN",
+      "cross-origin-opener-policy": "same-origin",
+      "server": "RubyGems.org",
+      "age": "2492",
+      "date": "Thu, 09 Jul 2026 14:06:23 GMT",
+      "via": "1.1 varnish",
+      "link": "</assets/hammy-ffd33ff6.css>; rel=preload; as=style; nopush,</assets/tailwind-dbb1b8cb.css>; rel=preload; as=style; nopush",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "x-timer": "S1783605984.660057,VS0,VE1"
+    },
+    "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <title>RubyGems.org | your community gem host</title>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0\">\n  <meta name=\"google-site-verification\" content=\"AuesbWQ9MCDMmC1lbDlw25RJzyqWOcDYpuaCjgPxEZY\" />\n  <link rel=\"apple-touch-icon\" href=\"/apple-touch-icons/apple-touch-icon.png\" />\n    <link rel=\"apple-touch-icon\" sizes=\"57x57\" href=\"/apple-touch-icons/apple-touch-icon-57x57.png\" />\n    <link rel=\"apple-touch-icon\" sizes=\"72x72\" href=\"/apple-touch-icons/apple-touch-icon-72x72.png\" />\n    <link rel=\"apple-touch-icon\" sizes=\"76x76\" href=\"/apple-touch-icons/apple-touch-icon-76x76.png\" />\n    <link rel=\"apple-touch-icon\" sizes=\"114x114\" href=\"/apple-touch-icons/apple-touch-icon-114x114.png\" />\n    <link rel=\"apple-touch-icon\" sizes=\"120x120\" href=\"/apple-touch-icons/apple-touch-icon-120x120.png\" />\n    <link rel=\"apple-touch-icon\" sizes=\"144x144\" href=\"/apple-touch-icons/apple-touch-icon-144x144.png\" />\n    <link rel=\"apple-touch-icon\" sizes=\"152x152\" href=\"/apple-touch-icons/apple-touch-icon-152x152.png\" />\n    <link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icons/apple-touch-icon-180x180.png\" />\n  <link rel=\"mask-icon\" href=\"/rubygems_logo.svg\" color=\"#e9573f\">\n  <link rel=\"fluid-icon\" href=\"/fluid-icon.png\"/>\n  <link rel=\"search\" type=\"application/opensearchdescription+xml\" title=\"RubyGems.org\" href=\"/opensearch.xml\">\n  <link rel=\"shortcut icon\" href=\"/favicon.ico\" type=\"image/x-icon\">\n\n  <link rel=\"stylesheet\" href=\"/assets/hammy-ffd33ff6.css\" />\n  <link rel=\"stylesheet\" href=\"/assets/tailwind-dbb1b8cb.css\" data-turbo-track=\"reload\" />\n  <link href=\"https://fonts.gstatic.com\" rel=\"preconnect\" crossorigin>\n  <link href=\"https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap\" rel=\"stylesheet\" type=\"text/css\">\n  \n<link rel=\"alternate\" type=\"application/atom+xml\" href=\"https://feeds.feedburner.com/gemcutter-latest\" title=\"RubyGems.org | Latest Gems\">\n\n  \n  \n  <script type=\"importmap\" data-turbo-track=\"reload\">{\n  \"imports\": {\n    \"jquery\": \"/assets/jquery-15a62848.js\",\n    \"@rails/ujs\": \"/assets/@rails--ujs-2089e246.js\",\n    \"application\": \"/assets/application-ae34b86d.js\",\n    \"@hotwired/turbo-rails\": \"/assets/turbo.min-9fd88cd5.js\",\n    \"@hotwired/stimulus\": \"/assets/@hotwired--stimulus-132cbc23.js\",\n    \"@hotwired/stimulus-loading\": \"/assets/stimulus-loading-1fc53fe7.js\",\n    \"@stimulus-components/clipboard\": \"/assets/@stimulus-components--clipboard-d9c44ea9.js\",\n    \"@stimulus-components/dialog\": \"/assets/@stimulus-components--dialog-74866932.js\",\n    \"@stimulus-components/reveal\": \"/assets/@stimulus-components--reveal-77f6cb39.js\",\n    \"@stimulus-components/checkbox-select-all\": \"/assets/@stimulus-components--checkbox-select-all-e7db6a97.js\",\n    \"github-buttons\": \"/assets/github-buttons-e675df7a.js\",\n    \"webauthn-json\": \"/assets/webauthn-json-74adc0e8.js\",\n    \"avo.custom\": \"/assets/avo.custom-4b185d31.js\",\n    \"stimulus-rails-nested-form\": \"/assets/stimulus-rails-nested-form-3f712873.js\",\n    \"local-time\": \"/assets/local-time-a331fc59.js\",\n    \"src/oidc_api_key_role_form\": \"/assets/src/oidc_api_key_role_form-223a59d4.js\",\n    \"src/pages\": \"/assets/src/pages-64095f36.js\",\n    \"src/transitive_dependencies\": \"/assets/src/transitive_dependencies-9280dc42.js\",\n    \"src/webauthn\": \"/assets/src/webauthn-44f86263.js\",\n    \"controllers/application\": \"/assets/controllers/application-e33ffaa8.js\",\n    \"controllers/autocomplete_controller\": \"/assets/controllers/autocomplete_controller-e9f78a76.js\",\n    \"controllers/avatar_controller\": \"/assets/controllers/avatar_controller-c357c7d9.js\",\n    \"controllers/counter_controller\": \"/assets/controllers/counter_controller-b739ef1d.js\",\n    \"controllers/dialog_controller\": \"/assets/controllers/dialog_controller-c788489b.js\",\n    \"controllers/dropdown_controller\": \"/assets/controllers/dropdown_controller-baaf189b.js\",\n    \"controllers/dump_controller\": \"/assets/controllers/dump_controller-5d671745.js\",\n    \"controllers/exclusive_checkbox_controller\": \"/assets/controllers/exclusive_checkbox_controller-c624394a.js\",\n    \"controllers/gem_scope_controller\": \"/assets/controllers/gem_scope_controller-9c330c45.js\",\n    \"controllers\": \"/assets/controllers/index-236ab973.js\",\n    \"controllers/nav_controller\": \"/assets/controllers/nav_controller-8f4ea870.js\",\n    \"controllers/onboarding_name_controller\": \"/assets/controllers/onboarding_name_controller-a65c65ec.js\",\n    \"controllers/password_strength_controller\": \"/assets/controllers/password_strength_controller-ccb00d57.js\",\n    \"controllers/radio_reveal_controller\": \"/assets/controllers/radio_reveal_controller-41774e15.js\",\n    \"controllers/recovery_controller\": \"/assets/controllers/recovery_controller-b051251b.js\",\n    \"controllers/reveal_controller\": \"/assets/controllers/reveal_controller-a90af4d9.js\",\n    \"controllers/reveal_search_controller\": \"/assets/controllers/reveal_search_controller-8dc44279.js\",\n    \"controllers/scroll_controller\": \"/assets/controllers/scroll_controller-07f12b0d.js\",\n    \"controllers/search_controller\": \"/assets/controllers/search_controller-79d09057.js\",\n    \"controllers/stats_controller\": \"/assets/controllers/stats_controller-5bae7b7f.js\"\n  }\n}</script>\n<link rel=\"modulepreload\" href=\"/assets/jquery-15a62848.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/@rails--ujs-2089e246.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/application-ae34b86d.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/turbo.min-9fd88cd5.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/@hotwired--stimulus-132cbc23.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/stimulus-loading-1fc53fe7.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/@stimulus-components--clipboard-d9c44ea9.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/@stimulus-components--dialog-74866932.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/@stimulus-components--reveal-77f6cb39.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/@stimulus-components--checkbox-select-all-e7db6a97.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/github-buttons-e675df7a.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/webauthn-json-74adc0e8.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/local-time-a331fc59.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/src/oidc_api_key_role_form-223a59d4.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/src/pages-64095f36.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/src/transitive_dependencies-9280dc42.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/src/webauthn-44f86263.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/application-e33ffaa8.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/autocomplete_controller-e9f78a76.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/avatar_controller-c357c7d9.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/counter_controller-b739ef1d.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/dialog_controller-c788489b.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/dropdown_controller-baaf189b.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/dump_controller-5d671745.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/exclusive_checkbox_controller-c624394a.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/gem_scope_controller-9c330c45.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/index-236ab973.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/nav_controller-8f4ea870.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/onboarding_name_controller-a65c65ec.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/password_strength_controller-ccb00d57.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/radio_reveal_controller-41774e15.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/recovery_controller-b051251b.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/reveal_controller-a90af4d9.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/reveal_search_controller-8dc44279.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/scroll_controller-07f12b0d.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/search_controller-79d09057.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<link rel=\"modulepreload\" href=\"/assets/controllers/stats_controller-5bae7b7f.js\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">\n<script type=\"module\" nonce=\"PVziVzJExBTfCwnXGd/W0g==\">import \"application\"</script>\n</head>\n<body class=\"bg-neutral-050 dark:bg-neutral-950\">\n  <div class=\"min-h-screen flex flex-col\">\n    <!-- Header -->\n    <header class=\"bg-white dark:bg-black\">\n      <!-- Header Nav -->\n      <div class=\"py-4 px-8 border-b border-neutral-400 dark:border-neutral-800\">\n        <div class=\"flex flex-wrap justify-between max-w-screen-xl mx-auto\" data-controller=\"reveal-search\" data-reveal-search-toggle-class=\"bg-neutral-200 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border\">\n          <!-- Menu button, Logo, desktop nav, mobile nav dialog -->\n          <div class=\"flex flex-row items-center xl:mr-auto\" data-controller=\"dialog\">\n            <!-- Mobile Menu Button -->\n            <button data-action=\"dialog#open\" data-dialog-target=\"button\" aria-label=\"Open menu\" class=\"px-2 py-1 w-10 h-9 mr-3 items-center rounded text-white bg-orange hover:bg-orange-600 dark:bg-orange-600 dark:hover:bg-orange-700 lg:hidden focus:outline-none\">\n              <svg class=\"h-6 w-6 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"24\" width=\"24\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#menu\" /></svg>\n            </button>\n\n            <!-- Logo -->\n            <a title=\"RubyGems\" class=\"flex h-8 items-center text-orange text-b1\" href=\"/\">\n              <svg class=\"h-8 w-8 flex-shrink-0 stroke-current stroke-0 fill-current w-7 h-7 lg:w-8 lg:h-8\" aria-label=\"RubyGems Home\" height=\"32\" width=\"32\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#logo\" /></svg>\n              <span class=\"hidden sm:flex ml-1 text-h5 text-orange\">RubyGems</span>\n</a>\n            <!-- Desktop Navigation Links -->\n            <nav class=\"hidden lg:flex flex-row ml-7 items-center justify-end text-b2 text-neutral-800 dark:text-white leading-7\">\n              <a class=\"lowercase hover:text-neutral-600 dark:hover:text-neutral-400\" href=\"https://blog.rubygems.org\">Blog</a>\n              <a class=\"ml-7 lowercase hover:text-neutral-600 dark:hover:text-neutral-400\" href=\"/stats\">Stats</a>\n              <a class=\"ml-7 lowercase hover:text-neutral-600 dark:hover:text-neutral-400\" href=\"https://guides.rubygems.org/command-reference/#gem-install\">Docs</a>\n              <!-- About links -->\n              <div class=\"flex relative ml-7\" data-controller=\"dropdown\">\n                <button data-action=\"dropdown#toggle click@window->dropdown#hide\" class=\"flex items-center text-neutral-900 dark:text-white hover:text-neutral-600 dark:hover:text-neutral-400 focus:outline-none lowercase\">\n                  <span>About</span>\n                  <svg class=\"h-6 w-6 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"24\" width=\"24\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-drop-down\" /></svg>\n                </button>\n\n                <!-- About Dropdown Menu -->\n                <div data-dropdown-target=\"menu\" class=\"z-50 hidden absolute -left-4 top-8 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded shadow-lg text-b2 text-neutral-700 dark:text-neutral-300 divide-y divide-neutral-200 dark:divide-neutral-800\">\n                  <a data-reveal-target=\"item\" class=\"block px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"/pages/about\">RubyGems.org</a>\n                  <a data-reveal-target=\"item\" class=\"block px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"https://status.rubygems.org\">Status</a>\n                  <a data-reveal-target=\"item\" class=\"block px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"/pages/data\">Data</a>\n                  <a data-reveal-target=\"item\" class=\"block px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"/pages/security\">Security</a>\n                  <a data-reveal-target=\"item\" class=\"block px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"mailto:support@rubygems.org\">Help</a>\n                </div>\n              </div>\n            </nav>\n\n            <!-- Mobile Left Navigation Menu -->\n            <dialog\n              data-dialog-target=\"dialog\" data-action=\"click->dialog#backdropClose\"\n              role=\"dialog\" aria-modal=\"true\"\n              class=\"fixed left-0 top-0 h-full w-screen max-h-full max-w-screen bg-white bg-opacity-20 z-50 overflow-hidden\">\n              <div class=\"h-full w-72 bg-white dark:bg-black overflow-y-auto border-r border-neutral-400 dark:border-neutral-800 shadow-[5px_0px_9px_3px_rgba(0,0,0,0.10)]\">\n                <!-- Mobile nav header -->\n                <div class=\"flex flex-row items-center px-8 py-4 border-b border-neutral-400 dark:border-neutral-800\">\n                  <!-- Close Menu Button -->\n                  <button data-action=\"dialog#close\" aria-label=\"Close menu\" class=\"px-2 py-1 w-10 h-9 mr-3 rounded text-white bg-orange dark:bg-orange-600 hover:bg-orange-700 dark:hover:bg-orange-700 focus:outline-none items-center\">\n                    <svg class=\"h-6 w-6 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"24\" width=\"24\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#close\" /></svg>\n                  </button>\n                  <!-- Logo -->\n                  <a title=\"RubyGems\" class=\"flex h-8 items-center text-orange text-b1\" href=\"/\">\n                    <svg class=\"h-8 w-8 flex-shrink-0 stroke-current stroke-0 fill-current w-7 h-7 lg:w-8 lg:h-8\" aria-label=\"RubyGems Home\" height=\"32\" width=\"32\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#logo\" /></svg>\n                    <span class=\"ml-1 text-h5 lg:text-h4 text-orange\">RubyGems</span>\n</a>                </div>\n\n                <!-- Mobile nav links -->\n                <nav class=\"flex flex-col py-6 text-left text-b2 text-neutral-900 dark:text-white\">\n                  <a class=\"px-8 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"https://blog.rubygems.org\">Blog</a>\n                  <a class=\"px-8 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"/stats\">Stats</a>\n                  <a class=\"px-8 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"https://guides.rubygems.org/command-reference/#gem-install\">Docs</a>\n\n                  <!-- About links expand -->\n                  <div data-controller=\"reveal\" data-reveal-toggle-class=\"rotate-180\" class=\"flex flex-col\">\n                    <button class=\"flex items-center px-8 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none justify-between\" data-action=\"reveal#toggle\" data-reveal-target=\"button\">\n                      <span>About</span>\n                      <svg class=\"h-6 w-6 flex-shrink-0 stroke-current stroke-0 fill-current transition-transform transform\" data-reveal-target=\"toggle\" height=\"24\" width=\"24\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#keyboard-arrow-down\" /></svg>\n                    </button>\n\n                    <a data-reveal-target=\"item\" class=\"hidden px-16 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"/pages/about\">RubyGems.org</a>\n                    <a data-reveal-target=\"item\" class=\"hidden px-16 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"https://status.rubygems.org\">Status</a>\n                    <a data-reveal-target=\"item\" class=\"hidden px-16 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"/pages/data\">Data</a>\n                    <a data-reveal-target=\"item\" class=\"hidden px-16 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"/pages/security\">Security</a>\n                    <a data-reveal-target=\"item\" class=\"mb-4 hidden px-16 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"mailto:support@rubygems.org\">Help</a>\n                  </div>\n\n                </nav>\n              </div>\n            </dialog>\n          </div>\n\n          <!-- Search button and Profile -->\n          <div class=\"ml-auto flex flex-row items-center xl:ml-0 xl:order-3\">\n            <!-- Search button -->\n            <button type=\"button\" data-action=\"reveal-search#toggle\" data-reveal-search-target=\"toggle\" aria-label=\"Open search\" class=\"flex xl:hidden h-9 w-9 box-border text-neutral-800 dark:text-white hover:text-neutral-600 dark:hover:text-neutral-400 items-center justify-center rounded border-neutral-300 dark:border-neutral-700\">\n              <svg class=\"h-6 w-6 flex-shrink-0 stroke-current stroke-0 fill-current h-6 w-6\" height=\"24\" width=\"24\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#search\" /></svg>\n            </button>\n\n            <!-- Profile -->\n            <div class=\"ml-3 flex text-neutral-900 dark:text-white hover:text-black dark:hover:text-neutral-400 items-center\" data-controller=\"dialog\">\n    <div class=\"hidden md:flex text-nowrap\">\n      <a class=\"text-nowrap no-underline inline-flex border-box justify-content-center items-center hover:shadow-md disabled:bg-neutral-200 disabled:border-neutral-200 disabled:text-neutral-600 dark:disabled:bg-neutral-800 dark:disabled:border-neutral-800 dark:disabled:text-neutral-600 disabled:cursor-default disabled:hover:shadow-none transition duration-200 ease-in-out focus:outline-2 focus:outline-offset-2 text-orange-900 bg-orange-200 hover:bg-orange-300 active:bg-orange-300 dark:text-white dark:bg-orange-800 dark:hover:bg-orange-900 dark:active:bg-orange-900 focus:outline-orange-800 dark:focus:outline-orange-200 px-4 py-3 h-9 min-h-9 text-b3 rounded \" href=\"/sign_in\">Sign in</a>\n      <a class=\"text-nowrap no-underline inline-flex border-box justify-content-center items-center hover:shadow-md disabled:bg-neutral-200 disabled:border-neutral-200 disabled:text-neutral-600 dark:disabled:bg-neutral-800 dark:disabled:border-neutral-800 dark:disabled:text-neutral-600 disabled:cursor-default disabled:hover:shadow-none transition duration-200 ease-in-out focus:outline-2 focus:outline-offset-2 text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-600 dark:bg-orange-500 dark:hover:bg-orange-700 dark:active:bg-orange-700 focus:outline-orange-500 px-4 py-3 h-9 min-h-9 text-b3 rounded ml-3\" href=\"/sign_up\">Sign up</a>\n    </div>\n\n    <a class=\"-mr-1 p-1 md:hidden text-neutral-800 dark:text-white hover:text-neutral-600 dark:hover:text-neutral-400 \" href=\"/sign_up\">\n      <svg class=\"h-7 w-7 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"28\" width=\"28\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#account-box\" /></svg>\n</a>\n  <dialog\n    data-dialog-target=\"dialog\" data-action=\"click->dialog#backdropClose\"\n    class=\"fixed m-0 inset-0 py-16 px-8 z-50 w-full h-full max-w-screen max-h-screen bg-white bg-opacity-20 p-0 ems-start justify-center sm:justify-right\"\n  >\n    <div class=\"max-w-screen-xl mx-auto flex items-center relative\">\n      <!-- Dialog content -->\n      <div\n        class=\"w-full sm:absolute sm:top-0 sm:right-0 sm:max-w-sm bg-white dark:bg-black rounded-lg shadow-xl shadow-black/10 max-h-[90vh] overflow-y-auto dark:border dark:border-neutral-800\n        flex flex-col px-4 py-4 text-b2 text-left text-neutral-900 dark:text-white\"\n      >\n        <!-- Dialog header -->\n        <div class=\"flex justify-between items-center\">\n          <h2 class=\"flex h-7 lg:h-8 lg:mb-0 items-center space-x-1 text-orange text-b1\">\n            <svg class=\"h-8 w-8 flex-shrink-0 stroke-current stroke-0 fill-current w-6 h-6\" height=\"32\" width=\"32\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#logo\" /></svg>\n            <span class=\"text-h5 text-orange\">RubyGems</span>\n          </h2>\n\n          <button data-action=\"dialog#close\" class=\"h-8 w-8 items-center justify-center outline-none\">\n            <svg class=\"h-6 w-6 flex-shrink-0 stroke-current stroke-0 fill-current w-6 h-6\" aria-label=\"Close profile modal\" height=\"24\" width=\"24\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#close\" /></svg>\n          </button>\n        </div>\n\n        <!-- Authenticated user content -->\n        <nav class=\"flex flex-col py-6 text-left text-b2 text-neutral-900 dark:text-white border-b border-neutral-400 dark:border-neutral-800\">\n          <a class=\"px-6 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"/dashboard\">Profile</a>\n          <a class=\"px-6 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"/profile/edit\">Edit profile</a>\n          <a class=\"px-6 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"/settings/edit\">Settings</a>\n        </nav>\n        <a class=\"w-full my-8 px-4 py-2 text-b2 rounded border border-black dark:border-white bg-white dark:bg-black hover:bg-neutral-100 dark:hover:bg-neutral-800 text-black dark:text-white text-center\" rel=\"nofollow\" data-method=\"delete\" href=\"/sign_out\">Sign out</a>\n      </div>\n    </div>\n  </dialog>\n</div>\n\n          </div>\n\n          <!-- Search Bar -->\n          <div data-reveal-search-target=\"item\" class=\"hidden pt-4 w-full items-center xl:flex xl:pt-0 xl:w-72 xl:order-2\" role=\"search\">\n            <form data-controller=\"autocomplete\" data-autocomplete-selected-class=\"bg-neutral-100 dark:bg-neutral-800\" data-reveal-target=\"item\" class=\"relative w-full items-center\" role=\"search\" action=\"/search\" accept-charset=\"UTF-8\" method=\"get\">\n              <input type=\"search\" name=\"query\" id=\"query\" value=\"rails\" placeholder=\"Search Gems&hellip;\" class=\"w-full md h-9 pr-12 bg-neutral-200 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 rounded border-neutral-300 dark:border-neutral-700 box-border outline-none focus:ring-0 focus:border-neutral-500\" autocomplete=\"off\" aria-autocomplete=\"list\" data-autocomplete-target=\"query\" data-action=\"autocomplete#suggest keydown.down-&gt;autocomplete#next keydown.up-&gt;autocomplete#prev keydown.esc-&gt;autocomplete#hide keydown.enter-&gt;autocomplete#clear click@window-&gt;autocomplete#hide focus-&gt;autocomplete#suggest blur-&gt;autocomplete#hide\" data-reveal-search-target=\"input\" />\n\n              <ul role=\"listbox\" data-autocomplete-target=\"suggestions\" class=\"hidden absolute z-40 start-0 mt-2 w-full bg-white dark:bg-black text-b2 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-800 rounded shadow-md divide-y divide-neutral-200 dark:divide-neutral-800\"></ul>\n\n              <template id=\"suggestion\" data-autocomplete-target=\"template\">\n                <li class=\"block px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800\" role=\"option\" tabindex=\"-1\" data-autocomplete-target=\"item\" data-action=\"click->autocomplete#choose mouseover->autocomplete#highlight\"></li>\n              </template>\n\n              <label id=\"querylabel\" for=\"query\">\n                <span class=\"hidden\">Search Gems&hellip;</span>\n</label>\n              <button type=\"submit\" id=\"search_submit\" aria-labelledby=\"querylabel\" class=\"absolute end-[1px] top-[1px] p-[5px] text-neutral-900 dark:text-white focus:outline-neutral-700 dark:focus:outline-white border-l border-neutral-300 dark:border-neutral-700 hover:text-neutral-600 dark:hover:text-neutral-400 rounded-r\">\n                <svg class=\"h-6 w-6 flex-shrink-0 stroke-current stroke-0 fill-current h-6 w-6\" height=\"24\" width=\"24\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#search\" /></svg>\n              </button>\n</form>          </div>\n        </div>\n      </div>\n\n      <!-- Policies acknowledgment banner -->\n      \n\n      <!-- Breadcrumbs -->\n        <div class=\"hidden lg:block w-full px-8 py-1 lg:pb-8 bg-neutral-050 dark:bg-neutral-950 text-neutral-800 dark:text-white\">\n    <div class=\"max-w-screen-xl mx-auto flex items-center\">\n      <nav class=\"flex justify-start items-center text-b2\" aria-label=\"Breadcrumb\">\n        <!-- Home breadcrumb -->\n        <a class=\"inline-block p-1 -ml-1 hover:text-neutral-600 dark:hover:text-neutral-400\" title=\"Home\" aria-label=\"Home\" href=\"/\">\n          <svg class=\"h-6 w-6 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"24\" width=\"24\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#house-siding\" /></svg>\n</a>\n          <svg class=\"h-6 w-6 flex-shrink-0 stroke-current stroke-0 fill-current text-neutral-600 dark:text-neutral-700 fill-neutral-600 dark:fill-neutral-700\" aria-hidden=\"true\" height=\"24\" width=\"24\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#chevron-right\" /></svg>\n            <a class=\"inline-block p-1 hover:text-neutral-600 dark:hover:text-neutral-400\" href=\"/\">Search</a>\n      </nav>\n    </div>\n  </div>\n\n    </header>\n\n    <!-- Content -->\n      <main class=\"flex-1 w-full px-8 flex-col bg-neutral-050 dark:bg-neutral-950 text-neutral-950 dark:text-neutral-050 text-b2 items-center inline-flex\">\n        <div class=\"max-w-screen-xl w-full mx-auto pt-8 pb-10 mb-12 md:mb-16 lg:mb-28\">\n\n\n          \n<article class=\"bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-white  w-full px-4 py-6 md:p-10 mb-10 rounded-md shadow overflow-hidden\">\n  <div divide class=\" flex justify-between items-center -mx-10 px-10 pb-8\">\n    <h1 class=\"text-h2 mb-10\">\n      Search; <span class=\"text-orange-500 italic\"> \"rails\"</span>\n    </h1>\n</div>\n  <div class=\"mb-6\">\n    <a class=\"text-sm text-orange-500 hover:underline\" href=\"/search/advanced\">Advanced Search</a>\n  </div>\n\n\n      <header class=\"flex items-center mb-6\">\n        <p class=\"text-xs text-neutral-500 uppercase tracking-wide\">Displaying gems <b>1&nbsp;-&nbsp;30</b> of <b>10000</b> in total</p>\n      </header>\n\n        <div class=\"flex flex-wrap items-center gap-2 mb-6\">\n      <span class=\"text-xs font-semibold uppercase tracking-wide text-neutral-500\">\n        Filter:\n      </span>\n    <a class=\"px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide no-underline bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-orange-100 dark:hover:bg-orange-900 hover:text-orange-700 dark:hover:text-orange-300 transition-colors\" href=\"/search?query=name%3Arails\">Name (6344)</a>\n    <a class=\"px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide no-underline bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-orange-100 dark:hover:bg-orange-900 hover:text-orange-700 dark:hover:text-orange-300 transition-colors\" href=\"/search?query=description%3Arails\">Description (15055)</a>\n    <a class=\"px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide no-underline bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-orange-100 dark:hover:bg-orange-900 hover:text-orange-700 dark:hover:text-orange-300 transition-colors\" href=\"/search?query=summary%3Arails\">Summary (15422)</a>\n    <a class=\"px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide no-underline bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-orange-100 dark:hover:bg-orange-900 hover:text-orange-700 dark:hover:text-orange-300 transition-colors\" href=\"/search?query=rails+AND+updated%3A%3E%3D2026-07-02\">Updated last week (172)</a>\n    <a class=\"px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide no-underline bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-orange-100 dark:hover:bg-orange-900 hover:text-orange-700 dark:hover:text-orange-300 transition-colors\" href=\"/search?query=rails+AND+updated%3A%3E%3D2026-06-09\">Updated last month (480)</a>\n    \n  </div>\n\n\n\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">8.1.3</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Full-stack web application framework.</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 762,074,489\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>762,074,489</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails-i18n\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails-i18n</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">8.1.0</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Common locale data and translations for Rails i18n.</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 135,588,428\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>135,588,428</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails-html-sanitizer\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails-html-sanitizer</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">1.7.0</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">This gem is responsible to sanitize HTML fragments in Rails applications.</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 678,283,060\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>678,283,060</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails-dom-testing\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails-dom-testing</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">2.3.0</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Dom and Selector assertions for Rails applications</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 658,274,916\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>658,274,916</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails-erd\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails-erd</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">2.0.2</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Entity-relationship diagram for your Rails models.</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 46,119,880\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>46,119,880</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails-observers\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails-observers</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">0.1.5</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">ActiveModel::Observer, ActiveRecord::Observer and ActionController::Caching::Sweeper ex...</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 40,598,698\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>40,598,698</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails_12factor\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails_12factor</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">0.0.3</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Following best practices from http://12factor.net run a maintainable, clean, and scalab...</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 34,353,046\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>34,353,046</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails_autolink\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails_autolink</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">1.1.8</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Automatic generation of html links in texts</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 24,257,233\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>24,257,233</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails-controller-testing\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails-controller-testing</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">1.0.5</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Extracting `assigns` and `assert_template` from ActionDispatch.</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 192,739,296\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>192,739,296</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails_admin\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails_admin</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">3.3.0</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Admin for Rails</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 12,774,976\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>12,774,976</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails-deprecated_sanitizer\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails-deprecated_sanitizer</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">1.0.4</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Deprecated sanitizer API extracted from Action View.</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 100,687,528\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>100,687,528</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails-api\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails-api</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">0.4.1</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Rails for API only Applications</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 5,160,626\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>5,160,626</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails_stdout_logging\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails_stdout_logging</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">0.0.5</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Overrides Rails&amp;#39; built in logger to send all logs to stdout</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 36,811,342\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>36,811,342</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails_param\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails_param</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">1.3.1</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Parameter Validation and Type Coercion for Rails</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 3,704,803\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>3,704,803</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails_layout\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails_layout</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">1.0.42</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Rails generator creates application layout files for Bootstrap and other frameworks.</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 3,649,000\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>3,649,000</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails_semantic_logger\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails_semantic_logger</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">5.0.0</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">High-performance, asynchronous structured logging that replaces the Rails logger.</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 23,450,844\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>23,450,844</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails_config\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails_config</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">0.99.0</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Please install the Config gem instead.</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 2,991,474\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>2,991,474</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails-properties\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails-properties</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">4.0.0</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Ruby gem to handle properties for ActiveRecord instances by storing them as serialized ...</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 2,768,703\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>2,768,703</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails_best_practices\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails_best_practices</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">1.23.4</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">a code metric tool for rails codes.</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 20,262,822\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>20,262,822</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails-healthcheck\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails-healthcheck</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">1.4.0</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Healthcheck route for a Rails application</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 2,507,409\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>2,507,409</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails-timeago\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails-timeago</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">2.20.0</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">jQuery Timeago helper for Rails 3</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 2,425,309\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>2,425,309</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails-perftest\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails-perftest</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">0.0.7</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">ActionDispatch::PerformanceTest, ActiveSupport::Testing::Performance extracted from Rails.</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 2,287,650\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>2,287,650</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails_sortable\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails_sortable</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">1.6.0</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Easy drag &amp;amp; drop sorting for rails.</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 1,949,657\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>1,949,657</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails-backbone\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails-backbone</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">1.2.0</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Use backbone.js with rails 3.1 and above apps</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 1,729,388\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>1,729,388</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails_warden\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails_warden</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">0.6.0</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">A gem that provides authentication Rails helpers when using Warden for authentication</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 1,722,076\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>1,722,076</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/sprockets-rails\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">sprockets-rails</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">3.5.2</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Sprockets Rails integration</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 549,466,452\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>549,466,452</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails-settings-cached\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails-settings-cached</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">2.9.6</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">The best solution for store global settings in Rails applications.</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 10,693,235\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>10,693,235</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rspec-rails\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rspec-rails</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">8.0.4</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">RSpec for Rails</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 394,800,534\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>394,800,534</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails_event_store\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails_event_store</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">3.0.0</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Rails wrapper for RubyEventStore with batteries included</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 8,815,999\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>8,815,999</span></span></div></a>\n          <a class=\"flex flex-col w-full px-4 py-4 rounded-md hover:bg-orange-50 dark:hover:bg-orange-950 border-b border-neutral-200 dark:border-neutral-800 group no-underline\" href=\"/gems/rails-ujs\"><div class=\"flex flex-row w-full items-center justify-between\"><h2 class=\"text-b1 font-semibold text-neutral-900 dark:text-white group-hover:text-orange-500 transition-colors\" data-testid=\"rubygem-name\">rails-ujs</h2><code class=\"ml-2 shrink-0 px-2 text-c3 bg-green-200 dark:bg-green-800 rounded-sm text-neutral-900 dark:text-white\">0.1.0</code></div><div class=\"flex flex-row w-full items-center justify-between mt-1\"><p class=\"text-b3 text-neutral-600 dark:text-neutral-400 truncate flex-1 mr-4\">Ruby on Rails unobtrusive scripting adapter.</p><span class=\"flex text-neutral-600 dark:text-neutral-400 text-nowrap text-b3 space-x-1 items-center \" title=\"Total downloads: 1,294,459\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#arrow-circle-down\" /></svg><span>1,294,459</span></span></div></a>\n          <nav class=\"flex flex-wrap items-center justify-center gap-1 my-8\" role=\"navigation\" aria-label=\"Pagination\">\n      <span class=\"inline-flex items-center justify-center w-10 h-10 rounded-md text-neutral-300 dark:text-neutral-700 cursor-default\" aria-disabled=\"true\" aria-label=\"First page\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#first-page\" /></svg></span>\n      <span class=\"inline-flex items-center justify-center w-10 h-10 rounded-md text-neutral-300 dark:text-neutral-700 cursor-default\" aria-disabled=\"true\" aria-label=\"Previous page\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#chevron-left\" /></svg></span>\n          <span class=\"inline-flex items-center justify-center min-w-10 h-10 px-3 rounded-md text-b2 font-semibold bg-orange-500 text-white\" aria-current=\"page\">1</span>\n          <a rel=\"next\" class=\"inline-flex items-center justify-center min-w-10 h-10 px-3 rounded-md text-b2 no-underline text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"/search?page=2&amp;query=rails\">2</a>\n          <a class=\"inline-flex items-center justify-center min-w-10 h-10 px-3 rounded-md text-b2 no-underline text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"/search?page=3&amp;query=rails\">3</a>\n          <a class=\"inline-flex items-center justify-center min-w-10 h-10 px-3 rounded-md text-b2 no-underline text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"/search?page=4&amp;query=rails\">4</a>\n          <a class=\"inline-flex items-center justify-center min-w-10 h-10 px-3 rounded-md text-b2 no-underline text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"/search?page=5&amp;query=rails\">5</a>\n        <span class=\"inline-flex items-center justify-center w-10 h-10 text-neutral-500 dark:text-neutral-500\" aria-hidden=\"true\">…</span>\n      <a rel=\"next\" aria-label=\"Next page\" class=\"inline-flex items-center justify-center w-10 h-10 rounded-md no-underline text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"/search?page=2&amp;query=rails\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#chevron-right\" /></svg></a>\n      <a rel=\"last\" aria-label=\"Last page\" class=\"last-page-button inline-flex items-center justify-center w-10 h-10 rounded-md no-underline text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800\" href=\"/search?page=100&amp;query=rails\"><svg class=\"h-5 w-5 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"20\" width=\"20\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#last-page\" /></svg></a>\n  </nav>\n\n\n</article>\n        </div>\n      </main>\n\n    <!-- Footer -->\n    <footer>\n      <div class=\"w-full px-8 py-8 bg-orange-100 dark:bg-orange-950 text-neutral-800 dark:text-neutral-200\">\n        <!-- Footer Nav -->\n        <div class=\"max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between\">\n          <nav class=\"mb-4 md:mb-0 justify-start\">\n            <ul class=\"flex flex-col md:flex-row md:space-x-8 text-b1 md:text-b2\">\n              <li><a class=\"hover:text-neutral-600\" href=\"/pages/about\">About</a></li>\n              <li><a class=\"hover:text-neutral-600\" href=\"https://guides.rubygems.org/command-reference/#gem-install\">Docs</a></li>\n              <li><a class=\"hover:text-neutral-600\" href=\"/policies\">Policies</a></li>\n              <li><a class=\"hover:text-neutral-600\" href=\"https://status.rubygems.org\">Status</a></li>\n              <li><a class=\"hover:text-neutral-600\" href=\"/pages/security\">Security</a></li>\n              <li><a class=\"hover:text-neutral-600\" href=\"mailto:support@rubygems.org\">Help</a></li>\n            </ul>\n          </nav>\n          <div class=\"flex space-x-4\">\n            <a href=\"https://github.com/rubygems/rubygems.org\">\n              <svg class=\"h-6 w-6 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"24\" width=\"24\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#github\" /></svg>\n            </a>\n            <a href=\"https://ruby.social/users/rubygems\">\n              <svg class=\"h-6 w-6 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"24\" width=\"24\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#mastodon\" /></svg>\n            </a>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"w-full px-6 bg-orange-200 dark:bg-orange-900 text-neutral-900 dark:text-neutral-100\">\n        <!-- Supported By -->\n        <div class=\"flex flex-col lg:flex-row max-w-screen-xl mx-auto py-6 items-center justify-between\">\n          <!-- RubyGems.org is supported by -->\n          <p class=\"mb-6 lg:mb-0 lg:mr-14 lg:w-52 text-b2 leading-6 text-balance\">\n            <a href=\"https://rubygems.org\" class=\"font-semibold\">RubyGems.org</a>\nis supported by\n\n          </p>\n\n          <!-- Supporter Icons -->\n          <div class=\"w-full lg:grow mx-auto grid grid-cols-3 gap-6 justify-items-center md:flex md:items-center md:justify-between\">\n            <a href=\"https://rubycentral.org/\" class=\"p-1\"><svg class=\"h-15 w-15 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"60\" width=\"60\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#ruby-central\" /></svg></a>\n            <a href=\"https://aws.amazon.com/\" class=\"p-1\"><svg class=\"h-15 w-15 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"60\" width=\"60\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#aws\" /></svg></a>\n            <a href=\"https://dnsimple.link/resolving-rubygems\" class=\"p-1\"><svg class=\"h-15 w-15 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"60\" width=\"60\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#dnsimple\" /></svg></a>\n            <a href=\"https://www.datadoghq.com/\" class=\"p-1\"><svg class=\"h-15 w-15 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"60\" width=\"60\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#datadog\" /></svg></a>\n            <a href=\"https://www.fastly.com/\" class=\"p-1\"><svg class=\"h-15 w-15 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"60\" width=\"60\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#fastly\" /></svg></a>\n            <a href=\"https://www.honeybadger.io/\" class=\"p-1\"><svg class=\"h-15 w-15 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"60\" width=\"60\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#honeybadger\" /></svg></a>\n            <a href=\"https://mend.io/\" class=\"col-start-2 p-1\"><svg class=\"h-15 w-15 flex-shrink-0 stroke-current stroke-0 fill-current \" height=\"60\" width=\"60\" aria-hidden=\"true\" role=\"graphics-symbol\"><use href=\"/assets/icons-4970ccf2.svg#mend-io\" /></svg></a>\n          </div>\n        </div>\n      </div>\n    </footer>\n  </div>\n</body>\n</html>\n"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails",
+          "normalized_url": "https://rubygems.org/gems/rails",
+          "title": "rails",
+          "content": "Full-stack web application framework.",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails-i18n",
+          "normalized_url": "https://rubygems.org/gems/rails-i18n",
+          "title": "rails-i18n",
+          "content": "Common locale data and translations for Rails i18n.",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails-html-sanitizer",
+          "normalized_url": "https://rubygems.org/gems/rails-html-sanitizer",
+          "title": "rails-html-sanitizer",
+          "content": "This gem is responsible to sanitize HTML fragments in Rails applications.",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails-dom-testing",
+          "normalized_url": "https://rubygems.org/gems/rails-dom-testing",
+          "title": "rails-dom-testing",
+          "content": "Dom and Selector assertions for Rails applications",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails-erd",
+          "normalized_url": "https://rubygems.org/gems/rails-erd",
+          "title": "rails-erd",
+          "content": "Entity-relationship diagram for your Rails models.",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails-observers",
+          "normalized_url": "https://rubygems.org/gems/rails-observers",
+          "title": "rails-observers",
+          "content": "ActiveModel::Observer, ActiveRecord::Observer and ActionController::Caching::Sweeper ex...",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails_12factor",
+          "normalized_url": "https://rubygems.org/gems/rails_12factor",
+          "title": "rails_12factor",
+          "content": "Following best practices from http://12factor.net run a maintainable, clean, and scalab...",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails_autolink",
+          "normalized_url": "https://rubygems.org/gems/rails_autolink",
+          "title": "rails_autolink",
+          "content": "Automatic generation of html links in texts",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails-controller-testing",
+          "normalized_url": "https://rubygems.org/gems/rails-controller-testing",
+          "title": "rails-controller-testing",
+          "content": "Extracting `assigns` and `assert_template` from ActionDispatch.",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails_admin",
+          "normalized_url": "https://rubygems.org/gems/rails_admin",
+          "title": "rails_admin",
+          "content": "Admin for Rails",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails-deprecated_sanitizer",
+          "normalized_url": "https://rubygems.org/gems/rails-deprecated_sanitizer",
+          "title": "rails-deprecated_sanitizer",
+          "content": "Deprecated sanitizer API extracted from Action View.",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails-api",
+          "normalized_url": "https://rubygems.org/gems/rails-api",
+          "title": "rails-api",
+          "content": "Rails for API only Applications",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails_stdout_logging",
+          "normalized_url": "https://rubygems.org/gems/rails_stdout_logging",
+          "title": "rails_stdout_logging",
+          "content": "Overrides Rails' built in logger to send all logs to stdout",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails_param",
+          "normalized_url": "https://rubygems.org/gems/rails_param",
+          "title": "rails_param",
+          "content": "Parameter Validation and Type Coercion for Rails",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails_layout",
+          "normalized_url": "https://rubygems.org/gems/rails_layout",
+          "title": "rails_layout",
+          "content": "Rails generator creates application layout files for Bootstrap and other frameworks.",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails_semantic_logger",
+          "normalized_url": "https://rubygems.org/gems/rails_semantic_logger",
+          "title": "rails_semantic_logger",
+          "content": "High-performance, asynchronous structured logging that replaces the Rails logger.",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails_config",
+          "normalized_url": "https://rubygems.org/gems/rails_config",
+          "title": "rails_config",
+          "content": "Please install the Config gem instead.",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails-properties",
+          "normalized_url": "https://rubygems.org/gems/rails-properties",
+          "title": "rails-properties",
+          "content": "Ruby gem to handle properties for ActiveRecord instances by storing them as serialized ...",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails_best_practices",
+          "normalized_url": "https://rubygems.org/gems/rails_best_practices",
+          "title": "rails_best_practices",
+          "content": "a code metric tool for rails codes.",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails-healthcheck",
+          "normalized_url": "https://rubygems.org/gems/rails-healthcheck",
+          "title": "rails-healthcheck",
+          "content": "Healthcheck route for a Rails application",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails-timeago",
+          "normalized_url": "https://rubygems.org/gems/rails-timeago",
+          "title": "rails-timeago",
+          "content": "jQuery Timeago helper for Rails 3",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails-perftest",
+          "normalized_url": "https://rubygems.org/gems/rails-perftest",
+          "title": "rails-perftest",
+          "content": "ActionDispatch::PerformanceTest, ActiveSupport::Testing::Performance extracted from Rails.",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails_sortable",
+          "normalized_url": "https://rubygems.org/gems/rails_sortable",
+          "title": "rails_sortable",
+          "content": "Easy drag & drop sorting for rails.",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails-backbone",
+          "normalized_url": "https://rubygems.org/gems/rails-backbone",
+          "title": "rails-backbone",
+          "content": "Use backbone.js with rails 3.1 and above apps",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails_warden",
+          "normalized_url": "https://rubygems.org/gems/rails_warden",
+          "title": "rails_warden",
+          "content": "A gem that provides authentication Rails helpers when using Warden for authentication",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/sprockets-rails",
+          "normalized_url": "https://rubygems.org/gems/sprockets-rails",
+          "title": "sprockets-rails",
+          "content": "Sprockets Rails integration",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails-settings-cached",
+          "normalized_url": "https://rubygems.org/gems/rails-settings-cached",
+          "title": "rails-settings-cached",
+          "content": "The best solution for store global settings in Rails applications.",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rspec-rails",
+          "normalized_url": "https://rubygems.org/gems/rspec-rails",
+          "title": "rspec-rails",
+          "content": "RSpec for Rails",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails_event_store",
+          "normalized_url": "https://rubygems.org/gems/rails_event_store",
+          "title": "rails_event_store",
+          "content": "Rails wrapper for RubyEventStore with batteries included",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rubygems.org/gems/rails-ujs",
+          "normalized_url": "https://rubygems.org/gems/rails-ujs",
+          "title": "rails-ujs",
+          "content": "Ruby on Rails unobtrusive scripting adapter.",
+          "engine": "rubygems",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

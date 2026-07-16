@@ -1,0 +1,60 @@
+{
+  "engine": "senscritique",
+  "case": "request",
+  "query": {
+    "query": "blade runner",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "blade runner",
+    "category": "",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "",
+    "engine_data": {},
+    "method": "Post",
+    "url": "https://apollo.senscritique.com/",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "cookies": {},
+    "data": {},
+    "json": {
+      "operationName": "SearchProductExplorer",
+      "query": "query SearchProductExplorer($query: String, $offset: Int, $limit: Int,\n                    $sortBy: SearchProductExplorerSort) {\n  searchProductExplorer(\n    query: $query\n    filters: []\n    sortBy: $sortBy\n    offset: $offset\n    limit: $limit\n  ) {\n    items {\n      category\n      dateRelease\n      duration\n      id\n      originalTitle\n      rating\n      title\n      url\n      yearOfProduction\n      medias {\n        picture\n      }\n      countries {\n        name\n      }\n      genresInfos {\n        label\n      }\n      directors {\n        name\n      }\n      stats {\n        ratingCount\n      }\n    }\n  }\n}",
+      "variables": {
+        "limit": 16,
+        "offset": 16,
+        "query": "blade runner",
+        "sortBy": "RELEVANCE"
+      }
+    },
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://apollo.senscritique.com/",
+    "headers": {},
+    "body": "{\"data\": {\"searchProductExplorer\": {\"items\": []}}}"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

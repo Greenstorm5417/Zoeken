@@ -1,0 +1,201 @@
+{
+  "engine": "vuhuv",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://vuhuv.com/veri2/?k=1&p=1&q=rust&d=1&dh=1",
+    "headers": {
+      "Referer": "https://vuhuv.com/"
+    },
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://vuhuv.com/veri2/?k=1&p=1&q=rust&d=1&dh=1",
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "vary": "Accept-Encoding",
+      "date": "Thu, 09 Jul 2026 14:06:43 GMT",
+      "alt-svc": "h3=\":443\"; ma=2592000",
+      "set-cookie": "k=eyJzYiI6ImNobiIsInMiOiJGbG9yaWRhIiwidSI6InVzIiwibyI6IjEiLCJ0ZCI6ImVuX1VTIn0=; Max-Age=86400; Path=/; Expires=Fri, 10 Jul 2026 14:06:43 GMT; Secure; SameSite=Lax",
+      "etag": "W/\"484b-KG9RK8ZpEqpnHk3doaRBaKASrdE\"",
+      "server": "vws 2.1.6",
+      "unutma": "Herseyi Allah yapar, insansa kendi yapti sanir."
+    },
+    "body": "\n    \n        <div class=\"sayfa-arasi duzenlemeYok\">\n            <div class=\"cizgi\"></div><div>1</div><div class=\"cizgi\"></div>\n        </div>\n    \n    \n        <div class=\"sonuc\">\n            <div>\n                <a href=\"https://rust-lang.org/\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" class=\"js-sonuc-say\">\n                    <br>\n                    <span>Rust Programming Language</span>\n                    <div><img src=\"https://simge.vuhuv.com/?a=rust-lang.org\">https://rust-lang.org</div>\n                </a>\n                <div class=\"sm\">\n                    <div>https://rust-lang.org</div>\n                    <span class=\"sonuc-menu\">\n                        <span class=\"balonButon duzenlemeYok sonuc-menu-buton\" onclick=\"balon('#sonuc-menu-12');\"></span>\n                        <div class=\"balonlar bcBalon bcBalonSonucMenu duzenlemeYok zoom-in-zoom-out\" id=\"sonuc-menu-12\">\n                            <a onclick=\"sonucGeriBildirim('web','https://rust-lang.org/');balonKapat(this);\">Feedback</a>\n                            <a class=\"js-sonuc-say\" data-yenisekme=\"1\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" href=\"https://rust-lang.org/\" target=\"_blank\" onclick=\"balonKapat(this);\">Open in new tab</a>\n                            <a class=\"js-sonuc-baglanti-kopyala\" data-a=\"https://rust-lang.org/\" onclick=\"balonKapat(this);\">Copy link</a>\n                            <a onclick=\"balonKapat(this);\">Close menu</a>\n                        </div>\n                    </span>\n                </div>\n                <ins>\n                    Rust is a fast, memory-safe, and productive programming language that can run on embedded devices, web services, and more. Learn how to\n                </ins>\n            </div>\n        </div>\n    \n        <div class=\"sonuc\">\n            <div>\n                <a href=\"https://rust.facepunch.com/\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" class=\"js-sonuc-say\">\n                    <br>\n                    <span>Rust — Explore, Build and Survive</span>\n                    <div><img src=\"https://simge.vuhuv.com/?a=rust.facepunch.com\">https://rust.facepunch.com</div>\n                </a>\n                <div class=\"sm\">\n                    <div>https://rust.facepunch.com</div>\n                    <span class=\"sonuc-menu\">\n                        <span class=\"balonButon duzenlemeYok sonuc-menu-buton\" onclick=\"balon('#sonuc-menu-13');\"></span>\n                        <div class=\"balonlar bcBalon bcBalonSonucMenu duzenlemeYok zoom-in-zoom-out\" id=\"sonuc-menu-13\">\n                            <a onclick=\"sonucGeriBildirim('web','https://rust.facepunch.com/');balonKapat(this);\">Feedback</a>\n                            <a class=\"js-sonuc-say\" data-yenisekme=\"1\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" href=\"https://rust.facepunch.com/\" target=\"_blank\" onclick=\"balonKapat(this);\">Open in new tab</a>\n                            <a class=\"js-sonuc-baglanti-kopyala\" data-a=\"https://rust.facepunch.com/\" onclick=\"balonKapat(this);\">Copy link</a>\n                            <a onclick=\"balonKapat(this);\">Close menu</a>\n                        </div>\n                    </span>\n                </div>\n                <ins>\n                    This month&#39;s update brings Rust&#39;s biggest player overhaul in years, featuring new player models and animations, a new armour set, and the\n                </ins>\n            </div>\n        </div>\n    \n        <div class=\"sonuc\">\n            <div>\n                <a href=\"https://store.steampowered.com/app/252490/Rust/\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" class=\"js-sonuc-say\">\n                    <br>\n                    <span>Rust on Steam</span>\n                    <div><img src=\"https://simge.vuhuv.com/?a=store.steampowered.com\">https://store.steampowered.com › app › 252490 › Rust</div>\n                </a>\n                <div class=\"sm\">\n                    <div>https://store.steampowered.com › app › 252490 › Rust</div>\n                    <span class=\"sonuc-menu\">\n                        <span class=\"balonButon duzenlemeYok sonuc-menu-buton\" onclick=\"balon('#sonuc-menu-14');\"></span>\n                        <div class=\"balonlar bcBalon bcBalonSonucMenu duzenlemeYok zoom-in-zoom-out\" id=\"sonuc-menu-14\">\n                            <a onclick=\"sonucGeriBildirim('web','https://store.steampowered.com/app/252490/Rust/');balonKapat(this);\">Feedback</a>\n                            <a class=\"js-sonuc-say\" data-yenisekme=\"1\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" href=\"https://store.steampowered.com/app/252490/Rust/\" target=\"_blank\" onclick=\"balonKapat(this);\">Open in new tab</a>\n                            <a class=\"js-sonuc-baglanti-kopyala\" data-a=\"https://store.steampowered.com/app/252490/Rust/\" onclick=\"balonKapat(this);\">Copy link</a>\n                            <a onclick=\"balonKapat(this);\">Close menu</a>\n                        </div>\n                    </span>\n                </div>\n                <ins>\n                    The only aim in Rust is to survive. Everything wants you to die - the island&#39;s wildlife, other inhabitants, the environment, and other\n                </ins>\n            </div>\n        </div>\n    \n        <div class=\"sonuc\">\n            <div>\n                <a href=\"https://en.wikipedia.org/wiki/Rust_(programming_language)\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" class=\"js-sonuc-say\">\n                    <br>\n                    <span>Rust (programming language) - Wikipedia</span>\n                    <div><img src=\"https://simge.vuhuv.com/?a=en.wikipedia.org\">https://en.wikipedia.org › wiki › Rust_(programming_language)</div>\n                </a>\n                <div class=\"sm\">\n                    <div>https://en.wikipedia.org › wiki › Rust_(programming_language)</div>\n                    <span class=\"sonuc-menu\">\n                        <span class=\"balonButon duzenlemeYok sonuc-menu-buton\" onclick=\"balon('#sonuc-menu-15');\"></span>\n                        <div class=\"balonlar bcBalon bcBalonSonucMenu duzenlemeYok zoom-in-zoom-out\" id=\"sonuc-menu-15\">\n                            <a onclick=\"sonucGeriBildirim('web','https://en.wikipedia.org/wiki/Rust_(programming_language)');balonKapat(this);\">Feedback</a>\n                            <a class=\"js-sonuc-say\" data-yenisekme=\"1\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" href=\"https://en.wikipedia.org/wiki/Rust_(programming_language)\" target=\"_blank\" onclick=\"balonKapat(this);\">Open in new tab</a>\n                            <a class=\"js-sonuc-baglanti-kopyala\" data-a=\"https://en.wikipedia.org/wiki/Rust_(programming_language)\" onclick=\"balonKapat(this);\">Copy link</a>\n                            <a onclick=\"balonKapat(this);\">Close menu</a>\n                        </div>\n                    </span>\n                </div>\n                <ins>\n                    Software developer Graydon Hoare created Rust in 2006 while working at Mozilla, which officially sponsored the project in 2009. The first\n                </ins>\n            </div>\n        </div>\n    \n        <div class=\"sonuc\">\n            <div>\n                <a href=\"https://www.xbox.com/tr-TR/games/store/rust/9NPHHZBV60B4\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" class=\"js-sonuc-say\">\n                    <br>\n                    <span>Rust edinin | Xbox</span>\n                    <div><img src=\"https://simge.vuhuv.com/?a=xbox.com\">https://www.xbox.com › tr-TR › games › store › rust › 9NPHHZBV60B4</div>\n                </a>\n                <div class=\"sm\">\n                    <div>https://www.xbox.com › tr-TR › games › store › rust › 9NPHHZBV60B4</div>\n                    <span class=\"sonuc-menu\">\n                        <span class=\"balonButon duzenlemeYok sonuc-menu-buton\" onclick=\"balon('#sonuc-menu-16');\"></span>\n                        <div class=\"balonlar bcBalon bcBalonSonucMenu duzenlemeYok zoom-in-zoom-out\" id=\"sonuc-menu-16\">\n                            <a onclick=\"sonucGeriBildirim('web','https://www.xbox.com/tr-TR/games/store/rust/9NPHHZBV60B4');balonKapat(this);\">Feedback</a>\n                            <a class=\"js-sonuc-say\" data-yenisekme=\"1\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" href=\"https://www.xbox.com/tr-TR/games/store/rust/9NPHHZBV60B4\" target=\"_blank\" onclick=\"balonKapat(this);\">Open in new tab</a>\n                            <a class=\"js-sonuc-baglanti-kopyala\" data-a=\"https://www.xbox.com/tr-TR/games/store/rust/9NPHHZBV60B4\" onclick=\"balonKapat(this);\">Copy link</a>\n                            <a onclick=\"balonKapat(this);\">Close menu</a>\n                        </div>\n                    </span>\n                </div>\n                <ins>\n                    Bu acımasız dünyanın tehlikeleriyle başa çıkmanda yardımcı olacak bir dizi benzersiz eşyayı elde etmek için ücretsiz Rust DLC&#39;sini al.\n                </ins>\n            </div>\n        </div>\n    \n        <div class=\"sonuc\">\n            <div>\n                <a href=\"https://github.com/rust-lang/rust\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" class=\"js-sonuc-say\">\n                    <br>\n                    <span>rust-lang / rust: Empowering everyone to build reliable and ... - GitHub</span>\n                    <div><img src=\"https://simge.vuhuv.com/?a=github.com\">https://github.com › rust-lang › rust</div>\n                </a>\n                <div class=\"sm\">\n                    <div>https://github.com › rust-lang › rust</div>\n                    <span class=\"sonuc-menu\">\n                        <span class=\"balonButon duzenlemeYok sonuc-menu-buton\" onclick=\"balon('#sonuc-menu-17');\"></span>\n                        <div class=\"balonlar bcBalon bcBalonSonucMenu duzenlemeYok zoom-in-zoom-out\" id=\"sonuc-menu-17\">\n                            <a onclick=\"sonucGeriBildirim('web','https://github.com/rust-lang/rust');balonKapat(this);\">Feedback</a>\n                            <a class=\"js-sonuc-say\" data-yenisekme=\"1\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" href=\"https://github.com/rust-lang/rust\" target=\"_blank\" onclick=\"balonKapat(this);\">Open in new tab</a>\n                            <a class=\"js-sonuc-baglanti-kopyala\" data-a=\"https://github.com/rust-lang/rust\" onclick=\"balonKapat(this);\">Copy link</a>\n                            <a onclick=\"balonKapat(this);\">Close menu</a>\n                        </div>\n                    </span>\n                </div>\n                <ins>\n                    Why Rust? Performance: Fast and memory-efficient, suitable for critical services, embedded devices, and easily integrated with other\n                </ins>\n            </div>\n        </div>\n    \n        <div class=\"sonuc\">\n            <div>\n                <a href=\"https://rust.en.softonic.com/\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" class=\"js-sonuc-say\">\n                    <br>\n                    <span>Rust - Download</span>\n                    <div><img src=\"https://simge.vuhuv.com/?a=rust.en.softonic.com\">https://rust.en.softonic.com</div>\n                </a>\n                <div class=\"sm\">\n                    <div>https://rust.en.softonic.com</div>\n                    <span class=\"sonuc-menu\">\n                        <span class=\"balonButon duzenlemeYok sonuc-menu-buton\" onclick=\"balon('#sonuc-menu-18');\"></span>\n                        <div class=\"balonlar bcBalon bcBalonSonucMenu duzenlemeYok zoom-in-zoom-out\" id=\"sonuc-menu-18\">\n                            <a onclick=\"sonucGeriBildirim('web','https://rust.en.softonic.com/');balonKapat(this);\">Feedback</a>\n                            <a class=\"js-sonuc-say\" data-yenisekme=\"1\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" href=\"https://rust.en.softonic.com/\" target=\"_blank\" onclick=\"balonKapat(this);\">Open in new tab</a>\n                            <a class=\"js-sonuc-baglanti-kopyala\" data-a=\"https://rust.en.softonic.com/\" onclick=\"balonKapat(this);\">Copy link</a>\n                            <a onclick=\"balonKapat(this);\">Close menu</a>\n                        </div>\n                    </span>\n                </div>\n                <ins>\n                    Rust is about resource management, base-building, and combat. This action game features an extensive crafting system, allowing players to\n                </ins>\n            </div>\n        </div>\n    \n        <div class=\"sonuc\">\n            <div>\n                <a href=\"https://steamcommunity.com/app/252490\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" class=\"js-sonuc-say\">\n                    <br>\n                    <span>Rust - Steam Community</span>\n                    <div><img src=\"https://simge.vuhuv.com/?a=steamcommunity.com\">https://steamcommunity.com › app › 252490</div>\n                </a>\n                <div class=\"sm\">\n                    <div>https://steamcommunity.com › app › 252490</div>\n                    <span class=\"sonuc-menu\">\n                        <span class=\"balonButon duzenlemeYok sonuc-menu-buton\" onclick=\"balon('#sonuc-menu-19');\"></span>\n                        <div class=\"balonlar bcBalon bcBalonSonucMenu duzenlemeYok zoom-in-zoom-out\" id=\"sonuc-menu-19\">\n                            <a onclick=\"sonucGeriBildirim('web','https://steamcommunity.com/app/252490');balonKapat(this);\">Feedback</a>\n                            <a class=\"js-sonuc-say\" data-yenisekme=\"1\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" href=\"https://steamcommunity.com/app/252490\" target=\"_blank\" onclick=\"balonKapat(this);\">Open in new tab</a>\n                            <a class=\"js-sonuc-baglanti-kopyala\" data-a=\"https://steamcommunity.com/app/252490\" onclick=\"balonKapat(this);\">Copy link</a>\n                            <a onclick=\"balonKapat(this);\">Close menu</a>\n                        </div>\n                    </span>\n                </div>\n                <ins>\n                    Rust is a survival game where you start naked on a beach with a rock, a torch, and a dream. That dream usually lasts about 47 seconds\n                </ins>\n            </div>\n        </div>\n    \n        <div class=\"sonuc\">\n            <div>\n                <a href=\"https://www.w3schools.com/rust/index.php\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" class=\"js-sonuc-say\">\n                    <br>\n                    <span>Rust Tutorial - W3Schools</span>\n                    <div><img src=\"https://simge.vuhuv.com/?a=w3schools.com\">https://www.w3schools.com › rust › index.php</div>\n                </a>\n                <div class=\"sm\">\n                    <div>https://www.w3schools.com › rust › index.php</div>\n                    <span class=\"sonuc-menu\">\n                        <span class=\"balonButon duzenlemeYok sonuc-menu-buton\" onclick=\"balon('#sonuc-menu-110');\"></span>\n                        <div class=\"balonlar bcBalon bcBalonSonucMenu duzenlemeYok zoom-in-zoom-out\" id=\"sonuc-menu-110\">\n                            <a onclick=\"sonucGeriBildirim('web','https://www.w3schools.com/rust/index.php');balonKapat(this);\">Feedback</a>\n                            <a class=\"js-sonuc-say\" data-yenisekme=\"1\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" href=\"https://www.w3schools.com/rust/index.php\" target=\"_blank\" onclick=\"balonKapat(this);\">Open in new tab</a>\n                            <a class=\"js-sonuc-baglanti-kopyala\" data-a=\"https://www.w3schools.com/rust/index.php\" onclick=\"balonKapat(this);\">Copy link</a>\n                            <a onclick=\"balonKapat(this);\">Close menu</a>\n                        </div>\n                    </span>\n                </div>\n                <ins>\n                    Rust is a popular programming language used to build everything from web servers to game engines. Rust is known for being very fast, and\n                </ins>\n            </div>\n        </div>\n    \n        <div class=\"sonuc\">\n            <div>\n                <a href=\"https://www.idcgames.com/tr/rust/\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" class=\"js-sonuc-say\">\n                    <br>\n                    <span>IDCGames - Rust - PC Oyunları</span>\n                    <div><img src=\"https://simge.vuhuv.com/?a=idcgames.com\">https://www.idcgames.com › tr › rust</div>\n                </a>\n                <div class=\"sm\">\n                    <div>https://www.idcgames.com › tr › rust</div>\n                    <span class=\"sonuc-menu\">\n                        <span class=\"balonButon duzenlemeYok sonuc-menu-buton\" onclick=\"balon('#sonuc-menu-111');\"></span>\n                        <div class=\"balonlar bcBalon bcBalonSonucMenu duzenlemeYok zoom-in-zoom-out\" id=\"sonuc-menu-111\">\n                            <a onclick=\"sonucGeriBildirim('web','https://www.idcgames.com/tr/rust/');balonKapat(this);\">Feedback</a>\n                            <a class=\"js-sonuc-say\" data-yenisekme=\"1\" data-k=\"eyJwIjoxLCJhIjoicnVzdCIsImsiOjF9&amp;t=abd2ac8bd6cae8138f84702f1c766bde\" href=\"https://www.idcgames.com/tr/rust/\" target=\"_blank\" onclick=\"balonKapat(this);\">Open in new tab</a>\n                            <a class=\"js-sonuc-baglanti-kopyala\" data-a=\"https://www.idcgames.com/tr/rust/\" onclick=\"balonKapat(this);\">Copy link</a>\n                            <a onclick=\"balonKapat(this);\">Close menu</a>\n                        </div>\n                    </span>\n                </div>\n                <ins>\n                    Rust, tehlikelerle dolu bir açık dünyada oyuncuların etraflarındaki malzemeleri kullandıkları ve hayvanlardan yiyecek topladıkları çok\n                </ins>\n            </div>\n        </div>\n    \n    \n         <button onclick=\"vhv.dahaSorgu(this);\" class=\"daha-fazla-sonuc-buton duzenlemeYok\"><span>More results</span><div class=\"lds-ring\"><div></div><div></div><div></div><div></div></div></button>\n    \n    <script>isaretleClass($(\".sonuc ins\"),'rust')</script>\n"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://rust-lang.org/",
+          "normalized_url": "https://rust-lang.org/",
+          "title": "Rust Programming Language https://rust-lang.org",
+          "content": "",
+          "engine": "vuhuv",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust.facepunch.com/",
+          "normalized_url": "https://rust.facepunch.com/",
+          "title": "Rust — Explore, Build and Survive https://rust.facepunch.com",
+          "content": "",
+          "engine": "vuhuv",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://store.steampowered.com/app/252490/Rust/",
+          "normalized_url": "https://store.steampowered.com/app/252490/Rust/",
+          "title": "Rust on Steam https://store.steampowered.com › app › 252490 › Rust",
+          "content": "",
+          "engine": "vuhuv",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+          "normalized_url": "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+          "title": "Rust (programming language) - Wikipedia https://en.wikipedia.org › wiki › Rust_(programming_language)",
+          "content": "",
+          "engine": "vuhuv",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.xbox.com/tr-TR/games/store/rust/9NPHHZBV60B4",
+          "normalized_url": "https://www.xbox.com/tr-TR/games/store/rust/9NPHHZBV60B4",
+          "title": "Rust edinin | Xbox https://www.xbox.com › tr-TR › games › store › rust › 9NPHHZBV60B4",
+          "content": "",
+          "engine": "vuhuv",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-lang/rust",
+          "normalized_url": "https://github.com/rust-lang/rust",
+          "title": "rust-lang / rust: Empowering everyone to build reliable and ... - GitHub https://github.com › rust-lang › rust",
+          "content": "",
+          "engine": "vuhuv",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust.en.softonic.com/",
+          "normalized_url": "https://rust.en.softonic.com/",
+          "title": "Rust - Download https://rust.en.softonic.com",
+          "content": "",
+          "engine": "vuhuv",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://steamcommunity.com/app/252490",
+          "normalized_url": "https://steamcommunity.com/app/252490",
+          "title": "Rust - Steam Community https://steamcommunity.com › app › 252490",
+          "content": "",
+          "engine": "vuhuv",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.w3schools.com/rust/index.php",
+          "normalized_url": "https://www.w3schools.com/rust/index.php",
+          "title": "Rust Tutorial - W3Schools https://www.w3schools.com › rust › index.php",
+          "content": "",
+          "engine": "vuhuv",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.idcgames.com/tr/rust/",
+          "normalized_url": "https://www.idcgames.com/tr/rust/",
+          "title": "IDCGames - Rust - PC Oyunları https://www.idcgames.com › tr › rust",
+          "content": "",
+          "engine": "vuhuv",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

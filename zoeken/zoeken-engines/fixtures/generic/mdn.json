@@ -1,0 +1,204 @@
+{
+  "engine": "mdn",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://developer.mozilla.org/api/v1/search?q=rust&page=1",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://developer.mozilla.org/api/v1/search?q=rust&page=1",
+    "headers": {
+      "via": "1.1 google, 1.1 google, 1.1 varnish, 1.1 varnish, 1.1 varnish",
+      "x-cloud-trace-context": "3f15d795371ccae56362d6ebecf7cb2d",
+      "accept-ranges": "bytes",
+      "x-timer": "S1783605957.047584,VS0,VE1",
+      "date": "Thu, 09 Jul 2026 14:05:57 GMT",
+      "x-cache": "MISS, HIT, HIT",
+      "age": "43247",
+      "x-cache-hits": "0, 1, 0",
+      "server": "Google Frontend",
+      "content-type": "application/json",
+      "x-served-by": "cache-bfi-kbfi7400020-BFI, cache-bfi-kbfi7400020-BFI, cache-bfi-kbfi7400034-BFI, cache-mia-kmia1760041-MIA",
+      "cache-control": "max-age=86400",
+      "vary": "Accept-Encoding"
+    },
+    "body": "{\"documents\":[{\"mdn_url\":\"/en-US/docs/WebAssembly/Guides/Rust_to_Wasm\",\"score\":55.90636,\"title\":\"Compiling from Rust to WebAssembly\",\"locale\":\"en-us\",\"slug\":\"webassembly/guides/rust_to_wasm\",\"popularity\":0.01147000031728908,\"summary\":\"This tutorial shows you how to compile a Rust project into WebAssembly and use it in an existing web app.\",\"highlight\":{\"body\":[\"Install <mark>Rust</mark> by going to the Install <mark>Rust</mark> page and following the instructions.\",\"Rustup installs rustc, the <mark>Rust</mark> compiler, cargo, <mark>Rust</mark>&#x27;s package manager, <mark>rust</mark>-std, <mark>Rust</mark>&#x27;s standard libraries, and some helpful\",\"docs — <mark>rust</mark>-docs.\"],\"title\":[\"Compiling from <mark>Rust</mark> to WebAssembly\"]}},{\"mdn_url\":\"/en-US/docs/WebAssembly/Guides/Concepts\",\"score\":13.630616,\"title\":\"WebAssembly concepts\",\"locale\":\"en-us\",\"slug\":\"webassembly/guides/concepts\",\"popularity\":0.00932301086186291,\"summary\":\"This article explains the concepts behind how WebAssembly works including its goals, the problems it solves, and how it runs inside the web browser's JavaScript engine.\",\"highlight\":{\"body\":[\"Writing a <mark>Rust</mark> application and targeting WebAssembly as its output.\",\"It is also possible to write <mark>Rust</mark> code and compile over to WebAssembly, thanks to the tireless work of the <mark>Rust</mark> WebAssembly\",\", and using that in a sample web app, over at our Compiling from <mark>Rust</mark> to WebAssembly article.\"],\"title\":[]}},{\"mdn_url\":\"/en-US/docs/WebAssembly\",\"score\":13.390742,\"title\":\"WebAssembly\",\"locale\":\"en-us\",\"slug\":\"webassembly\",\"popularity\":0.032775962179141416,\"summary\":\"WebAssembly is a type of code that can be run in modern web browsers.\\nIt is a low-level assembly-like language with a compact binary format that runs with near-native performance and provides languages such as C/C++, C# and Rust with a compilation target so that they can run on the web.\",\"highlight\":{\"body\":[\"language with a compact binary format that runs with near-native performance and provides languages such as C&#x2F;C++, C# and <mark>Rust</mark>\",\"Compiling from <mark>Rust</mark> to WebAssembly\\nIf you&#x27;ve written some <mark>Rust</mark> code, you can compile it into WebAssembly!\",\"This tutorial takes you through all you need to know to compile a <mark>Rust</mark> project to Wasm and use it in an existing web app.\"],\"title\":[]}},{\"mdn_url\":\"/en-US/docs/Learn_web_development/Core/Structuring_content/Debugging_HTML\",\"score\":13.343303,\"title\":\"Debugging HTML\",\"locale\":\"en-us\",\"slug\":\"learn_web_development/core/structuring_content/debugging_html\",\"popularity\":0.009460502797432074,\"summary\":\"Writing HTML is fine, but what if something goes wrong, and you can't work out where the error in the code is? This article will introduce you to some tools that can help you find and fix errors in HTML.\",\"highlight\":{\"body\":[\"For example, the following shows an error reported when trying to compile a simple program written in the <mark>Rust</mark> language.\",\"HTML is not as complicated to understand as <mark>Rust</mark>.\",\"And HTML&#x27;s element syntax is arguably a lot easier to understand than a &quot;real programming language&quot; like <mark>Rust</mark>, JavaScript\"],\"title\":[]}},{\"mdn_url\":\"/en-US/docs/Web\",\"score\":12.5316105,\"title\":\"Web technology for developers\",\"locale\":\"en-us\",\"slug\":\"web\",\"popularity\":0.17381095916489514,\"summary\":\"The open Web presents incredible opportunities for developers. To take full advantage of these technologies, you need to know how to use them. Below you'll find links to our Web technology documentation.\",\"highlight\":{\"body\":[\"WebAssembly\\nWebAssembly allows programs written in C, C++, <mark>Rust</mark>, Swift, C#, Go, and more to run on the Web.\"],\"title\":[]}},{\"mdn_url\":\"/en-US/docs/Learn_web_development/Extensions/Server-side/First_steps/Web_frameworks\",\"score\":12.294964,\"title\":\"Server-side web frameworks\",\"locale\":\"en-us\",\"slug\":\"learn_web_development/extensions/server-side/first_steps/web_frameworks\",\"popularity\":0.00875717866548212,\"summary\":\"The previous article showed you what the communication between web clients and servers looks like, the nature of HTTP requests and responses, and what a server-side web application needs to do in order to respond to requests from a web browser. With this knowledge under our belt, it's time to explore how web frameworks can simplify these tasks, and give you an idea of how you'd choose a framework for your first server-side web application.\",\"highlight\":{\"body\":[\"Deno is a simple, modern, and secure JavaScript&#x2F;TypeScript runtime and framework built on top of Chrome V8 and <mark>Rust</mark>.\",\"Deno is powered by Tokio — a <mark>Rust</mark>-based asynchronous runtime which lets it serve web pages faster.\"],\"title\":[]}},{\"mdn_url\":\"/en-US/docs/Glossary/Compile\",\"score\":12.252447,\"title\":\"Compile\",\"locale\":\"en-us\",\"slug\":\"glossary/compile\",\"popularity\":0.004505504965574135,\"summary\":\"Compiling is the process of transforming a computer program written in a given language into a set of instructions in another format or language. A compiler is a computer program to execute that task.\",\"highlight\":{\"body\":[\"Typically, a compiler transforms code written in a higher-level language such as C++, <mark>Rust</mark>, or Java into executable (runnable\",\"WebAssembly, for example, is a form of executable binary code that can be compiled from code written in C++, <mark>Rust</mark>, C#, Go\"],\"title\":[]}},{\"mdn_url\":\"/en-US/docs/WebAssembly/Guides\",\"score\":12.234572,\"title\":\"WebAssembly guides\",\"locale\":\"en-us\",\"slug\":\"webassembly/guides\",\"popularity\":0.002718109803175006,\"summary\":\"The WebAssembly guides cover topics such as high-level concepts, compiling from different languages, the textual representation of the Wasm binary format, and how to run WebAssembly.\",\"highlight\":{\"body\":[\"Compiling from <mark>Rust</mark> to WebAssembly\\nThis tutorial shows you how to compile a <mark>Rust</mark> project into WebAssembly and use it in an\"],\"title\":[]}},{\"mdn_url\":\"/en-US/docs/MDN/Writing_guidelines/Howto/Markdown_in_MDN\",\"score\":12.232193,\"title\":\"How to write in Markdown\",\"locale\":\"en-us\",\"slug\":\"mdn/writing_guidelines/howto/markdown_in_mdn\",\"popularity\":0.002480142991612992,\"summary\":\"This page describes how we use Markdown to write documentation on MDN Web Docs.\\nWe have chosen GitHub-Flavored Markdown (GFM) as a baseline and added extensions to support the things we need on MDN.\",\"highlight\":{\"body\":[\"TypeScript\\njsx - React JSX\\ntsx - React TSX\\nC-like\\nc - C\\ncpp - C++\\ncs - C#\\njava - Java\\nOther\\npython - Python\\nphp - PHP\\n<mark>rust</mark>\",\"- <mark>Rust</mark>\\nglsl - GLSL (OpenGL Shaders)\\nsql - SeQueL commands\\nwat - WebAssembly\\nwebidl - Web Interface Definition Language\\nStyling\"],\"title\":[]}},{\"mdn_url\":\"/en-US/docs/Mozilla/Firefox/Releases/149\",\"score\":12.218444,\"title\":\"Firefox 149 release notes for developers\",\"locale\":\"en-us\",\"slug\":\"mozilla/firefox/releases/149\",\"popularity\":0.0011052236359213546,\"summary\":\"This article provides information about the changes in Firefox 149 that affect developers.\\nFirefox 149 was released on March 24, 2026.\",\"highlight\":{\"body\":[\"JPEG XL image support: <mark>Rust</mark>-based decoder (Nightly only): image.jxl.enabled\\nThe previous C++ JPEG XL image decoder has been\",\"replaced with a new <mark>Rust</mark>-based implementation that uses the jxl-rs library.\"],\"title\":[]}}],\"metadata\":{\"took_ms\":24,\"size\":10,\"page\":1,\"total\":{\"value\":19,\"relation\":\"eq\"}},\"suggestions\":[]}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://developer.mozilla.org/en-US/docs/WebAssembly/Guides/Rust_to_Wasm",
+          "normalized_url": "https://developer.mozilla.org/en-US/docs/WebAssembly/Guides/Rust_to_Wasm",
+          "title": "Compiling from Rust to WebAssembly",
+          "content": "This tutorial shows you how to compile a Rust project into WebAssembly and use it in an existing web app.",
+          "engine": "mdn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://developer.mozilla.org/en-US/docs/WebAssembly/Guides/Concepts",
+          "normalized_url": "https://developer.mozilla.org/en-US/docs/WebAssembly/Guides/Concepts",
+          "title": "WebAssembly concepts",
+          "content": "This article explains the concepts behind how WebAssembly works including its goals, the problems it solves, and how it runs inside the web browser's JavaScript engine.",
+          "engine": "mdn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://developer.mozilla.org/en-US/docs/WebAssembly",
+          "normalized_url": "https://developer.mozilla.org/en-US/docs/WebAssembly",
+          "title": "WebAssembly",
+          "content": "WebAssembly is a type of code that can be run in modern web browsers. It is a low-level assembly-like language with a compact binary format that runs with near-native performance and provides languages such as C/C++, C# and Rust with a compilation target so that they can run on the web.",
+          "engine": "mdn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Debugging_HTML",
+          "normalized_url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Debugging_HTML",
+          "title": "Debugging HTML",
+          "content": "Writing HTML is fine, but what if something goes wrong, and you can't work out where the error in the code is? This article will introduce you to some tools that can help you find and fix errors in HTML.",
+          "engine": "mdn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://developer.mozilla.org/en-US/docs/Web",
+          "normalized_url": "https://developer.mozilla.org/en-US/docs/Web",
+          "title": "Web technology for developers",
+          "content": "The open Web presents incredible opportunities for developers. To take full advantage of these technologies, you need to know how to use them. Below you'll find links to our Web technology documentation.",
+          "engine": "mdn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/First_steps/Web_frameworks",
+          "normalized_url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/First_steps/Web_frameworks",
+          "title": "Server-side web frameworks",
+          "content": "The previous article showed you what the communication between web clients and servers looks like, the nature of HTTP requests and responses, and what a server-side web application needs to do in order to respond to requests from a web browser. With this knowledge under our belt, it's time to explore how web frameworks can simplify these tasks, and give you an idea of how you'd choose a framework for your first server-side web application.",
+          "engine": "mdn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://developer.mozilla.org/en-US/docs/Glossary/Compile",
+          "normalized_url": "https://developer.mozilla.org/en-US/docs/Glossary/Compile",
+          "title": "Compile",
+          "content": "Compiling is the process of transforming a computer program written in a given language into a set of instructions in another format or language. A compiler is a computer program to execute that task.",
+          "engine": "mdn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://developer.mozilla.org/en-US/docs/WebAssembly/Guides",
+          "normalized_url": "https://developer.mozilla.org/en-US/docs/WebAssembly/Guides",
+          "title": "WebAssembly guides",
+          "content": "The WebAssembly guides cover topics such as high-level concepts, compiling from different languages, the textual representation of the Wasm binary format, and how to run WebAssembly.",
+          "engine": "mdn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Howto/Markdown_in_MDN",
+          "normalized_url": "https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Howto/Markdown_in_MDN",
+          "title": "How to write in Markdown",
+          "content": "This page describes how we use Markdown to write documentation on MDN Web Docs. We have chosen GitHub-Flavored Markdown (GFM) as a baseline and added extensions to support the things we need on MDN.",
+          "engine": "mdn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/149",
+          "normalized_url": "https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/149",
+          "title": "Firefox 149 release notes for developers",
+          "content": "This article provides information about the changes in Firefox 149 that affect developers. Firefox 149 was released on March 24, 2026.",
+          "engine": "mdn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

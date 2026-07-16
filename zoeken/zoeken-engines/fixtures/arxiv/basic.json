@@ -1,0 +1,63 @@
+{
+  "engine": "arxiv",
+  "case": "basic",
+  "query": {
+    "query": "diphoton",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://export.arxiv.org/api/query",
+    "headers": {},
+    "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<feed xmlns=\"http://www.w3.org/2005/Atom\" xmlns:arxiv=\"http://arxiv.org/schemas/atom\">\n  <title>ArXiv Query</title>\n  <id>http://arxiv.org/api/feed</id>\n  <entry>\n    <id>http://arxiv.org/abs/0704.0001v1</id>\n    <published>2007-04-05T00:00:00Z</published>\n    <title>Calculation of prompt diphoton production</title>\n    <summary>A fully differential calculation in perturbative QCD.</summary>\n    <author><name>Alice Author</name></author>\n    <author><name>Bob Builder</name></author>\n    <arxiv:doi>10.1103/PhysRevD.76.013009</arxiv:doi>\n    <arxiv:journal_ref>Phys.Rev.D76:013009,2007</arxiv:journal_ref>\n    <arxiv:comment>37 pages, 15 figures</arxiv:comment>\n    <link href=\"http://arxiv.org/abs/0704.0001v1\" rel=\"alternate\" type=\"text/html\"/>\n    <link title=\"pdf\" href=\"http://arxiv.org/pdf/0704.0001v1\" rel=\"related\" type=\"application/pdf\"/>\n    <category term=\"hep-ph\" scheme=\"http://arxiv.org/schemas/atom\"/>\n    <category term=\"hep-ex\" scheme=\"http://arxiv.org/schemas/atom\"/>\n  </entry>\n</feed>"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Paper": {
+          "url": "http://arxiv.org/abs/0704.0001v1",
+          "normalized_url": "http://arxiv.org/abs/0704.0001v1",
+          "title": "Calculation of prompt diphoton production",
+          "content": "A fully differential calculation in perturbative QCD.",
+          "engine": "arxiv",
+          "authors": [
+            "Alice Author",
+            "Bob Builder"
+          ],
+          "doi": "10.1103/PhysRevD.76.013009",
+          "journal": "Phys.Rev.D76:013009,2007",
+          "published_date": "2007-04-05T00:00:00Z",
+          "publisher": "",
+          "editor": "",
+          "volume": "",
+          "pages": "",
+          "number": "",
+          "type": "",
+          "tags": [
+            "hep-ph",
+            "hep-ex"
+          ],
+          "issn": [],
+          "isbn": [],
+          "pdf_url": "http://arxiv.org/pdf/0704.0001v1",
+          "html_url": "",
+          "comments": "37 pages, 15 figures",
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

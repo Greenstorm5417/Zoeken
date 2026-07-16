@@ -1,0 +1,27 @@
+{
+  "engine": "google",
+  "case": "sorry-captcha",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 302,
+    "url": "https://www.google.com/sorry/index",
+    "headers": {},
+    "body": "<html></html>"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

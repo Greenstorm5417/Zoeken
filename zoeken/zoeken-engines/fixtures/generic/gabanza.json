@@ -1,0 +1,448 @@
+{
+  "engine": "gabanza",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://www.gabanza.com/search?query=rust",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://www.gabanza.com/search?query=rust",
+    "headers": {
+      "date": "Thu, 09 Jul 2026 14:05:42 GMT",
+      "content-language": "en-US",
+      "server": "nginx/1.18.0 (Ubuntu)",
+      "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "body": "<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta charset=\"utf-8\" />\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\r\n    <title>rust - Gabanza Search</title>\r\n    <meta name=\"description\" content=\"\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n    \r\n    <link href=\"https://www.gabanza.com/search/assets/images/favicon.ico\" rel=\"icon\">\r\n    <link rel=\"stylesheet\" lang=\"text/css\" href=\"https://www.gabanza.com/search/assets/styles/styles.css\" />\r\n    \r\n</head>\r\n<body class=\"flex flex-col min-h-screen\">\r\n\r\n<header class=\"shadow-md py-2 w-full\">\r\n    <div class=\"container mx-auto flex justify-between items-center px-2\">\r\n        <a class=\"text-xl md:text-2xl font-bold\" href=\"https://www.gabanza.com\"> GABANZA </a>\r\n        <div class=\"flex gap-3 flex-wrap\">\r\n            <a\r\n                    class=\"hover:text-[#2d5500] transition-colors duration-300 ease-in-out\"\r\n                    href=\"https://www.gabanza.com/gabanzabot\"\r\n            >Gabanzabot</a\r\n            >\r\n            <a\r\n                    class=\"hover:text-[#2d5500] transition-colors duration-300 ease-in-out\"\r\n                    href=\"https://www.gabanza.com/contact-us\"\r\n            >Contact Us</a\r\n            >\r\n            <a\r\n                    class=\"hover:text-[#2d5500] transition-colors duration-300 ease-in-out\"\r\n                    href=\"http://www.gabanza.com/about-us\"\r\n            >About Us</a\r\n            >\r\n        </div>\r\n    </div>\r\n</header>\r\n\r\n\r\n<div class=\"flex flex-col flex-1 justify-between\">\r\n    <div class=\"container mx-auto px-4 py-2 mb-16\">\r\n        \r\n        <div class=\"flex items-center py-2 gap-2 bg-white\">\r\n            <form class=\"w-full max-w-xl\" action=\"/search\" method=\"get\">\r\n                <label class=\"mb-2 text-sm font-medium text-gray-900 sr-only\"\r\n                >Search</label\r\n                >\r\n                <div class=\"flex gap-1\">\r\n                    <input\r\n                            id=\"query\"\r\n                            name=\"query\"\r\n                            type=\"search\"\r\n                            value=\"rust\"\r\n                            class=\"block w-full px-4 text-sm border border-gray-300 rounded-lg bg-gray-50 focus:ring-[#fea201] focus:border-[#fea201]\"\r\n                            placeholder=\"Search...\"\r\n                            required\r\n                    />\r\n                    <button\r\n                            type=\"submit\"\r\n                            class=\"text-white self-center bg-[#2d5500] hover:bg-[#2d5500da] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2\"\r\n                    >\r\n                        Search\r\n                    </button>\r\n                </div>\r\n            </form>\r\n        </div>\r\n        \r\n        <div class=\"border-t border-[#2d550013] flex flex-col\">\r\n            <p class=\"text-sm text-gray-700 py-2\">\r\n                Showing\r\n                <span class=\"font-medium\">1</span>\r\n                to\r\n                <span class=\"font-medium\">30</span>\r\n                of\r\n                <span class=\"font-medium\">563818</span>\r\n                results for\r\n                <span class=\"font-medium\">rust</span>\r\n            </p>\r\n            <div class=\"flex flex-col gap-4 max-w-2xl pb-5\" style=\"gap: 2rem\">\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://www.krylon.com/en/products/rust-preventive/rust-tough-with-anti-rust-technology-rust-converter\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://www.krylon.com/en/products/rust-preventive/rust-tough-with-anti-rust-technology-rust-converter\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Krylon.com</a>\r\n                            <a\r\n                                    href=\"https://www.krylon.com/en/products/rust-preventive/rust-tough-with-anti-rust-technology-rust-converter\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://www.krylon.com/en/products/rust-preventive/rust-tough-with-anti-rust-technology-rust-converter</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://www.krylon.com/en/products/rust-preventive/rust-tough-with-anti-rust-technology-rust-converter\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    ></a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">Skip to main content. 2024 Color of the Year is Here!. Previous. Next. Consumer. Industrial. Language. English, United States. Where to Buy. Navigation Menu. PRODUCTS. PRODUCTS. All Purpose Spray Paint. <strong>Rust</strong> Preventive. Craft. Specialty. Clear Coatings. Adhesives. Professional Coatings</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://github.com/rust-lang/rust\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://github.com/rust-lang/rust\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Github.com</a>\r\n                            <a\r\n                                    href=\"https://github.com/rust-lang/rust\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://github.com/rust-lang/rust</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://github.com/rust-lang/rust\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >GitHub - rust-lang/rust: Empowering everyone to build reliable and efficient software.</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">Empowering everyone to build reliable and efficient software. - <strong>rust</strong>-lang/<strong>rust</strong></p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://www.rust-belt-rust.com/\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://www.rust-belt-rust.com/\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Rust-belt-rust.com</a>\r\n                            <a\r\n                                    href=\"https://www.rust-belt-rust.com/\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://www.rust-belt-rust.com/</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://www.rust-belt-rust.com/\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Rust Belt Rust 2019</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\"><strong>Rust</strong> Belt <strong>Rust</strong> 2019. Code of Conduct. Sessions. Sponsors. Previous. 2018. 2017. 2016. A <strong>Rust</strong> conference for developers of any skill level. October 18 & 19, 2019 The Engineers Club Dayton, Ohio. Sponsors. We're grateful to our sponsors who help make <strong>Rust</strong> Belt <strong>Rust</strong> possible!. Future</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://forge.rust-lang.org/infra/docs/rustc-ci.html\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://forge.rust-lang.org/infra/docs/rustc-ci.html\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Forge.rust-lang.org</a>\r\n                            <a\r\n                                    href=\"https://forge.rust-lang.org/infra/docs/rustc-ci.html\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://forge.rust-lang.org/infra/docs/rustc-ci.html</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://forge.rust-lang.org/infra/docs/rustc-ci.html\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >rust-lang/rust CI - Rust Forge</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">Supplemental documentation for contributing to The <strong>Rust</strong> Programming Language</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://rustcheck.com/product/rust-check-rust-coat/\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://rustcheck.com/product/rust-check-rust-coat/\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Rustcheck.com</a>\r\n                            <a\r\n                                    href=\"https://rustcheck.com/product/rust-check-rust-coat/\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://rustcheck.com/product/rust-check-rust-coat/</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://rustcheck.com/product/rust-check-rust-coat/\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Rust Check – Rust Coat – Rust Check</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\"><strong>Rust</strong> Check – <strong>Rust</strong> Coat – <strong>Rust</strong> Check. Search for: Search Button. Skip to main content. Time tested and proven since 1973. Search for: Search Button. Hit enter to search or ESC to close. Close Search. Menu. Why <strong>Rust</strong> Check?. What is <strong>Rust</strong> Check?. <strong>Rust</strong> Check Treatment. <strong>Rust</strong> Check over</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://github.com/rust-lang/rust/activity\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://github.com/rust-lang/rust/activity\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Github.com</a>\r\n                            <a\r\n                                    href=\"https://github.com/rust-lang/rust/activity\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://github.com/rust-lang/rust/activity</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://github.com/rust-lang/rust/activity\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Activity · rust-lang/rust · GitHub</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">Empowering everyone to build reliable and efficient software. - Activity · <strong>rust</strong>-lang/<strong>rust</strong></p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://spaceship-prompt.sh/sections/rust/\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://spaceship-prompt.sh/sections/rust/\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Spaceship-prompt.sh</a>\r\n                            <a\r\n                                    href=\"https://spaceship-prompt.sh/sections/rust/\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://spaceship-prompt.sh/sections/rust/</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://spaceship-prompt.sh/sections/rust/\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Rust (rust) - Spaceship</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\"><strong>Rust</strong> (<strong>rust</strong>) - Spaceship. Skip to content. 🇺🇦 Russia has invaded Ukraine and already killed thousands of civilians. Please, #StandWithUkraine against the Russian regime.. Spaceship. <strong>Rust</strong> (<strong>rust</strong>). English. Deutsch. Français. Українська. 简体中文. Help translating. Initializing search</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://oneofthesedays.com/products/rust-overshirt-rust\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://oneofthesedays.com/products/rust-overshirt-rust\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Oneofthesedays.com</a>\r\n                            <a\r\n                                    href=\"https://oneofthesedays.com/products/rust-overshirt-rust\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://oneofthesedays.com/products/rust-overshirt-rust</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://oneofthesedays.com/products/rust-overshirt-rust\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Overshirt | Rust | Crossroads Of The Big Sky Collection | One Of These Days</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">Overshirt | <strong>Rust</strong> | Crossroads Of The Big Sky Collection | One Of These Days. Skip to content. Free Shipping Over $200 (US Orders Only). Shop. Shop. All. Home. Tees. Headwear. Shirts. Sweatshirts. Sweatpants. Bottoms. Outerwear. Accessories. Books. Collections. Collections. A Fantasy</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://rust-1.ru/rust-gde-pererabotchiki/\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://rust-1.ru/rust-gde-pererabotchiki/\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Rust-1.ru</a>\r\n                            <a\r\n                                    href=\"https://rust-1.ru/rust-gde-pererabotchiki/\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://rust-1.ru/rust-gde-pererabotchiki/</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://rust-1.ru/rust-gde-pererabotchiki/\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    ></a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">Gabanza generated placeholder text</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://egghead.io/lessons/rust-install-rust\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://egghead.io/lessons/rust-install-rust\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Egghead.io</a>\r\n                            <a\r\n                                    href=\"https://egghead.io/lessons/rust-install-rust\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://egghead.io/lessons/rust-install-rust</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://egghead.io/lessons/rust-install-rust\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Install Rust | egghead.io</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">Install <strong>Rust</strong> | egghead.io. egghead.io. Topics. Courses Tips Guides Articles. Open navigation. Play Video. Pause. Playback Rate. 1.00×. Current Time 0:00. /. Duration Time 0:00. Toggle side panel Full screen (f). Course. Write Your First Program with the <strong>Rust</strong> Language. 1. Install <strong>Rust</strong></p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://www.highlandwoodworking.com/rust-prevention-lubricants.aspx\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://www.highlandwoodworking.com/rust-prevention-lubricants.aspx\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Highlandwoodworking.com</a>\r\n                            <a\r\n                                    href=\"https://www.highlandwoodworking.com/rust-prevention-lubricants.aspx\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://www.highlandwoodworking.com/rust-prevention-lubricants.aspx</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://www.highlandwoodworking.com/rust-prevention-lubricants.aspx\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Rust Prevention | Rust Remover | Stop Rust</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\"><strong>Rust</strong> Prevention, <strong>Rust</strong> Protection, <strong>Rust</strong> Removal and <strong>Rust</strong> Cleaners at Highland Woodworking - Stop <strong>Rust</strong>.</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://rust-lang.github.io/rust-enhanced/\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://rust-lang.github.io/rust-enhanced/\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Rust-lang.github.io</a>\r\n                            <a\r\n                                    href=\"https://rust-lang.github.io/rust-enhanced/\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://rust-lang.github.io/rust-enhanced/</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://rust-lang.github.io/rust-enhanced/\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Introduction - Rust Enhanced User Guide</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">Introduction - <strong>Rust</strong> Enhanced User Guide. Introduction. 1. Installation. 2. Cargo Build System. 2.1. Build Settings. 2.2. Diagnostic Messages. 2.3. Custom Build Variants. 3. On-save checking. 4. Settings. 5. Context Menu. 6. Language Servers. 7. Formatting. 8. Tips. Light (default</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://gitlab.com/rust-kqueue/rust-kqueue\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://gitlab.com/rust-kqueue/rust-kqueue\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Gitlab.com</a>\r\n                            <a\r\n                                    href=\"https://gitlab.com/rust-kqueue/rust-kqueue\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://gitlab.com/rust-kqueue/rust-kqueue</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://gitlab.com/rust-kqueue/rust-kqueue\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >rust-kqueue / rust-kqueue · GitLab</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\"><strong>rust</strong>-kqueue / <strong>rust</strong>-kqueue · GitLab. Skip to content. GitLab. Menu. Why GitLab. Pricing. Contact Sales. Explore. Why GitLab. Pricing. Contact Sales. Explore. Sign in. Get free trial. R. <strong>rust</strong>-kqueue. Project information. Watches file descriptors and pids for events. Read more. 95 Commits. 6</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://rust-for-linux.com/coccinelle-for-rust\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://rust-for-linux.com/coccinelle-for-rust\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Rust-for-linux.com</a>\r\n                            <a\r\n                                    href=\"https://rust-for-linux.com/coccinelle-for-rust\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://rust-for-linux.com/coccinelle-for-rust</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://rust-for-linux.com/coccinelle-for-rust\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Coccinelle for Rust - Rust for Linux</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">Adding support for the <strong>Rust</strong> language to the Linux kernel</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://www.repotrends.com/rust-lang/rust\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://www.repotrends.com/rust-lang/rust\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Repotrends.com</a>\r\n                            <a\r\n                                    href=\"https://www.repotrends.com/rust-lang/rust\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://www.repotrends.com/rust-lang/rust</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://www.repotrends.com/rust-lang/rust\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >rust-lang/rust | RepoTrends</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">Analyze trends in <strong>rust</strong>-lang/<strong>rust</strong> issues over time</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://docs.rs/rust-bert/latest/rust_bert/\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://docs.rs/rust-bert/latest/rust_bert/\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Docs.rs</a>\r\n                            <a\r\n                                    href=\"https://docs.rs/rust-bert/latest/rust_bert/\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://docs.rs/rust-bert/latest/rust_bert/</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://docs.rs/rust-bert/latest/rust_bert/\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >rust_bert - Rust</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">rust_bert - <strong>Rust</strong>. Docs.rs. <strong>rust</strong>-bert-0.22.0. <strong>rust</strong>-bert 0.22.0. Permalink. Docs.rs crate page. Apache-2.0. Links. Documentation. Repository. Crates.io. Source. Owners. guillaume-be. Dependencies. cached-path ^0.6 normal. dirs ^5 normal. half ^2 normal. lazy_static ^1 normal. ndarray ^0.15</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://rust.code-maven.com/slides/rust/\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://rust.code-maven.com/slides/rust/\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Rust.code-maven.com</a>\r\n                            <a\r\n                                    href=\"https://rust.code-maven.com/slides/rust/\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://rust.code-maven.com/slides/rust/</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://rust.code-maven.com/slides/rust/\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Rust programming</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\"><strong>Rust</strong> programming. Home. Press ? for keyboard navigation. <strong>Rust</strong> programming. Author: Gabor Szabo. Copyright: Gabor Szabo. 2022 - 2024. Version: 1.00. TOC - Table of Contents. Keywords. Start ❯. Chapters. Self Introduction (2). Introduction to <strong>Rust</strong> (20). Hello World (15). Variables (9</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://tutorialedge.net/rust/rust-docker-tutorial/\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://tutorialedge.net/rust/rust-docker-tutorial/\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Tutorialedge.net</a>\r\n                            <a\r\n                                    href=\"https://tutorialedge.net/rust/rust-docker-tutorial/\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://tutorialedge.net/rust/rust-docker-tutorial/</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://tutorialedge.net/rust/rust-docker-tutorial/\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Rust Docker Tutorial | TutorialEdge.net</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">In this tutorial, we are going to look at how we can build single and multi-stage Dockerfiles for our <strong>Rust</strong> applications.</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://www.codetriage.com/rust-lang-nursery/rust-clippy\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://www.codetriage.com/rust-lang-nursery/rust-clippy\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Codetriage.com</a>\r\n                            <a\r\n                                    href=\"https://www.codetriage.com/rust-lang-nursery/rust-clippy\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://www.codetriage.com/rust-lang-nursery/rust-clippy</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://www.codetriage.com/rust-lang-nursery/rust-clippy\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Help Contribute to rust-lang-nursery/rust-clippy - Rust | CodeTriage</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">Discover the easiest way to get started contributing to <strong>rust</strong>-clippy with our free community tools. 20 developers and counting</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://www.bergfex.com/sommer/rust/\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://www.bergfex.com/sommer/rust/\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Bergfex.com</a>\r\n                            <a\r\n                                    href=\"https://www.bergfex.com/sommer/rust/\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://www.bergfex.com/sommer/rust/</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://www.bergfex.com/sommer/rust/\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >BERGFEX: Rust: Holiday Rust - Travel Rust</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">Urlaub <strong>Rust</strong> - Burgenland - Österreich: Alle Informationen zu Reisen, Familienurlaub und Sommerurlaub in <strong>Rust</strong>. Sie erhalten Sommer Infos zu Familie, Mountainbike, Wandern, Bergsteigen, Biken, Wellness, Hotels, Kontakt, Veranstaltungen u.v.m.</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://www.evapo-rust.com/rust-inhibitor-crc/\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://www.evapo-rust.com/rust-inhibitor-crc/\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Evapo-rust.com</a>\r\n                            <a\r\n                                    href=\"https://www.evapo-rust.com/rust-inhibitor-crc/\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://www.evapo-rust.com/rust-inhibitor-crc/</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://www.evapo-rust.com/rust-inhibitor-crc/\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Evapo-Rust® Is The Super Safe Rust Remover - Stop Rust Today!</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">Evapo-<strong>Rust</strong>® - Super Safe <strong>Rust</strong> Removal is our priority. Evapo-<strong>Rust</strong>® is safe on skin, biodegradable, and easy to use. Just soak, rinse, and reuse!</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://docs.sentry.io/platforms/rust/\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://docs.sentry.io/platforms/rust/\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Docs.sentry.io</a>\r\n                            <a\r\n                                    href=\"https://docs.sentry.io/platforms/rust/\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://docs.sentry.io/platforms/rust/</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://docs.sentry.io/platforms/rust/\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Rust | Sentry for Rust</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\"><strong>Rust</strong> | Sentry for <strong>Rust</strong>. Docs. ⌘K. or Ask A Bot. Changelog Sandbox Sign In Get Started. Menu. Sentry for <strong>Rust</strong>. Configuration. Usage. Enriching Events. Data Management. Set Up Tracing. Set Up User Feedback. Account Settings. Organization Settings. Product Walkthroughs. Pricing & Billing</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://effective-rust.com/\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://effective-rust.com/\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Effective-rust.com</a>\r\n                            <a\r\n                                    href=\"https://effective-rust.com/\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://effective-rust.com/</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://effective-rust.com/\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Effective Rust - Effective Rust</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">A collection of specific ways to improve your use of <strong>Rust</strong></p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://doc.rust-jp.rs/rust-nomicon-ja/\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://doc.rust-jp.rs/rust-nomicon-ja/\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Doc.rust-jp.rs</a>\r\n                            <a\r\n                                    href=\"https://doc.rust-jp.rs/rust-nomicon-ja/\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://doc.rust-jp.rs/rust-nomicon-ja/</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://doc.rust-jp.rs/rust-nomicon-ja/\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >はじめに</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">はじめに. はじめに. 1. 安全と危険のご紹介. 1.1. 安全と危険の相互作用. 1.2. Unsafe と連携する. 2. データレイアウト. 2.1. repr(<strong>Rust</strong>). 2.2. 奇妙なサイズの型. 2.3. 代替メモリレイアウト. 3. 所有権とライフタイム. 3.1. リファレンス. 3.2. ライフタイム. 3.3. ライフタイムシステムの限界. 3.4. ライフタイムの省略. 3.5. 無制限のライフタイム. 3.6. 高階トレイト境界. 3.7. Subtyping and Variance. 3.8. Drop Check. 3.9</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://jfrog.com/community/rust/rust-nyc-anyhow-turbofish-http-calls-and-errors-in-rust/\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://jfrog.com/community/rust/rust-nyc-anyhow-turbofish-http-calls-and-errors-in-rust/\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Jfrog.com</a>\r\n                            <a\r\n                                    href=\"https://jfrog.com/community/rust/rust-nyc-anyhow-turbofish-http-calls-and-errors-in-rust/\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://jfrog.com/community/rust/rust-nyc-anyhow-turbofish-http-calls-and-errors-in-rust/</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://jfrog.com/community/rust/rust-nyc-anyhow-turbofish-http-calls-and-errors-in-rust/\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Rust Anyhow ? Turbofish :: / HTTP Calls and Errors | JFrog</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">Learn to use turbofish syntax and anyhow crate to produce more elegant, but still idiomatic <strong>Rust</strong> code to explicitly handle Result(s).</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://nymtech.net/docs/sdk/rust/rust.html\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://nymtech.net/docs/sdk/rust/rust.html\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Nymtech.net</a>\r\n                            <a\r\n                                    href=\"https://nymtech.net/docs/sdk/rust/rust.html\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://nymtech.net/docs/sdk/rust/rust.html</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://nymtech.net/docs/sdk/rust/rust.html\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Redirecting...</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">Redirecting.... Redirecting to... https://nymtech.net/developers/sdk/<strong>rust</strong>/rust.html .. </p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://labex.io/tutorials/rust-online-rust-playground-372918\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://labex.io/tutorials/rust-online-rust-playground-372918\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Labex.io</a>\r\n                            <a\r\n                                    href=\"https://labex.io/tutorials/rust-online-rust-playground-372918\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://labex.io/tutorials/rust-online-rust-playground-372918</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://labex.io/tutorials/rust-online-rust-playground-372918\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Rust Playground | Interactive Rust Learning Environment | LabEx</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">LabEx Online <strong>Rust</strong> Playground provides a cloud-based <strong>Rust</strong> coding environment for interactive learning and experimentation. Write, compile, and run <strong>Rust</strong> code easily in this secure online playground, perfect for beginners and experienced developers alike.</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://www.alphacodingskills.com/rust/rust-tutorial.php\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://www.alphacodingskills.com/rust/rust-tutorial.php\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Alphacodingskills.com</a>\r\n                            <a\r\n                                    href=\"https://www.alphacodingskills.com/rust/rust-tutorial.php\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://www.alphacodingskills.com/rust/rust-tutorial.php</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://www.alphacodingskills.com/rust/rust-tutorial.php\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Rust Tutorial - AlphaCodingSkills</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\"><strong>Rust</strong> is a modern multi-paradigm programming language designed for performance and safety, especially safe concurrency. <strong>Rust</strong> is syntactically similar to ...</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://lobste.rs/t/rust\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://lobste.rs/t/rust\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Lobste.rs</a>\r\n                            <a\r\n                                    href=\"https://lobste.rs/t/rust\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://lobste.rs/t/rust</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://lobste.rs/t/rust\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >rust - Rust programming | Lobsters</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\"><strong>rust</strong> - <strong>Rust</strong> programming | Lobsters. Active. Recent. Comments. Search. Login. Login. Stories tagged as <strong>rust</strong> <strong>Rust</strong> programming. Most often also tagged with release. performance. plt. security. compilers. c. web. wasm. 21. Unmaking the Makefiles - exorcising the <strong>Rust</strong> compiler test suite</p>\r\n                    \r\n                </div>\r\n                \r\n                <div class=\"flex flex-col group\">\r\n                    <div class=\"flex items-center gap-1\">\r\n                        <a\r\n                                href=\"https://www.imperialsupplies.com/browse/chemicals/rust-protectors-converters-and-removers\"\r\n                                class=\"h-8 w-8 bg-[#fea201] rounded-full flex items-center justify-center\"\r\n                        >\r\n                            <span class=\"sr-only\"></span>\r\n                            \r\n                            \r\n                            \r\n                        </a>\r\n                        <div class=\"flex flex-col\">\r\n                            <a\r\n                                    href=\"https://www.imperialsupplies.com/browse/chemicals/rust-protectors-converters-and-removers\"\r\n                                    class=\"font-medium group-hover:text-[#2d5500] group-hover:underline transition-colors duration-300 ease-in-out\"\r\n                            >Imperialsupplies.com</a>\r\n                            <a\r\n                                    href=\"https://www.imperialsupplies.com/browse/chemicals/rust-protectors-converters-and-removers\"\r\n                                    class=\"text-xs text-gray-500\"\r\n                            >https://www.imperialsupplies.com/browse/chemicals/rust-protectors-converters-and-removers</a>\r\n                        </div>\r\n                    </div>\r\n                    <a\r\n                            href=\"https://www.imperialsupplies.com/browse/chemicals/rust-protectors-converters-and-removers\"\r\n                            class=\"text-lg truncate pt-1 font-medium text-[#2d5500] visited:text-[#DAAD13]\"\r\n                    >Rust Protectors|Rust Converters | Rust Removers | Imperial Supplies</a>\r\n                    \r\n                    </p>\r\n                    <p class=\"line-clamp-2 text-gray-500\">Looking for <strong>Rust</strong> Protectors, Converters and Removers? Imperial Supplies has a large selection on hand, at incredible prices. Shop now to stock up and save.</p>\r\n                    \r\n                </div>\r\n                \r\n            </div>\r\n            \r\n            \r\n        </div>\r\n        \r\n        \r\n    </div>\r\n\r\n    \r\n    <footer\r\n            class=\"justify-self-end border-t border-[#2d5500] border-opacity-30\"\r\n    >\r\n        <div class=\"container mx-auto flex justify-between items-center p-2\">\r\n            <p class=\"text-sm\">© Copyright 2023 - 2024. All Rights Reserved. Gabanza&reg; - 322 Palmer St. Jamestown, NY\r\n                14701. 716-240-2070</p>\r\n            <div class=\"flex gap-3 flex-wrap text-sm\">\r\n                <a\r\n                        class=\"hover:text-[#2d5500] transition-colors duration-300 ease-in-out\"\r\n                        href=\"https://www.gabanza.com/about-us\"\r\n                >About Us</a\r\n                >\r\n                <a\r\n                        class=\"hover:text-[#2d5500] transition-colors duration-300 ease-in-out\"\r\n                        href=\"https://www.gabanza.com/privacy-policy\"\r\n                >Privacy Policy</a\r\n                >\r\n                <a\r\n                        class=\"hover:text-[#2d5500] transition-colors duration-300 ease-in-out\"\r\n                        href=\"https://www.gabanza.com/terms-of-service\"\r\n                >Terms of Service</a\r\n                >\r\n            </div>\r\n        </div>\r\n    </footer>\r\n    \r\n</div>\r\n\r\n\r\n</body>\r\n</html>"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://github.com/rust-lang/rust",
+          "normalized_url": "https://github.com/rust-lang/rust",
+          "title": "GitHub - rust-lang/rust: Empowering everyone to build reliable and efficient software.",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.rust-belt-rust.com/",
+          "normalized_url": "https://www.rust-belt-rust.com/",
+          "title": "Rust Belt Rust 2019",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://forge.rust-lang.org/infra/docs/rustc-ci.html",
+          "normalized_url": "https://forge.rust-lang.org/infra/docs/rustc-ci.html",
+          "title": "rust-lang/rust CI - Rust Forge",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rustcheck.com/product/rust-check-rust-coat/",
+          "normalized_url": "https://rustcheck.com/product/rust-check-rust-coat/",
+          "title": "Rust Check – Rust Coat – Rust Check",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-lang/rust/activity",
+          "normalized_url": "https://github.com/rust-lang/rust/activity",
+          "title": "Activity · rust-lang/rust · GitHub",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://spaceship-prompt.sh/sections/rust/",
+          "normalized_url": "https://spaceship-prompt.sh/sections/rust/",
+          "title": "Rust (rust) - Spaceship",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://oneofthesedays.com/products/rust-overshirt-rust",
+          "normalized_url": "https://oneofthesedays.com/products/rust-overshirt-rust",
+          "title": "Overshirt | Rust | Crossroads Of The Big Sky Collection | One Of These Days",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://egghead.io/lessons/rust-install-rust",
+          "normalized_url": "https://egghead.io/lessons/rust-install-rust",
+          "title": "Install Rust | egghead.io",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.highlandwoodworking.com/rust-prevention-lubricants.aspx",
+          "normalized_url": "https://www.highlandwoodworking.com/rust-prevention-lubricants.aspx",
+          "title": "Rust Prevention | Rust Remover | Stop Rust",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust-lang.github.io/rust-enhanced/",
+          "normalized_url": "https://rust-lang.github.io/rust-enhanced/",
+          "title": "Introduction - Rust Enhanced User Guide",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gitlab.com/rust-kqueue/rust-kqueue",
+          "normalized_url": "https://gitlab.com/rust-kqueue/rust-kqueue",
+          "title": "rust-kqueue / rust-kqueue · GitLab",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust-for-linux.com/coccinelle-for-rust",
+          "normalized_url": "https://rust-for-linux.com/coccinelle-for-rust",
+          "title": "Coccinelle for Rust - Rust for Linux",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.repotrends.com/rust-lang/rust",
+          "normalized_url": "https://www.repotrends.com/rust-lang/rust",
+          "title": "rust-lang/rust | RepoTrends",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rust-bert/latest/rust_bert/",
+          "normalized_url": "https://docs.rs/rust-bert/latest/rust_bert/",
+          "title": "rust_bert - Rust",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust.code-maven.com/slides/rust/",
+          "normalized_url": "https://rust.code-maven.com/slides/rust/",
+          "title": "Rust programming",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://tutorialedge.net/rust/rust-docker-tutorial/",
+          "normalized_url": "https://tutorialedge.net/rust/rust-docker-tutorial/",
+          "title": "Rust Docker Tutorial | TutorialEdge.net",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.codetriage.com/rust-lang-nursery/rust-clippy",
+          "normalized_url": "https://www.codetriage.com/rust-lang-nursery/rust-clippy",
+          "title": "Help Contribute to rust-lang-nursery/rust-clippy - Rust | CodeTriage",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.bergfex.com/sommer/rust/",
+          "normalized_url": "https://www.bergfex.com/sommer/rust/",
+          "title": "BERGFEX: Rust: Holiday Rust - Travel Rust",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.evapo-rust.com/rust-inhibitor-crc/",
+          "normalized_url": "https://www.evapo-rust.com/rust-inhibitor-crc/",
+          "title": "Evapo-Rust® Is The Super Safe Rust Remover - Stop Rust Today!",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.sentry.io/platforms/rust/",
+          "normalized_url": "https://docs.sentry.io/platforms/rust/",
+          "title": "Rust | Sentry for Rust",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://effective-rust.com/",
+          "normalized_url": "https://effective-rust.com/",
+          "title": "Effective Rust - Effective Rust",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://doc.rust-jp.rs/rust-nomicon-ja/",
+          "normalized_url": "https://doc.rust-jp.rs/rust-nomicon-ja/",
+          "title": "はじめに",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jfrog.com/community/rust/rust-nyc-anyhow-turbofish-http-calls-and-errors-in-rust/",
+          "normalized_url": "https://jfrog.com/community/rust/rust-nyc-anyhow-turbofish-http-calls-and-errors-in-rust/",
+          "title": "Rust Anyhow ? Turbofish :: / HTTP Calls and Errors | JFrog",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://nymtech.net/docs/sdk/rust/rust.html",
+          "normalized_url": "https://nymtech.net/docs/sdk/rust/rust.html",
+          "title": "Redirecting...",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://labex.io/tutorials/rust-online-rust-playground-372918",
+          "normalized_url": "https://labex.io/tutorials/rust-online-rust-playground-372918",
+          "title": "Rust Playground | Interactive Rust Learning Environment | LabEx",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.alphacodingskills.com/rust/rust-tutorial.php",
+          "normalized_url": "https://www.alphacodingskills.com/rust/rust-tutorial.php",
+          "title": "Rust Tutorial - AlphaCodingSkills",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://lobste.rs/t/rust",
+          "normalized_url": "https://lobste.rs/t/rust",
+          "title": "rust - Rust programming | Lobsters",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.imperialsupplies.com/browse/chemicals/rust-protectors-converters-and-removers",
+          "normalized_url": "https://www.imperialsupplies.com/browse/chemicals/rust-protectors-converters-and-removers",
+          "title": "Rust Protectors|Rust Converters | Rust Removers | Imperial Supplies",
+          "content": "",
+          "engine": "gabanza",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

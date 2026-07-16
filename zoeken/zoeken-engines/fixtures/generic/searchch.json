@@ -1,0 +1,199 @@
+{
+  "engine": "searchch",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://search.ch/web/api/loadmore.html?path=/web/&q=rust&page=1",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://search.ch/web/api/loadmore.html?path=/web/&q=rust&page=1",
+    "headers": {
+      "via": "1.1 google",
+      "server": "Apache",
+      "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "vary": "Accept-Encoding",
+      "date": "Thu, 09 Jul 2026 14:06:24 GMT",
+      "permissions-policy": "interest-cohort=()",
+      "access-control-allow-origin": "*",
+      "content-type": "text/html; charset=UTF-8"
+    },
+    "body": "<hr>\n<div class=\"sl-loadmore-section\" data-maxpage=\"10\"><div class=\"www-feed-web-result sl-paragraph\"><span class=\"www-feed-web-noover\"><a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!ubc3d6c0757fd6fde/http://www.evarust.ch/\" class=\"sl-gus-result-url\">www.evarust.ch</a></span><br>\n<a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!ubc3d6c0757fd6fde/http://www.evarust.ch/\" class=\"sl-gus-result-title\">Eva <span class=\"sl-keyword\">Rust</span></a><br>\n<div class=\"sl-gus-result-body\">Portfolio Shop Info Publications Eva <span class=\"sl-keyword\">Rust</span> Portfolio Shop Info Publications Bazaar 58 Windowdesign and several illustrations for different things for the lovely shop Bazaar58<span class=\"sl-omissionmark\"> &hellip; </span></div>\n</div>\n<hr>\n<div class=\"www-feed-web-result sl-paragraph\"><span class=\"www-feed-web-noover\"><a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!ub3fb6f39083fe047/https://de.wikipedia.org/wiki/Rust_(Programmiersprache)\" class=\"sl-gus-result-url\">de.wikipedia.org/wiki/Rust_(Programmiersprache)</a></span><br>\n<a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!ub3fb6f39083fe047/https://de.wikipedia.org/wiki/Rust_(Programmiersprache)\" class=\"sl-gus-result-title\"><span class=\"sl-keyword\">Rust</span> (Programmiersprache) – Wikipedia</a><br>\n<div class=\"sl-gus-result-body\">Android 4.1.3 Linux 5 Literatur 6 Weblinks 7 Einzelnachweise Inhaltsverzeichnis umschalten <span class=\"sl-keyword\">Rust</span> (Programmiersprache) 53 Sprachen Afrikaans العربية Azərbaycanca Беларуская বাংলা Català<span class=\"sl-omissionmark\"> &hellip; </span></div>\n</div>\n<hr>\n<div class=\"www-feed-web-result sl-paragraph indented\"><span class=\"www-feed-web-noover\"><a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!u25126f914d4e64f4/https://de.wikipedia.org/wiki/Bernhard_Rust\" class=\"sl-gus-result-url\">de.wikipedia.org/wiki/Bernhard_Rust</a></span><br>\n<a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!u25126f914d4e64f4/https://de.wikipedia.org/wiki/Bernhard_Rust\" class=\"sl-gus-result-title\">Bernhard <span class=\"sl-keyword\">Rust</span> – Wikipedia</a><br>\n<div class=\"sl-gus-result-body\">3 Publikationen 4 Literatur 5 Weblinks 6 Einzelnachweise Inhaltsverzeichnis umschalten Bernhard <span class=\"sl-keyword\">Rust</span> 30 Sprachen العربية مصرى Български Dansk Ελληνικά English Esperanto<span class=\"sl-omissionmark\"> &hellip; </span></div>\n<br>\n<a href=\"?s=wikipedia.org&amp;path=%2Fweb%2F&amp;q=rust&amp;page=1\">More results for wikipedia.org</a></div>\n<hr>\n<div class=\"www-feed-web-result sl-paragraph\"><span class=\"www-feed-web-noover\"><a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!u92c93aa734f63405/https://www.chaes-rust.ch/\" class=\"sl-gus-result-url\">www.chaes-<span class=\"sl-keyword\">rust</span>.ch</a></span><br>\n<a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!u92c93aa734f63405/https://www.chaes-rust.ch/\" class=\"sl-gus-result-title\">Chäs-Hütte <span class=\"sl-keyword\">Rust</span> in Walchwil – Echter Genuss. Von hier.</a><br>\n<div class=\"sl-gus-result-body\">Zum Hauptinhalt springen Chäs-Hütte <span class=\"sl-keyword\">Rust</span> Walchwil Käserei Produkte Herstellung Kontakt Chäs-Hütte <span class=\"sl-keyword\">Rust</span> Walchwil Käserei Produkte Herstellung Kontakt Weitersagen:<span class=\"sl-omissionmark\"> &hellip; </span></div>\n<br>\n<span><a href=\"//search.ch/tel/?was=0041417581140\"><span class=\"sl-icon-monospace sl-icon-service-tel\"></span> 2 entries</a> for this web page</span></div>\n<hr>\n<div class=\"www-feed-web-result sl-paragraph\"><span class=\"www-feed-web-noover\"><a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!u23b7dec09dfbabfd/https://metzgerei-rust.ch/\" class=\"sl-gus-result-url\">metzgerei-<span class=\"sl-keyword\">rust</span>.ch</a></span><br>\n<a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!u23b7dec09dfbabfd/https://metzgerei-rust.ch/\" class=\"sl-gus-result-title\">Startseite - Metzgerei <span class=\"sl-keyword\">Rust</span> GmbH</a><br>\n<div class=\"sl-gus-result-body\">Anmelden Wunschliste 0 Warenkorb 0 Menü Bestes aus der Region - Genuss erleben. Herzlich willkommen in Ihrer Metzgerei <span class=\"sl-keyword\">Rust</span>. Sie finden uns jetzt direkt im Zentrum von Neu St.<span class=\"sl-omissionmark\"> &hellip; </span></div>\n<br>\n<span><a href=\"//search.ch/tel/?was=0041719942451\"><span class=\"sl-icon-monospace sl-icon-service-tel\"></span> 1 entry</a> for this web page</span></div>\n<hr>\n<div class=\"www-feed-web-result sl-paragraph\"><span class=\"www-feed-web-noover\"><a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!uf81abb9ec5e36d56/https://dorothearust.ch/\" class=\"sl-gus-result-url\">dorothearust.ch</a></span><br>\n<a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!uf81abb9ec5e36d56/https://dorothearust.ch/\" class=\"sl-gus-result-title\">Tanz- und Kunstperformances, Ausstellungen, Interventionen | ...</a><br>\n<div class=\"sl-gus-result-body\">Dorothea <span class=\"sl-keyword\">Rust</span> News Arbeiten Textarbeiten Publikationen Biographie Archive ... Netzwerke ... Kontakt D E Kontakt Folge mir Impressum Datenschutz</div>\n</div>\n<hr>\n<div class=\"www-feed-web-result sl-paragraph\"><span class=\"www-feed-web-noover\"><a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!u4a5b615008dc2b60/https://www.europapark.de/de\" class=\"sl-gus-result-url\">www.europapark.de/de</a></span><br>\n<a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!u4a5b615008dc2b60/https://www.europapark.de/de\" class=\"sl-gus-result-title\">Europa-Park, Rulantica &amp; Events besuchen und übernachten, ...</a><br>\n<div class=\"sl-gus-result-body\">Dr. G Zu YULLBE TALENT ACADEMY Exklusiv in <span class=\"sl-keyword\">Rust</span> TALENT ACADEMY Ausbildungsort &amp; Coachingangebot in den Bereichen Musik, Tanz, Kunst, Akrobatik und Mindset! Mehr<span class=\"sl-omissionmark\"> &hellip; </span></div>\n</div>\n<hr>\n<div class=\"www-feed-web-result sl-paragraph\"><span class=\"www-feed-web-noover\"><a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!u3a5fe94c58367733/https://www.zugerbeck.ch/\" class=\"sl-gus-result-url\">www.zugerbeck.ch</a></span><br>\n<a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!u3a5fe94c58367733/https://www.zugerbeck.ch/\" class=\"sl-gus-result-title\">Bäckerei, Konditorei | Bäckerei Hotz <span class=\"sl-keyword\">Rust</span> AG | Baar, Zug, Cham, ...</a><br>\n<div class=\"sl-gus-result-body\">Ihre Bäckerei Hotz <span class=\"sl-keyword\">Rust</span> AG in Baar, Rotkreuz und Zug ist stets auf dem neusten Stand und freut sich auch in Zukunft auf zufriedenen Kunden.<span class=\"sl-omissionmark\"> &hellip; </span></div>\n</div>\n<hr>\n<div class=\"www-feed-web-result sl-paragraph\"><span class=\"www-feed-web-noover\"><a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!uc7ea9088641e5078/https://www.rustbau.ch/\" class=\"sl-gus-result-url\">www.rustbau.ch</a></span><br>\n<a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!uc7ea9088641e5078/https://www.rustbau.ch/\" class=\"sl-gus-result-title\"><span class=\"sl-keyword\">rust</span>+co</a><br>\n<div class=\"sl-gus-result-body\"><span class=\"sl-keyword\">RUST</span>+CO ist in den zentralen Geschäftsfeldern des Hoch- und Tiefbaus, diversen Umbauten, sowie der Transportdienstleistungen tätig. Erfolgreich und regional engagiert sind wir im<span class=\"sl-omissionmark\"> &hellip; </span></div>\n</div>\n<hr>\n<div class=\"www-feed-web-result sl-paragraph\"><span class=\"www-feed-web-noover\"><a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!u0f73a481eabb20f6/https://rustfest.ch/\" class=\"sl-gus-result-url\">rustfest.ch</a></span><br>\n<a href=\"//search.ch/web/r/redirect?event=website&amp;origin=result!u0f73a481eabb20f6/https://rustfest.ch/\" class=\"sl-gus-result-title\">RustFest Zürich 19th - 24th June 2024</a><br>\n<div class=\"sl-gus-result-body\">2024 The second <span class=\"sl-keyword\">Rust</span> Fest in Zürich 🇨🇭 was a blast 🎉 Group picture 2024 Latest news Final information 2024/06/20 Where to connect Join us in<span class=\"sl-omissionmark\"> &hellip; </span></div>\n</div>\n</div>\n"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://www.evarust.ch/",
+          "normalized_url": "https://www.evarust.ch/",
+          "title": "Eva Rust",
+          "content": "Portfolio Shop Info Publications Eva Rust Portfolio Shop Info Publications Bazaar 58 Windowdesign and several illustrations for different things for the lovely shop Bazaar58 …",
+          "engine": "searchch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://de.wikipedia.org/wiki/Rust_(Programmiersprache)",
+          "normalized_url": "https://de.wikipedia.org/wiki/Rust_(Programmiersprache)",
+          "title": "Rust (Programmiersprache) – Wikipedia",
+          "content": "Android 4.1.3 Linux 5 Literatur 6 Weblinks 7 Einzelnachweise Inhaltsverzeichnis umschalten Rust (Programmiersprache) 53 Sprachen Afrikaans العربية Azərbaycanca Беларуская বাংলা Català …",
+          "engine": "searchch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://de.wikipedia.org/wiki/Bernhard_Rust",
+          "normalized_url": "https://de.wikipedia.org/wiki/Bernhard_Rust",
+          "title": "Bernhard Rust – Wikipedia",
+          "content": "3 Publikationen 4 Literatur 5 Weblinks 6 Einzelnachweise Inhaltsverzeichnis umschalten Bernhard Rust 30 Sprachen العربية مصرى Български Dansk Ελληνικά English Esperanto …",
+          "engine": "searchch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chaes-rust.ch/",
+          "normalized_url": "https://www.chaes-rust.ch/",
+          "title": "Chäs-Hütte Rust in Walchwil – Echter Genuss. Von hier.",
+          "content": "Zum Hauptinhalt springen Chäs-Hütte Rust Walchwil Käserei Produkte Herstellung Kontakt Chäs-Hütte Rust Walchwil Käserei Produkte Herstellung Kontakt Weitersagen: …",
+          "engine": "searchch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://metzgerei-rust.ch/",
+          "normalized_url": "https://metzgerei-rust.ch/",
+          "title": "Startseite - Metzgerei Rust GmbH",
+          "content": "Anmelden Wunschliste 0 Warenkorb 0 Menü Bestes aus der Region - Genuss erleben. Herzlich willkommen in Ihrer Metzgerei Rust. Sie finden uns jetzt direkt im Zentrum von Neu St. …",
+          "engine": "searchch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://dorothearust.ch/",
+          "normalized_url": "https://dorothearust.ch/",
+          "title": "Tanz- und Kunstperformances, Ausstellungen, Interventionen | ...",
+          "content": "Dorothea Rust News Arbeiten Textarbeiten Publikationen Biographie Archive ... Netzwerke ... Kontakt D E Kontakt Folge mir Impressum Datenschutz",
+          "engine": "searchch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.europapark.de/de",
+          "normalized_url": "https://www.europapark.de/de",
+          "title": "Europa-Park, Rulantica & Events besuchen und übernachten, ...",
+          "content": "Dr. G Zu YULLBE TALENT ACADEMY Exklusiv in Rust TALENT ACADEMY Ausbildungsort & Coachingangebot in den Bereichen Musik, Tanz, Kunst, Akrobatik und Mindset! Mehr …",
+          "engine": "searchch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.zugerbeck.ch/",
+          "normalized_url": "https://www.zugerbeck.ch/",
+          "title": "Bäckerei, Konditorei | Bäckerei Hotz Rust AG | Baar, Zug, Cham, ...",
+          "content": "Ihre Bäckerei Hotz Rust AG in Baar, Rotkreuz und Zug ist stets auf dem neusten Stand und freut sich auch in Zukunft auf zufriedenen Kunden. …",
+          "engine": "searchch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.rustbau.ch/",
+          "normalized_url": "https://www.rustbau.ch/",
+          "title": "rust+co",
+          "content": "RUST+CO ist in den zentralen Geschäftsfeldern des Hoch- und Tiefbaus, diversen Umbauten, sowie der Transportdienstleistungen tätig. Erfolgreich und regional engagiert sind wir im …",
+          "engine": "searchch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rustfest.ch/",
+          "normalized_url": "https://rustfest.ch/",
+          "title": "RustFest Zürich 19th - 24th June 2024",
+          "content": "2024 The second Rust Fest in Zürich 🇨🇭 was a blast 🎉 Group picture 2024 Latest news Final information 2024/06/20 Where to connect Join us in …",
+          "engine": "searchch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "engine": "askubuntu",
+  "case": "askubuntu-request",
+  "query": {
+    "query": "install package",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "install package",
+    "category": "",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://api.stackexchange.com/2.3/search/advanced?q=install+package&page=2&pagesize=10&site=askubuntu&sort=activity&order=desc",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://api.stackexchange.com/2.3/search/advanced",
+    "headers": {},
+    "body": "{\"items\":[{\"tags\":[\"apt\"],\"owner\":{\"display_name\":\"Alice\"},\"is_answered\":false,\"score\":3,\"question_id\":99,\"title\":\"How do I install a .deb?\"}]}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://askubuntu.com/q/99",
+          "normalized_url": "https://askubuntu.com/q/99",
+          "title": "How do I install a .deb?",
+          "content": "[apt] Alice // score: 3",
+          "engine": "askubuntu",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "engine": "fynd",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://fynd.bot/?search=rust&offset=0&safe=0",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://fynd.bot/?search=rust&offset=0&safe=0",
+    "headers": {
+      "vary": "Accept-Encoding",
+      "content-type": "text/html; charset=UTF-8",
+      "accept-ranges": "bytes",
+      "date": "Thu, 09 Jul 2026 14:05:41 GMT",
+      "x-edge": "va-edge",
+      "server": "nginx/1.22.1",
+      "x-bypass": "0",
+      "x-cache": "EXPIRED"
+    },
+    "body": "\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>rust - Fynd</title>\n    <meta name=\"description\" content=\"Fynd Search Results - rust\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <link rel=\"icon\" type=\"image/png\" href=\"/favicon-96x96.png\" sizes=\"96x96\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\" />\n    <link rel=\"shortcut icon\" href=\"/favicon.ico\" />\n    <link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\" />\n    <meta name=\"apple-mobile-web-app-title\" content=\"Fynd\" />\n    <link rel=\"manifest\" href=\"/site.webmanifest\" />\n<style>\n    @font-face {\n        font-family: 'Roboto';\n        src: url('/fonts/Roboto/Roboto-Bold.ttf') format('truetype');\n        font-weight: 700;\n        font-style: normal;\n    }\n\n    html, body {\n        font-family: Arial, sans-serif;\n        margin: 20px 5px;\n        padding: 0 5px;\n        position: relative;\n        -webkit-text-size-adjust: 100%;\n        text-size-adjust: 100%;\n        overflow-x: hidden;\n    }\n\n    h1 {\n        font-size: 5rem;\n        margin: 0 0 10px;\n        font-family: 'Roboto', sans-serif;\n        font-weight: bold;\n        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);\n        color: #2CB47C; /* added green tint */\n    }\n\n    .header {\n        position: absolute;\n        top: 0;\n        right: 20px;\n        padding: 10px;\n        font-size: 14px;\n        background-color: #f9f9f9;\n        border: 1px solid #d0d0d0;\n        border-radius: 5px;\n    }\n\n    .header-mobile {\n        display: none;\n        margin-bottom: 20px;\n        padding: 10px;\n        background-color: #f9f9f9;\n        border: 1px solid #d0d0d0;\n        border-radius: 5px;\n        text-align: center;\n    }\n\n    .tagline {\n        text-align: center;\n        font-size: 16px;\n        font-weight: bold;\n        margin-bottom: 20px;\n    }\n\n    .result-item {\n        margin-bottom: 20px;\n        padding-left: 2%;\n        padding-right: 2%;\n    }\n\n    @media (min-width: 992px) {\n        .result-item {\n            padding-left: 10%;\n            padding-right: 40%;\n        }\n    }\n\n    .result-item a {\n        font-size: 16px;\n        text-decoration: none;\n        color: #1a0dab;\n    }\n\n    .result-item a:hover {\n        text-decoration: underline;\n    }\n\n    .result-item .description {\n        font-size: 16px;\n        color: #4d5156;\n    }\n\n    .result-item .url-container {\n        max-width: 65%;\n        overflow: hidden;\n        text-overflow: ellipsis;\n        white-space: nowrap;\n        display: block;\n    }\n\n    .result-item .url {\n        font-size: 12px;\n        color: #006621;\n    }\n\n    form.search-form {\n        display: flex;\n        gap: 10px;\n        width: 100%;\n        max-width: 500px;\n        justify-content: flex-start;\n    }\n\n/* Search results pages only */\nbody:not(.body-no-search) form.search-form {\n    max-width: 600px;\n}\n\n    @media (min-width: 992px) {\n        form.search-form {\n            width: 80%;\n            padding-left: 8%;\n        }\n\n        .body-no-search form.search-form {\n            padding-left: 0;\n            width: 50%;\n        }\n    }\n\n    .searching-line {\n        font-size: 16px;\n        text-align: left;\n        margin-top: 10px;\n        padding-left: 0%;\n    }\n\n    @media (min-width: 992px) {\n        .searching-line {\n            font-size: 18px;\n            margin-top: 20px;\n            padding-left: 8%;\n        }\n    }\n\n.pagination{\n  display:inline-flex !important;\n  align-items:center;\n  gap:10px;\n}\n\n.pagination a{\n  margin:0 !important;\n}\n\n.pagination-dots{\n  display:inline-block;\n}\n\n    @media (min-width: 992px) {\n        .pagination {\n            padding-left: 8%;\n        }\n    }\n\n    input[type=\"text\"], button {\n        height: 40px;\n    }\n\n    input[type=\"text\"] {\n        flex-grow: 1;\n        padding: 0 10px;\n        width: 100%;\n        font-size: 13px;\n        font-weight: normal;\n        font-family: Arial, sans-serif;\n        border: 1px solid #ccc;\n        border-radius: 5px;\n        line-height: 1.4;\n        outline: none;\n        box-sizing: border-box;\n    }\n\n    button {\n        padding: 0 15px;\n        font-size: 14px;\n        font-family: 'Roboto', sans-serif;\n        background-color: transparent;\n        color: black;\n        border: 2px solid black;\n        border-radius: 25px;\n        cursor: pointer;\n        white-space: nowrap;\n    }\n\n    button:hover {\n        border-color: #2CB47C;\n        color: #2CB47C;\n    }\n\n    .ban-button {\n        font-size: 12px;\n        padding: 0 6px;\n        height: 24px;\n        background-color: #d9534f;\n        color: white;\n        border: none;\n        cursor: pointer;\n        border-radius: 3px;\n        line-height: 24px;\n    }\n\n    .ban-button:hover {\n        background-color: #c9302c;\n    }\n\n    .body-no-search {\n        display: flex;\n        flex-direction: column;\n        justify-content: center;\n        align-items: center;\n        height: 100vh;\n        margin: 0;\n    }\n\n    .trending-inline {\n        text-align: center;\n        font-size: 16px;\n        margin-top: 10px;\n    }\n\n    .trending-inline h2 {\n        display: inline;\n        font-weight: bold;\n        color: #00B7FF;\n        font-size: 16px; /* match the surrounding text */\n        margin-right: 5px;\n    }\n\n    .trending-inline a {\n        color: #1a0dab;\n        text-decoration: none;\n    }\n\n    .trending-inline a:hover {\n        text-decoration: underline;\n    }\n\n    .status-message {\n        background-color: #f0f0f0;\n        border: 1px solid #d0d0d0;\n        padding: 10px;\n        margin-bottom: 20px;\n    }\n\n    .result-inner {\n        display: flex;\n        align-items: flex-start;\n        gap: 6px;\n        flex-wrap: nowrap;\n    }\n\n    .favicon-box {\n        width: 24px;\n        height: 24px;\n        min-width: 24px;\n        min-height: 24px;\n        margin-right: 6px;\n        flex-shrink: 0;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        background-color: #f0f0f0;         /* Light grey background */\n        border: 1px solid #ccc;            /* Circle border */\n        border-radius: 50%;                /* Make it a circle */\n        box-sizing: border-box;            /* Ensures border fits correctly */\n        align-self: center;\n    }\n\n    .favicon-icon {\n        width: 16px;\n        height: 16px;\n        vertical-align: middle;\n    }\n\n    .result-body {\n        flex: 1;\n        min-width: 0;\n    }\n\n    .title-line {\n        font-size: 16px;\n        margin-bottom: 2px;\n        line-height: 1.2;\n        word-break: break-word;\n    }\n\n    .title-line .mobile-favicon {\n        display: none;\n        margin-right: 6px;\n    }\n\n    @media (max-width: 768px) {\n        .result-inner {\n            flex-direction: row;\n            align-items: flex-start;\n            flex-wrap: nowrap;\n        }\n\n        .favicon-box {\n            display: flex;\n        }\n\n        .title-line .mobile-favicon {\n            display: none;\n        }\n\n        body {\n            padding: 0 5px;\n            margin: 20px 5px;\n        }\n\n        .result-item {\n            padding-left: 2%;\n            padding-right: 2%;\n        }\n\n        form.search-form {\n            width: 95%;\n        }\n\n        .header {\n            display: none;\n        }\n\n        .header-mobile {\n            display: block;\n        }\n    }\n\n    @media (max-width: 480px) {\n        form.search-form {\n            width: 100%;\n            max-width: none;\n        }\n\n        input[type=\"text\"] {\n            font-size: 14px;\n        }\n\n        button {\n            padding: 0 10px;\n        }\n    }\n\n.result-body .preview-img {\n    float: right;\n    width: 80px;        /* thumbnail width */\n    height: 60px;       /* smaller height */\n    margin-left: 8px;\n    margin-top: 14px;    /* NEW: add a little top padding */\n    margin-bottom: 4px;\n    border-radius: 6px;\n    border: 1px solid #eee;\n    object-fit: cover;\n    object-position: center;\n    max-width: none;\n    max-height: none;\n}\n\n@media (max-width: 992px) {\n    .result-body .preview-img {\n        float: none;\n        display: block;\n        width: 100%;\n        height: auto;   /* full width, auto height on mobile */\n        margin: 8px 0;\n    }\n}\n</style>\n\n</head>\n<body class=\"\">\n\n    <!-- Desktop header -->\n    <div class=\"header\">\n        Server time (UTC): 2026-07-09 14:05:07    </div>\n\n\n<form action=\"\" method=\"get\" class=\"search-form\" id=\"searchForm\">\n    <input type=\"text\" name=\"search\" placeholder=\"Search the web\" value=\"rust\">\n\n    <!-- Real value that PHP reads -->\n    <input\n    type=\"hidden\"\n    name=\"safe\"\n    id=\"safeHidden\"\n    value=\"0\"\n>\n\n    <button type=\"submit\">fynd</button>\n\n    <!-- UI toggle AFTER the button -->\n<label style=\"display:flex;align-items:center;gap:6px;font-size:13px;white-space:nowrap;cursor:pointer;\">\n    <input\n        type=\"checkbox\"\n        id=\"safeToggle\"\n                onchange=\"\n            document.getElementById('safeHidden').value = this.checked ? '1' : '0';\n            document.getElementById('searchForm').submit();\n        \"\n    >\n    SafeSearch\n</label>\n\n</form>\n\n\n    <p class=\"searching-line\">Searching the web for \"rust\" - Your search took 0.07 seconds.</p>\n\n\n    <div>\n                    <div class=\"result-item\">\n                <div class=\"result-inner\">\n                    <div class=\"favicon-box\">\n                                                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Frust.dk\"\n                             class=\"favicon-icon\"\n                             loading=\"lazy\"\n                             width=\"16\"\n                             height=\"16\"\n                             alt=\"Favicon\">\n                    </div>\n<div class=\"result-body\">\n\n        <img\n        src=\"media/?kind=page&amp;url=https%3A%2F%2Frust.dk%2F\"\n        class=\"preview-img\"\n        loading=\"lazy\"\n        decoding=\"async\"\n        alt=\"\"\n        data-domain=\"rust.dk\"\n        onerror=\"this.style.display='none';\"\n    />\n\n    <div class=\"title-line\">\n        <a href=\"https://rust.dk/\">\n            <span class=\"mobile-favicon\">\n                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Frust.dk\"\n                     class=\"favicon-icon\"\n                     loading=\"lazy\"\n                     width=\"16\"\n                     height=\"16\"\n                     alt=\"Favicon\">\n            </span>\n            RUST – never sleeps        </a>\n    </div>\n\n    <div class=\"url-container\">\n        <span class=\"url\">\n            https://rust.dk/        </span>\n    </div>\n\n    <div class=\"description\">\n        LEÆTHER STRIP plus special guest BIONIC BITCHDanske Claus Larsen har under sine alias Leæther Strip og Klutæ udgivet mere end 30 albums siden starten i 1989,...    </div>\n        \n        \n    </div>\n\n                </div>\n            </div>\n                    <div class=\"result-item\">\n                <div class=\"result-inner\">\n                    <div class=\"favicon-box\">\n                                                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Frust.pl\"\n                             class=\"favicon-icon\"\n                             loading=\"lazy\"\n                             width=\"16\"\n                             height=\"16\"\n                             alt=\"Favicon\">\n                    </div>\n<div class=\"result-body\">\n\n        <img\n        src=\"media/?kind=page&amp;url=https%3A%2F%2Frust.pl%2Fen%2F\"\n        class=\"preview-img\"\n        loading=\"lazy\"\n        decoding=\"async\"\n        alt=\"\"\n        data-domain=\"rust.pl\"\n        onerror=\"this.style.display='none';\"\n    />\n\n    <div class=\"title-line\">\n        <a href=\"https://rust.pl/en/\">\n            <span class=\"mobile-favicon\">\n                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Frust.pl\"\n                     class=\"favicon-icon\"\n                     loading=\"lazy\"\n                     width=\"16\"\n                     height=\"16\"\n                     alt=\"Favicon\">\n            </span>\n            ernestrust - Luxury Custom Kitchens &amp; Wardrobes from Poland        </a>\n    </div>\n\n    <div class=\"url-container\">\n        <span class=\"url\">\n            https://rust.pl/en/        </span>\n    </div>\n\n    <div class=\"description\">\n        Our mission is simple. For 57 years, we have been manufacturing modern furniture in Poland that revolutionizes interiors around the world. We are constantly...    </div>\n        \n        \n    </div>\n\n                </div>\n            </div>\n                    <div class=\"result-item\">\n                <div class=\"result-inner\">\n                    <div class=\"favicon-box\">\n                                                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Frust.cc\"\n                             class=\"favicon-icon\"\n                             loading=\"lazy\"\n                             width=\"16\"\n                             height=\"16\"\n                             alt=\"Favicon\">\n                    </div>\n<div class=\"result-body\">\n\n        <img\n        src=\"media/?kind=page&amp;url=https%3A%2F%2Frust.cc%2F\"\n        class=\"preview-img\"\n        loading=\"lazy\"\n        decoding=\"async\"\n        alt=\"\"\n        data-domain=\"rust.cc\"\n        onerror=\"this.style.display='none';\"\n    />\n\n    <div class=\"title-line\">\n        <a href=\"https://rust.cc/\">\n            <span class=\"mobile-favicon\">\n                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Frust.cc\"\n                     class=\"favicon-icon\"\n                     loading=\"lazy\"\n                     width=\"16\"\n                     height=\"16\"\n                     alt=\"Favicon\">\n            </span>\n            Welcome to OpenResty!        </a>\n    </div>\n\n    <div class=\"url-container\">\n        <span class=\"url\">\n            https://rust.cc/        </span>\n    </div>\n\n    <div class=\"description\">\n        If you see this page, the OpenResty web platform is successfully installed and working. Further configuration is required    </div>\n        \n        \n    </div>\n\n                </div>\n            </div>\n                    <div class=\"result-item\">\n                <div class=\"result-inner\">\n                    <div class=\"favicon-box\">\n                                                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Fwww.jenolite.com\"\n                             class=\"favicon-icon\"\n                             loading=\"lazy\"\n                             width=\"16\"\n                             height=\"16\"\n                             alt=\"Favicon\">\n                    </div>\n<div class=\"result-body\">\n\n        <img\n        src=\"media/?kind=page&amp;url=https%3A%2F%2Fwww.jenolite.com%2Fblogs%2Frust-corrosion%2Frust-remover-vs-rust-converter-which-to-use\"\n        class=\"preview-img\"\n        loading=\"lazy\"\n        decoding=\"async\"\n        alt=\"\"\n        data-domain=\"jenolite.com\"\n        onerror=\"this.style.display='none';\"\n    />\n\n    <div class=\"title-line\">\n        <a href=\"https://www.jenolite.com/blogs/rust-corrosion/rust-remover-vs-rust-converter-which-to-use\">\n            <span class=\"mobile-favicon\">\n                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Fwww.jenolite.com\"\n                     class=\"favicon-icon\"\n                     loading=\"lazy\"\n                     width=\"16\"\n                     height=\"16\"\n                     alt=\"Favicon\">\n            </span>\n            Rust Remover vs Rust Converter: Which To Use? | [UPDATE 2024] A comprehensive gu        </a>\n    </div>\n\n    <div class=\"url-container\">\n        <span class=\"url\">\n            https://www.jenolite.com/blogs/rust-corrosion/rust-remover-vs-rust-converter-which-to-use        </span>\n    </div>\n\n    <div class=\"description\">\n        Once applied, making sure all areas of <strong>rust</strong> are covered, wait approximately 15 minutes, after which you should see the <strong>rust</strong> starting to turn into a blue-black...    </div>\n        \n        \n    </div>\n\n                </div>\n            </div>\n                    <div class=\"result-item\">\n                <div class=\"result-inner\">\n                    <div class=\"favicon-box\">\n                                                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Fusers.rust-lang.org\"\n                             class=\"favicon-icon\"\n                             loading=\"lazy\"\n                             width=\"16\"\n                             height=\"16\"\n                             alt=\"Favicon\">\n                    </div>\n<div class=\"result-body\">\n\n        <img\n        src=\"media/?kind=page&amp;url=https%3A%2F%2Fusers.rust-lang.org%2Ft%2Fgeneration-of-rust-ffi-bindings-to-rust%2F69048\"\n        class=\"preview-img\"\n        loading=\"lazy\"\n        decoding=\"async\"\n        alt=\"\"\n        data-domain=\"rust-lang.org\"\n        onerror=\"this.style.display='none';\"\n    />\n\n    <div class=\"title-line\">\n        <a href=\"https://users.rust-lang.org/t/generation-of-rust-ffi-bindings-to-rust/69048\">\n            <span class=\"mobile-favicon\">\n                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Fusers.rust-lang.org\"\n                     class=\"favicon-icon\"\n                     loading=\"lazy\"\n                     width=\"16\"\n                     height=\"16\"\n                     alt=\"Favicon\">\n            </span>\n            Generation of rust ffi bindings to rust        </a>\n    </div>\n\n    <div class=\"url-container\">\n        <span class=\"url\">\n            https://users.rust-lang.org/t/generation-of-rust-ffi-bindings-to-rust/69048        </span>\n    </div>\n\n    <div class=\"description\">\n        almost. it&#039;s like bindgen, however instead of generating C or C+ bindings, it generates <strong>rust</strong> bindings from <strong>rust</strong> library. It would be something like    </div>\n        \n        \n    </div>\n\n                </div>\n            </div>\n                    <div class=\"result-item\">\n                <div class=\"result-inner\">\n                    <div class=\"favicon-box\">\n                                                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Fdoc.rust-lang.org\"\n                             class=\"favicon-icon\"\n                             loading=\"lazy\"\n                             width=\"16\"\n                             height=\"16\"\n                             alt=\"Favicon\">\n                    </div>\n<div class=\"result-body\">\n\n\n    <div class=\"title-line\">\n        <a href=\"https://doc.rust-lang.org/rust-by-example/\">\n            <span class=\"mobile-favicon\">\n                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Fdoc.rust-lang.org\"\n                     class=\"favicon-icon\"\n                     loading=\"lazy\"\n                     width=\"16\"\n                     height=\"16\"\n                     alt=\"Favicon\">\n            </span>\n            Introduction - Rust By Example        </a>\n    </div>\n\n    <div class=\"url-container\">\n        <span class=\"url\">\n            https://doc.rust-lang.org/rust-by-example/        </span>\n    </div>\n\n    <div class=\"description\">\n        <strong>Rust</strong> by Example (RBE) is a collection of runnable examples that illustrate various <strong>Rust</strong> concepts and standard libraries. To get even more out of these...    </div>\n        \n        \n    </div>\n\n                </div>\n            </div>\n                    <div class=\"result-item\">\n                <div class=\"result-inner\">\n                    <div class=\"favicon-box\">\n                                                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Frust-lang.github.io\"\n                             class=\"favicon-icon\"\n                             loading=\"lazy\"\n                             width=\"16\"\n                             height=\"16\"\n                             alt=\"Favicon\">\n                    </div>\n<div class=\"result-body\">\n\n        <img\n        src=\"media/?kind=page&amp;url=https%3A%2F%2Frust-lang.github.io%2Frust-project-goals%2F2025h1%2Frust-vision-doc.html\"\n        class=\"preview-img\"\n        loading=\"lazy\"\n        decoding=\"async\"\n        alt=\"\"\n        data-domain=\"github.io\"\n        onerror=\"this.style.display='none';\"\n    />\n\n    <div class=\"title-line\">\n        <a href=\"https://rust-lang.github.io/rust-project-goals/2025h1/rust-vision-doc.html\">\n            <span class=\"mobile-favicon\">\n                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Frust-lang.github.io\"\n                     class=\"favicon-icon\"\n                     loading=\"lazy\"\n                     width=\"16\"\n                     height=\"16\"\n                     alt=\"Favicon\">\n            </span>\n            Rust Vision Document - Rust Project Goals        </a>\n    </div>\n\n    <div class=\"url-container\">\n        <span class=\"url\">\n            https://rust-lang.github.io/rust-project-goals/2025h1/rust-vision-doc.html        </span>\n    </div>\n\n    <div class=\"description\">\n        <strong>Rust</strong>’s goal since the beginning has been to empower everyone to build reliable and efficient software. We wanted <strong>Rust</strong> to be a language that would enable more...    </div>\n        \n        \n    </div>\n\n                </div>\n            </div>\n                    <div class=\"result-item\">\n                <div class=\"result-inner\">\n                    <div class=\"favicon-box\">\n                                                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Fgithub.com\"\n                             class=\"favicon-icon\"\n                             loading=\"lazy\"\n                             width=\"16\"\n                             height=\"16\"\n                             alt=\"Favicon\">\n                    </div>\n<div class=\"result-body\">\n\n        <img\n        src=\"media/?kind=page&amp;url=https%3A%2F%2Fgithub.com%2Frust-lang%2Frust%2Fissues\"\n        class=\"preview-img\"\n        loading=\"lazy\"\n        decoding=\"async\"\n        alt=\"\"\n        data-domain=\"github.com\"\n        onerror=\"this.style.display='none';\"\n    />\n\n    <div class=\"title-line\">\n        <a href=\"https://github.com/rust-lang/rust/issues\">\n            <span class=\"mobile-favicon\">\n                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Fgithub.com\"\n                     class=\"favicon-icon\"\n                     loading=\"lazy\"\n                     width=\"16\"\n                     height=\"16\"\n                     alt=\"Favicon\">\n            </span>\n            Issues · rust-lang/rust        </a>\n    </div>\n\n    <div class=\"url-container\">\n        <span class=\"url\">\n            https://github.com/rust-lang/rust/issues        </span>\n    </div>\n\n    <div class=\"description\">\n        Empowering everyone to build reliable and efficient software. - Issues · <strong>rust</strong>-lang/<strong>rust</strong>    </div>\n        \n        \n    </div>\n\n                </div>\n            </div>\n                    <div class=\"result-item\">\n                <div class=\"result-inner\">\n                    <div class=\"favicon-box\">\n                                                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Fgithub.com\"\n                             class=\"favicon-icon\"\n                             loading=\"lazy\"\n                             width=\"16\"\n                             height=\"16\"\n                             alt=\"Favicon\">\n                    </div>\n<div class=\"result-body\">\n\n\n    <div class=\"title-line\">\n        <a href=\"https://github.com/rust-lang/rust-bindgen/discussions\">\n            <span class=\"mobile-favicon\">\n                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Fgithub.com\"\n                     class=\"favicon-icon\"\n                     loading=\"lazy\"\n                     width=\"16\"\n                     height=\"16\"\n                     alt=\"Favicon\">\n            </span>\n            rust-lang rust-bindgen · Discussions        </a>\n    </div>\n\n    <div class=\"url-container\">\n        <span class=\"url\">\n            https://github.com/rust-lang/rust-bindgen/discussions        </span>\n    </div>\n\n    <div class=\"description\">\n        Explore the GitHub Discussions forum for <strong>rust</strong>-lang <strong>rust</strong>-bindgen. Discuss code, ask questions &amp; collaborate with the developer community    </div>\n        \n        \n    </div>\n\n                </div>\n            </div>\n                    <div class=\"result-item\">\n                <div class=\"result-inner\">\n                    <div class=\"favicon-box\">\n                                                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Fwww.alphacodingskills.com\"\n                             class=\"favicon-icon\"\n                             loading=\"lazy\"\n                             width=\"16\"\n                             height=\"16\"\n                             alt=\"Favicon\">\n                    </div>\n<div class=\"result-body\">\n\n        <img\n        src=\"media/?kind=page&amp;url=https%3A%2F%2Fwww.alphacodingskills.com%2Frust%2Frust-tutorial.php\"\n        class=\"preview-img\"\n        loading=\"lazy\"\n        decoding=\"async\"\n        alt=\"\"\n        data-domain=\"alphacodingskills.com\"\n        onerror=\"this.style.display='none';\"\n    />\n\n    <div class=\"title-line\">\n        <a href=\"https://www.alphacodingskills.com/rust/rust-tutorial.php\">\n            <span class=\"mobile-favicon\">\n                <img src=\"media/?kind=icon&amp;url=https%3A%2F%2Fwww.alphacodingskills.com\"\n                     class=\"favicon-icon\"\n                     loading=\"lazy\"\n                     width=\"16\"\n                     height=\"16\"\n                     alt=\"Favicon\">\n            </span>\n            Rust Tutorial - AlphaCodingSkills        </a>\n    </div>\n\n    <div class=\"url-container\">\n        <span class=\"url\">\n            https://www.alphacodingskills.com/rust/rust-tutorial.php        </span>\n    </div>\n\n    <div class=\"description\">\n        <strong>Rust</strong> is a modern multi-paradigm programming language designed for performance and safety, especially safe concurrency. <strong>Rust</strong> is syntactically similar to C+, and...    </div>\n        \n        \n    </div>\n\n                </div>\n            </div>\n            </div>\n\n\n<div class=\"pagination\">\n    \n    \n           <a href=\"?search=rust&safe=0&offset=10&sx=72&psx=0\">\n            Next &#xbb;\n        </a>\n    </div>\n\n    <hr style=\"border: 0; height: 1px; background-color: black; margin-top: 30px; margin-bottom: 30px; width: 95%;\">\n    <footer style=\"text-align: center; font-size: 0.85rem;\">\n        <a href=\"/\" style=\"margin-right: 20px;\">Fynd</a>\n        <a href=\"/advertise/\" style=\"margin-right: 20px;\">Advertise</a>\n        <a href=\"/addurl/\" style=\"margin-right: 20px;\">Submit URL</a>\n        <a href=\"https://dev.fynd.bot/\" style=\"margin-right: 20px;\">Blog</a>\n        <a href=\"/feedback/\" style=\"margin-right: 20px;\">Feedback</a>\n    </footer>\n\n</body>\n</html>\n"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://rust.dk/",
+          "normalized_url": "https://rust.dk/",
+          "title": "RUST – never sleeps",
+          "content": "LEÆTHER STRIP plus special guest BIONIC BITCHDanske Claus Larsen har under sine alias Leæther Strip og Klutæ udgivet mere end 30 albums siden starten i 1989,...",
+          "engine": "fynd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust.pl/en/",
+          "normalized_url": "https://rust.pl/en/",
+          "title": "ernestrust - Luxury Custom Kitchens & Wardrobes from Poland",
+          "content": "Our mission is simple. For 57 years, we have been manufacturing modern furniture in Poland that revolutionizes interiors around the world. We are constantly...",
+          "engine": "fynd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust.cc/",
+          "normalized_url": "https://rust.cc/",
+          "title": "Welcome to OpenResty!",
+          "content": "If you see this page, the OpenResty web platform is successfully installed and working. Further configuration is required",
+          "engine": "fynd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.jenolite.com/blogs/rust-corrosion/rust-remover-vs-rust-converter-which-to-use",
+          "normalized_url": "https://www.jenolite.com/blogs/rust-corrosion/rust-remover-vs-rust-converter-which-to-use",
+          "title": "Rust Remover vs Rust Converter: Which To Use? | [UPDATE 2024] A comprehensive gu",
+          "content": "Once applied, making sure all areas of rust are covered, wait approximately 15 minutes, after which you should see the rust starting to turn into a blue-black...",
+          "engine": "fynd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://users.rust-lang.org/t/generation-of-rust-ffi-bindings-to-rust/69048",
+          "normalized_url": "https://users.rust-lang.org/t/generation-of-rust-ffi-bindings-to-rust/69048",
+          "title": "Generation of rust ffi bindings to rust",
+          "content": "almost. it's like bindgen, however instead of generating C or C+ bindings, it generates rust bindings from rust library. It would be something like",
+          "engine": "fynd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://doc.rust-lang.org/rust-by-example/",
+          "normalized_url": "https://doc.rust-lang.org/rust-by-example/",
+          "title": "Introduction - Rust By Example",
+          "content": "Rust by Example (RBE) is a collection of runnable examples that illustrate various Rust concepts and standard libraries. To get even more out of these...",
+          "engine": "fynd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust-lang.github.io/rust-project-goals/2025h1/rust-vision-doc.html",
+          "normalized_url": "https://rust-lang.github.io/rust-project-goals/2025h1/rust-vision-doc.html",
+          "title": "Rust Vision Document - Rust Project Goals",
+          "content": "Rust’s goal since the beginning has been to empower everyone to build reliable and efficient software. We wanted Rust to be a language that would enable more...",
+          "engine": "fynd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-lang/rust/issues",
+          "normalized_url": "https://github.com/rust-lang/rust/issues",
+          "title": "Issues · rust-lang/rust",
+          "content": "Empowering everyone to build reliable and efficient software. - Issues · rust-lang/rust",
+          "engine": "fynd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-lang/rust-bindgen/discussions",
+          "normalized_url": "https://github.com/rust-lang/rust-bindgen/discussions",
+          "title": "rust-lang rust-bindgen · Discussions",
+          "content": "Explore the GitHub Discussions forum for rust-lang rust-bindgen. Discuss code, ask questions & collaborate with the developer community",
+          "engine": "fynd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.alphacodingskills.com/rust/rust-tutorial.php",
+          "normalized_url": "https://www.alphacodingskills.com/rust/rust-tutorial.php",
+          "title": "Rust Tutorial - AlphaCodingSkills",
+          "content": "Rust is a modern multi-paradigm programming language designed for performance and safety, especially safe concurrency. Rust is syntactically similar to C+, and...",
+          "engine": "fynd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

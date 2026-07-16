@@ -1,0 +1,42 @@
+{
+  "engine": "vimeo",
+  "case": "basic",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://vimeo.com/",
+    "headers": {},
+    "body": "<html><body><script>var data = {\"filtered\":{\"data\":[\n          {\"type\":\"clip\",\"clip\":{\"uri\":\"/videos/123456\",\"name\":\"Rust in 100 seconds\",\"created_time\":\"2021-01-02T03:04:05+00:00\",\"pictures\":{\"sizes\":[{\"link\":\"https://i.vimeocdn.com/x.jpg\"}]}}}\n        ]}};\n</script></body></html>"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://vimeo.com/123456",
+          "normalized_url": "https://vimeo.com/123456",
+          "title": "Rust in 100 seconds",
+          "content": "",
+          "engine": "vimeo",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

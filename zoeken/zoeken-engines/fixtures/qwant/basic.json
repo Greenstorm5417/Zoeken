@@ -1,0 +1,56 @@
+{
+  "engine": "qwant",
+  "case": "basic",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://api.qwant.com/v3/search/web",
+    "headers": {},
+    "body": "{\n      \"status\": \"success\",\n      \"data\": {\n        \"result\": {\n          \"items\": {\n            \"mainline\": [\n              {\n                \"type\": \"ads\",\n                \"items\": [{\"title\": \"Ad\", \"url\": \"https://ad.example.com/\", \"desc\": \"ignored\"}]\n              },\n              {\n                \"type\": \"web\",\n                \"items\": [\n                  {\"title\": \"Rust Programming Language\", \"url\": \"https://www.rust-lang.org/\", \"desc\": \"A language empowering everyone.\"},\n                  {\"title\": \"The Rust Book\", \"url\": \"https://doc.rust-lang.org/book/\", \"desc\": \"Learn Rust.\"}\n                ]\n              }\n            ]\n          }\n        }\n      }\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://www.rust-lang.org/",
+          "normalized_url": "https://www.rust-lang.org/",
+          "title": "Rust Programming Language",
+          "content": "A language empowering everyone.",
+          "engine": "qwant",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://doc.rust-lang.org/book/",
+          "normalized_url": "https://doc.rust-lang.org/book/",
+          "title": "The Rust Book",
+          "content": "Learn Rust.",
+          "engine": "qwant",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

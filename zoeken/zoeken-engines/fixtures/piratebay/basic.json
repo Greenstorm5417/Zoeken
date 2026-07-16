@@ -1,0 +1,54 @@
+{
+  "engine": "piratebay",
+  "case": "basic",
+  "query": {
+    "query": "debian",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://apibay.org/q.php",
+    "headers": {},
+    "body": "[\n      {\n        \"id\": \"1\",\n        \"name\": \"debian-12.5.0-amd64-netinst.iso\",\n        \"info_hash\": \"abcdef0123456789\",\n        \"seeders\": \"42\",\n        \"leechers\": \"3\",\n        \"size\": \"660602880\",\n        \"added\": \"1700000000\"\n      }\n    ]"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "File": {
+          "url": "https://thepiratebay.org/description.php?id=1",
+          "normalized_url": "https://thepiratebay.org/description.php?id=1",
+          "title": "debian-12.5.0-amd64-netinst.iso",
+          "content": "",
+          "engine": "piratebay",
+          "filename": "debian-12.5.0-amd64-netinst.iso",
+          "size": "",
+          "time": "1700000000",
+          "mimetype": "",
+          "abstract": "",
+          "author": "",
+          "embedded": "",
+          "mtype": "",
+          "subtype": "",
+          "filesize": "630.0 MiB",
+          "seed": 42,
+          "leech": 3,
+          "magnetlink": "magnet:?xt=urn:btih:abcdef0123456789&dn=debian-12.5.0-amd64-netinst.iso&tr=udp://tracker.coppersurfer.tk:6969/announce&tr=udp://9.rarbg.to:2920/announce&tr=udp://tracker.opentrackr.org:1337&tr=udp://tracker.internetwarriors.net:1337/announce&tr=udp://tracker.leechers-paradise.org:6969/announce&tr=udp://tracker.coppersurfer.tk:6969/announce&tr=udp://tracker.pirateparty.gr:6969/announce&tr=udp://tracker.cyberia.is:6969/announce",
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

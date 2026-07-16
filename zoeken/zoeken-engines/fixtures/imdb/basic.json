@@ -1,0 +1,56 @@
+{
+  "engine": "imdb",
+  "case": "basic",
+  "query": {
+    "query": "shawshank",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://v2.sg.media-imdb.com/suggestion/",
+    "headers": {},
+    "body": "{\n      \"d\": [\n        {\"id\": \"tt0111161\", \"l\": \"The Shawshank Redemption\", \"y\": 1994, \"s\": \"Frank Darabont\", \"rank\": 1},\n        {\"id\": \"nm0000209\", \"l\": \"Tim Robbins\", \"q\": \"actor\"},\n        {\"id\": \"xx0000000\", \"l\": \"unknown tag\"}\n      ]\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://imdb.com/title/tt0111161",
+          "normalized_url": "https://imdb.com/title/tt0111161",
+          "title": "The Shawshank Redemption",
+          "content": "(1) 1994 - Frank Darabont",
+          "engine": "imdb",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://imdb.com/name/nm0000209",
+          "normalized_url": "https://imdb.com/name/nm0000209",
+          "title": "Tim Robbins (actor)",
+          "content": "",
+          "engine": "imdb",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

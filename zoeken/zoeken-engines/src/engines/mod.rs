@@ -1,0 +1,121 @@
+//! Ported search engines (tasks 8.2 and 25.x).
+//!
+//! Each submodule ports one upstream engine onto the
+//! [`Engine`](zoeken_engine_core::Engine) trait. Engines are exercised by the
+//! [`conformance`](crate::conformance) harness against recorded golden output.
+
+pub(crate) mod util;
+
+pub mod apple_app_store;
+pub mod arxiv;
+pub mod bandcamp;
+pub mod bing;
+pub mod brave;
+pub mod core;
+pub mod crates;
+pub mod crossref;
+pub mod dailymotion;
+pub mod docker_hub;
+pub mod dogpile;
+pub mod duckduckgo;
+pub mod elasticsearch;
+pub mod generic;
+pub mod genius;
+pub mod github;
+pub mod github_code;
+pub mod gitlab;
+pub mod google;
+pub mod hackernews;
+pub mod imdb;
+pub mod invidious;
+pub mod lemmy;
+pub mod marginalia;
+pub mod mastodon;
+pub mod meilisearch;
+pub mod mojeek;
+pub mod ninegag;
+pub mod nyaa;
+pub mod openstreetmap;
+pub mod openverse;
+pub mod peertube;
+pub mod photon;
+pub mod piped;
+pub mod piratebay;
+pub mod pypi;
+pub mod qwant;
+pub mod reddit;
+pub mod semantic_scholar;
+pub mod senscritique;
+pub mod sepiasearch;
+pub mod solidtorrents;
+pub mod soundcloud;
+pub mod sqlite;
+pub mod stackexchange;
+pub mod startpage;
+pub mod swisscows;
+pub mod tootfinder;
+pub mod unsplash;
+pub mod vimeo;
+pub mod wikibooks;
+pub mod wikidata;
+pub mod wikipedia;
+pub mod yacy;
+
+pub use apple_app_store::AppleAppStore;
+pub use arxiv::Arxiv;
+pub use bandcamp::Bandcamp;
+pub use bing::Bing;
+pub use brave::Brave;
+pub use core::Core;
+pub use crates::Crates;
+pub use crossref::Crossref;
+pub use dailymotion::Dailymotion;
+pub use docker_hub::DockerHub;
+pub use dogpile::{Dogpile, DogpileConfig};
+pub use duckduckgo::DuckDuckGo;
+pub use elasticsearch::{Elasticsearch, ElasticsearchConfig};
+pub use generic::{
+    GenericEngineConfig, GenericHtmlConfig, GenericHtmlEngine, GenericJsonConfig,
+    GenericJsonEngine, all_generic_ids, builtin_generic_config, builtin_generic_html_config,
+    builtin_generic_ids,
+};
+pub use genius::Genius;
+pub use github::Github;
+pub use github_code::GithubCode;
+pub use gitlab::Gitlab;
+pub use google::Google;
+pub use hackernews::Hackernews;
+pub use imdb::Imdb;
+pub use invidious::Invidious;
+pub use lemmy::{Lemmy, LemmyType};
+pub use marginalia::{Marginalia, MarginaliaConfig};
+pub use mastodon::{Mastodon, MastodonType};
+pub use meilisearch::{Meilisearch, MeilisearchConfig};
+pub use mojeek::Mojeek;
+pub use ninegag::NineGag;
+pub use nyaa::Nyaa;
+pub use openstreetmap::Openstreetmap;
+pub use openverse::Openverse;
+pub use peertube::Peertube;
+pub use photon::Photon;
+pub use piped::Piped;
+pub use piratebay::Piratebay;
+pub use pypi::Pypi;
+pub use qwant::Qwant;
+pub use reddit::Reddit;
+pub use semantic_scholar::SemanticScholar;
+pub use senscritique::SensCritique;
+pub use sepiasearch::SepiaSearch;
+pub use solidtorrents::SolidTorrents;
+pub use soundcloud::Soundcloud;
+pub use sqlite::{Sqlite, SqliteConfig};
+pub use stackexchange::Stackexchange;
+pub use startpage::Startpage;
+pub use swisscows::{Swisscows, SwisscowsConfig};
+pub use tootfinder::Tootfinder;
+pub use unsplash::Unsplash;
+pub use vimeo::Vimeo;
+pub use wikibooks::Wikibooks;
+pub use wikidata::Wikidata;
+pub use wikipedia::Wikipedia;
+pub use yacy::{Yacy, YacyConfig};

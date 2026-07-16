@@ -1,0 +1,36 @@
+# Local / production-ish Zoeken stack.
+#
+#   cp .env.example .env   # then set APP_SECRET_KEY (openssl rand -hex 24)
+#   docker compose up -d
+#
+# Image: build locally, or pull ghcr.io/greenstorm5417/zoeken:latest
+
+services:
+  zoeken:
+    image: ghcr.io/greenstorm5417/zoeken:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VERSION: ${VERSION:-1.0.0}
+    ports:
+      - "${ZOEKEN_PORT:-8888}:8888"
+    environment:
+      APP_BIND_ADDRESS: "0.0.0.0"
+      APP_PORT: "8888"
+      APP_SECRET_KEY: "${APP_SECRET_KEY:?Set APP_SECRET_KEY in .env (openssl rand -hex 24)}"
+      APP_PUBLIC_INSTANCE: "${APP_PUBLIC_INSTANCE:-true}"
+      APP_ASSETS_DIR: /app/assets
+      APP_DATA_DIR: /var/lib/zoeken
+    volumes:
+      - zoeken-data:/var/lib/zoeken
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8888/healthz"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  zoeken-data:

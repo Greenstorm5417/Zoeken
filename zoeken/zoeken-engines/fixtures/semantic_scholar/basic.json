@@ -1,0 +1,62 @@
+{
+  "engine": "semantic scholar",
+  "case": "basic",
+  "query": {
+    "query": "transformers",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://www.semanticscholar.org/api/1/search",
+    "headers": {},
+    "body": "{\n      \"results\": [\n        {\n          \"id\": \"123\",\n          \"title\": {\"text\": \"Attention Is All You Need\"},\n          \"paperAbstract\": {\"text\": \"We propose a new architecture.\"},\n          \"venue\": {\"text\": \"NeurIPS\"},\n          \"doiInfo\": {\"doi\": \"10.5555/abc\"},\n          \"fieldsOfStudy\": [\"Computer Science\"],\n          \"authors\": [[{\"name\": \"Ashish Vaswani\"}], [{\"name\": \"Noam Shazeer\"}]],\n          \"links\": [\"https://arxiv.org/abs/1706.03762\"],\n          \"alternatePaperLinks\": [{\"url\": \"https://arxiv.org/pdf/1706.03762\", \"linkType\": \"pdf\"}],\n          \"pubDate\": \"2017-06-12\",\n          \"citationStats\": {\"numCitations\": 100, \"firstCitationVelocityYear\": 2017, \"lastCitationVelocityYear\": 2020}\n        }\n      ]\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Paper": {
+          "url": "https://arxiv.org/abs/1706.03762",
+          "normalized_url": "https://arxiv.org/abs/1706.03762",
+          "title": "Attention Is All You Need",
+          "content": "We propose a new architecture.",
+          "engine": "semantic scholar",
+          "authors": [
+            "Ashish Vaswani",
+            "Noam Shazeer"
+          ],
+          "doi": "10.5555/abc",
+          "journal": "NeurIPS",
+          "published_date": "2017-06-12",
+          "publisher": "",
+          "editor": "",
+          "volume": "",
+          "pages": "",
+          "number": "",
+          "type": "",
+          "tags": [
+            "Computer Science"
+          ],
+          "issn": [],
+          "isbn": [],
+          "pdf_url": "https://arxiv.org/pdf/1706.03762",
+          "html_url": "",
+          "comments": "100 citations from the year 2017 to 2020",
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "engine": "wikidata",
+  "case": "dummy-skipped",
+  "query": {
+    "query": "Berlin",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://query.wikidata.org/sparql",
+    "headers": {},
+    "body": "{\n      \"results\": {\n        \"bindings\": [\n          {\n            \"item\": {\"type\": \"uri\", \"value\": \"http://www.wikidata.org/entity/Q4115189\"},\n            \"itemLabel\": {\"type\": \"literal\", \"value\": \"Wikidata Sandbox\"},\n            \"itemDescription\": {\"type\": \"literal\", \"value\": \"dummy value\"}\n          },\n          {\n            \"item\": {\"type\": \"uri\", \"value\": \"http://www.wikidata.org/entity/Q64\"},\n            \"itemLabel\": {\"type\": \"literal\", \"value\": \"Berlin\"},\n            \"itemDescription\": {\"type\": \"literal\", \"value\": \"capital and largest city of Germany\"}\n          }\n        ]\n      }\n    }"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": [
+      {
+        "infobox": "Berlin",
+        "id": "https://www.wikidata.org/entity/Q64",
+        "content": "capital and largest city of Germany",
+        "img_src": null,
+        "urls": [
+          {
+            "title": "Wikidata",
+            "url": "http://www.wikidata.org/entity/Q64"
+          }
+        ],
+        "attributes": [],
+        "related_topics": [],
+        "engine": "wikidata"
+      }
+    ]
+  }
+}

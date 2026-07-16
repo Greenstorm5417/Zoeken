@@ -1,0 +1,56 @@
+{
+  "engine": "bing",
+  "case": "basic",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://www.bing.com",
+    "headers": {},
+    "body": "<!DOCTYPE html>\n<html><body>\n<ol id=\"b_results\">\n  <li class=\"b_algo\">\n    <h2><a href=\"https://www.rust-lang.org/\">Rust Programming Language</a></h2>\n    <div class=\"b_caption\"><p><span class=\"algoSlug_icon\"></span>A language empowering everyone to build reliable and efficient software.</p></div>\n  </li>\n  <li class=\"b_algo\">\n    <h2><a href=\"https://www.bing.com/ck/a?!&&p=abc&u=a1aHR0cHM6Ly9kb2MucnVzdC1sYW5nLm9yZy9ib29rLw&ntb=1\">The Rust Book</a></h2>\n    <div class=\"b_caption\"><p>This book teaches you the concepts of the Rust programming language.</p></div>\n  </li>\n  <li class=\"b_ad\"><h2><a href=\"https://ad.example.com/\">Ad</a></h2></li>\n</ol>\n</body></html>"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://www.rust-lang.org/",
+          "normalized_url": "https://www.rust-lang.org/",
+          "title": "Rust Programming Language",
+          "content": "A language empowering everyone to build reliable and efficient software.",
+          "engine": "bing",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://doc.rust-lang.org/book/",
+          "normalized_url": "https://doc.rust-lang.org/book/",
+          "title": "The Rust Book",
+          "content": "This book teaches you the concepts of the Rust programming language.",
+          "engine": "bing",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "engine": "fyyd",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://api.fyyd.de/0.2/search/podcast?term=rust&count=10&page=0",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://api.fyyd.de/0.2/search/podcast?term=rust&count=10&page=0",
+    "headers": {
+      "server": "Apache/2.4.67 (Debian)",
+      "date": "Thu, 09 Jul 2026 14:05:41 GMT",
+      "vary": "Accept-Encoding",
+      "expires": "Thu, 01 Jan 1970 00:00:00 +0000",
+      "access-control-allow-origin": "*",
+      "x-content-type-options": "nosniff",
+      "x-powered-by": "Fat-Free Framework",
+      "cache-control": "no-cache, no-store, must-revalidate",
+      "content-type": "application/json; charset=UTF-8",
+      "pragma": "no-cache",
+      "x-xss-protection": "1; mode=block"
+    },
+    "body": "{\n    \"status\": 1,\n    \"msg\": \"ok\",\n    \"meta\": {\n        \"paging\": {\n            \"count\": 10,\n            \"page\": 0,\n            \"first_page\": 0,\n            \"last_page\": 3,\n            \"next_page\": 1,\n            \"prev_page\": null\n        },\n        \"API_INFO\": {\n            \"API_VERSION\": \"0.2\"\n        },\n        \"SERVER\": \"88.99.101.163\",\n        \"duration\": 1\n    },\n    \"data\": [\n        {\n            \"title\": \"Cut and Thrust - Your Journey Through the Middle Ages\",\n            \"id\": 90402,\n            \"xmlURL\": \"https:\\/\\/letscast.fm\\/podcasts\\/cut-and-thrust-your-journey-through-the-middle-ages-d48b3e29\\/feed\",\n            \"htmlURL\": \"https:\\/\\/www.battlemerchant.com\",\n            \"imgURL\": \"https:\\/\\/lcdn.letscast.fm\\/media\\/podcast\\/d48b3e29\\/artwork-3000x3000.jpg?t=1765383608\",\n            \"status\": 200,\n            \"status_since\": \"2026-01-05 07:08:02\",\n            \"slug\": \"cut-and-thrust-your-journey-through-the-middle-ages\",\n            \"layoutImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/layout\\/90402be2132f51b102f26ec6af11190091dd7.jpg\",\n            \"thumbImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/thumbs\\/90402be2132f51b102f26ec6af11190091dd7.png\",\n            \"smallImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/small\\/90402be2132f51b102f26ec6af11190091dd7.jpg\",\n            \"microImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/micro\\/90402be2132f51b102f26ec6af11190091dd7.png\",\n            \"language\": \"en\",\n            \"generator\": \"LetsCast.fm (https:\\/\\/letscast.fm)\",\n            \"categories\": [\n                129,\n                142,\n                148\n            ],\n            \"lastpub\": \"2026-03-04T06:00:00+01:00\",\n            \"rank\": 2,\n            \"url_fyyd\": \"https:\\/\\/fyyd.de\\/podcast\\/cut-and-thrust-your-journey-through-the-middle-ages\\/0\",\n            \"description\": \"History to Go \\u2013 Now Also for Your Ears!\\n\\nFor over 23 years, we've been delivering more than just swords, chainmail, and helmets \\u2013 now we've got the perfect mind movie to go with it! Join us on a time travel adventure to the ancient Greeks, the hard-drinking Vikings, and the Middle Ages, where knights really knew how to lay into it. We'll tell you how people lived, loved, and fought back then \\u2013 sometimes epic, sometimes bizarre, but always with heart and helm. Whether it's reenactment, LARP, or cosplay, we turn history into an adventure \\u2013 also online at www.battlemerchant.com ?\",\n            \"subtitle\": \"The Battle-Merchant Podcast\",\n            \"tcolor\": \"#fff\",\n            \"color\": \"#3c1d1d\",\n            \"episode_count\": 48,\n            \"iflags\": \"1\",\n            \"paymentURL\": null,\n            \"author\": \"Battle-Merchant\"\n        },\n        {\n            \"title\": \" Rustacean Station \",\n            \"id\": 73351,\n            \"xmlURL\": \"https:\\/\\/rustacean-station.org\\/podcast.rss\",\n            \"htmlURL\": \"https:\\/\\/rustacean-station.org\",\n            \"imgURL\": \"https:\\/\\/rustacean-station.org\\/images\\/artwork.jpg\",\n            \"status\": 200,\n            \"status_since\": \"2026-03-09 18:32:03\",\n            \"slug\": \"rustacean-station\",\n            \"layoutImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/layout\\/733516a9a3983d42af6cfafbd72d38937dbfc.jpg\",\n            \"thumbImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/thumbs\\/733516a9a3983d42af6cfafbd72d38937dbfc.png\",\n            \"smallImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/small\\/733516a9a3983d42af6cfafbd72d38937dbfc.jpg\",\n            \"microImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/micro\\/733516a9a3983d42af6cfafbd72d38937dbfc.png\",\n            \"language\": \"en\",\n            \"generator\": null,\n            \"categories\": [\n                203\n            ],\n            \"lastpub\": \"2026-02-27T12:25:00+01:00\",\n            \"rank\": 17,\n            \"url_fyyd\": \"https:\\/\\/fyyd.de\\/podcast\\/rustacean-station\\/0\",\n            \"description\": \" Come journey with us into the weird, wonderful, and wily world of Rust. \",\n            \"subtitle\": \" A community project for creating podcast content for the Rust programming language. \",\n            \"tcolor\": \"#fff\",\n            \"color\": \"#2a1b16\",\n            \"episode_count\": 184,\n            \"iflags\": null,\n            \"paymentURL\": null,\n            \"author\": \" Rustacean Station \"\n        },\n        {\n            \"title\": \"The Trusted Partner Podcast - Wealth Strategies for High Net Worth Families\",\n            \"id\": 86324,\n            \"xmlURL\": \"https:\\/\\/feeds.libsyn.com\\/432960\\/rss\",\n            \"htmlURL\": \"https:\\/\\/sites.libsyn.com\\/432960\",\n            \"imgURL\": \"https:\\/\\/static.libsyn.com\\/p\\/assets\\/8\\/4\\/5\\/5\\/8455c0925145880aa04421dee9605cbd\\/cover_art_1.png\",\n            \"status\": 404,\n            \"status_since\": \"2026-04-17 03:16:04\",\n            \"slug\": \"the-trusted-partner-podcast\",\n            \"layoutImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/layout\\/86324e22693ddfdb56adb6710caa934c3d312.jpg\",\n            \"thumbImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/thumbs\\/86324e22693ddfdb56adb6710caa934c3d312.png\",\n            \"smallImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/small\\/86324e22693ddfdb56adb6710caa934c3d312.jpg\",\n            \"microImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/micro\\/86324e22693ddfdb56adb6710caa934c3d312.png\",\n            \"language\": \"en\",\n            \"generator\": \"Libsyn RSSgen 1.0\",\n            \"categories\": [\n                108,\n                111,\n                119\n            ],\n            \"lastpub\": \"2025-07-31T08:00:00+02:00\",\n            \"rank\": 0,\n            \"url_fyyd\": \"https:\\/\\/fyyd.de\\/podcast\\/the-trusted-partner-podcast\\/0\",\n            \"description\": \"What does it take to make smarter financial decisions and secure your future?\\n\\nWelcome to The Trusted Partner, where Cobblestone Capital Advisors' Jesse Cramer and Gabe Chodak bring you engaging conversations with experts in financial planning, investment management, and wealth management.\\n\\nDesigned to help you take control of your financial future, this podcast simplifies complex topics like tax-efficient investing, retirement planning strategies, and comprehensive financial planning. Whether you're navigating your growing career, preparing for retirement, or planning a lasting legacy, our expert guests provide practical advice tailored to real-world needs.\\n\\nBased in Rochester, NY, Jesse and Gabe combine their professional insights with relatable stories and actionable tips, helping you turn financial goals into achievable results.\\n\\nThe Trusted Partner Podcast isn't just about managing money. It's about building confidence, securing peace of mind, and empowering you to make informed decisions for the long term.\\n\\nTune in to The Trusted Partner Podcast and take the first step toward a smarter, brighter financial future.\",\n            \"subtitle\": \"What does it take to make smarter financial decisions and secure your future?\\n\\nWelcome to The Trusted Partner, where Cobblestone Capital Advisors' Jesse Cramer and Gabe Chodak bring you engaging conversations with experts in financial planning, investment management, and wealth management.\\n\\nDesigned to help you take control of your financial future, this podcast simplifies complex topics like tax-efficient investing, retirement planning strategies, and comprehensive financial planning. Whether you're navigating your growing career, preparing for retirement, or planning a lasting legacy, our expert guests provide practical advice tailored to real-world needs.\\n\\nBased in Rochester, NY, Jesse and Gabe combine their professional insights with relatable stories and actionable tips, helping you turn financial goals into achievable results.\\n\\nThe Trusted Partner Podcast isn't just about managing money. It's about building confidence, securing peace of mind, and empowering you to make informed decisions for the long term.\\n\\nTune in to The Trusted Partner Podcast and take the first step toward a smarter, brighter financial future.\",\n            \"tcolor\": \"#fff\",\n            \"color\": \"#4e5f82\",\n            \"episode_count\": 60,\n            \"iflags\": \"99\",\n            \"paymentURL\": null,\n            \"author\": \"Cobblestone Capital Advisors\"\n        },\n        {\n            \"title\": \"Nate Knows Nothing with Nate Armbruster\",\n            \"id\": 76791,\n            \"xmlURL\": \"https:\\/\\/natearmbruster.libsyn.com\\/rss\",\n            \"htmlURL\": \"https:\\/\\/www.natecomedy.com\\/\",\n            \"imgURL\": \"https:\\/\\/static.libsyn.com\\/p\\/assets\\/6\\/a\\/7\\/f\\/6a7f7f5340a77a23e5bbc093207a2619\\/NateKnowsNothing_Podcast_Artowrk-20231003-6f032zzyxi.jpg\",\n            \"status\": 200,\n            \"status_since\": \"2026-05-14 04:48:03\",\n            \"slug\": \"weekend-upnate-the-nate-armbruster-podcast\",\n            \"layoutImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/layout\\/76791c96b4902ffd000bcb0326a5a85c3789e.jpg\",\n            \"thumbImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/thumbs\\/76791c96b4902ffd000bcb0326a5a85c3789e.png\",\n            \"smallImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/small\\/76791c96b4902ffd000bcb0326a5a85c3789e.jpg\",\n            \"microImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/micro\\/76791c96b4902ffd000bcb0326a5a85c3789e.png\",\n            \"language\": \"en\",\n            \"generator\": \"Libsyn RSSgen 1.0\",\n            \"categories\": [\n                115,\n                118\n            ],\n            \"lastpub\": \"2025-05-16T07:26:00+02:00\",\n            \"rank\": 5,\n            \"url_fyyd\": \"https:\\/\\/fyyd.de\\/podcast\\/weekend-upnate-the-nate-armbruster-podcast\\/0\",\n            \"description\": \"A weekly bundle of unimportant but entertaining thoughts\\u2014jokes, musings, and random observations that won't change your life but might make you laugh. Hosted by comedian Nate Armbruster.\",\n            \"subtitle\": \"A weekly bundle of unimportant but entertaining thoughts\\u2014jokes, musings, and random observations that won't change your life but might make you laugh. Hosted by comedian Nate Armbruster.\",\n            \"tcolor\": \"#000\",\n            \"color\": \"#9ca5c2\",\n            \"episode_count\": 97,\n            \"iflags\": null,\n            \"paymentURL\": null,\n            \"author\": \"Nate Armbruster\"\n        },\n        {\n            \"title\": \"Captain Roy's Rusty Rocket Radio Show: Science Fiction\\/Fantasy\\/Horror\\/Doctor Who\\/Hammer House of Horror\",\n            \"id\": 57750,\n            \"xmlURL\": \"https:\\/\\/roymathur.com\\/podcast.xml\",\n            \"htmlURL\": \"https:\\/\\/roymathur.com\\/podcast.html\",\n            \"imgURL\": \"https:\\/\\/roymathur.com\\/images\\/crrrrs.jpg\",\n            \"status\": 69,\n            \"status_since\": \"2026-06-22 16:28:04\",\n            \"slug\": \"captain-roy-s-rocket-radio-show-the-uk-podcast-for-the-culture-geek-technology-nerd-and-creative-wizard\",\n            \"layoutImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/layout\\/5775057b343c392364028f3747b654d6a4e72.jpg\",\n            \"thumbImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/thumbs\\/5775057b343c392364028f3747b654d6a4e72.png\",\n            \"smallImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/small\\/5775057b343c392364028f3747b654d6a4e72.jpg\",\n            \"microImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/micro\\/5775057b343c392364028f3747b654d6a4e72.png\",\n            \"language\": \"en\",\n            \"generator\": \"https:\\/\\/podbean.com\\/?v=5.5\",\n            \"categories\": [\n                100,\n                102,\n                205,\n                209,\n                142,\n                147\n            ],\n            \"lastpub\": \"2024-02-17T23:33:27+01:00\",\n            \"rank\": 162,\n            \"url_fyyd\": \"https:\\/\\/fyyd.de\\/podcast\\/captain-roy-s-rocket-radio-show-the-uk-podcast-for-the-culture-geek-technology-nerd-and-creative-wizard\\/0\",\n            \"description\": \"Welcome to the greatest show in the multiverse! Fasten your seat belts for a rocketship ride to Altair City Spaceport's Rusty Rocket Tavern, where I discuss science fiction, fantasy, and horror books, comics, movies, TV, games, and toys. Powered by alien technology, eldritch abilities, and caffeinated beverages, since a summer night in 2012 fuelled by two double gin and tonics.\\n\\nFind me at roymathur.com, archive.org\\/details\\/@roymathur, @roymathur@mastodon.social, and @RoyMathur on Twitter until it goes fazoom! Please support me at https:\\/\\/ko-fi.com\\/U7U72359G\",\n            \"subtitle\": \"The Captain's UK Geek Science Fiction, Fantasy, and Horror Podcast\",\n            \"tcolor\": \"#fff\",\n            \"color\": \"#3b1d2c\",\n            \"episode_count\": 905,\n            \"iflags\": null,\n            \"paymentURL\": null,\n            \"author\": \"Roy Mathur\"\n        },\n        {\n            \"title\": \"Antitrust Law Source\",\n            \"id\": 46374,\n            \"xmlURL\": \"https:\\/\\/feed.podbean.com\\/podcast.antitrustlawsource.com\\/feed.xml\",\n            \"htmlURL\": \"https:\\/\\/antitrustlawsource.podbean.com\",\n            \"imgURL\": \"https:\\/\\/pbcdn1.podbean.com\\/imglogo\\/image-logo\\/694452\\/itunes_graphicv2.jpg\",\n            \"status\": 200,\n            \"status_since\": \"2026-06-13 04:38:04\",\n            \"slug\": \"antitrust-law-source\",\n            \"layoutImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/layout\\/46374916136605c08f3c317f157e124cb8c2e.jpg\",\n            \"thumbImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/thumbs\\/46374916136605c08f3c317f157e124cb8c2e.png\",\n            \"smallImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/small\\/46374916136605c08f3c317f157e124cb8c2e.jpg\",\n            \"microImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/micro\\/46374916136605c08f3c317f157e124cb8c2e.png\",\n            \"language\": \"en\",\n            \"generator\": \"https:\\/\\/podbean.com\\/?v=5.5\",\n            \"categories\": [\n                108\n            ],\n            \"lastpub\": \"2023-03-02T16:18:12+01:00\",\n            \"rank\": 2,\n            \"url_fyyd\": \"https:\\/\\/fyyd.de\\/podcast\\/antitrust-law-source\\/0\",\n            \"description\": \"Antitrust Law Source is designed for visitors to quickly and easily learn about developments in the growing antitrust arena.\",\n            \"subtitle\": \"Antitrust Law Source is designed for visitors to quickly and easily learn about developments in the growing antitrust arena.\",\n            \"tcolor\": \"#fff\",\n            \"color\": \"#373a47\",\n            \"episode_count\": 57,\n            \"iflags\": null,\n            \"paymentURL\": null,\n            \"author\": \"Porter Wright Morris and Arthur LLP\"\n        },\n        {\n            \"title\": \"Dolly Parton Fan TV - The Podcast with Andy Crust\",\n            \"id\": 82372,\n            \"xmlURL\": \"https:\\/\\/rss.buzzsprout.com\\/1516195.rss\",\n            \"htmlURL\": \"https:\\/\\/www.facebook.com\\/dollyfantv\\/\",\n            \"imgURL\": \"https:\\/\\/storage.buzzsprout.com\\/g65wniwf0adyu4mf16nk8ntu1xae?.jpg\",\n            \"status\": 200,\n            \"status_since\": \"2026-05-04 03:40:03\",\n            \"slug\": \"dolly-parton-fan-tv-the-podcast-with-andy-crust\",\n            \"layoutImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/layout\\/82372ceb46e58ddf6972680fb06ad818f78fc.jpg\",\n            \"thumbImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/thumbs\\/82372ceb46e58ddf6972680fb06ad818f78fc.png\",\n            \"smallImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/small\\/82372ceb46e58ddf6972680fb06ad818f78fc.jpg\",\n            \"microImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/micro\\/82372ceb46e58ddf6972680fb06ad818f78fc.png\",\n            \"language\": \"en\",\n            \"generator\": \"Buzzsprout (https:\\/\\/www.buzzsprout.com)\",\n            \"categories\": [\n                151,\n                154,\n                152,\n                181\n            ],\n            \"lastpub\": \"2021-01-16T19:00:00+01:00\",\n            \"rank\": 4,\n            \"url_fyyd\": \"https:\\/\\/fyyd.de\\/podcast\\/dolly-parton-fan-tv-the-podcast-with-andy-crust\\/0\",\n            \"description\": \"A podcast dedicated to the Queen of Country Music Dolly Parton for her wonderful fans from around the world. Fans tell their stories and experiences of The Country Legend and what Dolly means to them. The show is presented by Performer, Actor, TV presenter, and Dolly Parton Imagination Library affiliate Andy Crust. \",\n            \"subtitle\": \"A podcast dedicated to the Queen of Country Music Dolly Parton for her wonderful fans from around the world. Fans tell their stories and experiences of The Country Legend and what Dolly means to them. The show is presented by Performer, Actor, TV presenter, and Dolly Parton Imagination Library affiliate Andy Crust. \",\n            \"tcolor\": \"#fff\",\n            \"color\": \"#2b2a49\",\n            \"episode_count\": 9,\n            \"iflags\": \"99\",\n            \"paymentURL\": null,\n            \"author\": \"Andy Crust\"\n        },\n        {\n            \"title\": \"New Rustacean\",\n            \"id\": 45359,\n            \"xmlURL\": \"https:\\/\\/newrustacean.com\\/feed.xml\",\n            \"htmlURL\": \"https:\\/\\/newrustacean.com\",\n            \"imgURL\": \"https:\\/\\/newrustacean.com\\/podcast.png\",\n            \"status\": 200,\n            \"status_since\": \"2026-06-06 12:34:01\",\n            \"slug\": \"new-rustacean\",\n            \"layoutImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/layout\\/45359dc687fe930c1bb30d6174e3e06ea1da4.jpg\",\n            \"thumbImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/thumbs\\/45359dc687fe930c1bb30d6174e3e06ea1da4.png\",\n            \"smallImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/small\\/45359dc687fe930c1bb30d6174e3e06ea1da4.jpg\",\n            \"microImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/micro\\/45359dc687fe930c1bb30d6174e3e06ea1da4.png\",\n            \"language\": \"en\",\n            \"generator\": \"Feeder 3 3.6.7(3212); Mac OS X Version 10.14.4 (Build 18E226) http:\\/\\/reinventedsoftware.com\\/feeder\\/\",\n            \"categories\": [\n                203,\n                162,\n                119\n            ],\n            \"lastpub\": \"2015-09-25T01:14:50+02:00\",\n            \"rank\": 3,\n            \"url_fyyd\": \"https:\\/\\/fyyd.de\\/podcast\\/new-rustacean\\/0\",\n            \"description\": \"Deep dive teaching episodes, news updates, and interviews with people around the Rust community.\",\n            \"subtitle\": \"A show about the Rust programming language and the people who use it.\",\n            \"tcolor\": \"#ffffff\",\n            \"color\": \"#b55532\",\n            \"episode_count\": 106,\n            \"iflags\": null,\n            \"paymentURL\": \"https:\\/\\/www.patreon.com\\/newrustacean\",\n            \"author\": \"Chris Krycho\"\n        },\n        {\n            \"title\": \"H\\u00f6rbar Rust\",\n            \"id\": 4954,\n            \"xmlURL\": \"http:\\/\\/www.radioeins.de\\/archiv\\/podcast\\/hoerbar_rust.xml\\/feed=podcast.xml\",\n            \"htmlURL\": \"https:\\/\\/hoerbar-rust-radioeins.podigee.io\\/\",\n            \"imgURL\": \"https:\\/\\/images.podigee-cdn.net\\/0x,sahauu8kj11ErOniEsUiKApGEnPH6ypmGHNoWLyLi3zw=\\/https:\\/\\/main.podigee-cdn.net\\/uploads\\/u30479\\/4c801cdb-c514-4221-bacf-e9c7942ecf27.jpg\",\n            \"status\": 200,\n            \"status_since\": \"2026-06-11 09:32:28\",\n            \"slug\": \"hoerbar-rust-radioeins\",\n            \"layoutImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/layout\\/49541669284d835d52d6ba336a4b6309b1bc.jpg\",\n            \"thumbImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/thumbs\\/49541669284d835d52d6ba336a4b6309b1bc.png\",\n            \"smallImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/small\\/49541669284d835d52d6ba336a4b6309b1bc.jpg\",\n            \"microImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/micro\\/49541669284d835d52d6ba336a4b6309b1bc.png\",\n            \"language\": \"de\",\n            \"generator\": \"Podigee (https:\\/\\/podigee.com)\",\n            \"categories\": [\n                181,\n                183\n            ],\n            \"lastpub\": \"2026-07-05T14:00:00+02:00\",\n            \"rank\": 380,\n            \"url_fyyd\": \"https:\\/\\/fyyd.de\\/podcast\\/hoerbar-rust-radioeins\\/0\",\n            \"description\": \"Jeden Sonntag von 14.00 bis 16.00 Uhr l\\u00e4dt Bettina Rust einen prominenten Gast in die H\\u00f6rbar Rust ein. Dieser stellt sich in der Sendung vor und die Musik, die in seinem Leben von Bedeutung war und erz\\u00e4hlt dazu die passenden Geschichten zum Soundtrack seines Lebens - alte Mixtapes werden rausgekramt - die erste Platte - intime T\\u00f6ne oder peinliche Songs mit pers\\u00f6nlichen Erinnerungen des jeweiligen Gastes. Zwei Stunden voller Musik und toller Geschichten - Promis privat in der H\\u00f6rbar Rust - immer sonntags von 14.00 - 16.00 Uhr. Die Highlights der jeweiligen Sendung k\\u00f6nnen Sie hier downloaden.\\n\\nDieser Podcast steht unter der Creative Commons Lizenz CC BY-NC-ND 4.0.\\n\",\n            \"subtitle\": \"Jeden Sonntag von 14.00 bis 16.00 Uhr l\\u00e4dt Bettina Rust einen prominenten Gast in die H\\u00f6rbar Rust ein. Dieser stellt sich in der Sendung vor und die Musik, die in seinem Leben von Bedeutung war und erz\\u00e4hlt dazu die passenden Geschichten zum Soundtrack sei\",\n            \"tcolor\": \"#000\",\n            \"color\": \"#ddc6bf\",\n            \"episode_count\": 719,\n            \"iflags\": null,\n            \"paymentURL\": null,\n            \"author\": \"radioeins (rbb)\"\n        },\n        {\n            \"title\": \"Bauimpulse f\\u00fcr Bau- & Handwerksunternehmer | Handwerk digitalisieren ohne Chaos & Softwarefrust\",\n            \"id\": 87939,\n            \"xmlURL\": \"https:\\/\\/bauimpulse.podigee.io\\/feed\\/mp3\",\n            \"htmlURL\": \"https:\\/\\/bauimpulse.digital\",\n            \"imgURL\": \"https:\\/\\/images.podigee-cdn.net\\/0x,scDbYR7nZN0oRIs-_B4V2SbhMWCnxAPksHKd7h4dktfM=\\/https:\\/\\/main.podigee-cdn.net\\/uploads\\/u31081\\/42378c48-fe89-48d2-ab9c-9fc7e0658110.jpg\",\n            \"status\": 200,\n            \"status_since\": \"2026-06-22 18:22:03\",\n            \"slug\": \"bauimpulse-fuer-bau-handwerk\",\n            \"layoutImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/layout\\/87939f6c9c2c5788daa6d45dd5fb7f4fa76b3.jpg\",\n            \"thumbImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/thumbs\\/87939f6c9c2c5788daa6d45dd5fb7f4fa76b3.png\",\n            \"smallImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/small\\/87939f6c9c2c5788daa6d45dd5fb7f4fa76b3.jpg\",\n            \"microImageURL\": \"https:\\/\\/img-1.fyyd.de\\/pd\\/micro\\/87939f6c9c2c5788daa6d45dd5fb7f4fa76b3.png\",\n            \"language\": \"de\",\n            \"generator\": \"Podigee (https:\\/\\/podigee.com)\",\n            \"categories\": [\n                203,\n                119,\n                155,\n                162\n            ],\n            \"lastpub\": \"2026-07-03T06:00:00+02:00\",\n            \"rank\": 38,\n            \"url_fyyd\": \"https:\\/\\/fyyd.de\\/podcast\\/bauimpulse-fuer-bau-handwerk\\/0\",\n            \"description\": \"Viele Bau- und Handwerksunternehmen wollen ihre Digitalisierung voranbringen. Trotzdem bleiben Informationen auf der Baustelle liegen, Prozesse laufen doppelt, und neue Software sorgt oft f\\u00fcr mehr Frust als Fortschritt.\\n\\nDie erste Reaktion ist meist, weitere Tools einzuf\\u00fchren. Die zweite, bestehende Abl\\u00e4ufe einfach digital nachzubauen. Beides l\\u00f6st selten das eigentliche Problem: fehlende Strukturen, Frust bei den Mitarbeitern und unterbrochene Informationsfl\\u00fcsse und Prozesse, die B\\u00fcro und Baustelle nicht sauber miteinander verbinden.\\n\\nDie erfolgreiche Digitalisierung im Handwerk beginnt nicht mit Software. Sie beginnt mit klaren Prozessen, funktionierender Baustellenkommunikation und einer digitalen Zusammenarbeit, die im Alltag tats\\u00e4chlich funktioniert.\\n\\nGenau darum geht es bei dem Podcast Bauimpulse.\\n\\nAchim Maisenbacher zeigt, wie Bau- und Handwerksunternehmen ihre digitale Baustelle Schritt f\\u00fcr Schritt umsetzen, Mitarbeiter mitnehmen, digitale Prozesse im Handwerk etablieren und Handwerkersoftware sinnvoll einsetzen. Du erf\\u00e4hrst, wie Baustellendokumentation effizient funktioniert, wie Wissen im Betrieb gesichert wird, wie Informationsverluste vermieden werden und wie B\\u00fcro und Baustelle besser zusammenarbeiten.\\n\\nThemen reichen von Baustellendokumentation, digitaler Dokumentation und Baudokumentation \\u00fcber Prozessoptimierung im Handwerk, Wissensmanagement im Handwerk und digitale Unternehmensf\\u00fchrung bis hin zu Microsoft Teams im Handwerk, OneNote im Handwerk, WhatsApp im Handwerk und der erfolgreichen Einf\\u00fchrung neuer Systeme.\\n\\nAchim Maisenbacher ist Gr\\u00fcnder von MemoMeister und begleitet seit Jahren Betriebe dabei, ihre Digitalisierung im Handwerk praxisnah umzusetzen. Keine Theorie. Keine Buzzwords. Sondern konkrete Erfahrungen aus Bau- und Handwerksunternehmen.\\n\\nWenn du deinen Betrieb digitalisieren, Medienbr\\u00fcche vermeiden, Prozesse verbessern und eine funktionierende digitale Baustelle aufbauen willst, bist du hier richtig.\\n\\nSpannende Episoden und Folgen die wir immer behandeln: Digitalisierung Im Handwerk, Handwerk Digitalisieren, Digitale Baustelle, Baustellendokumentation, Digitale Dokumentation, Baudokumentation, Prozessoptimierung Im Handwerk, Digitale Prozesse, Handwerkersoftware, Software F\\u00fcr Handwerksbetriebe, Wissensmanagement Handwerk, Wissen Sichern, Mitarbeiterwissen Erhalten, Baustellenkommunikation, Teamkommunikation Handwerk, B\\u00fcro Und Baustelle, Informationsfluss Baustelle, Microsoft Teams Im Handwerk, OneNote Im Handwerk, Digitale Zus...\",\n            \"subtitle\": \"Zukunft, Digitalisierung und Automatisierung\",\n            \"tcolor\": \"#000\",\n            \"color\": \"#eee5a9\",\n            \"episode_count\": 184,\n            \"iflags\": \"99\",\n            \"paymentURL\": null,\n            \"author\": \"Achim Maisenbacher - Experte f\\u00fcr Digitalisierung im Handwerk\"\n        }\n    ]\n}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://www.battlemerchant.com/",
+          "normalized_url": "https://www.battlemerchant.com/",
+          "title": "Cut and Thrust - Your Journey Through the Middle Ages",
+          "content": "History to Go – Now Also for Your Ears! For over 23 years, we've been delivering more than just swords, chainmail, and helmets – now we've got the perfect mind movie to go with it! Join us on a time travel adventure to the ancient Greeks, the hard-drinking Vikings, and the Middle Ages, where knights really knew how to lay into it. We'll tell you how people lived, loved, and fought back then – sometimes epic, sometimes bizarre, but always with heart and helm. Whether it's reenactment, LARP, or cosplay, we turn history into an adventure – also online at www.battlemerchant.com ?",
+          "engine": "fyyd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rustacean-station.org/",
+          "normalized_url": "https://rustacean-station.org/",
+          "title": "Rustacean Station",
+          "content": "Come journey with us into the weird, wonderful, and wily world of Rust.",
+          "engine": "fyyd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://sites.libsyn.com/432960",
+          "normalized_url": "https://sites.libsyn.com/432960",
+          "title": "The Trusted Partner Podcast - Wealth Strategies for High Net Worth Families",
+          "content": "What does it take to make smarter financial decisions and secure your future? Welcome to The Trusted Partner, where Cobblestone Capital Advisors' Jesse Cramer and Gabe Chodak bring you engaging conversations with experts in financial planning, investment management, and wealth management. Designed to help you take control of your financial future, this podcast simplifies complex topics like tax-efficient investing, retirement planning strategies, and comprehensive financial planning. Whether you're navigating your growing career, preparing for retirement, or planning a lasting legacy, our expert guests provide practical advice tailored to real-world needs. Based in Rochester, NY, Jesse and Gabe combine their professional insights with relatable stories and actionable tips, helping you turn financial goals into achievable results. The Trusted Partner Podcast isn't just about managing money. It's about building confidence, securing peace of mind, and empowering you to make informed decisions for the long term. Tune in to The Trusted Partner Podcast and take the first step toward a smarter, brighter financial future.",
+          "engine": "fyyd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.natecomedy.com/",
+          "normalized_url": "https://www.natecomedy.com/",
+          "title": "Nate Knows Nothing with Nate Armbruster",
+          "content": "A weekly bundle of unimportant but entertaining thoughts—jokes, musings, and random observations that won't change your life but might make you laugh. Hosted by comedian Nate Armbruster.",
+          "engine": "fyyd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://roymathur.com/podcast.html",
+          "normalized_url": "https://roymathur.com/podcast.html",
+          "title": "Captain Roy's Rusty Rocket Radio Show: Science Fiction/Fantasy/Horror/Doctor Who/Hammer House of Horror",
+          "content": "Welcome to the greatest show in the multiverse! Fasten your seat belts for a rocketship ride to Altair City Spaceport's Rusty Rocket Tavern, where I discuss science fiction, fantasy, and horror books, comics, movies, TV, games, and toys. Powered by alien technology, eldritch abilities, and caffeinated beverages, since a summer night in 2012 fuelled by two double gin and tonics. Find me at roymathur.com, archive.org/details/@roymathur, @roymathur@mastodon.social, and @RoyMathur on Twitter until it goes fazoom! Please support me at https://ko-fi.com/U7U72359G",
+          "engine": "fyyd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://antitrustlawsource.podbean.com/",
+          "normalized_url": "https://antitrustlawsource.podbean.com/",
+          "title": "Antitrust Law Source",
+          "content": "Antitrust Law Source is designed for visitors to quickly and easily learn about developments in the growing antitrust arena.",
+          "engine": "fyyd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.facebook.com/dollyfantv/",
+          "normalized_url": "https://www.facebook.com/dollyfantv/",
+          "title": "Dolly Parton Fan TV - The Podcast with Andy Crust",
+          "content": "A podcast dedicated to the Queen of Country Music Dolly Parton for her wonderful fans from around the world. Fans tell their stories and experiences of The Country Legend and what Dolly means to them. The show is presented by Performer, Actor, TV presenter, and Dolly Parton Imagination Library affiliate Andy Crust.",
+          "engine": "fyyd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://newrustacean.com/",
+          "normalized_url": "https://newrustacean.com/",
+          "title": "New Rustacean",
+          "content": "Deep dive teaching episodes, news updates, and interviews with people around the Rust community.",
+          "engine": "fyyd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://hoerbar-rust-radioeins.podigee.io/",
+          "normalized_url": "https://hoerbar-rust-radioeins.podigee.io/",
+          "title": "Hörbar Rust",
+          "content": "Jeden Sonntag von 14.00 bis 16.00 Uhr lädt Bettina Rust einen prominenten Gast in die Hörbar Rust ein. Dieser stellt sich in der Sendung vor und die Musik, die in seinem Leben von Bedeutung war und erzählt dazu die passenden Geschichten zum Soundtrack seines Lebens - alte Mixtapes werden rausgekramt - die erste Platte - intime Töne oder peinliche Songs mit persönlichen Erinnerungen des jeweiligen Gastes. Zwei Stunden voller Musik und toller Geschichten - Promis privat in der Hörbar Rust - immer sonntags von 14.00 - 16.00 Uhr. Die Highlights der jeweiligen Sendung können Sie hier downloaden. Dieser Podcast steht unter der Creative Commons Lizenz CC BY-NC-ND 4.0.",
+          "engine": "fyyd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://bauimpulse.digital/",
+          "normalized_url": "https://bauimpulse.digital/",
+          "title": "Bauimpulse für Bau- & Handwerksunternehmer | Handwerk digitalisieren ohne Chaos & Softwarefrust",
+          "content": "Viele Bau- und Handwerksunternehmen wollen ihre Digitalisierung voranbringen. Trotzdem bleiben Informationen auf der Baustelle liegen, Prozesse laufen doppelt, und neue Software sorgt oft für mehr Frust als Fortschritt. Die erste Reaktion ist meist, weitere Tools einzuführen. Die zweite, bestehende Abläufe einfach digital nachzubauen. Beides löst selten das eigentliche Problem: fehlende Strukturen, Frust bei den Mitarbeitern und unterbrochene Informationsflüsse und Prozesse, die Büro und Baustelle nicht sauber miteinander verbinden. Die erfolgreiche Digitalisierung im Handwerk beginnt nicht mit Software. Sie beginnt mit klaren Prozessen, funktionierender Baustellenkommunikation und einer digitalen Zusammenarbeit, die im Alltag tatsächlich funktioniert. Genau darum geht es bei dem Podcast Bauimpulse. Achim Maisenbacher zeigt, wie Bau- und Handwerksunternehmen ihre digitale Baustelle Schritt für Schritt umsetzen, Mitarbeiter mitnehmen, digitale Prozesse im Handwerk etablieren und Handwerkersoftware sinnvoll einsetzen. Du erfährst, wie Baustellendokumentation effizient funktioniert, wie Wissen im Betrieb gesichert wird, wie Informationsverluste vermieden werden und wie Büro und Baustelle besser zusammenarbeiten. Themen reichen von Baustellendokumentation, digitaler Dokumentation und Baudokumentation über Prozessoptimierung im Handwerk, Wissensmanagement im Handwerk und digitale Unternehmensführung bis hin zu Microsoft Teams im Handwerk, OneNote im Handwerk, WhatsApp im Handwerk und der erfolgreichen Einführung neuer Systeme. Achim Maisenbacher ist Gründer von MemoMeister und begleitet seit Jahren Betriebe dabei, ihre Digitalisierung im Handwerk praxisnah umzusetzen. Keine Theorie. Keine Buzzwords. Sondern konkrete Erfahrungen aus Bau- und Handwerksunternehmen. Wenn du deinen Betrieb digitalisieren, Medienbrüche vermeiden, Prozesse verbessern und eine funktionierende digitale Baustelle aufbauen willst, bist du hier richtig. Spannende Episoden und Folgen die wir immer behandeln: Digitalisierung Im Handwerk, Handwerk Digitalisieren, Digitale Baustelle, Baustellendokumentation, Digitale Dokumentation, Baudokumentation, Prozessoptimierung Im Handwerk, Digitale Prozesse, Handwerkersoftware, Software Für Handwerksbetriebe, Wissensmanagement Handwerk, Wissen Sichern, Mitarbeiterwissen Erhalten, Baustellenkommunikation, Teamkommunikation Handwerk, Büro Und Baustelle, Informationsfluss Baustelle, Microsoft Teams Im Handwerk, OneNote Im Handwerk, Digitale Zus...",
+          "engine": "fyyd",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

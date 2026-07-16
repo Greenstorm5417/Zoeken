@@ -1,0 +1,27 @@
+{
+  "engine": "tootfinder",
+  "case": "empty",
+  "query": {
+    "query": "nothing",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://www.tootfinder.ch",
+    "headers": {},
+    "body": "no json here at all"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

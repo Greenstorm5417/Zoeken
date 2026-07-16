@@ -1,0 +1,205 @@
+{
+  "engine": "microsoft learn",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://learn.microsoft.com/api/search?search=rust&locale=en-us&%24top=10",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://learn.microsoft.com/api/search?search=rust&locale=en-us&%24top=10",
+    "headers": {
+      "date": "Thu, 09 Jul 2026 14:05:57 GMT",
+      "akamai-cache-status": "Miss from child, Miss from parent",
+      "report-to": "{\"group\":\"network-errors\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://mdec.nelreports.net/api/report?cat=mdocs\"}]}",
+      "cache-control": "max-age=0, no-cache, no-store",
+      "api-supported-versions": "1.0",
+      "pragma": "no-cache",
+      "x-azure-ref": "20260709T140557Z-r19ff779cd6c6njphC1MIAra4c0000001x0000000000btev",
+      "x-content-type-options": "nosniff",
+      "content-type": "application/json; charset=utf-8",
+      "set-cookie": "ak_bmsc=B51962DC6AE0D18F35ABBB54D51A8DDC~000000000000000000000000000000~YAAQMcTOF+D+niWfAQAAVxUzRwBpMLwwtlvUfoPdQboTPor4vjFcTdAbYiMoZ28p5uNGQcQpJ8V1VHTko0MKOiTuQKhG09g4GgjRkXxwmJH9ZDLzn9pHhzd8O/w9gGmHmcEue2VpEZRllihtQU00F5tp57r6i8rY6jjD6Xwd0Zw8oSAOR1OioW+VVQqaIwBXVEa3VEqJoF1GmGkO4qkqIf05e8uud+o0pAagmVfaXB0YKCqmmTG38xR2aQcH3ktzBCoUnYhKJ5S4MzNFIf/oju8Z0te0SJcZ6WvnAYj05e6l7nstl//0vVI/gqZrQeyaDnqUvscOzkNrMjhpm3cQXQuPBClsvp7nQxbzRKlyVn0bSSpJo7sec6wfMa0vSCSiHIjzNlXdTGnekC8xjpo=; Domain=.microsoft.com; Path=/; Expires=Thu, 09 Jul 2026 16:05:57 GMT; Max-Age=7200; HttpOnly",
+      "nel": "{\"report_to\":\"network-errors\",\"max_age\":604800,\"success_fraction\":0.01,\"failure_fraction\":1.0}",
+      "vary": "Accept-Encoding",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+      "expires": "Thu, 09 Jul 2026 14:05:57 GMT"
+    },
+    "body": "{\"results\":[{\"title\":\"Azure developer documentation\",\"url\":\"https://learn.microsoft.com/en-us/azure/developer/\",\"displayUrl\":{\"content\":\"/azure/developer/\",\"hitHighlights\":[]},\"description\":\"Azure developer documentation Develop applications on Azure using Python, JavaScript, Java, .NET, Go, C\\u002B\\u002B, and Rust. NET Azure SDK for .NET API reference Developer center Python Azure SDK for Python API reference Developer center JavaScript Azure SDK for JavaScript API reference Developer center Java Azure SDK for Java API reference Developer.\",\"descriptions\":[{\"content\":\"Azure developer documentation Develop applications on Azure using Python, JavaScript, Java, .NET, Go, C\\u002B\\u002B, and Rust. NET Azure SDK for .NET API reference Developer center Python Azure SDK for Python API reference Developer center JavaScript Azure SDK for JavaScript API reference Developer center Java Azure SDK for Java API reference Developer.\",\"hitHighlights\":[]}],\"lastUpdatedDate\":\"2026-04-28T17:14:00+00:00\",\"breadcrumbs\":[],\"category\":\"Documentation\"},{\"title\":\"Coreutils for Windows overview\",\"url\":\"https://learn.microsoft.com/en-us/windows/core-utils/overview\",\"displayUrl\":{\"content\":\"/windows/core-utils/overview\",\"hitHighlights\":[]},\"description\":\"Coreutils for Windows Summarize this article for me In this article Coreutils for Windows is a Microsoft-maintained set of UNIX-style command-line utilities that run natively on Windows \\u2014 the same commands and pipelines you use on Linux, macOS, and WSL. Coreutils for Windows on GitHub Install Install Coreutils w... How it works The utilities are.\",\"descriptions\":[{\"content\":\"Coreutils for Windows Summarize this article for me In this article Coreutils for Windows is a Microsoft-maintained set of UNIX-style command-line utilities that run natively on Windows \\u2014 the same commands and pipelines you use on Linux, macOS, and WSL. Coreutils for Windows on GitHub Install Install Coreutils w... How it works The utilities are.\",\"hitHighlights\":[]}],\"lastUpdatedDate\":\"2026-06-13T05:03:00+00:00\",\"breadcrumbs\":[],\"category\":\"Documentation\"},{\"title\":\"What is Windows Subsystem for Linux\",\"url\":\"https://learn.microsoft.com/en-us/windows/wsl/about\",\"displayUrl\":{\"content\":\"/windows/wsl/about\",\"hitHighlights\":[]},\"description\":\"Summarize this article for me In this article Windows Subsystem for Linux (WSL) is a feature of Windows that allows you to run a Linux environment on your Windows machine, without the need for a separate virtual machine or dual booting. Run Bash scripts and GNU/Linux command-line applications including: Tools: vim, emacs, tmux Languages: NodeJS,.\",\"descriptions\":[{\"content\":\"Summarize this article for me In this article Windows Subsystem for Linux (WSL) is a feature of Windows that allows you to run a Linux environment on your Windows machine, without the need for a separate virtual machine or dual booting. Run Bash scripts and GNU/Linux command-line applications including: Tools: vim, emacs, tmux Languages: NodeJS,.\",\"hitHighlights\":[]}],\"lastUpdatedDate\":\"2026-05-12T04:50:00+00:00\",\"breadcrumbs\":[],\"category\":\"Documentation\"},{\"title\":\"Windows developer tools\",\"url\":\"https://learn.microsoft.com/en-us/windows/dev-environment/\",\"displayUrl\":{\"content\":\"/windows/dev-environment/\",\"hitHighlights\":[]},\"description\":\"Windows developer tools Summarize this article for me In this article Windows supports a wide range of development workflows. Tools like Visual Studio Code and GitHub Copilot are well-integrated on Windows, and with AI assistance built into your editor an... PowerShell Cross-platform task automation and configuration management using PowerShell..\",\"descriptions\":[{\"content\":\"Windows developer tools Summarize this article for me In this article Windows supports a wide range of development workflows. Tools like Visual Studio Code and GitHub Copilot are well-integrated on Windows, and with AI assistance built into your editor an... PowerShell Cross-platform task automation and configuration management using PowerShell..\",\"hitHighlights\":[]}],\"lastUpdatedDate\":\"2026-06-18T05:04:00+00:00\",\"breadcrumbs\":[],\"category\":\"Documentation\"},{\"title\":\"Azure Functions Overview\",\"url\":\"https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview\",\"displayUrl\":{\"content\":\"/azure/azure-functions/functions-overview\",\"hitHighlights\":[]},\"description\":\"Summarize this article for me In this article Azure Functions is a serverless solution that allows you to build robust apps while using less code, and with less infrastructure and lower costs. For more information, see Azure ... Development lifecycle Functions supports you through every stage of app development: Code in C#, Java, JavaScript,.\",\"descriptions\":[{\"content\":\"Summarize this article for me In this article Azure Functions is a serverless solution that allows you to build robust apps while using less code, and with less infrastructure and lower costs. For more information, see Azure ... Development lifecycle Functions supports you through every stage of app development: Code in C#, Java, JavaScript,.\",\"hitHighlights\":[]}],\"lastUpdatedDate\":\"2026-06-03T05:14:00+00:00\",\"breadcrumbs\":[],\"category\":\"Documentation\"},{\"title\":\"Rust for Windows, and the windows crate\",\"url\":\"https://learn.microsoft.com/en-us/windows/dev-environment/rust/rust-for-windows\",\"displayUrl\":{\"content\":\"/windows/dev-environment/rust/rust-for-windows\",\"hitHighlights\":[{\"start\":25,\"length\":4},{\"start\":30,\"length\":4}]},\"description\":\"Rust for Windows, and the windows crate Summarize this article for me In this article Introducing Rust for Windows In the Overview of developing on Windows with Rust topic, we demonstrated a simple app that outputs a Hello, world! message.  ...the latest updates in the Release log of the RustRust for Windows lets you use any Windows API (past,.\",\"descriptions\":[{\"content\":\"Rust for Windows, and the windows crate Summarize this article for me In this article Introducing Rust for Windows In the Overview of developing on Windows with Rust topic, we demonstrated a simple app that outputs a Hello, world! message.  ...the latest updates in the Release log of the RustRust for Windows lets you use any Windows API (past,.\",\"hitHighlights\":[]}],\"lastUpdatedDate\":\"2026-07-07T05:03:00+00:00\",\"breadcrumbs\":[],\"category\":\"Documentation\"},{\"title\":\"Get Started with Azure Functions\",\"url\":\"https://learn.microsoft.com/en-us/azure/azure-functions/functions-get-started\",\"displayUrl\":{\"content\":\"/azure/azure-functions/functions-get-started\",\"hitHighlights\":[]},\"description\":\"Get started with Azure Functions Summarize this article for me In this article Azure Functions lets you implement your system\\u0027s logic as event-driven, readily available blocks of code. To use custom handlers to write your function code in Rust, see Create a Rust function in Azure using Visual Studio Code. Get started with Go on Azure Functions:.\",\"descriptions\":[{\"content\":\"Get started with Azure Functions Summarize this article for me In this article Azure Functions lets you implement your system\\u0027s logic as event-driven, readily available blocks of code. To use custom handlers to write your function code in Rust, see Create a Rust function in Azure using Visual Studio Code. Get started with Go on Azure Functions:.\",\"hitHighlights\":[]}],\"lastUpdatedDate\":\"2026-06-03T05:14:00+00:00\",\"breadcrumbs\":[],\"category\":\"Documentation\"},{\"title\":\"Overview of developing on Windows with Rust\",\"url\":\"https://learn.microsoft.com/en-us/windows/dev-environment/rust/overview\",\"displayUrl\":{\"content\":\"/windows/dev-environment/rust/overview\",\"hitHighlights\":[{\"start\":25,\"length\":4}]},\"description\":\"Overview of developing on Windows with Rust Summarize this article for me In this article Rust is a systems programming language designed for performance, reliability, and memory safety \\u2014 without a garbage collector. Rust has topped Stack Overflow\\u0027s annual developer survey as the most-admired language for many years running, and Microsoft is a.\",\"descriptions\":[{\"content\":\"Overview of developing on Windows with Rust Summarize this article for me In this article Rust is a systems programming language designed for performance, reliability, and memory safety \\u2014 without a garbage collector. Rust has topped Stack Overflow\\u0027s annual developer survey as the most-admired language for many years running, and Microsoft is a.\",\"hitHighlights\":[{\"start\":89,\"length\":6},{\"start\":97,\"length\":32},{\"start\":141,\"length\":31}]}],\"lastUpdatedDate\":\"2026-03-27T05:02:00+00:00\",\"breadcrumbs\":[],\"category\":\"Documentation\"},{\"title\":\"RSS reader tutorial (Rust for Windows with VS Code)\",\"url\":\"https://learn.microsoft.com/en-us/windows/dev-environment/rust/rss-reader-rust-for-windows\",\"displayUrl\":{\"content\":\"/windows/dev-environment/rust/rss-reader-rust-for-windows\",\"hitHighlights\":[{\"start\":25,\"length\":4},{\"start\":41,\"length\":4}]},\"description\":\"RSS reader tutorial (Rust for Windows with VS Code) Summarize this article for me In this article The previous topic introduced Rust for Windows, and the windows crate. Now let\\u0027s try out Rust for Windows by writing a simple console app that downloads the titles of blog posts from a Really Simple Syndication (RSS) feed. Launch a command prompt.\",\"descriptions\":[{\"content\":\"RSS reader tutorial (Rust for Windows with VS Code) Summarize this article for me In this article The previous topic introduced Rust for Windows, and the windows crate. Now let\\u0027s try out Rust for Windows by writing a simple console app that downloads the titles of blog posts from a Really Simple Syndication (RSS) feed. Launch a command prompt.\",\"hitHighlights\":[]}],\"lastUpdatedDate\":\"2026-07-07T05:03:00+00:00\",\"breadcrumbs\":[],\"category\":\"Documentation\"},{\"title\":\"Configure Your Local Rust Environment for Azure Development - Rust on Azure\",\"url\":\"https://learn.microsoft.com/en-us/azure/developer/rust/developer-environment\",\"displayUrl\":{\"content\":\"/azure/developer/rust/developer-environment\",\"hitHighlights\":[{\"start\":17,\"length\":4}]},\"description\":\"Configure your Rust development environment for Azure Summarize this article for me In this article Configure your local Rust development environment for Azure to build cloud applications efficiently on your workstation before deployment. Local development gives you access to a wider variety of tools and a familiar environment for faster.\",\"descriptions\":[{\"content\":\"Configure your Rust development environment for Azure Summarize this article for me In this article Configure your local Rust development environment for Azure to build cloud applications efficiently on your workstation before deployment. Local development gives you access to a wider variety of tools and a familiar environment for faster.\",\"hitHighlights\":[{\"start\":14,\"length\":30},{\"start\":99,\"length\":11},{\"start\":114,\"length\":36},{\"start\":239,\"length\":18},{\"start\":266,\"length\":11}]}],\"lastUpdatedDate\":\"2026-06-02T23:03:00+00:00\",\"breadcrumbs\":[],\"category\":\"Documentation\"}],\"spellingCorrection\":[],\"scopeRemoved\":false,\"count\":715,\"nextLink\":\"https://learn.microsoft.com/api/Search?search=rust\\u0026locale=en-us\\u0026$top=10\\u0026$skip=10\",\"srcheng\":\"02\",\"termHasSynonyms\":false,\"searchType\":\"semantic\"}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://learn.microsoft.com/en-us/azure/developer/",
+          "normalized_url": "https://learn.microsoft.com/en-us/azure/developer/",
+          "title": "Azure developer documentation",
+          "content": "Azure developer documentation Develop applications on Azure using Python, JavaScript, Java, .NET, Go, C++, and Rust. NET Azure SDK for .NET API reference Developer center Python Azure SDK for Python API reference Developer center JavaScript Azure SDK for JavaScript API reference Developer center Java Azure SDK for Java API reference Developer.",
+          "engine": "microsoft learn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://learn.microsoft.com/en-us/windows/core-utils/overview",
+          "normalized_url": "https://learn.microsoft.com/en-us/windows/core-utils/overview",
+          "title": "Coreutils for Windows overview",
+          "content": "Coreutils for Windows Summarize this article for me In this article Coreutils for Windows is a Microsoft-maintained set of UNIX-style command-line utilities that run natively on Windows — the same commands and pipelines you use on Linux, macOS, and WSL. Coreutils for Windows on GitHub Install Install Coreutils w... How it works The utilities are.",
+          "engine": "microsoft learn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://learn.microsoft.com/en-us/windows/wsl/about",
+          "normalized_url": "https://learn.microsoft.com/en-us/windows/wsl/about",
+          "title": "What is Windows Subsystem for Linux",
+          "content": "Summarize this article for me In this article Windows Subsystem for Linux (WSL) is a feature of Windows that allows you to run a Linux environment on your Windows machine, without the need for a separate virtual machine or dual booting. Run Bash scripts and GNU/Linux command-line applications including: Tools: vim, emacs, tmux Languages: NodeJS,.",
+          "engine": "microsoft learn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://learn.microsoft.com/en-us/windows/dev-environment/",
+          "normalized_url": "https://learn.microsoft.com/en-us/windows/dev-environment/",
+          "title": "Windows developer tools",
+          "content": "Windows developer tools Summarize this article for me In this article Windows supports a wide range of development workflows. Tools like Visual Studio Code and GitHub Copilot are well-integrated on Windows, and with AI assistance built into your editor an... PowerShell Cross-platform task automation and configuration management using PowerShell..",
+          "engine": "microsoft learn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview",
+          "normalized_url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview",
+          "title": "Azure Functions Overview",
+          "content": "Summarize this article for me In this article Azure Functions is a serverless solution that allows you to build robust apps while using less code, and with less infrastructure and lower costs. For more information, see Azure ... Development lifecycle Functions supports you through every stage of app development: Code in C#, Java, JavaScript,.",
+          "engine": "microsoft learn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://learn.microsoft.com/en-us/windows/dev-environment/rust/rust-for-windows",
+          "normalized_url": "https://learn.microsoft.com/en-us/windows/dev-environment/rust/rust-for-windows",
+          "title": "Rust for Windows, and the windows crate",
+          "content": "Rust for Windows, and the windows crate Summarize this article for me In this article Introducing Rust for Windows In the Overview of developing on Windows with Rust topic, we demonstrated a simple app that outputs a Hello, world! message. ...the latest updates in the Release log of the RustRust for Windows lets you use any Windows API (past,.",
+          "engine": "microsoft learn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-get-started",
+          "normalized_url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-get-started",
+          "title": "Get Started with Azure Functions",
+          "content": "Get started with Azure Functions Summarize this article for me In this article Azure Functions lets you implement your system's logic as event-driven, readily available blocks of code. To use custom handlers to write your function code in Rust, see Create a Rust function in Azure using Visual Studio Code. Get started with Go on Azure Functions:.",
+          "engine": "microsoft learn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://learn.microsoft.com/en-us/windows/dev-environment/rust/overview",
+          "normalized_url": "https://learn.microsoft.com/en-us/windows/dev-environment/rust/overview",
+          "title": "Overview of developing on Windows with Rust",
+          "content": "Overview of developing on Windows with Rust Summarize this article for me In this article Rust is a systems programming language designed for performance, reliability, and memory safety — without a garbage collector. Rust has topped Stack Overflow's annual developer survey as the most-admired language for many years running, and Microsoft is a.",
+          "engine": "microsoft learn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://learn.microsoft.com/en-us/windows/dev-environment/rust/rss-reader-rust-for-windows",
+          "normalized_url": "https://learn.microsoft.com/en-us/windows/dev-environment/rust/rss-reader-rust-for-windows",
+          "title": "RSS reader tutorial (Rust for Windows with VS Code)",
+          "content": "RSS reader tutorial (Rust for Windows with VS Code) Summarize this article for me In this article The previous topic introduced Rust for Windows, and the windows crate. Now let's try out Rust for Windows by writing a simple console app that downloads the titles of blog posts from a Really Simple Syndication (RSS) feed. Launch a command prompt.",
+          "engine": "microsoft learn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://learn.microsoft.com/en-us/azure/developer/rust/developer-environment",
+          "normalized_url": "https://learn.microsoft.com/en-us/azure/developer/rust/developer-environment",
+          "title": "Configure Your Local Rust Environment for Azure Development - Rust on Azure",
+          "content": "Configure your Rust development environment for Azure Summarize this article for me In this article Configure your local Rust development environment for Azure to build cloud applications efficiently on your workstation before deployment. Local development gives you access to a wider variety of tools and a familiar environment for faster.",
+          "engine": "microsoft learn",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

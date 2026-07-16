@@ -1,0 +1,49 @@
+{
+  "engine": "photon",
+  "case": "request",
+  "query": {
+    "query": "berlin cafe",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "de",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "berlin cafe",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "de",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://photon.komoot.io/api/?q=berlin+cafe&limit=10&lang=de",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://photon.komoot.io/",
+    "headers": {},
+    "body": "{\"features\": []}"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

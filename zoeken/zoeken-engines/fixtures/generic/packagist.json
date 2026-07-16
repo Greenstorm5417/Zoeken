@@ -1,0 +1,284 @@
+{
+  "engine": "packagist",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://packagist.org/search.json?q=rust&page=1",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://packagist.org/search.json?q=rust&page=1",
+    "headers": {
+      "date": "Thu, 09 Jul 2026 14:06:11 GMT",
+      "vary": "Accept-Encoding",
+      "cdn-requesttime": "0",
+      "content-security-policy": "default-src 'self'; base-uri 'none'; block-all-mixed-content; connect-src 'self' https://*.algolia.net https://*.algolianet.com; frame-src https://www.google.com/recaptcha/; img-src 'self' https: data:; object-src 'none'; script-src 'unsafe-eval' https://www.gstatic.com/recaptcha/ 'strict-dynamic'; style-src 'self' 'unsafe-inline'",
+      "server": "BunnyCDN-MI1-975",
+      "cdn-requestpullsuccess": "True",
+      "content-type": "application/json",
+      "cdn-cachedat": "07/09/2026 14:06:11",
+      "cdn-edgestorageid": "1210",
+      "cdn-status": "200",
+      "cdn-requestid": "2cefeb8f1280001ead051e1f42dac7e2",
+      "cdn-pullzone": "3535225",
+      "cache-control": "public, s-maxage=300",
+      "cdn-cache": "EXPIRED",
+      "x-xss-protection": "1; mode=block",
+      "cdn-proxyver": "1.58",
+      "x-frame-options": "DENY",
+      "cdn-requestcountrycode": "US",
+      "strict-transport-security": "max-age=31104000",
+      "x-content-type-options": "nosniff",
+      "cdn-requestpullcode": "200",
+      "x-content-security-policy": "default-src 'self'; base-uri 'none'; block-all-mixed-content; connect-src 'self' https://*.algolia.net https://*.algolianet.com; frame-src https://www.google.com/recaptcha/; img-src 'self' https: data:; object-src 'none'; script-src 'unsafe-eval' https://www.gstatic.com/recaptcha/ 'strict-dynamic'; style-src 'self' 'unsafe-inline'",
+      "referrer-policy": "strict-origin-when-cross-origin"
+    },
+    "body": "{\"results\":[{\"name\":\"xpaw\\/php-source-query-class\",\"description\":\"PHP library to query and send RCON commands to servers based on \\u0022Source Engine Query\\u0022 protocol\",\"url\":\"https:\\/\\/packagist.org\\/packages\\/xpaw\\/php-source-query-class\",\"repository\":\"https:\\/\\/github.com\\/xPaw\\/PHP-Source-Query\",\"downloads\":210058,\"favers\":614},{\"name\":\"prewk\\/result\",\"description\":\"Result object for PHP inspired by Rust\",\"url\":\"https:\\/\\/packagist.org\\/packages\\/prewk\\/result\",\"repository\":\"https:\\/\\/github.com\\/prewk\\/result\",\"downloads\":955321,\"favers\":121},{\"name\":\"prewk\\/option\",\"description\":\"Option object for PHP inspired by Rust\",\"url\":\"https:\\/\\/packagist.org\\/packages\\/prewk\\/option\",\"repository\":\"https:\\/\\/github.com\\/prewk\\/option\",\"downloads\":958041,\"favers\":47},{\"name\":\"xberg-io\\/xberg\",\"description\":\"High-performance document intelligence library\",\"url\":\"https:\\/\\/packagist.org\\/packages\\/xberg-io\\/xberg\",\"repository\":\"https:\\/\\/github.com\\/xberg-io\\/xberg\",\"downloads\":12,\"favers\":8602},{\"name\":\"rustici-software\\/scormcloud-api-v2-client-php\",\"description\":\"\",\"url\":\"https:\\/\\/packagist.org\\/packages\\/rustici-software\\/scormcloud-api-v2-client-php\",\"repository\":\"https:\\/\\/github.com\\/RusticiSoftware\\/scormcloud-api-v2-client-php\",\"downloads\":279364,\"favers\":20},{\"name\":\"rusticisoftware\\/tincan\",\"description\":\"Experience API (Tin Can API) Library\",\"url\":\"https:\\/\\/packagist.org\\/packages\\/rusticisoftware\\/tincan\",\"repository\":\"https:\\/\\/github.com\\/RusticiSoftware\\/TinCanPHP\",\"downloads\":846876,\"favers\":88},{\"name\":\"php-standard-library\\/channel\",\"description\":\"Message-passing channels for async communication, inspired by Go and Rust\",\"url\":\"https:\\/\\/packagist.org\\/packages\\/php-standard-library\\/channel\",\"repository\":\"https:\\/\\/github.com\\/php-standard-library\\/channel\",\"downloads\":98768,\"favers\":1},{\"name\":\"ory\\/client\",\"description\":\"# Introduction Documentation for all public and administrative Ory APIs. Administrative APIs can only be accessed with a valid Personal Access Token. Public APIs are mostly used in browsers.  ## SDKs This document describes the APIs available in the Ory Network. The APIs are available as SDKs for the following languages:  | Language       | Download SDK                                                     | Documentation                                                                        | | -------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------ | | Dart           | [pub.dev](https:\\/\\/pub.dev\\/packages\\/ory_client)                   | [README](https:\\/\\/github.com\\/ory\\/sdk\\/blob\\/master\\/clients\\/client\\/dart\\/README.md)       | | .NET           | [nuget.org](https:\\/\\/www.nuget.org\\/packages\\/Ory.Client\\/)          | [README](https:\\/\\/github.com\\/ory\\/sdk\\/blob\\/master\\/clients\\/client\\/dotnet\\/README.md)     | | Elixir         | [hex.pm](https:\\/\\/hex.pm\\/packages\\/ory_client)                     | [README](https:\\/\\/github.com\\/ory\\/sdk\\/blob\\/master\\/clients\\/client\\/elixir\\/README.md)     | | Go             | [github.com](https:\\/\\/github.com\\/ory\\/client-go)                   | [README](https:\\/\\/github.com\\/ory\\/sdk\\/blob\\/master\\/clients\\/client\\/go\\/README.md)         | | Java           | [maven.org](https:\\/\\/search.maven.org\\/artifact\\/sh.ory\\/ory-client) | [README](https:\\/\\/github.com\\/ory\\/sdk\\/blob\\/master\\/clients\\/client\\/java\\/README.md)       | | JavaScript     | [npmjs.com](https:\\/\\/www.npmjs.com\\/package\\/@ory\\/client)           | [README](https:\\/\\/github.com\\/ory\\/sdk\\/blob\\/master\\/clients\\/client\\/typescript\\/README.md) | | JavaScript (With fetch) | [npmjs.com](https:\\/\\/www.npmjs.com\\/package\\/@ory\\/client-fetch)           | [README](https:\\/\\/github.com\\/ory\\/sdk\\/blob\\/master\\/clients\\/client\\/typescript-fetch\\/README.md) |  | PHP            | [packagist.org](https:\\/\\/packagist.org\\/packages\\/ory\\/client)       | [README](https:\\/\\/github.com\\/ory\\/sdk\\/blob\\/master\\/clients\\/client\\/php\\/README.md)        | | Python         | [pypi.org](https:\\/\\/pypi.org\\/project\\/ory-client\\/)                 | [README](https:\\/\\/github.com\\/ory\\/sdk\\/blob\\/master\\/clients\\/client\\/python\\/README.md)     | | Ruby           | [rubygems.org](https:\\/\\/rubygems.org\\/gems\\/ory-client)             | [README](https:\\/\\/github.com\\/ory\\/sdk\\/blob\\/master\\/clients\\/client\\/ruby\\/README.md)       | | Rust           | [crates.io](https:\\/\\/crates.io\\/crates\\/ory-client)                 | [README](https:\\/\\/github.com\\/ory\\/sdk\\/blob\\/master\\/clients\\/client\\/rust\\/README.md)       |\",\"url\":\"https:\\/\\/packagist.org\\/packages\\/ory\\/client\",\"repository\":\"https:\\/\\/github.com\\/ory\\/client-php\",\"downloads\":117474,\"favers\":7},{\"name\":\"oxide\\/pdf-oxide\",\"description\":\"PDF processing toolkit (Rust-backed, FFI-bound) for PHP\",\"url\":\"https:\\/\\/packagist.org\\/packages\\/oxide\\/pdf-oxide\",\"repository\":\"https:\\/\\/github.com\\/yfedoseev\\/pdf_oxide\",\"downloads\":15,\"favers\":883},{\"name\":\"phpmlkit\\/ndarray\",\"description\":\"High-performance N-dimensional arrays for PHP, powered by Rust\",\"url\":\"https:\\/\\/packagist.org\\/packages\\/phpmlkit\\/ndarray\",\"repository\":\"https:\\/\\/github.com\\/phpmlkit\\/ndarray\",\"downloads\":1055,\"favers\":50},{\"name\":\"nikita2206\\/result\",\"description\":\"Result data type (just like in Rust)\",\"url\":\"https:\\/\\/packagist.org\\/packages\\/nikita2206\\/result\",\"repository\":\"https:\\/\\/github.com\\/nikita2206\\/result\",\"downloads\":131711,\"favers\":2},{\"name\":\"lord\\/option\",\"description\":\"Rust-esque Option for PHP\",\"url\":\"https:\\/\\/packagist.org\\/packages\\/lord\\/option\",\"repository\":\"https:\\/\\/github.com\\/aaronlord\\/option\",\"downloads\":112908,\"favers\":0},{\"name\":\"ferdiunal\\/php-firepdf\",\"description\":\"PHP FFI wrapper for the Rust pdf-inspector library.\",\"url\":\"https:\\/\\/packagist.org\\/packages\\/ferdiunal\\/php-firepdf\",\"repository\":\"https:\\/\\/github.com\\/ferdiunal\\/php-firepdf\",\"downloads\":910,\"favers\":5},{\"name\":\"bsn4\\/grpc\",\"description\":\"Rust-based gRPC extension for PHP \\u2014 drop-in replacement for ext-grpc\",\"url\":\"https:\\/\\/packagist.org\\/packages\\/bsn4\\/grpc\",\"repository\":\"https:\\/\\/github.com\\/BSN4\\/grpc-php-rs\",\"downloads\":853,\"favers\":30},{\"name\":\"kphoen\\/rusty\",\"description\":\"Documentation as tests \\u0022\\u00e0 la\\u0022 Rust for PHP\",\"url\":\"https:\\/\\/packagist.org\\/packages\\/kphoen\\/rusty\",\"repository\":\"https:\\/\\/github.com\\/K-Phoen\\/Rusty\",\"downloads\":3962,\"favers\":48}],\"total\":22480,\"next\":\"https:\\/\\/packagist.org\\/search.json?q=rust\\u0026page=2\"}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://packagist.org/packages/xpaw/php-source-query-class",
+          "normalized_url": "https://packagist.org/packages/xpaw/php-source-query-class",
+          "title": "xpaw/php-source-query-class",
+          "content": "PHP library to query and send RCON commands to servers based on \"Source Engine Query\" protocol",
+          "engine": "packagist",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://packagist.org/packages/prewk/result",
+          "normalized_url": "https://packagist.org/packages/prewk/result",
+          "title": "prewk/result",
+          "content": "Result object for PHP inspired by Rust",
+          "engine": "packagist",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://packagist.org/packages/prewk/option",
+          "normalized_url": "https://packagist.org/packages/prewk/option",
+          "title": "prewk/option",
+          "content": "Option object for PHP inspired by Rust",
+          "engine": "packagist",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://packagist.org/packages/xberg-io/xberg",
+          "normalized_url": "https://packagist.org/packages/xberg-io/xberg",
+          "title": "xberg-io/xberg",
+          "content": "High-performance document intelligence library",
+          "engine": "packagist",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://packagist.org/packages/rustici-software/scormcloud-api-v2-client-php",
+          "normalized_url": "https://packagist.org/packages/rustici-software/scormcloud-api-v2-client-php",
+          "title": "rustici-software/scormcloud-api-v2-client-php",
+          "content": "",
+          "engine": "packagist",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://packagist.org/packages/rusticisoftware/tincan",
+          "normalized_url": "https://packagist.org/packages/rusticisoftware/tincan",
+          "title": "rusticisoftware/tincan",
+          "content": "Experience API (Tin Can API) Library",
+          "engine": "packagist",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://packagist.org/packages/php-standard-library/channel",
+          "normalized_url": "https://packagist.org/packages/php-standard-library/channel",
+          "title": "php-standard-library/channel",
+          "content": "Message-passing channels for async communication, inspired by Go and Rust",
+          "engine": "packagist",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://packagist.org/packages/ory/client",
+          "normalized_url": "https://packagist.org/packages/ory/client",
+          "title": "ory/client",
+          "content": "# Introduction Documentation for all public and administrative Ory APIs. Administrative APIs can only be accessed with a valid Personal Access Token. Public APIs are mostly used in browsers. ## SDKs This document describes the APIs available in the Ory Network. The APIs are available as SDKs for the following languages: | Language | Download SDK | Documentation | | -------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------ | | Dart | [pub.dev](https://pub.dev/packages/ory_client) | [README](https://github.com/ory/sdk/blob/master/clients/client/dart/README.md) | | .NET | [nuget.org](https://www.nuget.org/packages/Ory.Client/) | [README](https://github.com/ory/sdk/blob/master/clients/client/dotnet/README.md) | | Elixir | [hex.pm](https://hex.pm/packages/ory_client) | [README](https://github.com/ory/sdk/blob/master/clients/client/elixir/README.md) | | Go | [github.com](https://github.com/ory/client-go) | [README](https://github.com/ory/sdk/blob/master/clients/client/go/README.md) | | Java | [maven.org](https://search.maven.org/artifact/sh.ory/ory-client) | [README](https://github.com/ory/sdk/blob/master/clients/client/java/README.md) | | JavaScript | [npmjs.com](https://www.npmjs.com/package/@ory/client) | [README](https://github.com/ory/sdk/blob/master/clients/client/typescript/README.md) | | JavaScript (With fetch) | [npmjs.com](https://www.npmjs.com/package/@ory/client-fetch) | [README](https://github.com/ory/sdk/blob/master/clients/client/typescript-fetch/README.md) | | PHP | [packagist.org](https://packagist.org/packages/ory/client) | [README](https://github.com/ory/sdk/blob/master/clients/client/php/README.md) | | Python | [pypi.org](https://pypi.org/project/ory-client/) | [README](https://github.com/ory/sdk/blob/master/clients/client/python/README.md) | | Ruby | [rubygems.org](https://rubygems.org/gems/ory-client) | [README](https://github.com/ory/sdk/blob/master/clients/client/ruby/README.md) | | Rust | [crates.io](https://crates.io/crates/ory-client) | [README](https://github.com/ory/sdk/blob/master/clients/client/rust/README.md) |",
+          "engine": "packagist",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://packagist.org/packages/oxide/pdf-oxide",
+          "normalized_url": "https://packagist.org/packages/oxide/pdf-oxide",
+          "title": "oxide/pdf-oxide",
+          "content": "PDF processing toolkit (Rust-backed, FFI-bound) for PHP",
+          "engine": "packagist",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://packagist.org/packages/phpmlkit/ndarray",
+          "normalized_url": "https://packagist.org/packages/phpmlkit/ndarray",
+          "title": "phpmlkit/ndarray",
+          "content": "High-performance N-dimensional arrays for PHP, powered by Rust",
+          "engine": "packagist",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://packagist.org/packages/nikita2206/result",
+          "normalized_url": "https://packagist.org/packages/nikita2206/result",
+          "title": "nikita2206/result",
+          "content": "Result data type (just like in Rust)",
+          "engine": "packagist",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://packagist.org/packages/lord/option",
+          "normalized_url": "https://packagist.org/packages/lord/option",
+          "title": "lord/option",
+          "content": "Rust-esque Option for PHP",
+          "engine": "packagist",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://packagist.org/packages/ferdiunal/php-firepdf",
+          "normalized_url": "https://packagist.org/packages/ferdiunal/php-firepdf",
+          "title": "ferdiunal/php-firepdf",
+          "content": "PHP FFI wrapper for the Rust pdf-inspector library.",
+          "engine": "packagist",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://packagist.org/packages/bsn4/grpc",
+          "normalized_url": "https://packagist.org/packages/bsn4/grpc",
+          "title": "bsn4/grpc",
+          "content": "Rust-based gRPC extension for PHP — drop-in replacement for ext-grpc",
+          "engine": "packagist",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://packagist.org/packages/kphoen/rusty",
+          "normalized_url": "https://packagist.org/packages/kphoen/rusty",
+          "title": "kphoen/rusty",
+          "content": "Documentation as tests \"à la\" Rust for PHP",
+          "engine": "packagist",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

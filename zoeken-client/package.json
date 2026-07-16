@@ -1,0 +1,60 @@
+{
+  "name": "zoeken-client",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Zoeken web UI (React SPA)",
+  "author": "Greenstorm <sdussinger1007@gmail.com>",
+  "license": "AGPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Greenstorm5417/zoeken.git",
+    "directory": "zoeken-client"
+  },
+  "homepage": "https://github.com/Greenstorm5417/zoeken#readme",
+  "bugs": {
+    "url": "https://github.com/Greenstorm5417/zoeken/issues"
+  },
+  "type": "module",
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "scripts": {
+    "dev": "vite dev --port 3000",
+    "generate-routes": "tsr generate",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "format": "biome format",
+    "lint": "biome lint",
+    "check": "biome check"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.90.2",
+    "@tanstack/react-router": "^1.132.0",
+    "lucide-react": "^0.545.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.5",
+    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/vite": "^4.1.18",
+    "@tanstack/react-devtools": "^0.7.0",
+    "@tanstack/react-query-devtools": "^5.90.2",
+    "@tanstack/react-router-devtools": "^1.132.0",
+    "@tanstack/router-cli": "^1.132.0",
+    "@tanstack/router-plugin": "^1.132.0",
+    "@tanstack/devtools-vite": "^0.3.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.4",
+    "jsdom": "^28.1.0",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.7",
+    "vitest": "^3.2.4"
+  }
+}

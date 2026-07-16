@@ -1,0 +1,38 @@
+[Unit]
+Description=Zoeken metasearch engine
+Documentation=https://github.com/Greenstorm5417/zoeken
+# Author: Greenstorm <sdussinger1007@gmail.com>
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=zoeken
+Group=zoeken
+EnvironmentFile=-/etc/default/zoeken
+Environment=APP_ASSETS_DIR=/usr/share/zoeken/assets
+Environment=APP_SETTINGS_PATH=/etc/zoeken/settings.yml
+Environment=APP_DATA_DIR=/var/lib/zoeken
+ExecStart=/usr/bin/zoeken-server
+Restart=on-failure
+RestartSec=5
+
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+RestrictRealtime=true
+ReadWritePaths=/var/lib/zoeken
+CapabilityBoundingSet=
+AmbientCapabilities=
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target

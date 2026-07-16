@@ -1,0 +1,151 @@
+{
+  "assets": [
+    {
+      "asset": "bangs",
+      "notes": "bundled in zoeken/zoeken-data/data",
+      "rust_files": [
+        "external_bangs.json"
+      ],
+      "status": "present",
+      "upstream_candidates": [
+        "external_bangs.json"
+      ]
+    },
+    {
+      "asset": "currencies",
+      "notes": "bundled in zoeken/zoeken-data/data",
+      "rust_files": [
+        "currencies.json"
+      ],
+      "status": "present",
+      "upstream_candidates": [
+        "currencies.json"
+      ]
+    },
+    {
+      "asset": "units",
+      "notes": "bundled in zoeken/zoeken-data/data",
+      "rust_files": [
+        "wikidata_units.json"
+      ],
+      "status": "present",
+      "upstream_candidates": [
+        "wikidata_units.json"
+      ]
+    },
+    {
+      "asset": "engine traits",
+      "notes": "bundled in zoeken/zoeken-data/data",
+      "rust_files": [
+        "engine_traits.json"
+      ],
+      "status": "present",
+      "upstream_candidates": [
+        "engine_traits.json"
+      ]
+    },
+    {
+      "asset": "locales",
+      "notes": "bundled in zoeken/zoeken-data/data",
+      "rust_files": [
+        "locales.json"
+      ],
+      "status": "present",
+      "upstream_candidates": [
+        "locales.json"
+      ]
+    },
+    {
+      "asset": "user agents",
+      "notes": "bundled in zoeken/zoeken-data/data",
+      "rust_files": [
+        "gsa_useragents.txt",
+        "useragents.json"
+      ],
+      "status": "present",
+      "upstream_candidates": [
+        "useragents.json",
+        "gsa_useragents.txt"
+      ]
+    },
+    {
+      "asset": "tracker patterns",
+      "notes": "bundled in zoeken/zoeken-data/data",
+      "rust_files": [
+        "tracker_patterns.json"
+      ],
+      "status": "present",
+      "upstream_candidates": [
+        "data/tracker_patterns.json",
+        "tracker_patterns.json"
+      ]
+    },
+    {
+      "asset": "Ahmia blacklist",
+      "notes": "bundled in zoeken/zoeken-data/data",
+      "rust_files": [
+        "ahmia_blacklist.txt"
+      ],
+      "status": "present",
+      "upstream_candidates": [
+        "data/ahmia_blacklist.txt",
+        "ahmia_blacklist.txt",
+        "data/ahmia_blacklist.json",
+        "ahmia_blacklist.json"
+      ]
+    },
+    {
+      "asset": "DOI resolvers",
+      "notes": "not bundled yet",
+      "rust_files": [],
+      "status": "missing",
+      "upstream_candidates": [
+        "settings.yml"
+      ]
+    },
+    {
+      "asset": "engine descriptions",
+      "notes": "not bundled yet",
+      "rust_files": [],
+      "status": "unknown-upstream",
+      "upstream_candidates": [
+        "data/engines_languages.json",
+        "engines_languages.json"
+      ]
+    },
+    {
+      "asset": "autocomplete metadata",
+      "notes": "not bundled yet",
+      "rust_files": [],
+      "status": "missing",
+      "upstream_candidates": [
+        "autocomplete.py"
+      ]
+    },
+    {
+      "asset": "limiter config",
+      "notes": "not loaded by DataBundle yet",
+      "rust_files": [],
+      "status": "missing",
+      "upstream_candidates": [
+        "limiter.toml",
+        "botdetection"
+      ]
+    },
+    {
+      "asset": "info pages",
+      "notes": "not loaded by DataBundle yet",
+      "rust_files": [],
+      "status": "missing",
+      "upstream_candidates": [
+        "infopage",
+        "info"
+      ]
+    }
+  ],
+  "summary": {
+    "missing": 4,
+    "present": 8,
+    "tracked_assets": 13
+  }
+}

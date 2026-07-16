@@ -1,0 +1,27 @@
+{
+  "engine": "senscritique",
+  "case": "empty",
+  "query": {
+    "query": "nothing",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://apollo.senscritique.com/",
+    "headers": {},
+    "body": "{\"data\": {\"searchProductExplorer\": {\"items\": []}}}"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

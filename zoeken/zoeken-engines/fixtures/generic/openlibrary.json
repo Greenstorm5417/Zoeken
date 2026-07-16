@@ -1,0 +1,196 @@
+{
+  "engine": "openlibrary",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://openlibrary.org/search.json?q=rust&page=1&limit=10",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://openlibrary.org/search.json?q=rust&page=1&limit=10",
+    "headers": {
+      "referrer-policy": "no-referrer-when-downgrade",
+      "server": "nginx/1.30.3",
+      "content-type": "application/json",
+      "date": "Thu, 09 Jul 2026 14:06:09 GMT",
+      "x-served-by": "FastAPI"
+    },
+    "body": "{\"numFound\":4990,\"start\":0,\"numFoundExact\":true,\"num_found\":4990,\"documentation_url\":\"https://openlibrary.org/dev/docs/api/search\",\"q\":\"rust\",\"offset\":null,\"docs\":[{\"author_key\":[\"OL7467124A\",\"OL7467125A\",\"OL1438683A\"],\"author_name\":[\"Steve Klabnik\",\"Carol Nichols\",\"Carol Nichols\"],\"cover_edition_key\":\"OL26740375M\",\"cover_i\":8508621,\"ebook_access\":\"no_ebook\",\"edition_count\":4,\"first_publish_year\":2018,\"has_fulltext\":false,\"key\":\"/works/OL19080231W\",\"language\":[\"eng\"],\"public_scan_b\":false,\"title\":\"The Rust Programming Language\"},{\"author_key\":[\"OL3110634A\"],\"author_name\":[\"C. Robert Cargill\"],\"cover_edition_key\":\"OL32238700M\",\"cover_i\":10871926,\"ebook_access\":\"printdisabled\",\"edition_count\":5,\"first_publish_year\":2017,\"has_fulltext\":true,\"ia\":[\"seaofrust0000carg_y5z8\"],\"ia_collection\":[\"internetarchivebooks\",\"printdisabled\"],\"key\":\"/works/OL21622637W\",\"language\":[\"eng\"],\"public_scan_b\":false,\"title\":\"Sea of Rust\"},{\"author_key\":[\"OL161160A\"],\"author_name\":[\"Edgar Wallace\"],\"cover_edition_key\":\"OL7025672M\",\"cover_i\":5889505,\"ebook_access\":\"public\",\"edition_count\":110,\"first_publish_year\":1910,\"has_fulltext\":true,\"ia\":[\"greenrust00walliala\",\"greenrust0000wall\"],\"ia_collection\":[\"americana\",\"cdl\",\"inlibrary\",\"internetarchivebooks\",\"printdisabled\"],\"key\":\"/works/OL1518056W\",\"language\":[\"eng\",\"ger\"],\"lending_edition_s\":\"OL7025672M\",\"lending_identifier_s\":\"greenrust00walliala\",\"public_scan_b\":true,\"title\":\"The Green Rust\"},{\"author_key\":[\"OL5148595A\"],\"author_name\":[\"Philipp Meyer\"],\"cover_edition_key\":\"OL16886598M\",\"cover_i\":6995983,\"ebook_access\":\"printdisabled\",\"edition_count\":4,\"first_publish_year\":2008,\"has_fulltext\":true,\"ia\":[\"americanrust00meye\",\"americanrust0000meye_o9v3\"],\"ia_collection\":[\"americana\",\"delawarecountydistrictlibrary\",\"internetarchivebooks\",\"printdisabled\"],\"key\":\"/works/OL11962691W\",\"language\":[\"eng\"],\"public_scan_b\":false,\"subtitle\":\"A Novel (Random House Reader's Circle)\",\"title\":\"American rust\"},{\"author_key\":[\"OL22258A\",\"OL7300714A\"],\"author_name\":[\"James Patterson\",\"Ned Rust\"],\"cover_i\":5742985,\"ebook_access\":\"printdisabled\",\"edition_count\":19,\"first_publish_year\":1978,\"has_fulltext\":true,\"ia\":[\"watchskies0000unse\",\"danielxmissionep0000patt\",\"watchskies0000patt_b0x9\",\"watchskies0000patt\",\"isbn_9780316043632\",\"danielxwatchskie0000unse\",\"watchskies0000patt_v6t6\",\"danielxwatchskie00patt\"],\"ia_collection\":[\"americana\",\"delawarecountydistrictlibrary\",\"internetarchivebooks\",\"printdisabled\"],\"key\":\"/works/OL14920133W\",\"language\":[\"ita\",\"eng\"],\"public_scan_b\":false,\"title\":\"Watch the skies\"},{\"author_key\":[\"OL7495862A\",\"OL7495863A\",\"OL9744285A\"],\"author_name\":[\"Jim Blandy\",\"Jason Orendorff\",\"Leonora F. s. Tindall\"],\"cover_edition_key\":\"OL59869969M\",\"cover_i\":15114618,\"ebook_access\":\"no_ebook\",\"edition_count\":5,\"first_publish_year\":2021,\"has_fulltext\":false,\"key\":\"/works/OL25768828W\",\"language\":[\"eng\"],\"public_scan_b\":false,\"title\":\"Programming Rust\"},{\"author_key\":[\"OL7366833A\"],\"author_name\":[\"Ottessa Moshfegh\"],\"cover_i\":8202400,\"ebook_access\":\"no_ebook\",\"edition_count\":17,\"first_publish_year\":2018,\"has_fulltext\":false,\"key\":\"/works/OL17889978W\",\"language\":[\"por\",\"ita\",\"spa\",\"eng\"],\"public_scan_b\":false,\"title\":\"My Year of Rest and Relaxation\"},{\"author_key\":[\"OL6793999A\"],\"author_name\":[\"Abimbola Adunni Adelakun\"],\"ebook_access\":\"no_ebook\",\"edition_count\":2,\"first_publish_year\":2008,\"has_fulltext\":false,\"key\":\"/works/OL18752000W\",\"language\":[\"eng\"],\"public_scan_b\":false,\"title\":\"Under the brown rusted roofs\"},{\"author_key\":[\"OL22258A\",\"OL34596A\",\"OL7300714A\"],\"author_name\":[\"James Patterson\",\"Gabrielle Charbonnet\",\"Ned Rust\"],\"cover_i\":7570991,\"ebook_access\":\"printdisabled\",\"edition_count\":24,\"first_publish_year\":1998,\"has_fulltext\":true,\"ia\":[\"gift0000patt\",\"gift0000patt_w6b2\",\"gift0000patt_c3s1\",\"gift0000patt_o1k2\",\"gift00patt\"],\"ia_collection\":[\"americana\",\"cnusd-ol\",\"delawarecountydistrictlibrary\",\"delawarecountydistrictlibrary-ol\",\"denverpubliclibrary-ol\",\"goffstownlibrary-ol\",\"internetarchivebooks\",\"library_of_atlantis\",\"miltonpubliclibrary-ol\",\"openlibrary-d-ol\",\"printdisabled\",\"spokanepubliclibrary-ol\",\"stmaryscountylibrary\",\"worthingtonlibraries-ol\"],\"key\":\"/works/OL15505454W\",\"language\":[\"eng\"],\"public_scan_b\":false,\"title\":\"The Gift\"},{\"author_key\":[\"OL9579873A\"],\"author_name\":[\"Jon Gjengset\"],\"cover_edition_key\":\"OL33934308M\",\"cover_i\":13168046,\"ebook_access\":\"no_ebook\",\"edition_count\":1,\"first_publish_year\":2021,\"has_fulltext\":false,\"key\":\"/works/OL25331893W\",\"language\":[\"eng\"],\"public_scan_b\":false,\"title\":\"Rust for Rustaceans\"}]}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://openlibrary.org/works/OL19080231W",
+          "normalized_url": "https://openlibrary.org/works/OL19080231W",
+          "title": "The Rust Programming Language",
+          "content": "",
+          "engine": "openlibrary",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openlibrary.org/works/OL21622637W",
+          "normalized_url": "https://openlibrary.org/works/OL21622637W",
+          "title": "Sea of Rust",
+          "content": "",
+          "engine": "openlibrary",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openlibrary.org/works/OL1518056W",
+          "normalized_url": "https://openlibrary.org/works/OL1518056W",
+          "title": "The Green Rust",
+          "content": "",
+          "engine": "openlibrary",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openlibrary.org/works/OL11962691W",
+          "normalized_url": "https://openlibrary.org/works/OL11962691W",
+          "title": "American rust",
+          "content": "",
+          "engine": "openlibrary",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openlibrary.org/works/OL14920133W",
+          "normalized_url": "https://openlibrary.org/works/OL14920133W",
+          "title": "Watch the skies",
+          "content": "",
+          "engine": "openlibrary",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openlibrary.org/works/OL25768828W",
+          "normalized_url": "https://openlibrary.org/works/OL25768828W",
+          "title": "Programming Rust",
+          "content": "",
+          "engine": "openlibrary",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openlibrary.org/works/OL17889978W",
+          "normalized_url": "https://openlibrary.org/works/OL17889978W",
+          "title": "My Year of Rest and Relaxation",
+          "content": "",
+          "engine": "openlibrary",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openlibrary.org/works/OL18752000W",
+          "normalized_url": "https://openlibrary.org/works/OL18752000W",
+          "title": "Under the brown rusted roofs",
+          "content": "",
+          "engine": "openlibrary",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openlibrary.org/works/OL15505454W",
+          "normalized_url": "https://openlibrary.org/works/OL15505454W",
+          "title": "The Gift",
+          "content": "",
+          "engine": "openlibrary",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openlibrary.org/works/OL25331893W",
+          "normalized_url": "https://openlibrary.org/works/OL25331893W",
+          "title": "Rust for Rustaceans",
+          "content": "",
+          "engine": "openlibrary",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

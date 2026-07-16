@@ -1,0 +1,61 @@
+{
+  "engine": "core.ac.uk",
+  "case": "basic",
+  "query": {
+    "query": "open access",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://api.core.ac.uk/v3/search/works/",
+    "headers": {},
+    "body": "{\n      \"results\": [\n        {\n          \"title\": \"Open Access Repositories\",\n          \"id\": \"12345\",\n          \"doi\": \"10.1000/xyz123\",\n          \"fullText\": \"This paper discusses open access.\",\n          \"fieldOfStudy\": [\"Library Science\"],\n          \"publishedDate\": \"2020-01-15T00:00:00Z\",\n          \"documentType\": \"research\",\n          \"authors\": [{\"name\": \"Jane Doe\"}],\n          \"publisher\": \"'CORE'\",\n          \"journals\": [{\"title\": \"Journal of OA\"}]\n        }\n      ]\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Paper": {
+          "url": "https://doi.org/10.1000/xyz123",
+          "normalized_url": "https://doi.org/10.1000/xyz123",
+          "title": "Open Access Repositories",
+          "content": "This paper discusses open access.",
+          "engine": "core.ac.uk",
+          "authors": [
+            "Jane Doe"
+          ],
+          "doi": "10.1000/xyz123",
+          "journal": "Journal of OA",
+          "published_date": "2020-01-15T00:00:00Z",
+          "publisher": "CORE",
+          "editor": "",
+          "volume": "",
+          "pages": "",
+          "number": "",
+          "type": "research",
+          "tags": [
+            "Library Science"
+          ],
+          "issn": [],
+          "isbn": [],
+          "pdf_url": "",
+          "html_url": "",
+          "comments": "",
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "engine": "senscritique",
+  "case": "basic",
+  "query": {
+    "query": "blade runner",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://apollo.senscritique.com/",
+    "headers": {},
+    "body": "{\n      \"data\": {\n        \"searchProductExplorer\": {\n          \"items\": [\n            {\n              \"category\": \"Film\",\n              \"duration\": 7200,\n              \"id\": 1,\n              \"originalTitle\": \"Blade Runner\",\n              \"rating\": 8.1,\n              \"title\": \"Blade Runner\",\n              \"url\": \"/film/blade_runner/1\",\n              \"yearOfProduction\": 1982,\n              \"medias\": {\"picture\": \"https://example.com/br.jpg\"},\n              \"countries\": [{\"name\": \"USA\"}],\n              \"genresInfos\": [{\"label\": \"Science-fiction\"}],\n              \"directors\": [{\"name\": \"Ridley Scott\"}],\n              \"stats\": {\"ratingCount\": 1000}\n            }\n          ]\n        }\n      }\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://www.senscritique.com/film/blade_runner/1",
+          "normalized_url": "https://www.senscritique.com/film/blade_runner/1",
+          "title": "Blade Runner (1982)",
+          "content": "Film | Director(s): Ridley Scott | Country: USA | Genre(s): Science-fiction | Duration: 120 min | Rating: 8.1/10 (1000 votes)",
+          "engine": "senscritique",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

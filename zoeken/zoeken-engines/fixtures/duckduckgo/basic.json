@@ -1,0 +1,56 @@
+{
+  "engine": "duckduckgo",
+  "case": "basic",
+  "query": {
+    "query": "rust programming",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://html.duckduckgo.com/html/",
+    "headers": {},
+    "body": "<!DOCTYPE html>\n<html><body>\n<form action=\"/html/\" method=\"post\"><input type=\"hidden\" name=\"vqd\" value=\"4-123456789\"></form>\n<div id=\"links\" class=\"results\">\n  <div class=\"result results_links results_links_deep web-result\">\n    <div class=\"links_main links_deep result__body\">\n      <h2 class=\"result__title\"><a rel=\"nofollow\" class=\"result__a\" href=\"https://www.rust-lang.org/\">Rust Programming Language</a></h2>\n      <a class=\"result__snippet\" href=\"https://www.rust-lang.org/\">A language empowering everyone to build reliable and efficient software.</a>\n    </div>\n  </div>\n  <div class=\"result results_links results_links_deep web-result\">\n    <div class=\"links_main links_deep result__body\">\n      <h2 class=\"result__title\"><a rel=\"nofollow\" class=\"result__a\" href=\"https://doc.rust-lang.org/book/\">The Rust Programming Language - The Book</a></h2>\n      <a class=\"result__snippet\" href=\"https://doc.rust-lang.org/book/\">This book teaches you the concepts of the Rust programming language.</a>\n    </div>\n  </div>\n  <div class=\"result result--ad result--ad--small\">\n    <div class=\"links_main\"><h2 class=\"result__title\"><a class=\"result__a\" href=\"https://ad.example.com/\">Sponsored result</a></h2>\n    <a class=\"result__snippet\">An advertisement that must be ignored.</a></div>\n  </div>\n</div>\n</body></html>"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://www.rust-lang.org/",
+          "normalized_url": "https://www.rust-lang.org/",
+          "title": "Rust Programming Language",
+          "content": "A language empowering everyone to build reliable and efficient software.",
+          "engine": "duckduckgo",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://doc.rust-lang.org/book/",
+          "normalized_url": "https://doc.rust-lang.org/book/",
+          "title": "The Rust Programming Language - The Book",
+          "content": "This book teaches you the concepts of the Rust programming language.",
+          "engine": "duckduckgo",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

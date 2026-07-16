@@ -1,0 +1,61 @@
+{
+  "engine": "crossref",
+  "case": "basic",
+  "query": {
+    "query": "deep learning",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://api.crossref.org/works",
+    "headers": {},
+    "body": "{\n      \"message\": {\n        \"items\": [\n          {\n            \"type\": \"journal-article\",\n            \"title\": [\"Deep Learning\"],\n            \"container-title\": [\"Nature\"],\n            \"abstract\": \"A review of deep learning.\",\n            \"DOI\": \"10.1038/nature14539\",\n            \"publisher\": \"Springer\",\n            \"subject\": [\"Computer Science\"],\n            \"URL\": \"https://doi.org/10.1038/nature14539\",\n            \"volume\": \"521\",\n            \"page\": \"436-444\",\n            \"published\": {\"date-parts\": [[2015, 5, 27]]},\n            \"author\": [{\"given\": \"Yann\", \"family\": \"LeCun\"}]\n          }\n        ]\n      }\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Paper": {
+          "url": "https://doi.org/10.1038/nature14539",
+          "normalized_url": "https://doi.org/10.1038/nature14539",
+          "title": "Deep Learning",
+          "content": "A review of deep learning.",
+          "engine": "crossref",
+          "authors": [
+            "Yann LeCun"
+          ],
+          "doi": "10.1038/nature14539",
+          "journal": "",
+          "published_date": "2015-05-27",
+          "publisher": "Springer",
+          "editor": "",
+          "volume": "521",
+          "pages": "436-444",
+          "number": "",
+          "type": "journal-article",
+          "tags": [
+            "Computer Science"
+          ],
+          "issn": [],
+          "isbn": [],
+          "pdf_url": "",
+          "html_url": "",
+          "comments": "",
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

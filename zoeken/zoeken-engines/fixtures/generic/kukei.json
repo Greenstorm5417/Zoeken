@@ -1,0 +1,150 @@
+{
+  "engine": "kukei",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://kukei.eu/?q=rust",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://kukei.eu/?q=rust",
+    "headers": {
+      "cdn-requestpullcode": "200",
+      "origin-agent-cluster": "?1",
+      "cdn-requestcountrycode": "US",
+      "cdn-requestpullsuccess": "True",
+      "content-type": "text/html; charset=utf-8",
+      "cdn-cachedat": "07/09/2026 13:23:58",
+      "x-dns-prefetch-control": "off",
+      "cdn-requestid": "40715056f59cf28d629146a943a67979",
+      "cross-origin-opener-policy": "same-origin",
+      "cdn-status": "200",
+      "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+      "cache-control": "public, max-age=3600, must-revalidate, proxy-revalidate",
+      "server": "BunnyCDN-MI1-1357",
+      "etag": "W/\"1b50-V7TH1rI8WJCfjoqtrW0DdzQ3wRM\"",
+      "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+      "cdn-requesttime": "0",
+      "x-permitted-cross-domain-policies": "none",
+      "cross-origin-resource-policy": "same-origin",
+      "x-xss-protection": "0",
+      "x-content-type-options": "nosniff",
+      "x-frame-options": "SAMEORIGIN",
+      "vary": "Accept-Encoding",
+      "referrer-policy": "no-referrer",
+      "cdn-cache": "HIT",
+      "cdn-pullzone": "5324753",
+      "x-download-options": "noopen",
+      "cdn-edgestorageid": "1353",
+      "cdn-proxyver": "1.58",
+      "date": "Thu, 09 Jul 2026 14:05:50 GMT"
+    },
+    "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<title>kukei.eu </title>\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t<link rel=\"stylesheet\" href=\"/static/variables.css?v=4ce6413f\" />\n\t<link rel=\"stylesheet\" href=\"/static/layout.css?v=4ce6413f\" />\n\t<script type=\"module\" src=\"/static/modules.js?v=4ce6413f\"></script>\n\t<link rel=\"icon\" href=\"/static/favicon.svg\" type=\"image/svg+xml\" sizes=\"any\" />\n\t<link rel=\"icon\" href=\"/static/favicon.png\" type=\"image/png\" sizes=\"600x600\" />\n\t<link rel=\"icon\" href=\"/static/favicon-32x32.png\" type=\"image/png\" sizes=\"32x32\" />\n\t<link\n\t\trel=\"search\"\n\t\ttype=\"application/opensearchdescription+xml\"\n\t\ttitle=\"Kukei.eu - search\"\n\t\thref=\"/opensearch.xml\"\n\t/>\n\t<meta name=\"fediverse:creator\" content=\"kukei@social.josko.org\" />\n</head>\n<body class=\"body body--has-query\">\n<main>\n\t<form action=\"/\" class=\"search-form\">\n\t\t<div class=\"headline\">\n\t\t\t<h1>\n\t\t\t\t<a href=\"/\">Kukei.eu</a>\n\t\t\t\t<br >\n\t\t\t\t<span> curated search for small web</span></h1>\n\t\t</div>\n\t\t<div class=\"form-main\">\n\t\t\t<input type=\"search\" name=\"q\" value=\"rust\" aria-label=\"Search\" placeholder=\"e.g.: snowflakes lang:en\" autofocus spellcheck=\"false\" />\n\t\t\t<button type=\"submit\" aria-label=\"Search\">\n\t\t\t\t<span class=\"desktop-only\">Search</span>\n\t\t\t\t<span class=\"mobile-only\">>></span>\n\t\t\t</button>\n\t\t</div>\n\t\t<div class=\"results\">\n\t\t\t<h2>Results</h2>\n\t\t\t<section>\n\t\t\t\t<ul>\n\t\t\t\t\t<li class=\"result-item-first-level\">\n\t\t\t\t\t\t<div class=\"result-item-first-level__data\">\n\t\t\t\t\t\t\t<h3>Rust</h3>\n\t\t\t\t\t\t\t<p>Rust</p>\n\t\t\t\t\t\t\t<a href=\"https:&#x2F;&#x2F;jvns.ca&#x2F;categories&#x2F;rust\" target=\"_blank\" rel=\"noopener\">https:&#x2F;&#x2F;jvns.ca&#x2F;categories&#x2F;rust</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"result-actions\">\n\t\t\t\t\t\t\t<label>\n\t\t\t\t\t\t\t\t<input type=\"checkbox\" class=\"result-item-first-level__checkbox\" />\n\t\t\t\t\t\t\t\tShow more from jvns.ca (1)\n\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<ul class=\"result-item-first-level__sublist\">\n\t\t\t\t\t\t\t<li class=\"result-item-second-level\">\n\t\t\t\t\t\t\t\t<h4>Rust in 2018: it&#39;s way easier to use!</h4>\n\t\t\t\t\t\t\t\t<p>Rust in 2018: it&#39;s way easier to use!</p>\n\t\t\t\t\t\t\t\t<a href=\"https:&#x2F;&#x2F;jvns.ca&#x2F;blog&#x2F;2018&#x2F;01&#x2F;13&#x2F;rust-in-2018--way-easier-to-use\" target=\"_blank\" rel=\"noopener\">https:&#x2F;&#x2F;jvns.ca&#x2F;blog&#x2F;2018&#x2F;01&#x2F;13&#x2F;rust-in-2018--way-easier-to-use</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li class=\"result-item-first-level\">\n\t\t\t\t\t\t<div class=\"result-item-first-level__data\">\n\t\t\t\t\t\t\t<h3>Go vs Rust? Choose Go. | Matthias Endler</h3>\n\t\t\t\t\t\t\t<p>Rust or Go, which one should I choose? is a question I get quite often.\nBoth languages seem to be competing for the same user base and they both seem to be\n*systems programming* languages, so there must be a clear winner, right?</p>\n\t\t\t\t\t\t\t<a href=\"https:&#x2F;&#x2F;endler.dev&#x2F;2017&#x2F;go-vs-rust\" target=\"_blank\" rel=\"noopener\">https:&#x2F;&#x2F;endler.dev&#x2F;2017&#x2F;go-vs-rust</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"result-actions\">\n\t\t\t\t\t\t\t<label>\n\t\t\t\t\t\t\t\t<input type=\"checkbox\" class=\"result-item-first-level__checkbox\" />\n\t\t\t\t\t\t\t\tShow more from endler.dev (2)\n\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<ul class=\"result-item-first-level__sublist\">\n\t\t\t\t\t\t\t<li class=\"result-item-second-level\">\n\t\t\t\t\t\t\t\t<h4>Rust for Rubyists | Matthias Endler</h4>\n\t\t\t\t\t\t\t\t<p>Recently I came across a delightful article on …</p>\n\t\t\t\t\t\t\t\t<a href=\"https:&#x2F;&#x2F;endler.dev&#x2F;2017&#x2F;rust-for-rubyists\" target=\"_blank\" rel=\"noopener\">https:&#x2F;&#x2F;endler.dev&#x2F;2017&#x2F;rust-for-rubyists</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li class=\"result-item-second-level\">\n\t\t\t\t\t\t\t\t<h4>Rust in 2018 | Matthias Endler</h4>\n\t\t\t\t\t\t\t\t<p>I wrote about the future of Rust before and it seems like nobody stops me from doing it again! Quite the contrary: this time the Rust core team even asked for it.\nI’m a bit late to the party, but here are my 2 cents about the priorities for Rust in 2018.</p>\n\t\t\t\t\t\t\t\t<a href=\"https:&#x2F;&#x2F;endler.dev&#x2F;2018&#x2F;rust-2018\" target=\"_blank\" rel=\"noopener\">https:&#x2F;&#x2F;endler.dev&#x2F;2018&#x2F;rust-2018</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li class=\"result-item-first-level\">\n\t\t\t\t\t\t<div class=\"result-item-first-level__data\">\n\t\t\t\t\t\t\t<h3>Rust: Embrace Captured Identifier in Format Strings | (think)</h3>\n\t\t\t\t\t\t\t<p>While playing with Rust recently I’ve noticed that most Rust tutorials suggest writing code like this:</p>\n\t\t\t\t\t\t\t<a href=\"https:&#x2F;&#x2F;batsov.com&#x2F;articles&#x2F;2025&#x2F;11&#x2F;16&#x2F;rust-embrace-captured-identifier-in-format-strings\" target=\"_blank\" rel=\"noopener\">https:&#x2F;&#x2F;batsov.com&#x2F;articles&#x2F;2025&#x2F;11&#x2F;16&#x2F;rust-embrace-captured-identifier-in-format-strings</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li class=\"result-item-first-level\">\n\t\t\t\t\t\t<div class=\"result-item-first-level__data\">\n\t\t\t\t\t\t\t<h3>100 days with Rust, or, a series of brick walls — brandur.org</h3>\n\t\t\t\t\t\t\t<p>A few thoughts on Rust after a few months of regular use.</p>\n\t\t\t\t\t\t\t<a href=\"https:&#x2F;&#x2F;brandur.org&#x2F;fragments&#x2F;rust-brick-walls\" target=\"_blank\" rel=\"noopener\">https:&#x2F;&#x2F;brandur.org&#x2F;fragments&#x2F;rust-brick-walls</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li class=\"result-item-first-level\">\n\t\t\t\t\t\t<div class=\"result-item-first-level__data\">\n\t\t\t\t\t\t\t<h3>Rust as a Flutter Data Layer: Build Safe Data Layers</h3>\n\t\t\t\t\t\t\t<p>Learn how to use Rust as a Flutter data layer for memory safety, real-time data, and cross-platform performance. Complete guide with case studies.</p>\n\t\t\t\t\t\t\t<a href=\"https:&#x2F;&#x2F;verygood.ventures&#x2F;blog&#x2F;rust-as-flutter-data-layer\" target=\"_blank\" rel=\"noopener\">https:&#x2F;&#x2F;verygood.ventures&#x2F;blog&#x2F;rust-as-flutter-data-layer</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t</section>\n\t\t</div>\n\t</form>\n\t<form action=\"/api/feedback\" method=\"POST\" class=\"feedback-widget\">\n\t\t<h2>Feedback</h2>\n\t\t<p>Are the results any good?</p>\n\t\t<div class=\"feedback-widget__buttons\">\n\t\t\t<button name=\"vote\" value=\"1\" type=\"submit\" class=\"button--secondary\">👍</button>\n\t\t\t<button name=\"vote\" value=\"-1\" type=\"submit\" class=\"button--secondary\">👎</button>\n\t\t</div>\n\t\t<input type=\"hidden\" name=\"q\" value=\"rust\" />\n\n\t</form>\n</main>\n<footer>\n\t<h2 class=\"visually-hidden\">About</h2>\n\t<p class=\"about__brand\">Kukei.eu - curated search for small web</p>\n\t<p>So far indexed <format-number>205032</format-number> internet pages. Warning: <a href=\"/about#privacy\">it logs all queries</a> for quality analysis. Once analysed, logs are being purged.</p>\n\t<p>\n\t\t<a href=\"/integrations\">Integrations</a>\n\t\t<a href=\"/status\">Index status</a>,\n\t\t<a href=\"/about\" title=\"version 4ce6413f\">About (Impressum)</a>\n\t</p>\n\t<p>\n\t\t<a href=\"https://social.josko.org/@sn\" target=\"_blank\" rel=\"noreferrer noopener\">Mastodon</a>,\n\t\t<a href=\"https://www.buymeacoffee.com/nowicki\" target=\"_blank\" rel=\"noopener\">Donate</a>,\n\t\t<a href=\"https://codeberg.org/kukei/kukei-eu\" target=\"_blank\" rel=\"noopener\">Git</a>,\n\t</p>\n</footer>\n</body>\n</html>\n"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://jvns.ca/categories/rust",
+          "normalized_url": "https://jvns.ca/categories/rust",
+          "title": "Rust",
+          "content": "Rust",
+          "engine": "kukei",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://endler.dev/2017/go-vs-rust",
+          "normalized_url": "https://endler.dev/2017/go-vs-rust",
+          "title": "Go vs Rust? Choose Go. | Matthias Endler",
+          "content": "Rust or Go, which one should I choose? is a question I get quite often. Both languages seem to be competing for the same user base and they both seem to be *systems programming* languages, so there must be a clear winner, right?",
+          "engine": "kukei",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://batsov.com/articles/2025/11/16/rust-embrace-captured-identifier-in-format-strings",
+          "normalized_url": "https://batsov.com/articles/2025/11/16/rust-embrace-captured-identifier-in-format-strings",
+          "title": "Rust: Embrace Captured Identifier in Format Strings | (think)",
+          "content": "While playing with Rust recently I’ve noticed that most Rust tutorials suggest writing code like this:",
+          "engine": "kukei",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://brandur.org/fragments/rust-brick-walls",
+          "normalized_url": "https://brandur.org/fragments/rust-brick-walls",
+          "title": "100 days with Rust, or, a series of brick walls — brandur.org",
+          "content": "A few thoughts on Rust after a few months of regular use.",
+          "engine": "kukei",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://verygood.ventures/blog/rust-as-flutter-data-layer",
+          "normalized_url": "https://verygood.ventures/blog/rust-as-flutter-data-layer",
+          "title": "Rust as a Flutter Data Layer: Build Safe Data Layers",
+          "content": "Learn how to use Rust as a Flutter data layer for memory safety, real-time data, and cross-platform performance. Complete guide with case studies.",
+          "engine": "kukei",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

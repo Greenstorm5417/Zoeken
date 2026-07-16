@@ -1,0 +1,64 @@
+{
+  "engine": "swisscows news",
+  "case": "basic",
+  "query": {
+    "query": "rust search",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": "Week",
+    "locale": "de-DE",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust search",
+    "category": "",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": "Week",
+    "locale_key": "de-DE",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://api.swisscows.com/news/search?query=rust+search&itemsCount=20&region=de-DE&language=de&offset=20&freshness=Week&sortOrder=Desc&sortBy=Created",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://api.swisscows.com/news/search",
+    "headers": {},
+    "body": "{\"items\":[{\"uri\":\"https://example.com/news/rust\",\"title\":\"<b>Rust</b> News\",\"description\":\"Fresh result\",\"created\":\"2024-01-01T00:00:00+00:00\",\"og:image\":\"https://example.com/news.jpg\"}]}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://example.com/news/rust",
+          "normalized_url": "https://example.com/news/rust",
+          "title": "Rust News",
+          "content": "Fresh result",
+          "engine": "swisscows news",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

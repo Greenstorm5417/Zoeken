@@ -1,0 +1,42 @@
+{
+  "engine": "mastodon users",
+  "case": "accounts",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://mastodon.social",
+    "headers": {},
+    "body": "{\n      \"accounts\": [\n        {\n          \"uri\": \"https://mastodon.social/users/rustlang\",\n          \"username\": \"rustlang\",\n          \"followers_count\": 12345,\n          \"note\": \"The Rust programming language.\",\n          \"avatar\": \"https://files.mastodon.social/a.png\",\n          \"created_at\": \"2017-04-05T00:00:00.000Z\"\n        }\n      ],\n      \"hashtags\": [],\n      \"statuses\": []\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://mastodon.social/users/rustlang",
+          "normalized_url": "https://mastodon.social/users/rustlang",
+          "title": "rustlang (12345 followers)",
+          "content": "The Rust programming language.",
+          "engine": "mastodon users",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

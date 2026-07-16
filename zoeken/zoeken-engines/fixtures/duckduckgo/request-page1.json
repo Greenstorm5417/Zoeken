@@ -1,0 +1,60 @@
+{
+  "engine": "duckduckgo",
+  "case": "request-page1",
+  "query": {
+    "query": "rust programming",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust programming",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Post",
+    "url": "https://html.duckduckgo.com/html/",
+    "headers": {
+      "Sec-Fetch-Dest": "document",
+      "Sec-Fetch-Mode": "navigate",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Sec-Fetch-User": "?1",
+      "Referer": "https://html.duckduckgo.com/html/",
+      "Sec-Fetch-Site": "same-origin"
+    },
+    "cookies": {},
+    "data": {
+      "b": "",
+      "q": "rust programming",
+      "kl": "wt-wt"
+    },
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://html.duckduckgo.com/html/",
+    "headers": {},
+    "body": "<html><body></body></html>"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

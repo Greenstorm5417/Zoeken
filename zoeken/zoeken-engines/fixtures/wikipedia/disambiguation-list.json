@@ -1,0 +1,42 @@
+{
+  "engine": "wikipedia",
+  "case": "disambiguation-list",
+  "query": {
+    "query": "Rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://en.wikipedia.org/",
+    "headers": {},
+    "body": "{\n      \"type\": \"disambiguation\",\n      \"title\": \"Rust\",\n      \"titles\": {\"display\": \"Rust\"},\n      \"description\": \"Topic list\",\n      \"extract\": \"Rust may refer to ...\",\n      \"content_urls\": {\"desktop\": {\"page\": \"https://en.wikipedia.org/wiki/Rust\"}}\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://en.wikipedia.org/wiki/Rust",
+          "normalized_url": "https://en.wikipedia.org/wiki/Rust",
+          "title": "Rust",
+          "content": "Topic list",
+          "engine": "wikipedia",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

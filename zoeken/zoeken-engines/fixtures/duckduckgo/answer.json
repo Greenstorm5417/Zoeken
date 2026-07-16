@@ -1,0 +1,49 @@
+{
+  "engine": "duckduckgo",
+  "case": "answer",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://html.duckduckgo.com/html/",
+    "headers": {},
+    "body": "<!DOCTYPE html>\n<html><body>\n<div id=\"links\" class=\"results\">\n  <div class=\"result results_links web-result\">\n    <h2 class=\"result__title\"><a class=\"result__a\" href=\"https://en.wikipedia.org/wiki/Rust_(programming_language)\">Rust (programming language) - Wikipedia</a></h2>\n    <a class=\"result__snippet\">Rust is a general-purpose programming language emphasizing performance, type safety, and concurrency.</a>\n  </div>\n</div>\n<div id=\"zero_click_abstract\">Rust is a multi-paradigm, general-purpose programming language that emphasizes performance, type safety, and concurrency. <a href=\"https://en.wikipedia.org/wiki/Rust_(programming_language)\">More at Wikipedia</a></div>\n</body></html>"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+          "normalized_url": "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+          "title": "Rust (programming language) - Wikipedia",
+          "content": "Rust is a general-purpose programming language emphasizing performance, type safety, and concurrency.",
+          "engine": "duckduckgo",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [
+      {
+        "answer": "Rust is a multi-paradigm, general-purpose programming language that emphasizes performance, type safety, and concurrency. More at Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+        "engine": "duckduckgo",
+        "template": "Answer"
+      }
+    ],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

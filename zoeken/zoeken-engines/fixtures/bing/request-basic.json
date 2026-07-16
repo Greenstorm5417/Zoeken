@@ -1,0 +1,51 @@
+{
+  "engine": "bing",
+  "case": "request-basic",
+  "query": {
+    "query": "rust programming",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "en-US",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust programming",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "en-US",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://www.bing.com/search?q=rust+programming&adlt=off&mkt=en-us",
+    "headers": {
+      "Accept-Language": "en-us,en;q=0.9"
+    },
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://www.bing.com",
+    "headers": {},
+    "body": "<html><body></body></html>"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

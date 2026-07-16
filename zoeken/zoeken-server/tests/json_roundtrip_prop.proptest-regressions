@@ -1,0 +1,7 @@
+# Seeds for failure cases proptest has generated in the past. It is
+# automatically read and these particular cases re-run before any
+# novel cases are generated.
+#
+# It is recommended to check this file in to source control so that
+# everyone who runs the test benefits from these saved cases.
+cc 0f4b6db8e17546243879c1a55e0412e1dbb6775284ebe5d89fc60e7739671781 # shrinks to container = ResultContainer { results: [KeyValue(KeyValue { url: "", normalized_url: "", title: "", content: "", engine: "", kvmap: [], caption: "", key_title: "", value_title: "", score: 493076138052.84515, positions: [], template: Default })], answers: [], suggestions: [], corrections: [], infoboxes: [], unresponsive_engines: [], number_of_results: 0 }

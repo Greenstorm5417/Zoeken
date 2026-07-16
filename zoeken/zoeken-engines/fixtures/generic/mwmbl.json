@@ -1,0 +1,2121 @@
+{
+  "engine": "mwmbl",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://api.mwmbl.org/api/v1/search/?s=rust",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://api.mwmbl.org/api/v1/search/?s=rust",
+    "headers": {
+      "x-frame-options": "DENY",
+      "content-type": "application/json; charset=utf-8",
+      "x-content-type-options": "nosniff",
+      "referrer-policy": "same-origin",
+      "access-control-allow-methods": "GET, POST, OPTIONS, DELETE",
+      "access-control-expose-headers": "Content-Length,Content-Range",
+      "date": "Thu, 09 Jul 2026 14:05:59 GMT",
+      "access-control-allow-headers": "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,X-API-Key",
+      "server": "nginx",
+      "cross-origin-opener-policy": "same-origin",
+      "access-control-allow-origin": "*",
+      "vary": "Cookie"
+    },
+    "body": "[{\"url\": \"https://doc.rust-lang.org\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Documentation\", \"is_bold\": false}], \"extract\": [{\"value\": \" \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Documentation Welcome to an overview of the documentation provided by the \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \"\\nproject. This page contains links to various helpful references,\\nmost\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://rust.facepunch.com/\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" \\u2014 Explore, Build and Survive\", \"is_bold\": false}], \"extract\": [{\"value\": \"Gear up and march across the island clad in their signature gas-masked Hazmat suit. Shoulder your Death Korps of Krieg Backpack, designed with the rugged \\u2026\", \"is_bold\": false}], \"source\": \"user\"}, {\"url\": \"https://en.wikipedia.org/wiki/Rust_(programming_language)\", \"title\": [], \"extract\": [], \"source\": \"user\"}, {\"url\": \"https://rust-lang.org\", \"title\": [{\"value\": \"\\n            \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Programming Language\\n        \", \"is_bold\": false}], \"extract\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" A language empowering everyone to build reliable and efficient software. Why \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \"? Performance \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" is blazingly fast and memory-efficient: with no r\\u2026\", \"is_bold\": false}], \"source\": \"user\"}, {\"url\": \"http://rusty.ozlabs.org\", \"title\": [{\"value\": \"Rusty Russell\\u2019s Quiet Corner of The Internet | I have been a ful\\u2026\", \"is_bold\": false}], \"extract\": [{\"value\": \" Rusty Russell's Quiet Corner of The Internet I have been a full time Free Software developer since the 90's. I worked on the Linux Kernel, where I wrote \\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://blog.rust-lang.org/feed\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Blog\", \"is_bold\": false}], \"extract\": [{\"value\": \" \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Bloghttps://blog.\", \"is_bold\": false}, {\"value\": \"rust\", \"is_bold\": true}, {\"value\": \"-lang.org/\", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" BlogEmpowering everyone to build reliable and efficient software.Maintained by the \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Teams.https://github.com\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://users.rust-lang.org/t/rustc-on-wasm32/62502\", \"title\": [{\"value\": \"Rustc on wasm32? - The \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Programming Language Forum\", \"is_bold\": false}], \"extract\": [{\"value\": \" Given rustc/llvm's memory usage and wasm32's memory limit, is the expected timeline for rustc on wasm32 (say you want an in browser IDE that can compile \\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://stackoverflow.com/a/64413353\", \"title\": [{\"value\": \"rust\", \"is_bold\": true}, {\"value\": \" - sqlx installation fails due to mismatched types - Stack O\\u2026\", \"is_bold\": false}], \"extract\": [{\"value\": \" $ rustc --explain E0308\\nExpected type did not match the received type.\\nErroneous code example:\\n```\\nlet x: i32 = \\\"I am not a number!\\\";\\n// ~~~ ~~~~~~~~~~~~\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/nielx/rust/issues/8\", \"title\": [{\"value\": \"RustC crashes when compiling \\u00b7 Issue #8 \\u00b7 nielx/\", \"is_bold\": false}, {\"value\": \"rust\", \"is_bold\": true}, {\"value\": \" \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://www.nytimes.com/topic/rusty-hardin\", \"title\": [{\"value\": \"Rusty Hardin - The New York Times\", \"is_bold\": false}], \"extract\": [{\"value\": \" The rulings applied to just 13 of the 22 women who have filed lawsuits accusing the Houston Texans quarterback of assault and sexual misconduct. But it a\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://en.wikipedia.org/wiki/Rust\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" is an iron oxide, a usually reddish-brown oxide formed by the reaction of iron and oxygen in the catalytic presence of water or air moisture. \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"source\": \"wikipedia\"}, {\"url\": \"https://www.wired.com/author/rusty-weston/\", \"title\": [{\"value\": \"Rusty Weston | WIRED\", \"is_bold\": false}], \"extract\": [{\"value\": \" Rusty Weston WIRED is where tomorrow is realized. It is the essential source of information and ideas that make sense of a world in constant transformati\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://keybase.io/rust\", \"title\": [{\"value\": \"rust\", \"is_bold\": true}, {\"value\": \" (\", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Language) | Keybase\", \"is_bold\": false}], \"extract\": [{\"value\": \"rust\", \"is_bold\": true}, {\"value\": \" (\", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Language) is now on Keybase, an open source app for encryption and cryptography.\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://news.ycombinator.com/item?id=15168166\", \"title\": [{\"value\": \"Rustc and Cargo are packaged for Debian; both are \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" applicati\\u2026\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"http://en.wikipedia.org/wiki/Rusty_Cage\", \"title\": [{\"value\": \"Rusty Cage - Wikipedia\", \"is_bold\": false}], \"extract\": [{\"value\": \" \\\"Rusty Cage\\\" is a song by the American rock band Soundgarden. Written by frontman Chris Cornell, \\\"Rusty Cage\\\" was released in 1992 as the third single fr\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://en.wikipedia.org/wiki/Rusty_Taco\", \"title\": [{\"value\": \"Rusty Taco - Wikipedia\", \"is_bold\": false}], \"extract\": [{\"value\": \" Rusty Taco is an American-based chain of fast food restaurants originating in Dallas, Texas in 2010, by founders Rusty Fenton and his wife, Denise Fenton\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://gist.github.com/japaric/8638077ef8731e06abb3\", \"title\": [{\"value\": \"rustc 1.0.0-dev (92ff8ea52 2015-01-27 23:08:13 +0000) | Linux od\\u2026\", \"is_bold\": false}], \"extract\": [{\"value\": \" You signed in with another tab or window. Reload to refresh your session.You signed out in another tab or window. Reload to refresh your session.You swit\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://en.wikipedia.org/wiki/Rust_(disambiguation)\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" (disambiguation)\", \"is_bold\": false}], \"extract\": [{\"value\": \"Look up \", \"is_bold\": false}, {\"value\": \"rust\", \"is_bold\": true}, {\"value\": \", r\\u00fcst, or r\\u016fst in Wiktionary, the free dictionary. \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" is an iron oxide formed by the reaction of iron and oxygen in the presence of water\", \"is_bold\": false}], \"source\": \"wikipedia\"}, {\"url\": \"https://doc.rust-lang.org/rustc\", \"title\": [{\"value\": \"What is rustc? - The rustc book\", \"is_bold\": false}], \"extract\": [{\"value\": \" The rustc book Welcome to \\\"The rustc book\\\"! rustc is the compiler for the \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" programming\\nlanguage, provided by the project itself. Compilers take your \\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://dev.to/t/rustc\", \"title\": [{\"value\": \"Rustc - DEV Community\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://doc.rust-lang.org/beta/nightly-rustc/rustc_span\", \"title\": [{\"value\": \"rustc_span - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [{\"value\": \" interned strings, represented by Symbols, with some common symbols available statically\\nin the sym module. Unlike most compilers, the span contains not o\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://rustyshelf.org/\", \"title\": [{\"value\": \"Rusty Rants | Blogs are Back!\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"http://doc.rust-lang.org/rustc/print.html\", \"title\": [{\"value\": \"The rustc book\", \"is_bold\": false}], \"extract\": [{\"value\": \" Keyboard shortcuts The rustc book Welcome to \\u201cThe rustc book\\u201d! rustc is the compiler for the \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" programming\\nlanguage, provided by the project itself. C\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rustyroad\", \"title\": [{\"value\": \"rustyroad - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [{\"value\": \"Rusty Road is a framework written in \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" that is based on Ruby on Rails. It is designed to provide the familiar conventions and ease of use of Ruby on Ra\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://en.wikipedia.org/wiki/Rusty_Ps\", \"title\": [{\"value\": \"Rusty Ps - Wikipedia\", \"is_bold\": false}], \"extract\": [{\"value\": \" The Rusty Ps is a hip hop/rap group based in Milwaukee, Wisconsin. Initially known as the Rusty Pelicans after forming in 1995, its membership currently \\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://fly.io/docs/rust\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" on Fly.io \\u00b7 Fly Docs\", \"is_bold\": false}], \"extract\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" on Fly.io Fly is a great place to launch your \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" applications, especially if you plan on running them on multiple servers around the world so your \\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://doc.rust-lang.org/rustc/json.html\", \"title\": [{\"value\": \"JSON Output - The rustc book\", \"is_bold\": false}], \"extract\": [{\"value\": \" The rustc book This chapter documents the JSON structures emitted by rustc. JSON may be\\nenabled with the --error-format=json flag. Additional\\noptions may\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://en.wikipedia.org/wiki/Rusty\", \"title\": [{\"value\": \"Rusty - Wikipedia\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://github.blog/tag/rust/\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Archives - The GitHub Blog\", \"is_bold\": false}], \"extract\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" continues to top the charts as the most admired and desired language by developers, and in this post, we dive a little deeper into how (and why) \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \"\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://rust-lang.github.io/rustc-pr-tracking/\", \"title\": [{\"value\": \"rustc PR tracking\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"http://imgur.com/a/RijZM\", \"title\": [{\"value\": \"Rusty cargo van converted into a mobile studio - Album on Imgur\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://bugs.launchpad.net/rustc\", \"title\": [{\"value\": \"Bugs : rustc\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://hackaday.com/tag/rusty/\", \"title\": [{\"value\": \"Rusty | Hackaday\", \"is_bold\": false}], \"extract\": [{\"value\": \" rusty 1 Articles Okay, first of all: holy crap! Even if you didn\\u2019t know this started as a rusty table saw, the workstation that came out of this project \\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://en.wikipedia.org/wiki/Rusty_Eye\", \"title\": [{\"value\": \"Rusty Eye - Wikipedia\", \"is_bold\": false}], \"extract\": [{\"value\": \" History Rusty Eye was formed in 1995 in Mexico City, Mexico. The band's original lineup consisted of Mr. \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" (born Pablo Armando Salido Casanova) on bas\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://doc.rust-lang.org/rustc/lints/index.html\", \"title\": [{\"value\": \"Lints - The rustc book\", \"is_bold\": false}], \"extract\": [{\"value\": \" The rustc book In software, a \\\"lint\\\" is a tool used to help improve your source code. The\\n\", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" compiler contains a number of lints, and when it compiles \\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://news.ycombinator.com/item?id=43192477\", \"title\": [{\"value\": \"rustc is written in \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" - for many years, start based on OCaml \\u2026\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://doc.rust-lang.org/rustc/tests/\", \"title\": [{\"value\": \"Tests - The rustc book\", \"is_bold\": false}], \"extract\": [{\"value\": \" Tests \\u201cpass\\u201d if they return without an error. They \\u201cfail\\u201d if they panic, or\\nreturn a type such as Result that implements the Termination trait\\nwith a non\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://doc.rust-lang.org/rustc/jobserver.html\", \"title\": [{\"value\": \"Jobserver - The rustc book\", \"is_bold\": false}], \"extract\": [{\"value\": \" The rustc book Internally, rustc may take advantage of parallelism. rustc will coordinate\\nwith the build system calling it if a GNU Make jobserver is pas\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://rustyshelf.org\", \"title\": [{\"value\": \"Rusty Rants\", \"is_bold\": false}], \"extract\": [{\"value\": \" Menu Around 6 months ago I posted about the shortcomings of the Polestar 2 App and what I felt needed to be improved about it. I thought it would be inte\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://gist.github.com/mtn/903444debb80bba70a2de6dd4a21cfba\", \"title\": [{\"value\": \"rustc optimization check \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" You signed in with another tab or window. Reload to refresh your session.You signed out in another tab or window. Reload to refresh your session.You swit\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rusty_dl\", \"title\": [{\"value\": \"rusty_dl - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"http://doc.rust-lang.org/rustc/driver\", \"title\": [{\"value\": \"Not Found\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"http://github.com/rust\", \"title\": [{\"value\": \"rust\", \"is_bold\": true}, {\"value\": \" (Shinichiro OGAWA) \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \"You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/nielx/rust/issues/4\", \"title\": [{\"value\": \"General: rustc uses too much memory when compiling librustc \\u00b7 Is\\u2026\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://keybase.io/rustc\", \"title\": [{\"value\": \"rustc | Keybase\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/pd-rs\", \"title\": [{\"value\": \"Rusty Playdate \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/Rusty\", \"title\": [{\"value\": \"Rusty (Russell Johnson) \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://github.com/rust-osdev\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" OSDev \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://github.com/topics/rustc\", \"title\": [{\"value\": \"rustc \\u00b7 GitHub Topics \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \"You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/r-rust\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" in R \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-rdf\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" \\u2665 RDF \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-nyc\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" NYC \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \"You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://github.com/Rust-GPU\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" GPU \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://github.com/Rust-GCC\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" GCC \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \"You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-gjk\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Programov\\u00e1n\\u00ed - GJK \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \"You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-iot\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" IoT \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-tlv\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" TLV \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \"You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-cv\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Computer Vision \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-or\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Operations Research \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-tw/\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Taiwan \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-cli\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" CLI WG \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-lt\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Lithuania \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \"You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://github.com/rust-dc\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" DC \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-zh\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" \\u4f17 \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \"You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://github.com/rust-db\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" database WG \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-cc\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Cryptography Community \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://lkml.org/lkml/2002/9/9/48\", \"title\": [{\"value\": \"LKML: Rusty Russell: Re: [PATCH] Important per-cpu fix.\", \"is_bold\": false}], \"extract\": [{\"value\": \"Rusty.   --   there are those who do and those who hang on and you don't see too   many doers quoting their contemporaries. -- Larry McVoy   -   To unsubs\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rusty_paseto/^0.7.0\", \"title\": [{\"value\": \"rusty_paseto - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [{\"value\": \"rusty_paseto is meant to be flexible and configurable for your specific use case. Whether you want to get started quickly with sensible defaults, create y\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-fuzz\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Fuzzing Authority \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-play\", \"title\": [{\"value\": \"rust\", \"is_bold\": true}, {\"value\": \"-play (The \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Playground) \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-brno\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" language meetup - Brno  \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-rtos\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" RTOS \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rusty_hogs\", \"title\": [{\"value\": \"rusty_hogs 1.0.1 - Docs.rs\", \"is_bold\": false}], \"extract\": [{\"value\": \" rusty_hogs 1.0.1 This project provides a set of scanners that will use regular expressions to try and detect the presence of sensitive information such a\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://gitlab.com/RustyChalk\", \"title\": [{\"value\": \"Rusty Chalk \\u00b7 GitLab\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rustgbg\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" G\\u00f6teborg \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://medium.com/@rustyk5\", \"title\": [{\"value\": \"Rusty Foster \\u2013 Medium\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/RustVis\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Visualization \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rs-ipfs\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" IPFS \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rson-rs\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Object Notation \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \"You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rash-sh\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Again SHell \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rustnl\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" NL \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://keybase.io/rusty_77\", \"title\": [{\"value\": \"rusty_77 | Keybase\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rustid\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Indonesia \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \"You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust3ds\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" 3DS \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/ffi-rs\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" FFI \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rsadsb\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" ADS-B \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/uuid-rs\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Uuid \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://github.com/gfx-rs\", \"title\": [{\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" Graphics Mages \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-lang/rust/issues/67183\", \"title\": [{\"value\": \"rustc requires 7GB of memory for clean build \\u00b7 Issue #67183 \\u00b7 ru\\u2026\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-lang/rust/issues/44433\", \"title\": [{\"value\": \"rustc deadlocks on FreeBSD \\u00b7 Issue #44433 \\u00b7 \", \"is_bold\": false}, {\"value\": \"rust\", \"is_bold\": true}, {\"value\": \"-lang/\", \"is_bold\": false}, {\"value\": \"rust\", \"is_bold\": true}, {\"value\": \" \\u00b7 Git\\u2026\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-lang/rust/issues/73987\", \"title\": [{\"value\": \"rustc performs auto-ref when a raw pointer would be enough \\u00b7 Iss\\u2026\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://medium.com/@rusty-grey\", \"title\": [{\"value\": \"Rusty Grey \\u2013 Medium\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"http://ifixit.org/User/4596339/Rusty+Crab\", \"title\": [{\"value\": \"Rusty Crab - iFixit\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://neosmart.net/blog/tag/rustc/\", \"title\": [{\"value\": \"rustc | The NeoSmart Files\", \"is_bold\": false}], \"extract\": [{\"value\": \" Tag Archives: rustc Just a PSA from one \", \"is_bold\": false}, {\"value\": \"rust\", \"is_bold\": true}, {\"value\": \" developer to another: if you use sccache, take a moment to benchmark a clean build1 of your favorite or curr\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-lang/llvm-project/pull/139\", \"title\": [{\"value\": \"rustc + avr = lovelove back again by Patryk27 \\u00b7 Pull Request #13\\u2026\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://lithub.com/tag/rusty-mae-moore/\", \"title\": [{\"value\": \"Rusty Mae Moore \\u2039 Literary  Hub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Become a Lit Hub Supporting Member: Because Books Matter For the past decade, Literary Hub has brought you the best of the book world for free\\u2014no paywall\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/ledger-rs\", \"title\": [{\"value\": \"Rusty Ledger \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \"You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://gitlab.com/rhroberts\", \"title\": [{\"value\": \"Rusty Roberts \\u00b7 GitLab\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://gitlab.com/RustyChalk/nibbler\", \"title\": [{\"value\": \"Rusty Chalk / nibbler \\u00b7 GitLab\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://ifixit.org/User/4070204/Rusty\", \"title\": [{\"value\": \"Rusty - iFixit\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"http://lwn.net/Articles/778186/\", \"title\": [{\"value\": \"Rusty Russell at LCA 2019 [LWN.net]\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"http://lwn.net/Articles/162574/\", \"title\": [{\"value\": \"Rusty scale? [LWN.net]\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"http://lwn.net/Articles/477175/\", \"title\": [{\"value\": \"Rusty Russell and Matt Evans at LCA 2012 [LWN.net]\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://medium.com/@rusty_lightning\", \"title\": [{\"value\": \"Rusty Lightning \\u2013 Medium\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://medium.com/@rusty-lightning\", \"title\": [{\"value\": \"Rusty Russell \\u2013 Medium\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"http://lwn.net/Articles/580191/\", \"title\": [{\"value\": \"Rusty Russell at LCA 2014 [LWN.net]\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rusty-celery\", \"title\": [{\"value\": \"Rusty Celery \\u00b7 GitHub\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-lang/rfcs/issues/3127\", \"title\": [{\"value\": \"New rustc and Cargo options to allow path sanitisation by defaul\\u2026\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://rustyshelf.org/page/5/\", \"title\": [{\"value\": \"Rusty Rants | Page 5\", \"is_bold\": false}], \"extract\": [{\"value\": \" Menu Fellow Relay FM host Jason Snell wrote an interesting article comparing Google in the naughties to Microsoft in the 90s. Open Google Docs for iOS an\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://rustyshelf.org/page/9/\", \"title\": [{\"value\": \"Rusty Rants | Page 9\", \"is_bold\": false}], \"extract\": [{\"value\": \" Menu At Shifty Jelly we love anything new and shiny. So it was no surprise that when Galaxy S6 pre-orders went live, we ordered one. The intention was to\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://rustyshelf.org/page/2/\", \"title\": [{\"value\": \"Rusty Rants | Page 2\", \"is_bold\": false}], \"extract\": [{\"value\": \" Menu I\\u2019ve tweetedquite a bit about Apple\\u2019s rejection of a Hey update from their iOS App Store. It was no surprise to me that this story got the attention\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://rustyshelf.org/page/3/\", \"title\": [{\"value\": \"Rusty Rants | Page 3\", \"is_bold\": false}], \"extract\": [{\"value\": \" Menu Early this year I wrote about my 2010 Mac Mini and the desire to replace it with something more modern. For some reason the article got some tractio\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://rustyshelf.org/page/6/\", \"title\": [{\"value\": \"Rusty Rants | Page 6\", \"is_bold\": false}], \"extract\": [{\"value\": \" Menu I had a few more thoughts after writing this post about Apple\\u2019s first Android app. The most interesting one was this: Apple Music on Android has the\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://keybase.io/jrt\", \"title\": [{\"value\": \"jrt (James Rusty Tyner) | Keybase\", \"is_bold\": false}], \"extract\": [{\"value\": \"jrt (James Rusty Tyner) is now on Keybase, an open source app for encryption and cryptography.\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/rust-lang/rust/pull/48456\", \"title\": [{\"value\": \"Whitelist rustc dependencies by mark-i-m \\u00b7 Pull Request #48456 \\u00b7\\u2026\", \"is_bold\": false}], \"extract\": [{\"value\": \"You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://unsplash.com/@nevreev\", \"title\": [{\"value\": \"Rusty Nevreev (@nevreev) | Unsplash Photo Community\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://unsplash.com/@rusty_grim\", \"title\": [{\"value\": \"Rusty Grim (@rusty_grim) | Unsplash Photo Community\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rustc_version\", \"title\": [{\"value\": \"rustc_version - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rustc_apfloat\", \"title\": [{\"value\": \"rustc_apfloat - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [{\"value\": \" The port contains no unsafe code, global state, or side-effects in general,\\nand the only allocations are in the conversion to/from decimal strings. Most \\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://unsplash.com/@rustyct1\", \"title\": [{\"value\": \"Rusty Watson (@rustyct1) | Unsplash Photo Community\", \"is_bold\": false}], \"extract\": [{\"value\": \" My photography is inspired by artistic ideas and places of innate beauty. I see nature's abundant imagination and human creativity everywhere I look. My \\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/servo/servo/pull/31694\", \"title\": [{\"value\": \"Add RUSTC env to clippy command by eerii \\u00b7 Pull Request #31694 \\u00b7\\u2026\", \"is_bold\": false}], \"extract\": [{\"value\": \"You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://aphyr.com/tags/rusty\", \"title\": [{\"value\": \"Tag: Rusty\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://github.com/NixOS/nixpkgs/pull/274135\", \"title\": [{\"value\": \"buildRustCrate: do not forcibly disable rustc parallelism \\u00b7 Pull\\u2026\", \"is_bold\": false}], \"extract\": [{\"value\": \" Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"http://lwn.net/Articles/907803/\", \"title\": [{\"value\": \"Compiling \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" with GCC: an update [LWN.net]\", \"is_bold\": false}], \"extract\": [{\"value\": \" Compiling \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" with GCC: an update I'd expect rustc built with mrustc to behave differently in various ways (such as plausibly not being correctly memory\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://unsplash.com/de/@rustyct1\", \"title\": [{\"value\": \"Rusty Watson (@rustyct1) | Unsplash-Foto-Community\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://unsplash.com/trends/rusty\", \"title\": [{\"value\": \"rusty Search Trends | Unsplash\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://pastebin.com/XN16Uxb6\", \"title\": [{\"value\": \"Copying stage0 rustc from stage0 (x86_64-pc-windows-msvc -> x86_\\u2026\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/crate/rustc_version/^0.1\", \"title\": [{\"value\": \"rustc_version 0.1.7 - Docs.rs\", \"is_bold\": false}], \"extract\": [{\"value\": \" Contribution Unless you explicitly state otherwise, any contribution intentionally submitted\\nfor inclusion in the work by you, as defined in the Apache-2\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/crate/rustc_version/0.4.0\", \"title\": [{\"value\": \"rustc_version 0.4.0 - Docs.rs\", \"is_bold\": false}], \"extract\": [{\"value\": \" Example // This could be a cargo build script\\nuserustc_version::{version, version_meta, Channel, Version};fnmain(){// Assert we haven't travelled back in\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rusty_time\", \"title\": [{\"value\": \"rusty_time - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rusty_ulid\", \"title\": [{\"value\": \"rusty_ulid - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [{\"value\": \"When generating a ULID within the same millisecond, we can provide some guarantees regarding sort order. Namely, if the same millisecond is detected, the \\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/crate/rustc_lexer/0.0.1\", \"title\": [{\"value\": \"rustc_lexer 0.0.1 - Docs.rs\", \"is_bold\": false}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rusty_lr\", \"title\": [{\"value\": \"rusty_lr - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rusty_v8\", \"title\": [{\"value\": \"rusty_v8 - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [{\"value\": \"A CallbackScope can be used to bootstrap a HandleScope and ContextScope inside a callback function that gets called by V8. Bootstrapping a scope inside a \\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rusty_genes\", \"title\": [{\"value\": \"rusty_genes - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [{\"value\": \" This module provides an implementation of the OneMax problem for use with the evolutionary\\nalgorithm framework. The OneMax problem is a simple problem of\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rustc_lexer\", \"title\": [{\"value\": \"rustc_lexer - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rusty_chain\", \"title\": [{\"value\": \"rusty_chain - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rusty_audio\", \"title\": [{\"value\": \"rusty_audio - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rusty_gfx\", \"title\": [{\"value\": \"rusty_gfx - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rusty_oge\", \"title\": [{\"value\": \"rusty_oge - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rusty_qjs\", \"title\": [{\"value\": \"rusty_qjs - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [{\"value\": \"JSContext represents a Javascript context (or Realm). Each JSContext has its own global objects and system objects. There can be several JSContexts per JS\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rusty_jsc/^0.1.0\", \"title\": [{\"value\": \"rusty_jsc - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rusty_ffmpeg\", \"title\": [{\"value\": \"rusty_ffmpeg - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/cov\", \"title\": [{\"value\": \"cov - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [{\"value\": \"GCNO (gcov notes) files are created by rustc when given the -Z profile flag. The GCNO files encode the structure of every function in the program, known a\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/trybuild\", \"title\": [{\"value\": \"trybuild - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [{\"value\": \" Crate trybuild Trybuild is a test harness for invoking rustc on a set of test cases and\\nasserting that any resulting error messages are the ones intended\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/rustc-serialize/0.3.7/rustc_serialize/\", \"title\": [{\"value\": \"rustc-serialize 0.3.7 - Docs.rs\", \"is_bold\": false}], \"extract\": [{\"value\": \" docs.rs failed to build rustc-serialize-0.3.7\\nPlease check the\\nbuild logs for more information.\\nSee Builds for ideas on how to fix a failed build,\\nor Met\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/ui_test\", \"title\": [{\"value\": \"ui_test - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [{\"value\": \"A test runner that builds tests with rustc or cargo (or any other compiler with some configuration effort) and compares the output of the compiler with a \\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}, {\"url\": \"https://docs.rs/osauth\", \"title\": [{\"value\": \"osauth - \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}], \"extract\": [{\"value\": \" This crate requires \", \"is_bold\": false}, {\"value\": \"Rust\", \"is_bold\": true}, {\"value\": \" 2021 edition and rustc version 1.71.0 or newer. OpenStack releases starting with Train are officially supported, although suppor\\u2026\", \"is_bold\": false}], \"source\": \"mwmbl\"}]"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://doc.rust-lang.org/",
+          "normalized_url": "https://doc.rust-lang.org/",
+          "title": "Rust",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust.facepunch.com/",
+          "normalized_url": "https://rust.facepunch.com/",
+          "title": "Rust",
+          "content": "Gear up and march across the island clad in their signature gas-masked Hazmat suit. Shoulder your Death Korps of Krieg Backpack, designed with the rugged …",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust-lang.org/",
+          "normalized_url": "https://rust-lang.org/",
+          "title": "",
+          "content": "Rust",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://rusty.ozlabs.org/",
+          "normalized_url": "http://rusty.ozlabs.org/",
+          "title": "Rusty Russell’s Quiet Corner of The Internet | I have been a ful…",
+          "content": "Rusty Russell's Quiet Corner of The Internet I have been a full time Free Software developer since the 90's. I worked on the Linux Kernel, where I wrote …",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://blog.rust-lang.org/feed",
+          "normalized_url": "https://blog.rust-lang.org/feed",
+          "title": "Rust",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://users.rust-lang.org/t/rustc-on-wasm32/62502",
+          "normalized_url": "https://users.rust-lang.org/t/rustc-on-wasm32/62502",
+          "title": "Rustc on wasm32? - The",
+          "content": "Given rustc/llvm's memory usage and wasm32's memory limit, is the expected timeline for rustc on wasm32 (say you want an in browser IDE that can compile …",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://stackoverflow.com/a/64413353",
+          "normalized_url": "https://stackoverflow.com/a/64413353",
+          "title": "rust",
+          "content": "$ rustc --explain E0308 Expected type did not match the received type. Erroneous code example: ``` let x: i32 = \"I am not a number!\"; // ~~~ ~~~~~~~~~~~~…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/nielx/rust/issues/8",
+          "normalized_url": "https://github.com/nielx/rust/issues/8",
+          "title": "RustC crashes when compiling · Issue #8 · nielx/",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.nytimes.com/topic/rusty-hardin",
+          "normalized_url": "https://www.nytimes.com/topic/rusty-hardin",
+          "title": "Rusty Hardin - The New York Times",
+          "content": "The rulings applied to just 13 of the 22 women who have filed lawsuits accusing the Houston Texans quarterback of assault and sexual misconduct. But it a…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://en.wikipedia.org/wiki/Rust",
+          "normalized_url": "https://en.wikipedia.org/wiki/Rust",
+          "title": "Rust",
+          "content": "Rust",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.wired.com/author/rusty-weston/",
+          "normalized_url": "https://www.wired.com/author/rusty-weston/",
+          "title": "Rusty Weston | WIRED",
+          "content": "Rusty Weston WIRED is where tomorrow is realized. It is the essential source of information and ideas that make sense of a world in constant transformati…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://keybase.io/rust",
+          "normalized_url": "http://keybase.io/rust",
+          "title": "rust",
+          "content": "rust",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://news.ycombinator.com/item?id=15168166",
+          "normalized_url": "http://news.ycombinator.com/item?id=15168166",
+          "title": "Rustc and Cargo are packaged for Debian; both are",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://en.wikipedia.org/wiki/Rusty_Cage",
+          "normalized_url": "http://en.wikipedia.org/wiki/Rusty_Cage",
+          "title": "Rusty Cage - Wikipedia",
+          "content": "\"Rusty Cage\" is a song by the American rock band Soundgarden. Written by frontman Chris Cornell, \"Rusty Cage\" was released in 1992 as the third single fr…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://en.wikipedia.org/wiki/Rusty_Taco",
+          "normalized_url": "https://en.wikipedia.org/wiki/Rusty_Taco",
+          "title": "Rusty Taco - Wikipedia",
+          "content": "Rusty Taco is an American-based chain of fast food restaurants originating in Dallas, Texas in 2010, by founders Rusty Fenton and his wife, Denise Fenton…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gist.github.com/japaric/8638077ef8731e06abb3",
+          "normalized_url": "https://gist.github.com/japaric/8638077ef8731e06abb3",
+          "title": "rustc 1.0.0-dev (92ff8ea52 2015-01-27 23:08:13 +0000) | Linux od…",
+          "content": "You signed in with another tab or window. Reload to refresh your session.You signed out in another tab or window. Reload to refresh your session.You swit…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://en.wikipedia.org/wiki/Rust_(disambiguation)",
+          "normalized_url": "https://en.wikipedia.org/wiki/Rust_(disambiguation)",
+          "title": "Rust",
+          "content": "Look up",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://doc.rust-lang.org/rustc",
+          "normalized_url": "https://doc.rust-lang.org/rustc",
+          "title": "What is rustc? - The rustc book",
+          "content": "The rustc book Welcome to \"The rustc book\"! rustc is the compiler for the",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://dev.to/t/rustc",
+          "normalized_url": "http://dev.to/t/rustc",
+          "title": "Rustc - DEV Community",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://doc.rust-lang.org/beta/nightly-rustc/rustc_span",
+          "normalized_url": "https://doc.rust-lang.org/beta/nightly-rustc/rustc_span",
+          "title": "rustc_span -",
+          "content": "interned strings, represented by Symbols, with some common symbols available statically in the sym module. Unlike most compilers, the span contains not o…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rustyshelf.org/",
+          "normalized_url": "https://rustyshelf.org/",
+          "title": "Rusty Rants | Blogs are Back!",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://doc.rust-lang.org/rustc/print.html",
+          "normalized_url": "http://doc.rust-lang.org/rustc/print.html",
+          "title": "The rustc book",
+          "content": "Keyboard shortcuts The rustc book Welcome to “The rustc book”! rustc is the compiler for the",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rustyroad",
+          "normalized_url": "https://docs.rs/rustyroad",
+          "title": "rustyroad -",
+          "content": "Rusty Road is a framework written in",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://en.wikipedia.org/wiki/Rusty_Ps",
+          "normalized_url": "http://en.wikipedia.org/wiki/Rusty_Ps",
+          "title": "Rusty Ps - Wikipedia",
+          "content": "The Rusty Ps is a hip hop/rap group based in Milwaukee, Wisconsin. Initially known as the Rusty Pelicans after forming in 1995, its membership currently …",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://fly.io/docs/rust",
+          "normalized_url": "http://fly.io/docs/rust",
+          "title": "Rust",
+          "content": "Rust",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://doc.rust-lang.org/rustc/json.html",
+          "normalized_url": "http://doc.rust-lang.org/rustc/json.html",
+          "title": "JSON Output - The rustc book",
+          "content": "The rustc book This chapter documents the JSON structures emitted by rustc. JSON may be enabled with the --error-format=json flag. Additional options may…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://en.wikipedia.org/wiki/Rusty",
+          "normalized_url": "https://en.wikipedia.org/wiki/Rusty",
+          "title": "Rusty - Wikipedia",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.blog/tag/rust/",
+          "normalized_url": "https://github.blog/tag/rust/",
+          "title": "Rust",
+          "content": "Rust",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust-lang.github.io/rustc-pr-tracking/",
+          "normalized_url": "https://rust-lang.github.io/rustc-pr-tracking/",
+          "title": "rustc PR tracking",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://imgur.com/a/RijZM",
+          "normalized_url": "http://imgur.com/a/RijZM",
+          "title": "Rusty cargo van converted into a mobile studio - Album on Imgur",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://bugs.launchpad.net/rustc",
+          "normalized_url": "https://bugs.launchpad.net/rustc",
+          "title": "Bugs : rustc",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://hackaday.com/tag/rusty/",
+          "normalized_url": "https://hackaday.com/tag/rusty/",
+          "title": "Rusty | Hackaday",
+          "content": "rusty 1 Articles Okay, first of all: holy crap! Even if you didn’t know this started as a rusty table saw, the workstation that came out of this project …",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://en.wikipedia.org/wiki/Rusty_Eye",
+          "normalized_url": "http://en.wikipedia.org/wiki/Rusty_Eye",
+          "title": "Rusty Eye - Wikipedia",
+          "content": "History Rusty Eye was formed in 1995 in Mexico City, Mexico. The band's original lineup consisted of Mr.",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://doc.rust-lang.org/rustc/lints/index.html",
+          "normalized_url": "http://doc.rust-lang.org/rustc/lints/index.html",
+          "title": "Lints - The rustc book",
+          "content": "The rustc book In software, a \"lint\" is a tool used to help improve your source code. The",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://news.ycombinator.com/item?id=43192477",
+          "normalized_url": "https://news.ycombinator.com/item?id=43192477",
+          "title": "rustc is written in",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://doc.rust-lang.org/rustc/tests/",
+          "normalized_url": "https://doc.rust-lang.org/rustc/tests/",
+          "title": "Tests - The rustc book",
+          "content": "Tests “pass” if they return without an error. They “fail” if they panic, or return a type such as Result that implements the Termination trait with a non…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://doc.rust-lang.org/rustc/jobserver.html",
+          "normalized_url": "http://doc.rust-lang.org/rustc/jobserver.html",
+          "title": "Jobserver - The rustc book",
+          "content": "The rustc book Internally, rustc may take advantage of parallelism. rustc will coordinate with the build system calling it if a GNU Make jobserver is pas…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://rustyshelf.org/",
+          "normalized_url": "http://rustyshelf.org/",
+          "title": "Rusty Rants",
+          "content": "Menu Around 6 months ago I posted about the shortcomings of the Polestar 2 App and what I felt needed to be improved about it. I thought it would be inte…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gist.github.com/mtn/903444debb80bba70a2de6dd4a21cfba",
+          "normalized_url": "https://gist.github.com/mtn/903444debb80bba70a2de6dd4a21cfba",
+          "title": "rustc optimization check · GitHub",
+          "content": "You signed in with another tab or window. Reload to refresh your session.You signed out in another tab or window. Reload to refresh your session.You swit…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rusty_dl",
+          "normalized_url": "https://docs.rs/rusty_dl",
+          "title": "rusty_dl -",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://doc.rust-lang.org/rustc/driver",
+          "normalized_url": "http://doc.rust-lang.org/rustc/driver",
+          "title": "Not Found",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://github.com/rust",
+          "normalized_url": "http://github.com/rust",
+          "title": "rust",
+          "content": "You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/nielx/rust/issues/4",
+          "normalized_url": "https://github.com/nielx/rust/issues/4",
+          "title": "General: rustc uses too much memory when compiling librustc · Is…",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://keybase.io/rustc",
+          "normalized_url": "http://keybase.io/rustc",
+          "title": "rustc | Keybase",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/pd-rs",
+          "normalized_url": "https://github.com/pd-rs",
+          "title": "Rusty Playdate · GitHub",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/Rusty",
+          "normalized_url": "https://github.com/Rusty",
+          "title": "Rusty (Russell Johnson) · GitHub",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://github.com/rust-osdev",
+          "normalized_url": "http://github.com/rust-osdev",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://github.com/topics/rustc",
+          "normalized_url": "http://github.com/topics/rustc",
+          "title": "rustc · GitHub Topics · GitHub",
+          "content": "You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/r-rust",
+          "normalized_url": "https://github.com/r-rust",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-rdf",
+          "normalized_url": "https://github.com/rust-rdf",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-nyc",
+          "normalized_url": "https://github.com/rust-nyc",
+          "title": "Rust",
+          "content": "You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://github.com/Rust-GPU",
+          "normalized_url": "http://github.com/Rust-GPU",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://github.com/Rust-GCC",
+          "normalized_url": "http://github.com/Rust-GCC",
+          "title": "Rust",
+          "content": "You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-gjk",
+          "normalized_url": "https://github.com/rust-gjk",
+          "title": "Rust",
+          "content": "You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-iot",
+          "normalized_url": "https://github.com/rust-iot",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-tlv",
+          "normalized_url": "https://github.com/rust-tlv",
+          "title": "Rust",
+          "content": "You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-cv",
+          "normalized_url": "https://github.com/rust-cv",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-or",
+          "normalized_url": "https://github.com/rust-or",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-tw/",
+          "normalized_url": "https://github.com/rust-tw/",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-cli",
+          "normalized_url": "https://github.com/rust-cli",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-lt",
+          "normalized_url": "https://github.com/rust-lt",
+          "title": "Rust",
+          "content": "You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://github.com/rust-dc",
+          "normalized_url": "http://github.com/rust-dc",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-zh",
+          "normalized_url": "https://github.com/rust-zh",
+          "title": "Rust",
+          "content": "You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://github.com/rust-db",
+          "normalized_url": "http://github.com/rust-db",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-cc",
+          "normalized_url": "https://github.com/rust-cc",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://lkml.org/lkml/2002/9/9/48",
+          "normalized_url": "http://lkml.org/lkml/2002/9/9/48",
+          "title": "LKML: Rusty Russell: Re: [PATCH] Important per-cpu fix.",
+          "content": "Rusty. -- there are those who do and those who hang on and you don't see too many doers quoting their contemporaries. -- Larry McVoy - To unsubs…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rusty_paseto/^0.7.0",
+          "normalized_url": "https://docs.rs/rusty_paseto/^0.7.0",
+          "title": "rusty_paseto -",
+          "content": "rusty_paseto is meant to be flexible and configurable for your specific use case. Whether you want to get started quickly with sensible defaults, create y…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-fuzz",
+          "normalized_url": "https://github.com/rust-fuzz",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-play",
+          "normalized_url": "https://github.com/rust-play",
+          "title": "rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-brno",
+          "normalized_url": "https://github.com/rust-brno",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-rtos",
+          "normalized_url": "https://github.com/rust-rtos",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rusty_hogs",
+          "normalized_url": "https://docs.rs/rusty_hogs",
+          "title": "rusty_hogs 1.0.1 - Docs.rs",
+          "content": "rusty_hogs 1.0.1 This project provides a set of scanners that will use regular expressions to try and detect the presence of sensitive information such a…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gitlab.com/RustyChalk",
+          "normalized_url": "https://gitlab.com/RustyChalk",
+          "title": "Rusty Chalk · GitLab",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rustgbg",
+          "normalized_url": "https://github.com/rustgbg",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://medium.com/@rustyk5",
+          "normalized_url": "https://medium.com/@rustyk5",
+          "title": "Rusty Foster – Medium",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/RustVis",
+          "normalized_url": "https://github.com/RustVis",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rs-ipfs",
+          "normalized_url": "https://github.com/rs-ipfs",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rson-rs",
+          "normalized_url": "https://github.com/rson-rs",
+          "title": "Rust",
+          "content": "You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rash-sh",
+          "normalized_url": "https://github.com/rash-sh",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rustnl",
+          "normalized_url": "https://github.com/rustnl",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://keybase.io/rusty_77",
+          "normalized_url": "http://keybase.io/rusty_77",
+          "title": "rusty_77 | Keybase",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rustid",
+          "normalized_url": "https://github.com/rustid",
+          "title": "Rust",
+          "content": "You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust3ds",
+          "normalized_url": "https://github.com/rust3ds",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/ffi-rs",
+          "normalized_url": "https://github.com/ffi-rs",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rsadsb",
+          "normalized_url": "https://github.com/rsadsb",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/uuid-rs",
+          "normalized_url": "https://github.com/uuid-rs",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://github.com/gfx-rs",
+          "normalized_url": "http://github.com/gfx-rs",
+          "title": "Rust",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-lang/rust/issues/67183",
+          "normalized_url": "https://github.com/rust-lang/rust/issues/67183",
+          "title": "rustc requires 7GB of memory for clean build · Issue #67183 · ru…",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-lang/rust/issues/44433",
+          "normalized_url": "https://github.com/rust-lang/rust/issues/44433",
+          "title": "rustc deadlocks on FreeBSD · Issue #44433 ·",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-lang/rust/issues/73987",
+          "normalized_url": "https://github.com/rust-lang/rust/issues/73987",
+          "title": "rustc performs auto-ref when a raw pointer would be enough · Iss…",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://medium.com/@rusty-grey",
+          "normalized_url": "https://medium.com/@rusty-grey",
+          "title": "Rusty Grey – Medium",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://ifixit.org/User/4596339/Rusty+Crab",
+          "normalized_url": "http://ifixit.org/User/4596339/Rusty+Crab",
+          "title": "Rusty Crab - iFixit",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://neosmart.net/blog/tag/rustc/",
+          "normalized_url": "https://neosmart.net/blog/tag/rustc/",
+          "title": "rustc | The NeoSmart Files",
+          "content": "Tag Archives: rustc Just a PSA from one",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-lang/llvm-project/pull/139",
+          "normalized_url": "https://github.com/rust-lang/llvm-project/pull/139",
+          "title": "rustc + avr = lovelove back again by Patryk27 · Pull Request #13…",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://lithub.com/tag/rusty-mae-moore/",
+          "normalized_url": "https://lithub.com/tag/rusty-mae-moore/",
+          "title": "Rusty Mae Moore ‹ Literary Hub",
+          "content": "Become a Lit Hub Supporting Member: Because Books Matter For the past decade, Literary Hub has brought you the best of the book world for free—no paywall…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/ledger-rs",
+          "normalized_url": "https://github.com/ledger-rs",
+          "title": "Rusty Ledger · GitHub",
+          "content": "You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gitlab.com/rhroberts",
+          "normalized_url": "https://gitlab.com/rhroberts",
+          "title": "Rusty Roberts · GitLab",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gitlab.com/RustyChalk/nibbler",
+          "normalized_url": "https://gitlab.com/RustyChalk/nibbler",
+          "title": "Rusty Chalk / nibbler · GitLab",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://ifixit.org/User/4070204/Rusty",
+          "normalized_url": "https://ifixit.org/User/4070204/Rusty",
+          "title": "Rusty - iFixit",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://lwn.net/Articles/778186/",
+          "normalized_url": "http://lwn.net/Articles/778186/",
+          "title": "Rusty Russell at LCA 2019 [LWN.net]",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://lwn.net/Articles/162574/",
+          "normalized_url": "http://lwn.net/Articles/162574/",
+          "title": "Rusty scale? [LWN.net]",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://lwn.net/Articles/477175/",
+          "normalized_url": "http://lwn.net/Articles/477175/",
+          "title": "Rusty Russell and Matt Evans at LCA 2012 [LWN.net]",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://medium.com/@rusty_lightning",
+          "normalized_url": "https://medium.com/@rusty_lightning",
+          "title": "Rusty Lightning – Medium",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://medium.com/@rusty-lightning",
+          "normalized_url": "https://medium.com/@rusty-lightning",
+          "title": "Rusty Russell – Medium",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://lwn.net/Articles/580191/",
+          "normalized_url": "http://lwn.net/Articles/580191/",
+          "title": "Rusty Russell at LCA 2014 [LWN.net]",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rusty-celery",
+          "normalized_url": "https://github.com/rusty-celery",
+          "title": "Rusty Celery · GitHub",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-lang/rfcs/issues/3127",
+          "normalized_url": "https://github.com/rust-lang/rfcs/issues/3127",
+          "title": "New rustc and Cargo options to allow path sanitisation by defaul…",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rustyshelf.org/page/5/",
+          "normalized_url": "https://rustyshelf.org/page/5/",
+          "title": "Rusty Rants | Page 5",
+          "content": "Menu Fellow Relay FM host Jason Snell wrote an interesting article comparing Google in the naughties to Microsoft in the 90s. Open Google Docs for iOS an…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rustyshelf.org/page/9/",
+          "normalized_url": "https://rustyshelf.org/page/9/",
+          "title": "Rusty Rants | Page 9",
+          "content": "Menu At Shifty Jelly we love anything new and shiny. So it was no surprise that when Galaxy S6 pre-orders went live, we ordered one. The intention was to…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rustyshelf.org/page/2/",
+          "normalized_url": "https://rustyshelf.org/page/2/",
+          "title": "Rusty Rants | Page 2",
+          "content": "Menu I’ve tweetedquite a bit about Apple’s rejection of a Hey update from their iOS App Store. It was no surprise to me that this story got the attention…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rustyshelf.org/page/3/",
+          "normalized_url": "https://rustyshelf.org/page/3/",
+          "title": "Rusty Rants | Page 3",
+          "content": "Menu Early this year I wrote about my 2010 Mac Mini and the desire to replace it with something more modern. For some reason the article got some tractio…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rustyshelf.org/page/6/",
+          "normalized_url": "https://rustyshelf.org/page/6/",
+          "title": "Rusty Rants | Page 6",
+          "content": "Menu I had a few more thoughts after writing this post about Apple’s first Android app. The most interesting one was this: Apple Music on Android has the…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://keybase.io/jrt",
+          "normalized_url": "https://keybase.io/jrt",
+          "title": "jrt (James Rusty Tyner) | Keybase",
+          "content": "jrt (James Rusty Tyner) is now on Keybase, an open source app for encryption and cryptography.",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/rust-lang/rust/pull/48456",
+          "normalized_url": "https://github.com/rust-lang/rust/pull/48456",
+          "title": "Whitelist rustc dependencies by mark-i-m · Pull Request #48456 ·…",
+          "content": "You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://unsplash.com/@nevreev",
+          "normalized_url": "https://unsplash.com/@nevreev",
+          "title": "Rusty Nevreev (@nevreev) | Unsplash Photo Community",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://unsplash.com/@rusty_grim",
+          "normalized_url": "https://unsplash.com/@rusty_grim",
+          "title": "Rusty Grim (@rusty_grim) | Unsplash Photo Community",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rustc_version",
+          "normalized_url": "https://docs.rs/rustc_version",
+          "title": "rustc_version -",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rustc_apfloat",
+          "normalized_url": "https://docs.rs/rustc_apfloat",
+          "title": "rustc_apfloat -",
+          "content": "The port contains no unsafe code, global state, or side-effects in general, and the only allocations are in the conversion to/from decimal strings. Most …",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://unsplash.com/@rustyct1",
+          "normalized_url": "http://unsplash.com/@rustyct1",
+          "title": "Rusty Watson (@rustyct1) | Unsplash Photo Community",
+          "content": "My photography is inspired by artistic ideas and places of innate beauty. I see nature's abundant imagination and human creativity everywhere I look. My …",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/servo/servo/pull/31694",
+          "normalized_url": "https://github.com/servo/servo/pull/31694",
+          "title": "Add RUSTC env to clippy command by eerii · Pull Request #31694 ·…",
+          "content": "You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You swi…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://aphyr.com/tags/rusty",
+          "normalized_url": "https://aphyr.com/tags/rusty",
+          "title": "Tag: Rusty",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/NixOS/nixpkgs/pull/274135",
+          "normalized_url": "https://github.com/NixOS/nixpkgs/pull/274135",
+          "title": "buildRustCrate: do not forcibly disable rustc parallelism · Pull…",
+          "content": "Saved searches Use saved searches to filter your results more quickly You signed in with another tab or window. Reload to refresh your session.You signed…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://lwn.net/Articles/907803/",
+          "normalized_url": "http://lwn.net/Articles/907803/",
+          "title": "Compiling",
+          "content": "Compiling",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://unsplash.com/de/@rustyct1",
+          "normalized_url": "https://unsplash.com/de/@rustyct1",
+          "title": "Rusty Watson (@rustyct1) | Unsplash-Foto-Community",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://unsplash.com/trends/rusty",
+          "normalized_url": "https://unsplash.com/trends/rusty",
+          "title": "rusty Search Trends | Unsplash",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pastebin.com/XN16Uxb6",
+          "normalized_url": "https://pastebin.com/XN16Uxb6",
+          "title": "Copying stage0 rustc from stage0 (x86_64-pc-windows-msvc -> x86_…",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/crate/rustc_version/^0.1",
+          "normalized_url": "https://docs.rs/crate/rustc_version/^0.1",
+          "title": "rustc_version 0.1.7 - Docs.rs",
+          "content": "Contribution Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in the work by you, as defined in the Apache-2…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/crate/rustc_version/0.4.0",
+          "normalized_url": "https://docs.rs/crate/rustc_version/0.4.0",
+          "title": "rustc_version 0.4.0 - Docs.rs",
+          "content": "Example // This could be a cargo build script userustc_version::{version, version_meta, Channel, Version};fnmain(){// Assert we haven't travelled back in…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rusty_time",
+          "normalized_url": "https://docs.rs/rusty_time",
+          "title": "rusty_time -",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rusty_ulid",
+          "normalized_url": "https://docs.rs/rusty_ulid",
+          "title": "rusty_ulid -",
+          "content": "When generating a ULID within the same millisecond, we can provide some guarantees regarding sort order. Namely, if the same millisecond is detected, the …",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/crate/rustc_lexer/0.0.1",
+          "normalized_url": "https://docs.rs/crate/rustc_lexer/0.0.1",
+          "title": "rustc_lexer 0.0.1 - Docs.rs",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rusty_lr",
+          "normalized_url": "https://docs.rs/rusty_lr",
+          "title": "rusty_lr -",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rusty_v8",
+          "normalized_url": "https://docs.rs/rusty_v8",
+          "title": "rusty_v8 -",
+          "content": "A CallbackScope can be used to bootstrap a HandleScope and ContextScope inside a callback function that gets called by V8. Bootstrapping a scope inside a …",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rusty_genes",
+          "normalized_url": "https://docs.rs/rusty_genes",
+          "title": "rusty_genes -",
+          "content": "This module provides an implementation of the OneMax problem for use with the evolutionary algorithm framework. The OneMax problem is a simple problem of…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rustc_lexer",
+          "normalized_url": "https://docs.rs/rustc_lexer",
+          "title": "rustc_lexer -",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rusty_chain",
+          "normalized_url": "https://docs.rs/rusty_chain",
+          "title": "rusty_chain -",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rusty_audio",
+          "normalized_url": "https://docs.rs/rusty_audio",
+          "title": "rusty_audio -",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rusty_gfx",
+          "normalized_url": "https://docs.rs/rusty_gfx",
+          "title": "rusty_gfx -",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rusty_oge",
+          "normalized_url": "https://docs.rs/rusty_oge",
+          "title": "rusty_oge -",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rusty_qjs",
+          "normalized_url": "https://docs.rs/rusty_qjs",
+          "title": "rusty_qjs -",
+          "content": "JSContext represents a Javascript context (or Realm). Each JSContext has its own global objects and system objects. There can be several JSContexts per JS…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rusty_jsc/^0.1.0",
+          "normalized_url": "https://docs.rs/rusty_jsc/^0.1.0",
+          "title": "rusty_jsc -",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rusty_ffmpeg",
+          "normalized_url": "https://docs.rs/rusty_ffmpeg",
+          "title": "rusty_ffmpeg -",
+          "content": "",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/cov",
+          "normalized_url": "https://docs.rs/cov",
+          "title": "cov -",
+          "content": "GCNO (gcov notes) files are created by rustc when given the -Z profile flag. The GCNO files encode the structure of every function in the program, known a…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/trybuild",
+          "normalized_url": "https://docs.rs/trybuild",
+          "title": "trybuild -",
+          "content": "Crate trybuild Trybuild is a test harness for invoking rustc on a set of test cases and asserting that any resulting error messages are the ones intended…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/rustc-serialize/0.3.7/rustc_serialize/",
+          "normalized_url": "https://docs.rs/rustc-serialize/0.3.7/rustc_serialize/",
+          "title": "rustc-serialize 0.3.7 - Docs.rs",
+          "content": "docs.rs failed to build rustc-serialize-0.3.7 Please check the build logs for more information. See Builds for ideas on how to fix a failed build, or Met…",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/ui_test",
+          "normalized_url": "https://docs.rs/ui_test",
+          "title": "ui_test -",
+          "content": "A test runner that builds tests with rustc or cargo (or any other compiler with some configuration effort) and compares the output of the compiler with a …",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://docs.rs/osauth",
+          "normalized_url": "https://docs.rs/osauth",
+          "title": "osauth -",
+          "content": "This crate requires",
+          "engine": "mwmbl",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

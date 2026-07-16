@@ -1,0 +1,27 @@
+{
+  "engine": "sepiasearch",
+  "case": "no-data",
+  "query": {
+    "query": "peertube",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://sepiasearch.org",
+    "headers": {},
+    "body": "{\"total\":0}"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

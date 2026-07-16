@@ -1,0 +1,206 @@
+{
+  "engine": "il post",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://api.ilpost.org/search/api/site_search/?qs=rust&pg=1&sort=date_d&filters=ctype%3Aarticoli",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://api.ilpost.org/search/api/site_search/?qs=rust&pg=1&sort=date_d&filters=ctype%3Aarticoli",
+    "headers": {
+      "x-amz-cf-pop": "MIA3-P6",
+      "vary": "Accept-Encoding",
+      "cross-origin-opener-policy": "same-origin",
+      "date": "Thu, 09 Jul 2026 14:05:48 GMT",
+      "via": "1.1 d405a04cd8ea9f4d044583a524ca1060.cloudfront.net (CloudFront)",
+      "x-amz-cf-id": "xhl19hhRg3foUbQx2NHe1aoS8Rpnc1W3vio8OlYqvQXx4FRfeNrhCw==",
+      "content-type": "application/json",
+      "allow": "GET, HEAD, OPTIONS",
+      "referrer-policy": "same-origin",
+      "x-cache": "Hit from cloudfront",
+      "age": "202",
+      "x-frame-options": "DENY",
+      "content-length": "12119",
+      "server": "nginx/1.18.0 (Ubuntu)",
+      "x-content-type-options": "nosniff"
+    },
+    "body": "{\"header\":{\"message\":\"success\",\"status\":200,\"search_time_ms\":\"10.74 ms \",\"search_e_time_ms\":\"10.78 ms \",\"es_took\":6,\"result_type\":\"listing\"},\"total\":66,\"docs\":[{\"id\":3563309,\"subscriber\":false,\"category\":\"bits\",\"derived_info\":{},\"image\":\"https://www.ilpost.it/wp-content/uploads/2026/04/19/1776578023-ab.jpg\",\"post_tag_text\":[\"alec baldwin\",\"causa civile\",\"cinema\"],\"timestamp\":\"2026-04-19T08:19:17\",\"title\":\"È stata autorizzata una causa civile contro Alec Baldwin, per la morte della direttrice della fotografia a cui aveva sparato nel 2021\",\"link\":\"https://www.ilpost.it/2026/04/19/alec-baldwin-causa-civile/\",\"type\":\"post\",\"score\":39.9171,\"summary\":\"Un tribunale di Los Angeles ha autorizzato l'avvio di una causa civile nei confronti del noto attore statunitense Alec Baldwin . La causa riguarda la morte della direttrice della fotografia Halyna Hutchins , avvenuta nel 2021 durante le riprese del\",\"highlight\":{\"content\":\"confronti del noto attore statunitense Alec Baldwin. La causa riguarda la morte della direttrice della fotografia Halyna Hutchins, avvenuta nel 2021 durante le riprese del film <span>Rust</span>, per via di un colpo sparato dall'attore con una pistola di scena che avrebbe dovuto essere caricata a salve. Il procedimento penale nei confronti di Baldwin, inizialmente accusato\"}},{\"id\":3450706,\"subscriber\":false,\"category\":\"cultura\",\"derived_info\":{},\"image\":\"https://www.ilpost.it/wp-content/uploads/2025/11/14/1763110542-spoti.jpg\",\"post_tag_text\":[\"intelligenza artificiale\",\"musica\",\"spotify\"],\"timestamp\":\"2025-11-14T11:58:50\",\"title\":\"Le canzoni fatte con l’intelligenza artificiale fanno capolino nelle classifiche\",\"link\":\"https://www.ilpost.it/2025/11/14/canzoni-intelligenza-artificiale-classifiche/\",\"type\":\"post\",\"score\":24.673027,\"summary\":\"Nell'ultima settimana hanno raggiunto il primo posto di alcune tra quelle più famose di Spotify e di una minore di Billboard, ma non vuol dire granché\",\"highlight\":{\"content\":\"classifiche di ascolto di Spotify, il servizio di streaming più usato al mondo. Sono “Walk My Walk” e “Livin' on Borrowed Time”, di un gruppo country che si fa chiamare Breaking <span>Rust</span>, e “Wij zeggen nee, nee, nee, tegen een AZC”, una specie di inno anti-migranti (la traduzione italiana è “Diciamo no, no, no a un centro per richiedenti asilo”) attribuito all'artista\"}},{\"id\":3447902,\"subscriber\":false,\"category\":\"cultura\",\"derived_info\":{},\"image\":\"https://www.ilpost.it/wp-content/uploads/2025/11/11/1762878091-neil.jpg\",\"post_tag_text\":[\"grunge\",\"musica\",\"neil young\"],\"timestamp\":\"2025-11-12T15:29:45\",\"title\":\"Neil Young fu grunge prima del grunge\",\"link\":\"https://www.ilpost.it/2025/11/12/neil-young-80-anni/\",\"type\":\"post\",\"score\":25.833702,\"summary\":\"Il suono e la scrittura di alcuni dei suoi dischi ebbero un'influenza enorme su Nirvana, Pearl Jam e molte altre band che lo omaggiarono\",\"highlight\":{\"content\":\"tratto da “Hey Hey, My My (Into the Black)”, una delle canzoni più note di Young.\\n-\\n– Leggi anche: Come se ne andò Kurt Cobain\\n-\\nProprio l’album del 1979 in cui è contenuta, <span>Rust</span> Never Sleeps, è diventato negli anni un feticcio per molti gruppi della scena grunge, e oggi è riconosciuto come una sorta di prototipo del genere, pur essendo uscito più di\"}},{\"id\":3255679,\"subscriber\":false,\"category\":\"economia\",\"derived_info\":{},\"image\":\"https://www.ilpost.it/wp-content/uploads/2025/02/10/1739197964-acciaieria.jpg\",\"post_tag_text\":[\"acciaio\",\"alluminio\",\"dazi\",\"donald trump\",\"guerra commerciale\"],\"timestamp\":\"2025-02-11T05:51:41\",\"title\":\"Trump ha imposto nuovi dazi su acciaio e alluminio\",\"link\":\"https://www.ilpost.it/2025/02/11/trump-dazi-alluminio-acciaio/\",\"type\":\"post\",\"score\":27.108967,\"summary\":\"Saranno del 25 per cento e da marzo si applicheranno a qualsiasi paese, con l'obiettivo poco realistico di risollevare l'industria pesante statunitense\",\"highlight\":{\"content\":\"Puskar)[/caption]\\nLa crisi del settore non è nuova, anzi: da tempo si parla del declino del Midwest e di quella che era la Steel Belt, la “cintura dell’acciaio”, che oggi viene chiamata <span>Rust</span> Belt, la “cintura arrugginita”, un soprannome poco lusinghiero dovuto proprio alla progressiva chiusura di moltissime fabbriche e centri di produzione industriale.\\nUn esempio\"}},{\"id\":3217975,\"subscriber\":false,\"category\":\"bits\",\"derived_info\":{},\"image\":\"https://www.ilpost.it/wp-content/uploads/2025/01/10/1736497921-alec-baldwin.jpg\",\"post_tag_text\":[\"alec baldwin\",\"rust\"],\"timestamp\":\"2025-01-10T09:38:38\",\"title\":\"Alec Baldwin ha fatto causa ai procuratori e agli investigatori che lo avevano accusato di omicidio\",\"link\":\"https://www.ilpost.it/2025/01/10/alec-baldwin-causa-procuratori-polizia-accuse-omicidio/\",\"type\":\"post\",\"score\":41.422554,\"summary\":\"L'attore statunitense Alec Baldwin ha fatto causa ai procuratori e agli investigatori del distretto di Santa Fe ( in New Mexico , negli Stati Uniti ) che lo avevano accusato di omicidio per la morte di Halyna Hutchins , uccisa sul set del film Rust\",\"highlight\":{\"content\":\"agli investigatori del distretto di Santa Fe (in New Mexico, negli Stati Uniti) che lo avevano accusato di omicidio per la morte di Halyna Hutchins, uccisa sul set del film <span>Rust</span> da un proiettile vero sparato accidentalmente dall'attore con una pistola di scena che avrebbe dovuto essere caricata a salve. Secondo Baldwin i procuratori lo avrebbero accusato\"}},{\"id\":3209170,\"subscriber\":false,\"category\":\"bits\",\"derived_info\":{},\"image\":\"https://www.ilpost.it/wp-content/uploads/2024/12/24/1735040936-alec-baldwin.jpg\",\"post_tag_text\":[\"alec baldwin\",\"rust\"],\"timestamp\":\"2024-12-24T12:59:54\",\"title\":\"Le accuse di omicidio colposo contro Alec Baldwin sono state archiviate definitivamente, dato che la procura ha ritirato il proprio ricorso\",\"link\":\"https://www.ilpost.it/2024/12/24/ricorso-omicidio-colposo-alec-baldwin-ritirato/\",\"type\":\"post\",\"score\":41.422554,\"summary\":\"La procura di Santa Fe , negli Stati Uniti , ha ritirato il ricorso contro la decisione di un giudice di archiviare le accuse di omicidio colposo contro l'attore Alec Baldwin . L'archiviazione delle accuse è quindi definitiva . Nell'ottobre del 2021\",\"highlight\":{\"content\":\"omicidio colposo contro l'attore Alec Baldwin. L'archiviazione delle accuse è quindi definitiva. Nell'ottobre del 2021, mentre maneggiava una pistola di scena sul set del film <span>Rust</span>, Baldwin aveva sparato un colpo vero, che aveva ucciso la direttrice della fotografia Halyna Hutchins e aveva ferito il regista Joel Souza.\\nGli avvocati di Baldwin sostenevano\"}},{\"id\":3169427,\"subscriber\":false,\"category\":\"mondo\",\"derived_info\":{},\"image\":\"https://www.ilpost.it/wp-content/uploads/2024/10/28/1730126688-glossario-evi.jpg\",\"post_tag_text\":[\"early voting\",\"elezioni stati uniti\",\"gerrymandering\",\"grandi elettori\",\"stati uniti\",\"usa 2024\"],\"timestamp\":\"2024-10-30T16:42:00\",\"title\":\"Glossario minimo per seguire le elezioni americane\",\"link\":\"https://www.ilpost.it/2024/10/30/glossario-minimo-per-seguire-le-elezioni-americane/\",\"type\":\"post\",\"score\":14.73959,\"summary\":\"Si vota martedì 5, si è già cominciato con l'early voting e nel Blue Wall i PAC dei MAGA inseguono il bro vote, ma la situazione resta too close to call: ok, spieghiamo\",\"highlight\":{\"content\":\"Jersey, ma più recentemente ci si riferisce soprattutto a questi tre, diventati “swing state”. Potreste sentire parlare di questi ultimi anche con termini come Steel Belt o <span>Rust</span> Belt, \\\"cintura dell'acciaio\\\", poi diventata dopo la crisi “cintura della ruggine”: anche questa definizione si rifà ad antiche tradizioni industriali e a volte include altri\"}},{\"id\":3098533,\"subscriber\":false,\"category\":\"mondo\",\"derived_info\":{},\"image\":\"https://www.ilpost.it/wp-content/uploads/2024/07/13/1720847230-AP24194860006641.jpg\",\"post_tag_text\":[\"alec baldwin\"],\"timestamp\":\"2024-07-13T07:18:30\",\"title\":\"Sono state archiviate le accuse di omicidio colposo nei confronti di Alec Baldwin\",\"link\":\"https://www.ilpost.it/2024/07/13/alec-baldwin-processo-archiviato/\",\"type\":\"post\",\"score\":28.516674,\"summary\":\"Il giudice ha dato ragione agli avvocati dell'attore, secondo cui la polizia aveva nascosto delle prove importanti\",\"highlight\":{\"content\":\"le accuse di omicidio colposo nei confronti dell'attore Alec Baldwin per la morte di Halyna Hutchins, la direttrice della fotografia a cui sparò durante le riprese del film <span>Rust</span> nel 2021. Il giudice che si occupava del caso ha dato ragione agli avvocati dell'attore, che avevano sostenuto che la polizia e l'accusa avessero nascosto una prova importante\"}},{\"id\":3095550,\"subscriber\":false,\"category\":\"mondo\",\"derived_info\":{},\"image\":\"https://www.ilpost.it/wp-content/uploads/2024/07/09/1720530664-RTSDW4GN.jpg\",\"post_tag_text\":[\"alec baldwin\",\"david halls\",\"halyna hutchins\",\"hannah gutierrez reed\",\"rust\"],\"timestamp\":\"2024-07-09T15:18:06\",\"title\":\"Come si è arrivati al processo ad Alec Baldwin\",\"link\":\"https://www.ilpost.it/2024/07/09/alec-baldwin-processo-omicidio-colposo-halyna-hutchins/\",\"type\":\"post\",\"score\":51.001297,\"summary\":\"Che è cominciato martedì: è accusato di omicidio colposo per aver sparato e ucciso la direttrice della fotografia Halyna Hutchins sul set di “Rust” nel 2021\",\"highlight\":{\"content\":\"noto attore statunitense Alec Baldwin è accusato di omicidio colposo per la morte di Halyna Hutchins, la direttrice della fotografia a cui sparò durante le riprese del western <span>Rust</span> nel 2021. Baldwin è da quasi tre anni al centro di attenzioni mediatiche, lunghe indagini e procedimenti giudiziari travagliati che hanno avuto più di una svolta, anche per\"}},{\"id\":3042881,\"subscriber\":false,\"category\":\"bits\",\"derived_info\":{},\"image\":\"https://www.ilpost.it/wp-content/uploads/2024/04/15/1713208196-AP24106677444594.jpg\",\"post_tag_text\":[\"alec baldwin\",\"rust\"],\"timestamp\":\"2024-04-15T21:12:07\",\"title\":\"La responsabile delle armi del set di “Rust” è stata condannata a 18 mesi di carcere per omicidio colposo\",\"link\":\"https://www.ilpost.it/2024/04/15/hanna-gutierrez-reed-condanna-18-mesi-omicidio-colposo-rust-alec-baldwin/\",\"type\":\"post\",\"score\":68.242195,\"summary\":\"Hannah Gutierrez-Reed , la responsabile delle armi sul set del film Rust dove nel 2021 morì una persona a causa di una pistola caricata con un vero proiettile , è stata condannata a 18 mesi di carcere , dopo che a inizio marzo un tribunale del New\",\"highlight\":{\"content\":\"Hannah Gutierrez-Reed, la responsabile delle armi sul set del film <span>Rust</span> dove nel 2021 morì una persona a causa di una pistola caricata con un vero proiettile, è stata condannata a 18 mesi di carcere, dopo che a inizio marzo un tribunale del New Mexico (Stati Uniti) l'aveva ritenuta colpevole di omicidio colposo. La condanna rispecchia quanto aveva chiesto\"}}],\"filters\":[{\"name\":\"ctype\",\"label\":\"Tipologia\",\"contents\":[{\"key\":\"articoli\",\"doc_count\":66,\"label\":\"Articoli\",\"selected\":true},{\"key\":\"newsletter\",\"doc_count\":9,\"label\":\"Newsletter\",\"selected\":false},{\"key\":\"podcast\",\"doc_count\":6,\"label\":\"Podcast\",\"selected\":false}],\"multi\":true},{\"name\":\"category\",\"label\":\"Categorie\",\"multi\":true,\"contents\":[{\"key\":\"mondo\",\"doc_count\":33,\"selected\":false,\"label\":\"Mondo\"},{\"key\":\"cultura\",\"doc_count\":25,\"selected\":false,\"label\":\"Cultura\"},{\"key\":\"economia\",\"doc_count\":2,\"selected\":false,\"label\":\"Economia\"},{\"key\":\"libri\",\"doc_count\":2,\"selected\":false,\"label\":\"Libri\"},{\"key\":\"da-costa-a-costa\",\"doc_count\":1,\"selected\":false,\"label\":\"Da-costa-a-costa\"},{\"key\":\"italia\",\"doc_count\":1,\"selected\":false,\"label\":\"Italia\"},{\"key\":\"tv\",\"doc_count\":1,\"selected\":false,\"label\":\"Tv\"},{\"key\":\"virgolette\",\"doc_count\":1,\"selected\":false,\"label\":\"Virgolette\"}]},{\"name\":\"pub_date\",\"label\":\"Data Pubblicazione\",\"multi\":false,\"contents\":[{\"doc_count\":81,\"key\":\"da_sempre\",\"label\":\"Tutti\",\"selected\":false},{\"doc_count\":3,\"key\":\"ultimo_anno\",\"label\":\"Ultimo anno\",\"selected\":false},{\"doc_count\":0,\"key\":\"ultimi_30_giorni\",\"label\":\"Ultimo mese\",\"selected\":false}]}],\"sort\":\"date_d\",\"hits\":10,\"mode\":\"content\"}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://www.ilpost.it/2026/04/19/alec-baldwin-causa-civile/",
+          "normalized_url": "https://www.ilpost.it/2026/04/19/alec-baldwin-causa-civile/",
+          "title": "È stata autorizzata una causa civile contro Alec Baldwin, per la morte della direttrice della fotografia a cui aveva sparato nel 2021",
+          "content": "Un tribunale di Los Angeles ha autorizzato l'avvio di una causa civile nei confronti del noto attore statunitense Alec Baldwin . La causa riguarda la morte della direttrice della fotografia Halyna Hutchins , avvenuta nel 2021 durante le riprese del",
+          "engine": "il post",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.ilpost.it/2025/11/14/canzoni-intelligenza-artificiale-classifiche/",
+          "normalized_url": "https://www.ilpost.it/2025/11/14/canzoni-intelligenza-artificiale-classifiche/",
+          "title": "Le canzoni fatte con l’intelligenza artificiale fanno capolino nelle classifiche",
+          "content": "Nell'ultima settimana hanno raggiunto il primo posto di alcune tra quelle più famose di Spotify e di una minore di Billboard, ma non vuol dire granché",
+          "engine": "il post",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.ilpost.it/2025/11/12/neil-young-80-anni/",
+          "normalized_url": "https://www.ilpost.it/2025/11/12/neil-young-80-anni/",
+          "title": "Neil Young fu grunge prima del grunge",
+          "content": "Il suono e la scrittura di alcuni dei suoi dischi ebbero un'influenza enorme su Nirvana, Pearl Jam e molte altre band che lo omaggiarono",
+          "engine": "il post",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.ilpost.it/2025/02/11/trump-dazi-alluminio-acciaio/",
+          "normalized_url": "https://www.ilpost.it/2025/02/11/trump-dazi-alluminio-acciaio/",
+          "title": "Trump ha imposto nuovi dazi su acciaio e alluminio",
+          "content": "Saranno del 25 per cento e da marzo si applicheranno a qualsiasi paese, con l'obiettivo poco realistico di risollevare l'industria pesante statunitense",
+          "engine": "il post",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.ilpost.it/2025/01/10/alec-baldwin-causa-procuratori-polizia-accuse-omicidio/",
+          "normalized_url": "https://www.ilpost.it/2025/01/10/alec-baldwin-causa-procuratori-polizia-accuse-omicidio/",
+          "title": "Alec Baldwin ha fatto causa ai procuratori e agli investigatori che lo avevano accusato di omicidio",
+          "content": "L'attore statunitense Alec Baldwin ha fatto causa ai procuratori e agli investigatori del distretto di Santa Fe ( in New Mexico , negli Stati Uniti ) che lo avevano accusato di omicidio per la morte di Halyna Hutchins , uccisa sul set del film Rust",
+          "engine": "il post",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.ilpost.it/2024/12/24/ricorso-omicidio-colposo-alec-baldwin-ritirato/",
+          "normalized_url": "https://www.ilpost.it/2024/12/24/ricorso-omicidio-colposo-alec-baldwin-ritirato/",
+          "title": "Le accuse di omicidio colposo contro Alec Baldwin sono state archiviate definitivamente, dato che la procura ha ritirato il proprio ricorso",
+          "content": "La procura di Santa Fe , negli Stati Uniti , ha ritirato il ricorso contro la decisione di un giudice di archiviare le accuse di omicidio colposo contro l'attore Alec Baldwin . L'archiviazione delle accuse è quindi definitiva . Nell'ottobre del 2021",
+          "engine": "il post",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.ilpost.it/2024/10/30/glossario-minimo-per-seguire-le-elezioni-americane/",
+          "normalized_url": "https://www.ilpost.it/2024/10/30/glossario-minimo-per-seguire-le-elezioni-americane/",
+          "title": "Glossario minimo per seguire le elezioni americane",
+          "content": "Si vota martedì 5, si è già cominciato con l'early voting e nel Blue Wall i PAC dei MAGA inseguono il bro vote, ma la situazione resta too close to call: ok, spieghiamo",
+          "engine": "il post",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.ilpost.it/2024/07/13/alec-baldwin-processo-archiviato/",
+          "normalized_url": "https://www.ilpost.it/2024/07/13/alec-baldwin-processo-archiviato/",
+          "title": "Sono state archiviate le accuse di omicidio colposo nei confronti di Alec Baldwin",
+          "content": "Il giudice ha dato ragione agli avvocati dell'attore, secondo cui la polizia aveva nascosto delle prove importanti",
+          "engine": "il post",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.ilpost.it/2024/07/09/alec-baldwin-processo-omicidio-colposo-halyna-hutchins/",
+          "normalized_url": "https://www.ilpost.it/2024/07/09/alec-baldwin-processo-omicidio-colposo-halyna-hutchins/",
+          "title": "Come si è arrivati al processo ad Alec Baldwin",
+          "content": "Che è cominciato martedì: è accusato di omicidio colposo per aver sparato e ucciso la direttrice della fotografia Halyna Hutchins sul set di “Rust” nel 2021",
+          "engine": "il post",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.ilpost.it/2024/04/15/hanna-gutierrez-reed-condanna-18-mesi-omicidio-colposo-rust-alec-baldwin/",
+          "normalized_url": "https://www.ilpost.it/2024/04/15/hanna-gutierrez-reed-condanna-18-mesi-omicidio-colposo-rust-alec-baldwin/",
+          "title": "La responsabile delle armi del set di “Rust” è stata condannata a 18 mesi di carcere per omicidio colposo",
+          "content": "Hannah Gutierrez-Reed , la responsabile delle armi sul set del film Rust dove nel 2021 morì una persona a causa di una pistola caricata con un vero proiettile , è stata condannata a 18 mesi di carcere , dopo che a inizio marzo un tribunale del New",
+          "engine": "il post",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

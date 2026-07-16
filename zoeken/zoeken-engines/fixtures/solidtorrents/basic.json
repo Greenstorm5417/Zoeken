@@ -1,0 +1,54 @@
+{
+  "engine": "solidtorrents",
+  "case": "basic",
+  "query": {
+    "query": "ubuntu",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://solidtorrents.to",
+    "headers": {},
+    "body": "<ul>\n      <li class=\"search-result\">\n        <h5 class=\"title\"><a href=\"/view/abc123\">Ubuntu 24.04 Desktop</a></h5>\n        <a class=\"category\">Software</a>\n        <a class=\"dl-torrent\" href=\"/download/abc123.torrent\">Torrent</a>\n        <a class=\"dl-magnet\" href=\"magnet:?xt=urn:btih:deadbeef\">Magnet</a>\n        <div class=\"stats\">\n          <div>0</div>\n          <div>4.7 GiB</div>\n          <div>7</div>\n          <div>25</div>\n          <div>Jan 02, 2024</div>\n        </div>\n      </li>\n    </ul>"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "File": {
+          "url": "https://solidtorrents.to/view/abc123",
+          "normalized_url": "https://solidtorrents.to/view/abc123",
+          "title": "Ubuntu 24.04 Desktop",
+          "content": "Software",
+          "engine": "solidtorrents",
+          "filename": "Ubuntu 24.04 Desktop",
+          "size": "",
+          "time": "",
+          "mimetype": "",
+          "abstract": "",
+          "author": "",
+          "embedded": "",
+          "mtype": "",
+          "subtype": "",
+          "filesize": "4.7 GiB",
+          "seed": 25,
+          "leech": 7,
+          "magnetlink": "magnet:?xt=urn:btih:deadbeef",
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

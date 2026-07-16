@@ -1,0 +1,230 @@
+{
+  "engine": "fdroid",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://search.f-droid.org/?q=rust&page=1&lang=",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://search.f-droid.org/?q=rust&page=1&lang=",
+    "headers": {
+      "x-frame-options": "DENY",
+      "strict-transport-security": "max-age=63072000",
+      "content-security-policy": "default-src 'none'; img-src https:; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'",
+      "content-type": "text/html; charset=utf-8",
+      "x-xss-protection": "1; mode=block",
+      "referrer-policy": "no-referrer",
+      "server": "nginx/1.18.0",
+      "permissions-policy": "interest-cohort=()",
+      "x-content-type-options": "nosniff",
+      "date": "Thu, 09 Jul 2026 14:05:39 GMT",
+      "cross-origin-opener-policy": "same-origin"
+    },
+    "body": "<!DOCTYPE html>\n\n\n\n\n\n\n\n\n\n\n\n\n<html>\n\n  <head>\n    <link href=\"/static/fdroid_website_search.css\" rel=\"stylesheet\" />\n    <link href=\"/static/favicon.png\" rel=\"shortcut icon\" />\n    <link href=\"/static/osd.xml\" rel=\"search\" title=\"F-Droid\" type=\"application/opensearchdescription+xml\"/>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <title>F-Droid\n      \n        Search: rust\n      \n    </title>\n  </head>\n\n  <body>\n    <div class=\"site-wrapper\">\n      <header class=\"site-header\">\n        <a class=\"site-title\" href=\"https://f-droid.org/\">\n          <img src=\"/static/fdroid-logo-text.svg\" alt=\"F-Droid\" />\n        </a>\n      </header>\n      <div class=\"main-content\">\n        <div class=\"search-form-wrapper\">\n          <form method=\"get\">\n            <input type=\"text\" class=\"search-input\" name=\"q\" value=\"rust\" />\n            \n            <input type=\"submit\" value=\"search\" class=\"material-button\" />\n          </form>\n        </div>\n\n        \n          <a class=\"package-header\" href=\"https://f-droid.org/packages/com.bmco.cratesiounofficial\">\n            <img class=\"package-icon\" src=\"https://ftp.fau.de/fdroid/repo/icons/com.bmco.cratesiounofficial.12.png\" />\n\n            <div class=\"package-info\">\n              <h4 class=\"package-name\">\n                Crates.io unofficial\n              </h4>\n\n              <div class=\"package-desc\">\n                <span class=\"package-summary\">Rust crates.io browsing app</span><span class=\"package-license\">Apache-2.0</span>\n              </div>\n            </div>\n          </a>\n        \n          <a class=\"package-header\" href=\"https://f-droid.org/packages/org.astonbitecode.rustkeylock\">\n            <img class=\"package-icon\" src=\"https://ftp.fau.de/fdroid/repo/org.astonbitecode.rustkeylock/en-US/icon__5ZNJIlzgigyf20VWSy1S9z8KpWz2eizUUf1gAcQowM=.png\" />\n\n            <div class=\"package-info\">\n              <h4 class=\"package-name\">\n                rust-keylock-android\n              </h4>\n\n              <div class=\"package-desc\">\n                <span class=\"package-summary\">A password manager with goals to be Secure, Simple to use, Portable and Extensib</span><span class=\"package-license\">GPL-3.0-only</span>\n              </div>\n            </div>\n          </a>\n        \n          <a class=\"package-header\" href=\"https://f-droid.org/packages/org.mlm.mages\">\n            <img class=\"package-icon\" src=\"https://ftp.fau.de/fdroid/repo/org.mlm.mages/en-US/icon_JU2ZYWVBRsUNv7AE4x176v6RjmY_qRreLiEWOipiB9g=.png\" />\n\n            <div class=\"package-info\">\n              <h4 class=\"package-name\">\n                Mages\n              </h4>\n\n              <div class=\"package-desc\">\n                <span class=\"package-summary\">Experimental Matrix client made using Compose Multiplatform (and Rust).</span><span class=\"package-license\">AGPL-3.0-only</span>\n              </div>\n            </div>\n          </a>\n        \n          <a class=\"package-header\" href=\"https://f-droid.org/packages/com.ssrlive.ssrdroid\">\n            <img class=\"package-icon\" src=\"https://ftp.fau.de/fdroid/repo/com.ssrlive.ssrdroid/en-US/icon_Fg6IrWvRQGdiLU-2swQrBHvRtfqE7ijGrGce8W9G_sY=.png\" />\n\n            <div class=\"package-info\">\n              <h4 class=\"package-name\">\n                ssrDroid\n              </h4>\n\n              <div class=\"package-desc\">\n                <span class=\"package-summary\">OverTLS &amp; SSRoT Android client</span><span class=\"package-license\">GPL-3.0-only</span>\n              </div>\n            </div>\n          </a>\n        \n          <a class=\"package-header\" href=\"https://f-droid.org/packages/com.brahmadeo.supertonic.tts\">\n            <img class=\"package-icon\" src=\"https://ftp.fau.de/fdroid/repo/com.brahmadeo.supertonic.tts/en-US/icon_Ftei5HU4qqFXtTKd-Zpz1SzK8mt2kfI94EvOP8uPWgo=.png\" />\n\n            <div class=\"package-info\">\n              <h4 class=\"package-name\">\n                Supertonic TTS\n              </h4>\n\n              <div class=\"package-desc\">\n                <span class=\"package-summary\">Local AI Text-to-Speech using Supertonic ONNX</span><span class=\"package-license\">GPL-3.0-only</span>\n              </div>\n            </div>\n          </a>\n        \n          <a class=\"package-header\" href=\"https://f-droid.org/packages/com.blacksquircle.ui\">\n            <img class=\"package-icon\" src=\"https://ftp.fau.de/fdroid/repo/com.blacksquircle.ui/en-US/icon_FtV5qpmuJJ3IqYz5WwTDUqsxFK3kUeIONL3_hbDFlLg=.png\" />\n\n            <div class=\"package-info\">\n              <h4 class=\"package-name\">\n                Squircle CE - Code Editor\n              </h4>\n\n              <div class=\"package-desc\">\n                <span class=\"package-summary\">Fast and powerful code editor &amp; file manager for over 30 programming languages</span><span class=\"package-license\">Apache-2.0</span>\n              </div>\n            </div>\n          </a>\n        \n          <a class=\"package-header\" href=\"https://f-droid.org/packages/alt.nainapps.sharepaste.fdroid\">\n            <img class=\"package-icon\" src=\"https://ftp.fau.de/fdroid/repo/alt.nainapps.sharepaste.fdroid/en-US/icon_-3vxSBUNtympM0L4kKHoOKQ8yi15VzRDIMRKSGNYGmo=.png\" />\n\n            <div class=\"package-info\">\n              <h4 class=\"package-name\">\n                Share Paste O2\n              </h4>\n\n              <div class=\"package-desc\">\n                <span class=\"package-summary\">Share pastes privately, with end to end encryption.</span><span class=\"package-license\">AGPL-3.0-only</span>\n              </div>\n            </div>\n          </a>\n        \n          <a class=\"package-header\" href=\"https://f-droid.org/packages/com.brokenpip3.fatto\">\n            <img class=\"package-icon\" src=\"https://ftp.fau.de/fdroid/repo/com.brokenpip3.fatto/en-US/icon_x2s15IK4GagggLzU-1f8SmvmsYTPQfkfvlLT34qb7ZY=.png\" />\n\n            <div class=\"package-info\">\n              <h4 class=\"package-name\">\n                Fatto\n              </h4>\n\n              <div class=\"package-desc\">\n                <span class=\"package-summary\">your Taskwarrior Android companion</span><span class=\"package-license\">GPL-3.0-only</span>\n              </div>\n            </div>\n          </a>\n        \n          <a class=\"package-header\" href=\"https://f-droid.org/packages/dev.khoj.pitaka.fdroid\">\n            <img class=\"package-icon\" src=\"https://ftp.fau.de/fdroid/repo/dev.khoj.pitaka.fdroid/en-US/icon_OdJNxhG-aw28v_413JYFzxnDIGaOqZ5Du18PX7fkwvE=.png\" />\n\n            <div class=\"package-info\">\n              <h4 class=\"package-name\">\n                Pitak\n              </h4>\n\n              <div class=\"package-desc\">\n                <span class=\"package-summary\">Privacy-first offline library catalogue with an encrypted lending vault</span><span class=\"package-license\">GPL-3.0-or-later</span>\n              </div>\n            </div>\n          </a>\n        \n          <a class=\"package-header\" href=\"https://f-droid.org/packages/com.trougnouf.cfait\">\n            <img class=\"package-icon\" src=\"https://ftp.fau.de/fdroid/repo/com.trougnouf.cfait/en-US/icon_hdNMiO51CtxeOJbf2fF1k__Xpapk8VRo-fLC7y5cGWo=.png\" />\n\n            <div class=\"package-info\">\n              <h4 class=\"package-name\">\n                Cfait\n              </h4>\n\n              <div class=\"package-desc\">\n                <span class=\"package-summary\">Powerful, fast and elegant TODO / task manager. (CalDAV and local)</span><span class=\"package-license\">GPL-3.0-only</span>\n              </div>\n            </div>\n          </a>\n        \n          <a class=\"package-header\" href=\"https://f-droid.org/packages/org.torproject.vpn\">\n            <img class=\"package-icon\" src=\"https://ftp.fau.de/fdroid/repo/org.torproject.vpn/en-US/icon_Apw8n6Kct_kklGY7bSHiix5LH7RFeJJLyw62JtpfNaw=.png\" />\n\n            <div class=\"package-info\">\n              <h4 class=\"package-name\">\n                Tor VPN Beta\n              </h4>\n\n              <div class=\"package-desc\">\n                <span class=\"package-summary\">Tor-powered with per-app routing, access unblocking &amp; network-level privacy.</span><span class=\"package-license\">BSD-3-Clause</span>\n              </div>\n            </div>\n          </a>\n        \n          <a class=\"package-header\" href=\"https://f-droid.org/packages/de.godisch.potillus\">\n            <img class=\"package-icon\" src=\"https://ftp.fau.de/fdroid/repo/de.godisch.potillus/en-US/icon_xLJh_8OLRT7aGHbCFLZK1rPoGz7x37lOSGXT4gsrfKs=.png\" />\n\n            <div class=\"package-info\">\n              <h4 class=\"package-name\">\n                Libellus Potionis\n              </h4>\n\n              <div class=\"package-desc\">\n                <span class=\"package-summary\">Privacy-friendly alcohol tracker: limits, BAC estimate, PDF reports.</span><span class=\"package-license\">GPL-3.0-or-later</span>\n              </div>\n            </div>\n          </a>\n        \n\n        \n      </div>\n      <footer class=\"site-footer\">\n        <div class=\"wrapper\">\n          <div class=\"site-description\">\n            <p>\n            &copy; 2019-2026 F-Droid Contributors (F-Droid 2026-07-09, <a href=\"https://gitlab.com/fdroid/fdroid-website-search/\">fdroid-website-search</a> 0.4.38)\n            </p>\n          </div>\n        </div>\n      </footer>\n\n    </div>\n  </body>\n</html>\n"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://f-droid.org/packages/com.bmco.cratesiounofficial",
+          "normalized_url": "https://f-droid.org/packages/com.bmco.cratesiounofficial",
+          "title": "Crates.io unofficial",
+          "content": "Rust crates.io browsing appApache-2.0",
+          "engine": "fdroid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://f-droid.org/packages/org.astonbitecode.rustkeylock",
+          "normalized_url": "https://f-droid.org/packages/org.astonbitecode.rustkeylock",
+          "title": "rust-keylock-android",
+          "content": "A password manager with goals to be Secure, Simple to use, Portable and ExtensibGPL-3.0-only",
+          "engine": "fdroid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://f-droid.org/packages/org.mlm.mages",
+          "normalized_url": "https://f-droid.org/packages/org.mlm.mages",
+          "title": "Mages",
+          "content": "Experimental Matrix client made using Compose Multiplatform (and Rust).AGPL-3.0-only",
+          "engine": "fdroid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://f-droid.org/packages/com.ssrlive.ssrdroid",
+          "normalized_url": "https://f-droid.org/packages/com.ssrlive.ssrdroid",
+          "title": "ssrDroid",
+          "content": "OverTLS & SSRoT Android clientGPL-3.0-only",
+          "engine": "fdroid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://f-droid.org/packages/com.brahmadeo.supertonic.tts",
+          "normalized_url": "https://f-droid.org/packages/com.brahmadeo.supertonic.tts",
+          "title": "Supertonic TTS",
+          "content": "Local AI Text-to-Speech using Supertonic ONNXGPL-3.0-only",
+          "engine": "fdroid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://f-droid.org/packages/com.blacksquircle.ui",
+          "normalized_url": "https://f-droid.org/packages/com.blacksquircle.ui",
+          "title": "Squircle CE - Code Editor",
+          "content": "Fast and powerful code editor & file manager for over 30 programming languagesApache-2.0",
+          "engine": "fdroid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://f-droid.org/packages/alt.nainapps.sharepaste.fdroid",
+          "normalized_url": "https://f-droid.org/packages/alt.nainapps.sharepaste.fdroid",
+          "title": "Share Paste O2",
+          "content": "Share pastes privately, with end to end encryption.AGPL-3.0-only",
+          "engine": "fdroid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://f-droid.org/packages/com.brokenpip3.fatto",
+          "normalized_url": "https://f-droid.org/packages/com.brokenpip3.fatto",
+          "title": "Fatto",
+          "content": "your Taskwarrior Android companionGPL-3.0-only",
+          "engine": "fdroid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://f-droid.org/packages/dev.khoj.pitaka.fdroid",
+          "normalized_url": "https://f-droid.org/packages/dev.khoj.pitaka.fdroid",
+          "title": "Pitak",
+          "content": "Privacy-first offline library catalogue with an encrypted lending vaultGPL-3.0-or-later",
+          "engine": "fdroid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://f-droid.org/packages/com.trougnouf.cfait",
+          "normalized_url": "https://f-droid.org/packages/com.trougnouf.cfait",
+          "title": "Cfait",
+          "content": "Powerful, fast and elegant TODO / task manager. (CalDAV and local)GPL-3.0-only",
+          "engine": "fdroid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://f-droid.org/packages/org.torproject.vpn",
+          "normalized_url": "https://f-droid.org/packages/org.torproject.vpn",
+          "title": "Tor VPN Beta",
+          "content": "Tor-powered with per-app routing, access unblocking & network-level privacy.BSD-3-Clause",
+          "engine": "fdroid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://f-droid.org/packages/de.godisch.potillus",
+          "normalized_url": "https://f-droid.org/packages/de.godisch.potillus",
+          "title": "Libellus Potionis",
+          "content": "Privacy-friendly alcohol tracker: limits, BAC estimate, PDF reports.GPL-3.0-or-later",
+          "engine": "fdroid",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

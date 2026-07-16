@@ -1,0 +1,56 @@
+{
+  "engine": "gitlab",
+  "case": "basic",
+  "query": {
+    "query": "gitlab",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://gitlab.com/",
+    "headers": {},
+    "body": "[\n      {\n        \"web_url\": \"https://gitlab.com/gitlab-org/gitlab\",\n        \"name\": \"GitLab\",\n        \"description\": \"GitLab is an open source end-to-end software development platform\"\n      },\n      {\n        \"web_url\": \"https://gitlab.com/inkscape/inkscape\",\n        \"name\": \"Inkscape\",\n        \"description\": null\n      }\n    ]"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://gitlab.com/gitlab-org/gitlab",
+          "normalized_url": "https://gitlab.com/gitlab-org/gitlab",
+          "title": "GitLab",
+          "content": "GitLab is an open source end-to-end software development platform",
+          "engine": "gitlab",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gitlab.com/inkscape/inkscape",
+          "normalized_url": "https://gitlab.com/inkscape/inkscape",
+          "title": "Inkscape",
+          "content": "",
+          "engine": "gitlab",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

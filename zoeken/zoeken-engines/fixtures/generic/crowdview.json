@@ -1,0 +1,484 @@
+{
+  "engine": "crowdview",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://crowdview-next-js.onrender.com/api/search-v3?query=rust",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://crowdview-next-js.onrender.com/api/search-v3?query=rust",
+    "headers": {
+      "rndr-id": "31e10b8d-4e3c-426b",
+      "content-type": "application/json; charset=utf-8",
+      "server": "cloudflare",
+      "vary": "Accept-Encoding",
+      "cf-ray": "a187e260cdb0cea2-MIA",
+      "access-control-allow-origin": "*",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "etag": "\"2c44-SQKHWG8Jg3sC2nkEdc40bO/qskE\"",
+      "x-render-origin-server": "Render",
+      "cf-cache-status": "DYNAMIC",
+      "access-control-allow-credentials": "true",
+      "date": "Thu, 09 Jul 2026 14:05:34 GMT",
+      "access-control-allow-methods": "GET"
+    },
+    "body": "{\"results\":[{\"title\":\"<b>Rust</b> removal | Badger &amp; Blade\",\"link\":\"https://www.badgerandblade.com/forum/threads/rust-removal.626986/\",\"snippet\":\"Jul 14, 2022 <b>...</b> Try doing the very least possible. The more I mess around, the more I ruin things (I think many will agree). Just leave a drop of WD40 on the&nbsp;...\",\"category\":\"Men Forums\"},{\"title\":\"<b>Rust</b> on 2020 Sportsman 850 Exhaust | Polaris ATV Forum\",\"link\":\"https://www.polarisatvforums.com/threads/rust-on-2020-sportsman-850-exhaust.193340/\",\"snippet\":\"Jan 10, 2021 <b>...</b> Perfectly normal its surface <b>rust</b> happens to all exhausts if you seriously want to “fix” it, its temporary but get yourself a wire brush an&nbsp;...\",\"category\":\"ATV Forums\"},{\"title\":\"<b>Rust</b> on water bath canning pot | Discuss Cooking - Cooking Forums\",\"link\":\"https://www.discusscooking.com/threads/rust-on-water-bath-canning-pot.105338/\",\"snippet\":\"Aug 19, 2020 <b>...</b> taxy, one is just scrubbing the <b>rust</b> off, not understanding why you worry. If the enamel is gone, it&#39;s gone. SOS pad isn&#39;t going to damage&nbsp;...\",\"category\":\"Cake Forums\"},{\"title\":\"Restoring a W&amp;B razor; <b>rust</b> removal tips? | Badger &amp; Blade\",\"link\":\"https://www.badgerandblade.com/forum/threads/restoring-a-w-b-razor-rust-removal-tips.531116/\",\"snippet\":\"Nov 4, 2017 <b>...</b> 2b.) If the <b>rust</b> was mostly surface without significant pitting, I was going to either sand with high grit (1000+) only or use Super fine 0000&nbsp;...\",\"category\":\"Men Forums\"},{\"title\":\"Why do stainless steel blades <b>rust</b>? | Badger &amp; Blade\",\"link\":\"https://www.badgerandblade.com/forum/threads/why-do-stainless-steel-blades-rust.494841/\",\"snippet\":\"Jul 3, 2016 <b>...</b> Stainless steel should actually be called stain resistant steel. It definitely will <b>rust</b>. It takes about 10 seconds to remove the blade from the razor and dry&nbsp;...\",\"category\":\"Men Forums\"},{\"title\":\"Please stop the Stainless Steel Razor <b>rust</b> issue! | Badger &amp; Blade\",\"link\":\"https://www.badgerandblade.com/forum/threads/please-stop-the-stainless-steel-razor-rust-issue.424977/\",\"snippet\":\"Oct 3, 2014 <b>...</b> The general consensus is, if one has a problem with rusting it&#39;s usually because the razor is stored with a blade in it and water is present.\",\"category\":\"Men Forums\"},{\"title\":\"<b>Rust</b> on my Opinel? | Badger &amp; Blade\",\"link\":\"https://www.badgerandblade.com/forum/threads/rust-on-my-opinel.364093/\",\"snippet\":\"Sep 14, 2013 <b>...</b> You don&#39;t let a carbon knife dry. You dry it. Immediately. Letting it air dry will definitely cause <b>rust</b>. If you want to cut acidic things like&nbsp;...\",\"category\":\"Men Forums\"},{\"title\":\"Removing <b>Rust</b>, but not Patina? | Badger &amp; Blade\",\"link\":\"https://www.badgerandblade.com/forum/threads/removing-rust-but-not-patina.163294/\",\"snippet\":\"Aug 18, 2010 <b>...</b> An acid dip will remove the <b>rust</b> but not the patina. Any sanding or polishing will remove the patina. That&#39;s what most people want, though, is&nbsp;...\",\"category\":\"Men Forums\"},{\"title\":\"How to remove <b>RUST</b> from a safety razor | Badger &amp; Blade\",\"link\":\"https://www.badgerandblade.com/forum/threads/how-to-remove-rust-from-a-safety-razor.33098/\",\"snippet\":\"Dec 29, 2007 <b>...</b> If you see <b>rust</b> then it must be from a blade that was left in the razor for a long time. A good soak in WD40 and a bit of scrubbing should be&nbsp;...\",\"category\":\"Men Forums\"},{\"title\":\"Non-abrasive <b>rust</b> removal recommendations? | Badger &amp; Blade\",\"link\":\"https://www.badgerandblade.com/forum/threads/non-abrasive-rust-removal-recommendations.604447/\",\"snippet\":\"Mar 10, 2021 <b>...</b> If its red/brown <b>rust</b>, some penetrating oil on a pad of 000-0000 steel wool and some elbow grease may do the trick.\",\"category\":\"Men Forums\"},{\"title\":\"Does titanium <b>rust</b>/stain? | Badger &amp; Blade\",\"link\":\"https://www.badgerandblade.com/forum/threads/does-titanium-rust-stain.653151/\",\"snippet\":\"May 23, 2024 <b>...</b> Titanium does not <b>rust</b>, and the rusty color of the blade may still stain the titanium and even your hands or clothing. But don&#39;t worry, this&nbsp;...\",\"category\":\"Men Forums\"},{\"title\":\"Preventing <b>rust</b> and pitting: Vaseline vs. baby oil vs. camellia oil ...\",\"link\":\"https://www.badgerandblade.com/forum/threads/preventing-rust-and-pitting-vaseline-vs-baby-oil-vs-camellia-oil.157440/page-2\",\"snippet\":\"Jul 11, 2010 <b>...</b> Doc Dan. Vaseline is one of the best things for preventing corrosion. It is, simply put, paraffin wax and mineral oil. The wax puts a nice&nbsp;...\",\"category\":\"Men Forums\"},{\"title\":\"How Do I Remove All This <b>Rust</b>?!?!?! | YFZ Central\",\"link\":\"https://www.yfzcentral.com/threads/how-do-i-remove-all-this-rust.44986/\",\"snippet\":\"Oct 12, 2006 <b>...</b> Get the <b>rust</b> off with that pb blaster 420 was talkin about or just a good wire brush and then repaint with some rustoleum or something good.\",\"category\":\"ATV Forums\"},{\"title\":\"How do I remove <b>rust</b> on exhaust pipe? | Blasterforum.com\",\"link\":\"https://blasterforum.com/threads/how-do-i-remove-rust-on-exhaust-pipe.61817/\",\"snippet\":\"May 1, 2015 <b>...</b> Use a small wire wheel on a hand held drill. works wonders depending on the finish you want, sand paper works decent for some <b>rust</b> if its just minor rusting.\",\"category\":\"ATV Forums\"},{\"title\":\"Rusty Pipe? NO PROBLEM, Cleaning <b>rust</b> with aluminum foil ...\",\"link\":\"https://blasterforum.com/threads/rusty-pipe-no-problem-cleaning-rust-with-aluminum-foil.52641/\",\"snippet\":\"Jan 1, 2013 <b>...</b> Wad up a larger piece of foil when you work on pitted areas. The edges created will help smooth down the pits. Don&#39;t rub too long with the first&nbsp;...\",\"category\":\"ATV Forums\"},{\"title\":\"<b>Rust</b> on welds | Can-Am ATV Forum\",\"link\":\"https://www.can-amforum.com/threads/rust-on-welds.44460/\",\"snippet\":\"May 19, 2013 <b>...</b> Welds on the all the parts that are bolted to the frame (a-arms, trailing arms, etc) seem fine but the frame itself is rusting through at EVERY weld.\",\"category\":\"ATV Forums\"},{\"title\":\"Cleaning <b>Rust</b> Off FMF Pipe | Blasterforum.com\",\"link\":\"https://blasterforum.com/threads/cleaning-rust-off-fmf-pipe.85/\",\"snippet\":\"Chrome bumper polish should work nicely, and you can get it almost anywhere. Just get it all wiped off good before you put it back together, if you have residue&nbsp;...\",\"category\":\"ATV Forums\"},{\"title\":\"polaris sportsman frame <b>rust</b> | Polaris ATV Forum\",\"link\":\"https://www.polarisatvforums.com/threads/polaris-sportsman-frame-rust.127001/\",\"snippet\":\"Feb 16, 2017 <b>...</b> I&#39;d have a local welder patch and strengthen up the area a little. Then spray it with a good <b>rust</b> preventing / converting spray paint.\",\"category\":\"ATV Forums\"},{\"title\":\"Surface <b>Rust</b> on Pipes. | Raptor Forum\",\"link\":\"https://www.raptorforum.com/threads/surface-rust-on-pipes.28835/\",\"snippet\":\"Feb 5, 2008 <b>...</b> I used a cordless drill with a wire wheel on it, then used some steel wool to finish them off. Looked good when i was done.\",\"category\":\"ATV Forums\"},{\"title\":\"<b>Rust</b> | Can-Am ATV Forum\",\"link\":\"https://www.can-amforum.com/threads/rust.139307/\",\"snippet\":\"Jul 17, 2021 <b>...</b> Paint Over <b>Rust</b> to Stop <b>Rust</b> Permanently With Chassis Saver Truck &amp; Auto Underbody Coating ... OK, still not an integrity issue. It is hard to&nbsp;...\",\"category\":\"ATV Forums\"},{\"title\":\"<b>Rust</b> on top of the piston??? Please help... | Raptor Forum\",\"link\":\"https://www.raptorforum.com/threads/rust-on-top-of-the-piston-please-help.63607/\",\"snippet\":\"Jan 12, 2010 <b>...</b> It is not <b>rust</b>, it is brown carbon deposits, I have seen this before..............\",\"category\":\"ATV Forums\"},{\"title\":\"<b>Rust</b> in screw-band - is it dangerous? | Discuss Cooking - Cooking ...\",\"link\":\"https://www.discusscooking.com/threads/rust-in-screw-band-is-it-dangerous.73569/\",\"snippet\":\"Jul 14, 2011 <b>...</b> <b>Rust</b> is not toxic. It is iron oxide. Just wipe off the bands and you&#39;re good to go. My parents used to use a light wipe of vegetable oil to keep things from&nbsp;...\",\"category\":\"Cake Forums\"},{\"title\":\"<b>Rust</b> spots on knives | Discuss Cooking - Cooking Forums\",\"link\":\"https://www.discusscooking.com/threads/rust-spots-on-knives.34707/\",\"snippet\":\"May 1, 2007 <b>...</b> Chicago Cutlery is made of a high carbon stainless steel which can <b>rust</b> and they will tell you this if you call. The high carbon makes the&nbsp;...\",\"category\":\"Cake Forums\"},{\"title\":\"Is my carbon steel wok rusted? Please help! | Discuss Cooking ...\",\"link\":\"https://www.discusscooking.com/threads/is-my-carbon-steel-wok-rusted-please-help.82060/\",\"snippet\":\"Oct 9, 2012 <b>...</b> It&#39;s normal, comes from cooking on high heat. Even if it was <b>rust</b> (Iron) it is still OK, Iron is not a bad thing. Just look at lettuce,when it&nbsp;...\",\"category\":\"Cake Forums\"},{\"title\":\"? Rusty cookie cutters? | Discuss Cooking - Cooking Forums\",\"link\":\"https://www.discusscooking.com/threads/rusty-cookie-cutters.5615/\",\"snippet\":\"Dec 14, 2004 <b>...</b> Soaking them in vinegar overnight should remove the <b>rust</b>. Next time make sure they are completely dry before you pack them away. A light covering of crisco&nbsp;...\",\"category\":\"Cake Forums\"},{\"title\":\"Smoker box <b>rust</b> question | Discuss Cooking - Cooking Forums\",\"link\":\"https://www.discusscooking.com/threads/smoker-box-rust-question.133418/\",\"snippet\":\"Apr 22, 2014 <b>...</b> Get some sand paper, and sand it down, get some high heat paint and repaint it. It is rusting because the manufacturer uses cheap paint, that&nbsp;...\",\"category\":\"Cake Forums\"},{\"title\":\"Processing with rusty rack in canner | Discuss Cooking - Cooking ...\",\"link\":\"https://www.discusscooking.com/threads/processing-with-rusty-rack-in-canner.108320/\",\"snippet\":\"Oct 27, 2021 <b>...</b> Hi CEEZEE, Welcome to DC. Absolutely what GG has said. Don&#39;t worry, everything is fine. Mine is a bit rusty too. I&#39;m like your parents. Heaven&nbsp;...\",\"category\":\"Cake Forums\"},{\"title\":\"Removing <b>rust</b> from a cast iron skillet? | Discuss Cooking - Cooking ...\",\"link\":\"https://www.discusscooking.com/threads/removing-rust-from-a-cast-iron-skillet.16065/\",\"snippet\":\"Oct 25, 2005 <b>...</b> Does anyone know how to get <b>rust</b> off the bottom of a Lodge cast iron skillet? I think my fiance didn&#39;t dry it fully after rinsing it..and&nbsp;...\",\"category\":\"Cake Forums\"},{\"title\":\"Help! Russell Hobbs Bread Maker Shaft Seized | Baking Forums\",\"link\":\"https://www.baking-forums.com/threads/help-russell-hobbs-bread-maker-shaft-seized.6555/\",\"snippet\":\"Jan 11, 2021 <b>...</b> I looked at the shaft that activated the paddle and it was corroded with <b>rust</b>, tried to move it with my hand and it was solid. I&#39;ve now dosed it with WD 40.\",\"category\":\"Cake Forums\"},{\"title\":\"Revitalizing Cast Iron Pot? | Discuss Cooking - Cooking Forums\",\"link\":\"https://www.discusscooking.com/threads/revitalizing-cast-iron-pot.82455/\",\"snippet\":\"Oct 31, 2012 <b>...</b> You have to get ALL the <b>rust</b> off. Consider having it sand blasted. The interior especially should have a smooth even surface. Then season it with lard/&nbsp;...\",\"category\":\"Cake Forums\"}]}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://www.badgerandblade.com/forum/threads/rust-removal.626986/",
+          "normalized_url": "https://www.badgerandblade.com/forum/threads/rust-removal.626986/",
+          "title": "Rust removal | Badger & Blade",
+          "content": "Jul 14, 2022 ... Try doing the very least possible. The more I mess around, the more I ruin things (I think many will agree). Just leave a drop of WD40 on the ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.polarisatvforums.com/threads/rust-on-2020-sportsman-850-exhaust.193340/",
+          "normalized_url": "https://www.polarisatvforums.com/threads/rust-on-2020-sportsman-850-exhaust.193340/",
+          "title": "Rust on 2020 Sportsman 850 Exhaust | Polaris ATV Forum",
+          "content": "Jan 10, 2021 ... Perfectly normal its surface rust happens to all exhausts if you seriously want to “fix” it, its temporary but get yourself a wire brush an ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.discusscooking.com/threads/rust-on-water-bath-canning-pot.105338/",
+          "normalized_url": "https://www.discusscooking.com/threads/rust-on-water-bath-canning-pot.105338/",
+          "title": "Rust on water bath canning pot | Discuss Cooking - Cooking Forums",
+          "content": "Aug 19, 2020 ... taxy, one is just scrubbing the rust off, not understanding why you worry. If the enamel is gone, it's gone. SOS pad isn't going to damage ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.badgerandblade.com/forum/threads/restoring-a-w-b-razor-rust-removal-tips.531116/",
+          "normalized_url": "https://www.badgerandblade.com/forum/threads/restoring-a-w-b-razor-rust-removal-tips.531116/",
+          "title": "Restoring a W&B razor; rust removal tips? | Badger & Blade",
+          "content": "Nov 4, 2017 ... 2b.) If the rust was mostly surface without significant pitting, I was going to either sand with high grit (1000+) only or use Super fine 0000 ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.badgerandblade.com/forum/threads/why-do-stainless-steel-blades-rust.494841/",
+          "normalized_url": "https://www.badgerandblade.com/forum/threads/why-do-stainless-steel-blades-rust.494841/",
+          "title": "Why do stainless steel blades rust? | Badger & Blade",
+          "content": "Jul 3, 2016 ... Stainless steel should actually be called stain resistant steel. It definitely will rust. It takes about 10 seconds to remove the blade from the razor and dry ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.badgerandblade.com/forum/threads/please-stop-the-stainless-steel-razor-rust-issue.424977/",
+          "normalized_url": "https://www.badgerandblade.com/forum/threads/please-stop-the-stainless-steel-razor-rust-issue.424977/",
+          "title": "Please stop the Stainless Steel Razor rust issue! | Badger & Blade",
+          "content": "Oct 3, 2014 ... The general consensus is, if one has a problem with rusting it's usually because the razor is stored with a blade in it and water is present.",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.badgerandblade.com/forum/threads/rust-on-my-opinel.364093/",
+          "normalized_url": "https://www.badgerandblade.com/forum/threads/rust-on-my-opinel.364093/",
+          "title": "Rust on my Opinel? | Badger & Blade",
+          "content": "Sep 14, 2013 ... You don't let a carbon knife dry. You dry it. Immediately. Letting it air dry will definitely cause rust. If you want to cut acidic things like ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.badgerandblade.com/forum/threads/removing-rust-but-not-patina.163294/",
+          "normalized_url": "https://www.badgerandblade.com/forum/threads/removing-rust-but-not-patina.163294/",
+          "title": "Removing Rust, but not Patina? | Badger & Blade",
+          "content": "Aug 18, 2010 ... An acid dip will remove the rust but not the patina. Any sanding or polishing will remove the patina. That's what most people want, though, is ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.badgerandblade.com/forum/threads/how-to-remove-rust-from-a-safety-razor.33098/",
+          "normalized_url": "https://www.badgerandblade.com/forum/threads/how-to-remove-rust-from-a-safety-razor.33098/",
+          "title": "How to remove RUST from a safety razor | Badger & Blade",
+          "content": "Dec 29, 2007 ... If you see rust then it must be from a blade that was left in the razor for a long time. A good soak in WD40 and a bit of scrubbing should be ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.badgerandblade.com/forum/threads/non-abrasive-rust-removal-recommendations.604447/",
+          "normalized_url": "https://www.badgerandblade.com/forum/threads/non-abrasive-rust-removal-recommendations.604447/",
+          "title": "Non-abrasive rust removal recommendations? | Badger & Blade",
+          "content": "Mar 10, 2021 ... If its red/brown rust, some penetrating oil on a pad of 000-0000 steel wool and some elbow grease may do the trick.",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.badgerandblade.com/forum/threads/does-titanium-rust-stain.653151/",
+          "normalized_url": "https://www.badgerandblade.com/forum/threads/does-titanium-rust-stain.653151/",
+          "title": "Does titanium rust/stain? | Badger & Blade",
+          "content": "May 23, 2024 ... Titanium does not rust, and the rusty color of the blade may still stain the titanium and even your hands or clothing. But don't worry, this ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.badgerandblade.com/forum/threads/preventing-rust-and-pitting-vaseline-vs-baby-oil-vs-camellia-oil.157440/page-2",
+          "normalized_url": "https://www.badgerandblade.com/forum/threads/preventing-rust-and-pitting-vaseline-vs-baby-oil-vs-camellia-oil.157440/page-2",
+          "title": "Preventing rust and pitting: Vaseline vs. baby oil vs. camellia oil ...",
+          "content": "Jul 11, 2010 ... Doc Dan. Vaseline is one of the best things for preventing corrosion. It is, simply put, paraffin wax and mineral oil. The wax puts a nice ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.yfzcentral.com/threads/how-do-i-remove-all-this-rust.44986/",
+          "normalized_url": "https://www.yfzcentral.com/threads/how-do-i-remove-all-this-rust.44986/",
+          "title": "How Do I Remove All This Rust?!?!?! | YFZ Central",
+          "content": "Oct 12, 2006 ... Get the rust off with that pb blaster 420 was talkin about or just a good wire brush and then repaint with some rustoleum or something good.",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://blasterforum.com/threads/how-do-i-remove-rust-on-exhaust-pipe.61817/",
+          "normalized_url": "https://blasterforum.com/threads/how-do-i-remove-rust-on-exhaust-pipe.61817/",
+          "title": "How do I remove rust on exhaust pipe? | Blasterforum.com",
+          "content": "May 1, 2015 ... Use a small wire wheel on a hand held drill. works wonders depending on the finish you want, sand paper works decent for some rust if its just minor rusting.",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://blasterforum.com/threads/rusty-pipe-no-problem-cleaning-rust-with-aluminum-foil.52641/",
+          "normalized_url": "https://blasterforum.com/threads/rusty-pipe-no-problem-cleaning-rust-with-aluminum-foil.52641/",
+          "title": "Rusty Pipe? NO PROBLEM, Cleaning rust with aluminum foil ...",
+          "content": "Jan 1, 2013 ... Wad up a larger piece of foil when you work on pitted areas. The edges created will help smooth down the pits. Don't rub too long with the first ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.can-amforum.com/threads/rust-on-welds.44460/",
+          "normalized_url": "https://www.can-amforum.com/threads/rust-on-welds.44460/",
+          "title": "Rust on welds | Can-Am ATV Forum",
+          "content": "May 19, 2013 ... Welds on the all the parts that are bolted to the frame (a-arms, trailing arms, etc) seem fine but the frame itself is rusting through at EVERY weld.",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://blasterforum.com/threads/cleaning-rust-off-fmf-pipe.85/",
+          "normalized_url": "https://blasterforum.com/threads/cleaning-rust-off-fmf-pipe.85/",
+          "title": "Cleaning Rust Off FMF Pipe | Blasterforum.com",
+          "content": "Chrome bumper polish should work nicely, and you can get it almost anywhere. Just get it all wiped off good before you put it back together, if you have residue ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.polarisatvforums.com/threads/polaris-sportsman-frame-rust.127001/",
+          "normalized_url": "https://www.polarisatvforums.com/threads/polaris-sportsman-frame-rust.127001/",
+          "title": "polaris sportsman frame rust | Polaris ATV Forum",
+          "content": "Feb 16, 2017 ... I'd have a local welder patch and strengthen up the area a little. Then spray it with a good rust preventing / converting spray paint.",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.raptorforum.com/threads/surface-rust-on-pipes.28835/",
+          "normalized_url": "https://www.raptorforum.com/threads/surface-rust-on-pipes.28835/",
+          "title": "Surface Rust on Pipes. | Raptor Forum",
+          "content": "Feb 5, 2008 ... I used a cordless drill with a wire wheel on it, then used some steel wool to finish them off. Looked good when i was done.",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.can-amforum.com/threads/rust.139307/",
+          "normalized_url": "https://www.can-amforum.com/threads/rust.139307/",
+          "title": "Rust | Can-Am ATV Forum",
+          "content": "Jul 17, 2021 ... Paint Over Rust to Stop Rust Permanently With Chassis Saver Truck & Auto Underbody Coating ... OK, still not an integrity issue. It is hard to ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.raptorforum.com/threads/rust-on-top-of-the-piston-please-help.63607/",
+          "normalized_url": "https://www.raptorforum.com/threads/rust-on-top-of-the-piston-please-help.63607/",
+          "title": "Rust on top of the piston??? Please help... | Raptor Forum",
+          "content": "Jan 12, 2010 ... It is not rust, it is brown carbon deposits, I have seen this before..............",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.discusscooking.com/threads/rust-in-screw-band-is-it-dangerous.73569/",
+          "normalized_url": "https://www.discusscooking.com/threads/rust-in-screw-band-is-it-dangerous.73569/",
+          "title": "Rust in screw-band - is it dangerous? | Discuss Cooking - Cooking ...",
+          "content": "Jul 14, 2011 ... Rust is not toxic. It is iron oxide. Just wipe off the bands and you're good to go. My parents used to use a light wipe of vegetable oil to keep things from ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.discusscooking.com/threads/rust-spots-on-knives.34707/",
+          "normalized_url": "https://www.discusscooking.com/threads/rust-spots-on-knives.34707/",
+          "title": "Rust spots on knives | Discuss Cooking - Cooking Forums",
+          "content": "May 1, 2007 ... Chicago Cutlery is made of a high carbon stainless steel which can rust and they will tell you this if you call. The high carbon makes the ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.discusscooking.com/threads/is-my-carbon-steel-wok-rusted-please-help.82060/",
+          "normalized_url": "https://www.discusscooking.com/threads/is-my-carbon-steel-wok-rusted-please-help.82060/",
+          "title": "Is my carbon steel wok rusted? Please help! | Discuss Cooking ...",
+          "content": "Oct 9, 2012 ... It's normal, comes from cooking on high heat. Even if it was rust (Iron) it is still OK, Iron is not a bad thing. Just look at lettuce,when it ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.discusscooking.com/threads/rusty-cookie-cutters.5615/",
+          "normalized_url": "https://www.discusscooking.com/threads/rusty-cookie-cutters.5615/",
+          "title": "? Rusty cookie cutters? | Discuss Cooking - Cooking Forums",
+          "content": "Dec 14, 2004 ... Soaking them in vinegar overnight should remove the rust. Next time make sure they are completely dry before you pack them away. A light covering of crisco ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.discusscooking.com/threads/smoker-box-rust-question.133418/",
+          "normalized_url": "https://www.discusscooking.com/threads/smoker-box-rust-question.133418/",
+          "title": "Smoker box rust question | Discuss Cooking - Cooking Forums",
+          "content": "Apr 22, 2014 ... Get some sand paper, and sand it down, get some high heat paint and repaint it. It is rusting because the manufacturer uses cheap paint, that ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.discusscooking.com/threads/processing-with-rusty-rack-in-canner.108320/",
+          "normalized_url": "https://www.discusscooking.com/threads/processing-with-rusty-rack-in-canner.108320/",
+          "title": "Processing with rusty rack in canner | Discuss Cooking - Cooking ...",
+          "content": "Oct 27, 2021 ... Hi CEEZEE, Welcome to DC. Absolutely what GG has said. Don't worry, everything is fine. Mine is a bit rusty too. I'm like your parents. Heaven ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.discusscooking.com/threads/removing-rust-from-a-cast-iron-skillet.16065/",
+          "normalized_url": "https://www.discusscooking.com/threads/removing-rust-from-a-cast-iron-skillet.16065/",
+          "title": "Removing rust from a cast iron skillet? | Discuss Cooking - Cooking ...",
+          "content": "Oct 25, 2005 ... Does anyone know how to get rust off the bottom of a Lodge cast iron skillet? I think my fiance didn't dry it fully after rinsing it..and ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.baking-forums.com/threads/help-russell-hobbs-bread-maker-shaft-seized.6555/",
+          "normalized_url": "https://www.baking-forums.com/threads/help-russell-hobbs-bread-maker-shaft-seized.6555/",
+          "title": "Help! Russell Hobbs Bread Maker Shaft Seized | Baking Forums",
+          "content": "Jan 11, 2021 ... I looked at the shaft that activated the paddle and it was corroded with rust, tried to move it with my hand and it was solid. I've now dosed it with WD 40.",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.discusscooking.com/threads/revitalizing-cast-iron-pot.82455/",
+          "normalized_url": "https://www.discusscooking.com/threads/revitalizing-cast-iron-pot.82455/",
+          "title": "Revitalizing Cast Iron Pot? | Discuss Cooking - Cooking Forums",
+          "content": "Oct 31, 2012 ... You have to get ALL the rust off. Consider having it sand blasted. The interior especially should have a smooth even surface. Then season it with lard/ ...",
+          "engine": "crowdview",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

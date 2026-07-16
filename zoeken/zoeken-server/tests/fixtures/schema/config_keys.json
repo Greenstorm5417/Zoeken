@@ -1,0 +1,15 @@
+{
+  "instance_name": "",
+  "version": "0.0.0",
+  "brand": {},
+  "limiter": {},
+  "plugins": [],
+  "engines": [
+    {
+      "name": "stub",
+      "categories": ["general"]
+    }
+  ],
+  "default_locale": "",
+  "safe_search": 0
+}

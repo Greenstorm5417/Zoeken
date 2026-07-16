@@ -1,0 +1,27 @@
+{
+  "engine": "duckduckgo",
+  "case": "status-303",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 303,
+    "url": "https://html.duckduckgo.com/html/",
+    "headers": {},
+    "body": ""
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

@@ -1,0 +1,27 @@
+[package]
+name = "zoeken-favicons"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description.workspace = true
+
+[dependencies]
+rusqlite = { workspace = true }
+tokio = { workspace = true }
+thiserror = { workspace = true }
+hmac = { workspace = true }
+hex = { workspace = true }
+sha2 = { workspace = true }
+wreq = { workspace = true }
+http = { workspace = true }
+url = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }
+tokio = { workspace = true, features = ["macros", "rt", "rt-multi-thread"] }
+
+[lints]
+workspace = true

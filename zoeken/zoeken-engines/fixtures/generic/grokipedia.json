@@ -1,0 +1,202 @@
+{
+  "engine": "grokipedia",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://grokipedia.com/api/full-text-search?query=rust&limit=10&offset=0",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://grokipedia.com/api/full-text-search?query=rust&limit=10&offset=0",
+    "headers": {
+      "content-type": "application/json",
+      "cf-ray": "a187e2a96ac1042e-MIA",
+      "server": "cloudflare",
+      "vary": "Accept-Encoding",
+      "date": "Thu, 09 Jul 2026 14:05:45 GMT",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "cache-control": "public, max-age=300",
+      "expires": "Thu, 09 Jul 2026 14:10:45 GMT",
+      "server-timing": "proxy.search;dur=55.5;desc=\"/api/full-text-search\", total;dur=56.4",
+      "cf-cache-status": "BYPASS",
+      "set-cookie": "__cf_bm=LsJLT54jyfOBPHDHMkgPDqI50md1DdeRCti3E9P5XRQ-1783605945.8269007-1.0.1.1-ThPoJyNOqeA0K_.iGt8JCZGBDkgfQlrMZZmIS1WFW3xqhp0yKGe8e9MIT19lOetRVjfyd3NNoHYO5rIhenVuBcVGC4xVmbPtp2hp6uwrHBADUzMOrUJjWNC7gQiA549X; HttpOnly; SameSite=None; Secure; Path=/; Domain=grokipedia.com; Expires=Thu, 09 Jul 2026 14:35:45 GMT"
+    },
+    "body": "{\"results\":[{\"slug\":\"Rust\",\"title\":\"Rust\",\"snippet\":\"Rust is the common name for the reddish-brown oxide coating, primarily hydrated iron(III) oxide (Fe₂O₃·nH₂O), that forms on iron and\",\"relevanceScore\":3227.983,\"viewCount\":\"0\",\"titleHighlights\":[],\"snippetHighlights\":[],\"creationSource\":1,\"visibility\":1,\"providers\":[1],\"snippetVariants\":[{\"provider\":1,\"kind\":1,\"text\":\"Rust is the common name for the reddish-brown oxide coating, primarily hydrated iron(III) oxide (Fe₂O₃·nH₂O), that forms on iron and\",\"score\":3227.983}],\"scrollAnchorText\":\"Rust is the common name for the reddish-brown oxide coating, primarily hydrated iron(III) oxide (Fe₂O₃·nH₂O), that forms on iron and\"},{\"slug\":\"Brian_Rust\",\"title\":\"Brian Rust\",\"snippet\":\"Brian Rust is a British discographer, music historian, and broadcaster known for pioneering modern discography and compiling the foundational reference work on early jazz recordings.\",\"relevanceScore\":2715.0671,\"viewCount\":\"0\",\"titleHighlights\":[],\"snippetHighlights\":[],\"creationSource\":1,\"visibility\":1,\"providers\":[1],\"snippetVariants\":[{\"provider\":1,\"kind\":1,\"text\":\"Brian Rust is a British discographer, music historian, and broadcaster known for pioneering modern discography and compiling the foundational reference work on early jazz recordings.\",\"score\":2715.0671}],\"scrollAnchorText\":\"Brian Rust is a British discographer, music historian, and broadcaster known for pioneering modern discography and compiling the foundational reference work on early jazz recordings.\"},{\"slug\":\"thomas_rust\",\"title\":\"Thomas Rust\",\"snippet\":\"Thomas Rust (born July 21, 1941, in Front Royal, Virginia) is an American civil engineer and Republican politician from Virginia who represented the 86th district in the Virginia House of Delegates from 2002 to 2016. A moderate known for bipartisan…\",\"relevanceScore\":2680.5713,\"viewCount\":\"0\",\"titleHighlights\":[],\"snippetHighlights\":[],\"creationSource\":1,\"visibility\":1,\"providers\":[1],\"snippetVariants\":[{\"provider\":1,\"kind\":1,\"text\":\"Thomas Rust (born July 21, 1941, in Front Royal, Virginia) is an American civil engineer and Republican politician from Virginia who represented the 86th district in the Virginia House of Delegates from 2002 to 2016. A moderate known for bipartisan…\",\"score\":2680.5713}],\"scrollAnchorText\":\"Thomas Rust (born July 21, 1941, in Front Royal, Virginia) is an American civil engineer and Republican politician from Virginia who represented the 86th district in the Virginia House of Delegates from 2002 to 2016. A moderate known for bipartisan…\"},{\"slug\":\"Rust_programming_language\",\"title\":\"Rust (programming language)\",\"snippet\":\"Rust is a multi-paradigm, general-purpose systems programming language that emphasizes performance, concurrency, and safety, particularly by enforcing memory safety at compile time without relying on a garbage collector. These compile-time guarantee…\",\"relevanceScore\":2575.0742,\"viewCount\":\"0\",\"titleHighlights\":[],\"snippetHighlights\":[],\"creationSource\":0,\"visibility\":1,\"providers\":[1],\"snippetVariants\":[{\"provider\":1,\"kind\":1,\"text\":\"Rust is a multi-paradigm, general-purpose systems programming language that emphasizes performance, concurrency, and safety, particularly by enforcing memory safety at compile time without relying on a garbage collector. These compile-time guarantee…\",\"score\":2575.0742}],\"scrollAnchorText\":\"Rust is a multi-paradigm, general-purpose systems programming language that emphasizes performance, concurrency, and safety, particularly by enforcing memory safety at compile time without relying on a garbage collector. These compile-time guarantee…\"},{\"slug\":\"johann_nepomuk_rust\",\"title\":\"Johann Nepomuk Rust\",\"snippet\":\"Johann Nepomuk Rust (5 April 1775 – 9 October 1840) was an Austrian surgeon, military physician, and professor renowned for his advancements in general and ophthalmic surgery, as well as his influential writings on medical topics including ulcers,…\",\"relevanceScore\":2498.5273,\"viewCount\":\"0\",\"titleHighlights\":[],\"snippetHighlights\":[],\"creationSource\":1,\"visibility\":1,\"providers\":[1],\"snippetVariants\":[{\"provider\":1,\"kind\":1,\"text\":\"Johann Nepomuk Rust (5 April 1775 – 9 October 1840) was an Austrian surgeon, military physician, and professor renowned for his advancements in general and ophthalmic surgery, as well as his influential writings on medical topics including ulcers,…\",\"score\":2498.5273}],\"scrollAnchorText\":\"Johann Nepomuk Rust (5 April 1775 – 9 October 1840) was an Austrian surgeon, military physician, and professor renowned for his advancements in general and ophthalmic surgery, as well as his influential writings on medical topics including ulcers,…\"},{\"slug\":\"rust_courage_mc_3_(book)\",\"title\":\"Rust (Courage MC #3) (book)\",\"snippet\":\"Rust is a 2016 erotic romance novel by author Kara Hart, published on June 1, 2016, as the third book in the Courage MC series. Presented as a standalone story with a complete happily ever after and no cliffhangers, it follows the forbidden romance…\",\"relevanceScore\":2301.0225,\"viewCount\":\"0\",\"titleHighlights\":[],\"snippetHighlights\":[],\"creationSource\":1,\"visibility\":1,\"providers\":[1],\"snippetVariants\":[{\"provider\":1,\"kind\":1,\"text\":\"Rust is a 2016 erotic romance novel by author Kara Hart, published on June 1, 2016, as the third book in the Courage MC series. Presented as a standalone story with a complete happily ever after and no cliffhangers, it follows the forbidden romance…\",\"score\":2301.0225}],\"scrollAnchorText\":\"Rust is a 2016 erotic romance novel by author Kara Hart, published on June 1, 2016, as the third book in the Courage MC series. Presented as a standalone story with a complete happily ever after and no cliffhangers, it follows the forbidden romance…\"},{\"slug\":\"Rust-Oleum_Rust_Reformer\",\"title\":\"Rust-Oleum Rust Reformer\",\"snippet\":\"Rust-Oleum Rust Reformer is a rust converter product that transforms rust into a black, paintable surface, eliminating the need for additional primer before topcoating. Users can apply topcoat directly after the product dries. For brush application,…\",\"relevanceScore\":2153.9224,\"viewCount\":\"0\",\"titleHighlights\":[],\"snippetHighlights\":[],\"creationSource\":1,\"visibility\":1,\"providers\":[1],\"snippetVariants\":[{\"provider\":1,\"kind\":1,\"text\":\"Rust-Oleum Rust Reformer is a rust converter product that transforms rust into a black, paintable surface, eliminating the need for additional primer before topcoating. Users can apply topcoat directly after the product dries. For brush application,…\",\"score\":2153.9224}],\"scrollAnchorText\":\"Rust-Oleum Rust Reformer is a rust converter product that transforms rust into a black, paintable surface, eliminating the need for additional primer before topcoating. Users can apply topcoat directly after the product dries. For brush application,…\"},{\"slug\":\"Rust_Removal\",\"title\":\"Rust Removal\",\"snippet\":\"Rust removal refers to methods for eliminating rust (iron oxide) from metal surfaces, often using chemical treatments that dissolve or convert rust. Commercial rust dissolvers and removers are widely available and work by chemically breaking down ru…\",\"relevanceScore\":2034.6434,\"viewCount\":\"0\",\"titleHighlights\":[],\"snippetHighlights\":[],\"creationSource\":1,\"visibility\":1,\"providers\":[1],\"snippetVariants\":[{\"provider\":1,\"kind\":1,\"text\":\"Rust removal refers to methods for eliminating rust (iron oxide) from metal surfaces, often using chemical treatments that dissolve or convert rust. Commercial rust dissolvers and removers are widely available and work by chemically breaking down ru…\",\"score\":2034.6434}],\"scrollAnchorText\":\"Rust removal refers to methods for eliminating rust (iron oxide) from metal surfaces, often using chemical treatments that dissolve or convert rust. Commercial rust dissolvers and removers are widely available and work by chemically breaking down ru…\"},{\"slug\":\"rust-analyzer\",\"title\":\"rust-analyzer\",\"snippet\":\"rust-analyzer is a modern IDE backend and language server for the Rust programming language, providing fast, accurate semantic analysis, type inference, error diagnostics, completions, refactoring, and inline type hints. Often compared to Roslyn for…\",\"relevanceScore\":2017.1263,\"viewCount\":\"0\",\"titleHighlights\":[],\"snippetHighlights\":[],\"creationSource\":0,\"visibility\":1,\"providers\":[1],\"snippetVariants\":[{\"provider\":1,\"kind\":1,\"text\":\"rust-analyzer is a modern IDE backend and language server for the Rust programming language, providing fast, accurate semantic analysis, type inference, error diagnostics, completions, refactoring, and inline type hints. Often compared to Roslyn for…\",\"score\":2017.1263}],\"scrollAnchorText\":\"rust-analyzer is a modern IDE backend and language server for the Rust programming language, providing fast, accurate semantic analysis, type inference, error diagnostics, completions, refactoring, and inline type hints. Often compared to Roslyn for…\"},{\"slug\":\"Rust-Oleum\",\"title\":\"Rust-Oleum\",\"snippet\":\"Rust-Oleum is a leading brand of protective paints, primers, and coatings, renowned for its rust-preventive formulations and innovative solutions\",\"relevanceScore\":2012.2307,\"viewCount\":\"0\",\"titleHighlights\":[],\"snippetHighlights\":[],\"creationSource\":1,\"visibility\":1,\"providers\":[1],\"snippetVariants\":[{\"provider\":1,\"kind\":1,\"text\":\"Rust-Oleum is a leading brand of protective paints, primers, and coatings, renowned for its rust-preventive formulations and innovative solutions\",\"score\":2012.2307}],\"scrollAnchorText\":\"Rust-Oleum is a leading brand of protective paints, primers, and coatings, renowned for its rust-preventive formulations and innovative solutions\"}],\"totalCount\":10000,\"searchTimeMs\":54.33363,\"facets\":[]}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://grokipedia.com/page/Rust",
+          "normalized_url": "https://grokipedia.com/page/Rust",
+          "title": "Rust",
+          "content": "Rust is the common name for the reddish-brown oxide coating, primarily hydrated iron(III) oxide (Fe₂O₃·nH₂O), that forms on iron and",
+          "engine": "grokipedia",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://grokipedia.com/page/Brian_Rust",
+          "normalized_url": "https://grokipedia.com/page/Brian_Rust",
+          "title": "Brian Rust",
+          "content": "Brian Rust is a British discographer, music historian, and broadcaster known for pioneering modern discography and compiling the foundational reference work on early jazz recordings.",
+          "engine": "grokipedia",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://grokipedia.com/page/thomas_rust",
+          "normalized_url": "https://grokipedia.com/page/thomas_rust",
+          "title": "Thomas Rust",
+          "content": "Thomas Rust (born July 21, 1941, in Front Royal, Virginia) is an American civil engineer and Republican politician from Virginia who represented the 86th district in the Virginia House of Delegates from 2002 to 2016. A moderate known for bipartisan…",
+          "engine": "grokipedia",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://grokipedia.com/page/Rust_programming_language",
+          "normalized_url": "https://grokipedia.com/page/Rust_programming_language",
+          "title": "Rust (programming language)",
+          "content": "Rust is a multi-paradigm, general-purpose systems programming language that emphasizes performance, concurrency, and safety, particularly by enforcing memory safety at compile time without relying on a garbage collector. These compile-time guarantee…",
+          "engine": "grokipedia",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://grokipedia.com/page/johann_nepomuk_rust",
+          "normalized_url": "https://grokipedia.com/page/johann_nepomuk_rust",
+          "title": "Johann Nepomuk Rust",
+          "content": "Johann Nepomuk Rust (5 April 1775 – 9 October 1840) was an Austrian surgeon, military physician, and professor renowned for his advancements in general and ophthalmic surgery, as well as his influential writings on medical topics including ulcers,…",
+          "engine": "grokipedia",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://grokipedia.com/page/rust_courage_mc_3_(book)",
+          "normalized_url": "https://grokipedia.com/page/rust_courage_mc_3_(book)",
+          "title": "Rust (Courage MC #3) (book)",
+          "content": "Rust is a 2016 erotic romance novel by author Kara Hart, published on June 1, 2016, as the third book in the Courage MC series. Presented as a standalone story with a complete happily ever after and no cliffhangers, it follows the forbidden romance…",
+          "engine": "grokipedia",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://grokipedia.com/page/Rust-Oleum_Rust_Reformer",
+          "normalized_url": "https://grokipedia.com/page/Rust-Oleum_Rust_Reformer",
+          "title": "Rust-Oleum Rust Reformer",
+          "content": "Rust-Oleum Rust Reformer is a rust converter product that transforms rust into a black, paintable surface, eliminating the need for additional primer before topcoating. Users can apply topcoat directly after the product dries. For brush application,…",
+          "engine": "grokipedia",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://grokipedia.com/page/Rust_Removal",
+          "normalized_url": "https://grokipedia.com/page/Rust_Removal",
+          "title": "Rust Removal",
+          "content": "Rust removal refers to methods for eliminating rust (iron oxide) from metal surfaces, often using chemical treatments that dissolve or convert rust. Commercial rust dissolvers and removers are widely available and work by chemically breaking down ru…",
+          "engine": "grokipedia",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://grokipedia.com/page/rust-analyzer",
+          "normalized_url": "https://grokipedia.com/page/rust-analyzer",
+          "title": "rust-analyzer",
+          "content": "rust-analyzer is a modern IDE backend and language server for the Rust programming language, providing fast, accurate semantic analysis, type inference, error diagnostics, completions, refactoring, and inline type hints. Often compared to Roslyn for…",
+          "engine": "grokipedia",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://grokipedia.com/page/Rust-Oleum",
+          "normalized_url": "https://grokipedia.com/page/Rust-Oleum",
+          "title": "Rust-Oleum",
+          "content": "Rust-Oleum is a leading brand of protective paints, primers, and coatings, renowned for its rust-preventive formulations and innovative solutions",
+          "engine": "grokipedia",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "engine": "pypi",
+  "case": "response-demo",
+  "query": {
+    "query": "rustimport",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rustimport",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://pypi.org/search/?q=rustimport&page=1",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://pypi.org/search/",
+    "headers": {},
+    "body": "<html><body><main><div><div><div><form><div><ul>\n<li><a class=\"package-snippet\" href=\"/project/rustimport/\">\n<h3><span class=\"package-snippet__name\">rustimport</span><span class=\"package-snippet__version\">1.0</span><span class=\"package-snippet__created\"><time datetime=\"2021-01-01T00:00:00+0000\">Jan 1, 2021</time></span></h3>\n<p>Import rust files directly</p>\n</a></li>\n</ul></div></form></div></div></div></main></body></html>\n"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://pypi.org/project/rustimport/",
+          "normalized_url": "https://pypi.org/project/rustimport/",
+          "title": "rustimport",
+          "content": "Import rust files directly",
+          "engine": "pypi",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}
