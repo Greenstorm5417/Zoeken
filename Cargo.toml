@@ -72,7 +72,7 @@ wreq = "5.3.0"
 wreq-util = "2.2.6"
 axum = "0.8.9"
 tower = { version = "0.5.3", features = ["util", "timeout", "limit"] }
-tower-http = { version = "0.6.11", features = [
+tower-http = { version = "0.7.0", features = [
     "trace",
     "compression-full",
     "timeout",
