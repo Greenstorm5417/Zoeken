@@ -1,0 +1,57 @@
+{
+  "engine": "brave",
+  "case": "request-page2",
+  "query": {
+    "query": "rust",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://search.brave.com/search?q=rust&source=web&offset=1",
+    "headers": {
+      "Accept-Encoding": "gzip, deflate"
+    },
+    "cookies": {
+      "useLocation": "0",
+      "safesearch": "off",
+      "country": "all",
+      "summarizer": "0",
+      "ui_lang": "en-us"
+    },
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://search.brave.com",
+    "headers": {},
+    "body": "<html><body></body></html>"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

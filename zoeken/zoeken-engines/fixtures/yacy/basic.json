@@ -1,0 +1,64 @@
+{
+  "engine": "yacy",
+  "case": "basic",
+  "query": {
+    "query": "rust search",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "en-US",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust search",
+    "category": "",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "en-US",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://search.example.test/yacysearch.json?query=rust+search&startRecord=10&maximumRecords=10&contentdom=text&resource=global&lr=lang_en",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://search.example.test/yacysearch.json",
+    "headers": {},
+    "body": "{\"channels\":[{\"items\":[{\"link\":\"https://example.com/rust\",\"title\":\"Rust Search\",\"description\":\"<b>Rust</b> search result\"}]}]}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://example.com/rust",
+          "normalized_url": "https://example.com/rust",
+          "title": "Rust Search",
+          "content": "Rust search result",
+          "engine": "yacy",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

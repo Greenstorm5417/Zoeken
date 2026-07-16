@@ -1,0 +1,199 @@
+{
+  "engine": "kozmonavt",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://kozmonavt.su/s?q=rust",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://kozmonavt.su/s?q=rust",
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "server": "nginx",
+      "x-robots-tag": "noarchive",
+      "x-frame-options": "SAMEORIGIN",
+      "x-xss-protection": "1; mode=block",
+      "date": "Thu, 09 Jul 2026 14:05:50 GMT",
+      "strict-transport-security": "max-age=32000000",
+      "cache-control": "no-cache"
+    },
+    "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><link rel=\"stylesheet\" type=\"text/css\" href=\"/css/27.css\"><link rel=\"icon\" type=\"image/png\" href=\"/img/icon.png\"><link rel=\"icon\" sizes=\"128x128\" type=\"image/png\" href=\"/img/logo.png\"><link rel=\"search\" type=\"application/opensearchdescription+xml\" title=\"KOCMOHABT\" href=\"https://kozmonavt.su/osd.xml\"><title>Search: rust</title><meta name=\"description\" content=\"Search for: rust\"></head><body><header><div id=\"bar\"><div class=\"view inline\"><div id=\"title\"><a href=\"/\">KOZMONAVT</a></div><div id=\"search\"><form id=\"form\" method=\"get\" action=\"s\"><input type=\"text\" id=\"query\" name=\"q\" size=\"32\" maxlength=\"64\" value=\"rust\"><input type=\"submit\" id=\"action\" value=\"Search\"></form></div></div></div></header><main><div class=\"view\"><div id=\"count\">Found<span>36.516</span></div><div class=\"list\"><section class=\"entry inline\"><div class=\"site inline\"><div class=\"logo\"><img src=\"https://pix.kozmonavt.su/icon/rust-lang.org/1783605600/WMVVRPAxA%2Fx%2FtXEmzHSkwqqUCUK%2BibQE7k59komh7UA%3D\"></div><div class=\"host\"><a href=\"/v?q=rust-lang.org\">rust-lang.org</a></div><div class=\"rank\"><div class=\"score mark-b\">B</div></div><div class=\"snip\"><em>Rust</em> Programming Language Install Learn Playground Tools Governance Funding Community Blog Language</div></div><div class=\"info\"><div class=\"title\"><em>Rust</em> Programming Language</div><div class=\"description\">A language empowering everyone to build reliable and efficient software.</div></div></section><section class=\"entry inline\"><div class=\"site inline\"><div class=\"logo\"><img src=\"https://pix.kozmonavt.su/icon/doc.rust-lang.org/1783605600/BIF4etyb1PhkV9U6enOEM7kr%2BLtPnWSqOuraj8ozkNU%3D\"></div><div class=\"host\"><a href=\"/v?q=doc.rust-lang.org\">doc.rust-lang.org</a></div><div class=\"rank\"><div class=\"score mark-b\">B</div></div><div class=\"snip\"><em>Rust</em> Documentation <em>Rust</em> Documentation Welcome to an overview of the documentation provided by the</div></div><div class=\"info\"><div class=\"title\"><em>Rust</em> Documentation</div></div></section><section class=\"entry inline\"><div class=\"site inline\"><div class=\"logo\"><img src=\"https://pix.kozmonavt.su/icon/rust-servers.net/1783605600/4F73HYt8VqVayvfgFv73%2FCFpe7oQywkbR%2BfU%2FKr5Ok0%3D\"></div><div class=\"host\"><a href=\"/v?q=rust-servers.net\">rust-servers.net</a></div><div class=\"rank\"><div class=\"score mark-a\">A</div></div><div class=\"snip\"><em>Rust</em> Server List | <em>Rust</em> Multiplayer Servers <em>Rust</em> Servers Your Server Servers Top Rated Servers</div></div><div class=\"info\"><div class=\"title\"><em>Rust</em> Server List | <em>Rust</em> Multiplayer Servers</div><div class=\"description\">Browse the best <em>Rust</em> servers to play online. Discover active multiplayer servers, explore new communities, and join <em>Rust</em> servers today.</div></div></section><section class=\"entry inline\"><div class=\"site inline\"><div class=\"logo\"></div><div class=\"host\"><a href=\"/v?q=play.rust-lang.org\">play.rust-lang.org</a></div><div class=\"rank\"><div class=\"score mark-c\">C</div></div><div class=\"snip\"><em>Rust</em> Playground</div></div><div class=\"info\"><div class=\"title\"><em>Rust</em> Playground</div><div class=\"description\">A browser interface to the <em>Rust</em> compiler to experiment with the language</div></div></section><section class=\"entry inline\"><div class=\"site inline\"><div class=\"logo\"><img src=\"https://pix.kozmonavt.su/icon/blog.rust-lang.org/1783605600/1H2PSSFfuLqkeQQIu9uICUigOsOo%2B64kSyq3e3ejSBo%3D\"></div><div class=\"host\"><a href=\"/v?q=blog.rust-lang.org\">blog.rust-lang.org</a></div><div class=\"rank\"><div class=\"score mark-a\">A</div></div><div class=\"snip\">The <em>Rust</em> Programming Language Blog <em>Rust</em> Blog <em>Rust</em> Install Learn Tools Governance Community This is</div></div><div class=\"info\"><div class=\"title\">The <em>Rust</em> Programming Language Blog</div><div class=\"description\">Empowering everyone to build reliable and efficient software.</div></div></section><section class=\"entry inline\"><div class=\"site inline\"><div class=\"logo\"><img src=\"https://pix.kozmonavt.su/icon/rust.facepunch.com/1783605600/Lh%2FxMSmQMNvxYP3d9SJU03E5TLrPzK0%2Fa7mfOfA2CbI%3D\"></div><div class=\"host\"><a href=\"/v?q=rust.facepunch.com\">rust.facepunch.com</a></div><div class=\"rank\"><div class=\"score mark-b\">B</div></div><div class=\"snip\"><em>Rust</em> — Explore, Build and Survive menu news companion mobile Merch Store Redeem Careers Buy <em>Rust</em></div></div><div class=\"info\"><div class=\"title\"><em>Rust</em> — Explore, Build and Survive</div><div class=\"description\">The only aim in <em>Rust</em> is to survive. Everything wants you to die - the island’s wildlife and other inhabitants, the environment, other...</div></div></section><section class=\"entry inline\"><div class=\"site inline\"><div class=\"logo\"><img src=\"https://pix.kozmonavt.su/icon/users.rust-lang.org/1783605600/BImCAaM6Fcw%2Bk81Ddf3AFHjjJLw8G3sIw3jqgRzBuYg%3D\"></div><div class=\"host\"><a href=\"/v?q=users.rust-lang.org\">users.rust-lang.org</a></div><div class=\"rank\"><div class=\"score mark-h\">A+</div></div><div class=\"snip\">The <em>Rust</em> Programming Language Forum The <em>Rust</em> Programming Language Forum General discussion of The</div></div><div class=\"info\"><div class=\"title\">The <em>Rust</em> Programming Language Forum</div><div class=\"description\">General discussion of The <em>Rust</em> Programming Language</div></div></section><section class=\"entry inline\"><div class=\"site inline\"><div class=\"logo\"><img src=\"https://pix.kozmonavt.su/icon/internals.rust-lang.org/1783605600/tf2pMDyIAfH%2FGbxgCYt7VJqYqnXRsYo9B3y9lBRbLn0%3D\"></div><div class=\"host\"><a href=\"/v?q=internals.rust-lang.org\">internals.rust-lang.org</a></div><div class=\"rank\"><div class=\"score mark-a\">A</div></div><div class=\"snip\"><em>Rust</em> Internals <em>Rust</em> Internals Discussions around the design and implementation of The <em>Rust</em></div></div><div class=\"info\"><div class=\"title\"><em>Rust</em> Internals</div><div class=\"description\">Discussions around the design and implementation of The <em>Rust</em> Programming Language</div></div></section><section class=\"entry inline\"><div class=\"site inline\"><div class=\"logo\"><img src=\"https://pix.kozmonavt.su/icon/rust-analyzer.github.io/1783605600/V%2BDlz5gTAxcZBHf6a0gb6HalKWvzurd4u6%2FjHMUKcEw%3D\"></div><div class=\"host\"><a href=\"/v?q=rust-analyzer.github.io\">rust-analyzer.github.io</a></div><div class=\"rank\"><div class=\"score mark-b\">B</div></div><div class=\"snip\"><em>rust</em>-analyzer Bringing a great IDE experience to the <em>Rust</em> programming language. Source About <em>rust</em></div></div><div class=\"info\"><div class=\"title\"><em>rust</em>-analyzer</div><div class=\"description\"><em>rust</em>-analyzer: building a better <em>Rust</em> IDE</div></div></section><section class=\"entry inline\"><div class=\"site inline\"><div class=\"logo\"><img src=\"https://pix.kozmonavt.su/icon/rust-tracker.ru/1783605600/tqiE5wUxO0APJLIbWEYA14Txw5nAeV6%2BsrBPbvq4htE%3D\"></div><div class=\"host\"><a href=\"/v?q=rust-tracker.ru\">rust-tracker.ru</a></div><div class=\"rank\"><div class=\"score mark-b\">B</div></div><div class=\"snip\">Мониторинг серверов <em>Rust</em> - <em>Rust</em> Сервера Главная Ваш аккаунт Войти Регистрация Забыли пароль? Поиск</div></div><div class=\"info\"><div class=\"title\">Мониторинг серверов <em>Rust</em> - <em>Rust</em> Сервера</div><div class=\"description\">Рейтинг игровых серверов <em>RUST</em> (Сервера <em>RUST</em> Legacy и Experimental) - Мониторинг и статистика</div></div></section></div><nav id=\"next\"><a class=\"pb vert sign-h\" href=\"/s?q=rust&amp;𝟢=2\"><div class=\"icon icon-b\"></div></a><span id=\"err\"></span></nav><div id=\"wait\"><div class=\"loading\"><div class=\"icon-x\"></div></div></div></div></main><footer><nav id=\"about\"><ul class=\"navbar\"><li class=\"about\"><span>&hearts;</span>2017<a href=\"z\">KOCMOHABT</a></li><li><a href=\"w\">Download</a></li><li><a href=\"y\">Help</a></li></ul></nav></footer></body><script src=\"/js/4.js\"></script></html>"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://rust-lang.org/",
+          "normalized_url": "https://rust-lang.org/",
+          "title": "rust-lang.org",
+          "content": "Rust Programming Language Install Learn Playground Tools Governance Funding Community Blog Language",
+          "engine": "kozmonavt",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://doc.rust-lang.org/",
+          "normalized_url": "https://doc.rust-lang.org/",
+          "title": "doc.rust-lang.org",
+          "content": "Rust Documentation Rust Documentation Welcome to an overview of the documentation provided by the",
+          "engine": "kozmonavt",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust-servers.net/",
+          "normalized_url": "https://rust-servers.net/",
+          "title": "rust-servers.net",
+          "content": "Rust Server List | Rust Multiplayer Servers Rust Servers Your Server Servers Top Rated Servers",
+          "engine": "kozmonavt",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://play.rust-lang.org/",
+          "normalized_url": "https://play.rust-lang.org/",
+          "title": "play.rust-lang.org",
+          "content": "Rust Playground",
+          "engine": "kozmonavt",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://blog.rust-lang.org/",
+          "normalized_url": "https://blog.rust-lang.org/",
+          "title": "blog.rust-lang.org",
+          "content": "The Rust Programming Language Blog Rust Blog Rust Install Learn Tools Governance Community This is",
+          "engine": "kozmonavt",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust.facepunch.com/",
+          "normalized_url": "https://rust.facepunch.com/",
+          "title": "rust.facepunch.com",
+          "content": "Rust — Explore, Build and Survive menu news companion mobile Merch Store Redeem Careers Buy Rust",
+          "engine": "kozmonavt",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://users.rust-lang.org/",
+          "normalized_url": "https://users.rust-lang.org/",
+          "title": "users.rust-lang.org",
+          "content": "The Rust Programming Language Forum The Rust Programming Language Forum General discussion of The",
+          "engine": "kozmonavt",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://internals.rust-lang.org/",
+          "normalized_url": "https://internals.rust-lang.org/",
+          "title": "internals.rust-lang.org",
+          "content": "Rust Internals Rust Internals Discussions around the design and implementation of The Rust",
+          "engine": "kozmonavt",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust-analyzer.github.io/",
+          "normalized_url": "https://rust-analyzer.github.io/",
+          "title": "rust-analyzer.github.io",
+          "content": "rust-analyzer Bringing a great IDE experience to the Rust programming language. Source About rust",
+          "engine": "kozmonavt",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust-tracker.ru/",
+          "normalized_url": "https://rust-tracker.ru/",
+          "title": "rust-tracker.ru",
+          "content": "Мониторинг серверов Rust - Rust Сервера Главная Ваш аккаунт Войти Регистрация Забыли пароль? Поиск",
+          "engine": "kozmonavt",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

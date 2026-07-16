@@ -1,0 +1,59 @@
+{
+  "engine": "github code",
+  "case": "basic",
+  "query": {
+    "query": "println",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://api.github.com/search/code",
+    "headers": {},
+    "body": "{\n      \"items\": [\n        {\n          \"name\": \"main.rs\",\n          \"path\": \"src/main.rs\",\n          \"html_url\": \"https://github.com/rust-lang/rust/blob/main/src/main.rs\",\n          \"repository\": {\n            \"full_name\": \"rust-lang/rust\",\n            \"html_url\": \"https://github.com/rust-lang/rust\",\n            \"description\": \"The Rust programming language\"\n          },\n          \"text_matches\": [\n            {\"object_type\": \"FileContent\", \"property\": \"content\", \"fragment\": \"fn main() {\\n    println!(\\\"hi\\\");\\n}\"}\n          ]\n        }\n      ]\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Code": {
+          "url": "https://github.com/rust-lang/rust/blob/main/src/main.rs",
+          "normalized_url": "https://github.com/rust-lang/rust/blob/main/src/main.rs",
+          "title": "rust-lang/rust · main.rs",
+          "content": "The Rust programming language",
+          "engine": "github code",
+          "repository": "https://github.com/rust-lang/rust",
+          "codelines": [
+            [
+              1,
+              "fn main() {"
+            ],
+            [
+              2,
+              "    println!(\"hi\");"
+            ],
+            [
+              3,
+              "}"
+            ]
+          ],
+          "hl_lines": [],
+          "code_language": "",
+          "filename": "src/main.rs",
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

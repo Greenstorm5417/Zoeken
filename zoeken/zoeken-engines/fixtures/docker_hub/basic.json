@@ -1,0 +1,56 @@
+{
+  "engine": "docker hub",
+  "case": "basic",
+  "query": {
+    "query": "nginx",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://hub.docker.com",
+    "headers": {},
+    "body": "{\n      \"results\": [\n        {\n          \"source\": \"official\",\n          \"slug\": \"nginx\",\n          \"name\": \"nginx\",\n          \"short_description\": \"Official build of Nginx.\"\n        },\n        {\n          \"source\": \"community\",\n          \"slug\": \"someuser/myapp\",\n          \"name\": \"myapp\",\n          \"short_description\": \"A community image.\"\n        }\n      ]\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://hub.docker.com/_/nginx",
+          "normalized_url": "https://hub.docker.com/_/nginx",
+          "title": "nginx",
+          "content": "Official build of Nginx.",
+          "engine": "docker hub",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://hub.docker.com/r/someuser/myapp",
+          "normalized_url": "https://hub.docker.com/r/someuser/myapp",
+          "title": "myapp",
+          "content": "A community image.",
+          "engine": "docker hub",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

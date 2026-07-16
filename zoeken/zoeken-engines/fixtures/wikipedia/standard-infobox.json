@@ -1,0 +1,43 @@
+{
+  "engine": "wikipedia",
+  "case": "standard-infobox",
+  "query": {
+    "query": "Rust (programming language)",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://en.wikipedia.org/",
+    "headers": {},
+    "body": "{\n      \"type\": \"standard\",\n      \"title\": \"Rust (programming language)\",\n      \"titles\": {\"display\": \"Rust (programming language)\"},\n      \"description\": \"General-purpose programming language\",\n      \"extract\": \"Rust is a multi-paradigm, general-purpose programming language.\",\n      \"thumbnail\": {\"source\": \"https://upload.wikimedia.org/rust.png\"},\n      \"content_urls\": {\"desktop\": {\"page\": \"https://en.wikipedia.org/wiki/Rust_(programming_language)\"}}\n    }"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": [
+      {
+        "infobox": "Rust (programming language)",
+        "id": "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+        "content": "Rust is a multi-paradigm, general-purpose programming language.",
+        "img_src": "https://upload.wikimedia.org/rust.png",
+        "urls": [
+          {
+            "title": "Wikipedia",
+            "url": "https://en.wikipedia.org/wiki/Rust_(programming_language)"
+          }
+        ],
+        "attributes": [],
+        "related_topics": [],
+        "engine": "wikipedia"
+      }
+    ]
+  }
+}

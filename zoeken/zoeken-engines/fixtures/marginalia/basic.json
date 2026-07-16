@@ -1,0 +1,66 @@
+{
+  "engine": "marginalia",
+  "case": "basic",
+  "query": {
+    "query": "rust search",
+    "pageno": 2,
+    "safesearch": "Strict",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust search",
+    "category": "",
+    "pageno": 2,
+    "safesearch": "Strict",
+    "time_range": null,
+    "locale_key": "",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://api2.marginalia-search.com/search?page=2&count=20&nsfw=1&query=rust+search",
+    "headers": {
+      "API-Key": "test-key"
+    },
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://api2.marginalia-search.com/search",
+    "headers": {},
+    "body": "{\"license\":\"test\",\"query\":\"rust search\",\"results\":[{\"url\":\"https://example.com/rust\",\"title\":\"Rust Search\",\"description\":\"Independent result\",\"quality\":1.0,\"format\":\"html\",\"details\":\"\"}]}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://example.com/rust",
+          "normalized_url": "https://example.com/rust",
+          "title": "Rust Search",
+          "content": "Independent result",
+          "engine": "marginalia",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

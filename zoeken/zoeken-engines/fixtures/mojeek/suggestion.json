@@ -1,0 +1,47 @@
+{
+  "engine": "mojeek",
+  "case": "suggestion",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://www.mojeek.com",
+    "headers": {},
+    "body": "<!DOCTYPE html>\n<html><body>\n<div class=\"top-info\"><p class=\"top-info spell\">Did you mean <em><a href=\"/search?q=rust\">rust</a></em></p></div>\n<div id=\"results\">\n<ul class=\"results-standard\">\n  <li>\n    <h2><a href=\"https://en.wikipedia.org/wiki/Rust\">Rust - Wikipedia</a></h2>\n    <a class=\"ob\" href=\"https://en.wikipedia.org/wiki/Rust\">https://en.wikipedia.org/wiki/Rust</a>\n    <p class=\"s\">Rust is an iron oxide.</p>\n  </li>\n</ul>\n</div>\n</body></html>"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://en.wikipedia.org/wiki/Rust",
+          "normalized_url": "https://en.wikipedia.org/wiki/Rust",
+          "title": "Rust - Wikipedia",
+          "content": "Rust is an iron oxide.",
+          "engine": "mojeek",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [
+      {
+        "suggestion": "rust",
+        "engine": "mojeek"
+      }
+    ],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

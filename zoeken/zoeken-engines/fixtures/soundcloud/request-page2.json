@@ -1,0 +1,49 @@
+{
+  "engine": "soundcloud",
+  "case": "request-page2",
+  "query": {
+    "query": "cool",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "cool",
+    "category": "",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://api-v2.soundcloud.com/search?q=cool&offset=10&limit=10&facet=model&client_id=&app_locale=en",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://api-v2.soundcloud.com/search",
+    "headers": {},
+    "body": "{\"collection\":[],\"total_results\":0}"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "autocomplete": "duckduckgo",
+  "categories": ["general", "images", "videos", "news", "map"],
+  "doi_resolvers": ["https://doi.org/", "https://oadoi.org/"],
+  "engines": [
+    {
+      "categories": ["general"],
+      "enabled": true,
+      "name": "duckduckgo",
+      "shortcut": "ddg"
+    }
+  ]
+}

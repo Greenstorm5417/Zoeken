@@ -1,0 +1,167 @@
+{
+  "engine": "abcnyheter",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://startsiden.abcnyheter.no/sok/?q=rust&page=1",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://startsiden.abcnyheter.no/sok/?q=rust&page=1",
+    "headers": {
+      "access-control-allow-origin": "*",
+      "x-robots-tag": "noindex",
+      "etag": "W/\"6314-w4kz2mkii7RECHAUjFEH2LcO+hg\"",
+      "access-control-allow-methods": "GET,PUT,PATCH,POST,DELETE,OPTIONS",
+      "accept-ranges": "bytes",
+      "x-abtest-variation": "A",
+      "access-control-allow-headers": "X-Requested-With, Content-Type, Authorization",
+      "cache-control": "public, max-age=30",
+      "user-agent": "pc",
+      "x-ab-selection": "random=12",
+      "vary": "X-ABGROUP, , Accept-Encoding",
+      "set-cookie": "Abgroup=12;Expires=Thu, 23 Jul 2026 14:05:19 GMT;path=/;domain=.abcnyheter.no;",
+      "server": "nginx",
+      "content-type": "text/html; charset=utf-8",
+      "expires": "Thu, 09 Jul 2026 14:05:48 GMT",
+      "x-abtest-name": "DT-2366-adsense-test",
+      "varnish-grace": "28800s",
+      "date": "Thu, 09 Jul 2026 14:05:19 GMT"
+    },
+    "body": "<!DOCTYPE html><html lang=\"no\"><head><meta charSet=\"utf-8\"/><meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\"/><meta http-equiv=\"X-UA-Compatible\" content=\"IE=9\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\"/><meta name=\"description\" content=\"Komplett tjeneste med søk i nettsider, bilder, nyheter, kart og telefonnummer, samt katalogen til ABC Startsiden.\"/><meta name=\"apple-itunes-app\" content=\"app-id=435032741\"/><meta name=\"google-play-app\" content=\"app-id=no.startsiden.bookmarks\"/><meta name=\"format-detection\" content=\"telephone=no\"/><meta name=\"msapplication-TileColor\" content=\"#ffffff\"/><meta name=\"og:description\" content=\"Søk i verden med Startsiden søk\"/><meta name=\"og:title\" content=\"Startsiden søk\"/><meta name=\"og:url\" content=\"https://startsiden.abcnyheter.no/sok\"/><meta name=\"og:image\" content=\"https://startsiden.abcnyheter.no/sok/static/ogImageDefault.459639c9.png\"/><meta name=\"og:type\" content=\"website\"/><meta name=\"cXenseParse:pageclass\" content=\"frontpage\"/><meta name=\"msapplication-TileImage\" content=\"/sok/static/mstile-144x144.e9d71429.png\"/><meta name=\"msapplication-config\" content=\"/sok/xml/browserconfig.xml\"/><meta name=\"google-adsense-account\" content=\"sites-7640060563995494\"/><link rel=\"icon\" href=\"/sok/static/favicon.140de993.ico\"/><link rel=\"icon\" type=\"image/png\" href=\"/sok/static/favicon-16x16.c82a3737.png\" sizes=\"16x16\"/><link rel=\"icon\" type=\"image/png\" href=\"/sok/static/favicon-32x32.b66df527.png\" sizes=\"32x32\"/><link rel=\"icon\" type=\"image/png\" href=\"/sok/static/favicon-96x96.9598c9cb.png\" sizes=\"96x96\"/><link rel=\"icon\" type=\"image/png\" href=\"/sok/static/favicon-230x230.fffbffad.png\" sizes=\"230x230\"/><link rel=\"apple-touch-icon\" sizes=\"57x57\"/><link rel=\"apple-touch-icon\" sizes=\"60x60\"/><link rel=\"apple-touch-icon\" href=\"/sok/static/apple-touch-icon-72x72.8409ca9f.png\" sizes=\"72x72\"/><link rel=\"apple-touch-icon\" href=\"/sok/static/apple-touch-icon-76x76.a2567d0b.png\" sizes=\"76x76\"/><link rel=\"apple-touch-icon\" href=\"/sok/static/apple-touch-icon-114x114.21093ee7.png\" sizes=\"114x114\"/><link rel=\"apple-touch-icon\" href=\"/sok/static/apple-touch-icon-120x120.2875d632.png\" sizes=\"120x120\"/><link rel=\"apple-touch-icon\" href=\"/sok/static/apple-touch-icon-144x144.e9d71429.png\" sizes=\"144x144\"/><link rel=\"apple-touch-icon\" href=\"/sok/static/apple-touch-icon-152x152.f584217c.png\" sizes=\"152x152\"/><link rel=\"apple-touch-icon\" href=\"/sok/static/apple-touch-icon-180x180.4b7b88ba.png\" sizes=\"180x180\"/><link rel=\"icon\" type=\"image/png\" sizes=\"192x192\"/><link rel=\"icon\" type=\"image/png\" href=\"/sok/static/coast-228x228.98de491b.png\" sizes=\"228x228\"/><script id=\"parsely_json\" type=\"application/ld+json\">{\"publisher\":{\"@type\":\"Organization\",\"name\":\"ABC Startsiden\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://startsiden.abcnyheter.no/sok/static/ogImageDefault.459639c9.png\"}},\"@context\":\"http://schema.org\",\"@type\":\"WebPage\",\"articleSection\":\"Søk\",\"creator\":\"ABC Startsiden\",\"datePublished\":\"2026-07-09T14:05:19.305Z\",\"headline\":\"Søk\",\"keywords\":[\"Søk\"],\"thumbnailUrl\":\"https://startsiden.abcnyheter.no/sok/static/ogImageDefault.459639c9.png\",\"url\":\"https://startsiden.abcnyheter.no/?q=rust&page=1\"}</script><link rel=\"stylesheet\" href=\"/sok/static/styles.2e2314c857dcc7608c42.css\"/><link rel=\"search\" type=\"application/opensearchdescription+xml\" href=\"/sok/xml/opensearch.xml\" title=\"Startsiden søk\"/><script src=\"https://www.google.com/adsense/search/ads.js\"></script><title>rust - Startsiden søk</title><script>if(!window._AppState){window._AppState={};} window._AppState={\"adsConfiguration\":{\"blocks\":[{\"container\":\"googlead_top\",\"maxTop\":6},{\"container\":\"googlead_bottom\",\"number\":4}],\"enabled\":true,\"page\":{\"adPage\":1,\"adsafe\":\"medium\",\"adsWantedBottom\":4,\"adsWantedTop\":6,\"ivt\":false,\"numRepeated\":6,\"pubId\":\"partner-pub-8480475432742786\",\"query\":\"rust\",\"styleId\":\"7898882224\"}},\"deviceType\":\"pc\",\"entryPoint\":\"\\u002Fsok\\u002F\",\"environment\":\"production\",\"error\":false,\"pageData\":{\"items\":[{\"crawlDate\":undefined,\"description\":\"Blog\",\"imageThumbnail\":undefined,\"title\":\"Rust Programming Language\",\"url\":\"https:\\u002F\\u002Frust-lang.org\\u002F\",\"urlLabel\":\"https:\\u002F\\u002Frust-lang.org\"},{\"crawlDate\":undefined,\"description\":\"The only aim in Rust is to survive. Everything wants you to die - the island's wildlife and other inhabitants, the environment, other survivors.\",\"imageThumbnail\":undefined,\"title\":\"Rust — Explore, Build and Survive\",\"url\":\"https:\\u002F\\u002Frust.facepunch.com\\u002F\",\"urlLabel\":\"https:\\u002F\\u002Frust.facepunch.com\"},{\"crawlDate\":undefined,\"description\":\"The only aim in Rust is to survive. Everything wants you to die - the island's wildlife, other inhabitants, the environment, and other survivors.\",\"imageThumbnail\":undefined,\"title\":\"Save 50% on Rust on Steam\",\"url\":\"https:\\u002F\\u002Fstore.steampowered.com\\u002Fapp\\u002F252490\\u002FRust\\u002F\",\"urlLabel\":\"https:\\u002F\\u002Fstore.steampowered.com › app › Rust\"},{\"crawlDate\":undefined,\"description\":\"r\\u002Frust: A place for all things related to the Rust programming language—an open-source systems language that emphasizes performance, reliability, and…\",\"imageThumbnail\":undefined,\"title\":\"The Rust Programming Language - Reddit\",\"url\":\"https:\\u002F\\u002Fwww.reddit.com\\u002Fr\\u002Frust\\u002F\",\"urlLabel\":\"https:\\u002F\\u002Fwww.reddit.com › rust\"},{\"crawlDate\":undefined,\"description\":\"Rust is a general-purpose programming language which emphasizes performance, type safety, concurrency, and memory safety.\",\"imageThumbnail\":undefined,\"title\":\"Rust (programming language) - Wikipedia\",\"url\":\"https:\\u002F\\u002Fen.wikipedia.org\\u002Fwiki\\u002FRust_(programming_language)\",\"urlLabel\":\"https:\\u002F\\u002Fen.wikipedia.org › wiki › Rust_(programming_lang...\"},{\"crawlDate\":undefined,\"description\":\"Det eneste målet i Rust er å overleve. Hvert åndedrag er en kamp på en mystisk postapokalyptisk øy der alt – fra miljøet til de andre innbyggerne – vil ha deg ...\",\"imageThumbnail\":undefined,\"title\":\"Rust - PlayStation\",\"url\":\"https:\\u002F\\u002Fwww.playstation.com\\u002Fno-no\\u002Fgames\\u002Frust\\u002F\",\"urlLabel\":\"https:\\u002F\\u002Fwww.playstation.com › Hjem › Spill\"},{\"crawlDate\":\"24. feb. 2023\",\"description\":\"Rust is a programming language that is built to be fast, secure, reliable and supposedly easier to program.\",\"imageThumbnail\":undefined,\"title\":\"Rust 101 — Everything you need to know about Rust - Medium\",\"url\":\"https:\\u002F\\u002Fmedium.com\\u002Fcodex\\u002Frust-101-everything-you-need-to-know-about-rust-f3dd0ae99f4c\",\"urlLabel\":\"https:\\u002F\\u002Fmedium.com › codex › rust-101-everything-you-ne...\"}],\"totalItems\":7,\"page\":1,\"providerType\":\"ScrapingDogSearch\",\"resultPerPage\":10,\"abTestSetting\":{\"abTestName\":\"DT-2366-adsense-test\",\"variant\":\"A\"},\"config\":{\"environment\":\"production\",\"homepageUrls\":{\"default\":\"\\u002F\",\"abcnyheter\":\"https:\\u002F\\u002Fwww.abcnyheter.no\\u002F\",\"search\":\"\\u002Fsok\\u002F\"},\"imaginaryPath\":\"https:\\u002F\\u002Fimaginary.abcmedia.no\",\"piano\":{\"scriptUrl\":\"\\u002F\\u002Fexperience-eu.piano.io\\u002Fxbuilder\\u002Fexperience\\u002Fload?aid=9BVUKHQEpe\"},\"searchWs\":\"https:\\u002F\\u002Fsearch-ws.startsiden.no\"}},\"query\":\"rust\",\"searchType\":\"general\"};</script><script>(function (w, d, s, l, i, n) {\n    w[l] = w[l] || [];\n    if (n) {\n        w[l].push({\n            'gtm.start': new Date().getTime(),\n            event: 'gtm.js',\n            'abtest_group': n\n        });\n    } else {\n        w[l].push({\n            'gtm.start': new Date().getTime(),\n            event: 'gtm.js'\n        });\n    }\n    var f = d.getElementsByTagName(s)[0],\n        j = d.createElement(s),\n        dl = (l !== 'dataLayer' ? '&l=' + l : '');\n    j.async = true;\n    j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl;\n    f.parentNode.insertBefore(j, f);\n})(window, document, 'script', 'dataLayer', 'GTM-M64JV25V', 'DT-2366-adsense-test_A');\n</script><script>\"use strict\";function _typeof(t){return(_typeof=\"function\"==typeof Symbol&&\"symbol\"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&\"function\"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?\"symbol\":typeof t})(t)}!function(){var t=function(){var t,e,o=[],n=window,r=n;for(;r;){try{if(r.frames.__tcfapiLocator){t=r;break}}catch(t){}if(r===n.top)break;r=r.parent}t||(!function t(){var e=n.document,o=!!n.frames.__tcfapiLocator;if(!o)if(e.body){var r=e.createElement(\"iframe\");r.style.cssText=\"display:none\",r.name=\"__tcfapiLocator\",e.body.appendChild(r)}else setTimeout(t,5);return!o}(),n.__tcfapi=function(){for(var t=arguments.length,n=new Array(t),r=0;r<t;r++)n[r]=arguments[r];if(!n.length)return o;\"setGdprApplies\"===n[0]?n.length>3&&2===parseInt(n[1],10)&&\"boolean\"==typeof n[3]&&(e=n[3],\"function\"==typeof n[2]&&n[2](\"set\",!0)):\"ping\"===n[0]?\"function\"==typeof n[2]&&n[2]({gdprApplies:e,cmpLoaded:!1,cmpStatus:\"stub\"}):o.push(n)},n.addEventListener(\"message\",(function(t){var e=\"string\"==typeof t.data,o={};if(e)try{o=JSON.parse(t.data)}catch(t){}else o=t.data;var n=\"object\"===_typeof(o)&&null!==o?o.__tcfapiCall:null;n&&window.__tcfapi(n.command,n.version,(function(o,r){var a={__tcfapiReturn:{returnValue:o,success:r,callId:n.callId}};t&&t.source&&t.source.postMessage&&t.source.postMessage(e?JSON.stringify(a):a,\"*\")}),n.parameter)}),!1))};\"undefined\"!=typeof module?module.exports=t:t()}();</script><script>\n            window._sp_queue = [];\n            window._sp_ = {\n                config: {\n                    accountId: 1923,\n                    baseEndpoint: 'https://cdn.privacy-mgmt.com',\n\n                    gdpr: { },\n                    events: {\n                        onMessageChoiceSelect: function() {\n                            console.log('[event] onMessageChoiceSelect', arguments);\n                        },\n                        onMessageReady: function() {\n                            console.log('[event] onMessageReady', arguments);\n                        },\n                        onMessageChoiceError: function() {\n                            console.log('[event] onMessageChoiceError', arguments);\n                        },\n                        onPrivacyManagerAction: function() {\n                            console.log('[event] onPrivacyManagerAction', arguments);\n                        },\n                        onPMCancel: function() {\n                            console.log('[event] onPMCancel', arguments);\n                        },\n                        onMessageReceiveData: function() {\n                            console.log('[event] onMessageReceiveData', arguments);\n                        },\n                        onSPPMObjectReady: function() {\n                            console.log('[event] onSPPMObjectReady', arguments);\n                        },\n                        onConsentReady: function (consentUUID, euconsent) {\n                            console.log('[event] onConsentReady', arguments);\n                        },\n                        onError: function() {\n                            console.log('[event] onError', arguments);\n                        },\n                    }\n                }\n            }</script><script src=\"https://cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js\" async=\"\"></script><script type=\"text/javascript\" src=\"//log.medietall.no/analytics.js\" async=\"\"></script><meta name=\"robots\" content=\"noindex\"/><script type=\"text/javascript\" charSet=\"utf-8\">(function(g,o){g[o]=g[o]||function(){(g[o]['q']=g[o]['q']||[]).push(\n            arguments)},g[o]['t']=1*new Date})(window,'_googCsa');</script><script>\n            document.cookie = \"__adblocker=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/\";\n            var setNptTechAdblockerCookie = function(adblocker) {\n                var d = new Date();\n                d.setTime(d.getTime() + 60 * 5 * 1000);\n                document.cookie = \"__adblocker=\" + (adblocker ? \"true\" : \"false\") + \"; expires=\" + d.toUTCString() + \"; path=/\";\n            };\n            var script = document.createElement(\"script\");\n            script.setAttribute(\"async\", true);\n            script.setAttribute(\"src\", \"//www.npttech.com/advertising.js\");\n            script.setAttribute(\"onerror\", \"setNptTechAdblockerCookie(true);\");\n            document.getElementsByTagName(\"head\")[0].appendChild(script);\n        </script></head><body><div id=\"deHydratePlacement\"><div class=\"root\"><div class=\"\"><header class=\"header-top\"><div class=\"row align-middle\"><div class=\"columns small-12 medium-12 large-2\"><a id=\"logo-gohome-header\" class=\"header-top__back-btn hide-for-large\" href=\"/\" aria-label=\"\" data-ga4-event-name=\"search_header\" data-ga4-event-details-1=\"back_to_startsiden\" data-ga4-link-title=\"\" data-ga4-link-url=\"/\"><span></span></a><a id=\"logo-startsiden\" class=\"header-top__logo logo-startsiden\" href=\"/sok/\" aria-label=\"Startsiden\" data-ga4-event-name=\"search_header\" data-ga4-event-details-1=\"logo\" data-ga4-link-title=\"Startsiden\" data-ga4-link-url=\"/sok/\"><span>Startsiden</span></a></div><div class=\"columns small-12 large-10\"><div class=\"searchform__container\" data-ga4-event-name=\"search_header\" data-ga4-event-details-1=\"search_google_menu\"><form id=\"searchform_default\" class=\" visible searchform vs-top-1x-medium-only vs-bottom-1x\" method=\"GET\" action=\"/sok/\" autoComplete=\"off\" data-ga-search-query-name=\"q\" data-ga4-search-type=\"form_submit\" target=\"_self\"><span class=\"searchform__hint show-for-large\">Forbedret med hjelp av</span><input type=\"text\" class=\"searchform__input\" name=\"q\" value=\"rust\" aria-label=\"search\" placeholder=\"Skriv inn her...\" autofocus=\"\" data-ga-search-query=\"rust\"/><span class=\"searchform__clean hide-for-large\" tabindex=\"0\"></span><button form=\"searchform_default\" class=\"button searchform__button\" type=\"submit\">Søk</button></form></div></div></div></header></div><div id=\"navigation\" class=\"header-nav hide-for-printview\"><div class=\"row\"><div class=\"right-overlay\"></div><nav class=\"columns small-12 large-10 large-offset-2\"><ul class=\"menu\" data-ga4-event-name=\"search_header\"><li class=\"menu__item menu__item--active\"><a class=\"menu__link\" href=\"/sok/?q=rust\" id=\"all-kilder-search-tab\" target=\"_self\" rel=\"noopener\" data-ga4-event-details-1=\"switch_tab\" data-ga4-link-title=\"Alle kilder\" data-ga4-link-url=\"/sok/?q=rust\">Alle kilder</a></li><li class=\"menu__item \"><a class=\"menu__link\" href=\"/sok/nyheter/?q=rust\" id=\"nyheter-search-tab\" target=\"_self\" rel=\"noopener\" data-ga4-event-details-1=\"switch_tab\" data-ga4-link-title=\"Nyheter\" data-ga4-link-url=\"/sok/nyheter/?q=rust\">Nyheter</a></li><li class=\"menu__item \"><a class=\"menu__link\" href=\"/sok/redirect/?engine=google_images&amp;q=rust\" id=\"bilder-search-tab\" target=\"_blank\" rel=\"noopener\" data-ga4-event-details-1=\"switch_tab\" data-ga4-link-title=\"Bilder\" data-ga4-link-url=\"/sok/redirect/?engine=google_images&amp;q=rust\">Bilder</a></li><li class=\"menu__item \"><a class=\"menu__link\" href=\"/sok/person/?q=rust\" id=\"person-search-tab\" target=\"_self\" rel=\"noopener\" data-ga4-event-details-1=\"switch_tab\" data-ga4-link-title=\"Person\" data-ga4-link-url=\"/sok/person/?q=rust\">Person</a></li><li class=\"menu__item \"><a class=\"menu__link\" href=\"/sok/firma/?q=rust\" id=\"firma-search-tab\" target=\"_self\" rel=\"noopener\" data-ga4-event-details-1=\"switch_tab\" data-ga4-link-title=\"Firma\" data-ga4-link-url=\"/sok/firma/?q=rust\">Firma</a></li></ul></nav></div></div><div class=\"row search-general search-results\"><div class=\"ad-skyscraper-wrapper \"><div id=\"ad-skyscraper\" class=\"is-gpt-root\" style=\"min-height:0\"></div></div><div class=\"small-12 columns\"><div class=\"hide-for-printview ads_top ad--hidden \"><h4 class=\"ad_header\"><span class=\"show-for-small-only\">Annonser</span><span class=\"hide-for-small-only\">Annonser relatert til <b><b>rust</b></b></span></h4><div><div id=\"googlead_top\"></div></div></div></div><div class=\"small-12 columns\" data-ga4-event-name=\"search_results\"><div class=\"pixelAds\"><div class=\"ad-pixel-wrapper \"><div id=\"ad-pixel\" class=\"is-gpt-root\" style=\"min-height:0\"></div></div><div class=\"ad-pixel-tab-wrapper \"><div id=\"ad-pixel-tab\" class=\"is-gpt-root\" style=\"min-height:0\"></div></div><div class=\"ad-pixel-mob-wrapper \"><div id=\"ad-pixel-mob\" class=\"is-gpt-root\" style=\"min-height:0\"></div></div></div><h4 class=\"results__info\"></h4><div class=\"results\"><div class=\"results__hint  hide-for-medium\"> Forbedret med hjelp av </div><ul class=\"results__list\" data-ga4-event-details-1=\"organic_results\" data-ga4-no-track=\"true\"><li class=\"result \"><a href=\"https://rust-lang.org/\" rel=\"noopener\" class=\"result__link-wrapper\" data-ga4-link-title=\"Rust Programming Language\" data-ga4-link-url=\"https://rust-lang.org/\" data-ga4-element-order=\"1\"><div class=\"result__url\">rust-lang.org </div><h3 class=\"result__heading\">Rust Programming Language</h3></a><div class=\"flex-container\"><div class=\"result__description\">Blog</div></div></li><li class=\"result \"><a href=\"https://rust.facepunch.com/\" rel=\"noopener\" class=\"result__link-wrapper\" data-ga4-link-title=\"Rust — Explore, Build and Survive\" data-ga4-link-url=\"https://rust.facepunch.com/\" data-ga4-element-order=\"2\"><div class=\"result__url\">rust.facepunch.com </div><h3 class=\"result__heading\">Rust — Explore, Build and Survive</h3></a><div class=\"flex-container\"><div class=\"result__description\">The only aim in Rust is to survive. Everything wants you to die - the island's wildlife and other inhabitants, the environment, other survivors.</div></div></li><li class=\"result \"><a href=\"https://store.steampowered.com/app/252490/Rust/\" rel=\"noopener\" class=\"result__link-wrapper\" data-ga4-link-title=\"Save 50% on Rust on Steam\" data-ga4-link-url=\"https://store.steampowered.com/app/252490/Rust/\" data-ga4-element-order=\"3\"><div class=\"result__url\">https://store.steampowered.com › app › Rust</div><h3 class=\"result__heading\">Save 50% on Rust on Steam</h3></a><div class=\"flex-container\"><div class=\"result__description\">The only aim in Rust is to survive. Everything wants you to die - the island's wildlife, other inhabitants, the environment, and other survivors.</div></div></li><li class=\"result \"><a href=\"https://www.reddit.com/r/rust/\" rel=\"noopener\" class=\"result__link-wrapper\" data-ga4-link-title=\"The Rust Programming Language - Reddit\" data-ga4-link-url=\"https://www.reddit.com/r/rust/\" data-ga4-element-order=\"4\"><div class=\"result__url\">https://www.reddit.com › rust</div><h3 class=\"result__heading\">The Rust Programming Language - Reddit</h3></a><div class=\"flex-container\"><div class=\"result__description\">r/rust: A place for all things related to the Rust programming language—an open-source systems language that emphasizes performance, reliability, and…</div></div></li><li class=\"result \"><a href=\"https://en.wikipedia.org/wiki/Rust_(programming_language)\" rel=\"noopener\" class=\"result__link-wrapper\" data-ga4-link-title=\"Rust (programming language) - Wikipedia\" data-ga4-link-url=\"https://en.wikipedia.org/wiki/Rust_(programming_language)\" data-ga4-element-order=\"5\"><div class=\"result__url\">https://en.wikipedia.org › wiki › Rust_(programming_lang...</div><h3 class=\"result__heading\">Rust (programming language) - Wikipedia</h3></a><div class=\"flex-container\"><div class=\"result__description\">Rust is a general-purpose programming language which emphasizes performance, type safety, concurrency, and memory safety.</div></div></li><li class=\"result \"><a href=\"https://www.playstation.com/no-no/games/rust/\" rel=\"noopener\" class=\"result__link-wrapper\" data-ga4-link-title=\"Rust - PlayStation\" data-ga4-link-url=\"https://www.playstation.com/no-no/games/rust/\" data-ga4-element-order=\"6\"><div class=\"result__url\">https://www.playstation.com › Hjem › Spill</div><h3 class=\"result__heading\">Rust - PlayStation</h3></a><div class=\"flex-container\"><div class=\"result__description\">Det eneste målet i Rust er å overleve. Hvert åndedrag er en kamp på en mystisk postapokalyptisk øy der alt – fra miljøet til de andre innbyggerne – vil ha deg ...</div></div></li><li class=\"result \"><a href=\"https://medium.com/codex/rust-101-everything-you-need-to-know-about-rust-f3dd0ae99f4c\" rel=\"noopener\" class=\"result__link-wrapper\" data-ga4-link-title=\"Rust 101 — Everything you need to know about Rust - Medium\" data-ga4-link-url=\"https://medium.com/codex/rust-101-everything-you-need-to-know-about-rust-f3dd0ae99f4c\" data-ga4-element-order=\"7\"><div class=\"result__url\">https://medium.com › codex › rust-101-everything-you-ne...</div><h3 class=\"result__heading\">Rust 101 — Everything you need to know about Rust - Medium</h3></a><div class=\"flex-container\"><div class=\"result__description\">Rust is a programming language that is built to be fast, secure, reliable and supposedly easier to program.</div></div></li></ul></div><div class=\"hide-for-printview ads_bottom ad--hidden \"><h4 class=\"ad_header\"><span class=\"show-for-small-only\">Annonser</span><span class=\"hide-for-small-only\">Annonser relatert til <b><b>rust</b></b></span></h4><div><div id=\"googlead_bottom\"></div></div></div><div id=\"load-more\" class=\"load-more-btn\"><a href=\"/sok/?page=2&amp;q=rust\" aria-label=\"Neste side\">Last mer</a></div></div></div><div class=\"frontpage-btn\" data-ga4-event-name=\"search_results\"><a href=\"/\" id=\"logo-gohome\" data-ga4-event-details-1=\"back_to_startsiden\" data-ga4-link-title=\"Gå til forsiden\" data-ga4-link-url=\"/\">Gå til forsiden</a></div><div id=\"stop-sticky-ad\"></div><footer class=\"footer \"><div class=\"row footer__row\"><div class=\"small-12 medium-6 columns\"><a href=\"/\" class=\"footer__logo\">Startsiden.no</a></div><div class=\"small-12 medium-5 medium-offset-1 large-3 large-offset-3 columns\"><ul class=\"footer__btn-social\"><li><a href=\"https://www.facebook.com/Startsiden\" class=\"btn-social icon-facebook\">https://www.facebook.com/Startsiden</a></li><li><a href=\"https://twitter.com/startsiden\" class=\"btn-social icon-twitter\">https://twitter.com/startsiden</a></li></ul></div></div><div class=\"row footer__row\"><div class=\"small-12 medium-6 columns\"><ul class=\"footer__list footer__meta\"><li>Daglig leder (CEO): <a href=\"mailto:trygve.sorvaag@abcnyheter.no\">Trygve Sørvaag</a></li></ul></div><div class=\"small-12 medium-5 medium-offset-1 large-3 large-offset-3 columns\"><ul class=\"footer__list\"><li><a href=\"https://om.startsiden.no/2018-annonseinfo/\">Annonseweb</a></li><li><a href=\"https://www.facebook.com/Startsiden\" title=\"Klikk her dersom du ønsker å gi oss tilbakemelding om noe\">Gi oss tilbakemelding</a></li><li><a href=\"https://om.startsiden.no/kontakt/\">Kontakt</a></li><li><button class=\"footer__privacy-btn\">Annonseinnstillinger</button></li></ul></div></div><div class=\"footer__bottom\"><div class=\"row footer__row\"><div class=\"small-12 medium-5 columns\"><p class=\"footer__copyright\">Copyright © ABC Startsiden AS</p><p class=\"footer__company\">Startsiden.no/sok/ er en del av <a class=\"footer__company-link\" href=\"https://www.abcnyheter.no/om-oss\">ABC Startsiden AS</a></p></div><div class=\"small-12 medium-7 columns footer__bottom-links\"><ul class=\"\"><li><a href=\"https://om.startsiden.no/retningslinjer-for-personvern/\">Personvernpolicy</a></li><li><a href=\"https://www.abcnyheter.no/om-oss/\">Om selskapet</a></li><li><a href=\"https://om.startsiden.no/startsiden/\">Våre produkter</a></li><li><a href=\"https://om.startsiden.no/kontakt/\">Kontakt oss</a></li></ul></div></div></div></footer></div></div><noscript><iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-M64JV25V\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript><script src=\"/sok/static/polyfills.674218035c5b0889a76d.js\"></script><script src=\"/sok/static/commons.c7321ec08653182dfbbd.js\"></script><script src=\"/sok/static/generalSearch.5326656a32adb09971c3.js\"></script><script>\n            (function(d,s,e,t) {\n                var cX = window.cX = window.cX || {}; cX.callQueue = cX.callQueue || [];\n                cX.callQueue.push(['sync','appnexus']);\n                window.cX.options = {campaignReporting: true};\n                cX.CCE = cX.CCE || {}; cX.CCE.callQueue = cX.CCE.callQueue || [];\n                e=d.createElement(s);\n                e.type='text/java'+s;\n                e.async='async';\n                e.src='http'+('https:'===location.protocol?'s://s':'://')+'cdn.cxense.com/cx.cce.js';\n                t=d.getElementsByTagName(s)[0];\n                t.parentNode.insertBefore(e,t);\n            })\n            (document,'script');\n        </script><script>\n            (function(src) {\n                var a = document.createElement(\"script\");\n                a.type = \"text/javascript\";\n                a.async = true; a.src = src;\n                var b = document.getElementsByTagName(\"script\")[0];\n                b.parentNode.insertBefore(a, b);\n                (function(d,s,e,t) {\n                    e=d.createElement(s);\n                    e.type='text/java'+s;\n                    e.async='async';\n                    e.src='http'+('https:'===location.protocol?'s://s':'://')+'cdn.cxense.com/cx.js';\n                    t=d.getElementsByTagName(s)[0];\n                    t.parentNode.insertBefore(e,t);\n                  })\n                  (document,'script');\n            })(\"//experience-eu.piano.io/xbuilder/experience/load?aid=9BVUKHQEpe\");\n        </script><div id=\"piano_wrapper\"><div id=\"piano_inline\"></div></div></body></html>"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://rust-lang.org/",
+          "normalized_url": "https://rust-lang.org/",
+          "title": "Rust Programming Language",
+          "content": "Blog",
+          "engine": "abcnyheter",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust.facepunch.com/",
+          "normalized_url": "https://rust.facepunch.com/",
+          "title": "Rust — Explore, Build and Survive",
+          "content": "The only aim in Rust is to survive. Everything wants you to die - the island's wildlife and other inhabitants, the environment, other survivors.",
+          "engine": "abcnyheter",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://store.steampowered.com/app/252490/Rust/",
+          "normalized_url": "https://store.steampowered.com/app/252490/Rust/",
+          "title": "Save 50% on Rust on Steam",
+          "content": "The only aim in Rust is to survive. Everything wants you to die - the island's wildlife, other inhabitants, the environment, and other survivors.",
+          "engine": "abcnyheter",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.reddit.com/r/rust/",
+          "normalized_url": "https://www.reddit.com/r/rust/",
+          "title": "The Rust Programming Language - Reddit",
+          "content": "r/rust: A place for all things related to the Rust programming language—an open-source systems language that emphasizes performance, reliability, and…",
+          "engine": "abcnyheter",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+          "normalized_url": "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+          "title": "Rust (programming language) - Wikipedia",
+          "content": "Rust is a general-purpose programming language which emphasizes performance, type safety, concurrency, and memory safety.",
+          "engine": "abcnyheter",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.playstation.com/no-no/games/rust/",
+          "normalized_url": "https://www.playstation.com/no-no/games/rust/",
+          "title": "Rust - PlayStation",
+          "content": "Det eneste målet i Rust er å overleve. Hvert åndedrag er en kamp på en mystisk postapokalyptisk øy der alt – fra miljøet til de andre innbyggerne – vil ha deg ...",
+          "engine": "abcnyheter",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://medium.com/codex/rust-101-everything-you-need-to-know-about-rust-f3dd0ae99f4c",
+          "normalized_url": "https://medium.com/codex/rust-101-everything-you-need-to-know-about-rust-f3dd0ae99f4c",
+          "title": "Rust 101 — Everything you need to know about Rust - Medium",
+          "content": "Rust is a programming language that is built to be fast, secure, reliable and supposedly easier to program.",
+          "engine": "abcnyheter",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

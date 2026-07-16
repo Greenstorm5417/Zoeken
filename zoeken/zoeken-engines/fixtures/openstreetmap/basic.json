@@ -1,0 +1,56 @@
+{
+  "engine": "openstreetmap",
+  "case": "basic",
+  "query": {
+    "query": "cafe",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://nominatim.openstreetmap.org/",
+    "headers": {},
+    "body": "[\n      {\n        \"osm_type\": \"node\",\n        \"osm_id\": 1234,\n        \"category\": \"amenity\",\n        \"type\": \"cafe\",\n        \"lat\": \"48.1\",\n        \"lon\": \"11.5\",\n        \"display_name\": \"Cafe Central, Munich, Germany\",\n        \"address\": {\n          \"amenity\": \"Cafe Central\",\n          \"road\": \"Hauptstrasse\",\n          \"city\": \"Munich\",\n          \"country\": \"Germany\"\n        }\n      },\n      {\n        \"type\": \"administrative\",\n        \"lat\": \"51.5\",\n        \"lon\": \"-0.12\",\n        \"display_name\": \"London, EC1M 5RF, United Kingdom\",\n        \"address\": {\n          \"administrative\": \"London\",\n          \"postcode\": \"EC1M 5RF\",\n          \"country\": \"United Kingdom\"\n        }\n      },\n      {\n        \"osm_type\": \"way\",\n        \"osm_id\": 98765,\n        \"category\": \"highway\",\n        \"type\": \"residential\",\n        \"lat\": \"40.0\",\n        \"lon\": \"-3.0\",\n        \"address\": {\n          \"road\": \"Some Road\"\n        }\n      }\n    ]"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://openstreetmap.org/node/1234",
+          "normalized_url": "https://openstreetmap.org/node/1234",
+          "title": "Cafe Central",
+          "content": "",
+          "engine": "openstreetmap",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.openstreetmap.org/?mlat=51.5&mlon=-0.12&zoom=12&layers=M",
+          "normalized_url": "https://www.openstreetmap.org/?mlat=51.5&mlon=-0.12&zoom=12&layers=M",
+          "title": "London",
+          "content": "",
+          "engine": "openstreetmap",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

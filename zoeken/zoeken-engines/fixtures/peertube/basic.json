@@ -1,0 +1,44 @@
+{
+  "engine": "peertube",
+  "case": "basic",
+  "query": {
+    "query": "peertube",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://peer.tube",
+    "headers": {},
+    "body": "{\n      \"total\": 1,\n      \"data\": [\n        {\n          \"url\": \"https://framatube.org/w/abc\",\n          \"name\": \"Intro to PeerTube\",\n          \"description\": \"A <b>short</b> introduction.\"\n        }\n      ]\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://framatube.org/w/abc",
+          "normalized_url": "https://framatube.org/w/abc",
+          "title": "Intro to PeerTube",
+          "content": "A short introduction.",
+          "engine": "peertube",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Videos",
+          "thumbnail": "",
+          "iframe_src": ""
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

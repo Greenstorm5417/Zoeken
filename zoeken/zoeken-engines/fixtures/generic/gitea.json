@@ -1,0 +1,201 @@
+{
+  "engine": "gitea",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://gitea.com/api/v1/repos/search?q=rust&limit=10&page=1",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://gitea.com/api/v1/repos/search?q=rust&limit=10&page=1",
+    "headers": {
+      "vary": "Origin",
+      "content-type": "application/json;charset=utf-8",
+      "link": "<https://gitea.com/api/v1/repos/search?limit=10&page=2&q=rust>; rel=\"next\",<https://gitea.com/api/v1/repos/search?limit=10&page=7&q=rust>; rel=\"last\"",
+      "x-content-type-options": "nosniff",
+      "server": "Caddy",
+      "x-total-count": "68",
+      "x-frame-options": "SAMEORIGIN",
+      "date": "Thu, 09 Jul 2026 14:05:45 GMT",
+      "access-control-expose-headers": "Link, X-Total-Count",
+      "cache-control": "max-age=0, private, must-revalidate"
+    },
+    "body": "{\"ok\":true,\"data\":[{\"id\":133142,\"owner\":{\"id\":204922,\"login\":\"dtfcgv567tygh\",\"login_name\":\"\",\"source_id\":0,\"full_name\":\"\",\"email\":\"204922+dtfcgv567tygh@noreply.gitea.com\",\"avatar_url\":\"https://seccdn.libravatar.org/avatar/bb17fd3ce530c8be2fb760b966290b6a?d=identicon\",\"html_url\":\"https://gitea.com/dtfcgv567tygh\",\"language\":\"\",\"is_admin\":false,\"last_login\":\"0001-01-01T00:00:00Z\",\"created\":\"2026-05-30T14:55:07Z\",\"restricted\":false,\"active\":false,\"prohibit_login\":false,\"location\":\"\",\"website\":\"\",\"description\":\"\",\"visibility\":\"public\",\"followers_count\":0,\"following_count\":0,\"starred_repos_count\":0,\"username\":\"dtfcgv567tygh\"},\"name\":\"--Flash-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance\",\"full_name\":\"dtfcgv567tygh/--Flash-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance\",\"description\":\"Analyze USDT transaction visibility, wallet activity, and liquidity movement across Trust Wallet, Binance, TRC20, ERC20, and BEP20 blockchain ecosystems. https://wa.me/+13612593850  \\r\\n\",\"empty\":true,\"private\":false,\"fork\":false,\"template\":false,\"mirror\":false,\"size\":27,\"language\":\"\",\"languages_url\":\"https://gitea.com/api/v1/repos/dtfcgv567tygh/--Flash-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance/languages\",\"html_url\":\"https://gitea.com/dtfcgv567tygh/--Flash-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance\",\"url\":\"https://gitea.com/api/v1/repos/dtfcgv567tygh/--Flash-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance\",\"link\":\"\",\"ssh_url\":\"git@gitea.com:dtfcgv567tygh/--Flash-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance.git\",\"clone_url\":\"https://gitea.com/dtfcgv567tygh/--Flash-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance.git\",\"original_url\":\"\",\"website\":\"\",\"stars_count\":0,\"forks_count\":0,\"watchers_count\":1,\"branch_count\":0,\"open_issues_count\":0,\"open_pr_counter\":0,\"release_counter\":0,\"default_branch\":\"main\",\"archived\":false,\"created_at\":\"2026-05-30T18:01:52Z\",\"updated_at\":\"2026-05-30T18:01:52Z\",\"archived_at\":\"1970-01-01T00:00:00Z\",\"permissions\":{\"admin\":false,\"push\":false,\"pull\":true},\"has_code\":true,\"has_issues\":true,\"internal_tracker\":{\"enable_time_tracker\":true,\"allow_only_contributors_to_track_time\":true,\"enable_issue_dependencies\":true},\"has_wiki\":true,\"has_pull_requests\":true,\"has_projects\":true,\"projects_mode\":\"all\",\"has_releases\":true,\"has_packages\":false,\"has_actions\":true,\"ignore_whitespace_conflicts\":false,\"allow_merge_commits\":true,\"allow_rebase\":true,\"allow_rebase_explicit\":true,\"allow_squash_merge\":true,\"allow_fast_forward_only_merge\":true,\"allow_merge_update\":true,\"allow_rebase_update\":true,\"allow_manual_merge\":false,\"autodetect_manual_merge\":false,\"default_delete_branch_after_merge\":false,\"default_merge_style\":\"merge\",\"default_update_style\":\"merge\",\"default_allow_maintainer_edit\":true,\"avatar_url\":\"\",\"internal\":false,\"mirror_interval\":\"\",\"object_format_name\":\"sha1\",\"mirror_updated\":\"0001-01-01T00:00:00Z\",\"mirror_last_sync_at\":\"0001-01-01T00:00:00Z\",\"topics\":[],\"licenses\":[]},{\"id\":133143,\"owner\":{\"id\":204924,\"login\":\"gh56fyu78ghgh\",\"login_name\":\"\",\"source_id\":0,\"full_name\":\"\",\"email\":\"204924+gh56fyu78ghgh@noreply.gitea.com\",\"avatar_url\":\"https://seccdn.libravatar.org/avatar/7a2907c92b5656ef0a475354a11ac462?d=identicon\",\"html_url\":\"https://gitea.com/gh56fyu78ghgh\",\"language\":\"\",\"is_admin\":false,\"last_login\":\"0001-01-01T00:00:00Z\",\"created\":\"2026-05-30T15:01:19Z\",\"restricted\":false,\"active\":false,\"prohibit_login\":false,\"location\":\"\",\"website\":\"\",\"description\":\"\",\"visibility\":\"public\",\"followers_count\":0,\"following_count\":0,\"starred_repos_count\":0,\"username\":\"gh56fyu78ghgh\"},\"name\":\"--FLASH-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance\",\"full_name\":\"gh56fyu78ghgh/--FLASH-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance\",\"description\":\"Analyze USDT transaction visibility, wallet activity, and liquidity movement across Trust Wallet, Binance, TRC20, ERC20, and BEP20 blockchain ecosystems.   \\r\\nhttps://wa.me/+13612593850\",\"empty\":false,\"private\":false,\"fork\":false,\"template\":false,\"mirror\":false,\"size\":31,\"language\":\"\",\"languages_url\":\"https://gitea.com/api/v1/repos/gh56fyu78ghgh/--FLASH-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance/languages\",\"html_url\":\"https://gitea.com/gh56fyu78ghgh/--FLASH-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance\",\"url\":\"https://gitea.com/api/v1/repos/gh56fyu78ghgh/--FLASH-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance\",\"link\":\"\",\"ssh_url\":\"git@gitea.com:gh56fyu78ghgh/--FLASH-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance.git\",\"clone_url\":\"https://gitea.com/gh56fyu78ghgh/--FLASH-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance.git\",\"original_url\":\"\",\"website\":\"\",\"stars_count\":0,\"forks_count\":0,\"watchers_count\":1,\"branch_count\":1,\"open_issues_count\":0,\"open_pr_counter\":0,\"release_counter\":0,\"default_branch\":\"main\",\"archived\":false,\"created_at\":\"2026-05-30T18:20:42Z\",\"updated_at\":\"2026-05-30T19:20:57Z\",\"archived_at\":\"1970-01-01T00:00:00Z\",\"permissions\":{\"admin\":false,\"push\":false,\"pull\":true},\"has_code\":true,\"has_issues\":true,\"internal_tracker\":{\"enable_time_tracker\":true,\"allow_only_contributors_to_track_time\":true,\"enable_issue_dependencies\":true},\"has_wiki\":true,\"has_pull_requests\":true,\"has_projects\":true,\"projects_mode\":\"all\",\"has_releases\":true,\"has_packages\":false,\"has_actions\":true,\"ignore_whitespace_conflicts\":false,\"allow_merge_commits\":true,\"allow_rebase\":true,\"allow_rebase_explicit\":true,\"allow_squash_merge\":true,\"allow_fast_forward_only_merge\":true,\"allow_merge_update\":true,\"allow_rebase_update\":true,\"allow_manual_merge\":false,\"autodetect_manual_merge\":false,\"default_delete_branch_after_merge\":false,\"default_merge_style\":\"merge\",\"default_update_style\":\"merge\",\"default_allow_maintainer_edit\":true,\"avatar_url\":\"\",\"internal\":false,\"mirror_interval\":\"\",\"object_format_name\":\"sha1\",\"mirror_updated\":\"0001-01-01T00:00:00Z\",\"mirror_last_sync_at\":\"0001-01-01T00:00:00Z\",\"topics\":[\"bitcoin-flash\",\"bitcoin-flashing-software\",\"btc-flashing-software\",\"flash\",\"flash-bitcoins\",\"flash-crypto\",\"flash-usdt-binance\",\"flash-usdt-erc20\",\"flash-usdt-hash-log-engine\",\"flash-usdt-pro\",\"flash-usdt-smart-contracts-bep20\",\"flash-usdt-smart-contracts-trc20\",\"flash-usdt-software-download\",\"flash-usdt-softwate\",\"flash-usdt-transfer\",\"flash-usdt-trc20\",\"purchase-flash-usdt\",\"what-is-flash-bitcoin\",\"what-is-flash-usdt\"],\"licenses\":[]},{\"id\":133144,\"owner\":{\"id\":204926,\"login\":\"nkjn90onu\",\"login_name\":\"\",\"source_id\":0,\"full_name\":\"\",\"email\":\"204926+nkjn90onu@noreply.gitea.com\",\"avatar_url\":\"https://seccdn.libravatar.org/avatar/935479c258926b5ced7b6f10635d018e?d=identicon\",\"html_url\":\"https://gitea.com/nkjn90onu\",\"language\":\"\",\"is_admin\":false,\"last_login\":\"0001-01-01T00:00:00Z\",\"created\":\"2026-05-30T15:05:12Z\",\"restricted\":false,\"active\":false,\"prohibit_login\":false,\"location\":\"\",\"website\":\"\",\"description\":\"\",\"visibility\":\"public\",\"followers_count\":0,\"following_count\":0,\"starred_repos_count\":0,\"username\":\"nkjn90onu\"},\"name\":\"--LATEST-USDT-FLASH-TOOL-FOR-TRUST-WALLET-2026\",\"full_name\":\"nkjn90onu/--LATEST-USDT-FLASH-TOOL-FOR-TRUST-WALLET-2026\",\"description\":\"Latest USDT Flash Tool V2.5 for Trust Wallet is a blockchain-focused analytical repository designed to help users understand how USDT transactions appear, move, and are verified inside Trust Wallet environments.\",\"empty\":false,\"private\":false,\"fork\":false,\"template\":false,\"mirror\":false,\"size\":32,\"language\":\"\",\"languages_url\":\"https://gitea.com/api/v1/repos/nkjn90onu/--LATEST-USDT-FLASH-TOOL-FOR-TRUST-WALLET-2026/languages\",\"html_url\":\"https://gitea.com/nkjn90onu/--LATEST-USDT-FLASH-TOOL-FOR-TRUST-WALLET-2026\",\"url\":\"https://gitea.com/api/v1/repos/nkjn90onu/--LATEST-USDT-FLASH-TOOL-FOR-TRUST-WALLET-2026\",\"link\":\"\",\"ssh_url\":\"git@gitea.com:nkjn90onu/--LATEST-USDT-FLASH-TOOL-FOR-TRUST-WALLET-2026.git\",\"clone_url\":\"https://gitea.com/nkjn90onu/--LATEST-USDT-FLASH-TOOL-FOR-TRUST-WALLET-2026.git\",\"original_url\":\"\",\"website\":\"\",\"stars_count\":0,\"forks_count\":0,\"watchers_count\":1,\"branch_count\":1,\"open_issues_count\":0,\"open_pr_counter\":0,\"release_counter\":0,\"default_branch\":\"main\",\"archived\":false,\"created_at\":\"2026-05-30T18:24:54Z\",\"updated_at\":\"2026-05-30T19:20:28Z\",\"archived_at\":\"1970-01-01T00:00:00Z\",\"permissions\":{\"admin\":false,\"push\":false,\"pull\":true},\"has_code\":true,\"has_issues\":true,\"internal_tracker\":{\"enable_time_tracker\":true,\"allow_only_contributors_to_track_time\":true,\"enable_issue_dependencies\":true},\"has_wiki\":true,\"has_pull_requests\":true,\"has_projects\":true,\"projects_mode\":\"all\",\"has_releases\":true,\"has_packages\":false,\"has_actions\":true,\"ignore_whitespace_conflicts\":false,\"allow_merge_commits\":true,\"allow_rebase\":true,\"allow_rebase_explicit\":true,\"allow_squash_merge\":true,\"allow_fast_forward_only_merge\":true,\"allow_merge_update\":true,\"allow_rebase_update\":true,\"allow_manual_merge\":false,\"autodetect_manual_merge\":false,\"default_delete_branch_after_merge\":false,\"default_merge_style\":\"merge\",\"default_update_style\":\"merge\",\"default_allow_maintainer_edit\":true,\"avatar_url\":\"\",\"internal\":false,\"mirror_interval\":\"\",\"object_format_name\":\"sha1\",\"mirror_updated\":\"0001-01-01T00:00:00Z\",\"mirror_last_sync_at\":\"0001-01-01T00:00:00Z\",\"topics\":[\"buy-flash-usdt-online\",\"flash-bitcoin-software\",\"flash-crypto\",\"flash-ethereum\",\"flash-solana\",\"flash-usdt-binance\",\"flash-usdt-currency\",\"flash-usdt-erc20\",\"flash-usdt-hash-log-engine\",\"flash-usdt-merchant-integration\",\"flash-usdt-online\",\"flash-usdt-smart-contracts-bep20\",\"flash-usdt-smart-contracts-trc20\",\"flash-usdt-software\",\"flash-usdt-softwate\",\"flash-usdt-tokens\",\"flash-usdt-trc20\",\"flash-xrp\",\"purchase-flash-usdt\",\"usdt-flash-generator\",\"usdt-flash-wallet\",\"what-is-flash-bitcoin\",\"what-is-flash-usdt\"],\"licenses\":[]},{\"id\":52273,\"owner\":{\"id\":43282,\"login\":\"0x61nas\",\"login_name\":\"\",\"source_id\":0,\"full_name\":\"Anas\",\"email\":\"43282+0x61nas@noreply.gitea.com\",\"avatar_url\":\"https://seccdn.libravatar.org/avatar/aa4fef4c4c6c53b23abc1c661e9dce55?d=identicon\",\"html_url\":\"https://gitea.com/0x61nas\",\"language\":\"\",\"is_admin\":false,\"last_login\":\"0001-01-01T00:00:00Z\",\"created\":\"2023-05-11T11:59:02Z\",\"restricted\":false,\"active\":false,\"prohibit_login\":false,\"location\":\"Milky Way\",\"website\":\"https://0x61nas.github.io\",\"description\":\"meow\",\"visibility\":\"public\",\"followers_count\":0,\"following_count\":0,\"starred_repos_count\":0,\"username\":\"0x61nas\"},\"name\":\"aarty\",\"full_name\":\"0x61nas/aarty\",\"description\":\"Print any image in your terminal\",\"empty\":false,\"private\":false,\"fork\":false,\"template\":false,\"mirror\":false,\"size\":13507,\"language\":\"Rust\",\"languages_url\":\"https://gitea.com/api/v1/repos/0x61nas/aarty/languages\",\"html_url\":\"https://gitea.com/0x61nas/aarty\",\"url\":\"https://gitea.com/api/v1/repos/0x61nas/aarty\",\"link\":\"\",\"ssh_url\":\"git@gitea.com:0x61nas/aarty.git\",\"clone_url\":\"https://gitea.com/0x61nas/aarty.git\",\"original_url\":\"https://github.com/0x61nas/aarty\",\"website\":\"\",\"stars_count\":0,\"forks_count\":0,\"watchers_count\":1,\"branch_count\":5,\"open_issues_count\":9,\"open_pr_counter\":2,\"release_counter\":33,\"default_branch\":\"aurora\",\"archived\":false,\"created_at\":\"2024-03-08T15:42:20Z\",\"updated_at\":\"2024-03-08T15:44:37Z\",\"archived_at\":\"1970-01-01T00:00:00Z\",\"permissions\":{\"admin\":false,\"push\":false,\"pull\":true},\"has_code\":true,\"has_issues\":true,\"external_tracker\":{\"external_tracker_url\":\"https://github.com/0x61nas/aarty/issues\",\"external_tracker_format\":\"\",\"external_tracker_style\":\"numeric\",\"external_tracker_regexp_pattern\":\"\"},\"has_wiki\":true,\"has_pull_requests\":true,\"has_projects\":true,\"projects_mode\":\"all\",\"has_releases\":true,\"has_packages\":false,\"has_actions\":true,\"ignore_whitespace_conflicts\":false,\"allow_merge_commits\":true,\"allow_rebase\":true,\"allow_rebase_explicit\":true,\"allow_squash_merge\":true,\"allow_fast_forward_only_merge\":true,\"allow_merge_update\":true,\"allow_rebase_update\":true,\"allow_manual_merge\":false,\"autodetect_manual_merge\":false,\"default_delete_branch_after_merge\":false,\"default_merge_style\":\"merge\",\"default_update_style\":\"merge\",\"default_allow_maintainer_edit\":false,\"avatar_url\":\"\",\"internal\":false,\"mirror_interval\":\"\",\"object_format_name\":\"sha1\",\"mirror_updated\":\"0001-01-01T00:00:00Z\",\"mirror_last_sync_at\":\"0001-01-01T00:00:00Z\",\"topics\":[\"ansi\",\"ascii\",\"ascii-art\",\"ascii-generator\",\"ascii-generators\",\"ascii-graphics\",\"cli\",\"command-line\",\"convert-image-to-ascii\",\"hacktoberfest\",\"rust\",\"text\"],\"licenses\":[]},{\"id\":131277,\"owner\":{\"id\":132622,\"login\":\"usapalletwarehousinginc\",\"login_name\":\"\",\"source_id\":0,\"full_name\":\"\",\"email\":\"132622+usapalletwarehousinginc@noreply.gitea.com\",\"avatar_url\":\"https://seccdn.libravatar.org/avatar/39f1052b9aa1f468d4564fa1934bb23a?d=identicon\",\"html_url\":\"https://gitea.com/usapalletwarehousinginc\",\"language\":\"\",\"is_admin\":false,\"last_login\":\"0001-01-01T00:00:00Z\",\"created\":\"2025-07-03T09:52:06Z\",\"restricted\":false,\"active\":false,\"prohibit_login\":false,\"location\":\"\",\"website\":\"\",\"description\":\"\",\"visibility\":\"public\",\"followers_count\":0,\"following_count\":0,\"starred_repos_count\":0,\"username\":\"usapalletwarehousinginc\"},\"name\":\"Built-for-Fast-Shipping.-Trusted-for-Strong-Pallets\",\"full_name\":\"usapalletwarehousinginc/Built-for-Fast-Shipping.-Trusted-for-Strong-Pallets\",\"description\":\"Need reliable pallets without delays? USA Pallet & Warehousing Inc. delivers new, recycled & custom pallet solutions built for warehouses that move fast. \\r\\nhttps://www.usapalletwarehouseinc.com\",\"empty\":true,\"private\":false,\"fork\":false,\"template\":false,\"mirror\":false,\"size\":27,\"language\":\"\",\"languages_url\":\"https://gitea.com/api/v1/repos/usapalletwarehousinginc/Built-for-Fast-Shipping.-Trusted-for-Strong-Pallets/languages\",\"html_url\":\"https://gitea.com/usapalletwarehousinginc/Built-for-Fast-Shipping.-Trusted-for-Strong-Pallets\",\"url\":\"https://gitea.com/api/v1/repos/usapalletwarehousinginc/Built-for-Fast-Shipping.-Trusted-for-Strong-Pallets\",\"link\":\"\",\"ssh_url\":\"git@gitea.com:usapalletwarehousinginc/Built-for-Fast-Shipping.-Trusted-for-Strong-Pallets.git\",\"clone_url\":\"https://gitea.com/usapalletwarehousinginc/Built-for-Fast-Shipping.-Trusted-for-Strong-Pallets.git\",\"original_url\":\"\",\"website\":\"\",\"stars_count\":0,\"forks_count\":0,\"watchers_count\":1,\"branch_count\":0,\"open_issues_count\":0,\"open_pr_counter\":0,\"release_counter\":0,\"default_branch\":\"main\",\"archived\":false,\"created_at\":\"2026-05-13T06:51:58Z\",\"updated_at\":\"2026-05-13T06:51:58Z\",\"archived_at\":\"1970-01-01T00:00:00Z\",\"permissions\":{\"admin\":false,\"push\":false,\"pull\":true},\"has_code\":true,\"has_issues\":true,\"internal_tracker\":{\"enable_time_tracker\":true,\"allow_only_contributors_to_track_time\":true,\"enable_issue_dependencies\":true},\"has_wiki\":true,\"has_pull_requests\":true,\"has_projects\":true,\"projects_mode\":\"all\",\"has_releases\":true,\"has_packages\":false,\"has_actions\":true,\"ignore_whitespace_conflicts\":false,\"allow_merge_commits\":true,\"allow_rebase\":true,\"allow_rebase_explicit\":true,\"allow_squash_merge\":true,\"allow_fast_forward_only_merge\":true,\"allow_merge_update\":true,\"allow_rebase_update\":true,\"allow_manual_merge\":false,\"autodetect_manual_merge\":false,\"default_delete_branch_after_merge\":false,\"default_merge_style\":\"merge\",\"default_update_style\":\"merge\",\"default_allow_maintainer_edit\":true,\"avatar_url\":\"\",\"internal\":false,\"mirror_interval\":\"\",\"object_format_name\":\"sha1\",\"mirror_updated\":\"0001-01-01T00:00:00Z\",\"mirror_last_sync_at\":\"0001-01-01T00:00:00Z\",\"topics\":[],\"licenses\":[]},{\"id\":125856,\"owner\":{\"id\":185601,\"login\":\"palmcoasty\",\"login_name\":\"\",\"source_id\":0,\"full_name\":\"\",\"email\":\"185601+palmcoasty@noreply.gitea.com\",\"avatar_url\":\"https://seccdn.libravatar.org/avatar/f4d970f07e5cce9e5da0fbb2b0e3905b?d=identicon\",\"html_url\":\"https://gitea.com/palmcoasty\",\"language\":\"\",\"is_admin\":false,\"last_login\":\"0001-01-01T00:00:00Z\",\"created\":\"2026-03-21T05:50:36Z\",\"restricted\":false,\"active\":false,\"prohibit_login\":false,\"location\":\"\",\"website\":\"\",\"description\":\"\",\"visibility\":\"public\",\"followers_count\":1,\"following_count\":0,\"starred_repos_count\":0,\"username\":\"palmcoasty\"},\"name\":\"bunkerweb-plugins\",\"full_name\":\"palmcoasty/bunkerweb-plugins\",\"description\":\"Official plugins for BunkerWeb can be found below in the original repo on github maintained by the owners.\",\"empty\":false,\"private\":false,\"fork\":false,\"template\":false,\"mirror\":false,\"size\":4079,\"language\":\"Lua\",\"languages_url\":\"https://gitea.com/api/v1/repos/palmcoasty/bunkerweb-plugins/languages\",\"html_url\":\"https://gitea.com/palmcoasty/bunkerweb-plugins\",\"url\":\"https://gitea.com/api/v1/repos/palmcoasty/bunkerweb-plugins\",\"link\":\"\",\"ssh_url\":\"git@gitea.com:palmcoasty/bunkerweb-plugins.git\",\"clone_url\":\"https://gitea.com/palmcoasty/bunkerweb-plugins.git\",\"original_url\":\"https://github.com/bunkerity/bunkerweb-plugins\",\"website\":\"https://github.com/bunkerity/bunkerweb-plugins\",\"stars_count\":0,\"forks_count\":0,\"watchers_count\":1,\"branch_count\":7,\"open_issues_count\":0,\"open_pr_counter\":0,\"release_counter\":0,\"default_branch\":\"main\",\"archived\":false,\"created_at\":\"2026-03-21T06:01:16Z\",\"updated_at\":\"2026-03-21T06:01:19Z\",\"archived_at\":\"1970-01-01T00:00:00Z\",\"permissions\":{\"admin\":false,\"push\":false,\"pull\":true},\"has_code\":true,\"has_issues\":true,\"internal_tracker\":{\"enable_time_tracker\":true,\"allow_only_contributors_to_track_time\":true,\"enable_issue_dependencies\":true},\"has_wiki\":true,\"has_pull_requests\":true,\"has_projects\":true,\"projects_mode\":\"all\",\"has_releases\":true,\"has_packages\":false,\"has_actions\":true,\"ignore_whitespace_conflicts\":false,\"allow_merge_commits\":true,\"allow_rebase\":true,\"allow_rebase_explicit\":true,\"allow_squash_merge\":true,\"allow_fast_forward_only_merge\":true,\"allow_merge_update\":true,\"allow_rebase_update\":true,\"allow_manual_merge\":false,\"autodetect_manual_merge\":false,\"default_delete_branch_after_merge\":false,\"default_merge_style\":\"merge\",\"default_update_style\":\"merge\",\"default_allow_maintainer_edit\":false,\"avatar_url\":\"\",\"internal\":false,\"mirror_interval\":\"\",\"object_format_name\":\"sha1\",\"mirror_updated\":\"0001-01-01T00:00:00Z\",\"mirror_last_sync_at\":\"0001-01-01T00:00:00Z\",\"topics\":[\"bunkerweb\",\"clamav\",\"coraza\",\"crowdsec\",\"discord\",\"security\",\"slack\",\"virustotal\",\"waf\",\"web-application-firewall\"],\"licenses\":[]},{\"id\":38798,\"owner\":{\"id\":45555,\"login\":\"scorpion\",\"login_name\":\"\",\"source_id\":0,\"full_name\":\"SCORPION\",\"email\":\"\",\"avatar_url\":\"https://gitea.com/avatars/81d8904d801ce3e8d158be2ad37de6e817f261e7cf96d5ede840eb94c3178002\",\"html_url\":\"https://gitea.com/scorpion\",\"language\":\"\",\"is_admin\":false,\"last_login\":\"0001-01-01T00:00:00Z\",\"created\":\"2023-07-16T18:03:43Z\",\"restricted\":false,\"active\":false,\"prohibit_login\":false,\"location\":\"\",\"website\":\"https://www.scorpion.io\",\"description\":\"\",\"visibility\":\"public\",\"followers_count\":1,\"following_count\":0,\"starred_repos_count\":0,\"username\":\"scorpion\"},\"name\":\"cli\",\"full_name\":\"scorpion/cli\",\"description\":\"Command line interface for the scorpion project written in rust.\",\"empty\":false,\"private\":false,\"fork\":false,\"template\":false,\"mirror\":false,\"size\":90,\"language\":\"Rust\",\"languages_url\":\"https://gitea.com/api/v1/repos/scorpion/cli/languages\",\"html_url\":\"https://gitea.com/scorpion/cli\",\"url\":\"https://gitea.com/api/v1/repos/scorpion/cli\",\"link\":\"\",\"ssh_url\":\"git@gitea.com:scorpion/cli.git\",\"clone_url\":\"https://gitea.com/scorpion/cli.git\",\"original_url\":\"https://github.com/scorpion/cli\",\"website\":\"\",\"stars_count\":0,\"forks_count\":0,\"watchers_count\":1,\"branch_count\":3,\"open_issues_count\":0,\"open_pr_counter\":0,\"release_counter\":0,\"default_branch\":\"main\",\"archived\":false,\"created_at\":\"2023-07-16T18:15:22Z\",\"updated_at\":\"2023-07-16T18:15:27Z\",\"archived_at\":\"1970-01-01T00:00:00Z\",\"permissions\":{\"admin\":false,\"push\":false,\"pull\":true},\"has_code\":true,\"has_issues\":true,\"internal_tracker\":{\"enable_time_tracker\":true,\"allow_only_contributors_to_track_time\":true,\"enable_issue_dependencies\":true},\"has_wiki\":true,\"has_pull_requests\":true,\"has_projects\":true,\"projects_mode\":\"all\",\"has_releases\":true,\"has_packages\":false,\"has_actions\":false,\"ignore_whitespace_conflicts\":false,\"allow_merge_commits\":true,\"allow_rebase\":true,\"allow_rebase_explicit\":true,\"allow_squash_merge\":true,\"allow_fast_forward_only_merge\":true,\"allow_merge_update\":true,\"allow_rebase_update\":true,\"allow_manual_merge\":false,\"autodetect_manual_merge\":false,\"default_delete_branch_after_merge\":false,\"default_merge_style\":\"merge\",\"default_update_style\":\"merge\",\"default_allow_maintainer_edit\":false,\"avatar_url\":\"\",\"internal\":false,\"mirror_interval\":\"\",\"object_format_name\":\"sha1\",\"mirror_updated\":\"0001-01-01T00:00:00Z\",\"mirror_last_sync_at\":\"0001-01-01T00:00:00Z\",\"topics\":[\"docker\",\"cli\",\"rust\",\"scorpion\",\"crates\"],\"licenses\":[]},{\"id\":94502,\"owner\":{\"id\":112523,\"login\":\"mnurpeiissov\",\"login_name\":\"\",\"source_id\":0,\"full_name\":\"\",\"email\":\"112523+mnurpeiissov@noreply.gitea.com\",\"avatar_url\":\"https://seccdn.libravatar.org/avatar/29187154fe538ad8dfb853c01f9dc279?d=identicon\",\"html_url\":\"https://gitea.com/mnurpeiissov\",\"language\":\"\",\"is_admin\":false,\"last_login\":\"0001-01-01T00:00:00Z\",\"created\":\"2025-03-10T11:18:19Z\",\"restricted\":false,\"active\":false,\"prohibit_login\":false,\"location\":\"\",\"website\":\"\",\"description\":\"\",\"visibility\":\"public\",\"followers_count\":0,\"following_count\":0,\"starred_repos_count\":0,\"username\":\"mnurpeiissov\"},\"name\":\"datafusion-comet\",\"full_name\":\"mnurpeiissov/datafusion-comet\",\"description\":\"Apache DataFusion Comet Spark Accelerator\",\"empty\":false,\"private\":false,\"fork\":false,\"template\":false,\"mirror\":false,\"size\":31114,\"language\":\"Rust\",\"languages_url\":\"https://gitea.com/api/v1/repos/mnurpeiissov/datafusion-comet/languages\",\"html_url\":\"https://gitea.com/mnurpeiissov/datafusion-comet\",\"url\":\"https://gitea.com/api/v1/repos/mnurpeiissov/datafusion-comet\",\"link\":\"\",\"ssh_url\":\"git@gitea.com:mnurpeiissov/datafusion-comet.git\",\"clone_url\":\"https://gitea.com/mnurpeiissov/datafusion-comet.git\",\"original_url\":\"https://github.com/apache/datafusion-comet\",\"website\":\"\",\"stars_count\":0,\"forks_count\":0,\"watchers_count\":1,\"branch_count\":13,\"open_issues_count\":0,\"open_pr_counter\":0,\"release_counter\":0,\"default_branch\":\"main\",\"archived\":false,\"created_at\":\"2025-03-18T09:04:09Z\",\"updated_at\":\"2025-03-18T09:04:24Z\",\"archived_at\":\"1970-01-01T00:00:00Z\",\"permissions\":{\"admin\":false,\"push\":false,\"pull\":true},\"has_code\":true,\"has_issues\":true,\"internal_tracker\":{\"enable_time_tracker\":true,\"allow_only_contributors_to_track_time\":true,\"enable_issue_dependencies\":true},\"has_wiki\":true,\"has_pull_requests\":true,\"has_projects\":true,\"projects_mode\":\"all\",\"has_releases\":true,\"has_packages\":false,\"has_actions\":true,\"ignore_whitespace_conflicts\":false,\"allow_merge_commits\":true,\"allow_rebase\":true,\"allow_rebase_explicit\":true,\"allow_squash_merge\":true,\"allow_fast_forward_only_merge\":true,\"allow_merge_update\":true,\"allow_rebase_update\":true,\"allow_manual_merge\":false,\"autodetect_manual_merge\":false,\"default_delete_branch_after_merge\":false,\"default_merge_style\":\"merge\",\"default_update_style\":\"merge\",\"default_allow_maintainer_edit\":false,\"avatar_url\":\"\",\"internal\":false,\"mirror_interval\":\"\",\"object_format_name\":\"sha1\",\"mirror_updated\":\"0001-01-01T00:00:00Z\",\"mirror_last_sync_at\":\"0001-01-01T00:00:00Z\",\"topics\":[\"arrow\",\"datafusion\",\"rust\",\"spark\"],\"licenses\":[]},{\"id\":50392,\"owner\":{\"id\":59222,\"login\":\"azena\",\"login_name\":\"\",\"source_id\":0,\"full_name\":\"\",\"email\":\"59222+azena@noreply.gitea.com\",\"avatar_url\":\"https://seccdn.libravatar.org/avatar/db02a36b8e27b71f674b8dc824bfe85f?d=identicon\",\"html_url\":\"https://gitea.com/azena\",\"language\":\"\",\"is_admin\":false,\"last_login\":\"0001-01-01T00:00:00Z\",\"created\":\"2024-02-02T02:13:21Z\",\"restricted\":false,\"active\":false,\"prohibit_login\":false,\"location\":\"\",\"website\":\"\",\"description\":\"\",\"visibility\":\"public\",\"followers_count\":0,\"following_count\":0,\"starred_repos_count\":0,\"username\":\"azena\"},\"name\":\"deeptrust.test\",\"full_name\":\"azena/deeptrust.test\",\"description\":\"\",\"empty\":true,\"private\":false,\"fork\":false,\"template\":false,\"mirror\":false,\"size\":24,\"language\":\"\",\"languages_url\":\"https://gitea.com/api/v1/repos/azena/deeptrust.test/languages\",\"html_url\":\"https://gitea.com/azena/deeptrust.test\",\"url\":\"https://gitea.com/api/v1/repos/azena/deeptrust.test\",\"link\":\"\",\"ssh_url\":\"git@gitea.com:azena/deeptrust.test.git\",\"clone_url\":\"https://gitea.com/azena/deeptrust.test.git\",\"original_url\":\"\",\"website\":\"\",\"stars_count\":0,\"forks_count\":0,\"watchers_count\":1,\"branch_count\":0,\"open_issues_count\":0,\"open_pr_counter\":0,\"release_counter\":0,\"default_branch\":\"main\",\"archived\":false,\"created_at\":\"2024-02-02T02:15:04Z\",\"updated_at\":\"2024-02-02T02:15:04Z\",\"archived_at\":\"1970-01-01T00:00:00Z\",\"permissions\":{\"admin\":false,\"push\":false,\"pull\":true},\"has_code\":true,\"has_issues\":true,\"internal_tracker\":{\"enable_time_tracker\":true,\"allow_only_contributors_to_track_time\":true,\"enable_issue_dependencies\":true},\"has_wiki\":true,\"has_pull_requests\":true,\"has_projects\":true,\"projects_mode\":\"all\",\"has_releases\":true,\"has_packages\":false,\"has_actions\":true,\"ignore_whitespace_conflicts\":false,\"allow_merge_commits\":true,\"allow_rebase\":true,\"allow_rebase_explicit\":true,\"allow_squash_merge\":true,\"allow_fast_forward_only_merge\":true,\"allow_merge_update\":true,\"allow_rebase_update\":true,\"allow_manual_merge\":false,\"autodetect_manual_merge\":false,\"default_delete_branch_after_merge\":false,\"default_merge_style\":\"merge\",\"default_update_style\":\"merge\",\"default_allow_maintainer_edit\":false,\"avatar_url\":\"\",\"internal\":false,\"mirror_interval\":\"\",\"object_format_name\":\"sha1\",\"mirror_updated\":\"0001-01-01T00:00:00Z\",\"mirror_last_sync_at\":\"0001-01-01T00:00:00Z\",\"topics\":[],\"licenses\":[]},{\"id\":77833,\"owner\":{\"id\":95094,\"login\":\"kohaiy\",\"login_name\":\"\",\"source_id\":0,\"full_name\":\"\",\"email\":\"95094+kohaiy@noreply.gitea.com\",\"avatar_url\":\"https://seccdn.libravatar.org/avatar/d99eda519397ed77815e0a503157454e?d=identicon\",\"html_url\":\"https://gitea.com/kohaiy\",\"language\":\"\",\"is_admin\":false,\"last_login\":\"0001-01-01T00:00:00Z\",\"created\":\"2024-12-11T03:23:55Z\",\"restricted\":false,\"active\":false,\"prohibit_login\":false,\"location\":\"\",\"website\":\"\",\"description\":\"\",\"visibility\":\"public\",\"followers_count\":0,\"following_count\":0,\"starred_repos_count\":0,\"username\":\"kohaiy\"},\"name\":\"EcoPaste\",\"full_name\":\"kohaiy/EcoPaste\",\"description\":\"🎉跨平台的剪贴板管理工具 | Cross-platform clipboard management tool\",\"empty\":false,\"private\":false,\"fork\":false,\"template\":false,\"mirror\":false,\"size\":17913,\"language\":\"TypeScript\",\"languages_url\":\"https://gitea.com/api/v1/repos/kohaiy/EcoPaste/languages\",\"html_url\":\"https://gitea.com/kohaiy/EcoPaste\",\"url\":\"https://gitea.com/api/v1/repos/kohaiy/EcoPaste\",\"link\":\"\",\"ssh_url\":\"git@gitea.com:kohaiy/EcoPaste.git\",\"clone_url\":\"https://gitea.com/kohaiy/EcoPaste.git\",\"original_url\":\"https://github.com/EcoPasteHub/EcoPaste\",\"website\":\"\",\"stars_count\":0,\"forks_count\":0,\"watchers_count\":1,\"branch_count\":5,\"open_issues_count\":0,\"open_pr_counter\":0,\"release_counter\":0,\"default_branch\":\"master\",\"archived\":false,\"created_at\":\"2024-12-11T03:25:41Z\",\"updated_at\":\"2024-12-11T03:25:44Z\",\"archived_at\":\"1970-01-01T00:00:00Z\",\"permissions\":{\"admin\":false,\"push\":false,\"pull\":true},\"has_code\":true,\"has_issues\":true,\"internal_tracker\":{\"enable_time_tracker\":true,\"allow_only_contributors_to_track_time\":true,\"enable_issue_dependencies\":true},\"has_wiki\":true,\"has_pull_requests\":true,\"has_projects\":true,\"projects_mode\":\"all\",\"has_releases\":true,\"has_packages\":false,\"has_actions\":true,\"ignore_whitespace_conflicts\":false,\"allow_merge_commits\":true,\"allow_rebase\":true,\"allow_rebase_explicit\":true,\"allow_squash_merge\":true,\"allow_fast_forward_only_merge\":true,\"allow_merge_update\":true,\"allow_rebase_update\":true,\"allow_manual_merge\":false,\"autodetect_manual_merge\":false,\"default_delete_branch_after_merge\":false,\"default_merge_style\":\"merge\",\"default_update_style\":\"merge\",\"default_allow_maintainer_edit\":false,\"avatar_url\":\"\",\"internal\":false,\"mirror_interval\":\"\",\"object_format_name\":\"sha1\",\"mirror_updated\":\"0001-01-01T00:00:00Z\",\"mirror_last_sync_at\":\"0001-01-01T00:00:00Z\",\"topics\":[\"antd\",\"application\",\"clipboard\",\"clipboard-manager\",\"cross-platform\",\"desktop-app\",\"desktop-application\",\"linux\",\"macos\",\"rust\",\"tauri\",\"windows\"],\"licenses\":[\"Apache-2.0\"]}]}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://gitea.com/dtfcgv567tygh/--Flash-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance",
+          "normalized_url": "https://gitea.com/dtfcgv567tygh/--Flash-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance",
+          "title": "dtfcgv567tygh/--Flash-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance",
+          "content": "Analyze USDT transaction visibility, wallet activity, and liquidity movement across Trust Wallet, Binance, TRC20, ERC20, and BEP20 blockchain ecosystems. https://wa.me/+13612593850",
+          "engine": "gitea",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gitea.com/gh56fyu78ghgh/--FLASH-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance",
+          "normalized_url": "https://gitea.com/gh56fyu78ghgh/--FLASH-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance",
+          "title": "gh56fyu78ghgh/--FLASH-USDT-Flasher-Tool-2026-For-Trust-Wallet-And-Binance",
+          "content": "Analyze USDT transaction visibility, wallet activity, and liquidity movement across Trust Wallet, Binance, TRC20, ERC20, and BEP20 blockchain ecosystems. https://wa.me/+13612593850",
+          "engine": "gitea",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gitea.com/nkjn90onu/--LATEST-USDT-FLASH-TOOL-FOR-TRUST-WALLET-2026",
+          "normalized_url": "https://gitea.com/nkjn90onu/--LATEST-USDT-FLASH-TOOL-FOR-TRUST-WALLET-2026",
+          "title": "nkjn90onu/--LATEST-USDT-FLASH-TOOL-FOR-TRUST-WALLET-2026",
+          "content": "Latest USDT Flash Tool V2.5 for Trust Wallet is a blockchain-focused analytical repository designed to help users understand how USDT transactions appear, move, and are verified inside Trust Wallet environments.",
+          "engine": "gitea",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gitea.com/0x61nas/aarty",
+          "normalized_url": "https://gitea.com/0x61nas/aarty",
+          "title": "0x61nas/aarty",
+          "content": "Print any image in your terminal",
+          "engine": "gitea",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gitea.com/usapalletwarehousinginc/Built-for-Fast-Shipping.-Trusted-for-Strong-Pallets",
+          "normalized_url": "https://gitea.com/usapalletwarehousinginc/Built-for-Fast-Shipping.-Trusted-for-Strong-Pallets",
+          "title": "usapalletwarehousinginc/Built-for-Fast-Shipping.-Trusted-for-Strong-Pallets",
+          "content": "Need reliable pallets without delays? USA Pallet & Warehousing Inc. delivers new, recycled & custom pallet solutions built for warehouses that move fast. https://www.usapalletwarehouseinc.com",
+          "engine": "gitea",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gitea.com/palmcoasty/bunkerweb-plugins",
+          "normalized_url": "https://gitea.com/palmcoasty/bunkerweb-plugins",
+          "title": "palmcoasty/bunkerweb-plugins",
+          "content": "Official plugins for BunkerWeb can be found below in the original repo on github maintained by the owners.",
+          "engine": "gitea",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gitea.com/scorpion/cli",
+          "normalized_url": "https://gitea.com/scorpion/cli",
+          "title": "scorpion/cli",
+          "content": "Command line interface for the scorpion project written in rust.",
+          "engine": "gitea",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gitea.com/mnurpeiissov/datafusion-comet",
+          "normalized_url": "https://gitea.com/mnurpeiissov/datafusion-comet",
+          "title": "mnurpeiissov/datafusion-comet",
+          "content": "Apache DataFusion Comet Spark Accelerator",
+          "engine": "gitea",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gitea.com/azena/deeptrust.test",
+          "normalized_url": "https://gitea.com/azena/deeptrust.test",
+          "title": "azena/deeptrust.test",
+          "content": "",
+          "engine": "gitea",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gitea.com/kohaiy/EcoPaste",
+          "normalized_url": "https://gitea.com/kohaiy/EcoPaste",
+          "title": "kohaiy/EcoPaste",
+          "content": "🎉跨平台的剪贴板管理工具 | Cross-platform clipboard management tool",
+          "engine": "gitea",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

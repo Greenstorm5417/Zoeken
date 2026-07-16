@@ -1,0 +1,45 @@
+{
+  "engine": "piped",
+  "case": "basic",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://pipedapi.kavin.rocks",
+    "headers": {},
+    "body": "{\n      \"items\": [\n        {\n          \"url\": \"/watch?v=abc123\",\n          \"title\": \"Rust in 100 seconds\",\n          \"shortDescription\": \"A quick overview of Rust.\",\n          \"uploaded\": 1234567890000,\n          \"duration\": 100,\n          \"views\": 5000\n        }\n      ],\n      \"nextpage\": \"opaque-token-1\"\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://piped.video/watch?v=abc123",
+          "normalized_url": "https://piped.video/watch?v=abc123",
+          "title": "Rust in 100 seconds",
+          "content": "A quick overview of Rust.",
+          "engine": "piped",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": [],
+    "engine_data": {
+      "nextpage": "opaque-token-1"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "engine": "dogpile",
+  "case": "basic",
+  "query": {
+    "query": "rust search",
+    "pageno": 2,
+    "safesearch": "Moderate",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust search",
+    "category": "",
+    "pageno": 2,
+    "safesearch": "Moderate",
+    "time_range": null,
+    "locale_key": "",
+    "engine_data": {},
+    "method": "Post",
+    "url": "https://www.dogpile.com/api/search",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": {
+      "page": 2,
+      "q": "rust search",
+      "qadf": "moderate"
+    },
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://www.dogpile.com/api/search",
+    "headers": {},
+    "body": "{\"results\":[{\"clickUrl\":\"https://example.com/rust\",\"title\":\"<b>Rust</b> Search\",\"description\":\"Systems search result\"}]}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://example.com/rust",
+          "normalized_url": "https://example.com/rust",
+          "title": "Rust Search",
+          "content": "Systems search result",
+          "engine": "dogpile",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "engine": "meilisearch",
+  "case": "basic",
+  "query": {
+    "query": "berlin",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "berlin",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "",
+    "engine_data": {},
+    "method": "Post",
+    "url": "http://localhost:7700/indexes/my-index/search",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": {
+      "limit": 10,
+      "offset": 0,
+      "q": "berlin"
+    },
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "http://localhost:7700/indexes/my-index/search",
+    "headers": {},
+    "body": "{\"hits\":[{\"city\":\"berlin\"}]}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "KeyValue": {
+          "url": "",
+          "normalized_url": "",
+          "title": "",
+          "content": "",
+          "engine": "meilisearch",
+          "kvmap": [
+            [
+              "city",
+              "berlin"
+            ]
+          ],
+          "caption": "",
+          "key_title": "",
+          "value_title": "",
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

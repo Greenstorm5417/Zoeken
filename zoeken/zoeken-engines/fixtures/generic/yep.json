@@ -1,0 +1,347 @@
+{
+  "engine": "yep",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://api.yep.com/search?query=rust&safeSearch=off&limit=20",
+    "headers": {
+      "Referer": "https://yep.com/",
+      "Origin": "https://yep.com"
+    },
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://api.yep.com/search?query=rust&safeSearch=off&limit=20",
+    "headers": {
+      "date": "Thu, 09 Jul 2026 14:06:53 GMT",
+      "content-type": "application/json",
+      "cf-ray": "a187e446ccb6cea2-MIA",
+      "set-cookie": "_cfuvid=xTlqerWykJJgh4kiztRGfCllZvlMOOiZWcfT.rFnvpE-1783606013220-0.0.1.1-604800000; path=/; domain=.yep.com; HttpOnly; Secure; SameSite=None",
+      "vary": "accept-encoding",
+      "cf-cache-status": "DYNAMIC",
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "https://yep.com",
+      "traceparent": "00-428110e567f702406f9d8296f9f53ec6-2e4958f1ee3e43ed-03",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "access-control-expose-headers": "traceparent",
+      "x-request-id": "c98457f8-b690-4807-8105-4f2ec9404017",
+      "server": "cloudflare"
+    },
+    "body": "[\"Ok\",{\"results\":[{\"url\":\"https://medium.com/@shail.bhattt/unlocking-the-power-of-rust-an-overview-of-the-language-use-cases-ecosystem-and-more-60df0518e3ea\",\"title\":\"Unlocking the Power of Rust: An overview of the Language, Ecosystem, and more…\",\"type\":\"Organic\",\"snippet\":\"<strong>Rust</strong> is a modern systems programming language that aims to provide the safety and performance of low-level languages like C and C++, while… \",\"visual_url\":\"medium.com › @shail.bhattt › unlocking-the-power-of-rust-an-overview-of-the-language-use-cases-ecosystem-and-more-60df0518e3ea\"},{\"url\":\"https://rustc-dev-guide.rust-lang.org/print.html\",\"title\":\"Rust Compiler Development Guide\",\"type\":\"Organic\",\"snippet\":\"A guide to developing the <strong>Rust</strong> compiler (rustc) \",\"visual_url\":\"rustc-dev-guide.rust-lang.org › print.html\"},{\"url\":\"https://dev-doc.rust-lang.org/nightly/releases.html\",\"title\":\"Rust Release Notes\",\"type\":\"Organic\",\"snippet\":\"impl Extend&lt;proc_macro:&nbsp;… last Relax rules for identifiers in search Previously you could only search for identifiers that were valid in <strong>rust</strong> code&nbsp;… \",\"visual_url\":\"dev-doc.rust-lang.org › nightly › releases.html\"},{\"url\":\"https://leesei.github.io/posts/rust-lang/\",\"title\":\"Rust\",\"type\":\"Organic\",\"snippet\":\"Getting Started Cargo Cargo tools Editions <strong>Rust</strong> Libz Blitz Learn Compiler Conditional Compiling Linkage Cross compile Android Deployment Syntax String Print Formatting Rc/Arc Containers Iterators Traits Option Results Closures Modules Macros Rhai Books Tips&nbsp;… \",\"visual_url\":\"leesei.github.io › posts › rust-lang\"},{\"url\":\"https://rust-lang.github.io/rust-clippy/master/index.html\",\"title\":\"Clippy Lints\",\"type\":\"Organic\",\"snippet\":\"A collection of lints to catch common mistakes and improve your <strong>Rust</strong> code. \",\"visual_url\":\"rust-lang.github.io › rust-clippy › master › index.html\"},{\"url\":\"https://doc.rust-lang.org/beta/releases.html\",\"title\":\"Rust Release Notes\",\"type\":\"Organic\",\"snippet\":\"See #&nbsp;…  and <strong>rust</strong>-lang/cargo#&nbsp;… [feature] attributes on invalid targets are now checked Internal Changes These changes do not affect any public interfaces of <strong>Rust</strong>&nbsp;… \",\"visual_url\":\"doc.rust-lang.org › beta › releases.html\"},{\"url\":\"https://aws.amazon.com/blogs/opensource/sustainability-with-rust/\",\"title\":\"Sustainability with Rust | Amazon Web Services\",\"type\":\"Organic\",\"snippet\":\"<strong>Rust</strong> is a programming language implemented as a set of open source projects.&nbsp;… <strong>Rust</strong> started in 2006 as a personal project of Graydon Hoare before becoming a research project at Mozilla in 2010. \",\"visual_url\":\"aws.amazon.com › blogs › opensource › sustainability-with-rust\"},{\"url\":\"https://dev-doc.rust-lang.org/stable/rustc/print.html\",\"title\":\"The rustc book\",\"type\":\"Organic\",\"snippet\":\"rustc is the compiler for the <strong>Rust</strong> programming language, provided by the project itself. Most <strong>Rust</strong> programmers don’t invoke rustc directly&nbsp;… \",\"visual_url\":\"dev-doc.rust-lang.org › stable › rustc › print.html\"},{\"url\":\"https://doc.rust-lang.org/stable/rust-by-example/print.html\",\"title\":\"Rust By Example\",\"type\":\"Organic\",\"snippet\":\"<strong>Rust</strong> by Example (RBE) is a collection of runnable examples that illustrate various <strong>Rust</strong> concepts and standard libraries. \",\"visual_url\":\"doc.rust-lang.org › stable › rust-by-example › print.html\"},{\"url\":\"https://discord.com/servers/sho-rust-ua-community-1052289098162917416\",\"title\":\"SHO? | RUST UA Community - Discord Servers\",\"type\":\"Organic\",\"snippet\":\"| Official <strong>Rust</strong> UA Discord community — join via discord.gg/rustua-sho🔥Ukrainian <strong>Rust</strong> clan &amp; community focused on team-based gameplay, epic raids and high daily activity. \",\"visual_url\":\"discord.com › servers › sho-rust-ua-community-1052289098162917416\"},{\"url\":\"https://rust-lang.github.io/rust-project-goals/print.html\",\"title\":\"Rust Project Goals\",\"type\":\"Organic\",\"snippet\":\"Keyboard shortcuts Press or to navigate between chapters Press S or to search in the book Press to show this help Press Esc to hide this help Project goals This repo tracks the effort to set and track goals for the <strong>Rust</strong> project. \",\"visual_url\":\"rust-lang.github.io › rust-project-goals › print.html\"},{\"url\":\"https://aws.amazon.com/blogs/opensource/rust-runtime-for-aws-lambda/\",\"title\":\"Rust Runtime for AWS Lambda | Amazon Web Services\",\"type\":\"Organic\",\"snippet\":\"To accompany the API launch, we have open sourced a runtime for the <strong>Rust</strong> language If you’re not familiar with <strong>Rust</strong> , it’s a programming language for writing and maintaining fast&nbsp;… \",\"visual_url\":\"aws.amazon.com › blogs › opensource › rust-runtime-for-aws-lambda\"},{\"url\":\"https://serokell.medium.com/rust-development-roadmap-805419c487f?source=user_profile_page---------57-------------80128fbfb065----------------------\",\"title\":\"Rust Development Roadmap\",\"type\":\"Organic\",\"snippet\":\"<strong>Rust</strong> has been one of the top 15 most popular and loved programming languages over the past five years due to the incredible developer… \",\"visual_url\":\"serokell.medium.com › rust-development-roadmap-805419c487f?source=user_profile_page---------57-------------80128fbfb065----------------------\"},{\"url\":\"https://discord.com/servers/rust-programming-language-community-273534239310479360\",\"title\":\"Rust Programming Language Community - Discord Servers\",\"type\":\"Organic\",\"snippet\":\"The <strong>Rust</strong> Programming Language Community Server is all about learning and sharing <strong>Rust</strong> knowledge, and helping others. \",\"visual_url\":\"discord.com › servers › rust-programming-language-community-273534239310479360\"},{\"url\":\"https://medium.com/@techinfocus/rust-no-rust-is-not-just-for-systems-programming-894937c2a957\",\"title\":\"Rust, No Rust Is Not Just for Systems Programming\",\"type\":\"Organic\",\"snippet\":\"5 min read May 24, 2025 <strong>Rust</strong> has earned a fierce reputation in the programming world.&nbsp;…  Most people still believe <strong>Rust</strong> is only good for systems programming. \",\"visual_url\":\"medium.com › @techinfocus › rust-no-rust-is-not-just-for-systems-programming-894937c2a957\"},{\"url\":\"https://aws.amazon.com/blogs/devops/why-aws-is-the-best-place-to-run-rust/\",\"title\":\"Why AWS is the Best Place to Run Rust | Amazon Web Services\",\"type\":\"Organic\",\"snippet\":\"Introduction The <strong>Rust</strong> programming language was created by Mozilla Research in 2010 to be “a programming language empowering everyone to build reliable and efficient(fast) software&nbsp;… \",\"visual_url\":\"aws.amazon.com › blogs › devops › why-aws-is-the-best-place-to-run-rust\"},{\"url\":\"https://medium.com/@muhammadzulnourain6/rust-programming-language-security-why-rust-is-becoming-the-go-to-language-for-security-7f6598adcea4\",\"title\":\"Rust Programming Language Security: Why Rust Is Becoming the Go-To Language for Security\",\"type\":\"Organic\",\"snippet\":\"3 min read Aug 28,&nbsp;…  Why <strong>Rust</strong> Is Secure in 2025 In recent years, the <strong>Rust</strong> programming language security model has gained attention from developers&nbsp;… \",\"visual_url\":\"medium.com › @muhammadzulnourain6 › rust-programming-language-security-why-rust-is-becoming-the-go-to-language-for-security-7f6598adcea4\"},{\"url\":\"https://medium.com/@joichiro.sai/rust-offensive-and-auditing-pathway-a-web3-security-roadmap-2e3d77d5ebcd\",\"title\":\"Rust Offensive and Auditing Pathway: A Web3 Security Roadmap\",\"type\":\"Organic\",\"snippet\":\"5 min read Dec 11, 2024 Press enter or click to view image in full size <strong>Rust</strong>: A Paradigm Shift in Programming and Blockchain Development <strong>Rust</strong> isn’t just another programming language&nbsp;… \",\"visual_url\":\"medium.com › @joichiro.sai › rust-offensive-and-auditing-pathway-a-web3-security-roadmap-2e3d77d5ebcd\"},{\"url\":\"https://google.github.io/comprehensive-rust/print.html\",\"title\":\"Comprehensive Rust 🦀\",\"type\":\"Organic\",\"snippet\":\"Welcome to Comprehensive <strong>Rust</strong> 🦀 This is a free <strong>Rust</strong> course developed by the Android team at Google. covers the full spectrum of <strong>Rust</strong>&nbsp;… \",\"visual_url\":\"google.github.io › comprehensive-rust › print.html\"},{\"url\":\"https://rust-analyzer.github.io/book/print.html\",\"title\":\"rust-analyzer\",\"type\":\"Organic\",\"snippet\":\"Keyboard shortcuts&nbsp;… to navigate between chapters&nbsp;… to search in the book&nbsp;… to show this help&nbsp;… to hide this help <strong>rust</strong>-analyzer <strong>rust</strong>-analyzer is a language serv \",\"visual_url\":\"rust-analyzer.github.io › book › print.html\"}],\"total\":20,\"stats\":null,\"search_id\":\"c98457f8-b690-4807-8105-4f2ec9404017\"}]"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://medium.com/@shail.bhattt/unlocking-the-power-of-rust-an-overview-of-the-language-use-cases-ecosystem-and-more-60df0518e3ea",
+          "normalized_url": "https://medium.com/@shail.bhattt/unlocking-the-power-of-rust-an-overview-of-the-language-use-cases-ecosystem-and-more-60df0518e3ea",
+          "title": "Unlocking the Power of Rust: An overview of the Language, Ecosystem, and more…",
+          "content": "Rust is a modern systems programming language that aims to provide the safety and performance of low-level languages like C and C++, while…",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rustc-dev-guide.rust-lang.org/print.html",
+          "normalized_url": "https://rustc-dev-guide.rust-lang.org/print.html",
+          "title": "Rust Compiler Development Guide",
+          "content": "A guide to developing the Rust compiler (rustc)",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://dev-doc.rust-lang.org/nightly/releases.html",
+          "normalized_url": "https://dev-doc.rust-lang.org/nightly/releases.html",
+          "title": "Rust Release Notes",
+          "content": "impl Extend<proc_macro: … last Relax rules for identifiers in search Previously you could only search for identifiers that were valid in rust code …",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://leesei.github.io/posts/rust-lang/",
+          "normalized_url": "https://leesei.github.io/posts/rust-lang/",
+          "title": "Rust",
+          "content": "Getting Started Cargo Cargo tools Editions Rust Libz Blitz Learn Compiler Conditional Compiling Linkage Cross compile Android Deployment Syntax String Print Formatting Rc/Arc Containers Iterators Traits Option Results Closures Modules Macros Rhai Books Tips …",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust-lang.github.io/rust-clippy/master/index.html",
+          "normalized_url": "https://rust-lang.github.io/rust-clippy/master/index.html",
+          "title": "Clippy Lints",
+          "content": "A collection of lints to catch common mistakes and improve your Rust code.",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://doc.rust-lang.org/beta/releases.html",
+          "normalized_url": "https://doc.rust-lang.org/beta/releases.html",
+          "title": "Rust Release Notes",
+          "content": "See # … and rust-lang/cargo# … [feature] attributes on invalid targets are now checked Internal Changes These changes do not affect any public interfaces of Rust …",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://aws.amazon.com/blogs/opensource/sustainability-with-rust/",
+          "normalized_url": "https://aws.amazon.com/blogs/opensource/sustainability-with-rust/",
+          "title": "Sustainability with Rust | Amazon Web Services",
+          "content": "Rust is a programming language implemented as a set of open source projects. … Rust started in 2006 as a personal project of Graydon Hoare before becoming a research project at Mozilla in 2010.",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://dev-doc.rust-lang.org/stable/rustc/print.html",
+          "normalized_url": "https://dev-doc.rust-lang.org/stable/rustc/print.html",
+          "title": "The rustc book",
+          "content": "rustc is the compiler for the Rust programming language, provided by the project itself. Most Rust programmers don’t invoke rustc directly …",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://doc.rust-lang.org/stable/rust-by-example/print.html",
+          "normalized_url": "https://doc.rust-lang.org/stable/rust-by-example/print.html",
+          "title": "Rust By Example",
+          "content": "Rust by Example (RBE) is a collection of runnable examples that illustrate various Rust concepts and standard libraries.",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://discord.com/servers/sho-rust-ua-community-1052289098162917416",
+          "normalized_url": "https://discord.com/servers/sho-rust-ua-community-1052289098162917416",
+          "title": "SHO? | RUST UA Community - Discord Servers",
+          "content": "| Official Rust UA Discord community — join via discord.gg/rustua-sho🔥Ukrainian Rust clan & community focused on team-based gameplay, epic raids and high daily activity.",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust-lang.github.io/rust-project-goals/print.html",
+          "normalized_url": "https://rust-lang.github.io/rust-project-goals/print.html",
+          "title": "Rust Project Goals",
+          "content": "Keyboard shortcuts Press or to navigate between chapters Press S or to search in the book Press to show this help Press Esc to hide this help Project goals This repo tracks the effort to set and track goals for the Rust project.",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://aws.amazon.com/blogs/opensource/rust-runtime-for-aws-lambda/",
+          "normalized_url": "https://aws.amazon.com/blogs/opensource/rust-runtime-for-aws-lambda/",
+          "title": "Rust Runtime for AWS Lambda | Amazon Web Services",
+          "content": "To accompany the API launch, we have open sourced a runtime for the Rust language If you’re not familiar with Rust , it’s a programming language for writing and maintaining fast …",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://serokell.medium.com/rust-development-roadmap-805419c487f?source=user_profile_page---------57-------------80128fbfb065----------------------",
+          "normalized_url": "https://serokell.medium.com/rust-development-roadmap-805419c487f?source=user_profile_page---------57-------------80128fbfb065----------------------",
+          "title": "Rust Development Roadmap",
+          "content": "Rust has been one of the top 15 most popular and loved programming languages over the past five years due to the incredible developer…",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://discord.com/servers/rust-programming-language-community-273534239310479360",
+          "normalized_url": "https://discord.com/servers/rust-programming-language-community-273534239310479360",
+          "title": "Rust Programming Language Community - Discord Servers",
+          "content": "The Rust Programming Language Community Server is all about learning and sharing Rust knowledge, and helping others.",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://medium.com/@techinfocus/rust-no-rust-is-not-just-for-systems-programming-894937c2a957",
+          "normalized_url": "https://medium.com/@techinfocus/rust-no-rust-is-not-just-for-systems-programming-894937c2a957",
+          "title": "Rust, No Rust Is Not Just for Systems Programming",
+          "content": "5 min read May 24, 2025 Rust has earned a fierce reputation in the programming world. … Most people still believe Rust is only good for systems programming.",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://aws.amazon.com/blogs/devops/why-aws-is-the-best-place-to-run-rust/",
+          "normalized_url": "https://aws.amazon.com/blogs/devops/why-aws-is-the-best-place-to-run-rust/",
+          "title": "Why AWS is the Best Place to Run Rust | Amazon Web Services",
+          "content": "Introduction The Rust programming language was created by Mozilla Research in 2010 to be “a programming language empowering everyone to build reliable and efficient(fast) software …",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://medium.com/@muhammadzulnourain6/rust-programming-language-security-why-rust-is-becoming-the-go-to-language-for-security-7f6598adcea4",
+          "normalized_url": "https://medium.com/@muhammadzulnourain6/rust-programming-language-security-why-rust-is-becoming-the-go-to-language-for-security-7f6598adcea4",
+          "title": "Rust Programming Language Security: Why Rust Is Becoming the Go-To Language for Security",
+          "content": "3 min read Aug 28, … Why Rust Is Secure in 2025 In recent years, the Rust programming language security model has gained attention from developers …",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://medium.com/@joichiro.sai/rust-offensive-and-auditing-pathway-a-web3-security-roadmap-2e3d77d5ebcd",
+          "normalized_url": "https://medium.com/@joichiro.sai/rust-offensive-and-auditing-pathway-a-web3-security-roadmap-2e3d77d5ebcd",
+          "title": "Rust Offensive and Auditing Pathway: A Web3 Security Roadmap",
+          "content": "5 min read Dec 11, 2024 Press enter or click to view image in full size Rust: A Paradigm Shift in Programming and Blockchain Development Rust isn’t just another programming language …",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://google.github.io/comprehensive-rust/print.html",
+          "normalized_url": "https://google.github.io/comprehensive-rust/print.html",
+          "title": "Comprehensive Rust 🦀",
+          "content": "Welcome to Comprehensive Rust 🦀 This is a free Rust course developed by the Android team at Google. covers the full spectrum of Rust …",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust-analyzer.github.io/book/print.html",
+          "normalized_url": "https://rust-analyzer.github.io/book/print.html",
+          "title": "rust-analyzer",
+          "content": "Keyboard shortcuts … to navigate between chapters … to search in the book … to show this help … to hide this help rust-analyzer rust-analyzer is a language serv",
+          "engine": "yep",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

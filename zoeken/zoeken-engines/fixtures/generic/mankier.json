@@ -1,0 +1,138 @@
+{
+  "engine": "mankier",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://www.mankier.com/api/v2/mans/?q=rust",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://www.mankier.com/api/v2/mans/?q=rust",
+    "headers": {
+      "last-modified": "Thu, 09 Jul 2026 12:21:31 GMT",
+      "accept-ranges": "bytes",
+      "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+      "content-type": "application/javascript",
+      "cf-cache-status": "HIT",
+      "date": "Thu, 09 Jul 2026 14:05:56 GMT",
+      "vary": "Accept-Encoding",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfEdge;dur=10,cfOrigin;dur=0",
+      "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=xjMVU7JGCh7kwCzAbnHFYM8MTbHjcZ6t7sLJZ2Cdf1O9DBVMLSlHIY2MA7liIEKR6EY8EBeizJGzambJcIR5EDgnntVZYMfMJy%2B5VIBeJrrbacKK4dGcITudzxQRr%2Bt5sM8%3D\"}]}",
+      "cache-control": "public, max-age=31536000",
+      "cf-ray": "a187e2ef0fb6437d-MIA",
+      "age": "43247",
+      "server": "cloudflare",
+      "expires": "Fri, 09 Jul 2027 02:05:09 GMT",
+      "link": "</img/search.svg>; rel=preload; as=image",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+    },
+    "body": "{\"q\":\"rust\",\"truncated\":false,\"results\":[{\"name\":\"rustc\",\"section\":\"1\",\"description\":\"The Rust compiler\",\"url\":\"https:\\/\\/www.mankier.com\\/1\\/rustc\"},{\"name\":\"rustdoc\",\"section\":\"1\",\"description\":\"generate documentation from Rust source code\",\"url\":\"https:\\/\\/www.mankier.com\\/1\\/rustdoc\"},{\"name\":\"rust2rpm\",\"section\":\"1\",\"description\":\"generate RPM spec files for Rust crates\",\"url\":\"https:\\/\\/www.mankier.com\\/1\\/rust2rpm\"},{\"name\":\"rust2rpm.conf\",\"section\":\"5\",\"description\":\"package-specific configuration file for *rust2rpm* (deprecated)\",\"url\":\"https:\\/\\/www.mankier.com\\/5\\/rust2rpm.conf\"},{\"name\":\"rust2rpm.toml\",\"section\":\"5\",\"description\":\"package-specific configuration file for *rust2rpm*\",\"url\":\"https:\\/\\/www.mankier.com\\/5\\/rust2rpm.toml\"}]}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://www.mankier.com/1/rustc",
+          "normalized_url": "https://www.mankier.com/1/rustc",
+          "title": "rustc",
+          "content": "The Rust compiler",
+          "engine": "mankier",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.mankier.com/1/rustdoc",
+          "normalized_url": "https://www.mankier.com/1/rustdoc",
+          "title": "rustdoc",
+          "content": "generate documentation from Rust source code",
+          "engine": "mankier",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.mankier.com/1/rust2rpm",
+          "normalized_url": "https://www.mankier.com/1/rust2rpm",
+          "title": "rust2rpm",
+          "content": "generate RPM spec files for Rust crates",
+          "engine": "mankier",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.mankier.com/5/rust2rpm.conf",
+          "normalized_url": "https://www.mankier.com/5/rust2rpm.conf",
+          "title": "rust2rpm.conf",
+          "content": "package-specific configuration file for *rust2rpm* (deprecated)",
+          "engine": "mankier",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.mankier.com/5/rust2rpm.toml",
+          "normalized_url": "https://www.mankier.com/5/rust2rpm.toml",
+          "title": "rust2rpm.toml",
+          "content": "package-specific configuration file for *rust2rpm*",
+          "engine": "mankier",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

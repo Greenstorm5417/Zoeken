@@ -1,0 +1,56 @@
+{
+  "engine": "github",
+  "case": "basic",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://api.github.com/",
+    "headers": {},
+    "body": "{\n      \"items\": [\n        {\n          \"html_url\": \"https://github.com/rust-lang/rust\",\n          \"full_name\": \"rust-lang/rust\",\n          \"name\": \"rust\",\n          \"language\": \"Rust\",\n          \"description\": \"Empowering everyone to build reliable software.\"\n        },\n        {\n          \"html_url\": \"https://github.com/BurntSushi/ripgrep\",\n          \"full_name\": \"BurntSushi/ripgrep\",\n          \"name\": \"ripgrep\",\n          \"description\": \"recursively search directories\"\n        }\n      ]\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://github.com/rust-lang/rust",
+          "normalized_url": "https://github.com/rust-lang/rust",
+          "title": "rust-lang/rust",
+          "content": "Rust / Empowering everyone to build reliable software.",
+          "engine": "github",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://github.com/BurntSushi/ripgrep",
+          "normalized_url": "https://github.com/BurntSushi/ripgrep",
+          "title": "BurntSushi/ripgrep",
+          "content": "recursively search directories",
+          "engine": "github",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

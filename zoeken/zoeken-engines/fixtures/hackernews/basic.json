@@ -1,0 +1,56 @@
+{
+  "engine": "hackernews",
+  "case": "basic",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://hn.algolia.com/api/v1",
+    "headers": {},
+    "body": "{\n      \"hits\": [\n        {\n          \"objectID\": \"1\",\n          \"title\": \"Show HN: A cool project\",\n          \"author\": \"alice\",\n          \"url\": \"https://example.com/project\",\n          \"points\": 42,\n          \"num_comments\": 10,\n          \"created_at_i\": 1700000000\n        },\n        {\n          \"objectID\": \"2\",\n          \"author\": \"bob\",\n          \"comment_text\": \"<p>Great <b>point</b> here</p>\",\n          \"points\": 5,\n          \"num_comments\": 0,\n          \"created_at_i\": 1700000100\n        }\n      ]\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://news.ycombinator.com/item?id=1",
+          "normalized_url": "https://news.ycombinator.com/item?id=1",
+          "title": "Show HN: A cool project",
+          "content": "https://example.com/project",
+          "engine": "hackernews",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://news.ycombinator.com/item?id=2",
+          "normalized_url": "https://news.ycombinator.com/item?id=2",
+          "title": "author: bob",
+          "content": "Great point here",
+          "engine": "hackernews",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

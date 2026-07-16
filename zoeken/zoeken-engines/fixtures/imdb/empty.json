@@ -1,0 +1,27 @@
+{
+  "engine": "imdb",
+  "case": "empty",
+  "query": {
+    "query": "nothing",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://v2.sg.media-imdb.com/suggestion/",
+    "headers": {},
+    "body": "{\"d\": []}"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

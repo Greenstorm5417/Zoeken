@@ -1,0 +1,56 @@
+{
+  "engine": "bandcamp",
+  "case": "basic",
+  "query": {
+    "query": "great",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://bandcamp.com/",
+    "headers": {},
+    "body": "<!DOCTYPE html>\n<html><body>\n<ul class=\"result-items\">\n  <li class=\"searchresult track\">\n    <div class=\"art\"><img src=\"https://f4.bcbits.com/img/a1.jpg\"></div>\n    <div class=\"heading\"><a href=\"https://artist.bandcamp.com/track/song\">Great Song</a></div>\n    <div class=\"subhead\">from Great Album by The Artist</div>\n    <div class=\"itemtype\">TRACK</div>\n    <div class=\"itemurl\"><a href=\"https://artist.bandcamp.com/track/song?search_item_id=123\">artist.bandcamp.com/track/song</a></div>\n    <div class=\"released\">released April 5, 2020</div>\n  </li>\n  <li class=\"searchresult album\">\n    <div class=\"heading\"><a href=\"https://artist.bandcamp.com/album/rec\">Great Album</a></div>\n    <div class=\"subhead\">by The Artist</div>\n    <div class=\"itemtype\">ALBUM</div>\n    <div class=\"itemurl\"><a href=\"https://artist.bandcamp.com/album/rec?search_item_id=456\">artist.bandcamp.com/album/rec</a></div>\n  </li>\n  <li class=\"searchresult noskip\">\n    <div class=\"heading\"><a href=\"https://x.example/\">No Item URL</a></div>\n    <div class=\"subhead\">skipped, has no itemurl link</div>\n  </li>\n</ul>\n</body></html>"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "artist.bandcamp.com/track/song",
+          "normalized_url": "artist.bandcamp.com/track/song",
+          "title": "Great Song",
+          "content": "from Great Album by The Artist",
+          "engine": "bandcamp",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "artist.bandcamp.com/album/rec",
+          "normalized_url": "artist.bandcamp.com/album/rec",
+          "title": "Great Album",
+          "content": "by The Artist",
+          "engine": "bandcamp",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

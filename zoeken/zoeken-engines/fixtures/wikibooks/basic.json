@@ -1,0 +1,56 @@
+{
+  "engine": "wikibooks",
+  "case": "basic",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://en.wikibooks.org/",
+    "headers": {},
+    "body": "{\n      \"batchcomplete\": \"\",\n      \"query\": {\n        \"search\": [\n          {\n            \"ns\": 0,\n            \"title\": \"Rust Programming\",\n            \"snippet\": \"A book about the <span class=\\\"searchmatch\\\">Rust</span> language\",\n            \"timestamp\": \"2024-01-02T03:04:05Z\"\n          },\n          {\n            \"ns\": 0,\n            \"title\": \"Cookbook\",\n            \"sectiontitle\": \"Sauces\",\n            \"snippet\": \"The best <span class=\\\"searchmatch\\\">sauces</span> chapter\",\n            \"timestamp\": \"2024-02-03T04:05:06Z\"\n          }\n        ]\n      }\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://en.wikibooks.org/wiki/Rust_Programming",
+          "normalized_url": "https://en.wikibooks.org/wiki/Rust_Programming",
+          "title": "Rust Programming",
+          "content": "A book about the Rust language",
+          "engine": "wikibooks",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://en.wikibooks.org/wiki/Cookbook#Sauces",
+          "normalized_url": "https://en.wikibooks.org/wiki/Cookbook#Sauces",
+          "title": "Cookbook / Sauces",
+          "content": "The best sauces chapter",
+          "engine": "wikibooks",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "engine": "startpage",
+  "case": "basic",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://www.startpage.com/sp/search",
+    "headers": {},
+    "body": "<html><body><script>window.x=1;React.createElement(UIStartpage.AppSerpWeb, {\"render\":{\"presenter\":{\"regions\":{\"mainline\":[{\"display_type\":\"web-google\",\"results\":[{\"clickUrl\":\"https://www.rust-lang.org/\",\"title\":\"Rust Programming Language\",\"description\":\"A language empowering everyone.\"},{\"clickUrl\":\"https://doc.rust-lang.org/book/\",\"title\":\"The Rust Book\",\"description\":\"Learn Rust.\"}]}]}}}});</script></body></html>"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://www.rust-lang.org/",
+          "normalized_url": "https://www.rust-lang.org/",
+          "title": "Rust Programming Language",
+          "content": "A language empowering everyone.",
+          "engine": "startpage",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://doc.rust-lang.org/book/",
+          "normalized_url": "https://doc.rust-lang.org/book/",
+          "title": "The Rust Book",
+          "content": "Learn Rust.",
+          "engine": "startpage",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

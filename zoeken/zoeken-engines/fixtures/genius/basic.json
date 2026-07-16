@@ -1,0 +1,56 @@
+{
+  "engine": "genius",
+  "case": "basic",
+  "query": {
+    "query": "song",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://genius.com/api/search/multi?",
+    "headers": {},
+    "body": "{\n      \"response\": {\n        \"sections\": [\n          {\n            \"type\": \"song\",\n            \"hits\": [\n              {\n                \"type\": \"song\",\n                \"highlights\": [],\n                \"result\": {\n                  \"url\": \"https://genius.com/Artist-song-lyrics\",\n                  \"full_title\": \"Song by Artist\",\n                  \"title_with_featured\": \"Song\"\n                }\n              }\n            ]\n          },\n          {\n            \"type\": \"artist\",\n            \"hits\": [\n              {\n                \"type\": \"artist\",\n                \"result\": {\n                  \"url\": \"https://genius.com/artists/Artist\",\n                  \"name\": \"Artist\"\n                }\n              }\n            ]\n          }\n        ]\n      }\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://genius.com/Artist-song-lyrics",
+          "normalized_url": "https://genius.com/Artist-song-lyrics",
+          "title": "Song by Artist",
+          "content": "Song",
+          "engine": "genius",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://genius.com/artists/Artist",
+          "normalized_url": "https://genius.com/artists/Artist",
+          "title": "Artist",
+          "content": "",
+          "engine": "genius",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

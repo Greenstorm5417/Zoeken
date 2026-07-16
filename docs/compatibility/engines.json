@@ -1,0 +1,5882 @@
+{
+  "engines": [
+    {
+      "api_key_required": false,
+      "categories": [
+        "files"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "1337x",
+      "upstream_name": "1337x",
+      "upstream_path": "searx/engines/1337x.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "360search",
+      "upstream_name": "360search",
+      "upstream_path": "searx/engines/360search.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "360search_videos",
+      "upstream_name": "360search videos",
+      "upstream_path": "searx/engines/360search_videos.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "500px",
+      "upstream_name": "500px",
+      "upstream_path": "searx/engines/500px.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "social media"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "ninegag",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "9gag",
+      "upstream_name": "9gag",
+      "upstream_path": "searx/engines/9gag.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "acfun",
+      "upstream_name": "acfun",
+      "upstream_path": "searx/engines/acfun.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "adobe_stock",
+      "upstream_name": "adobe stock",
+      "upstream_path": "searx/engines/adobe_stock.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "onions"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "ahmia",
+      "upstream_name": "ahmia",
+      "upstream_path": "searx/engines/ahmia.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "packages",
+        "it"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "alpinelinux",
+      "upstream_name": "alpinelinux",
+      "upstream_path": "searx/engines/alpinelinux.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "files",
+        "books"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "annas_archive",
+      "upstream_name": "annas archive",
+      "upstream_path": "searx/engines/annas_archive.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "news"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "ansa",
+      "upstream_name": "ansa",
+      "upstream_path": "searx/engines/ansa.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "files",
+        "apps"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "apkmirror",
+      "upstream_name": "apkmirror",
+      "upstream_path": "searx/engines/apkmirror.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "files",
+        "apps"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "apple_app_store",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "apple_app_store",
+      "upstream_name": "apple app store",
+      "upstream_path": "searx/engines/apple_app_store.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "map"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "requires Apple Maps token/bootstrap not yet supported"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "apple_maps",
+      "upstream_name": "apple maps",
+      "upstream_path": "searx/engines/apple_maps.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "software wikis"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "archlinux",
+      "upstream_name": "archlinux",
+      "upstream_path": "searx/engines/archlinux.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "bespoke API engine deferred past Phase 6 campaign"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "artic",
+      "upstream_name": "artic",
+      "upstream_path": "searx/engines/artic.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "artstation",
+      "upstream_name": "artstation",
+      "upstream_path": "searx/engines/artstation.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "science",
+        "scientific publications"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "arxiv",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "arxiv",
+      "upstream_name": "arxiv",
+      "upstream_path": "searx/engines/arxiv.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "science",
+        "scientific publications"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "astrophysics_data_system",
+      "upstream_name": "astrophysics data system",
+      "upstream_path": "searx/engines/astrophysics_data_system.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "cloud"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "azure",
+      "upstream_name": "azure",
+      "upstream_path": "searx/engines/azure.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "bespoke regional engine deferred past Phase 6 campaign"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": true,
+      "upstream_module": "baidu",
+      "upstream_name": "baidu",
+      "upstream_path": "searx/engines/baidu.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "music"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "bandcamp",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "bandcamp",
+      "upstream_name": "bandcamp",
+      "upstream_path": "searx/engines/bandcamp.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "science"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "base",
+      "upstream_name": "base",
+      "upstream_path": "searx/engines/base.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "bilibili",
+      "upstream_name": "bilibili",
+      "upstream_path": "searx/engines/bilibili.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "web"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "bing",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "bing",
+      "upstream_name": "bing",
+      "upstream_path": "searx/engines/bing.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images",
+        "web"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "bing_images",
+      "upstream_name": "bing images",
+      "upstream_path": "searx/engines/bing_images.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "news"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "bing_news",
+      "upstream_name": "bing news",
+      "upstream_path": "searx/engines/bing_news.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos",
+        "web"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "bing_videos",
+      "upstream_name": "bing videos",
+      "upstream_path": "searx/engines/bing_videos.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "bitchute",
+      "upstream_name": "bitchute",
+      "upstream_path": "searx/engines/bitchute.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "social media"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "boardreader",
+      "upstream_name": "boardreader",
+      "upstream_path": "searx/engines/boardreader.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "bpb",
+      "upstream_name": "bpb",
+      "upstream_path": "searx/engines/bpb.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "brave",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "brave",
+      "upstream_name": "brave",
+      "upstream_path": "searx/engines/brave.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "web"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "braveapi",
+      "upstream_name": "braveapi",
+      "upstream_path": "searx/engines/braveapi.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "files"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "bt4g",
+      "upstream_name": "bt4g",
+      "upstream_path": "searx/engines/bt4g.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "files"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "btdigg",
+      "upstream_name": "btdigg",
+      "upstream_path": "searx/engines/btdigg.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "packages",
+        "it"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "cachy_os",
+      "upstream_name": "cachy os",
+      "upstream_path": "searx/engines/cachy_os.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "cara",
+      "upstream_name": "cara",
+      "upstream_path": "searx/engines/cara.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "ccc_media",
+      "upstream_name": "ccc media",
+      "upstream_path": "searx/engines/ccc_media.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "chatnoir",
+      "upstream_name": "chatnoir",
+      "upstream_path": "searx/engines/chatnoir.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "chefkoch",
+      "upstream_name": "chefkoch",
+      "upstream_path": "searx/engines/chefkoch.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "chinaso",
+      "upstream_name": "chinaso",
+      "upstream_path": "searx/engines/chinaso.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "requires Cloudflare AI credentials and custom request flow"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "cloudflareai",
+      "upstream_name": "cloudflareai",
+      "upstream_path": "searx/engines/cloudflareai.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "command engines require an explicit sandbox decision"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "offline",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "command",
+      "upstream_name": "command",
+      "upstream_path": "searx/engines/command.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "science",
+        "scientific publications"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "core",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "core",
+      "upstream_name": "core",
+      "upstream_path": "searx/engines/core.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "packages",
+        "cargo"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "crates",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "crates",
+      "upstream_name": "crates",
+      "upstream_path": "searx/engines/crates.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "science",
+        "scientific publications"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "crossref",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "crossref",
+      "upstream_name": "crossref",
+      "upstream_path": "searx/engines/crossref.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "currency",
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "online_currency processor specialization deferred"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online_currency",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "currency_convert",
+      "upstream_name": "currency convert",
+      "upstream_path": "searx/engines/currency_convert.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "dailymotion",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "dailymotion",
+      "upstream_name": "dailymotion",
+      "upstream_path": "searx/engines/dailymotion.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "translate"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online_dictionary",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "deepl",
+      "upstream_name": "deepl",
+      "upstream_path": "searx/engines/deepl.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "music"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "requires Deezer API credentials / bespoke media flow"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "deezer",
+      "upstream_name": "deezer",
+      "upstream_path": "searx/engines/deezer.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "SearXNG demo engine"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "offline",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "demo_offline",
+      "upstream_name": "demo offline",
+      "upstream_path": "searx/engines/demo_offline.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "SearXNG demo engine"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "demo_online",
+      "upstream_name": "demo online",
+      "upstream_path": "searx/engines/demo_online.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "destatis",
+      "upstream_name": "destatis",
+      "upstream_path": "searx/engines/destatis.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "deviantart",
+      "upstream_name": "deviantart",
+      "upstream_path": "searx/engines/deviantart.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images",
+        "icons"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "devicons",
+      "upstream_name": "devicons",
+      "upstream_path": "searx/engines/devicons.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "translate"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online_dictionary",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "dictzone",
+      "upstream_name": "dictzone",
+      "upstream_path": "searx/engines/dictzone.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos",
+        "music",
+        "files"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "digbt",
+      "upstream_name": "digbt",
+      "upstream_path": "searx/engines/digbt.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "discourse",
+      "upstream_name": "discourse",
+      "upstream_path": "searx/engines/discourse.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "packages"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "docker_hub",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "docker_hub",
+      "upstream_name": "docker hub",
+      "upstream_path": "searx/engines/docker_hub.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "dogpile",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "dogpile",
+      "upstream_name": "dogpile",
+      "upstream_path": "searx/engines/dogpile.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "doku",
+      "upstream_name": "doku",
+      "upstream_path": "searx/engines/doku.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "duckduckgo",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "duckduckgo",
+      "upstream_name": "duckduckgo",
+      "upstream_path": "searx/engines/duckduckgo.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "duckduckgo_definitions",
+      "upstream_name": "duckduckgo definitions",
+      "upstream_path": "searx/engines/duckduckgo_definitions.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "duckduckgo_extra",
+      "upstream_name": "duckduckgo extra",
+      "upstream_path": "searx/engines/duckduckgo_extra.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "weather"
+      ],
+      "engine_traits": true,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "bespoke weather engine deferred past Phase 6 campaign"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "duckduckgo_weather",
+      "upstream_name": "duckduckgo weather",
+      "upstream_path": "searx/engines/duckduckgo_weather.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "duckduckgo_web",
+      "upstream_name": "duckduckgo web",
+      "upstream_path": "searx/engines/duckduckgo_web.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "dictionaries"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "duden",
+      "upstream_name": "duden",
+      "upstream_path": "searx/engines/duden.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "SearXNG dummy/test engine"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "offline",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "dummy-offline",
+      "upstream_name": "dummy-offline",
+      "upstream_path": "searx/engines/dummy-offline.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "SearXNG dummy/test engine"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "dummy",
+      "upstream_name": "dummy",
+      "upstream_path": "searx/engines/dummy.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "shopping"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "ebay",
+      "upstream_name": "ebay",
+      "upstream_path": "searx/engines/ebay.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "elasticsearch",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "elasticsearch",
+      "upstream_name": "elasticsearch",
+      "upstream_path": "searx/engines/elasticsearch.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "emojipedia",
+      "upstream_name": "emojipedia",
+      "upstream_path": "searx/engines/emojipedia.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "files",
+        "apps"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "fdroid",
+      "upstream_name": "fdroid",
+      "upstream_path": "searx/engines/fdroid.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "files"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "findfiles",
+      "upstream_name": "findfiles",
+      "upstream_path": "searx/engines/findfiles.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "findthatmeme",
+      "upstream_name": "findthatmeme",
+      "upstream_path": "searx/engines/findthatmeme.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "fireball",
+      "upstream_name": "fireball",
+      "upstream_path": "searx/engines/fireball.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images",
+        "icons"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "flaticon",
+      "upstream_name": "flaticon",
+      "upstream_path": "searx/engines/flaticon.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "requires Flickr API key / bespoke media flow"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "flickr",
+      "upstream_name": "flickr",
+      "upstream_path": "searx/engines/flickr.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "bespoke HTML scraper deferred past Phase 6 campaign"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": true,
+      "upstream_module": "flickr_noapi",
+      "upstream_name": "flickr noapi",
+      "upstream_path": "searx/engines/flickr_noapi.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "requires Freesound API key"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "freesound",
+      "upstream_name": "freesound",
+      "upstream_path": "searx/engines/freesound.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "bespoke media engine deferred past Phase 6 campaign"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "frinkiac",
+      "upstream_name": "frinkiac",
+      "upstream_path": "searx/engines/frinkiac.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "fyyd",
+      "upstream_name": "fyyd",
+      "upstream_path": "searx/engines/fyyd.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "shopping"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "geizhals",
+      "upstream_name": "geizhals",
+      "upstream_path": "searx/engines/geizhals.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "music",
+        "lyrics"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "genius",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "genius",
+      "upstream_name": "genius",
+      "upstream_path": "searx/engines/genius.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "giphy",
+      "upstream_name": "giphy",
+      "upstream_path": "searx/engines/giphy.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "repos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "gitea",
+      "upstream_name": "gitea",
+      "upstream_path": "searx/engines/gitea.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "repos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "github",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "github",
+      "upstream_name": "github",
+      "upstream_path": "searx/engines/github.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "code"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "github_code",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "github_code",
+      "upstream_name": "github code",
+      "upstream_path": "searx/engines/github_code.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "repos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "gitlab",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "gitlab",
+      "upstream_name": "gitlab",
+      "upstream_path": "searx/engines/gitlab.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "gmx",
+      "upstream_name": "gmx",
+      "upstream_path": "searx/engines/gmx.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "goodreads",
+      "upstream_name": "goodreads",
+      "upstream_path": "searx/engines/goodreads.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "web"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "google",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "google",
+      "upstream_name": "google",
+      "upstream_path": "searx/engines/google.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "web"
+      ],
+      "engine_traits": true,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "requires Google CSE API key"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": true,
+      "status": "intentionally-skipped",
+      "time_range": true,
+      "upstream_module": "google_cse",
+      "upstream_name": "google cse",
+      "upstream_path": "searx/engines/google_cse.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images",
+        "web"
+      ],
+      "engine_traits": true,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "bespoke Google images flow deferred past Phase 6 campaign"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": true,
+      "status": "intentionally-skipped",
+      "time_range": true,
+      "upstream_module": "google_images",
+      "upstream_name": "google images",
+      "upstream_path": "searx/engines/google_images.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "news"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "google_news",
+      "upstream_name": "google news",
+      "upstream_path": "searx/engines/google_news.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "google_play",
+      "upstream_name": "google play",
+      "upstream_path": "searx/engines/google_play.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "science",
+        "scientific publications"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "google_scholar",
+      "upstream_name": "google scholar",
+      "upstream_path": "searx/engines/google_scholar.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos",
+        "web"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "google_videos",
+      "upstream_name": "google videos",
+      "upstream_path": "searx/engines/google_videos.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "grokipedia",
+      "upstream_name": "grokipedia",
+      "upstream_path": "searx/engines/grokipedia.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "hackernews",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "hackernews",
+      "upstream_name": "hackernews",
+      "upstream_path": "searx/engines/hackernews.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "heexy",
+      "upstream_name": "heexy",
+      "upstream_path": "searx/engines/heexy.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "packages"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "hex",
+      "upstream_name": "hex",
+      "upstream_path": "searx/engines/hex.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "repos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "huggingface",
+      "upstream_name": "huggingface",
+      "upstream_path": "searx/engines/huggingface.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "news"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "il_post",
+      "upstream_name": "il post",
+      "upstream_path": "searx/engines/il_post.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "movies"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "imdb",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "imdb",
+      "upstream_name": "imdb",
+      "upstream_path": "searx/engines/imdb.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "imgur",
+      "upstream_name": "imgur",
+      "upstream_path": "searx/engines/imgur.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "ina",
+      "upstream_name": "ina",
+      "upstream_path": "searx/engines/ina.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos",
+        "music"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "invidious",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "invidious",
+      "upstream_name": "invidious",
+      "upstream_path": "searx/engines/invidious.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "ipernity",
+      "upstream_name": "ipernity",
+      "upstream_path": "searx/engines/ipernity.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "iqiyi",
+      "upstream_name": "iqiyi",
+      "upstream_path": "searx/engines/iqiyi.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "iseek",
+      "upstream_name": "iseek",
+      "upstream_path": "searx/engines/iseek.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "dictionaries"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "jisho",
+      "upstream_name": "jisho",
+      "upstream_path": "searx/engines/jisho.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "generic framework helper, not a standalone engine"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "json_engine",
+      "upstream_name": "json engine",
+      "upstream_path": "searx/engines/json_engine.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "kagi",
+      "upstream_name": "kagi",
+      "upstream_path": "searx/engines/kagi.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "files"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "kickass",
+      "upstream_name": "kickass",
+      "upstream_path": "searx/engines/kickass.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "social media"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "lemmy",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "lemmy",
+      "upstream_name": "lemmy",
+      "upstream_path": "searx/engines/lemmy.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "packages"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "lib_rs",
+      "upstream_name": "lib rs",
+      "upstream_path": "searx/engines/lib_rs.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "translate"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online_dictionary",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "libretranslate",
+      "upstream_name": "libretranslate",
+      "upstream_path": "searx/engines/libretranslate.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online_dictionary",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "lingva",
+      "upstream_name": "lingva",
+      "upstream_path": "searx/engines/lingva.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "loc",
+      "upstream_name": "loc",
+      "upstream_path": "searx/engines/loc.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images",
+        "icons"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "lucide",
+      "upstream_name": "lucide",
+      "upstream_path": "searx/engines/lucide.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "luxxle",
+      "upstream_name": "luxxle",
+      "upstream_path": "searx/engines/luxxle.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "magnific",
+      "upstream_name": "magnific",
+      "upstream_path": "searx/engines/magnific.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "blogs"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "marginalia",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "marginalia",
+      "upstream_name": "marginalia",
+      "upstream_path": "searx/engines/marginalia.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "database engines require explicit safe execution semantics"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "offline",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "mariadb_server",
+      "upstream_name": "mariadb server",
+      "upstream_path": "searx/engines/mariadb_server.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "social media"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "mastodon",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "mastodon",
+      "upstream_name": "mastodon",
+      "upstream_path": "searx/engines/mastodon.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images",
+        "icons"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "bespoke icon engine deferred past Phase 6 campaign"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "material_icons",
+      "upstream_name": "material icons",
+      "upstream_path": "searx/engines/material_icons.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "bespoke regional video engine deferred past Phase 6 campaign"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "mediathekviewweb",
+      "upstream_name": "mediathekviewweb",
+      "upstream_path": "searx/engines/mediathekviewweb.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "mediawiki",
+      "upstream_name": "mediawiki",
+      "upstream_path": "searx/engines/mediawiki.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "meilisearch",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "meilisearch",
+      "upstream_name": "meilisearch",
+      "upstream_path": "searx/engines/meilisearch.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "packages"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "metacpan",
+      "upstream_name": "metacpan",
+      "upstream_path": "searx/engines/metacpan.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "microsoft_learn",
+      "upstream_name": "microsoft learn",
+      "upstream_path": "searx/engines/microsoft_learn.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "music"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "mixcloud",
+      "upstream_name": "mixcloud",
+      "upstream_path": "searx/engines/mixcloud.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "web"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "mojeek",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "mojeek",
+      "upstream_name": "mojeek",
+      "upstream_path": "searx/engines/mojeek.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "database engines require explicit safe execution semantics"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "offline",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "mongodb",
+      "upstream_name": "mongodb",
+      "upstream_path": "searx/engines/mongodb.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "movies"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "moviepilot",
+      "upstream_name": "moviepilot",
+      "upstream_path": "searx/engines/moviepilot.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "translate"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online_dictionary",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "mozhi",
+      "upstream_name": "mozhi",
+      "upstream_path": "searx/engines/mozhi.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "social media"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "mrs",
+      "upstream_name": "mrs",
+      "upstream_path": "searx/engines/mrs.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "mwmbl",
+      "upstream_name": "mwmbl",
+      "upstream_path": "searx/engines/mwmbl.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "database engines require explicit safe execution semantics"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "offline",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "mysql_server",
+      "upstream_name": "mysql server",
+      "upstream_path": "searx/engines/mysql_server.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "naver",
+      "upstream_name": "naver",
+      "upstream_path": "searx/engines/naver.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "blogs"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "neocities",
+      "upstream_name": "neocities",
+      "upstream_path": "searx/engines/neocities.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": true,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "bespoke engine deferred past Phase 6 campaign"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "neosearch",
+      "upstream_name": "neosearch",
+      "upstream_path": "searx/engines/neosearch.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "niconico",
+      "upstream_name": "niconico",
+      "upstream_path": "searx/engines/niconico.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "packages"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "npm",
+      "upstream_name": "npm",
+      "upstream_path": "searx/engines/npm.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "nvd",
+      "upstream_name": "nvd",
+      "upstream_path": "searx/engines/nvd.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "files"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "nyaa",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "nyaa",
+      "upstream_name": "nyaa",
+      "upstream_path": "searx/engines/nyaa.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "odysee",
+      "upstream_name": "odysee",
+      "upstream_path": "searx/engines/odysee.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "repos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "ollama",
+      "upstream_name": "ollama",
+      "upstream_path": "searx/engines/ollama.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "weather"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "open_meteo",
+      "upstream_name": "open meteo",
+      "upstream_path": "searx/engines/open_meteo.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "science",
+        "scientific publications"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "openalex",
+      "upstream_name": "openalex",
+      "upstream_path": "searx/engines/openalex.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "openclipart",
+      "upstream_name": "openclipart",
+      "upstream_path": "searx/engines/openclipart.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "books"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "openlibrary",
+      "upstream_name": "openlibrary",
+      "upstream_path": "searx/engines/openlibrary.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "requires OpenSemantic instance configuration"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "opensemantic",
+      "upstream_name": "opensemantic",
+      "upstream_path": "searx/engines/opensemantic.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "map"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": true,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "openstreetmap",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "openstreetmap",
+      "upstream_name": "openstreetmap",
+      "upstream_path": "searx/engines/openstreetmap.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "openverse",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "openverse",
+      "upstream_name": "openverse",
+      "upstream_path": "searx/engines/openverse.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "science"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "bespoke science engine deferred past Phase 6 campaign"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "pdbe",
+      "upstream_name": "pdbe",
+      "upstream_path": "searx/engines/pdbe.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "peertube",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "peertube",
+      "upstream_name": "peertube",
+      "upstream_path": "searx/engines/peertube.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "pexels",
+      "upstream_name": "pexels",
+      "upstream_path": "searx/engines/pexels.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "map"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "photon",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "photon",
+      "upstream_name": "photon",
+      "upstream_path": "searx/engines/photon.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "picjumbo",
+      "upstream_name": "picjumbo",
+      "upstream_path": "searx/engines/picjumbo.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "pinterest",
+      "upstream_name": "pinterest",
+      "upstream_path": "searx/engines/pinterest.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "piped",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "piped",
+      "upstream_name": "piped",
+      "upstream_path": "searx/engines/piped.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "files"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "piratebay",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "piratebay",
+      "upstream_name": "piratebay",
+      "upstream_path": "searx/engines/piratebay.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "pixabay",
+      "upstream_name": "pixabay",
+      "upstream_path": "searx/engines/pixabay.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": true,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "pixiv",
+      "upstream_name": "pixiv",
+      "upstream_path": "searx/engines/pixiv.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "packages",
+        "it"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "pkg_go_dev",
+      "upstream_name": "pkg go dev",
+      "upstream_path": "searx/engines/pkg_go_dev.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "podchaser",
+      "upstream_name": "podchaser",
+      "upstream_path": "searx/engines/podchaser.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "database engines require explicit safe execution semantics"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "offline",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "postgresql",
+      "upstream_name": "postgresql",
+      "upstream_path": "searx/engines/postgresql.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "web"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "requires a live request-id preflight before search requests"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": true,
+      "status": "intentionally-skipped",
+      "time_range": true,
+      "upstream_module": "presearch",
+      "upstream_name": "presearch",
+      "upstream_path": "searx/engines/presearch.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "privacywall",
+      "upstream_name": "privacywall",
+      "upstream_path": "searx/engines/privacywall.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "public_domain_image_archive",
+      "upstream_name": "public domain image archive",
+      "upstream_path": "searx/engines/public_domain_image_archive.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "science",
+        "scientific publications"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "pubmed",
+      "upstream_name": "pubmed",
+      "upstream_path": "searx/engines/pubmed.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "packages"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "pypi",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "pypi",
+      "upstream_name": "pypi",
+      "upstream_path": "searx/engines/pypi.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "bespoke regional engine deferred past Phase 6 campaign"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": true,
+      "upstream_module": "quark",
+      "upstream_name": "quark",
+      "upstream_path": "searx/engines/quark.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "qwant",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "qwant",
+      "upstream_name": "qwant",
+      "upstream_path": "searx/engines/qwant.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "music",
+        "radio"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "radio_browser",
+      "upstream_name": "radio browser",
+      "upstream_path": "searx/engines/radio_browser.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "recoll",
+      "upstream_name": "recoll",
+      "upstream_path": "searx/engines/recoll.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "social media"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "reddit",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "reddit",
+      "upstream_name": "reddit",
+      "upstream_path": "searx/engines/reddit.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "repology",
+      "upstream_name": "repology",
+      "upstream_path": "searx/engines/repology.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "resulthunter",
+      "upstream_name": "resulthunter",
+      "upstream_path": "searx/engines/resulthunter.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "news"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "reuters",
+      "upstream_name": "reuters",
+      "upstream_path": "searx/engines/reuters.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "movies"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "rottentomatoes",
+      "upstream_name": "rottentomatoes",
+      "upstream_path": "searx/engines/rottentomatoes.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "rumble",
+      "upstream_name": "rumble",
+      "upstream_path": "searx/engines/rumble.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "s1search",
+      "upstream_name": "s1search",
+      "upstream_path": "searx/engines/s1search.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "science"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "bespoke science engine deferred past Phase 6 campaign"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "scanr_structures",
+      "upstream_name": "scanr structures",
+      "upstream_path": "searx/engines/scanr_structures.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "searchzee",
+      "upstream_name": "searchzee",
+      "upstream_path": "searx/engines/searchzee.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "upstream engine base class, not a standalone engine"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "searx_engine",
+      "upstream_name": "searx engine",
+      "upstream_path": "searx/engines/searx_engine.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "bespoke engine deferred past Phase 6 campaign"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": true,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "seekninja",
+      "upstream_name": "seekninja",
+      "upstream_path": "searx/engines/seekninja.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images",
+        "icons"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "selfhst",
+      "upstream_name": "selfhst",
+      "upstream_path": "searx/engines/selfhst.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "science",
+        "scientific publications"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "semantic_scholar",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "semantic_scholar",
+      "upstream_name": "semantic scholar",
+      "upstream_path": "searx/engines/semantic_scholar.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "movies"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "senscritique",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "senscritique",
+      "upstream_name": "senscritique",
+      "upstream_path": "searx/engines/senscritique.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "sepiasearch",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "sepiasearch",
+      "upstream_name": "sepiasearch",
+      "upstream_path": "searx/engines/sepiasearch.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "web"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "seznam",
+      "upstream_name": "seznam",
+      "upstream_path": "searx/engines/seznam.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "shopify_stock",
+      "upstream_name": "shopify stock",
+      "upstream_path": "searx/engines/shopify_stock.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "sogou",
+      "upstream_name": "sogou",
+      "upstream_path": "searx/engines/sogou.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "bespoke regional images engine deferred past Phase 6 campaign"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "sogou_images",
+      "upstream_name": "sogou images",
+      "upstream_path": "searx/engines/sogou_images.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "sogou_videos",
+      "upstream_name": "sogou videos",
+      "upstream_path": "searx/engines/sogou_videos.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "news"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "sogou_wechat",
+      "upstream_name": "sogou wechat",
+      "upstream_path": "searx/engines/sogou_wechat.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "files"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "solidtorrents",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "solidtorrents",
+      "upstream_name": "solidtorrents",
+      "upstream_path": "searx/engines/solidtorrents.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "solr",
+      "upstream_name": "solr",
+      "upstream_path": "searx/engines/solr.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "music"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "soundcloud",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "soundcloud",
+      "upstream_name": "soundcloud",
+      "upstream_path": "searx/engines/soundcloud.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "repos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "sourcehut",
+      "upstream_name": "sourcehut",
+      "upstream_path": "searx/engines/sourcehut.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "music"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "requires Spotify API credentials"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "spotify",
+      "upstream_name": "spotify",
+      "upstream_path": "searx/engines/spotify.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "science",
+        "scientific publications"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "springer",
+      "upstream_name": "springer",
+      "upstream_path": "searx/engines/springer.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "missing",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "offline",
+      "rust_module": "sqlite",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "sqlite",
+      "upstream_name": "sqlite",
+      "upstream_path": "searx/engines/sqlite.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "stackexchange",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "stackexchange",
+      "upstream_name": "stackexchange",
+      "upstream_path": "searx/engines/stackexchange.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "web"
+      ],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "startpage",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "startpage",
+      "upstream_name": "startpage",
+      "upstream_path": "searx/engines/startpage.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "startpagina",
+      "upstream_name": "startpagina",
+      "upstream_path": "searx/engines/startpagina.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "steam",
+      "upstream_name": "steam",
+      "upstream_path": "searx/engines/steam.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "stocksnap",
+      "upstream_name": "stocksnap",
+      "upstream_path": "searx/engines/stocksnap.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "swisscows",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "swisscows",
+      "upstream_name": "swisscows",
+      "upstream_path": "searx/engines/swisscows.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "news"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "swisscows",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "swisscows_news",
+      "upstream_name": "swisscows news",
+      "upstream_path": "searx/engines/swisscows_news.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "news"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "tagesschau",
+      "upstream_name": "tagesschau",
+      "upstream_path": "searx/engines/tagesschau.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "tiger",
+      "upstream_name": "tiger",
+      "upstream_path": "searx/engines/tiger.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online_url_search",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "tineye",
+      "upstream_name": "tineye",
+      "upstream_path": "searx/engines/tineye.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "files"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "tokyotoshokan",
+      "upstream_name": "tokyotoshokan",
+      "upstream_path": "searx/engines/tokyotoshokan.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "tonline",
+      "upstream_name": "tonline",
+      "upstream_path": "searx/engines/tonline.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "social media"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "tootfinder",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "tootfinder",
+      "upstream_name": "tootfinder",
+      "upstream_path": "searx/engines/tootfinder.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "requires Torznab indexer configuration"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "torznab",
+      "upstream_name": "torznab",
+      "upstream_path": "searx/engines/torznab.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "translate"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online_dictionary",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "translated",
+      "upstream_name": "translated",
+      "upstream_path": "searx/engines/translated.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "tubearchivist",
+      "upstream_name": "tubearchivist",
+      "upstream_path": "searx/engines/tubearchivist.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "tusksearch",
+      "upstream_name": "tusksearch",
+      "upstream_path": "searx/engines/tusksearch.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "unsplash",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "unsplash",
+      "upstream_name": "unsplash",
+      "upstream_path": "searx/engines/unsplash.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images",
+        "icons"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "uxwing",
+      "upstream_name": "uxwing",
+      "upstream_path": "searx/engines/uxwing.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "database engines require explicit safe execution semantics"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "offline",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "valkey_server",
+      "upstream_name": "valkey server",
+      "upstream_path": "searx/engines/valkey_server.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "vimeo",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "vimeo",
+      "upstream_name": "vimeo",
+      "upstream_path": "searx/engines/vimeo.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "packages",
+        "it"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "voidlinux",
+      "upstream_name": "voidlinux",
+      "upstream_path": "searx/engines/voidlinux.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "vuhuv",
+      "upstream_name": "vuhuv",
+      "upstream_path": "searx/engines/vuhuv.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "wallhaven",
+      "upstream_name": "wallhaven",
+      "upstream_path": "searx/engines/wallhaven.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "wikicommons",
+      "upstream_name": "wikicommons",
+      "upstream_path": "searx/engines/wikicommons.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "wikidata",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "wikidata",
+      "upstream_name": "wikidata",
+      "upstream_path": "searx/engines/wikidata.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "wikipedia",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "wikipedia",
+      "upstream_name": "wikipedia",
+      "upstream_path": "searx/engines/wikipedia.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "wolframalpha_api",
+      "upstream_name": "wolframalpha api",
+      "upstream_path": "searx/engines/wolframalpha_api.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "wolframalpha_noapi",
+      "upstream_name": "wolframalpha noapi",
+      "upstream_path": "searx/engines/wolframalpha_noapi.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "dictionaries",
+        "define"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "wordnik",
+      "upstream_name": "wordnik",
+      "upstream_path": "searx/engines/wordnik.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "weather"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "wttr",
+      "upstream_name": "wttr",
+      "upstream_path": "searx/engines/wttr.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "images"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "www1x",
+      "upstream_name": "www1x",
+      "upstream_path": "searx/engines/www1x.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "xpath",
+      "upstream_name": "xpath",
+      "upstream_path": "searx/engines/xpath.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "yacy",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "yacy",
+      "upstream_name": "yacy",
+      "upstream_path": "searx/engines/yacy.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "web"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "yahoo",
+      "upstream_name": "yahoo",
+      "upstream_path": "searx/engines/yahoo.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "news"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "yahoo_news",
+      "upstream_name": "yahoo news",
+      "upstream_path": "searx/engines/yahoo_news.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "yandex",
+      "upstream_name": "yandex",
+      "upstream_path": "searx/engines/yandex.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "music"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "yandex_music",
+      "upstream_name": "yandex music",
+      "upstream_path": "searx/engines/yandex_music.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "yep",
+      "upstream_name": "yep",
+      "upstream_path": "searx/engines/yep.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos",
+        "music"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "requires YouTube Data API key"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "youtube_api",
+      "upstream_name": "youtube api",
+      "upstream_path": "searx/engines/youtube_api.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "videos",
+        "music"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "bespoke YouTube scraper deferred past Phase 6 campaign"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": true,
+      "upstream_module": "youtube_noapi",
+      "upstream_name": "youtube noapi",
+      "upstream_path": "searx/engines/youtube_noapi.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": true,
+      "fixture_status": "present",
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": true,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "zlibrary",
+      "upstream_name": "zlibrary",
+      "upstream_path": "searx/engines/zlibrary.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "abcnyheter",
+      "upstream_name": "abcnyheter",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "anaconda",
+      "upstream_name": "anaconda",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "ayo",
+      "upstream_name": "ayo",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "repos"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "bitbucket",
+      "upstream_name": "bitbucket",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "cl0q",
+      "upstream_name": "cl0q",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "crowdview",
+      "upstream_name": "crowdview",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "encyclosearch",
+      "upstream_name": "encyclosearch",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "erowid",
+      "upstream_name": "erowid",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "dictionaries"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "etymonline",
+      "upstream_name": "etymonline",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "fastbot",
+      "upstream_name": "fastbot",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": true,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "fynd",
+      "upstream_name": "fynd",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "gabanza",
+      "upstream_name": "gabanza",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "habrahabr",
+      "upstream_name": "habrahabr",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "packages"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "hoogle",
+      "upstream_name": "hoogle",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "SearXNG demo engine"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "intentionally-skipped",
+      "time_range": false,
+      "upstream_module": "kavunka_demo",
+      "upstream_name": "kavunka demo",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "kozmonavt",
+      "upstream_name": "kozmonavt",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "blogs"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "kukei",
+      "upstream_name": "kukei",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "files"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "library_genesis",
+      "upstream_name": "library genesis",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "lobste_rs",
+      "upstream_name": "lobste.rs",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "mdn",
+      "upstream_name": "mdn",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "mankier",
+      "upstream_name": "mankier",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "science"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "openairedatasets",
+      "upstream_name": "openairedatasets",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "science"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "openairepublications",
+      "upstream_name": "openairepublications",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "files"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "openrepos",
+      "upstream_name": "openrepos",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "packages"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "packagist",
+      "upstream_name": "packagist",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "packages",
+        "it"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "pub_dev",
+      "upstream_name": "pub.dev",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "blogs"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "rawweb",
+      "upstream_name": "rawweb",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "blogs"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "searchmysite",
+      "upstream_name": "searchmysite",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "movies"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "tmdb",
+      "upstream_name": "tmdb",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "onions"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "torch",
+      "upstream_name": "torch",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "blogs"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "unobtanium",
+      "upstream_name": "unobtanium",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general",
+        "blogs"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "wiby",
+      "upstream_name": "wiby",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "it",
+        "packages"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "rubygems",
+      "upstream_name": "rubygems",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "reloado",
+      "upstream_name": "reloado",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "searchch",
+      "upstream_name": "searchch",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "dictionaries"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": true,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "woxikon_de_synonyme",
+      "upstream_name": "woxikon.de synonyme",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": true,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "wikimini",
+      "upstream_name": "wikimini",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "xonaly",
+      "upstream_name": "xonaly",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": false,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": false,
+      "upstream_module": "zapmeta",
+      "upstream_name": "zapmeta",
+      "upstream_path": "searx/settings.yml"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "news"
+      ],
+      "engine_traits": false,
+      "fixture_status": "present",
+      "known_gaps": [],
+      "language_support": true,
+      "network_required": false,
+      "paging": true,
+      "processor_type": "online",
+      "rust_module": "generic",
+      "safe_search": false,
+      "status": "ported",
+      "time_range": true,
+      "upstream_module": "sina",
+      "upstream_name": "sina",
+      "upstream_path": "searx/settings.yml"
+    }
+  ],
+  "orphaned_rust_engines": [],
+  "summary": {
+    "generic_candidates": 0,
+    "intentionally_skipped": 40,
+    "missing": 0,
+    "orphaned_rust_engines": 0,
+    "ported": 248,
+    "rust_engines": 54,
+    "upstream_engines": 288,
+    "zoeken_only_engines": 1
+  },
+  "zoeken_only_engines": [
+    {
+      "name": "wikibooks",
+      "reason": "Zoeken-only MediaWiki books engine; no distinct SearXNG module"
+    }
+  ]
+}

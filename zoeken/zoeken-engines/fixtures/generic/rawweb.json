@@ -1,0 +1,201 @@
+{
+  "engine": "rawweb",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://api.rawweb.org/api/search?keyword=rust&page=1&lang=*",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://api.rawweb.org/api/search?keyword=rust&page=1&lang=*",
+    "headers": {
+      "cf-cache-status": "DYNAMIC",
+      "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=dNRAgwySsyiXqdr4s%2B3Qbo0nBfVN9EDjO%2BmnyyKiTFvMPaVpkLTeAdx123qHJAZvBFTeX8JB4CyCiKfjxYKKmKIhHTA%2FMtNYwRY7EKPUHFkUDoacZzLpdokZLm3LGhgQXQ%3D%3D\"}]}",
+      "date": "Thu, 09 Jul 2026 14:06:19 GMT",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "content-type": "application/json",
+      "server-timing": "cfEdge;dur=9,cfOrigin;dur=405",
+      "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+      "server": "cloudflare",
+      "cf-ray": "a187e3787e07120e-MIA",
+      "vary": "Origin"
+    },
+    "body": "{\"total\":19965,\"data\":[{\"score\":1,\"title\":\"\\u003cem\\u003eRust\\u003c/em\\u003e\",\"content\":\"The language that helped coin the moniker \\u003cem\\u003eRust\\u003c/em\\u003e Evangelism Strike Force, and which is slowly starting to get to me. Resources Category Date Link Notes Backend 2024 trailbase a self-...\",\"link\":\"https://taoofmac.com/space/dev/rust\",\"publish_time\":1598956860},{\"score\":1,\"title\":\"\\u003cem\\u003eRust\\u003c/em\\u003e\",\"content\":\"For the full article visit \\u003cem\\u003eRust\\u003c/em\\u003e\",\"link\":\"https://szabgab.com/rust.html\",\"publish_time\":1699906693},{\"score\":1,\"title\":\"\\u003cem\\u003eRust\\u003c/em\\u003e\",\"content\":\"...e to follow the pointer if you use the heap normally garbage collector or manual freeing, \\u003cem\\u003eRust\\u003c/em\\u003e uses ownership to make memory safety guarantees without a garbage collector borrow, s...\",\"link\":\"https://miku86.com/2021-09-29/\",\"publish_time\":1632873600},{\"score\":1,\"title\":\"\\u003cem\\u003eRust\\u003c/em\\u003e\",\"content\":\"Backlinks 2021-04-13 Gregory Szorc’s \\u003cem\\u003eRust\\u003c/em\\u003e is for Professionals is his 2+ year experience report from using \\u003cem\\u003eRust\\u003c/em\\u003e. tl;dr: He really likes it! Also includes his approach to speeding u...\",\"link\":\"https://www.kevindangoor.com/posts/rust/\",\"publish_time\":1618300800},{\"score\":1,\"title\":\"\\u003cem\\u003eRust\\u003c/em\\u003e.\",\"content\":\"(Arkadasa \\u003cem\\u003eRust\\u003c/em\\u003e\\u0026#39;i anlatiyorum) Borrow checker ile kod yazmasi cok yorucu bir sey. \\u003cem\\u003eRust\\u003c/em\\u003e\\u0026#39;in ownership feature\\u0026#39;indan faydalanmak istiyorsan ne yazik ki katlanman gereken bir sey. Hata ...\",\"link\":\"https://reo.bearblog.dev/rust/\",\"publish_time\":1667841389},{\"score\":1,\"title\":\"\\u003cem\\u003eRust\\u003c/em\\u003e\",\"content\":\"My non-mechanical engineering experience with \\u003cem\\u003eRust\\u003c/em\\u003e\",\"link\":\"https://www.davidhang.com/blog/2024-06-29-rust-part-1/\",\"publish_time\":1719619200},{\"score\":1,\"title\":\"\\u003cem\\u003eRust\\u003c/em\\u003e\",\"content\":\"\\u003cem\\u003eRust\\u003c/em\\u003eup Installation Install on MacOS: Install on Arch Linux: Configuration To make installed \\u003cem\\u003eRust\\u003c/em\\u003e components available on MacOS, add to the . Enable tab completion for Bash, Fish, ...\",\"link\":\"https://www.pashynskykh.com/kb/rust/\",\"publish_time\":1744156800},{\"score\":1,\"title\":\"\\u003cem\\u003eRust\\u003c/em\\u003e\",\"content\":\"...er as Niko Matsakis. Of course he is a world-class engineer with a PhD from ETH Zürich, a \\u003cem\\u003eRust\\u003c/em\\u003e core maintainer who has been working on the language for way more than a decade, and ...\",\"link\":\"https://corrode.dev/podcast/s04e04-rust/\",\"publish_time\":1748476800},{\"score\":1,\"title\":\"\\u003cem\\u003eRust\\u003c/em\\u003e\",\"content\":\"####Course Outline In this course, we are going to look at some of the fundamentals of the \\u003cem\\u003eRust\\u003c/em\\u003e programming language.\",\"link\":\"https://tutorialedge.net/course/rust/\",\"publish_time\":1492198078},{\"score\":1,\"title\":\"\\u003cem\\u003eRust\\u003c/em\\u003e\",\"content\":\"The Algorithms - \\u003cem\\u003eRust\\u003c/em\\u003e All algorithms implemented in \\u003cem\\u003eRust\\u003c/em\\u003e - for education List of Algorithms # See our directory for easier navigation and a better overview of the project.\",\"link\":\"https://jr0.org/projects/rust/\",\"publish_time\":1648684800}]}\n"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://taoofmac.com/space/dev/rust",
+          "normalized_url": "https://taoofmac.com/space/dev/rust",
+          "title": "Rust",
+          "content": "The language that helped coin the moniker Rust Evangelism Strike Force, and which is slowly starting to get to me. Resources Category Date Link Notes Backend 2024 trailbase a self-...",
+          "engine": "rawweb",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://szabgab.com/rust.html",
+          "normalized_url": "https://szabgab.com/rust.html",
+          "title": "Rust",
+          "content": "For the full article visit Rust",
+          "engine": "rawweb",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://miku86.com/2021-09-29/",
+          "normalized_url": "https://miku86.com/2021-09-29/",
+          "title": "Rust",
+          "content": "...e to follow the pointer if you use the heap normally garbage collector or manual freeing, Rust uses ownership to make memory safety guarantees without a garbage collector borrow, s...",
+          "engine": "rawweb",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.kevindangoor.com/posts/rust/",
+          "normalized_url": "https://www.kevindangoor.com/posts/rust/",
+          "title": "Rust",
+          "content": "Backlinks 2021-04-13 Gregory Szorc’s Rust is for Professionals is his 2+ year experience report from using Rust. tl;dr: He really likes it! Also includes his approach to speeding u...",
+          "engine": "rawweb",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://reo.bearblog.dev/rust/",
+          "normalized_url": "https://reo.bearblog.dev/rust/",
+          "title": "Rust.",
+          "content": "(Arkadasa Rust'i anlatiyorum) Borrow checker ile kod yazmasi cok yorucu bir sey. Rust'in ownership feature'indan faydalanmak istiyorsan ne yazik ki katlanman gereken bir sey. Hata ...",
+          "engine": "rawweb",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.davidhang.com/blog/2024-06-29-rust-part-1/",
+          "normalized_url": "https://www.davidhang.com/blog/2024-06-29-rust-part-1/",
+          "title": "Rust",
+          "content": "My non-mechanical engineering experience with Rust",
+          "engine": "rawweb",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.pashynskykh.com/kb/rust/",
+          "normalized_url": "https://www.pashynskykh.com/kb/rust/",
+          "title": "Rust",
+          "content": "Rustup Installation Install on MacOS: Install on Arch Linux: Configuration To make installed Rust components available on MacOS, add to the . Enable tab completion for Bash, Fish, ...",
+          "engine": "rawweb",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://corrode.dev/podcast/s04e04-rust/",
+          "normalized_url": "https://corrode.dev/podcast/s04e04-rust/",
+          "title": "Rust",
+          "content": "...er as Niko Matsakis. Of course he is a world-class engineer with a PhD from ETH Zürich, a Rust core maintainer who has been working on the language for way more than a decade, and ...",
+          "engine": "rawweb",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://tutorialedge.net/course/rust/",
+          "normalized_url": "https://tutorialedge.net/course/rust/",
+          "title": "Rust",
+          "content": "####Course Outline In this course, we are going to look at some of the fundamentals of the Rust programming language.",
+          "engine": "rawweb",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jr0.org/projects/rust/",
+          "normalized_url": "https://jr0.org/projects/rust/",
+          "title": "Rust",
+          "content": "The Algorithms - Rust All algorithms implemented in Rust - for education List of Algorithms # See our directory for easier navigation and a better overview of the project.",
+          "engine": "rawweb",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

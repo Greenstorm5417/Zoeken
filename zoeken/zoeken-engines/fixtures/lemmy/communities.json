@@ -1,0 +1,42 @@
+{
+  "engine": "lemmy",
+  "case": "communities",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://lemmy.ml/",
+    "headers": {},
+    "body": "{\n      \"communities\": [\n        {\n          \"community\": {\n            \"actor_id\": \"https://lemmy.ml/c/rust\",\n            \"title\": \"Rust Programming\",\n            \"description\": \"A community about the [Rust](https://rust-lang.org) language.\"\n          },\n          \"counts\": {\"subscribers\": 100, \"posts\": 50, \"users_active_half_year\": 20, \"published\": \"2023-01-01T12:00:00Z\"}\n        }\n      ]\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://lemmy.ml/c/rust",
+          "normalized_url": "https://lemmy.ml/c/rust",
+          "title": "Rust Programming",
+          "content": "A community about the Rust language.",
+          "engine": "lemmy",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

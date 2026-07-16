@@ -1,0 +1,344 @@
+{
+  "engine": "jisho",
+  "case": "live",
+  "query": {
+    "query": "house",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "house",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://jisho.org/api/v1/search/words?keyword=house",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://jisho.org/api/v1/search/words?keyword=house",
+    "headers": {
+      "transfer-encoding": "chunked",
+      "x-xss-protection": "1; mode=block",
+      "x-request-id": "8ae640c3-31c7-4ed5-9e7b-1d9b0fd2eb6a",
+      "strict-transport-security": "max-age=31536000",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 09 Jul 2026 14:05:49 GMT",
+      "status": "200 OK",
+      "x-content-type-options": "nosniff",
+      "x-runtime": "0.262549",
+      "x-frame-options": "ALLOW-FROM http://www.wanikani.com",
+      "cache-control": "max-age=0, private, must-revalidate",
+      "server": "nginx",
+      "etag": "W/\"eaf010c8f13ccd6ea3ac3225e1fa4cad\""
+    },
+    "body": "{\"meta\":{\"status\":200},\"data\":[{\"slug\":\"家\",\"is_common\":true,\"tags\":[],\"jlpt\":[\"jlpt-n5\"],\"japanese\":[{\"word\":\"家\",\"reading\":\"いえ\"}],\"senses\":[{\"english_definitions\":[\"house\",\"residence\",\"dwelling\",\"home\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"family\",\"household\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"lineage\",\"family name\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":false}},{\"slug\":\"家屋\",\"is_common\":true,\"tags\":[],\"jlpt\":[\"jlpt-n2\"],\"japanese\":[{\"word\":\"家屋\",\"reading\":\"かおく\"}],\"senses\":[{\"english_definitions\":[\"house\",\"building\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"House\"],\"parts_of_speech\":[\"Wikipedia definition\"],\"links\":[{\"text\":\"Read “House” on English Wikipedia\",\"url\":\"http://en.wikipedia.org/wiki/House?oldid=495354808\"},{\"text\":\"Read “家屋” on Japanese Wikipedia\",\"url\":\"http://ja.wikipedia.org/wiki/家屋?oldid=42735051\"}],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[],\"sentences\":[]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":\"http://dbpedia.org/resource/House\"}},{\"slug\":\"宅\",\"is_common\":true,\"tags\":[\"wanikani23\"],\"jlpt\":[\"jlpt-n3\"],\"japanese\":[{\"word\":\"宅\",\"reading\":\"たく\"}],\"senses\":[{\"english_definitions\":[\"house\",\"home\"],\"parts_of_speech\":[\"Noun\",\"Noun, used as a suffix\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"one's house\",\"one's home\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"one's husband\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":false}},{\"slug\":\"住まい\",\"is_common\":true,\"tags\":[],\"jlpt\":[\"jlpt-n2\"],\"japanese\":[{\"word\":\"住まい\",\"reading\":\"すまい\"},{\"word\":\"住い\",\"reading\":\"すまい\"},{\"word\":\"住居\",\"reading\":\"すまい\"}],\"senses\":[{\"english_definitions\":[\"dwelling\",\"house\",\"residence\",\"address\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[\"住居 じゅうきょ\"],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"living\",\"life\"],\"parts_of_speech\":[\"Noun, used as a suffix\",\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[\"pronounced ずまい as a suffix\"]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":false}},{\"slug\":\"邸宅\",\"is_common\":true,\"tags\":[\"wanikani51\"],\"jlpt\":[\"jlpt-n1\"],\"japanese\":[{\"word\":\"邸宅\",\"reading\":\"ていたく\"},{\"word\":\"第宅\",\"reading\":\"ていたく\"}],\"senses\":[{\"english_definitions\":[\"(large) house\",\"residence\",\"mansion\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":false}},{\"slug\":\"人家\",\"is_common\":false,\"tags\":[],\"jlpt\":[],\"japanese\":[{\"word\":\"人家\",\"reading\":\"じんか\"}],\"senses\":[{\"english_definitions\":[\"house\",\"dwelling\",\"human habitation\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":false}},{\"slug\":\"宿\",\"is_common\":true,\"tags\":[\"wanikani13\"],\"jlpt\":[\"jlpt-n3\"],\"japanese\":[{\"word\":\"宿\",\"reading\":\"やど\"}],\"senses\":[{\"english_definitions\":[\"lodging\",\"inn\",\"hotel\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"house\",\"home\",\"dwelling\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"home of a servant's parents (or guarantor, etc.)\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":false}},{\"slug\":\"参議院\",\"is_common\":true,\"tags\":[],\"jlpt\":[\"jlpt-n1\"],\"japanese\":[{\"word\":\"参議院\",\"reading\":\"さんぎいん\"}],\"senses\":[{\"english_definitions\":[\"House of Councillors (upper house of the National Diet of Japan)\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[\"衆議院\"],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"House of Councillors\"],\"parts_of_speech\":[\"Wikipedia definition\"],\"links\":[{\"text\":\"Read “House of Councillors” on English Wikipedia\",\"url\":\"http://en.wikipedia.org/wiki/House_of_Councillors?oldid=493116584\"},{\"text\":\"Read “参議院” on Japanese Wikipedia\",\"url\":\"http://ja.wikipedia.org/wiki/参議院?oldid=42585224\"}],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[],\"sentences\":[]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":\"http://dbpedia.org/resource/House_of_Councillors\"}},{\"slug\":\"衆議院\",\"is_common\":true,\"tags\":[\"wanikani28\"],\"jlpt\":[\"jlpt-n1\"],\"japanese\":[{\"word\":\"衆議院\",\"reading\":\"しゅうぎいん\"}],\"senses\":[{\"english_definitions\":[\"House of Representatives (lower house of the National Diet of Japan)\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[\"参議院\"],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"House of Representatives of Japan\"],\"parts_of_speech\":[\"Wikipedia definition\"],\"links\":[{\"text\":\"Read “House of Representatives of Japan” on English Wikipedia\",\"url\":\"http://en.wikipedia.org/wiki/House_of_Representatives_of_Japan?oldid=493595186\"},{\"text\":\"Read “衆議院” on Japanese Wikipedia\",\"url\":\"http://ja.wikipedia.org/wiki/衆議院?oldid=42570609\"}],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[],\"sentences\":[]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":\"http://dbpedia.org/resource/House_of_Representatives_of_Japan\"}},{\"slug\":\"館-1\",\"is_common\":false,\"tags\":[],\"jlpt\":[\"jlpt-n1\"],\"japanese\":[{\"word\":\"館\",\"reading\":\"かん\"}],\"senses\":[{\"english_definitions\":[\"(large) building\",\"public building\",\"hall\"],\"parts_of_speech\":[\"Noun\",\"Noun, used as a suffix\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":false}},{\"slug\":\"家-2\",\"is_common\":true,\"tags\":[],\"jlpt\":[],\"japanese\":[{\"word\":\"家\",\"reading\":\"け\"}],\"senses\":[{\"english_definitions\":[\"house\",\"family\"],\"parts_of_speech\":[\"Suffix\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[\"after a surname\"]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":false}},{\"slug\":\"ハウス\",\"is_common\":true,\"tags\":[],\"jlpt\":[],\"japanese\":[{\"reading\":\"ハウス\"}],\"senses\":[{\"english_definitions\":[\"house\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"greenhouse\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[\"Abbreviation\"],\"restrictions\":[],\"see_also\":[\"ビニールハウス\"],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"house music\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[\"Abbreviation\"],\"restrictions\":[],\"see_also\":[\"ハウスミュージック\"],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"go to your kennel (cage, bed, etc.)!\"],\"parts_of_speech\":[],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[\"dog command\"]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":false}},{\"slug\":\"部族\",\"is_common\":true,\"tags\":[],\"jlpt\":[],\"japanese\":[{\"word\":\"部族\",\"reading\":\"ぶぞく\"}],\"senses\":[{\"english_definitions\":[\"tribe\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"Tribe\"],\"parts_of_speech\":[\"Wikipedia definition\"],\"links\":[{\"text\":\"Read “Tribe” on English Wikipedia\",\"url\":\"http://en.wikipedia.org/wiki/Tribe?oldid=495371610\"},{\"text\":\"Read “部族” on Japanese Wikipedia\",\"url\":\"http://ja.wikipedia.org/wiki/部族?oldid=42742474\"}],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[],\"sentences\":[]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":\"http://dbpedia.org/resource/Tribe\"}},{\"slug\":\"一家\",\"is_common\":true,\"tags\":[],\"jlpt\":[\"jlpt-n3\"],\"japanese\":[{\"word\":\"一家\",\"reading\":\"いっか\"},{\"word\":\"一家\",\"reading\":\"いっけ\"}],\"senses\":[{\"english_definitions\":[\"a family\",\"a household\",\"a home\",\"one's family\",\"whole family\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"(one's own) style\",\"school\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"gang\",\"(yakuza) family\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":false}},{\"slug\":\"お宅\",\"is_common\":true,\"tags\":[],\"jlpt\":[\"jlpt-n4\"],\"japanese\":[{\"word\":\"お宅\",\"reading\":\"おたく\"}],\"senses\":[{\"english_definitions\":[\"your house\",\"your home\",\"your family\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[\"Honorific or respectful (sonkeigo) language\"],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"your husband\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[\"Honorific or respectful (sonkeigo) language\"],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"your organization\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[\"Honorific or respectful (sonkeigo) language\"],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"you\"],\"parts_of_speech\":[\"Pronoun\"],\"links\":[],\"tags\":[\"Honorific or respectful (sonkeigo) language\"],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[\"referring to someone of equal status with whom one is not especially close\"]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":false}},{\"slug\":\"家-1\",\"is_common\":true,\"tags\":[\"wanikani7\"],\"jlpt\":[],\"japanese\":[{\"word\":\"家\",\"reading\":\"うち\"}],\"senses\":[{\"english_definitions\":[\"one's house\",\"one's home\",\"one's family\",\"one's household\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[\"Usually written using kana alone\"],\"restrictions\":[],\"see_also\":[\"内 うち\"],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"house\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[\"Usually written using kana alone\"],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"Uchi\"],\"parts_of_speech\":[\"Place\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":true,\"dbpedia\":false}},{\"slug\":\"屋-1\",\"is_common\":false,\"tags\":[],\"jlpt\":[],\"japanese\":[{\"word\":\"屋\",\"reading\":\"おく\"}],\"senses\":[{\"english_definitions\":[\"house\",\"building\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[\"屋 や\"],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"roof\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[\"屋根 やね\",\"屋 や\"],\"antonyms\":[],\"source\":[],\"info\":[]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":false}},{\"slug\":\"貸家\",\"is_common\":true,\"tags\":[],\"jlpt\":[\"jlpt-n2\"],\"japanese\":[{\"word\":\"貸家\",\"reading\":\"かしや\"},{\"word\":\"貸し家\",\"reading\":\"かしや\"},{\"word\":\"貸屋\",\"reading\":\"かしや\"},{\"word\":\"貸し屋\",\"reading\":\"かしや\"},{\"word\":\"貸家\",\"reading\":\"かしいえ\"},{\"word\":\"貸し家\",\"reading\":\"かしいえ\"}],\"senses\":[{\"english_definitions\":[\"house for rent\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":false}},{\"slug\":\"番地\",\"is_common\":true,\"tags\":[],\"jlpt\":[\"jlpt-n2\"],\"japanese\":[{\"word\":\"番地\",\"reading\":\"ばんち\"}],\"senses\":[{\"english_definitions\":[\"house number\",\"address\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":false}},{\"slug\":\"別荘\",\"is_common\":true,\"tags\":[\"wanikani54\"],\"jlpt\":[\"jlpt-n2\"],\"japanese\":[{\"word\":\"別荘\",\"reading\":\"べっそう\"}],\"senses\":[{\"english_definitions\":[\"holiday house\",\"vacation home\",\"villa\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]},{\"english_definitions\":[\"prison\",\"jail\"],\"parts_of_speech\":[\"Noun\"],\"links\":[],\"tags\":[\"Colloquial\"],\"restrictions\":[],\"see_also\":[],\"antonyms\":[],\"source\":[],\"info\":[]}],\"attribution\":{\"jmdict\":true,\"jmnedict\":false,\"dbpedia\":false}}]}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E5%AE%B6",
+          "normalized_url": "https://jisho.org/word/%E5%AE%B6",
+          "title": "家",
+          "content": "house",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E5%AE%B6%E5%B1%8B",
+          "normalized_url": "https://jisho.org/word/%E5%AE%B6%E5%B1%8B",
+          "title": "家屋",
+          "content": "house",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E5%AE%85",
+          "normalized_url": "https://jisho.org/word/%E5%AE%85",
+          "title": "宅",
+          "content": "house",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E4%BD%8F%E3%81%BE%E3%81%84",
+          "normalized_url": "https://jisho.org/word/%E4%BD%8F%E3%81%BE%E3%81%84",
+          "title": "住まい",
+          "content": "dwelling",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E9%82%B8%E5%AE%85",
+          "normalized_url": "https://jisho.org/word/%E9%82%B8%E5%AE%85",
+          "title": "邸宅",
+          "content": "(large) house",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E4%BA%BA%E5%AE%B6",
+          "normalized_url": "https://jisho.org/word/%E4%BA%BA%E5%AE%B6",
+          "title": "人家",
+          "content": "house",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E5%AE%BF",
+          "normalized_url": "https://jisho.org/word/%E5%AE%BF",
+          "title": "宿",
+          "content": "lodging",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E5%8F%82%E8%AD%B0%E9%99%A2",
+          "normalized_url": "https://jisho.org/word/%E5%8F%82%E8%AD%B0%E9%99%A2",
+          "title": "参議院",
+          "content": "House of Councillors (upper house of the National Diet of Japan)",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E8%A1%86%E8%AD%B0%E9%99%A2",
+          "normalized_url": "https://jisho.org/word/%E8%A1%86%E8%AD%B0%E9%99%A2",
+          "title": "衆議院",
+          "content": "House of Representatives (lower house of the National Diet of Japan)",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E9%A4%A8-1",
+          "normalized_url": "https://jisho.org/word/%E9%A4%A8-1",
+          "title": "館-1",
+          "content": "(large) building",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E5%AE%B6-2",
+          "normalized_url": "https://jisho.org/word/%E5%AE%B6-2",
+          "title": "家-2",
+          "content": "house",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E3%83%8F%E3%82%A6%E3%82%B9",
+          "normalized_url": "https://jisho.org/word/%E3%83%8F%E3%82%A6%E3%82%B9",
+          "title": "ハウス",
+          "content": "house",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E9%83%A8%E6%97%8F",
+          "normalized_url": "https://jisho.org/word/%E9%83%A8%E6%97%8F",
+          "title": "部族",
+          "content": "tribe",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E4%B8%80%E5%AE%B6",
+          "normalized_url": "https://jisho.org/word/%E4%B8%80%E5%AE%B6",
+          "title": "一家",
+          "content": "a family",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E3%81%8A%E5%AE%85",
+          "normalized_url": "https://jisho.org/word/%E3%81%8A%E5%AE%85",
+          "title": "お宅",
+          "content": "your house",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E5%AE%B6-1",
+          "normalized_url": "https://jisho.org/word/%E5%AE%B6-1",
+          "title": "家-1",
+          "content": "one's house",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E5%B1%8B-1",
+          "normalized_url": "https://jisho.org/word/%E5%B1%8B-1",
+          "title": "屋-1",
+          "content": "house",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E8%B2%B8%E5%AE%B6",
+          "normalized_url": "https://jisho.org/word/%E8%B2%B8%E5%AE%B6",
+          "title": "貸家",
+          "content": "house for rent",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E7%95%AA%E5%9C%B0",
+          "normalized_url": "https://jisho.org/word/%E7%95%AA%E5%9C%B0",
+          "title": "番地",
+          "content": "house number",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jisho.org/word/%E5%88%A5%E8%8D%98",
+          "normalized_url": "https://jisho.org/word/%E5%88%A5%E8%8D%98",
+          "title": "別荘",
+          "content": "holiday house",
+          "engine": "jisho",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

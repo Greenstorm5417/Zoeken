@@ -1,0 +1,416 @@
+{
+  "engine": "npm",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://api.npms.io/v2/search?q=rust&size=25&from=0",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://api.npms.io/v2/search?q=rust&size=25&from=0",
+    "headers": {
+      "date": "Thu, 09 Jul 2026 14:06:03 GMT",
+      "content-type": "application/json; charset=utf-8",
+      "server": "cloudflare",
+      "cf-cache-status": "DYNAMIC",
+      "cf-ray": "a187e3196c726e24-MIA",
+      "x-response-time": "15ms",
+      "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=aYKFBjHwKCKEATrhAF5YveEKo4sERkI3q%2FbzI%2FZnQ8hu2E8I%2F3z%2FfCCYE%2Bxv%2FHemnoLpmuq1%2FZJvkbBsUT5MJLl4Ag0qUBGWuw878%2FeFnCq7zsnltWIW78vEe0fXJA%3D%3D\"}]}",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+      "access-control-allow-headers": "DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type",
+      "access-control-allow-methods": "GET, POST, OPTIONS",
+      "access-control-allow-credentials": "false",
+      "server-timing": "cfEdge;dur=7,cfOrigin;dur=123",
+      "vary": "Origin",
+      "access-control-allow-origin": "*"
+    },
+    "body": "{\"total\":1980,\"results\":[{\"package\":{\"name\":\"rust\",\"scope\":\"unscoped\",\"version\":\"0.1.6\",\"description\":\"riak node configuration like a boss\",\"keywords\":[\"riak\",\"cluster\",\"node\",\"configuration\",\"boss\"],\"date\":\"2013-05-27T19:39:37.265Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/rust\",\"homepage\":\"https://github.com/wlaurance/rust#readme\",\"repository\":\"https://github.com/wlaurance/rust\",\"bugs\":\"https://github.com/wlaurance/rust/issues\"},\"author\":{\"name\":\"Will S. Laurance\"},\"publisher\":{\"username\":\"wlaurance\",\"email\":\"w.laurance@gmail.com\"},\"maintainers\":[{\"username\":\"wlaurance\",\"email\":\"w.laurance@gmail.com\"},{\"username\":\"zackify\",\"email\":\"zackify@gmail.com\"}]},\"flags\":{\"unstable\":true},\"score\":{\"final\":0.15122068339188835,\"detail\":{\"quality\":0.10511502143193392,\"popularity\":0.00940461195761718,\"maintenance\":0.33255589364897764}},\"searchScore\":100000.125},{\"package\":{\"name\":\"@napi-rs/triples\",\"scope\":\"napi-rs\",\"version\":\"1.1.0\",\"description\":\"Rust target triples objects\",\"keywords\":[\"Rust\",\"cross-compile\",\"napi\",\"n-api\",\"node-rs\",\"napi-rs\"],\"date\":\"2021-12-02T06:41:58.718Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40napi-rs%2Ftriples\",\"homepage\":\"https://github.com/napi-rs/napi-rs/tree/main/triples#readme\",\"repository\":\"https://github.com/napi-rs/napi-rs\",\"bugs\":\"https://github.com/napi-rs/napi-rs/issues\"},\"author\":{\"name\":\"LongYinan\",\"email\":\"lynweklm@gmail.com\",\"username\":\"broooooklyn\"},\"publisher\":{\"username\":\"broooooklyn\",\"email\":\"lynweklm@gmail.com\"},\"maintainers\":[{\"username\":\"thisispluto\",\"email\":\"andywangsy@gmail.com\"},{\"username\":\"broooooklyn\",\"email\":\"lynweklm@gmail.com\"}]},\"score\":{\"final\":0.7827869842020878,\"detail\":{\"quality\":0.8741829062190997,\"popularity\":0.5171430493415371,\"maintenance\":0.9700915573337714}},\"searchScore\":2.9023578},{\"package\":{\"name\":\"@node-rs/helper\",\"scope\":\"node-rs\",\"version\":\"1.3.3\",\"description\":\"Helper library for node-rs\",\"keywords\":[\"N-API\",\"napi\",\"Rust\",\"Performance\"],\"date\":\"2022-01-18T10:00:06.840Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40node-rs%2Fhelper\",\"homepage\":\"https://github.com/napi-rs/node-rs\",\"repository\":\"https://github.com/napi-rs/node-rs\",\"bugs\":\"https://github.com/napi-rs/node-rs/issues\"},\"author\":{\"name\":\"LongYinan\",\"email\":\"lynweklm@gmail.com\",\"username\":\"broooooklyn\"},\"publisher\":{\"username\":\"broooooklyn\",\"email\":\"lynweklm@gmail.com\"},\"maintainers\":[{\"username\":\"dxd_sjtu\",\"email\":\"dxd_sjtu@outlook.com\"},{\"username\":\"broooooklyn\",\"email\":\"lynweklm@gmail.com\"}]},\"score\":{\"final\":0.7526900288585616,\"detail\":{\"quality\":0.8741829062190997,\"popularity\":0.4012433073851207,\"maintenance\":0.9999999983086844}},\"searchScore\":1.1589981},{\"package\":{\"name\":\"@cspell/dict-rust\",\"scope\":\"cspell\",\"version\":\"2.0.1\",\"description\":\"Rust dictionary for cspell.\",\"keywords\":[\"cspell\",\"rust\",\"Rust\",\"dictionary\",\"spelling\"],\"date\":\"2022-06-15T12:25:10.070Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40cspell%2Fdict-rust\",\"homepage\":\"https://github.com/streetsidesoftware/cspell-dicts/blob/main/dictionaries/rust#readme\",\"repository\":\"https://github.com/streetsidesoftware/cspell-dicts\",\"bugs\":\"https://github.com/streetsidesoftware/cspell-dicts/issues\"},\"author\":{\"name\":\"Alexander Andreev\"},\"publisher\":{\"username\":\"jason-dent\",\"email\":\"jason@streetsidesoftware.nl\"},\"maintainers\":[{\"username\":\"jason-dent\",\"email\":\"jason@streetsidesoftware.nl\"}]},\"score\":{\"final\":0.7039297927919335,\"detail\":{\"quality\":0.8464094502755721,\"popularity\":0.285938320326316,\"maintenance\":0.9997958445572894}},\"searchScore\":1.0301888},{\"package\":{\"name\":\"@swc/core-linux\",\"scope\":\"swc\",\"version\":\"1.2.42\",\"description\":\"Super-fast alternative for babel\",\"keywords\":[\"swc\",\"spack\",\"babel\",\"typescript\",\"rust\",\"webpack\",\"tsc\"],\"date\":\"2020-12-29T07:14:17.098Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40swc%2Fcore-linux\",\"homepage\":\"https://swc.rs\",\"repository\":\"https://github.com/swc-project/swc\",\"bugs\":\"https://github.com/swc-project/swc/issues\"},\"author\":{\"name\":\"강동윤\",\"email\":\"kdy1997.dev@gmail.com\"},\"publisher\":{\"username\":\"kdy1\",\"email\":\"kdy1@outlook.kr\"},\"maintainers\":[{\"username\":\"kdy1\",\"email\":\"kdy1@outlook.kr\"}]},\"score\":{\"final\":0.7536208646003915,\"detail\":{\"quality\":0.9268446221167916,\"popularity\":0.35901732342871523,\"maintenance\":0.999746899329439}},\"searchScore\":0.93556976},{\"package\":{\"name\":\"@swc/core-win32\",\"scope\":\"swc\",\"version\":\"1.2.42\",\"description\":\"Super-fast alternative for babel\",\"keywords\":[\"swc\",\"spack\",\"babel\",\"typescript\",\"rust\",\"webpack\",\"tsc\"],\"date\":\"2020-12-29T07:14:25.111Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40swc%2Fcore-win32\",\"homepage\":\"https://swc.rs\",\"repository\":\"https://github.com/swc-project/swc\",\"bugs\":\"https://github.com/swc-project/swc/issues\"},\"author\":{\"name\":\"강동윤\",\"email\":\"kdy1997.dev@gmail.com\"},\"publisher\":{\"username\":\"kdy1\",\"email\":\"kdy1@outlook.kr\"},\"maintainers\":[{\"username\":\"kdy1\",\"email\":\"kdy1@outlook.kr\"}]},\"score\":{\"final\":0.7495499050087895,\"detail\":{\"quality\":0.9268446221167916,\"popularity\":0.3474292610423061,\"maintenance\":0.9997036485969852}},\"searchScore\":0.84403765},{\"package\":{\"name\":\"@swc/core-darwin\",\"scope\":\"swc\",\"version\":\"1.2.42\",\"description\":\"Super-fast alternative for babel\",\"keywords\":[\"swc\",\"spack\",\"babel\",\"typescript\",\"rust\",\"webpack\",\"tsc\"],\"date\":\"2020-12-29T07:14:08.619Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40swc%2Fcore-darwin\",\"homepage\":\"https://swc.rs\",\"repository\":\"https://github.com/swc-project/swc\",\"bugs\":\"https://github.com/swc-project/swc/issues\"},\"author\":{\"name\":\"강동윤\",\"email\":\"kdy1997.dev@gmail.com\"},\"publisher\":{\"username\":\"kdy1\",\"email\":\"kdy1@outlook.kr\"},\"maintainers\":[{\"username\":\"kdy1\",\"email\":\"kdy1@outlook.kr\"}]},\"score\":{\"final\":0.7495467513994183,\"detail\":{\"quality\":0.9268446221167916,\"popularity\":0.3474202507298169,\"maintenance\":0.9997036485969852}},\"searchScore\":0.84396994},{\"package\":{\"name\":\"@swc/core-linux-x64-musl\",\"scope\":\"swc\",\"version\":\"1.2.57\",\"description\":\"Super-fast alternative for babel\",\"keywords\":[\"swc\",\"spack\",\"babel\",\"typescript\",\"rust\",\"webpack\",\"tsc\"],\"date\":\"2021-05-11T14:35:09.005Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40swc%2Fcore-linux-x64-musl\",\"homepage\":\"https://swc.rs\",\"repository\":\"https://github.com/swc-project/swc\",\"bugs\":\"https://github.com/swc-project/swc/issues\"},\"author\":{\"name\":\"강동윤\",\"email\":\"kdy1997.dev@gmail.com\"},\"publisher\":{\"username\":\"kdy1\",\"email\":\"kdy1@outlook.kr\"},\"maintainers\":[{\"username\":\"kdy1\",\"email\":\"kdy1@outlook.kr\"}]},\"score\":{\"final\":0.7385727961952631,\"detail\":{\"quality\":0.823702539280414,\"popularity\":0.40447535348257196,\"maintenance\":0.9997018876921104}},\"searchScore\":0.8266336},{\"package\":{\"name\":\"@swc/core-linux-arm64-gnu\",\"scope\":\"swc\",\"version\":\"1.2.57\",\"description\":\"Super-fast alternative for babel\",\"keywords\":[\"swc\",\"spack\",\"babel\",\"typescript\",\"rust\",\"webpack\",\"tsc\"],\"date\":\"2021-05-11T14:35:27.345Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40swc%2Fcore-linux-arm64-gnu\",\"homepage\":\"https://swc.rs\",\"repository\":\"https://github.com/swc-project/swc\",\"bugs\":\"https://github.com/swc-project/swc/issues\"},\"author\":{\"name\":\"강동윤\",\"email\":\"kdy1997.dev@gmail.com\"},\"publisher\":{\"username\":\"kdy1\",\"email\":\"kdy1@outlook.kr\"},\"maintainers\":[{\"username\":\"kdy1\",\"email\":\"kdy1@outlook.kr\"}]},\"score\":{\"final\":0.7384147888035013,\"detail\":{\"quality\":0.8239761735435838,\"popularity\":0.4037893601376787,\"maintenance\":0.9997018876921104}},\"searchScore\":0.82274926},{\"package\":{\"name\":\"@swc/core-win32-x64-msvc\",\"scope\":\"swc\",\"version\":\"1.2.57\",\"description\":\"Super-fast alternative for babel\",\"keywords\":[\"swc\",\"spack\",\"babel\",\"typescript\",\"rust\",\"webpack\",\"tsc\"],\"date\":\"2021-05-11T14:34:39.784Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40swc%2Fcore-win32-x64-msvc\",\"homepage\":\"https://swc.rs\",\"repository\":\"https://github.com/swc-project/swc\",\"bugs\":\"https://github.com/swc-project/swc/issues\"},\"author\":{\"name\":\"강동윤\",\"email\":\"kdy1997.dev@gmail.com\"},\"publisher\":{\"username\":\"kdy1\",\"email\":\"kdy1@outlook.kr\"},\"maintainers\":[{\"username\":\"kdy1\",\"email\":\"kdy1@outlook.kr\"}]},\"score\":{\"final\":0.738087760762314,\"detail\":{\"quality\":0.8228753316338595,\"popularity\":0.4037985730854786,\"maintenance\":0.9997018876921104}},\"searchScore\":0.8181799},{\"package\":{\"name\":\"@swc/core-darwin-x64\",\"scope\":\"swc\",\"version\":\"1.2.57\",\"description\":\"Super-fast alternative for babel\",\"keywords\":[\"swc\",\"spack\",\"babel\",\"typescript\",\"rust\",\"webpack\",\"tsc\"],\"date\":\"2021-05-11T14:34:48.620Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40swc%2Fcore-darwin-x64\",\"homepage\":\"https://swc.rs\",\"repository\":\"https://github.com/swc-project/swc\",\"bugs\":\"https://github.com/swc-project/swc/issues\"},\"author\":{\"name\":\"강동윤\",\"email\":\"kdy1997.dev@gmail.com\"},\"publisher\":{\"username\":\"kdy1\",\"email\":\"kdy1@outlook.kr\"},\"maintainers\":[{\"username\":\"kdy1\",\"email\":\"kdy1@outlook.kr\"}]},\"score\":{\"final\":0.7375065334330586,\"detail\":{\"quality\":0.8209078535860199,\"popularity\":0.40382433332861134,\"maintenance\":0.9997018876921104}},\"searchScore\":0.810139},{\"package\":{\"name\":\"@swc-node/core\",\"scope\":\"swc-node\",\"version\":\"1.9.0\",\"description\":\"Faster swc nodejs binding\",\"keywords\":[\"swc\",\"babel\",\"esbuild\",\"rust\",\"n-api\",\"napi\",\"node-rs\",\"uglify\",\"napi-rs\",\"terser\",\"webpack\",\"ts-node\",\"typescript\",\"tsc\"],\"date\":\"2022-04-27T11:19:04.444Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40swc-node%2Fcore\",\"homepage\":\"https://github.com/swc-project/swc-node\",\"repository\":\"https://github.com/swc-project/swc-node\",\"bugs\":\"https://github.com/swc-project/swc-node/issues\"},\"author\":{\"name\":\"LongYinan\",\"email\":\"github@lyn.one\"},\"publisher\":{\"username\":\"broooooklyn\",\"email\":\"lynweklm@gmail.com\"},\"maintainers\":[{\"username\":\"broooooklyn\",\"email\":\"lynweklm@gmail.com\"}]},\"score\":{\"final\":0.7536181679603711,\"detail\":{\"quality\":0.8741829062190997,\"popularity\":0.40389880142668527,\"maintenance\":0.9999963302722896}},\"searchScore\":0.74077904},{\"package\":{\"name\":\"@swc/core-linux-musl\",\"scope\":\"swc\",\"version\":\"1.2.42\",\"description\":\"Super-fast alternative for babel\",\"keywords\":[\"swc\",\"spack\",\"babel\",\"typescript\",\"rust\",\"webpack\",\"tsc\"],\"date\":\"2020-12-29T07:14:34.532Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40swc%2Fcore-linux-musl\",\"homepage\":\"https://swc.rs\",\"repository\":\"https://github.com/swc-project/swc\",\"bugs\":\"https://github.com/swc-project/swc/issues\"},\"author\":{\"name\":\"강동윤\",\"email\":\"kdy1997.dev@gmail.com\"},\"publisher\":{\"username\":\"kdy1\",\"email\":\"kdy1@outlook.kr\"},\"maintainers\":[{\"username\":\"kdy1\",\"email\":\"kdy1@outlook.kr\"}]},\"score\":{\"final\":0.7423096503956936,\"detail\":{\"quality\":0.9268446221167916,\"popularity\":0.3267402542741944,\"maintenance\":0.9997062136133948}},\"searchScore\":0.701247},{\"package\":{\"name\":\"@swc-node/sourcemap-support\",\"scope\":\"swc-node\",\"version\":\"0.2.0\",\"description\":\"Runtime sourcemap support in NodeJS\",\"keywords\":[\"swc\",\"ts-node\",\"N-API\",\"NAPI\",\"napi-rs\",\"node-rs\",\"rust\",\"esbuild\",\"typescript\"],\"date\":\"2022-04-27T11:19:04.393Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40swc-node%2Fsourcemap-support\",\"homepage\":\"https://github.com/swc-project/swc-node\",\"repository\":\"https://github.com/swc-project/swc-node\",\"bugs\":\"https://github.com/swc-project/swc-node/issues\"},\"author\":{\"name\":\"LongYinan\",\"email\":\"github@lyn.one\"},\"publisher\":{\"username\":\"broooooklyn\",\"email\":\"lynweklm@gmail.com\"},\"maintainers\":[{\"username\":\"broooooklyn\",\"email\":\"lynweklm@gmail.com\"}]},\"flags\":{\"unstable\":true},\"score\":{\"final\":0.72435802150707,\"detail\":{\"quality\":0.7874063083771982,\"popularity\":0.3997507092866097,\"maintenance\":0.9949239449817062}},\"searchScore\":0.5208666},{\"package\":{\"name\":\"rust-result\",\"scope\":\"unscoped\",\"version\":\"1.0.0\",\"description\":\"Mimic Rust's `std::result`\",\"date\":\"2014-12-17T11:59:49.690Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/rust-result\",\"homepage\":\"https://github.com/mmalecki/rust-result.js\",\"repository\":\"https://github.com/mmalecki/rust-result.js\",\"bugs\":\"https://github.com/mmalecki/rust-result.js/issues\"},\"author\":{\"name\":\"Maciej Małecki\",\"email\":\"me@mmalecki.com\",\"username\":\"mmalecki\"},\"publisher\":{\"username\":\"mmalecki\",\"email\":\"me@mmalecki.com\"},\"maintainers\":[{\"username\":\"mmalecki\",\"email\":\"me@mmalecki.com\"},{\"username\":\"raynos\",\"email\":\"raynos2@gmail.com\"}]},\"score\":{\"final\":0.6808657610276984,\"detail\":{\"quality\":0.8178754546707278,\"popularity\":0.24441380783227454,\"maintenance\":0.9998808339576686}},\"searchScore\":0.47423053},{\"package\":{\"name\":\"protoduck\",\"scope\":\"unscoped\",\"version\":\"5.0.1\",\"description\":\"Fancy duck typing for the most serious of ducks.\",\"keywords\":[\"oop\",\"util\",\"object oriented\",\"duck type\",\"ducktype\",\"ducktyping\",\"protocols\",\"multimethod\",\"clojure\",\"haskell\",\"rust\",\"generic\",\"functions\",\"clos\",\"polymorphism\",\"impl\",\"typeclass\",\"traits\"],\"date\":\"2018-10-26T17:36:37.456Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/protoduck\",\"homepage\":\"https://github.com/zkat/protoduck#readme\",\"repository\":\"https://github.com/zkat/protoduck\",\"bugs\":\"https://github.com/zkat/protoduck/issues\"},\"author\":{\"name\":\"Kat Marchán\",\"email\":\"kzm@sykosomatic.org\"},\"publisher\":{\"username\":\"zkat\",\"email\":\"npm@zkat.tech\"},\"maintainers\":[{\"username\":\"zkat\",\"email\":\"kat@sykosomatic.org\"}]},\"score\":{\"final\":0.7431168733207485,\"detail\":{\"quality\":0.9867889634113984,\"popularity\":0.27749112117755725,\"maintenance\":0.9998808339576686}},\"searchScore\":0.37396312},{\"package\":{\"name\":\"@cubejs-backend/native\",\"scope\":\"cubejs-backend\",\"version\":\"0.30.25\",\"description\":\"Native module for Cube.js (binding to Rust codebase)\",\"date\":\"2022-06-16T19:49:20.166Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40cubejs-backend%2Fnative\",\"homepage\":\"https://github.com/cube-js/cube.js#readme\",\"repository\":\"https://github.com/cube-js/cube.js\",\"bugs\":\"https://github.com/cube-js/cube.js/issues\"},\"author\":{\"name\":\"Cube Dev, Inc.\"},\"publisher\":{\"username\":\"statsbot\",\"email\":\"pavel@statsbot.co\"},\"maintainers\":[{\"username\":\"cubedevinc\",\"email\":\"pavel@cube.dev\"},{\"username\":\"statsbot\",\"email\":\"pavel@statsbot.co\"},{\"username\":\"keydunov\",\"email\":\"artyom.keydunov@gmail.com\"}]},\"flags\":{\"unstable\":true},\"score\":{\"final\":0.7208546561414975,\"detail\":{\"quality\":0.7737971992532469,\"popularity\":0.40513536046343934,\"maintenance\":0.991194629152342}},\"searchScore\":0.3443379},{\"package\":{\"name\":\"@napi-rs/cli\",\"scope\":\"napi-rs\",\"version\":\"2.10.0\",\"description\":\"Cli tools for napi-rs\",\"keywords\":[\"cli\",\"rust\",\"napi\",\"n-api\",\"neon\"],\"date\":\"2022-06-10T10:25:14.502Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40napi-rs%2Fcli\",\"homepage\":\"https://github.com/napi-rs/napi-rs\",\"repository\":\"https://github.com/napi-rs/napi-rs\",\"bugs\":\"https://github.com/napi-rs/napi-rs/issues\"},\"author\":{\"name\":\"LongYinan\",\"email\":\"lynweklm@gmail.com\",\"username\":\"broooooklyn\"},\"publisher\":{\"username\":\"broooooklyn\",\"email\":\"lynweklm@gmail.com\"},\"maintainers\":[{\"username\":\"thisispluto\",\"email\":\"andywangsy@gmail.com\"},{\"username\":\"broooooklyn\",\"email\":\"lynweklm@gmail.com\"}]},\"score\":{\"final\":0.7068053970572905,\"detail\":{\"quality\":0.8741829062190997,\"popularity\":0.2701517729684106,\"maintenance\":0.9999925847217629}},\"searchScore\":0.33465695},{\"package\":{\"name\":\"@auto-it/crates\",\"scope\":\"auto-it\",\"version\":\"10.37.1\",\"description\":\"Deploy Rust crates to crates.io\",\"keywords\":[\"automation\",\"semantic\",\"release\",\"github\",\"labels\",\"automated\",\"continuos integration\",\"changelog\",\"rust\",\"crates.io\"],\"date\":\"2022-05-27T00:11:23.248Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40auto-it%2Fcrates\",\"homepage\":\"https://github.com/intuit/auto#readme\",\"repository\":\"https://github.com/intuit/auto\",\"bugs\":\"https://github.com/intuit/auto/issues\"},\"author\":{\"name\":\"Andrew Lisowski\",\"email\":\"lisowski54@gmail.com\",\"username\":\"alisowski\"},\"publisher\":{\"username\":\"alisowski\",\"email\":\"lisowski54@gmail.com\"},\"maintainers\":[{\"username\":\"alisowski\",\"email\":\"lisowski54@gmail.com\"}]},\"score\":{\"final\":0.7031914658143965,\"detail\":{\"quality\":0.9035118969755527,\"popularity\":0.23498030207421736,\"maintenance\":0.999699402845013}},\"searchScore\":0.29797375},{\"package\":{\"name\":\"@parcel/css-darwin-arm64\",\"scope\":\"parcel\",\"version\":\"1.10.1\",\"description\":\"A CSS parser, transformer, and minifier written in Rust\",\"date\":\"2022-06-16T15:26:22.065Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40parcel%2Fcss-darwin-arm64\"},\"publisher\":{\"username\":\"devongovett\",\"email\":\"devongovett@gmail.com\"},\"maintainers\":[{\"username\":\"devongovett\",\"email\":\"devongovett@gmail.com\"}]},\"score\":{\"final\":0.7257226252174901,\"detail\":{\"quality\":0.8675646348637752,\"popularity\":0.32992077949653215,\"maintenance\":0.9999456055273466}},\"searchScore\":0.2933982},{\"package\":{\"name\":\"@cloudflare/wrangler\",\"scope\":\"cloudflare\",\"version\":\"1.19.12\",\"description\":\"Command-line interface for all things Cloudflare Workers\",\"keywords\":[\"wrangler\",\"cloudflare\",\"workers\",\"cloudflare workers\",\"edge\",\"compute\",\"serverless\",\"serverless application\",\"serverless module\",\"wasm\",\"web\",\"assembly\",\"webassembly\",\"rust\",\"emscripten\",\"typescript\",\"graphql\",\"router\",\"http\",\"cli\"],\"date\":\"2022-04-21T10:47:36.045Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40cloudflare%2Fwrangler\",\"homepage\":\"https://github.com/cloudflare/wrangler#readme\",\"repository\":\"https://github.com/cloudflare/wrangler\",\"bugs\":\"https://github.com/cloudflare/wrangler/issues\"},\"author\":{\"name\":\"wrangler@cloudflare.com\"},\"publisher\":{\"username\":\"threepointone\",\"email\":\"threepointone@gmail.com\"},\"maintainers\":[{\"username\":\"jgentes\",\"email\":\"jgentes@cloudflare.com\"},{\"username\":\"threepointone\",\"email\":\"threepointone@gmail.com\"},{\"username\":\"caass\",\"email\":\"cass@swag.lgbt\"},{\"username\":\"xtuc\",\"email\":\"npm@sauleau.com\"},{\"username\":\"xortive\",\"email\":\"granjef3@gmail.com\"},{\"username\":\"nilslice\",\"email\":\"nilslice@gmail.com\"}]},\"score\":{\"final\":0.7184566622487414,\"detail\":{\"quality\":0.8390485382899159,\"popularity\":0.3508772090551117,\"maintenance\":0.9826716502642217}},\"searchScore\":0.2830037},{\"package\":{\"name\":\"nodejs-polars\",\"scope\":\"unscoped\",\"version\":\"0.5.4\",\"description\":\"[![rust docs](https://docs.rs/polars/badge.svg)](https://docs.rs/polars/latest/polars/) [![Build and test](https://github.com/pola-rs/polars/workflows/Build%20and%20test/badge.svg)](https://github.com/pola-rs/polars/actions) [![](https://img.shields.io/cr\",\"keywords\":[\"csv\",\"transform\",\"parse\",\"json\",\"polars\",\"dataframe\",\"data-processing\",\"rust\"],\"date\":\"2022-06-14T20:14:57.867Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/nodejs-polars\",\"homepage\":\"https://github.com/pola-rs/polars#readme\",\"repository\":\"https://github.com/pola-rs/polars\",\"bugs\":\"https://github.com/pola-rs/polars/issues\"},\"publisher\":{\"username\":\"cory_grinstead\",\"email\":\"cory.grinstead@gmail.com\"},\"maintainers\":[{\"username\":\"ritchie46\",\"email\":\"ritchie46@gmail.com\"},{\"username\":\"cory_grinstead\",\"email\":\"cory.grinstead@gmail.com\"}]},\"flags\":{\"unstable\":true},\"score\":{\"final\":0.6930382817645439,\"detail\":{\"quality\":0.7989561482359963,\"popularity\":0.29529114182326915,\"maintenance\":0.9999986790160023}},\"searchScore\":0.27924135},{\"package\":{\"name\":\"@swc/wasm\",\"scope\":\"swc\",\"version\":\"1.2.57\",\"description\":\"wasm module for swc\",\"keywords\":[\"swc\",\"spack\",\"babel\",\"typescript\",\"rust\",\"webpack\",\"tsc\"],\"date\":\"2021-05-11T14:18:35.322Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/%40swc%2Fwasm\",\"homepage\":\"https://github.com/swc-project/swc#readme\",\"repository\":\"https://github.com/swc-project/swc\",\"bugs\":\"https://github.com/swc-project/swc/issues\"},\"author\":{\"name\":\"강동윤\",\"email\":\"kdy1997.dev@gmail.com\"},\"publisher\":{\"username\":\"kdy1\",\"email\":\"kdy1@outlook.kr\"},\"maintainers\":[{\"username\":\"kdy1\",\"email\":\"kdy1@outlook.kr\"}]},\"score\":{\"final\":0.6886870782921214,\"detail\":{\"quality\":0.7437081495918751,\"popularity\":0.3305113506352005,\"maintenance\":0.9997018876921104}},\"searchScore\":0.27125135},{\"package\":{\"name\":\"snappy\",\"scope\":\"unscoped\",\"version\":\"7.1.1\",\"description\":\"Fastest Snappy compression library in Node.js\",\"keywords\":[\"snappy\",\"snap\",\"compression\",\"compress\",\"napi-rs\",\"NAPI\",\"N-API\",\"Rust\",\"Node-API\",\"node-addon\",\"node-addon-api\"],\"date\":\"2021-12-22T12:51:34.746Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/snappy\",\"homepage\":\"https://github.com/Brooooooklyn/snappy#readme\",\"repository\":\"https://github.com/Brooooooklyn/snappy\",\"bugs\":\"https://github.com/Brooooooklyn/snappy/issues\"},\"publisher\":{\"username\":\"broooooklyn\",\"email\":\"lynweklm@gmail.com\"},\"maintainers\":[{\"username\":\"broooooklyn\",\"email\":\"lynweklm@gmail.com\"},{\"username\":\"kesla\",\"email\":\"david.bjorklund@gmail.com\"}]},\"score\":{\"final\":0.7184086513316263,\"detail\":{\"quality\":0.9323791309610258,\"popularity\":0.25343052336586963,\"maintenance\":0.9999835110436123}},\"searchScore\":0.25696212},{\"package\":{\"name\":\"rustify\",\"scope\":\"unscoped\",\"version\":\"1.1.0\",\"description\":\"Rust WebAssembly transform for Browserify\",\"keywords\":[\"browserify\",\"rust\",\"node\",\"inline\"],\"date\":\"2018-02-21T15:53:52.998Z\",\"links\":{\"npm\":\"https://www.npmjs.com/package/rustify\",\"homepage\":\"https://github.com/browserify/rustify#readme\",\"repository\":\"https://github.com/browserify/rustify\",\"bugs\":\"https://github.com/browserify/rustify/issues\"},\"publisher\":{\"username\":\"goto-bus-stop\",\"email\":\"rene@kooi.me\"},\"maintainers\":[{\"username\":\"substack\",\"email\":\"substack@gmail.com\"},{\"username\":\"feross\",\"email\":\"feross@feross.org\"},{\"username\":\"gkatsev\",\"email\":\"me@gkatsev.com\"},{\"username\":\"zertosh\",\"email\":\"zertosh@gmail.com\"},{\"username\":\"mafintosh\",\"email\":\"mathiasbuus@gmail.com\"},{\"username\":\"maxogden\",\"email\":\"max@maxogden.com\"},{\"username\":\"thlorenz\",\"email\":\"thlorenz10@gmail.com\"},{\"username\":\"terinjokes\",\"email\":\"terinjokes@gmail.com\"},{\"username\":\"jmm\",\"email\":\"npm-public@jessemccarthy.net\"},{\"username\":\"mellowmelon\",\"email\":\"palmermebane@gmail.com\"},{\"username\":\"ashaffer88\",\"email\":\"darawk@gmail.com\"},{\"username\":\"balupton\",\"email\":\"b@lupton.cc\"},{\"username\":\"cwmma\",\"email\":\"calvin.metcalf@gmail.com\"},{\"username\":\"jprichardson\",\"email\":\"jprichardson@gmail.com\"},{\"username\":\"indutny\",\"email\":\"fedor@indutny.com\"},{\"username\":\"jryans\",\"email\":\"jryans@gmail.com\"},{\"username\":\"sethvincent\",\"email\":\"sethvincent@gmail.com\"},{\"username\":\"yoshuawuyts\",\"email\":\"yoshuawuyts@gmail.com\"},{\"username\":\"ungoldman\",\"email\":\"ungoldman@gmail.com\"},{\"username\":\"ahdinosaur\",\"email\":\"michael.williams@enspiral.com\"},{\"username\":\"elnounch\",\"email\":\"contact@elnounch.net\"},{\"username\":\"parshap\",\"email\":\"parshap+npm@gmail.com\"},{\"username\":\"yerkopalma\",\"email\":\"yerko.palma@usach.cl\"},{\"username\":\"forbeslindesay\",\"email\":\"forbes@lindesay.co.uk\"},{\"username\":\"leichtgewicht\",\"email\":\"martin.heidegger@gmail.com\"},{\"username\":\"garann\",\"email\":\"garann@gmail.com\"},{\"username\":\"bret\",\"email\":\"bcomnes@gmail.com\"},{\"username\":\"anandthakker\",\"email\":\"vestibule@anandthakker.net\"},{\"username\":\"mattdesl\",\"email\":\"dave.des@gmail.com\"},{\"username\":\"hughsk\",\"email\":\"hughskennedy@gmail.com\"},{\"username\":\"fpereira1\",\"email\":\"pereira.filype@gmail.com\"},{\"username\":\"goto-bus-stop\",\"email\":\"renee@kooi.me\"},{\"username\":\"bpostlethwaite\",\"email\":\"post.ben.here@gmail.com\"},{\"username\":\"emilbayes\",\"email\":\"github@tixz.dk\"},{\"username\":\"stevemao\",\"email\":\"maochenyan@gmail.com\"},{\"username\":\"pkrumins\",\"email\":\"peteris.krumins@gmail.com\"},{\"username\":\"tehshrike\",\"email\":\"me@JoshDuff.com\"},{\"username\":\"defunctzombie\",\"email\":\"shtylman@gmail.com\"},{\"username\":\"lukechilds\",\"email\":\"lukechilds123@gmail.com\"},{\"username\":\"raynos\",\"email\":\"raynos2@gmail.com\"}]},\"score\":{\"final\":0.6712382550964906,\"detail\":{\"quality\":0.9006654406871133,\"popularity\":0.1459438028719217,\"maintenance\":0.9998808339576686}},\"searchScore\":0.2504388}]}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/rust",
+          "normalized_url": "https://www.npmjs.com/package/rust",
+          "title": "rust",
+          "content": "riak node configuration like a boss",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40napi-rs%2Ftriples",
+          "normalized_url": "https://www.npmjs.com/package/%40napi-rs%2Ftriples",
+          "title": "@napi-rs/triples",
+          "content": "Rust target triples objects",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40node-rs%2Fhelper",
+          "normalized_url": "https://www.npmjs.com/package/%40node-rs%2Fhelper",
+          "title": "@node-rs/helper",
+          "content": "Helper library for node-rs",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40cspell%2Fdict-rust",
+          "normalized_url": "https://www.npmjs.com/package/%40cspell%2Fdict-rust",
+          "title": "@cspell/dict-rust",
+          "content": "Rust dictionary for cspell.",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40swc%2Fcore-linux",
+          "normalized_url": "https://www.npmjs.com/package/%40swc%2Fcore-linux",
+          "title": "@swc/core-linux",
+          "content": "Super-fast alternative for babel",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40swc%2Fcore-win32",
+          "normalized_url": "https://www.npmjs.com/package/%40swc%2Fcore-win32",
+          "title": "@swc/core-win32",
+          "content": "Super-fast alternative for babel",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40swc%2Fcore-darwin",
+          "normalized_url": "https://www.npmjs.com/package/%40swc%2Fcore-darwin",
+          "title": "@swc/core-darwin",
+          "content": "Super-fast alternative for babel",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40swc%2Fcore-linux-x64-musl",
+          "normalized_url": "https://www.npmjs.com/package/%40swc%2Fcore-linux-x64-musl",
+          "title": "@swc/core-linux-x64-musl",
+          "content": "Super-fast alternative for babel",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40swc%2Fcore-linux-arm64-gnu",
+          "normalized_url": "https://www.npmjs.com/package/%40swc%2Fcore-linux-arm64-gnu",
+          "title": "@swc/core-linux-arm64-gnu",
+          "content": "Super-fast alternative for babel",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40swc%2Fcore-win32-x64-msvc",
+          "normalized_url": "https://www.npmjs.com/package/%40swc%2Fcore-win32-x64-msvc",
+          "title": "@swc/core-win32-x64-msvc",
+          "content": "Super-fast alternative for babel",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40swc%2Fcore-darwin-x64",
+          "normalized_url": "https://www.npmjs.com/package/%40swc%2Fcore-darwin-x64",
+          "title": "@swc/core-darwin-x64",
+          "content": "Super-fast alternative for babel",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40swc-node%2Fcore",
+          "normalized_url": "https://www.npmjs.com/package/%40swc-node%2Fcore",
+          "title": "@swc-node/core",
+          "content": "Faster swc nodejs binding",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40swc%2Fcore-linux-musl",
+          "normalized_url": "https://www.npmjs.com/package/%40swc%2Fcore-linux-musl",
+          "title": "@swc/core-linux-musl",
+          "content": "Super-fast alternative for babel",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40swc-node%2Fsourcemap-support",
+          "normalized_url": "https://www.npmjs.com/package/%40swc-node%2Fsourcemap-support",
+          "title": "@swc-node/sourcemap-support",
+          "content": "Runtime sourcemap support in NodeJS",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/rust-result",
+          "normalized_url": "https://www.npmjs.com/package/rust-result",
+          "title": "rust-result",
+          "content": "Mimic Rust's `std::result`",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/protoduck",
+          "normalized_url": "https://www.npmjs.com/package/protoduck",
+          "title": "protoduck",
+          "content": "Fancy duck typing for the most serious of ducks.",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40cubejs-backend%2Fnative",
+          "normalized_url": "https://www.npmjs.com/package/%40cubejs-backend%2Fnative",
+          "title": "@cubejs-backend/native",
+          "content": "Native module for Cube.js (binding to Rust codebase)",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40napi-rs%2Fcli",
+          "normalized_url": "https://www.npmjs.com/package/%40napi-rs%2Fcli",
+          "title": "@napi-rs/cli",
+          "content": "Cli tools for napi-rs",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40auto-it%2Fcrates",
+          "normalized_url": "https://www.npmjs.com/package/%40auto-it%2Fcrates",
+          "title": "@auto-it/crates",
+          "content": "Deploy Rust crates to crates.io",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40parcel%2Fcss-darwin-arm64",
+          "normalized_url": "https://www.npmjs.com/package/%40parcel%2Fcss-darwin-arm64",
+          "title": "@parcel/css-darwin-arm64",
+          "content": "A CSS parser, transformer, and minifier written in Rust",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40cloudflare%2Fwrangler",
+          "normalized_url": "https://www.npmjs.com/package/%40cloudflare%2Fwrangler",
+          "title": "@cloudflare/wrangler",
+          "content": "Command-line interface for all things Cloudflare Workers",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/nodejs-polars",
+          "normalized_url": "https://www.npmjs.com/package/nodejs-polars",
+          "title": "nodejs-polars",
+          "content": "[![rust docs](https://docs.rs/polars/badge.svg)](https://docs.rs/polars/latest/polars/) [![Build and test](https://github.com/pola-rs/polars/workflows/Build%20and%20test/badge.svg)](https://github.com/pola-rs/polars/actions) [![](https://img.shields.io/cr",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/%40swc%2Fwasm",
+          "normalized_url": "https://www.npmjs.com/package/%40swc%2Fwasm",
+          "title": "@swc/wasm",
+          "content": "wasm module for swc",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/snappy",
+          "normalized_url": "https://www.npmjs.com/package/snappy",
+          "title": "snappy",
+          "content": "Fastest Snappy compression library in Node.js",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.npmjs.com/package/rustify",
+          "normalized_url": "https://www.npmjs.com/package/rustify",
+          "title": "rustify",
+          "content": "Rust WebAssembly transform for Browserify",
+          "engine": "npm",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

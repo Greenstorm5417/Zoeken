@@ -1,0 +1,49 @@
+{
+  "engine": "qwant",
+  "case": "request-page2",
+  "query": {
+    "query": "rust",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "en-US",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "en-US",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://api.qwant.com/v3/search/web?q=rust&count=10&locale=en_US&offset=10&device=desktop&safesearch=0&tgp=1&display=True&llm=True",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://api.qwant.com/v3/search/web",
+    "headers": {},
+    "body": "{\"status\":\"success\",\"data\":{}}"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

@@ -1,0 +1,344 @@
+{
+  "engine": "chefkoch",
+  "case": "live",
+  "query": {
+    "query": "kuchen",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "kuchen",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://api.chefkoch.de/v2/search-gateway/recipes?query=kuchen&limit=20&offset=0",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://api.chefkoch.de/v2/search-gateway/recipes?query=kuchen&limit=20&offset=0",
+    "headers": {
+      "x-instana-t": "03039f1a025a8cb4",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+      "x-instana-s": "666adb5ad08c2d68",
+      "accept-ranges": "bytes",
+      "x-timer": "S1783605932.299556,VS0,VE158",
+      "tracestate": "in=03039f1a025a8cb4;666adb5ad08c2d68",
+      "vary": "accept-encoding",
+      "date": "Thu, 09 Jul 2026 14:05:32 GMT",
+      "x-content-type-options": "nosniff",
+      "x-instana-l": "1",
+      "traceparent": "00-000000000000000003039f1a025a8cb4-666adb5ad08c2d68-01",
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-cache, no-store"
+    },
+    "body": "{\"count\":58003,\"queryId\":\"\",\"results\":[{\"score\":58003,\"recipe\":{\"id\":\"820481186558221\",\"type\":0,\"title\":\"Zitronenkuchen\",\"subtitle\":\"Saftiger Zitronenkuchen vom Blech\",\"owner\":{\"id\":\"73330e8571946a910f518ef0b151a1d4\",\"username\":\"StrawberryShortCake\",\"rank\":1,\"role\":\"user\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/73330e8571946a910f518ef0b151a1d4.jpg\",\"isVerified\":false,\"displayName\":\"StrawberryShortCake\"},\"rating\":{\"rating\":4.76,\"numVotes\":3298},\"difficulty\":2,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"1622423\",\"preparationTime\":25,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/820481186558221/Zitronenkuchen.html\",\"createdAt\":\"2007-08-08T19:20:03+02:00\",\"imageCount\":340,\"editor\":null,\"submissionDate\":null,\"isPremium\":false,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/820481186558221/bilder/1622423/\\u003cformat\\u003e/zitronenkuchen.jpg\",\"ingredientCount\":8,\"computedInfo\":null,\"savedRecipesCount\":277390,\"campaign\":null}},{\"score\":58002,\"recipe\":{\"id\":\"2636361414129018\",\"type\":0,\"title\":\"Russischer Zupfkuchen\",\"subtitle\":\"Rikes Backschule - Kuchen, die jeder mag, für eine 26er Springform\",\"owner\":{\"id\":\"6f6db5169a564ab67598d4b8a7506853\",\"username\":\"Chefkoch-Video\",\"rank\":9,\"role\":\"admin\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/6f6db5169a564ab67598d4b8a7506853.jpg\",\"isVerified\":false,\"displayName\":\"Chefkoch-Video\"},\"rating\":{\"rating\":4.84,\"numVotes\":1664},\"difficulty\":1,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"1104178\",\"preparationTime\":20,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/2636361414129018/Russischer-Zupfkuchen.html\",\"createdAt\":\"2014-11-03T11:23:30+01:00\",\"imageCount\":447,\"editor\":{\"id\":\"fc99c92a2118c2da0fb9891eaba58f0f\",\"username\":\"tobimodo\",\"rank\":9,\"role\":\"moderator\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/fc99c92a2118c2da0fb9891eaba58f0f.jpg\",\"isVerified\":false,\"displayName\":\"tobimodo\"},\"submissionDate\":\"2014-10-24T07:29:31+02:00\",\"isPremium\":false,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/2636361414129018/bilder/1104178/\\u003cformat\\u003e/russischer-zupfkuchen.jpg\",\"ingredientCount\":11,\"computedInfo\":null,\"savedRecipesCount\":202974,\"campaign\":null}},{\"score\":58001,\"recipe\":{\"id\":\"351351120485193\",\"type\":0,\"title\":\"Fantakuchen mit Mandarinen-Schmand\",\"subtitle\":\"\",\"owner\":{\"id\":\"cf280b72970c7c7faee5fbe9a9d22d5b\",\"username\":\"newbee\",\"rank\":1,\"role\":\"user\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/cf280b72970c7c7faee5fbe9a9d22d5b.jpg\",\"isVerified\":false,\"displayName\":\"newbee\"},\"rating\":{\"rating\":4.8,\"numVotes\":1194},\"difficulty\":2,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"1499755\",\"preparationTime\":30,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/351351120485193/Fantakuchen-mit-Mandarinen-Schmand.html\",\"createdAt\":\"2005-07-04T15:58:23+02:00\",\"imageCount\":173,\"editor\":null,\"submissionDate\":null,\"isPremium\":false,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/351351120485193/bilder/1499755/\\u003cformat\\u003e/fantakuchen-mit-mandarinen-schmand.jpg\",\"ingredientCount\":13,\"computedInfo\":null,\"savedRecipesCount\":187024,\"campaign\":null}},{\"score\":58000,\"recipe\":{\"id\":\"1511921256558799\",\"type\":0,\"title\":\"Erdbeerkuchen mit Schmand-Vanillecreme\",\"subtitle\":\"\",\"owner\":{\"id\":\"c608f70d896977edcebdc24958d695cf\",\"username\":\"Loeckchen87\",\"rank\":6,\"role\":\"user\",\"hasAvatar\":false,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"\",\"isVerified\":false,\"displayName\":\"Loeckchen87\"},\"rating\":{\"rating\":4.78,\"numVotes\":729},\"difficulty\":2,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"1626733\",\"preparationTime\":40,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/1511921256558799/Erdbeerkuchen-mit-Schmand-Vanillecreme.html\",\"createdAt\":\"2009-10-26T13:57:29+01:00\",\"imageCount\":200,\"editor\":null,\"submissionDate\":null,\"isPremium\":false,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/1511921256558799/bilder/1626733/\\u003cformat\\u003e/erdbeerkuchen-mit-schmand-vanillecreme.jpg\",\"ingredientCount\":13,\"computedInfo\":null,\"savedRecipesCount\":99915,\"campaign\":null}},{\"score\":57999,\"recipe\":{\"id\":\"1666101274781519\",\"type\":0,\"title\":\"Der unglaublich cremige NY Cheese Cake\",\"subtitle\":\"\",\"owner\":{\"id\":\"429b23d311721f20a3825b70c6de2064\",\"username\":\"demma\",\"rank\":5,\"role\":\"user\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/429b23d311721f20a3825b70c6de2064.jpg\",\"isVerified\":false,\"displayName\":\"demma\"},\"rating\":{\"rating\":4.82,\"numVotes\":3654},\"difficulty\":1,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"946472\",\"preparationTime\":20,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/1666101274781519/Der-unglaublich-cremige-NY-Cheese-Cake.html\",\"createdAt\":\"2010-05-26T08:16:11+02:00\",\"imageCount\":659,\"editor\":{\"id\":\"90b54f33ba25f2bca73b843479bccbef\",\"username\":\"schasti\",\"rank\":9,\"role\":\"moderator\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/90b54f33ba25f2bca73b843479bccbef.jpg\",\"isVerified\":false,\"displayName\":\"schasti\"},\"submissionDate\":\"2010-03-14T10:53:26+01:00\",\"isPremium\":false,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/1666101274781519/bilder/946472/\\u003cformat\\u003e/der-unglaublich-cremige-ny-cheese-cake.jpg\",\"ingredientCount\":11,\"computedInfo\":null,\"savedRecipesCount\":227401,\"campaign\":null}},{\"score\":57998,\"recipe\":{\"id\":\"1218391227356456\",\"type\":0,\"title\":\"Der beste Käsekuchen der Welt\",\"subtitle\":\"Kuchenliebling für Geburtstage, Feiertage, Kaffeeklatsch und Buffets\",\"owner\":{\"id\":\"904d6b29e24e02ea5216cb3554fba882\",\"username\":\"blondeangel716\",\"rank\":4,\"role\":\"user\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/904d6b29e24e02ea5216cb3554fba882.jpg\",\"isVerified\":false,\"displayName\":\"blondeangel716\"},\"rating\":{\"rating\":4.82,\"numVotes\":5821},\"difficulty\":2,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"1616497\",\"preparationTime\":30,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/1218391227356456/Der-beste-Kaesekuchen-der-Welt.html\",\"createdAt\":\"2008-11-22T17:19:29+01:00\",\"imageCount\":672,\"editor\":null,\"submissionDate\":null,\"isPremium\":false,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/1218391227356456/bilder/1616497/\\u003cformat\\u003e/der-beste-kaesekuchen-der-welt.jpg\",\"ingredientCount\":11,\"computedInfo\":null,\"savedRecipesCount\":349525,\"campaign\":null}},{\"score\":57997,\"recipe\":{\"id\":\"2038461330206007\",\"type\":0,\"title\":\"Blechkuchen \\\"Gebrannte Mandeln\\\"\",\"subtitle\":\"Der perfekte Blechkuchen für die kalte Winterzeit\",\"owner\":{\"id\":\"07f17883d12c84f8b6a141a0a4b390dc\",\"username\":\"Julie13\",\"rank\":5,\"role\":\"user\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/07f17883d12c84f8b6a141a0a4b390dc.jpg\",\"isVerified\":false,\"displayName\":\"Julie13\"},\"rating\":{\"rating\":4.77,\"numVotes\":411},\"difficulty\":1,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"1367698\",\"preparationTime\":25,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/2038461330206007/Blechkuchen-Gebrannte-Mandeln.html\",\"createdAt\":\"2012-02-26T17:30:03+01:00\",\"imageCount\":81,\"editor\":{\"id\":\"df0ac74a0990367eeb342f17b19f85f0\",\"username\":\"chiara\",\"rank\":9,\"role\":\"moderator\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/df0ac74a0990367eeb342f17b19f85f0.jpg\",\"isVerified\":false,\"displayName\":\"chiara\"},\"submissionDate\":\"2011-10-12T12:11:00+02:00\",\"isPremium\":false,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/2038461330206007/bilder/1367698/\\u003cformat\\u003e/blechkuchen-gebrannte-mandeln.jpg\",\"ingredientCount\":11,\"computedInfo\":null,\"savedRecipesCount\":62993,\"campaign\":null}},{\"score\":57996,\"recipe\":{\"id\":\"1001811205419556\",\"type\":0,\"title\":\"Rührkuchen nach Omas Art\",\"subtitle\":\"vielseitig zu variieren\",\"owner\":{\"id\":\"4255cb59d10ff1f14354245b3e48e875\",\"username\":\"Gaydo\",\"rank\":3,\"role\":\"reguser\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/4255cb59d10ff1f14354245b3e48e875.jpg\",\"isVerified\":false,\"displayName\":\"Gaydo\"},\"rating\":{\"rating\":4.79,\"numVotes\":254},\"difficulty\":2,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"1622427\",\"preparationTime\":30,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/1001811205419556/Ruehrkuchen-nach-Omas-Art.html\",\"createdAt\":\"2008-03-13T16:39:12+01:00\",\"imageCount\":53,\"editor\":null,\"submissionDate\":null,\"isPremium\":true,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/1001811205419556/bilder/1622427/\\u003cformat\\u003e/ruehrkuchen-nach-omas-art.jpg\",\"ingredientCount\":9,\"computedInfo\":null,\"savedRecipesCount\":44912,\"campaign\":null}},{\"score\":57995,\"recipe\":{\"id\":\"1140221220253617\",\"type\":0,\"title\":\"Supersaftiger Apfelkuchen\",\"subtitle\":\"Einfaches Rezept mit vielen Äpfeln und lockerem Rührteig\",\"owner\":{\"id\":\"9943ca6ba1a75cfdd48d4b5d9ef0e5f1\",\"username\":\"nina-sun\",\"rank\":2,\"role\":\"user\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/9943ca6ba1a75cfdd48d4b5d9ef0e5f1.jpg\",\"isVerified\":false,\"displayName\":\"nina-sun\"},\"rating\":{\"rating\":4.78,\"numVotes\":2755},\"difficulty\":2,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"1618359\",\"preparationTime\":40,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/1140221220253617/Supersaftiger-Apfelkuchen.html\",\"createdAt\":\"2008-09-01T14:47:50+02:00\",\"imageCount\":380,\"editor\":null,\"submissionDate\":null,\"isPremium\":false,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/1140221220253617/bilder/1618359/\\u003cformat\\u003e/supersaftiger-apfelkuchen.jpg\",\"ingredientCount\":8,\"computedInfo\":null,\"savedRecipesCount\":223600,\"campaign\":null}},{\"score\":57994,\"recipe\":{\"id\":\"2654951416926884\",\"type\":0,\"title\":\"Karottenkuchen, Rüblikuchen oder Möhrenkuchen\",\"subtitle\":\"Der Name ist eigentlich egal - Hauptsache lecker\",\"owner\":{\"id\":\"6f6db5169a564ab67598d4b8a7506853\",\"username\":\"Chefkoch-Video\",\"rank\":9,\"role\":\"admin\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/6f6db5169a564ab67598d4b8a7506853.jpg\",\"isVerified\":false,\"displayName\":\"Chefkoch-Video\"},\"rating\":{\"rating\":4.8,\"numVotes\":3096},\"difficulty\":2,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"749878\",\"preparationTime\":35,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/2654951416926884/Karottenkuchen-Rueblikuchen-oder-Moehrenkuchen.html\",\"createdAt\":\"2014-11-26T10:15:45+01:00\",\"imageCount\":1007,\"editor\":{\"id\":\"fc99c92a2118c2da0fb9891eaba58f0f\",\"username\":\"tobimodo\",\"rank\":9,\"role\":\"moderator\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/fc99c92a2118c2da0fb9891eaba58f0f.jpg\",\"isVerified\":false,\"displayName\":\"tobimodo\"},\"submissionDate\":\"2014-11-25T14:58:21+01:00\",\"isPremium\":false,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/2654951416926884/bilder/749878/\\u003cformat\\u003e/karottenkuchen-rueblikuchen-oder-moehrenkuchen.jpg\",\"ingredientCount\":13,\"computedInfo\":null,\"savedRecipesCount\":250500,\"campaign\":null}},{\"score\":57993,\"recipe\":{\"id\":\"4334481728047031\",\"type\":0,\"title\":\"High Protein Carrot Cake Baked Oats\",\"subtitle\":\"proteinreich, einfach, schnell\",\"owner\":{\"id\":\"642b0b70095f402889ec3890a133b1b7\",\"username\":\"Chefkoch_ChristinaS\",\"rank\":6,\"role\":\"comuser\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/642b0b70095f402889ec3890a133b1b7.jpg\",\"isVerified\":true,\"displayName\":\"Chefkoch_ChristinaS\"},\"rating\":{\"rating\":4.75,\"numVotes\":12},\"difficulty\":1,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"1569667\",\"preparationTime\":10,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/4334481728047031/High-Protein-Carrot-Cake-Baked-Oats.html\",\"createdAt\":\"2024-10-04T15:11:22+02:00\",\"imageCount\":2,\"editor\":{\"id\":\"bcfce3497b42e48f1210823471c1312f\",\"username\":\"Chefkoch_Heidi\",\"rank\":9,\"role\":\"admin\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/bcfce3497b42e48f1210823471c1312f.jpg\",\"isVerified\":false,\"displayName\":\"Chefkoch_Heidi\"},\"submissionDate\":\"2024-10-04T15:03:51+02:00\",\"isPremium\":false,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/4334481728047031/bilder/1569667/\\u003cformat\\u003e/high-protein-carrot-cake-baked-oats.jpg\",\"ingredientCount\":14,\"computedInfo\":null,\"savedRecipesCount\":2324,\"campaign\":null}},{\"score\":57992,\"recipe\":{\"id\":\"4422111775564568\",\"type\":0,\"title\":\"High Protein Zimtschnecken Blechkuchen\",\"subtitle\":\"schnell, einfach, kalorienarm\",\"owner\":{\"id\":\"642b0b70095f402889ec3890a133b1b7\",\"username\":\"Chefkoch_ChristinaS\",\"rank\":6,\"role\":\"comuser\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/642b0b70095f402889ec3890a133b1b7.jpg\",\"isVerified\":true,\"displayName\":\"Chefkoch_ChristinaS\"},\"rating\":{\"rating\":5,\"numVotes\":2},\"difficulty\":1,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"1622251\",\"preparationTime\":15,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/4422111775564568/High-Protein-Zimtschnecken-Blechkuchen.html\",\"createdAt\":\"2026-04-08T10:54:21+02:00\",\"imageCount\":1,\"editor\":{\"id\":\"1e4db4e0f38a13fed693bd9d99ecfb4f\",\"username\":\"Chefkoch_EllenT\",\"rank\":9,\"role\":\"admin\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/1e4db4e0f38a13fed693bd9d99ecfb4f.jpg\",\"isVerified\":false,\"displayName\":\"Chefkoch_EllenT\"},\"submissionDate\":\"2026-04-07T14:22:48+02:00\",\"isPremium\":true,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/4422111775564568/bilder/1622251/\\u003cformat\\u003e/high-protein-zimtschnecken-blechkuchen.jpg\",\"ingredientCount\":13,\"computedInfo\":null,\"savedRecipesCount\":null,\"campaign\":null}},{\"score\":57991,\"recipe\":{\"id\":\"378801124204434\",\"type\":0,\"title\":\"Friedas genialer Hefezopf\",\"subtitle\":\"\",\"owner\":{\"id\":\"08b447dc2366539c1a78911ba2d53ede\",\"username\":\"lone_bohne\",\"rank\":9,\"role\":\"reguser\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/08b447dc2366539c1a78911ba2d53ede.jpg\",\"isVerified\":false,\"displayName\":\"lone_bohne\"},\"rating\":{\"rating\":4.85,\"numVotes\":5446},\"difficulty\":2,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"1628092\",\"preparationTime\":30,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/378801124204434/Friedas-genialer-Hefezopf.html\",\"createdAt\":\"2005-08-16T18:28:36+02:00\",\"imageCount\":1818,\"editor\":null,\"submissionDate\":null,\"isPremium\":true,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/378801124204434/bilder/1628092/\\u003cformat\\u003e/friedas-genialer-hefezopf.jpg\",\"ingredientCount\":11,\"computedInfo\":null,\"savedRecipesCount\":206870,\"campaign\":null}},{\"score\":57990,\"recipe\":{\"id\":\"2204031353338061\",\"type\":0,\"title\":\"Apfelkuchen mit Streuseln\",\"subtitle\":\"Blechkuchen\",\"owner\":{\"id\":\"edb2e621666c4b799c885004f4f92481\",\"username\":\"mimamutti\",\"rank\":8,\"role\":\"reguser\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/edb2e621666c4b799c885004f4f92481.jpg\",\"isVerified\":false,\"displayName\":\"mimamutti\"},\"rating\":{\"rating\":4.84,\"numVotes\":2513},\"difficulty\":2,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"1325918\",\"preparationTime\":40,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/2204031353338061/Apfelkuchen-mit-Streuseln.html\",\"createdAt\":\"2012-11-19T18:04:53+01:00\",\"imageCount\":282,\"editor\":{\"id\":\"dd694bf429144e0ad322258b9938e3a1\",\"username\":\"Sonja\",\"rank\":9,\"role\":\"reguser\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/dd694bf429144e0ad322258b9938e3a1.jpg\",\"isVerified\":false,\"displayName\":\"Sonja\"},\"submissionDate\":\"2012-11-11T16:24:30+01:00\",\"isPremium\":true,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/2204031353338061/bilder/1325918/\\u003cformat\\u003e/apfelkuchen-mit-streuseln.jpg\",\"ingredientCount\":7,\"computedInfo\":null,\"savedRecipesCount\":187068,\"campaign\":null}},{\"score\":57989,\"recipe\":{\"id\":\"369841122576721\",\"type\":0,\"title\":\"Käsekuchen mit 2 Schichten\",\"subtitle\":\"aus einer 28er Springorm\",\"owner\":{\"id\":\"18873db6bafce9bd278ca7b077705d91\",\"username\":\"minizeh\",\"rank\":3,\"role\":\"user\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/18873db6bafce9bd278ca7b077705d91.jpg\",\"isVerified\":false,\"displayName\":\"minizeh\"},\"rating\":{\"rating\":4.84,\"numVotes\":1492},\"difficulty\":2,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"1560881\",\"preparationTime\":35,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/369841122576721/Kaesekuchen-mit-2-Schichten.html\",\"createdAt\":\"2005-07-29T08:13:43+02:00\",\"imageCount\":261,\"editor\":null,\"submissionDate\":null,\"isPremium\":false,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/369841122576721/bilder/1560881/\\u003cformat\\u003e/kaesekuchen-mit-2-schichten.jpg\",\"ingredientCount\":14,\"computedInfo\":null,\"savedRecipesCount\":100707,\"campaign\":null}},{\"score\":57988,\"recipe\":{\"id\":\"1255131230975627\",\"type\":0,\"title\":\"Tränenkuchen - der beste Käsekuchen der Welt!\",\"subtitle\":\"\",\"owner\":{\"id\":\"ba6435db19dd47e53653aa71066d5951\",\"username\":\"Philippsmama\",\"rank\":1,\"role\":\"user\",\"hasAvatar\":false,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"\",\"isVerified\":false,\"displayName\":\"Philippsmama\"},\"rating\":{\"rating\":4.82,\"numVotes\":1803},\"difficulty\":2,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"1395167\",\"preparationTime\":45,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/1255131230975627/Traenenkuchen-der-beste-Kaesekuchen-der-Welt.html\",\"createdAt\":\"2009-01-03T17:37:34+01:00\",\"imageCount\":509,\"editor\":null,\"submissionDate\":null,\"isPremium\":false,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/1255131230975627/bilder/1395167/\\u003cformat\\u003e/traenenkuchen-der-beste-kaesekuchen-der-welt.jpg\",\"ingredientCount\":14,\"computedInfo\":null,\"savedRecipesCount\":143150,\"campaign\":null}},{\"score\":57987,\"recipe\":{\"id\":\"2040561330436979\",\"type\":0,\"title\":\"Zimtschnecken mit Frischkäse-Glasur\",\"subtitle\":\"Cinnamon Rolls with Cream Cheese Frosting\",\"owner\":{\"id\":\"581ea26942cc2a548d073429ca52424e\",\"username\":\"unknown-cff9c530d0e927adea9471c9\",\"rank\":9,\"role\":\"user\",\"hasAvatar\":false,\"hasPaid\":false,\"deleted\":true,\"avatarImageUrlTemplate\":\"\",\"isVerified\":false,\"displayName\":\"Unbekannte:r Nutzer:in\"},\"rating\":{\"rating\":4.82,\"numVotes\":1790},\"difficulty\":1,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"1067872\",\"preparationTime\":30,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/2040561330436979/Zimtschnecken-mit-Frischkaese-Glasur.html\",\"createdAt\":\"2012-02-28T15:48:07+01:00\",\"imageCount\":417,\"editor\":{\"id\":\"dd694bf429144e0ad322258b9938e3a1\",\"username\":\"Sonja\",\"rank\":9,\"role\":\"reguser\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/dd694bf429144e0ad322258b9938e3a1.jpg\",\"isVerified\":false,\"displayName\":\"Sonja\"},\"submissionDate\":\"2012-02-22T14:00:22+01:00\",\"isPremium\":false,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/2040561330436979/bilder/1067872/\\u003cformat\\u003e/zimtschnecken-mit-frischkaese-glasur.jpg\",\"ingredientCount\":14,\"computedInfo\":null,\"savedRecipesCount\":144856,\"campaign\":null}},{\"score\":57986,\"recipe\":{\"id\":\"2287701364848460\",\"type\":0,\"title\":\"Zimtschnecken 'Cinnabon Style'\",\"subtitle\":\"amerikanische Zimtschnecken mit Cream-Cheese-Frosting\",\"owner\":{\"id\":\"f267c52e380c24de1391e267883cfa96\",\"username\":\"Bourbie\",\"rank\":7,\"role\":\"user\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/f267c52e380c24de1391e267883cfa96.jpg\",\"isVerified\":false,\"displayName\":\"Bourbie\"},\"rating\":{\"rating\":4.82,\"numVotes\":1769},\"difficulty\":2,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"952364\",\"preparationTime\":60,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/2287701364848460/Zimtschnecken-Cinnabon-Style.html\",\"createdAt\":\"2013-04-03T17:15:39+02:00\",\"imageCount\":373,\"editor\":{\"id\":\"df0ac74a0990367eeb342f17b19f85f0\",\"username\":\"chiara\",\"rank\":9,\"role\":\"moderator\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/df0ac74a0990367eeb342f17b19f85f0.jpg\",\"isVerified\":false,\"displayName\":\"chiara\"},\"submissionDate\":\"2012-12-20T13:32:37+01:00\",\"isPremium\":false,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/2287701364848460/bilder/952364/\\u003cformat\\u003e/zimtschnecken-cinnabon-style.jpg\",\"ingredientCount\":15,\"computedInfo\":null,\"savedRecipesCount\":115588,\"campaign\":null}},{\"score\":57985,\"recipe\":{\"id\":\"773171180182809\",\"type\":0,\"title\":\"Grundrezept für Kuchen und Muffins\",\"subtitle\":\"Melanies Bester\",\"owner\":{\"id\":\"53e947117f5df7197fef07fd82314ca9\",\"username\":\"melawi\",\"rank\":4,\"role\":\"user\",\"hasAvatar\":false,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"\",\"isVerified\":false,\"displayName\":\"melawi\"},\"rating\":{\"rating\":4.81,\"numVotes\":1255},\"difficulty\":2,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"1242159\",\"preparationTime\":10,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/773171180182809/Grundrezept-fuer-Kuchen-und-Muffins.html\",\"createdAt\":\"2007-05-26T17:44:48+02:00\",\"imageCount\":228,\"editor\":null,\"submissionDate\":null,\"isPremium\":false,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/773171180182809/bilder/1242159/\\u003cformat\\u003e/grundrezept-fuer-kuchen-und-muffins.jpg\",\"ingredientCount\":7,\"computedInfo\":null,\"savedRecipesCount\":102843,\"campaign\":null}},{\"score\":57984,\"recipe\":{\"id\":\"537101150800337\",\"type\":0,\"title\":\"Hefezopf wie beim Bäcker\",\"subtitle\":\"...nur viel frischer!!\",\"owner\":{\"id\":\"98d8cb175968bdd9e846baa986d4b6da\",\"username\":\"jesusfreak\",\"rank\":8,\"role\":\"user\",\"hasAvatar\":true,\"hasPaid\":false,\"deleted\":false,\"avatarImageUrlTemplate\":\"https://img.chefkoch-cdn.de/images/\\u003cformat\\u003e/ck.de/user/98d8cb175968bdd9e846baa986d4b6da.jpg\",\"isVerified\":false,\"displayName\":\"jesusfreak\"},\"rating\":{\"rating\":4.81,\"numVotes\":955},\"difficulty\":2,\"hasImage\":true,\"hasVideo\":true,\"previewImageId\":\"1369610\",\"preparationTime\":30,\"isSubmitted\":true,\"isRejected\":false,\"siteUrl\":\"https://www.chefkoch.de/rezepte/537101150800337/Hefezopf-wie-beim-Baecker.html\",\"createdAt\":\"2006-06-23T23:18:50+02:00\",\"imageCount\":359,\"editor\":null,\"submissionDate\":null,\"isPremium\":false,\"isPlus\":false,\"status\":99,\"previewImageUrlTemplate\":\"https://img.chefkoch-cdn.de/rezepte/537101150800337/bilder/1369610/\\u003cformat\\u003e/hefezopf-wie-beim-baecker.jpg\",\"ingredientCount\":9,\"computedInfo\":null,\"savedRecipesCount\":49600,\"campaign\":null}}],\"tagGroups\":[{\"key\":\"diet\",\"name\":\"Ernährung\",\"icon\":\"https://img.chefkoch-cdn.de/assets/v2/svg/veggi_vegan.svg\",\"isActive\":false,\"isDisabled\":false,\"tags\":[{\"id\":32,\"name\":\"Vegetarisch\",\"count\":13230,\"isActive\":false,\"isDisabled\":false},{\"id\":57,\"name\":\"Vegan\",\"count\":1870,\"isActive\":false,\"isDisabled\":false},{\"id\":55,\"name\":\"Kalorienarm\",\"count\":993,\"isActive\":false,\"isDisabled\":false},{\"id\":9948,\"name\":\"Low Carb\",\"count\":380,\"isActive\":false,\"isDisabled\":false},{\"id\":9947,\"name\":\"Ketogen\",\"count\":131,\"isActive\":false,\"isDisabled\":false},{\"id\":7710,\"name\":\"Paleo\",\"count\":176,\"isActive\":false,\"isDisabled\":false},{\"id\":56,\"name\":\"Fettarm\",\"count\":1532,\"isActive\":false,\"isDisabled\":false},{\"id\":112,\"name\":\"Trennkost\",\"count\":459,\"isActive\":false,\"isDisabled\":false},{\"id\":143,\"name\":\"Vollwert\",\"count\":1343,\"isActive\":false,\"isDisabled\":false},{\"id\":111,\"name\":\"Für das Baby\",\"count\":43,\"isActive\":false,\"isDisabled\":false}]},{\"key\":\"category\",\"name\":\"Rezeptkategorie\",\"icon\":\"https://img.chefkoch-cdn.de/assets/v2/svg/recipe_category.svg\",\"isActive\":false,\"isDisabled\":false,\"tags\":[{\"id\":30,\"name\":\"Auflauf\",\"count\":848,\"isActive\":false,\"isDisabled\":false},{\"id\":82,\"name\":\"Pizza\",\"count\":95,\"isActive\":false,\"isDisabled\":false},{\"id\":94,\"name\":\"Reis- oder Nudelsalat\",\"count\":104,\"isActive\":false,\"isDisabled\":false},{\"id\":15,\"name\":\"Salat\",\"count\":740,\"isActive\":false,\"isDisabled\":false},{\"id\":3669,\"name\":\"Salatdressing\",\"count\":39,\"isActive\":false,\"isDisabled\":false},{\"id\":122,\"name\":\"Tarte\",\"count\":1414,\"isActive\":false,\"isDisabled\":false},{\"id\":52,\"name\":\"Fingerfood\",\"count\":568,\"isActive\":false,\"isDisabled\":false},{\"id\":35,\"name\":\"Dips\",\"count\":247,\"isActive\":false,\"isDisabled\":false},{\"id\":34,\"name\":\"Saucen\",\"count\":746,\"isActive\":false,\"isDisabled\":false},{\"id\":40,\"name\":\"Suppe\",\"count\":810,\"isActive\":false,\"isDisabled\":false},{\"id\":166,\"name\":\"Klöße\",\"count\":102,\"isActive\":false,\"isDisabled\":false},{\"id\":108,\"name\":\"Brot und Brötchen\",\"count\":548,\"isActive\":false,\"isDisabled\":false},{\"id\":46,\"name\":\"Brotspeise\",\"count\":87,\"isActive\":false,\"isDisabled\":false},{\"id\":51,\"name\":\"Aufstrich\",\"count\":133,\"isActive\":false,\"isDisabled\":false},{\"id\":89,\"name\":\"Süßspeise\",\"count\":647,\"isActive\":false,\"isDisabled\":false},{\"id\":127,\"name\":\"Eis\",\"count\":442,\"isActive\":false,\"isDisabled\":false},{\"id\":92,\"name\":\"Kuchen\",\"count\":44831,\"isActive\":false,\"isDisabled\":false},{\"id\":147,\"name\":\"Kekse\",\"count\":1139,\"isActive\":false,\"isDisabled\":false},{\"id\":93,\"name\":\"Torte\",\"count\":2302,\"isActive\":false,\"isDisabled\":false},{\"id\":157,\"name\":\"Confiserie\",\"count\":247,\"isActive\":false,\"isDisabled\":false},{\"id\":11,\"name\":\"Getränke\",\"count\":259,\"isActive\":false,\"isDisabled\":false},{\"id\":113,\"name\":\"Shake\",\"count\":25,\"isActive\":false,\"isDisabled\":false},{\"id\":313,\"name\":\"Gewürzmischung\",\"count\":4,\"isActive\":false,\"isDisabled\":false},{\"id\":243,\"name\":\"Pasten\",\"count\":4,\"isActive\":false,\"isDisabled\":false},{\"id\":211,\"name\":\"Studentenküche\",\"count\":775,\"isActive\":false,\"isDisabled\":false}]},{\"key\":\"characteristic\",\"name\":\"Rezepteigenschaften\",\"icon\":\"https://img.chefkoch-cdn.de/assets/v2/svg/recipe_property.svg\",\"isActive\":false,\"isDisabled\":false,\"tags\":[{\"id\":50,\"name\":\"Einfach\",\"count\":26675,\"isActive\":false,\"isDisabled\":false},{\"id\":49,\"name\":\"Schnell\",\"count\":6398,\"isActive\":false,\"isDisabled\":false},{\"id\":79,\"name\":\"Basisrezepte\",\"count\":918,\"isActive\":false,\"isDisabled\":false},{\"id\":48,\"name\":\"Preiswert\",\"count\":1986,\"isActive\":false,\"isDisabled\":false}]},{\"key\":\"technique\",\"name\":\"Zubereitung\",\"icon\":\"https://img.chefkoch-cdn.de/assets/v2/svg/preparation.svg\",\"isActive\":false,\"isDisabled\":false,\"tags\":[{\"id\":144,\"name\":\"Kochen\",\"count\":2941,\"isActive\":false,\"isDisabled\":false},{\"id\":69,\"name\":\"Braten\",\"count\":1933,\"isActive\":false,\"isDisabled\":false},{\"id\":107,\"name\":\"Dünsten\",\"count\":346,\"isActive\":false,\"isDisabled\":false},{\"id\":153,\"name\":\"Blanchieren\",\"count\":9,\"isActive\":false,\"isDisabled\":false},{\"id\":66,\"name\":\"Schmoren\",\"count\":682,\"isActive\":false,\"isDisabled\":false},{\"id\":23,\"name\":\"Backen\",\"count\":49401,\"isActive\":false,\"isDisabled\":false},{\"id\":137,\"name\":\"Überbacken\",\"count\":325,\"isActive\":false,\"isDisabled\":false},{\"id\":116,\"name\":\"Wok\",\"count\":138,\"isActive\":false,\"isDisabled\":false},{\"id\":135,\"name\":\"Mikrowelle\",\"count\":331,\"isActive\":false,\"isDisabled\":false},{\"id\":162,\"name\":\"Römertopf\",\"count\":42,\"isActive\":false,\"isDisabled\":false},{\"id\":62,\"name\":\"Fondue\",\"count\":9,\"isActive\":false,\"isDisabled\":false},{\"id\":136,\"name\":\"Marinieren\",\"count\":65,\"isActive\":false,\"isDisabled\":false},{\"id\":134,\"name\":\"Frittieren\",\"count\":805,\"isActive\":false,\"isDisabled\":false},{\"id\":128,\"name\":\"Flambieren\",\"count\":7,\"isActive\":false,\"isDisabled\":false},{\"id\":150,\"name\":\"Haltbarmachen\",\"count\":277,\"isActive\":false,\"isDisabled\":false},{\"id\":1147,\"name\":\"Wursten\",\"count\":15,\"isActive\":false,\"isDisabled\":false}]},{\"key\":\"cuisine\",\"name\":\"Länderküche\",\"icon\":\"https://img.chefkoch-cdn.de/assets/v2/svg/international.svg\",\"isActive\":false,\"isDisabled\":false,\"tags\":[{\"id\":65,\"name\":\"Deutsch\",\"count\":2186,\"isActive\":false,\"isDisabled\":false},{\"id\":28,\"name\":\"Italienisch\",\"count\":506,\"isActive\":false,\"isDisabled\":false},{\"id\":43,\"name\":\"Spanisch\",\"count\":225,\"isActive\":false,\"isDisabled\":false},{\"id\":149,\"name\":\"Portugiesisch\",\"count\":134,\"isActive\":false,\"isDisabled\":false},{\"id\":84,\"name\":\"Französisch\",\"count\":507,\"isActive\":false,\"isDisabled\":false},{\"id\":117,\"name\":\"Englisch\",\"count\":270,\"isActive\":false,\"isDisabled\":false},{\"id\":86,\"name\":\"Osteuropäisch\",\"count\":363,\"isActive\":false,\"isDisabled\":false},{\"id\":133,\"name\":\"Skandinavisch\",\"count\":186,\"isActive\":false,\"isDisabled\":false},{\"id\":44,\"name\":\"Griechisch\",\"count\":142,\"isActive\":false,\"isDisabled\":false},{\"id\":103,\"name\":\"Türkisch\",\"count\":130,\"isActive\":false,\"isDisabled\":false},{\"id\":212,\"name\":\"Russisch\",\"count\":77,\"isActive\":false,\"isDisabled\":false},{\"id\":163,\"name\":\"Naher Osten\",\"count\":140,\"isActive\":false,\"isDisabled\":false},{\"id\":14,\"name\":\"Asiatisch\",\"count\":361,\"isActive\":false,\"isDisabled\":false},{\"id\":13,\"name\":\"Indisch\",\"count\":51,\"isActive\":false,\"isDisabled\":false},{\"id\":148,\"name\":\"Japanisch\",\"count\":45,\"isActive\":false,\"isDisabled\":false},{\"id\":38,\"name\":\"Amerikanisch\",\"count\":1264,\"isActive\":false,\"isDisabled\":false},{\"id\":74,\"name\":\"Mexikanisch\",\"count\":30,\"isActive\":false,\"isDisabled\":false},{\"id\":95,\"name\":\"Karibisch\",\"count\":51,\"isActive\":false,\"isDisabled\":false},{\"id\":114,\"name\":\"Lateinamerikanisch\",\"count\":45,\"isActive\":false,\"isDisabled\":false},{\"id\":101,\"name\":\"Afrikanisch\",\"count\":101,\"isActive\":false,\"isDisabled\":false},{\"id\":131,\"name\":\"Marokkanisch\",\"count\":37,\"isActive\":false,\"isDisabled\":false},{\"id\":168,\"name\":\"Ägyptisch\",\"count\":10,\"isActive\":false,\"isDisabled\":false},{\"id\":145,\"name\":\"Australisch\",\"count\":57,\"isActive\":false,\"isDisabled\":false}]},{\"key\":\"meal\",\"name\":\"Mahlzeit\",\"icon\":\"https://img.chefkoch-cdn.de/assets/v2/svg/restaurant_menu.svg\",\"isActive\":false,\"isDisabled\":false,\"tags\":[{\"id\":21,\"name\":\"Hauptspeise\",\"count\":6722,\"isActive\":false,\"isDisabled\":false},{\"id\":19,\"name\":\"Vorspeise\",\"count\":1145,\"isActive\":false,\"isDisabled\":false},{\"id\":36,\"name\":\"Beilage\",\"count\":1236,\"isActive\":false,\"isDisabled\":false},{\"id\":90,\"name\":\"Dessert\",\"count\":3847,\"isActive\":false,\"isDisabled\":false},{\"id\":71,\"name\":\"Snack\",\"count\":1608,\"isActive\":false,\"isDisabled\":false},{\"id\":53,\"name\":\"Frühstück\",\"count\":795,\"isActive\":false,\"isDisabled\":false}]},{\"key\":\"occasion\",\"name\":\"Anlass\",\"icon\":\"https://img.chefkoch-cdn.de/assets/v2/svg/celebration.svg\",\"isActive\":false,\"isDisabled\":false,\"tags\":[{\"id\":78,\"name\":\"Frühling\",\"count\":2265,\"isActive\":false,\"isDisabled\":false},{\"id\":27,\"name\":\"Sommer\",\"count\":4775,\"isActive\":false,\"isDisabled\":false},{\"id\":99,\"name\":\"Herbst\",\"count\":4403,\"isActive\":false,\"isDisabled\":false},{\"id\":64,\"name\":\"Winter\",\"count\":4247,\"isActive\":false,\"isDisabled\":false},{\"id\":91,\"name\":\"Für Kinder\",\"count\":2802,\"isActive\":false,\"isDisabled\":false},{\"id\":120,\"name\":\"Ostern\",\"count\":521,\"isActive\":false,\"isDisabled\":false},{\"id\":39,\"name\":\"Halloween\",\"count\":133,\"isActive\":false,\"isDisabled\":false},{\"id\":102,\"name\":\"Weihnachten\",\"count\":2851,\"isActive\":false,\"isDisabled\":false},{\"id\":87,\"name\":\"Silvester\",\"count\":168,\"isActive\":false,\"isDisabled\":false},{\"id\":106,\"name\":\"Festlich\",\"count\":1598,\"isActive\":false,\"isDisabled\":false},{\"id\":63,\"name\":\"Grillen\",\"count\":163,\"isActive\":false,\"isDisabled\":false},{\"id\":152,\"name\":\"Camping\",\"count\":291,\"isActive\":false,\"isDisabled\":false},{\"id\":45,\"name\":\"Party\",\"count\":2773,\"isActive\":false,\"isDisabled\":false}]},{\"key\":\"other\",\"name\":\"Andere\",\"icon\":\"\",\"isActive\":false,\"isDisabled\":false,\"tags\":[{\"id\":132,\"name\":\"Schweden\",\"count\":153,\"isActive\":false,\"isDisabled\":false},{\"id\":164,\"name\":\"Südafrika\",\"count\":27,\"isActive\":false,\"isDisabled\":false},{\"id\":10,\"name\":\"Cocktail\",\"count\":4,\"isActive\":false,\"isDisabled\":false},{\"id\":18,\"name\":\"Gemüse\",\"count\":5808,\"isActive\":false,\"isDisabled\":false},{\"id\":29,\"name\":\"Europa\",\"count\":5551,\"isActive\":false,\"isDisabled\":false},{\"id\":47,\"name\":\"gebunden\",\"count\":580,\"isActive\":false,\"isDisabled\":false},{\"id\":275,\"name\":\"kaffee\",\"count\":14,\"isActive\":false,\"isDisabled\":false},{\"id\":24,\"name\":\"Nudeln\",\"count\":775,\"isActive\":false,\"isDisabled\":false},{\"id\":26,\"name\":\"Krustentier oder Muscheln\",\"count\":389,\"isActive\":false,\"isDisabled\":false},{\"id\":20,\"name\":\"kalt\",\"count\":361,\"isActive\":false,\"isDisabled\":false},{\"id\":67,\"name\":\"Wild\",\"count\":200,\"isActive\":false,\"isDisabled\":false},{\"id\":75,\"name\":\"Lamm oder Ziege\",\"count\":109,\"isActive\":false,\"isDisabled\":false},{\"id\":85,\"name\":\"Ungarn\",\"count\":56,\"isActive\":false,\"isDisabled\":false},{\"id\":68,\"name\":\"Kartoffel\",\"count\":1030,\"isActive\":false,\"isDisabled\":false},{\"id\":105,\"name\":\"Diabetiker\",\"count\":181,\"isActive\":false,\"isDisabled\":false},{\"id\":1076,\"name\":\"Niederlande\",\"count\":60,\"isActive\":false,\"isDisabled\":false},{\"id\":96,\"name\":\"Weißrussland\",\"count\":7,\"isActive\":false,\"isDisabled\":false},{\"id\":1605,\"name\":\"Gluten\",\"count\":6,\"isActive\":false,\"isDisabled\":false},{\"id\":6082,\"name\":\"Ernährungskonzepte\",\"count\":543,\"isActive\":false,\"isDisabled\":false},{\"id\":100,\"name\":\"Mehlspeisen\",\"count\":491,\"isActive\":false,\"isDisabled\":false},{\"id\":158,\"name\":\"Finnland\",\"count\":58,\"isActive\":false,\"isDisabled\":false},{\"id\":154,\"name\":\"Belgien\",\"count\":45,\"isActive\":false,\"isDisabled\":false},{\"id\":142,\"name\":\"Punsch\",\"count\":40,\"isActive\":false,\"isDisabled\":false},{\"id\":169,\"name\":\"Vietnam\",\"count\":10,\"isActive\":false,\"isDisabled\":false},{\"id\":1456,\"name\":\"Essig\",\"count\":4,\"isActive\":false,\"isDisabled\":false},{\"id\":1609,\"name\":\"Getreide\",\"count\":415,\"isActive\":false,\"isDisabled\":false},{\"id\":80,\"name\":\"Meeresfrüchte\",\"count\":411,\"isActive\":false,\"isDisabled\":false},{\"id\":25,\"name\":\"Krustentier oder Fisch\",\"count\":137,\"isActive\":false,\"isDisabled\":false},{\"id\":151,\"name\":\"Likör\",\"count\":53,\"isActive\":false,\"isDisabled\":false},{\"id\":12,\"name\":\"Longdrink\",\"count\":5,\"isActive\":false,\"isDisabled\":false},{\"id\":146,\"name\":\"Geheimrezept\",\"count\":506,\"isActive\":false,\"isDisabled\":false},{\"id\":139,\"name\":\"Wildgeflügel\",\"count\":58,\"isActive\":false,\"isDisabled\":false},{\"id\":161,\"name\":\"Luxemburg\",\"count\":10,\"isActive\":false,\"isDisabled\":false},{\"id\":81,\"name\":\"Eintopf\",\"count\":673,\"isActive\":false,\"isDisabled\":false},{\"id\":77,\"name\":\"Früchte\",\"count\":127,\"isActive\":false,\"isDisabled\":false},{\"id\":97,\"name\":\"Tschechien\",\"count\":55,\"isActive\":false,\"isDisabled\":false},{\"id\":3828,\"name\":\"Gewürze Öl Essig Pasten\",\"count\":29,\"isActive\":false,\"isDisabled\":false},{\"id\":121,\"name\":\"Bowle\",\"count\":9,\"isActive\":false,\"isDisabled\":false},{\"id\":110,\"name\":\"Resteverwertung\",\"count\":1328,\"isActive\":false,\"isDisabled\":false},{\"id\":155,\"name\":\"Ei\",\"count\":318,\"isActive\":false,\"isDisabled\":false},{\"id\":124,\"name\":\"Eier oder Käse\",\"count\":126,\"isActive\":false,\"isDisabled\":false},{\"id\":252,\"name\":\"tee\",\"count\":14,\"isActive\":false,\"isDisabled\":false},{\"id\":58,\"name\":\"Geflügel\",\"count\":873,\"isActive\":false,\"isDisabled\":false},{\"id\":140,\"name\":\"Pilze\",\"count\":581,\"isActive\":false,\"isDisabled\":false},{\"id\":60,\"name\":\"Schweiz\",\"count\":241,\"isActive\":false,\"isDisabled\":false},{\"id\":159,\"name\":\"Einlagen\",\"count\":108,\"isActive\":false,\"isDisabled\":false},{\"id\":54,\"name\":\"klar\",\"count\":89,\"isActive\":false,\"isDisabled\":false},{\"id\":130,\"name\":\"Dänemark\",\"count\":68,\"isActive\":false,\"isDisabled\":false},{\"id\":88,\"name\":\"Backen oder Süßspeise\",\"count\":59,\"isActive\":false,\"isDisabled\":false},{\"id\":2678,\"name\":\"Korea\",\"count\":7,\"isActive\":false,\"isDisabled\":false},{\"id\":73,\"name\":\"Innereien\",\"count\":75,\"isActive\":false,\"isDisabled\":false},{\"id\":160,\"name\":\"Norwegen\",\"count\":37,\"isActive\":false,\"isDisabled\":false},{\"id\":1701,\"name\":\"Kakao\",\"count\":14,\"isActive\":false,\"isDisabled\":false},{\"id\":83,\"name\":\"Käse\",\"count\":696,\"isActive\":false,\"isDisabled\":false},{\"id\":115,\"name\":\"Amerika\",\"count\":116,\"isActive\":false,\"isDisabled\":false},{\"id\":156,\"name\":\"Kaffee Tee oder Kakao\",\"count\":96,\"isActive\":false,\"isDisabled\":false},{\"id\":123,\"name\":\"Thailand\",\"count\":50,\"isActive\":false,\"isDisabled\":false},{\"id\":3818,\"name\":\"ReisGetreide\",\"count\":57,\"isActive\":false,\"isDisabled\":false},{\"id\":3817,\"name\":\"Grundrezepte\",\"count\":23,\"isActive\":false,\"isDisabled\":false},{\"id\":126,\"name\":\"alkoholfrei\",\"count\":18,\"isActive\":false,\"isDisabled\":false},{\"id\":61,\"name\":\"Fisch\",\"count\":1131,\"isActive\":false,\"isDisabled\":false},{\"id\":22,\"name\":\"Rind\",\"count\":886,\"isActive\":false,\"isDisabled\":false},{\"id\":41,\"name\":\"spezial\",\"count\":93,\"isActive\":false,\"isDisabled\":false},{\"id\":125,\"name\":\"Polen\",\"count\":83,\"isActive\":false,\"isDisabled\":false},{\"id\":98,\"name\":\"Eier\",\"count\":43,\"isActive\":false,\"isDisabled\":false},{\"id\":5999,\"name\":\"lateinamerika\",\"count\":23,\"isActive\":false,\"isDisabled\":false},{\"id\":245,\"name\":\"öl\",\"count\":4,\"isActive\":false,\"isDisabled\":false},{\"id\":37,\"name\":\"Reis\",\"count\":415,\"isActive\":false,\"isDisabled\":false},{\"id\":165,\"name\":\"Hülsenfrüchte\",\"count\":392,\"isActive\":false,\"isDisabled\":false},{\"id\":141,\"name\":\"cross-cooking\",\"count\":74,\"isActive\":false,\"isDisabled\":false},{\"id\":9949,\"name\":\"klare Suppe\",\"count\":14,\"isActive\":false,\"isDisabled\":false},{\"id\":109,\"name\":\"Frucht\",\"count\":8092,\"isActive\":false,\"isDisabled\":false},{\"id\":59,\"name\":\"Schwein\",\"count\":1648,\"isActive\":false,\"isDisabled\":false},{\"id\":31,\"name\":\"Pasta\",\"count\":542,\"isActive\":false,\"isDisabled\":false},{\"id\":104,\"name\":\"Creme\",\"count\":523,\"isActive\":false,\"isDisabled\":false},{\"id\":76,\"name\":\"China\",\"count\":62,\"isActive\":false,\"isDisabled\":false},{\"id\":167,\"name\":\"Malta\",\"count\":6,\"isActive\":false,\"isDisabled\":false},{\"id\":4123,\"name\":\"Lactose\",\"count\":2,\"isActive\":false,\"isDisabled\":false},{\"id\":138,\"name\":\"Kartoffeln\",\"count\":2561,\"isActive\":false,\"isDisabled\":false},{\"id\":42,\"name\":\"warm\",\"count\":987,\"isActive\":false,\"isDisabled\":false},{\"id\":72,\"name\":\"Österreich\",\"count\":825,\"isActive\":false,\"isDisabled\":false},{\"id\":16,\"name\":\"Fleisch\",\"count\":679,\"isActive\":false,\"isDisabled\":false}]}],\"hasTypo\":false,\"maximumRating\":5,\"minimumPreparationTime\":1,\"plusContentCount\":512,\"customData\":null,\"isIndexable\":true}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/820481186558221/Zitronenkuchen.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/820481186558221/Zitronenkuchen.html",
+          "title": "Zitronenkuchen",
+          "content": "Saftiger Zitronenkuchen vom Blech",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/2636361414129018/Russischer-Zupfkuchen.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/2636361414129018/Russischer-Zupfkuchen.html",
+          "title": "Russischer Zupfkuchen",
+          "content": "Rikes Backschule - Kuchen, die jeder mag, für eine 26er Springform",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/351351120485193/Fantakuchen-mit-Mandarinen-Schmand.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/351351120485193/Fantakuchen-mit-Mandarinen-Schmand.html",
+          "title": "Fantakuchen mit Mandarinen-Schmand",
+          "content": "",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/1511921256558799/Erdbeerkuchen-mit-Schmand-Vanillecreme.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/1511921256558799/Erdbeerkuchen-mit-Schmand-Vanillecreme.html",
+          "title": "Erdbeerkuchen mit Schmand-Vanillecreme",
+          "content": "",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/1666101274781519/Der-unglaublich-cremige-NY-Cheese-Cake.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/1666101274781519/Der-unglaublich-cremige-NY-Cheese-Cake.html",
+          "title": "Der unglaublich cremige NY Cheese Cake",
+          "content": "",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/1218391227356456/Der-beste-Kaesekuchen-der-Welt.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/1218391227356456/Der-beste-Kaesekuchen-der-Welt.html",
+          "title": "Der beste Käsekuchen der Welt",
+          "content": "Kuchenliebling für Geburtstage, Feiertage, Kaffeeklatsch und Buffets",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/2038461330206007/Blechkuchen-Gebrannte-Mandeln.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/2038461330206007/Blechkuchen-Gebrannte-Mandeln.html",
+          "title": "Blechkuchen \"Gebrannte Mandeln\"",
+          "content": "Der perfekte Blechkuchen für die kalte Winterzeit",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/1001811205419556/Ruehrkuchen-nach-Omas-Art.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/1001811205419556/Ruehrkuchen-nach-Omas-Art.html",
+          "title": "Rührkuchen nach Omas Art",
+          "content": "vielseitig zu variieren",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/1140221220253617/Supersaftiger-Apfelkuchen.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/1140221220253617/Supersaftiger-Apfelkuchen.html",
+          "title": "Supersaftiger Apfelkuchen",
+          "content": "Einfaches Rezept mit vielen Äpfeln und lockerem Rührteig",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/2654951416926884/Karottenkuchen-Rueblikuchen-oder-Moehrenkuchen.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/2654951416926884/Karottenkuchen-Rueblikuchen-oder-Moehrenkuchen.html",
+          "title": "Karottenkuchen, Rüblikuchen oder Möhrenkuchen",
+          "content": "Der Name ist eigentlich egal - Hauptsache lecker",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/4334481728047031/High-Protein-Carrot-Cake-Baked-Oats.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/4334481728047031/High-Protein-Carrot-Cake-Baked-Oats.html",
+          "title": "High Protein Carrot Cake Baked Oats",
+          "content": "proteinreich, einfach, schnell",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/4422111775564568/High-Protein-Zimtschnecken-Blechkuchen.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/4422111775564568/High-Protein-Zimtschnecken-Blechkuchen.html",
+          "title": "High Protein Zimtschnecken Blechkuchen",
+          "content": "schnell, einfach, kalorienarm",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/378801124204434/Friedas-genialer-Hefezopf.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/378801124204434/Friedas-genialer-Hefezopf.html",
+          "title": "Friedas genialer Hefezopf",
+          "content": "",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/2204031353338061/Apfelkuchen-mit-Streuseln.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/2204031353338061/Apfelkuchen-mit-Streuseln.html",
+          "title": "Apfelkuchen mit Streuseln",
+          "content": "Blechkuchen",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/369841122576721/Kaesekuchen-mit-2-Schichten.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/369841122576721/Kaesekuchen-mit-2-Schichten.html",
+          "title": "Käsekuchen mit 2 Schichten",
+          "content": "aus einer 28er Springorm",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/1255131230975627/Traenenkuchen-der-beste-Kaesekuchen-der-Welt.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/1255131230975627/Traenenkuchen-der-beste-Kaesekuchen-der-Welt.html",
+          "title": "Tränenkuchen - der beste Käsekuchen der Welt!",
+          "content": "",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/2040561330436979/Zimtschnecken-mit-Frischkaese-Glasur.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/2040561330436979/Zimtschnecken-mit-Frischkaese-Glasur.html",
+          "title": "Zimtschnecken mit Frischkäse-Glasur",
+          "content": "Cinnamon Rolls with Cream Cheese Frosting",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/2287701364848460/Zimtschnecken-Cinnabon-Style.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/2287701364848460/Zimtschnecken-Cinnabon-Style.html",
+          "title": "Zimtschnecken 'Cinnabon Style'",
+          "content": "amerikanische Zimtschnecken mit Cream-Cheese-Frosting",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/773171180182809/Grundrezept-fuer-Kuchen-und-Muffins.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/773171180182809/Grundrezept-fuer-Kuchen-und-Muffins.html",
+          "title": "Grundrezept für Kuchen und Muffins",
+          "content": "Melanies Bester",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.chefkoch.de/rezepte/537101150800337/Hefezopf-wie-beim-Baecker.html",
+          "normalized_url": "https://www.chefkoch.de/rezepte/537101150800337/Hefezopf-wie-beim-Baecker.html",
+          "title": "Hefezopf wie beim Bäcker",
+          "content": "...nur viel frischer!!",
+          "engine": "chefkoch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

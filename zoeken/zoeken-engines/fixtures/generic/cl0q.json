@@ -1,0 +1,341 @@
+{
+  "engine": "cl0q",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://cl0q.com/search?q=rust&limit=20&offset=0",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://cl0q.com/search?q=rust&limit=20&offset=0",
+    "headers": {
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "x-request-id": "1783605933-612122",
+      "x-frame-options": "SAMEORIGIN",
+      "x-cache": "MISS",
+      "referrer-policy": "no-referrer",
+      "server": "Apache",
+      "content-type": "application/json",
+      "x-content-type-options": "nosniff",
+      "date": "Thu, 09 Jul 2026 14:05:34 GMT",
+      "vary": "Accept-Encoding"
+    },
+    "body": "{\"total\":3498,\"results\":[{\"domain\":\"rustwiki.org\",\"status_code\":200,\"title\":\"Rust 文档网 - Rust 官方文档中文教程\",\"h1\":\"Rust 官方文档中文教程\",\"description\":\"Rust 文档网是 Rust 官方文档中文翻译项目组创建的 Rust 语言文档在线知识库，涵盖了最全面的 Rust 语言的中文学习内容和编程入门资料，包括 Rust 官方或非官方文档的中文翻译，以及 Rust 中文翻译项目组制定的 Rust 翻译规范及标准。\",\"keywords\":\"\",\"snippet\":\"@@CL0Q_HL@@Rust@@CL0Q_EL@@ 文档网是 @@CL0Q_HL@@Rust@@CL0Q_EL@@ 官方文档中文翻译项目组创建的 @@CL0Q_HL@@Rust@@CL0Q_EL@@ 语言文档在线知识库，涵盖了最全面的 @@CL0Q_HL@@Rust@@CL0Q_EL@@ 语言的中文学习内容和编程入门资料，包括 @@CL0Q_HL@@Rust@@CL0Q_EL@@ 官方或非官方文档的中文翻译，以及 @@CL0Q_HL@@Rust@@CL0Q_EL@@ 中文翻译项目组制定的 @@CL0Q_HL@@Rust@@CL0Q_EL@@ 翻译规范及标准\",\"ip\":\"172.67.172.205,104.21.47.214\",\"mx_records\":\"\",\"cname\":\"rustwiki.org.\",\"rank\":0.8733321},{\"domain\":\"rust-servers.net\",\"status_code\":200,\"title\":\"Rust Server List | Rust Multiplayer Servers\",\"h1\":\"Rust Server List\",\"description\":\"Browse the best Rust servers to play online. Discover active multiplayer servers, explore new communities, and join Rust servers today.\",\"keywords\":\"\",\"snippet\":\"Browse the best @@CL0Q_HL@@Rust@@CL0Q_EL@@ servers to play online. Discover active multiplayer servers, explore new communities, and join @@CL0Q_HL@@Rust@@CL0Q_EL@@ servers today\",\"ip\":\"104.26.12.91,104.26.13.91,172.67.68.181\",\"mx_records\":\"\",\"cname\":\"\",\"rank\":0.8523813},{\"domain\":\"rustplatform.com\",\"status_code\":200,\"title\":\"Learn Rust for Python Developers | Pybites Rust Platform\",\"h1\":\"Rust Platform\",\"description\":\"Learn Rust by doing — small, focused exercises that bridge from Python to Rust, with an in-browser editor that compiles and grades your code.\",\"keywords\":\"\",\"snippet\":\"Learn @@CL0Q_HL@@Rust@@CL0Q_EL@@ by doing — small, focused exercises that bridge from Python to @@CL0Q_HL@@Rust@@CL0Q_EL@@, with an in-browser editor that compiles and grades your code\",\"ip\":\"35.71.179.82,99.83.220.108,75.2.60.68,13.248.244.96\",\"mx_records\":\"\",\"cname\":\"\",\"rank\":0.8523813},{\"domain\":\"renovatingtherustbelt.wordpress.com\",\"status_code\":200,\"title\":\"Renovating the Rust Belt | Following the Transformation of the Rust Belt into the Green Belt\",\"h1\":\"Renovating the Rust Belt\",\"description\":\"Following the Transformation of the Rust Belt into the Green Belt\",\"keywords\":\"\",\"snippet\":\"Following the Transformation of the @@CL0Q_HL@@Rust@@CL0Q_EL@@ Belt into the Green Belt\",\"ip\":\"192.0.78.12,192.0.78.13\",\"mx_records\":\"mx-ams.automattic.com,mx-dfw.automattic.com\",\"cname\":\"lb.wordpress.com.\",\"og_image\":\"https://secure.gravatar.com/blavatar/625f292b12b760b0a1eaceead2679d413c354ab3dfdebf5c79bce6a3b47faafd?s=200&ts=1782005397\",\"rank\":0.8426546},{\"domain\":\"rustbeltgirl.com\",\"status_code\":200,\"title\":\"Rust Belt Girl – reading and writing the Rust Belt with Rebecca Moon Ruark\",\"h1\":\"Rust Belt Girl\",\"description\":\"reading and writing the Rust Belt with Rebecca Moon Ruark\",\"keywords\":\"\",\"snippet\":\"reading and writing the @@CL0Q_HL@@Rust@@CL0Q_EL@@ Belt with Rebecca Moon Ruark\",\"ip\":\"192.0.78.25,192.0.78.24\",\"mx_records\":\"\",\"cname\":\"\",\"og_image\":\"https://rustbeltgirl.com/wp-content/uploads/2022/08/cropped-rruark_009.jpg?w=200\",\"rank\":0.8426546},{\"domain\":\"poland.rs\",\"status_code\":200,\"title\":\"Rust Poland – Społeczność Programistów Rust w Polsce\",\"h1\":\"\",\"description\":\"Rust Poland to społeczność polskich entuzjastów Rust. Meetupy, warsztaty, prelekcje i oferty pracy. Dołącz do nas! Wspierani przez compiled.pl.\",\"keywords\":\"Rust, Rust Poland, Rust programming, Rust meetup, Rust Polska, programowanie Rust, compiled.pl, Rust community Poland\",\"snippet\":\"@@CL0Q_HL@@Rust@@CL0Q_EL@@ Poland to społeczność polskich entuzjastów @@CL0Q_HL@@Rust@@CL0Q_EL@@. Meetupy, warsztaty, prelekcje i oferty pracy. Dołącz do nas! Wspierani przez compiled.pl\",\"ip\":\"185.158.133.1\",\"mx_records\":\"\",\"cname\":\"\",\"og_image\":\"https://storage.googleapis.com/gpt-engineer-file-uploads/sshc6an7XkM09MUFRZEPsRXueyw2/social-images/social-1772186139476-Gemini_Generated_Image_4ztixu4ztixu4zti.webp\",\"rank\":0.8184696},{\"domain\":\"cxx.rs\",\"status_code\":200,\"title\":\"Rust ❤️ C++\",\"h1\":\"CXX — safe interop between Rust and C++\",\"description\":\"CXX — safe interop between Rust and C++ by David Tolnay. This library provides a safe mechanism for calling C++ code from Rust and Rust code from C++.\",\"keywords\":\"\",\"snippet\":\"CXX — safe interop between @@CL0Q_HL@@Rust@@CL0Q_EL@@ and C++ by David Tolnay. This library provides a safe mechanism for calling C++ code from @@CL0Q_HL@@Rust@@CL0Q_EL@@ and @@CL0Q_HL@@Rust@@CL0Q_EL@@ code from\",\"ip\":\"104.21.45.180,172.67.217.185\",\"mx_records\":\"\",\"cname\":\"cxx.rs.\",\"og_image\":\"https://cxx.rs/cxx.png\",\"rank\":0.8118529},{\"domain\":\"rustbeltchic.com\",\"status_code\":200,\"title\":\"Home - Rust Belt Chic – Midwestern Culture, Stories & Urban Lifestyle\",\"h1\":\"Rust Belt Chic – Midwestern Culture, Stories & Urban Lifestyle\",\"description\":\"🏙️ Welcome to Rust Belt Chic — Exploring the Heart, Culture & Soul of the Midwest Welcome to Rust Belt Chic, a digital space dedicated to celebrating the authentic spirit of the American Midwest — its people, its stories, its struggles, and its rebirth. The Rust Belt is more than a geographical region; it is […]\",\"keywords\":\"\",\"snippet\":\"Welcome to @@CL0Q_HL@@Rust@@CL0Q_EL@@ Belt Chic — Exploring the Heart, Culture & Soul of the Midwest Welcome to @@CL0Q_HL@@Rust@@CL0Q_EL@@ Belt Chic, a digital space dedicated to celebrating the authentic spirit of the American Midwest — its\",\"ip\":\"172.67.193.146,104.21.41.204\",\"mx_records\":\"ghs.google.com\",\"cname\":\"\",\"og_image\":\"https://rustbeltchic.com/wp-content/uploads/2025/11/1.jpg\",\"rank\":0.8118529},{\"domain\":\"pmine.rs\",\"status_code\":200,\"title\":\"Pmine Research — Rust Systems Software, Safe Plugins, AI & Applied Research\",\"h1\":\"Pmine Research — Rust Systems Software & Applied Research\",\"description\":\"Pmine Research is the applied Rust research group of Field of Dream Studio (FDS), focused on Rust systems software, safe dynamic plugin systems, adaptive learning and testing platforms, clinical AI systems, publications, and applied academic research.\",\"keywords\":\"\",\"snippet\":\"Pmine Research is the applied @@CL0Q_HL@@Rust@@CL0Q_EL@@ research group of Field of Dream Studio (FDS), focused on @@CL0Q_HL@@Rust@@CL0Q_EL@@ systems software, safe dynamic plugin systems, adaptive learning and testing platforms, clinical AI systems, publications\",\"ip\":\"104.21.48.101,172.67.183.203\",\"mx_records\":\"\",\"cname\":\"\",\"og_image\":\"https://pmine.rs/og-image.png\",\"rank\":0.80212605},{\"domain\":\"slint.rs\",\"status_code\":200,\"title\":\"Slint | Declarative GUI for Rust\",\"h1\":\"Declarative GUI for Rust\",\"description\":\"Slint, the declarative GUI toolkit for Rust, C++, JavaScript, and Python. Build elegant, modern, stylish, native GUIs for Embedded, Desktop, and Web. Complete your UI design through quick iterations using Live Preview. Tweak everything, like colors, animations, geometries, or text. and verify the changes instantly. Build a responsive UI from a single design. Target different screen resolution and sizes with flexible layouts. Enjoy flexibility that only a native application can provide: Access full operating system APIs, utilize all CPU and GPU cores, connect to any peripheral. Slint compiles your UI design to machine code. Achieve low footprint and minimal resource consumption. The Slint runtime fits in less than 300KiB RAM, features a reactive property system, and is built with Rust. Deliver a smooth user experience. Slint uses the optimal graphics rendering method: GPU accelerated, DMA2D, Framebuffer, or Linebuffer. Continue using your favourite IDE. Choose between our generic langua\",\"keywords\":\"\",\"snippet\":\"Slint, the declarative GUI toolkit for @@CL0Q_HL@@Rust@@CL0Q_EL@@, C++, JavaScript, and Python. Build elegant, modern, stylish, native GUIs for Embedded, Desktop, and Web. Complete your UI design through quick iterations using Live Preview\",\"ip\":\"104.21.62.33,172.67.219.105\",\"mx_records\":\"\",\"cname\":\"slint.rs.\",\"rank\":0.80212605},{\"domain\":\"www.rust.dk\",\"status_code\":200,\"title\":\"RUST – never sleeps\",\"h1\":\"RUST\",\"description\":\"Se det aktuelle program for RUST og oplev de bedste koncerter og events i København. Få information om kommende shows, billetkøb og mere på vores officielle programsider. Planlæg din aften på RUST nu!\",\"keywords\":\"\",\"snippet\":\"det aktuelle program for @@CL0Q_HL@@RUST@@CL0Q_EL@@ og oplev de bedste koncerter og events i København. Få information om kommende shows, billetkøb og mere på vores officielle programsider. Planlæg din aften på @@CL0Q_HL@@RUST@@CL0Q_EL@@\",\"ip\":\"104.21.48.1,104.21.64.1,104.21.16.1,104.21.112.1,104.21.32.1,104.21.80.1,104.21.96.1\",\"mx_records\":\"\",\"cname\":\"www.rust.dk.\",\"og_image\":\"https://rust.dk/wp-content/uploads/2022/04/rust_header-800x533.jpg\",\"rank\":0.80212605},{\"domain\":\"pawelurbanek.com\",\"status_code\":200,\"title\":\"Ruby and Rust developer specializing in backend performance - Paweł Urbanek\",\"h1\":\"Ruby & Rust developer specializing in backend performance\",\"description\":\"Backend developer with over 10 years of experience. Specializing in Ruby on Rails, Rust, PostgreSQL, and backend performance.\",\"keywords\":\"Ruby on Rails, Rust, PostgreSQL, backend performance, performance optimization\",\"snippet\":\"Backend developer with over 10 years of experience. Specializing in Ruby on Rails, @@CL0Q_HL@@Rust@@CL0Q_EL@@, PostgreSQL, and backend performance\",\"ip\":\"172.67.187.13,104.21.19.181\",\"mx_records\":\"smtp.google.com.\",\"cname\":\"pawelurbanek.com.\",\"og_image\":\"https://pawelurbanek.com/assets/pawel-tag-b713e6ba7bae7b8dc77c8c7492af210671b16f470698eeffa009e7bc8f914591.jpg\",\"rank\":0.7945269},{\"domain\":\"www.ovasylenko.com\",\"status_code\":200,\"title\":\"Oleksii Vasylenko — Rust & Full-Stack Engineer | Matching Engines, ZK Proofs, Distributed Systems\",\"h1\":\"Oleksii Vasylenko - Rust & Full-Stack Engineer | Workflow Orchestration, Matching Engines, ZK Proofs, Distributed Systems\",\"description\":\"Oleksii Vasylenko — Rust & Full-Stack Engineer. 18 years building mission-critical infrastructure. Matching engines, ZK proof systems, cross-chain protocols.\",\"keywords\":\"Oleksii Vasylenko, Rust Developer, Full-Stack Engineer, Rust Engineer, Systems Programming, Tokio, Axum, Distributed Systems, Matching Engine, ZK Proofs, Blockchain, TypeScript, React, Software Architecture\",\"snippet\":\"Oleksii Vasylenko — @@CL0Q_HL@@Rust@@CL0Q_EL@@ & Full-Stack Engineer. 18 years building mission-critical infrastructure. Matching engines, ZK proof systems, cross-chain protocols\",\"ip\":\"64.29.17.65,216.198.79.65\",\"mx_records\":\"\",\"cname\":\"d6474bef75c9c763.vercel-dns-017.com.\",\"og_image\":\"https://www.ovasylenko.com/opengraph-image?5af959b46021ce1d\",\"rank\":0.7993904},{\"domain\":\"ovasylenko.com\",\"status_code\":200,\"title\":\"Oleksii Vasylenko — Rust & Full-Stack Engineer | Matching Engines, ZK Proofs, Distributed Systems\",\"h1\":\"Oleksii Vasylenko - Rust & Full-Stack Engineer | Workflow Orchestration, Matching Engines, ZK Proofs, Distributed Systems\",\"description\":\"Oleksii Vasylenko — Rust & Full-Stack Engineer. 18 years building mission-critical infrastructure. Matching engines, ZK proof systems, cross-chain protocols.\",\"keywords\":\"Oleksii Vasylenko, Rust Developer, Full-Stack Engineer, Rust Engineer, Systems Programming, Tokio, Axum, Distributed Systems, Matching Engine, ZK Proofs, Blockchain, TypeScript, React, Software Architecture\",\"snippet\":\"Oleksii Vasylenko — @@CL0Q_HL@@Rust@@CL0Q_EL@@ & Full-Stack Engineer. 18 years building mission-critical infrastructure. Matching engines, ZK proof systems, cross-chain protocols\",\"ip\":\"216.198.79.1\",\"mx_records\":\"smtp.google.com\",\"cname\":\"\",\"og_image\":\"https://www.ovasylenko.com/opengraph-image?5af959b46021ce1d\",\"rank\":0.7993904},{\"domain\":\"oliverandrust.com\",\"status_code\":200,\"title\":\"Oliver and Rust – Oliver and Rust\",\"h1\":\"\",\"description\":\"Vintage timeless pieces to make your house a home. Oliver and Rust is a vintage home and lifestyle shop with a penchant for the colour green and a worn, textured aesthetic influenced by time and nature. Most of our selections have had a life before we found them and we love imagining new uses for them in your home.\",\"keywords\":\"\",\"snippet\":\"Vintage timeless pieces to make your house a home. Oliver and @@CL0Q_HL@@Rust@@CL0Q_EL@@ is a vintage home and lifestyle shop with a penchant for the colour green and a worn, textured aesthetic influenced\",\"ip\":\"172.67.152.155,104.21.1.243\",\"mx_records\":\"aspmx.l.google.com.,alt2.aspmx.l.google.com.,alt1.aspmx.l.google.com.,alt3.aspmx.l.google.com.,alt4.aspmx.l.google.com.\",\"cname\":\"oliverandrust.com.\",\"og_image\":\"https://cdn.shopify.com/s/files/1/0426/0033/3470/files/oliver-and-rust-logo-olive-primary-monogram_0cd11893-4a8d-497e-8bff-a5f9e85f8239.png?v=1729860450\",\"rank\":0.78692794},{\"domain\":\"projectunspeakable.com\",\"status_code\":200,\"title\":\"Rust Mobile iOS — Download for iPhone & iPad\",\"h1\":\"Rust Mobile for iPhone & iPad\",\"description\":\"Download Rust Mobile for iOS — iPhone, iPad. Free install via App Store, IPA sideload guide, latest iOS 16, 17, 18 support.\",\"keywords\":\"\",\"snippet\":\"Download @@CL0Q_HL@@Rust@@CL0Q_EL@@ Mobile for iOS — iPhone, iPad. Free install via App Store, IPA sideload guide, latest iOS 16, 17, 18 support\",\"ip\":\"104.21.25.96,172.67.133.249\",\"mx_records\":\"mx.zohomail.com,mx2.zohomail.com\",\"cname\":\"\",\"og_image\":\"https://rust2.io/assets/img/screen-08.webp\",\"rank\":0.78692794},{\"domain\":\"rapidskins.com\",\"status_code\":200,\"title\":\"Sell CS2 & Rust Skins for Real Money Instantly | RapidSkins\",\"h1\":\"Sell CS2 & Rust Skins for Real Cash\",\"description\":\"Sell CS2 (CS:GO) and Rust skins for real cash in minutes. Instant payouts via PayPal, bank transfer, Bitcoin & more. Trusted by 200K+ players, 347 Trustpilot reviews.\",\"keywords\":\"\",\"snippet\":\"Sell CS2 (CS:GO) and @@CL0Q_HL@@Rust@@CL0Q_EL@@ skins for real cash in minutes. Instant payouts via PayPal, bank transfer, Bitcoin & more. Trusted by 200K+ players, 347 Trustpilot reviews\",\"ip\":\"104.26.14.155,172.67.72.3,104.26.15.155\",\"mx_records\":\"mx2.privateemail.com.,mx1.privateemail.com.\",\"cname\":\"rapidskins.com.\",\"og_image\":\"https://rapidskins.com/banner.webp\",\"rank\":0.78692794},{\"domain\":\"rustfreetruck.com\",\"status_code\":200,\"title\":\"Quality Classic Rust Free Trucks & Parts For Sale Las Vegas, Nv | Rust Free Truck\",\"h1\":\"Welcome to classic southwesternRust free trucks & parts\",\"description\":\"Need A Rust Free Truck Or Parts? Well Come On In And Have A Look Whether It's Online (We Ship) Or At Our Location. If We Don't Have It, We Can Get It.\",\"keywords\":\"\",\"snippet\":\"Need A @@CL0Q_HL@@Rust@@CL0Q_EL@@ Free Truck Or Parts? Well Come On In And Have A Look Whether It's Online (We Ship) Or At Our Location. If We Don't Have\",\"ip\":\"104.21.60.16,172.67.187.181\",\"mx_records\":\"\",\"cname\":\"\",\"rank\":0.78692794},{\"domain\":\"rusthelp.com\",\"status_code\":200,\"title\":\"Rust Wiki - Items, Raid Calculator, Crosshair, Skins | RustHelp\",\"h1\":\"Rust Wiki - always up to date with RustHelp\",\"description\":\"The Rust wiki - raid costs, crafting, monument loot, weekly skin store, and free tools (crosshair generator, recycler, tech tree)\",\"keywords\":\"\",\"snippet\":\"The @@CL0Q_HL@@Rust@@CL0Q_EL@@ wiki - raid costs, crafting, monument loot, weekly skin store, and free tools (crosshair generator, recycler, tech tree\",\"ip\":\"172.67.74.19,104.26.7.67,104.26.6.67\",\"mx_records\":\"\",\"cname\":\"rusthelp.com.\",\"og_image\":\"https://rusthelp.com/images/cover.png\",\"rank\":0.78692794},{\"domain\":\"rustlang.cz\",\"status_code\":200,\"title\":\"Czech Rust community index\",\"h1\":\"Rust Czech community index 🇨🇿\",\"description\":\"Index of events and links related to the Rust programming language in the Czech Republic.\",\"keywords\":\"\",\"snippet\":\"Index of events and links related to the @@CL0Q_HL@@Rust@@CL0Q_EL@@ programming language in the Czech Republic\",\"ip\":\"104.21.83.201,172.67.181.72\",\"mx_records\":\"\",\"cname\":\"\",\"og_image\":\"https://rustlang.cz/img/ferris-cz.png\",\"rank\":0.78692794}]}\n"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://rustwiki.org/",
+          "normalized_url": "https://rustwiki.org/",
+          "title": "Rust 文档网 - Rust 官方文档中文教程",
+          "content": "Rust 文档网是 Rust 官方文档中文翻译项目组创建的 Rust 语言文档在线知识库，涵盖了最全面的 Rust 语言的中文学习内容和编程入门资料，包括 Rust 官方或非官方文档的中文翻译，以及 Rust 中文翻译项目组制定的 Rust 翻译规范及标准。",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust-servers.net/",
+          "normalized_url": "https://rust-servers.net/",
+          "title": "Rust Server List | Rust Multiplayer Servers",
+          "content": "Browse the best Rust servers to play online. Discover active multiplayer servers, explore new communities, and join Rust servers today.",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rustplatform.com/",
+          "normalized_url": "https://rustplatform.com/",
+          "title": "Learn Rust for Python Developers | Pybites Rust Platform",
+          "content": "Learn Rust by doing — small, focused exercises that bridge from Python to Rust, with an in-browser editor that compiles and grades your code.",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://renovatingtherustbelt.wordpress.com/",
+          "normalized_url": "https://renovatingtherustbelt.wordpress.com/",
+          "title": "Renovating the Rust Belt | Following the Transformation of the Rust Belt into the Green Belt",
+          "content": "Following the Transformation of the Rust Belt into the Green Belt",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rustbeltgirl.com/",
+          "normalized_url": "https://rustbeltgirl.com/",
+          "title": "Rust Belt Girl – reading and writing the Rust Belt with Rebecca Moon Ruark",
+          "content": "reading and writing the Rust Belt with Rebecca Moon Ruark",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://poland.rs/",
+          "normalized_url": "https://poland.rs/",
+          "title": "Rust Poland – Społeczność Programistów Rust w Polsce",
+          "content": "Rust Poland to społeczność polskich entuzjastów Rust. Meetupy, warsztaty, prelekcje i oferty pracy. Dołącz do nas! Wspierani przez compiled.pl.",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://cxx.rs/",
+          "normalized_url": "https://cxx.rs/",
+          "title": "Rust ❤️ C++",
+          "content": "CXX — safe interop between Rust and C++ by David Tolnay. This library provides a safe mechanism for calling C++ code from Rust and Rust code from C++.",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rustbeltchic.com/",
+          "normalized_url": "https://rustbeltchic.com/",
+          "title": "Home - Rust Belt Chic – Midwestern Culture, Stories & Urban Lifestyle",
+          "content": "🏙️ Welcome to Rust Belt Chic — Exploring the Heart, Culture & Soul of the Midwest Welcome to Rust Belt Chic, a digital space dedicated to celebrating the authentic spirit of the American Midwest — its people, its stories, its struggles, and its rebirth. The Rust Belt is more than a geographical region; it is […]",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pmine.rs/",
+          "normalized_url": "https://pmine.rs/",
+          "title": "Pmine Research — Rust Systems Software, Safe Plugins, AI & Applied Research",
+          "content": "Pmine Research is the applied Rust research group of Field of Dream Studio (FDS), focused on Rust systems software, safe dynamic plugin systems, adaptive learning and testing platforms, clinical AI systems, publications, and applied academic research.",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://slint.rs/",
+          "normalized_url": "https://slint.rs/",
+          "title": "Slint | Declarative GUI for Rust",
+          "content": "Slint, the declarative GUI toolkit for Rust, C++, JavaScript, and Python. Build elegant, modern, stylish, native GUIs for Embedded, Desktop, and Web. Complete your UI design through quick iterations using Live Preview. Tweak everything, like colors, animations, geometries, or text. and verify the changes instantly. Build a responsive UI from a single design. Target different screen resolution and sizes with flexible layouts. Enjoy flexibility that only a native application can provide: Access full operating system APIs, utilize all CPU and GPU cores, connect to any peripheral. Slint compiles your UI design to machine code. Achieve low footprint and minimal resource consumption. The Slint runtime fits in less than 300KiB RAM, features a reactive property system, and is built with Rust. Deliver a smooth user experience. Slint uses the optimal graphics rendering method: GPU accelerated, DMA2D, Framebuffer, or Linebuffer. Continue using your favourite IDE. Choose between our generic langua",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.rust.dk/",
+          "normalized_url": "https://www.rust.dk/",
+          "title": "RUST – never sleeps",
+          "content": "Se det aktuelle program for RUST og oplev de bedste koncerter og events i København. Få information om kommende shows, billetkøb og mere på vores officielle programsider. Planlæg din aften på RUST nu!",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pawelurbanek.com/",
+          "normalized_url": "https://pawelurbanek.com/",
+          "title": "Ruby and Rust developer specializing in backend performance - Paweł Urbanek",
+          "content": "Backend developer with over 10 years of experience. Specializing in Ruby on Rails, Rust, PostgreSQL, and backend performance.",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.ovasylenko.com/",
+          "normalized_url": "https://www.ovasylenko.com/",
+          "title": "Oleksii Vasylenko — Rust & Full-Stack Engineer | Matching Engines, ZK Proofs, Distributed Systems",
+          "content": "Oleksii Vasylenko — Rust & Full-Stack Engineer. 18 years building mission-critical infrastructure. Matching engines, ZK proof systems, cross-chain protocols.",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://ovasylenko.com/",
+          "normalized_url": "https://ovasylenko.com/",
+          "title": "Oleksii Vasylenko — Rust & Full-Stack Engineer | Matching Engines, ZK Proofs, Distributed Systems",
+          "content": "Oleksii Vasylenko — Rust & Full-Stack Engineer. 18 years building mission-critical infrastructure. Matching engines, ZK proof systems, cross-chain protocols.",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://oliverandrust.com/",
+          "normalized_url": "https://oliverandrust.com/",
+          "title": "Oliver and Rust – Oliver and Rust",
+          "content": "Vintage timeless pieces to make your house a home. Oliver and Rust is a vintage home and lifestyle shop with a penchant for the colour green and a worn, textured aesthetic influenced by time and nature. Most of our selections have had a life before we found them and we love imagining new uses for them in your home.",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://projectunspeakable.com/",
+          "normalized_url": "https://projectunspeakable.com/",
+          "title": "Rust Mobile iOS — Download for iPhone & iPad",
+          "content": "Download Rust Mobile for iOS — iPhone, iPad. Free install via App Store, IPA sideload guide, latest iOS 16, 17, 18 support.",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rapidskins.com/",
+          "normalized_url": "https://rapidskins.com/",
+          "title": "Sell CS2 & Rust Skins for Real Money Instantly | RapidSkins",
+          "content": "Sell CS2 (CS:GO) and Rust skins for real cash in minutes. Instant payouts via PayPal, bank transfer, Bitcoin & more. Trusted by 200K+ players, 347 Trustpilot reviews.",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rustfreetruck.com/",
+          "normalized_url": "https://rustfreetruck.com/",
+          "title": "Quality Classic Rust Free Trucks & Parts For Sale Las Vegas, Nv | Rust Free Truck",
+          "content": "Need A Rust Free Truck Or Parts? Well Come On In And Have A Look Whether It's Online (We Ship) Or At Our Location. If We Don't Have It, We Can Get It.",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rusthelp.com/",
+          "normalized_url": "https://rusthelp.com/",
+          "title": "Rust Wiki - Items, Raid Calculator, Crosshair, Skins | RustHelp",
+          "content": "The Rust wiki - raid costs, crafting, monument loot, weekly skin store, and free tools (crosshair generator, recycler, tech tree)",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rustlang.cz/",
+          "normalized_url": "https://rustlang.cz/",
+          "title": "Czech Rust community index",
+          "content": "Index of events and links related to the Rust programming language in the Czech Republic.",
+          "engine": "cl0q",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

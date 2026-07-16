@@ -1,0 +1,56 @@
+{
+  "engine": "photon",
+  "case": "basic",
+  "query": {
+    "query": "cafe",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://photon.komoot.io/",
+    "headers": {},
+    "body": "{\n      \"features\": [\n        {\n          \"properties\": {\n            \"osm_type\": \"N\",\n            \"osm_id\": 123,\n            \"name\": \"Cafe Central\"\n          }\n        },\n        {\n          \"properties\": {\n            \"osm_type\": \"W\",\n            \"osm_id\": 456,\n            \"name\": \"Hauptstrasse\"\n          }\n        },\n        {\n          \"properties\": {\n            \"osm_id\": 789\n          }\n        }\n      ]\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://openstreetmap.org/node/123",
+          "normalized_url": "https://openstreetmap.org/node/123",
+          "title": "Cafe Central",
+          "content": "",
+          "engine": "photon",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openstreetmap.org/way/456",
+          "normalized_url": "https://openstreetmap.org/way/456",
+          "title": "Hauptstrasse",
+          "content": "",
+          "engine": "photon",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

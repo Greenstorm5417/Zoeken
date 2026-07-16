@@ -1,0 +1,54 @@
+{
+  "engine": "nyaa",
+  "case": "basic",
+  "query": {
+    "query": "anime",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://nyaa.si/",
+    "headers": {},
+    "body": "<table class=\"torrent-list\"><tbody>\n      <tr>\n        <td><a href=\"/?c=1_2\" title=\"Anime - English-translated\">Anime</a></td>\n        <td><a href=\"/view/123\" class=\"comments\">1</a><a href=\"/view/123\">Some Anime Episode 01</a></td>\n        <td><a href=\"/download/123.torrent\">Torrent</a><a href=\"magnet:?xt=urn:btih:hash\">Magnet</a></td>\n        <td>1.3 GiB</td>\n        <td>2023-01-01</td>\n        <td>12</td>\n        <td>4</td>\n        <td>100</td>\n      </tr>\n    </tbody></table>"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "File": {
+          "url": "https://nyaa.si/view/123",
+          "normalized_url": "https://nyaa.si/view/123",
+          "title": "Some Anime Episode 01",
+          "content": "Category: \"Anime - English-translated\". Downloaded 100 times.",
+          "engine": "nyaa",
+          "filename": "Some Anime Episode 01",
+          "size": "",
+          "time": "",
+          "mimetype": "",
+          "abstract": "",
+          "author": "",
+          "embedded": "",
+          "mtype": "",
+          "subtype": "",
+          "filesize": "1.3 GiB",
+          "seed": 12,
+          "leech": 4,
+          "magnetlink": "magnet:?xt=urn:btih:hash",
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

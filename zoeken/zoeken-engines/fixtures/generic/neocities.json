@@ -1,0 +1,2358 @@
+{
+  "engine": "neocities",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://neocities.org/search?q=rust",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://neocities.org/search?q=rust",
+    "headers": {
+      "set-cookie": "neocities=AoTuV8yQ3Ok4Dc4NT7gCDIUEX9AR0JIl2Ajojo0Erl1ghBaf0z3LUamT4G47IWEKQWoTCp0zwOCndY2z2XbGC8AyzqpSg5ksxoepFislDfd7lzFPodI6cqi6Fh9kYD%2BR75mFsjAx4lLKh2FFfGKD%2BA%2FQqSI2Ju7RVYOsZhznew2AcvYq5%2F6oXaMcwqdh2ElJaH0NWEyKUQYtwxlGM4cAcLZPLL76imZBFlIP156yB1sxC%2BiVzzWlhEH0gVKkrAuuP59TcgSVgyDQS3PPckkuHagchPoQq83mVEX%2Fu78%3D; path=/; expires=Fri, 09 Jul 2027 19:54:46 GMT; secure; httponly; samesite=lax",
+      "x-cached": "MISS",
+      "content-type": "text/html;charset=utf-8",
+      "vary": "Accept-Encoding",
+      "x-frame-options": "DENY",
+      "date": "Thu, 09 Jul 2026 14:06:00 GMT",
+      "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+      "content-security-policy": "default-src 'self' data: blob: 'unsafe-inline'; script-src 'self' blob: 'unsafe-inline' 'unsafe-eval' https://hcaptcha.com https://*.hcaptcha.com https://js.stripe.com; style-src 'self' 'unsafe-inline' https://hcaptcha.com https://*.hcaptcha.com; connect-src 'self' https://hcaptcha.com https://*.hcaptcha.com https://api.stripe.com; frame-src 'self' https://hcaptcha.com https://*.hcaptcha.com https://js.stripe.com",
+      "server": "neocities",
+      "x-xss-protection": "1; mode=block",
+      "x-content-type-options": "nosniff"
+    },
+    "body": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <title>Neocities - Site Search</title>\n\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n<meta name=\"description\"        content=\"Search websites hosted on Neocities.\">\n\n<link rel=\"canonical\" href=\"https://neocities.org/search?q=rust\">\n\n<meta property=\"og:title\"       content=\"Neocities\">\n<meta property=\"og:type\"        content=\"website\">\n<meta property=\"og:image\"       content=\"https://neocities.org/img/neocities-front-screenshot.jpg\">\n<meta property=\"og:description\" content=\"Search websites hosted on Neocities.\">\n\n<link rel=\"icon\" type=\"image/x-icon\" href=\"/img/favicon.png\">\n\n<meta name=\"viewport\" content=\"width=device-width, minimum-scale=1, initial-scale=1\">\n\n\n\n    <script>\n  (function() {\n    var themeKey = 'neocities-theme';\n    var storedTheme;\n\n    try {\n      storedTheme = localStorage.getItem(themeKey);\n    } catch (e) {}\n\n    if (storedTheme === 'dark') {\n      document.documentElement.className += ' dark-Mode';\n      document.documentElement.setAttribute('data-theme', 'dark');\n    } else {\n      if (storedTheme !== 'light') {\n        try {\n          localStorage.setItem(themeKey, 'light');\n        } catch (e) {}\n      }\n\n      document.documentElement.setAttribute('data-theme', 'light');\n    }\n  })();\n</script>\n\n\n    <link href=\"/css/neo.css\" rel=\"stylesheet\" type=\"text/css\" media=\"all\">\n\n\n    <script src=\"/js/jquery-1.11.0.min.js\"></script>\n\n    <script src=\"/js/highlight/highlight.min.js\"></script>\n    <link rel=\"stylesheet\" href=\"/css/highlight/styles/tomorrow-night.css\">\n    <script>\n      hljs.highlightAll()\n\n      document.addEventListener('DOMContentLoaded', function() {\n        var eventDateElements = document.querySelectorAll('.local-date-title');\n        eventDateElements.forEach(function(element) {\n          var timestamp = element.getAttribute('data-timestamp');\n          var date = dayjs.unix(timestamp);\n          var formattedDate = date.format('MMMM D, YYYY [at] h:mm A');\n          element.title = formattedDate;\n        });\n      });\n    </script>\n  </head>\n\n  <body class=\"interior\">\n    <div class=\"page\">\n      <header class=\"header-Base\">\n\n  <nav class=\"header-Nav clearfix\" role=\"navigation\">\n\n    <a href=\"#!\" title=\"show small screen nav\" class=\"small-Nav\">\n      <img src=\"/img/nav-Icon.png\" alt=\"navigation icon\" />\n    </a>\n\n    <ul class=\"h-Nav constant-Nav\">\n        <li>\n    <a href=\"/browse\" id=\"browse-link\">Websites</a>\n    <script>\n      document.addEventListener('DOMContentLoaded', () => {\n        const browseLink = document.getElementById('browse-link');\n\n        if (window.location.pathname === '/browse') {\n          const params = new URLSearchParams(window.location.search);\n          const persistParams = new URLSearchParams();\n          const validPattern = /^[a-zA-Z0-9 ]+$/;\n\n          ['sort_by', 'tag'].forEach(key => {\n            if (params.has(key)) {\n              const value = params.get(key);\n              if (value.length <= 25 && validPattern.test(value)) {\n                persistParams.set(key, value);\n              }\n            }\n          });\n\n          localStorage.setItem('browseQuery', persistParams.toString());\n        }\n\n        const savedQuery = localStorage.getItem('browseQuery');\n\n        if (savedQuery) {\n          browseLink.href = `/browse?${savedQuery}`;\n        }\n      });\n    </script>\n  </li>\n  <li>\n    <a href=\"/search\">Search</a>\n  </li>\n  <li>\n    <a href=\"/activity\">Activity</a>\n  </li>\n  <li>\n    <a href=\"/tutorials\">Learn</a>\n  </li>\n\n    <li>\n      <a href=\"/supporter\">Support Us<i class=\"fa fa-heart\"></i></i></a>\n    </li>\n\n    </ul>\n\n    <ul class=\"status-Nav\">\n        <li>\n          <a href=\"/#new\" class=\"create-New\">Sign up for Free</a>\n        </li>\n        <li>\n          <a href=\"/signin\" class=\"sign-In\">Sign In</a>\n        </li>\n      <li class=\"theme-NavItem theme-NavItem--iconOnly\">\n  <button type=\"button\" class=\"theme-Toggle theme-Toggle--iconOnly\" data-theme-toggle aria-pressed=\"false\" aria-label=\"Switch to dark mode\" title=\"Switch to dark mode\">\n    <i class=\"fa fa-moon-o\" aria-hidden=\"true\"></i>\n  </button>\n</li>\n\n      </ul>\n  </nav>\n\n  <div class=\"logo int-Logo\">\n    <a href=\"/\" title=\"back to home\">\n      <span class=\"hidden\">Neocities.org</span>\n      <img src=\"/img/cat.png\" alt=\"Neocities.org\" />\n    </a>\n  </div>\n</header>\n\n      \n        <div class=\"header-Outro with-columns browse-page browse-search-page\">\n    <div class=\"row content\">\n      <div class=\"col col-100\">\n        <span class=\"search-results-mascot-frame\">\n          <a href=\"/search\"><img class=\"search-results-mascot\" src=\"/img/hotcat.svg\" alt=\"Hot Cat\"></a>\n        </span>\n      </div>\n\n      <div class=\"col col-100 filter\">\n        <form id=\"search_criteria\" class=\"browse-search-form\" action=\"/search\" method=\"GET\">\n          <fieldset class=\"grouping\">\n            <input name=\"q\" type=\"text\" class=\"input-Area\" value=\"rust\" placeholder=\"keywords\" autocapitalize=\"off\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\">\n            <button type=\"submit\" class=\"btn-Action\">Search</button>\n          </fieldset>\n        </form>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"content single-Col misc-page browse-search-page\">\n      <div class=\"search-results\">\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://genosadness.neocities.org/stories/vignettober/23-2024\"><img src=\"/site_screenshots/24/60/genosadness/stories/vignettober/23-2024.html.540x405.webp\" alt=\"&quot;Rust&quot;\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://genosadness.neocities.org/stories/vignettober/23-2024\">&quot;Rust&quot;</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://genosadness.neocities.org/stories/vignettober/23-2024\">genosadness.neocities.org/stories/vignettober/23-2024</a>\n                <br>\n                <small><a href=\"/site/genosadness\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b>&#34; An old art installation lies at the bottom of a living complex. None have seen it but the artist himself. It&#39;s said to be a symphonic dance of metals twisted around the room,...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://misswindow.neocities.org/rust\"><img src=\"/site_screenshots/40/62/misswindow/rust.html.540x405.webp\" alt=\"rust this is impressive\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://misswindow.neocities.org/rust\">rust this is impressive</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://misswindow.neocities.org/rust\">misswindow.neocities.org/rust</a>\n                <br>\n                <small><a href=\"/site/misswindow\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...oxydée, je suis reconnaissante pour le sebum rance et la f<b>rust</b>ration inavouée, parfois même je commence a croire que la muqueuse uterine n’est rien d’autre que du cervelas broyé q...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://shindoom.neocities.org/rust_e1e2\"><img src=\"/site_screenshots/35/05/shindoom/rust_e1e2.html.540x405.webp\" alt=\"Rust Ep 1-2 ⛧ SHIN&#39;S SPACE PORT ⛧\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://shindoom.neocities.org/rust_e1e2\">Rust Ep 1-2 ⛧ SHIN&#39;S SPACE PORT ⛧</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://shindoom.neocities.org/rust_e1e2\">shindoom.neocities.org/rust_e1e2</a>\n                <br>\n                <small><a href=\"/site/shindoom\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> Ep 1-2 Game Mode: Survival with ammo respawn. Additional Gameplay Mods: None Useful Links: <b>Rust</b> Ep 1-2 (DoomWorld Forums) Comment: Ongoing project by Arsinikk, now it reached...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://atvutv1.neocities.org/suzuki-rust-problems\"><img src=\"/site_screenshots/18/98/atvutv1/suzuki-rust-problems.html.540x405.webp\" alt=\"Suzuki Rust Problems\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://atvutv1.neocities.org/suzuki-rust-problems\">Suzuki Rust Problems</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://atvutv1.neocities.org/suzuki-rust-problems\">atvutv1.neocities.org/suzuki-rust-problems</a>\n                <br>\n                <small><a href=\"/site/atvutv1\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...ike a constant battle against the dreaded orange menace – <b>rust</b>.\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://die-verwandlung.neocities.org/writings/rust\"><img src=\"/site_screenshots/23/01/die-verwandlung/writings/rust.html.540x405.webp\" alt=\"Rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://die-verwandlung.neocities.org/writings/rust\">Rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://die-verwandlung.neocities.org/writings/rust\">die-verwandlung.neocities.org/writings/rust</a>\n                <br>\n                <small><a href=\"/site/die-verwandlung\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> Written February 2026. Originally written for a writing group I take part in with friends. Inspired by Testuo , particularly this scene , and The Atrocity Exhibition . The mom...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://a-i-nstein.neocities.org/\"><img src=\"/site_screenshots/41/46/a-i-nstein/index.html.540x405.webp\" alt=\"Idiomatic Rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://a-i-nstein.neocities.org/\">Idiomatic Rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://a-i-nstein.neocities.org/\">a-i-nstein.neocities.org</a>\n                <br>\n                <small><a href=\"/site/a-i-nstein\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> examples and learn the best practices of <b>Rust</b> programming.\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://developer04web13.neocities.org/LENGUAJE%20RUST\"><img src=\"/site_screenshots/35/54/developer04web13/LENGUAJE%20RUST.html.540x405.webp\" alt=\"Lenguaje Rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://developer04web13.neocities.org/LENGUAJE%20RUST\">Lenguaje Rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://developer04web13.neocities.org/LENGUAJE%20RUST\">developer04web13.neocities.org/LENGUAJE RUST</a>\n                <br>\n                <small><a href=\"/site/developer04web13\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b>? Como hemos mencionado anteriormente, <b>Rust</b> como lenguaje de programación consiste en un proyecto que busca la velocidad de los viejos C++ olvidándose de los problemas de almac...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://albertoo.neocities.org/Trabajo_de_Rust/Rust\"><img src=\"/site_screenshots/23/52/albertoo/Trabajo_de_Rust/Rust.html.540x405.webp\" alt=\"Rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://albertoo.neocities.org/Trabajo_de_Rust/Rust\">Rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://albertoo.neocities.org/Trabajo_de_Rust/Rust\">albertoo.neocities.org/Trabajo_de_Rust/Rust</a>\n                <br>\n                <small><a href=\"/site/albertoo\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>RUST</b> ¿Que es el <b>Rust</b>? &#34;El único objetivo en <b>Rust</b> es sobrevivir: superar luchas como el hambre, la sed y el frío. Hacer fuego. Construir un refugio. Matar animales. Protegerse de ot...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://rust12993.neocities.org/rust\"><img src=\"/site_screenshots/34/44/rust12993/rust.html.540x405.webp\" alt=\"rust!\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://rust12993.neocities.org/rust\">rust!</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://rust12993.neocities.org/rust\">rust12993.neocities.org/rust</a>\n                <br>\n                <small><a href=\"/site/rust12993\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                <b>rust</b>! she/her/he/him || bi/aroace About Me hii im aly or u can call me <b>rust</b>! Im a bit lazy and im an ambivert whos quiet, awkward, and shy irl.Im a dog lover and also maybe a littl...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://ft2.neocities.org/languagePages/rust\"><img src=\"/site_screenshots/81/57/ft2/languagePages/rust.html.540x405.webp\" alt=\"Rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://ft2.neocities.org/languagePages/rust\">Rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://ft2.neocities.org/languagePages/rust\">ft2.neocities.org/languagePages/rust</a>\n                <br>\n                <small><a href=\"/site/ft2\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                <b>Rust</b> C++ Dónde se debe aplicar Un poco de historia Especialidades Python Razón de popularidad Un poco de historia Desventajas <b>Rust</b> Especialidades Historia del idioma C# Especialida...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://hitogata.neocities.org/Rust_compiles_really_slow\"><img src=\"/site_screenshots/18/42/hitogata/Rust_compiles_really_slow.html.540x405.webp\" alt=\"Rust compiles really slow\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://hitogata.neocities.org/Rust_compiles_really_slow\">Rust compiles really slow</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://hitogata.neocities.org/Rust_compiles_really_slow\">hitogata.neocities.org/Rust_compiles_really_slow</a>\n                <br>\n                <small><a href=\"/site/hitogata\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                <b>Rust</b> compiles really slow\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://davidandreu.neocities.org/rust\"><img src=\"/site_screenshots/30/90/davidandreu/rust.html.540x405.webp\" alt=\"RUST - Materiales Necesarios\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://davidandreu.neocities.org/rust\">RUST - Materiales Necesarios</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://davidandreu.neocities.org/rust\">davidandreu.neocities.org/rust</a>\n                <br>\n                <small><a href=\"/site/davidandreu\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                <b>RUST</b> - Material necesario para romper cosas Rellena los campos y ale Estructura: Metal door Armored door Garage door Stone wall Metal wall Armored wall Cantidad: Explosivos: Satche...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://cnile.neocities.org/fuckrust\"><img src=\"/site_screenshots/18/93/cnile/fuckrust.html.540x405.webp\" alt=\"Rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://cnile.neocities.org/fuckrust\">Rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://cnile.neocities.org/fuckrust\">cnile.neocities.org/fuckrust</a>\n                <br>\n                <small><a href=\"/site/cnile\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>RUST</b> <b>Rust</b> is a systems language that prides itself on memory safety. Instead of sacrificing memory safety for performance like other languages might, it prides itself on having mem...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://planar-invasion.neocities.org/compendium/items/bag-of-tricks-rust\"><img src=\"/site_screenshots/18/47/planar-invasion/compendium/items/bag-of-tricks-rust.html.540x405.webp\" alt=\"bag-of-tricks-rust | Planar Invasion\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://planar-invasion.neocities.org/compendium/items/bag-of-tricks-rust\">bag-of-tricks-rust | Planar Invasion</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://planar-invasion.neocities.org/compendium/items/bag-of-tricks-rust\">planar-invasion.neocities.org/compendium/items/bag-of-tricks-rust</a>\n                <br>\n                <small><a href=\"/site/planar-invasion\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> Wondrous Item, major, uncommon Cost: ⏤ Weight: 0.5 lbs. This ordinary bag, made from <b>rust</b> cloth, appears empty.\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://paulkenny.neocities.org/tags/Programming_Language/Rust\"><img src=\"/site_screenshots/31/11/paulkenny/tags/Programming_Language/Rust.html.540x405.webp\" alt=\"Rust - Paul Kenny\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://paulkenny.neocities.org/tags/Programming_Language/Rust\">Rust - Paul Kenny</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://paulkenny.neocities.org/tags/Programming_Language/Rust\">paulkenny.neocities.org/tags/Programming_Language/Rust</a>\n                <br>\n                <small><a href=\"/site/paulkenny\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> Files tagged “Programming_Language/<b>Rust</b>” topgrade.md Incorrect? No substance? Bad? Broken? Yes. You can create an issue or contact me via email . Or start shouting and I might...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://smon.neocities.org/2019.05.27.12.50-rust_webassembly\"><img src=\"/site_screenshots/13/53/smon/2019.05.27.12.50-rust_webassembly.html.540x405.webp\" alt=\"Rust &amp; Webassembly\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://smon.neocities.org/2019.05.27.12.50-rust_webassembly\">Rust &amp; Webassembly</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://smon.neocities.org/2019.05.27.12.50-rust_webassembly\">smon.neocities.org/2019.05.27.12.50-rust_webassembly</a>\n                <br>\n                <small><a href=\"/site/smon\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> &amp; Webassembly 2019-May-27 I barely know <b>Rust</b> but I like when things are easily accessible so I will try to figure out how to compile to webassembly and how to use the result....\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://poipole2010.neocities.org/glfs/shareddeps/rust-bindgen\"><img src=\"/site_screenshots/60/49/poipole2010/glfs/shareddeps/rust-bindgen.html.540x405.webp\" alt=\"rust-bindgen-0.71.1\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://poipole2010.neocities.org/glfs/shareddeps/rust-bindgen\">rust-bindgen-0.71.1</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://poipole2010.neocities.org/glfs/shareddeps/rust-bindgen\">poipole2010.neocities.org/glfs/shareddeps/rust-bindgen</a>\n                <br>\n                <small><a href=\"/site/poipole2010\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...d Dependencies Prev Cbindgen-0.28.0 Next Mako-1.3.8 Up Home <b>rust</b>-bindgen-0.71.1 Introduction to <b>rust</b>-bindgen Automatically generates <b>Rust</b> FFI bindings to C (and some C++) libraries...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://lotophagus.neocities.org/october\"><img src=\"/site_screenshots/15/58/lotophagus/october.html.540x405.webp\" alt=\"October Rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://lotophagus.neocities.org/october\">October Rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://lotophagus.neocities.org/october\">lotophagus.neocities.org/october</a>\n                <br>\n                <small><a href=\"/site/\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>rust</b> 8/28/2025 ← Back to Blog The &#34;Mood&#34; For This October October now, and it&#39;s finally getting cold... switching from shorts to sweatpants. Life is slowing down... I watch through...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://spud-rust.neocities.org/CONTACTS\"><img src=\"/site_screenshots/14/66/spud-rust/CONTACTS.html.540x405.webp\" alt=\"SPUD RUST WEBSITE\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://spud-rust.neocities.org/CONTACTS\">SPUD RUST WEBSITE</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://spud-rust.neocities.org/CONTACTS\">spud-rust.neocities.org/CONTACTS</a>\n                <br>\n                <small><a href=\"/site/spud-rust\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...roduct About Us Contacts Transactions Sign In Register SPUD-<b>RUST</b> Remove the <b>Rust</b>! Shop Now → WHY SPUD-<b>RUST</b>? Yourself required no at thoughts delicate landlord it be. Branched dashw...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://vexked.neocities.org/\"><img src=\"/site_screenshots/22/34/vexked/index.html.540x405.webp\" alt=\"Rust Sever\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://vexked.neocities.org/\">Rust Sever</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://vexked.neocities.org/\">vexked.neocities.org</a>\n                <br>\n                <small><a href=\"/site/vexked\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>rust</b> you play <b>rust</b> if she aint 250 she aint a lady I LOVE FAT BITCHES\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://bornfirr.neocities.org/\"><img src=\"/site_screenshots/28/01/bornfirr/index.html.540x405.webp\" alt=\"Rust Gamble\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://bornfirr.neocities.org/\">Rust Gamble</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://bornfirr.neocities.org/\">bornfirr.neocities.org</a>\n                <br>\n                <small><a href=\"/site/bornfirr\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                <b>RUST</b> GAMBLE Login with Steam Total Players 1,247 Total Games 8,392 Total Wagered $45,231 Logga in med Steam\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://srchon.neocities.org/\"><img src=\"/site_screenshots/25/56/srchon/index.html.540x405.webp\" alt=\"Rust para noobs\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://srchon.neocities.org/\">Rust para noobs</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://srchon.neocities.org/\">srchon.neocities.org</a>\n                <br>\n                <small><a href=\"/site/srchon\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                <b>Rust</b> para Noobs Home Twitch FacePunch <b>Rust</b>afied Drops Aqui te enteraras de las cosas básicas de <b>RUST</b> Esta es la página oficial de FacePunch : FacePunch Armas Ropa Skins Armas Empez...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://marcherlands-rpg.neocities.org/monster-manual/rustmonster\"><img src=\"/site_screenshots/34/12/marcherlands-rpg/monster-manual/rustmonster.html.540x405.webp\" alt=\"Rust Monster\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://marcherlands-rpg.neocities.org/monster-manual/rustmonster\">Rust Monster</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://marcherlands-rpg.neocities.org/monster-manual/rustmonster\">marcherlands-rpg.neocities.org/monster-manual/rustmonster</a>\n                <br>\n                <small><a href=\"/site/marcherlands-rpg\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                <b>Rust</b> Monster <b>Rust</b> Monster Climate/Terrain Subterranean % in Lair 60% Frequency Uncommon Organisation Solitary Activity Cycle Nocturnal Diet Metal, detritus Intelligence Non- (0) Al...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://nexus6.neocities.org/techindex/rustdict\"><img src=\"/site_screenshots/38/58/nexus6/techindex/rustdict.html.540x405.webp\" alt=\"rust for dummies\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://nexus6.neocities.org/techindex/rustdict\">rust for dummies</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://nexus6.neocities.org/techindex/rustdict\">nexus6.neocities.org/techindex/rustdict</a>\n                <br>\n                <small><a href=\"/site/nexus6\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>rust</b> with you! <b>Rust</b> is an efficient language that my roommate really likes. I&#39;m learning it because she&#39;s smart. a very basic sample program: 1. run cargo new hello_cargo and swap...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://rocketcalculator.neocities.org/\"><img src=\"/site_screenshots/21/92/rocketcalculator/index.html.540x405.webp\" alt=\"Rust Rocket Calculator\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://rocketcalculator.neocities.org/\">Rust Rocket Calculator</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://rocketcalculator.neocities.org/\">rocketcalculator.neocities.org</a>\n                <br>\n                <small><a href=\"/site/rocketcalculator\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                <b>Rust</b> Rocket Calculator 🚀 Amount of Rockets: Calculate Materials Amount of Explosives: Calculate Rockets Amount of Sulfur: Calculate Rockets made by Türkiye Tarkan\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://yfz.neocities.org/\"><img src=\"/site_screenshots/65/58/yfz/index.html.540x405.webp\" alt=\"YFZ Rust Clan\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://yfz.neocities.org/\">YFZ Rust Clan</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://yfz.neocities.org/\">yfz.neocities.org</a>\n                <br>\n                <small><a href=\"/site/yfz\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> Clan “No base too strong, no raid too long.” Welcome to the official YFZ Clan website — a tight-knit, elite <b>Rust</b> group built for dominance, loyalty, and tactical raids. Join u...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://unik.neocities.org/\"><img src=\"/site_screenshots/13/70/unik/index.html.540x405.webp\" alt=\"UNIK Rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://unik.neocities.org/\">UNIK Rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://unik.neocities.org/\">unik.neocities.org</a>\n                <br>\n                <small><a href=\"/site/unik\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> UNIK 10x, a modded <b>Rust</b> server. Scroll down for server information and resources. UNIK is a modded <b>Rust</b> server hosted in Sydney, Australia, an ideal location for all Oceanic R...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://speckofrust.neocities.org/\"><img src=\"/site_screenshots/34/45/speckofrust/index.html.540x405.webp\" alt=\"Speck of Rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://speckofrust.neocities.org/\">Speck of Rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://speckofrust.neocities.org/\">speckofrust.neocities.org</a>\n                <br>\n                <small><a href=\"/site/speckofrust\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b>\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://portcoriol.neocities.org/rustbucket\"><img src=\"/site_screenshots/35/75/portcoriol/rustbucket.html.540x405.webp\" alt=\"THE RUST BUCKET\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://portcoriol.neocities.org/rustbucket\">THE RUST BUCKET</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://portcoriol.neocities.org/rustbucket\">portcoriol.neocities.org/rustbucket</a>\n                <br>\n                <small><a href=\"/site/portcoriol\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...dit to the author. Find out more about the series here. THE <b>RUST</b> BUCKET lorem ipsum\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://rust-in-pieces.neocities.org/\"><img src=\"/site_screenshots/12/37/rust-in-pieces/index.html.540x405.webp\" alt=\"Rust In Pieces\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://rust-in-pieces.neocities.org/\">Rust In Pieces</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://rust-in-pieces.neocities.org/\">rust-in-pieces.neocities.org</a>\n                <br>\n                <small><a href=\"/site/rust-in-pieces\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> in Pieces - Community <b>Rust</b> Server Forced Wipe - 1 st Thursday of Every Month Next Wipe: March 4th, 2021 More Info TWITCH STREAMER DROPS/SKINS February 4th 07:00pm UTC until Fe...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://southwesternrugsdepot.neocities.org/southwestern-interior-design-carpets/southwest-carpets-in-rust-color\"><img src=\"/site_screenshots/13/12/southwesternrugsdepot/southwestern-interior-design-carpets/southwest-carpets-in-rust-color.html.540x405.webp\" alt=\"southwest carpets in rust color\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://southwesternrugsdepot.neocities.org/southwestern-interior-design-carpets/southwest-carpets-in-rust-color\">southwest carpets in rust color</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://southwesternrugsdepot.neocities.org/southwestern-interior-design-carpets/southwest-carpets-in-rust-color\">southwesternrugsdepot.neocities.org/southwestern-interior-design-carpets/southwest-carpets-in-rust-color</a>\n                <br>\n                <small><a href=\"/site/southwesternrugsdepot\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                Advantages of Southwestern Carpets can&#39;t be denied! (They) are among the most beautiful and durable choices for carpeting. With their vibrant colors and intricate designs, they off...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://moddedbear.neocities.org/posts/2022-06-23-sticky-notes-and-learning-rust\"><img src=\"/site_screenshots/11/78/moddedbear/posts/2022-06-23-sticky-notes-and-learning-rust.html.540x405.webp\" alt=\"Sticky Notes and Learning Rust - moddedBear\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://moddedbear.neocities.org/posts/2022-06-23-sticky-notes-and-learning-rust\">Sticky Notes and Learning Rust - moddedBear</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://moddedbear.neocities.org/posts/2022-06-23-sticky-notes-and-learning-rust\">moddedbear.neocities.org/posts/2022-06-23-sticky-notes-and-learning-rust</a>\n                <br>\n                <small><a href=\"/site/moddedbear\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> I got another itch to do some hobby programming this week, but to make things interesting I decided why not try to see what <b>Rust</b> is all about? Yet Another CLI Note Manager I s...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://apropos.neocities.org/posts/thoughts-on-rust\"><img src=\"/site_screenshots/60/82/apropos/posts/thoughts-on-rust.html.540x405.webp\" alt=\"Reflections on Writing Rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://apropos.neocities.org/posts/thoughts-on-rust\">Reflections on Writing Rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://apropos.neocities.org/posts/thoughts-on-rust\">apropos.neocities.org/posts/thoughts-on-rust</a>\n                <br>\n                <small><a href=\"/site/\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...bout blog notes resume writeups wiki Reflections on Writing <b>Rust</b> Note: This post is a work-in-progress with many unfinished or entirely missing sections. Proceed with caution, or b...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://koengrosveld.neocities.org/stage1\"><img src=\"/site_screenshots/66/27/koengrosveld/stage1.html.540x405.webp\" alt=\"Rust stage 1\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://koengrosveld.neocities.org/stage1\">Rust stage 1</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://koengrosveld.neocities.org/stage1\">koengrosveld.neocities.org/stage1</a>\n                <br>\n                <small><a href=\"/site/koengrosveld\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> Stage 1: Je spawnt in maakt een base en hebt een level 1 workbench gemaakt. Gefeliciteerd je bent begonnen aan de wipe! In deze level 1 workbench kun je kruisbogen, spijkerpis...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://crimsolution.neocities.org/black_hat_rust\"><img src=\"/site_screenshots/41/70/crimsolution/black_hat_rust.html.540x405.webp\" alt=\"Library - Black Hat Rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://crimsolution.neocities.org/black_hat_rust\">Library - Black Hat Rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://crimsolution.neocities.org/black_hat_rust\">crimsolution.neocities.org/black_hat_rust</a>\n                <br>\n                <small><a href=\"/site/crimsolution\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> I will begin my library excursion through a book I&#39;ve read a little of, and am excited to get through and hopefully be able to fully explain as I go along. Chapter 1. Core Con...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://vecuvia.neocities.org/writing/blood_and_rust\"><img src=\"/site_screenshots/37/59/vecuvia/writing/blood_and_rust.html.540x405.webp\" alt=\"Blood and Rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://vecuvia.neocities.org/writing/blood_and_rust\">Blood and Rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://vecuvia.neocities.org/writing/blood_and_rust\">vecuvia.neocities.org/writing/blood_and_rust</a>\n                <br>\n                <small><a href=\"/site/vecuvia\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> Blood and <b>Rust</b> Date: 2016-04-22 23:30 - Words: 2648 The zeppellin stood out clearly against the sunset sky, blocking out most of the light as it slowly made its way towards th...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://noctlas332.neocities.org/third/art/ocs/blooming_in_rust\"><img src=\"/site_screenshots/13/63/noctlas332/third/art/ocs/blooming_in_rust.html.540x405.webp\" alt=\"blooming in rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://noctlas332.neocities.org/third/art/ocs/blooming_in_rust\">blooming in rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://noctlas332.neocities.org/third/art/ocs/blooming_in_rust\">noctlas332.neocities.org/third/art/ocs/blooming_in_rust</a>\n                <br>\n                <small><a href=\"/site/\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>rust</b>\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://tmgindex.neocities.org/songs/bonesdontrust\"><img src=\"/site_screenshots/41/10/tmgindex/songs/bonesdontrust.html.540x405.webp\" alt=\"Bones Don&#39;t Rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://tmgindex.neocities.org/songs/bonesdontrust\">Bones Don&#39;t Rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://tmgindex.neocities.org/songs/bonesdontrust\">tmgindex.neocities.org/songs/bonesdontrust</a>\n                <br>\n                <small><a href=\"/site/tmgindex\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> Lyrics Never any call for a lone wolf You have to learn to go with the flow But they can find a use for a scarecrow Depending on your stomach for crows Always gonna need a lit...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://igolden.neocities.org/LaserCleaningMachine-LaserRustRemovalMachine\"><img src=\"/site_screenshots/25/16/igolden/LaserCleaningMachine-LaserRustRemovalMachine.html.540x405.webp\" alt=\"Laser Cleaning Machine- Laser Rust Removal Machine - IGOLDEN-CNC\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://igolden.neocities.org/LaserCleaningMachine-LaserRustRemovalMachine\">Laser Cleaning Machine- Laser Rust Removal Machine - IGOLDEN-CNC</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://igolden.neocities.org/LaserCleaningMachine-LaserRustRemovalMachine\">igolden.neocities.org/LaserCleaningMachine-LaserRustRemovalMachine</a>\n                <br>\n                <small><a href=\"/site/igolden\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>rust</b> removal.High Quality, Low Price,laser cleaning power from 1000W-3000W, clean and fast, no consumables.\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://mrtshop.neocities.org/rust-color-ruffle-spread-shirt\"><img src=\"/site_screenshots/29/62/mrtshop/rust-color-ruffle-spread-shirt.html.540x405.webp\" alt=\"RUST COLOR RUFFLE SPREAD SHIRT - Serrena\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://mrtshop.neocities.org/rust-color-ruffle-spread-shirt\">RUST COLOR RUFFLE SPREAD SHIRT - Serrena</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://mrtshop.neocities.org/rust-color-ruffle-spread-shirt\">mrtshop.neocities.org/rust-color-ruffle-spread-shirt</a>\n                <br>\n                <small><a href=\"/site/mrtshop\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                Pink Solid Slim Fit Single Breasted Formal Blazer, has long sleeves, notched lapel collar and button closurePink Solid Slim Fit Trousers, has 2 pockets and secured with hook and ba...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://jr413.neocities.org/bloodhex/bloodhex%20rust%20table%20test\"><img src=\"/site_screenshots/23/90/jr413/bloodhex/bloodhex%20rust%20table%20test.html.540x405.webp\" alt=\"JR Bloodhex Grid h000: RUST\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://jr413.neocities.org/bloodhex/bloodhex%20rust%20table%20test\">JR Bloodhex Grid h000: RUST</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://jr413.neocities.org/bloodhex/bloodhex%20rust%20table%20test\">jr413.neocities.org/bloodhex/bloodhex rust table test</a>\n                <br>\n                <small><a href=\"/site/jr413\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...h300 ⬢ h315 ⬢ h330 ⬢ h345 ogusdjfsd. bloodhex H000: <b>RUST</b> BLOOD <b>RUST</b> blood is the first and lowest on the hemospectrum. It has a hue of 0 degrees. Lorem ipsum dolor sit amet, conse...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://pizzapi.neocities.org/\"><img src=\"/site_screenshots/31/43/pizzapi/index.html.540x405.webp\" alt=\"Rust Server &amp; Radio Station\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://pizzapi.neocities.org/\">Rust Server &amp; Radio Station</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://pizzapi.neocities.org/\">pizzapi.neocities.org</a>\n                <br>\n                <small><a href=\"/site/pizzapi\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>RUST</b> SERVER 🍕 Survive. Build. Dominate. 🖥️ Server Info Server Name: Your <b>Rust</b> Server IP Address: 123.456.789.0:28015 Status: ● ONLINE Players: 25/100 Map: Procedural 4000 Wipe Sche...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://culturevault.neocities.org/pipboy3000dcdtonor\"><img src=\"/site_screenshots/86/53/culturevault/pipboy3000dcdtonor.html.540x405.webp\" alt=\"Type O Negative - October Rust&quot;\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://culturevault.neocities.org/pipboy3000dcdtonor\">Type O Negative - October Rust&quot;</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://culturevault.neocities.org/pipboy3000dcdtonor\">culturevault.neocities.org/pipboy3000dcdtonor</a>\n                <br>\n                <small><a href=\"/site/culturevault\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> Genre: Gothic Metal Date acquired: 2025 Gift: Yes (A.) For Christmas 2025, A. gave me October <b>Rust</b> by Type O Negative, and it’s the perfect gift. I’ve been listening to World...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://marionrust.neocities.org/obit\"><img src=\"/site_screenshots/16/61/marionrust/obit.html.540x405.webp\" alt=\"Obituaries - The Marion Rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://marionrust.neocities.org/obit\">Obituaries - The Marion Rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://marionrust.neocities.org/obit\">marionrust.neocities.org/obit</a>\n                <br>\n                <small><a href=\"/site/marionrust\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> Obituaries Name 1 Details about the person&#39;s life, contributions, and any relevant information. Name 2 Details about the person&#39;s life, contributions, and any relevant informa...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://dukeofdumbass.neocities.org/poems/cavalleriarust\"><img src=\"/site_screenshots/42/30/dukeofdumbass/poems/cavalleriarust.html.540x405.webp\" alt=\"rust, and other accruals | Rose&#39;s Fics\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://dukeofdumbass.neocities.org/poems/cavalleriarust\">rust, and other accruals | Rose&#39;s Fics</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://dukeofdumbass.neocities.org/poems/cavalleriarust\">dukeofdumbass.neocities.org/poems/cavalleriarust</a>\n                <br>\n                <small><a href=\"/site/dukeofdumbass\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                Rose dukeofdumbass is writing silly stories. Enjoy them here!\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://millionsofrorys.neocities.org/pages/music/thoughts\"><img src=\"/site_screenshots/18/27/millionsofrorys/pages/music/thoughts.html.540x405.webp\" alt=\"rust never sleeps\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://millionsofrorys.neocities.org/pages/music/thoughts\">rust never sleeps</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://millionsofrorys.neocities.org/pages/music/thoughts\">millionsofrorys.neocities.org/pages/music/thoughts</a>\n                <br>\n                <small><a href=\"/site/millionsofrorys\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                <b>rust</b> never sleeps page for text based material related to music, including my own thoughts/opinions or published text reviews and interviews. sorted alphabetically by artist, then...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://charlietrip.neocities.org/projects/indextree\"><img src=\"/site_screenshots/26/97/charlietrip/projects/indextree.html.540x405.webp\" alt=\"Rust: IndexTree · cB Space\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://charlietrip.neocities.org/projects/indextree\">Rust: IndexTree · cB Space</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://charlietrip.neocities.org/projects/indextree\">charlietrip.neocities.org/projects/indextree</a>\n                <br>\n                <small><a href=\"/site/\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...houghts Projects Freebies On This Page Back to the contents <b>Rust</b>: IndexTree On This Page Back to the contents tl;dr: multi-index Iterator for a structured finite tree (isomorphic t...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://mudlord.neocities.org/2019/03/20/Rust-keygen-tut\"><img src=\"/site_screenshots/63/73/mudlord/2019/03/20/Rust-keygen-tut.html.540x405.webp\" alt=\"Keygenning diablo2oo2’s crackme 1 (in Rust) | .blog\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://mudlord.neocities.org/2019/03/20/Rust-keygen-tut\">Keygenning diablo2oo2’s crackme 1 (in Rust) | .blog</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://mudlord.neocities.org/2019/03/20/Rust-keygen-tut\">mudlord.neocities.org/2019/03/20/Rust-keygen-tut</a>\n                <br>\n                <small><a href=\"/site/mudlord\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...imple tutorial in debugging with x64dbg and writing code in <b>Rust</b>\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://ourboypatrick.neocities.org/images/toldeo/the-land-of-steel\"><img src=\"/site_screenshots/39/02/ourboypatrick/images/toldeo/the-land-of-steel.html.540x405.webp\" alt=\"The Land of Steel and Rust~\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://ourboypatrick.neocities.org/images/toldeo/the-land-of-steel\">The Land of Steel and Rust~</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://ourboypatrick.neocities.org/images/toldeo/the-land-of-steel\">ourboypatrick.neocities.org/images/toldeo/the-land-of-steel</a>\n                <br>\n                <small><a href=\"/site/ourboypatrick\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> Photographed on 9/15/2023 Published on 9/23/2023 When I was in high school I spent a lot of time online. Actually, I still spent a lot of time online. Truthfully, I have alway...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://3549.neocities.org/posts/cast-iron-pans-cleaning-rust-off-of-chrome\"><img src=\"/site_screenshots/89/51/3549/posts/cast-iron-pans-cleaning-rust-off-of-chrome.html.540x405.webp\" alt=\"Cast Iron Pans Cleaning Rust Off Of Chrome\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://3549.neocities.org/posts/cast-iron-pans-cleaning-rust-off-of-chrome\">Cast Iron Pans Cleaning Rust Off Of Chrome</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://3549.neocities.org/posts/cast-iron-pans-cleaning-rust-off-of-chrome\">3549.neocities.org/posts/cast-iron-pans-cleaning-rust-off-of-chrome</a>\n                <br>\n                <small><a href=\"/site/\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                This is Mötley Crüe’s first single with Randy Castillo on drums. This is the first animated Mötley Crüe video. It starts off with the words Mötley Crüe’s history of mankind in the...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://mnunley.neocities.org/num-test\"><img src=\"/site_screenshots/37/52/mnunley/num-test.html.540x405.webp\" alt=\"Fixed precision number experiment in rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://mnunley.neocities.org/num-test\">Fixed precision number experiment in rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://mnunley.neocities.org/num-test\">mnunley.neocities.org/num-test</a>\n                <br>\n                <small><a href=\"/site/\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                Michael Nunley&#39;s projects and portfolio\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://metamind.neocities.org/\"><img src=\"/site_screenshots/42/32/metamind/index.html.540x405.webp\" alt=\"MetaMind | Clash Royale &amp; Rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://metamind.neocities.org/\">MetaMind | Clash Royale &amp; Rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://metamind.neocities.org/\">metamind.neocities.org</a>\n                <br>\n                <small><a href=\"/site/metamind\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> Тренеры Команда ⚡ ПРОФЕССИОНАЛЬНЫЙ ГЕЙМИНГ MetaMind: гейминг-образование Индивидуальные курсы по Clash Royale и <b>Rust</b>. От основ до киберспортивного уровня. Только чёрно-белая т...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://perseoq.neocities.org/manual_rust_drivers\"><img src=\"/site_screenshots/14/90/perseoq/manual_rust_drivers.html.540x405.webp\" alt=\"Manual de Rust para Drivers Linux\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://perseoq.neocities.org/manual_rust_drivers\">Manual de Rust para Drivers Linux</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://perseoq.neocities.org/manual_rust_drivers\">perseoq.neocities.org/manual_rust_drivers</a>\n                <br>\n                <small><a href=\"/site/\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> para Programación de Drivers en Linux Este manual cubre desde los fundamentos de <b>Rust</b> hasta conceptos avanzados para desarrollar drivers de kernel Linux, con ejemplos práctico...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://rust-and-moss.neocities.org/\"><img src=\"/site_screenshots/28/31/rust-and-moss/index.html.540x405.webp\" alt=\"The web site of rust-and-moss\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://rust-and-moss.neocities.org/\">The web site of rust-and-moss</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://rust-and-moss.neocities.org/\">rust-and-moss.neocities.org</a>\n                <br>\n                <small><a href=\"/site/rust-and-moss\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                <b>Rust</b> and Moss One day, I&#39;ll walk by a prison and the bars have all <b>rust</b>ed off ------ One day, I&#39;ll walk by a bank and the walls are all covered in moss ------ One day, I&#39;ll walk by...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://rustfrequency.neocities.org/\"><img src=\"/site_screenshots/82/42/rustfrequency/index.html.540x405.webp\" alt=\"Rust Frequency – Sound in the Decay of Metals\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://rustfrequency.neocities.org/\">Rust Frequency – Sound in the Decay of Metals</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://rustfrequency.neocities.org/\">rustfrequency.neocities.org</a>\n                <br>\n                <small><a href=\"/site/rustfrequency\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...ter Corrosion Choirs Acoustic Oxidation Tuned Decay Gallery <b>Rust</b> Frequency A study of sound installations tuned to the corrosion rates of different metals, exploring decay as rhyth...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://ollieofthebeholder.neocities.org/forget62\"><img src=\"/site_screenshots/17/94/ollieofthebeholder/forget62.html.540x405.webp\" alt=\"62 - Our treasures moth and rust corrupt\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://ollieofthebeholder.neocities.org/forget62\">62 - Our treasures moth and rust corrupt</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://ollieofthebeholder.neocities.org/forget62\">ollieofthebeholder.neocities.org/forget62</a>\n                <br>\n                <small><a href=\"/site/ollieofthebeholder\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...ndex Next → Latest ⇥ Chapter 62: Our treasures moth and <b>rust</b> corrupt Content Warnings: Concealment, anger, mention of skinning, mention of loss of a sibling, light bickering, scopo...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://toliksemaniuk123.neocities.org/rust_site/rust\"><img src=\"/site_screenshots/95/37/toliksemaniuk123/rust_site/rust.html.540x405.webp\" alt=\"RUST\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://toliksemaniuk123.neocities.org/rust_site/rust\">RUST</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://toliksemaniuk123.neocities.org/rust_site/rust\">toliksemaniuk123.neocities.org/rust_site/rust</a>\n                <br>\n                <small><a href=\"/site/toliksemaniuk123\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> squad <b>RUST</b> <b>Rust</b>-Головним завданням є виживання в жорстких умовах навколишнього середовища. Гравці повинні турбуватися про харчування, захист, майструвати собі знаряддя, бази й...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://noname11111.neocities.org/blog_why-discord-is-switching-from-go-to-rust\"><img src=\"/site_screenshots/36/16/noname11111/blog_why-discord-is-switching-from-go-to-rust.html.540x405.webp\" alt=\"Why Discord is switching from Go to Rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://noname11111.neocities.org/blog_why-discord-is-switching-from-go-to-rust\">Why Discord is switching from Go to Rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://noname11111.neocities.org/blog_why-discord-is-switching-from-go-to-rust\">noname11111.neocities.org/blog_why-discord-is-switching-from-go-to-rust</a>\n                <br>\n                <small><a href=\"/site/noname11111\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> made sense for Discord to reimplement: how it was done, and the resulting performance improvements.\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://charris.neocities.org/rust-commentary\"><img src=\"/site_screenshots/23/60/charris/rust-commentary.html.540x405.webp\" alt=\"Commentary on the Rust book\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://charris.neocities.org/rust-commentary\">Commentary on the Rust book</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://charris.neocities.org/rust-commentary\">charris.neocities.org/rust-commentary</a>\n                <br>\n                <small><a href=\"/site/charris\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> book Chapter 3 Section 1: Variables and mutability “Immutable” structures are completely immutable Logic flow analysis for variable initialization Section 2: Data types Sectio...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://thecultofnyx.neocities.org/games/textadventure/rustandsunlight\"><img src=\"/site_screenshots/10/06/thecultofnyx/games/textadventure/rustandsunlight.html.540x405.webp\" alt=\"A Memory of Rust and Sunlight\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://thecultofnyx.neocities.org/games/textadventure/rustandsunlight\">A Memory of Rust and Sunlight</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://thecultofnyx.neocities.org/games/textadventure/rustandsunlight\">thecultofnyx.neocities.org/games/textadventure/rustandsunlight</a>\n                <br>\n                <small><a href=\"/site/thecultofnyx\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> and Sunlight by SylvieNyx Controls Inventory You are not carrying anything. Diary Rooms Objects People Map\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://magentamenace.neocities.org/RUST\"><img src=\"/site_screenshots/77/77/magentamenace/RUST.html.540x405.webp\" alt=\"RUST Interactive Zine\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://magentamenace.neocities.org/RUST\">RUST Interactive Zine</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://magentamenace.neocities.org/RUST\">magentamenace.neocities.org/RUST</a>\n                <br>\n                <small><a href=\"/site/magentamenace\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                \n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://fune.neocities.org/\"><img src=\"/site_screenshots/28/78/fune/index.html.540x405.webp\" alt=\"rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://fune.neocities.org/\">rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://fune.neocities.org/\">fune.neocities.org</a>\n                <br>\n                <small><a href=\"/site/fune\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...: Neocities . Here&#39;s how you can make bold and italic text. <b>rust</b> step one get <b>rust</b> ferst get woud and stone meack spiyer meac 2*2 hose To learn more HTML/CSS, check out these tutor...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://shukularuni.neocities.org/guide/ctf/picoctf/general/Rust_fixme_1\"><img src=\"/site_screenshots/32/36/shukularuni/guide/ctf/picoctf/general/Rust_fixme_1.html.540x405.webp\" alt=\"picoCTF Rust fixme 1 @ Shukularuni\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://shukularuni.neocities.org/guide/ctf/picoctf/general/Rust_fixme_1\">picoCTF Rust fixme 1 @ Shukularuni</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://shukularuni.neocities.org/guide/ctf/picoctf/general/Rust_fixme_1\">shukularuni.neocities.org/guide/ctf/picoctf/general/Rust_fixme_1</a>\n                <br>\n                <small><a href=\"/site/shukularuni\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> fixme 1 Back to the General Skills Guides <b>Rust</b> fixme 1 Name: <b>Rust</b> fixme 1 Description: Have you heard of <b>Rust</b>? Fix the syntax errors in this <b>Rust</b> file to print the flag! Downl...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://rust.neocities.org/miscellaneous\"><img src=\"/site_screenshots/37/78/rust/miscellaneous.html.540x405.webp\" alt=\"rust\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://rust.neocities.org/miscellaneous\">rust</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://rust.neocities.org/miscellaneous\">rust.neocities.org/miscellaneous</a>\n                <br>\n                <small><a href=\"/site/rust\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                quiz_results text_quotes image_quotes credits biology_project home about art shrines photography media_log misc guestbook\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://gujie.neocities.org/bhznjns.github.io-2/pages/%E4%BD%BF%E7%94%A8%20Rust%20%E5%BC%80%E5%8F%91%E5%85%A8%E6%A0%88%E5%BA%94%E7%94%A8\"><img src=\"/site_screenshots/21/04/gujie/bhznjns.github.io-2/pages/%E4%BD%BF%E7%94%A8%20Rust%20%E5%BC%80%E5%8F%91%E5%85%A8%E6%A0%88%E5%BA%94%E7%94%A8.html.540x405.webp\" alt=\"使用 Rust 开发全栈应用\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://gujie.neocities.org/bhznjns.github.io-2/pages/%E4%BD%BF%E7%94%A8%20Rust%20%E5%BC%80%E5%8F%91%E5%85%A8%E6%A0%88%E5%BA%94%E7%94%A8\">使用 Rust 开发全栈应用</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://gujie.neocities.org/bhznjns.github.io-2/pages/%E4%BD%BF%E7%94%A8%20Rust%20%E5%BC%80%E5%8F%91%E5%85%A8%E6%A0%88%E5%BA%94%E7%94%A8\">gujie.neocities.org/bhznjns.github.io-2/pages/使用 Rust 开发全栈应用</a>\n                <br>\n                <small><a href=\"/site/gujie\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b> 开发全栈应用 2024/10/27 项目地址： leptos 这个项目能让你完全使用 <b>Rust</b> 开发 Web 应用。 让我们看看它的示例代码： use leptos::*; #[component] pub fn SimpleCounter(initial_value: i32) -&gt; impl IntoView { // create a rea...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://bateto.neocities.org/old_toy_factory_dolls_rust_generator\"><img src=\"/site_screenshots/18/23/bateto/old_toy_factory_dolls_rust_generator.html.540x405.webp\" alt=\"Prompt Generator – Old Toy Factory, Forgotten Dolls, Rust, Light Horror &amp; Humor\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://bateto.neocities.org/old_toy_factory_dolls_rust_generator\">Prompt Generator – Old Toy Factory, Forgotten Dolls, Rust, Light Horror &amp; Humor</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://bateto.neocities.org/old_toy_factory_dolls_rust_generator\">bateto.neocities.org/old_toy_factory_dolls_rust_generator</a>\n                <br>\n                <small><a href=\"/site/bateto\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...<b>Rust</b>, Light Horror &amp; Humor Select options from the categories below. The generated prompt will always be in English, even if the interface is in Bulgarian. EN / BG Generate Random...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://thegameguy.neocities.org/rust\"><img src=\"/site_screenshots/30/44/thegameguy/rust.html.540x405.webp\" alt=\"Rust Mini Survival + Keycards\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://thegameguy.neocities.org/rust\">Rust Mini Survival + Keycards</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://thegameguy.neocities.org/rust\">thegameguy.neocities.org/rust</a>\n                <br>\n                <small><a href=\"/site/thegameguy\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                \n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://gladhatter.neocities.org/rust_journey\"><img src=\"/site_screenshots/14/85/gladhatter/rust_journey.html.540x405.webp\" alt=\"Rust Journey\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://gladhatter.neocities.org/rust_journey\">Rust Journey</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://gladhatter.neocities.org/rust_journey\">gladhatter.neocities.org/rust_journey</a>\n                <br>\n                <small><a href=\"/site/gladhatter\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...solving to remind yourself you need to eat. I&#39;ve been doing <b>rust</b>lings, and the thing is it&#39;s not hard, per se. These problems are all completely solveable, by design. In fact, the...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://lykarust.neocities.org/\"><img src=\"/site_screenshots/26/42/lykarust/index.html.540x405.webp\" alt=\"LYKA RUST\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://lykarust.neocities.org/\">LYKA RUST</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://lykarust.neocities.org/\">lykarust.neocities.org</a>\n                <br>\n                <small><a href=\"/site/lykarust\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                Buradaki Herkes Eğlence Ve Rol Yapmak için Bulunuyor Peki ya Sen ?\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://mazda6.neocities.org/esicont/srvc/html/id098009740100\"><img src=\"/site_screenshots/15/09/mazda6/esicont/srvc/html/id098009740100.html.540x405.webp\" alt=\"RUST PREVENTIVE TREATMENT [WATER-PROOF AND RUST PREVENTIVE]\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://mazda6.neocities.org/esicont/srvc/html/id098009740100\">RUST PREVENTIVE TREATMENT [WATER-PROOF AND RUST PREVENTIVE]</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://mazda6.neocities.org/esicont/srvc/html/id098009740100\">mazda6.neocities.org/esicont/srvc/html/id098009740100</a>\n                <br>\n                <small><a href=\"/site/mazda6\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                <b>RUST</b> PREVENTIVE TREATMENT [WATER-PROOF AND <b>RUST</b> PREVENTIVE] id098009740100 4SD am6zzb00000498 WGN am6zzb00000499\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://geemesrust.neocities.org/newnewnewfil\"><img src=\"/site_screenshots/24/50/geemesrust/newnewnewfil.html.540x405.webp\" alt=\"GEMME&#39;s RUST\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://geemesrust.neocities.org/newnewnewfil\">GEMME&#39;s RUST</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://geemesrust.neocities.org/newnewnewfil\">geemesrust.neocities.org/newnewnewfil</a>\n                <br>\n                <small><a href=\"/site/geemesrust\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                Welcome Navigate ⊳ Link 1 ⊳ Link 2 ⊳ Link 3 ⊳ Link 4 ⊳ Link 5 Sub Header ⊳ Link 1 ⊳ Link 2 ⊳ Link 3 ⊳ Link 4 ⊳ Link 5 Other Hello Header Lorem ipsum dolor sit amet, consectetur adi...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://nugget.neocities.org/articles/gmsleep\"><img src=\"/site_screenshots/37/78/nugget/articles/gmsleep.html.540x405.webp\" alt=\"GM planned rust and sleeping-gas floormats\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://nugget.neocities.org/articles/gmsleep\">GM planned rust and sleeping-gas floormats</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://nugget.neocities.org/articles/gmsleep\">nugget.neocities.org/articles/gmsleep</a>\n                <br>\n                <small><a href=\"/site/nugget\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ...purgatory (scary) Creepy meat markets in SE Asia GM planned <b>rust</b> and sleeping-gas floormats Strange businesses in Indiana pointing to mind control (MKULTRA) Internet reviews for co...\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://bvazquez.neocities.org/Rust%20load%20and%20scan/Rust\"><img src=\"/site_screenshots/56/18/bvazquez/Rust%20load%20and%20scan/Rust.html.540x405.webp\" alt=\"El web site de RUST\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://bvazquez.neocities.org/Rust%20load%20and%20scan/Rust\">El web site de RUST</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://bvazquez.neocities.org/Rust%20load%20and%20scan/Rust\">bvazquez.neocities.org/Rust load and scan/Rust</a>\n                <br>\n                <small><a href=\"/site/bvazquez\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                i Stone and ore nodes are often found around cliffs, mountains and other rock formations. LOADING ENTERING THE GAME SCAN\n              </p>\n            </div>\n          </div>\n          <div class=\"result-item\">\n            <a class=\"result-screenshot\" href=\"https://fckingtiredaf.neocities.org/rustruin\"><img src=\"/site_screenshots/32/54/fckingtiredaf/rustruin.html.540x405.webp\" alt=\"* Rust &amp; Ruin *\"></a>\n            <div class=\"result-details\">\n              <h3 class=\"result-title\">\n                <a href=\"https://fckingtiredaf.neocities.org/rustruin\">* Rust &amp; Ruin *</a>\n              </h3>\n\n              <div class=\"result-url\">\n                <a href=\"https://fckingtiredaf.neocities.org/rustruin\">fckingtiredaf.neocities.org/rustruin</a>\n                <br>\n                <small><a href=\"/site/fckingtiredaf\">Guestbook</a></small>\n              </div>\n\n              <p class=\"result-snippet\">\n                ▄██████████████▄ ██████████████████ ██████▀▀██▀▀██████ ██████▄▄██▄▄██████ ██████████████████ ▀███████████████▀ Welcome to the Zombie Apocalypse... Type a command to begin.\n              </p>\n            </div>\n          </div>\n      </div>\n\n      <div class=\"txt-Center\">\n        <h2>\n            <a href=\"?q=rust&start=100\"><i class=\"fa fa-arrow-right arrow\"></i></a>\n        </h2>\n      </div>\n  </div>\n\n    </div>\n    <footer class=\"footer-Base\">\n      <aside class=\"footer-Outro\">\n  <div class=\"footer-Content\">\n    <div class=\"row\">\n      <p class=\"tiny col credits\">\n        <a href=\"https://neocities.org\" title=\"Neocities.org\" style=\"text-decoration:none;\">Neocities</a> is <a href=\"https://github.com/neocities\" title=\"Neocities on GitHub\">open source</a>. Follow us on <a href=\"https://bsky.app/profile/neocities.org\">Bluesky</a>\n      </p>\n      <nav class=\"footer-Nav col\">\n        <ul class=\"tiny h-Nav\">\n          <li><a href=\"/about\">About</a></li>\n          <li><a href=\"/donate\">Donate</a></li>\n          <li><a href=\"/cli\">CLI</a></li>\n            <li><a href=\"//blog.neocities.org\">Blog</a></li>\n            <li><a href=\"/api\">API</a></li>\n            <li><a href=\"/press\">Press</a></li>\n          <li><a href=\"http://status.neocitiesops.net/\">Status</a></li>\n          <li><a href=\"/terms\" rel=\"nofollow\">Terms</a></li>\n          <li><a href=\"/contact\" rel=\"nofollow\">Contact</a></li>\n        </ul>\n      </nav>\n    </div>\n  </div>\n</aside>\n\n    </footer>\n\n    <script src=\"/js/underscore-min.js\"></script>\n    <script src=\"/js/nav.min.js\"></script>\n    <script src=\"/js/bootstrap.min.js\"></script>\n    <script src=\"/js/typeahead.bundle.js\"></script>\n    <script src=\"/js/dayjs.min.js\"></script>\n    <script src=\"/js/theme.js\"></script>\n\n    <script>\n      $(\"a#like\").tooltip({html: true})\n      $(\"a.comment_like\").tooltip({html: true})\n      $('#shareButton').popover({html: true})\n      $('#tipButton').popover({html: true})\n\n      $('.typeahead').typeahead({\n        minLength: 2,\n        highlight: true\n      }, {\n        name: 'tags',\n        source: function(query, callback) {\n          $.get('/tags/autocomplete/'+query+'.json', function(data) {\n            var suggestions = JSON.parse(data)\n            var suggestionObjects = []\n            for(var i=0; i<suggestions.length; i++)\n              suggestionObjects.push({value: suggestions[i]})\n\n            callback(suggestionObjects)\n          })\n        }\n      }).on('typeahead:selected', function(e) {\n        e.target.form.submit()\n      })\n    </script>\n  </body>\n</html>\n"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://neocities.org/browse",
+          "normalized_url": "https://neocities.org/browse",
+          "title": "Websites",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://neocities.org/search",
+          "normalized_url": "https://neocities.org/search",
+          "title": "Search",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://neocities.org/activity",
+          "normalized_url": "https://neocities.org/activity",
+          "title": "Activity",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://neocities.org/tutorials",
+          "normalized_url": "https://neocities.org/tutorials",
+          "title": "Learn",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://neocities.org/supporter",
+          "normalized_url": "https://neocities.org/supporter",
+          "title": "Support Us",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://neocities.org/#new",
+          "normalized_url": "https://neocities.org/#new",
+          "title": "Sign up for Free",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://neocities.org/signin",
+          "normalized_url": "https://neocities.org/signin",
+          "title": "Sign In",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://genosadness.neocities.org/stories/vignettober/23-2024",
+          "normalized_url": "https://genosadness.neocities.org/stories/vignettober/23-2024",
+          "title": "\"Rust\"",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://genosadness.neocities.org/stories/vignettober/23-2024",
+          "normalized_url": "https://genosadness.neocities.org/stories/vignettober/23-2024",
+          "title": "genosadness.neocities.org/stories/vignettober/23-2024",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://misswindow.neocities.org/rust",
+          "normalized_url": "https://misswindow.neocities.org/rust",
+          "title": "rust this is impressive",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://misswindow.neocities.org/rust",
+          "normalized_url": "https://misswindow.neocities.org/rust",
+          "title": "misswindow.neocities.org/rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://shindoom.neocities.org/rust_e1e2",
+          "normalized_url": "https://shindoom.neocities.org/rust_e1e2",
+          "title": "Rust Ep 1-2 ⛧ SHIN'S SPACE PORT ⛧",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://shindoom.neocities.org/rust_e1e2",
+          "normalized_url": "https://shindoom.neocities.org/rust_e1e2",
+          "title": "shindoom.neocities.org/rust_e1e2",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://atvutv1.neocities.org/suzuki-rust-problems",
+          "normalized_url": "https://atvutv1.neocities.org/suzuki-rust-problems",
+          "title": "Suzuki Rust Problems",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://atvutv1.neocities.org/suzuki-rust-problems",
+          "normalized_url": "https://atvutv1.neocities.org/suzuki-rust-problems",
+          "title": "atvutv1.neocities.org/suzuki-rust-problems",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://die-verwandlung.neocities.org/writings/rust",
+          "normalized_url": "https://die-verwandlung.neocities.org/writings/rust",
+          "title": "Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://die-verwandlung.neocities.org/writings/rust",
+          "normalized_url": "https://die-verwandlung.neocities.org/writings/rust",
+          "title": "die-verwandlung.neocities.org/writings/rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://a-i-nstein.neocities.org/",
+          "normalized_url": "https://a-i-nstein.neocities.org/",
+          "title": "Idiomatic Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://a-i-nstein.neocities.org/",
+          "normalized_url": "https://a-i-nstein.neocities.org/",
+          "title": "a-i-nstein.neocities.org",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://developer04web13.neocities.org/LENGUAJE%20RUST",
+          "normalized_url": "https://developer04web13.neocities.org/LENGUAJE%20RUST",
+          "title": "Lenguaje Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://developer04web13.neocities.org/LENGUAJE%20RUST",
+          "normalized_url": "https://developer04web13.neocities.org/LENGUAJE%20RUST",
+          "title": "developer04web13.neocities.org/LENGUAJE RUST",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://albertoo.neocities.org/Trabajo_de_Rust/Rust",
+          "normalized_url": "https://albertoo.neocities.org/Trabajo_de_Rust/Rust",
+          "title": "Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://albertoo.neocities.org/Trabajo_de_Rust/Rust",
+          "normalized_url": "https://albertoo.neocities.org/Trabajo_de_Rust/Rust",
+          "title": "albertoo.neocities.org/Trabajo_de_Rust/Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust12993.neocities.org/rust",
+          "normalized_url": "https://rust12993.neocities.org/rust",
+          "title": "rust!",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust12993.neocities.org/rust",
+          "normalized_url": "https://rust12993.neocities.org/rust",
+          "title": "rust12993.neocities.org/rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://ft2.neocities.org/languagePages/rust",
+          "normalized_url": "https://ft2.neocities.org/languagePages/rust",
+          "title": "Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://ft2.neocities.org/languagePages/rust",
+          "normalized_url": "https://ft2.neocities.org/languagePages/rust",
+          "title": "ft2.neocities.org/languagePages/rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://hitogata.neocities.org/Rust_compiles_really_slow",
+          "normalized_url": "https://hitogata.neocities.org/Rust_compiles_really_slow",
+          "title": "Rust compiles really slow",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://hitogata.neocities.org/Rust_compiles_really_slow",
+          "normalized_url": "https://hitogata.neocities.org/Rust_compiles_really_slow",
+          "title": "hitogata.neocities.org/Rust_compiles_really_slow",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://davidandreu.neocities.org/rust",
+          "normalized_url": "https://davidandreu.neocities.org/rust",
+          "title": "RUST - Materiales Necesarios",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://davidandreu.neocities.org/rust",
+          "normalized_url": "https://davidandreu.neocities.org/rust",
+          "title": "davidandreu.neocities.org/rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://cnile.neocities.org/fuckrust",
+          "normalized_url": "https://cnile.neocities.org/fuckrust",
+          "title": "Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://cnile.neocities.org/fuckrust",
+          "normalized_url": "https://cnile.neocities.org/fuckrust",
+          "title": "cnile.neocities.org/fuckrust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://planar-invasion.neocities.org/compendium/items/bag-of-tricks-rust",
+          "normalized_url": "https://planar-invasion.neocities.org/compendium/items/bag-of-tricks-rust",
+          "title": "bag-of-tricks-rust | Planar Invasion",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://planar-invasion.neocities.org/compendium/items/bag-of-tricks-rust",
+          "normalized_url": "https://planar-invasion.neocities.org/compendium/items/bag-of-tricks-rust",
+          "title": "planar-invasion.neocities.org/compendium/items/bag-of-tricks-rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://paulkenny.neocities.org/tags/Programming_Language/Rust",
+          "normalized_url": "https://paulkenny.neocities.org/tags/Programming_Language/Rust",
+          "title": "Rust - Paul Kenny",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://paulkenny.neocities.org/tags/Programming_Language/Rust",
+          "normalized_url": "https://paulkenny.neocities.org/tags/Programming_Language/Rust",
+          "title": "paulkenny.neocities.org/tags/Programming_Language/Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://smon.neocities.org/2019.05.27.12.50-rust_webassembly",
+          "normalized_url": "https://smon.neocities.org/2019.05.27.12.50-rust_webassembly",
+          "title": "Rust & Webassembly",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://smon.neocities.org/2019.05.27.12.50-rust_webassembly",
+          "normalized_url": "https://smon.neocities.org/2019.05.27.12.50-rust_webassembly",
+          "title": "smon.neocities.org/2019.05.27.12.50-rust_webassembly",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://poipole2010.neocities.org/glfs/shareddeps/rust-bindgen",
+          "normalized_url": "https://poipole2010.neocities.org/glfs/shareddeps/rust-bindgen",
+          "title": "rust-bindgen-0.71.1",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://poipole2010.neocities.org/glfs/shareddeps/rust-bindgen",
+          "normalized_url": "https://poipole2010.neocities.org/glfs/shareddeps/rust-bindgen",
+          "title": "poipole2010.neocities.org/glfs/shareddeps/rust-bindgen",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://lotophagus.neocities.org/october",
+          "normalized_url": "https://lotophagus.neocities.org/october",
+          "title": "October Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://lotophagus.neocities.org/october",
+          "normalized_url": "https://lotophagus.neocities.org/october",
+          "title": "lotophagus.neocities.org/october",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://spud-rust.neocities.org/CONTACTS",
+          "normalized_url": "https://spud-rust.neocities.org/CONTACTS",
+          "title": "SPUD RUST WEBSITE",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://spud-rust.neocities.org/CONTACTS",
+          "normalized_url": "https://spud-rust.neocities.org/CONTACTS",
+          "title": "spud-rust.neocities.org/CONTACTS",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://vexked.neocities.org/",
+          "normalized_url": "https://vexked.neocities.org/",
+          "title": "Rust Sever",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://vexked.neocities.org/",
+          "normalized_url": "https://vexked.neocities.org/",
+          "title": "vexked.neocities.org",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://bornfirr.neocities.org/",
+          "normalized_url": "https://bornfirr.neocities.org/",
+          "title": "Rust Gamble",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://bornfirr.neocities.org/",
+          "normalized_url": "https://bornfirr.neocities.org/",
+          "title": "bornfirr.neocities.org",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://srchon.neocities.org/",
+          "normalized_url": "https://srchon.neocities.org/",
+          "title": "Rust para noobs",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://srchon.neocities.org/",
+          "normalized_url": "https://srchon.neocities.org/",
+          "title": "srchon.neocities.org",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://marcherlands-rpg.neocities.org/monster-manual/rustmonster",
+          "normalized_url": "https://marcherlands-rpg.neocities.org/monster-manual/rustmonster",
+          "title": "Rust Monster",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://marcherlands-rpg.neocities.org/monster-manual/rustmonster",
+          "normalized_url": "https://marcherlands-rpg.neocities.org/monster-manual/rustmonster",
+          "title": "marcherlands-rpg.neocities.org/monster-manual/rustmonster",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://nexus6.neocities.org/techindex/rustdict",
+          "normalized_url": "https://nexus6.neocities.org/techindex/rustdict",
+          "title": "rust for dummies",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://nexus6.neocities.org/techindex/rustdict",
+          "normalized_url": "https://nexus6.neocities.org/techindex/rustdict",
+          "title": "nexus6.neocities.org/techindex/rustdict",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rocketcalculator.neocities.org/",
+          "normalized_url": "https://rocketcalculator.neocities.org/",
+          "title": "Rust Rocket Calculator",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rocketcalculator.neocities.org/",
+          "normalized_url": "https://rocketcalculator.neocities.org/",
+          "title": "rocketcalculator.neocities.org",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://yfz.neocities.org/",
+          "normalized_url": "https://yfz.neocities.org/",
+          "title": "YFZ Rust Clan",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://yfz.neocities.org/",
+          "normalized_url": "https://yfz.neocities.org/",
+          "title": "yfz.neocities.org",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://unik.neocities.org/",
+          "normalized_url": "https://unik.neocities.org/",
+          "title": "UNIK Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://unik.neocities.org/",
+          "normalized_url": "https://unik.neocities.org/",
+          "title": "unik.neocities.org",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://speckofrust.neocities.org/",
+          "normalized_url": "https://speckofrust.neocities.org/",
+          "title": "Speck of Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://speckofrust.neocities.org/",
+          "normalized_url": "https://speckofrust.neocities.org/",
+          "title": "speckofrust.neocities.org",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://portcoriol.neocities.org/rustbucket",
+          "normalized_url": "https://portcoriol.neocities.org/rustbucket",
+          "title": "THE RUST BUCKET",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://portcoriol.neocities.org/rustbucket",
+          "normalized_url": "https://portcoriol.neocities.org/rustbucket",
+          "title": "portcoriol.neocities.org/rustbucket",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust-in-pieces.neocities.org/",
+          "normalized_url": "https://rust-in-pieces.neocities.org/",
+          "title": "Rust In Pieces",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust-in-pieces.neocities.org/",
+          "normalized_url": "https://rust-in-pieces.neocities.org/",
+          "title": "rust-in-pieces.neocities.org",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://southwesternrugsdepot.neocities.org/southwestern-interior-design-carpets/southwest-carpets-in-rust-color",
+          "normalized_url": "https://southwesternrugsdepot.neocities.org/southwestern-interior-design-carpets/southwest-carpets-in-rust-color",
+          "title": "southwest carpets in rust color",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://southwesternrugsdepot.neocities.org/southwestern-interior-design-carpets/southwest-carpets-in-rust-color",
+          "normalized_url": "https://southwesternrugsdepot.neocities.org/southwestern-interior-design-carpets/southwest-carpets-in-rust-color",
+          "title": "southwesternrugsdepot.neocities.org/southwestern-interior-design-carpets/southwest-carpets-in-rust-color",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://moddedbear.neocities.org/posts/2022-06-23-sticky-notes-and-learning-rust",
+          "normalized_url": "https://moddedbear.neocities.org/posts/2022-06-23-sticky-notes-and-learning-rust",
+          "title": "Sticky Notes and Learning Rust - moddedBear",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://moddedbear.neocities.org/posts/2022-06-23-sticky-notes-and-learning-rust",
+          "normalized_url": "https://moddedbear.neocities.org/posts/2022-06-23-sticky-notes-and-learning-rust",
+          "title": "moddedbear.neocities.org/posts/2022-06-23-sticky-notes-and-learning-rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://apropos.neocities.org/posts/thoughts-on-rust",
+          "normalized_url": "https://apropos.neocities.org/posts/thoughts-on-rust",
+          "title": "Reflections on Writing Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://apropos.neocities.org/posts/thoughts-on-rust",
+          "normalized_url": "https://apropos.neocities.org/posts/thoughts-on-rust",
+          "title": "apropos.neocities.org/posts/thoughts-on-rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://koengrosveld.neocities.org/stage1",
+          "normalized_url": "https://koengrosveld.neocities.org/stage1",
+          "title": "Rust stage 1",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://koengrosveld.neocities.org/stage1",
+          "normalized_url": "https://koengrosveld.neocities.org/stage1",
+          "title": "koengrosveld.neocities.org/stage1",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://crimsolution.neocities.org/black_hat_rust",
+          "normalized_url": "https://crimsolution.neocities.org/black_hat_rust",
+          "title": "Library - Black Hat Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://crimsolution.neocities.org/black_hat_rust",
+          "normalized_url": "https://crimsolution.neocities.org/black_hat_rust",
+          "title": "crimsolution.neocities.org/black_hat_rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://vecuvia.neocities.org/writing/blood_and_rust",
+          "normalized_url": "https://vecuvia.neocities.org/writing/blood_and_rust",
+          "title": "Blood and Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://vecuvia.neocities.org/writing/blood_and_rust",
+          "normalized_url": "https://vecuvia.neocities.org/writing/blood_and_rust",
+          "title": "vecuvia.neocities.org/writing/blood_and_rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://noctlas332.neocities.org/third/art/ocs/blooming_in_rust",
+          "normalized_url": "https://noctlas332.neocities.org/third/art/ocs/blooming_in_rust",
+          "title": "blooming in rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://noctlas332.neocities.org/third/art/ocs/blooming_in_rust",
+          "normalized_url": "https://noctlas332.neocities.org/third/art/ocs/blooming_in_rust",
+          "title": "noctlas332.neocities.org/third/art/ocs/blooming_in_rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://tmgindex.neocities.org/songs/bonesdontrust",
+          "normalized_url": "https://tmgindex.neocities.org/songs/bonesdontrust",
+          "title": "Bones Don't Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://tmgindex.neocities.org/songs/bonesdontrust",
+          "normalized_url": "https://tmgindex.neocities.org/songs/bonesdontrust",
+          "title": "tmgindex.neocities.org/songs/bonesdontrust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://igolden.neocities.org/LaserCleaningMachine-LaserRustRemovalMachine",
+          "normalized_url": "https://igolden.neocities.org/LaserCleaningMachine-LaserRustRemovalMachine",
+          "title": "Laser Cleaning Machine- Laser Rust Removal Machine - IGOLDEN-CNC",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://igolden.neocities.org/LaserCleaningMachine-LaserRustRemovalMachine",
+          "normalized_url": "https://igolden.neocities.org/LaserCleaningMachine-LaserRustRemovalMachine",
+          "title": "igolden.neocities.org/LaserCleaningMachine-LaserRustRemovalMachine",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://mrtshop.neocities.org/rust-color-ruffle-spread-shirt",
+          "normalized_url": "https://mrtshop.neocities.org/rust-color-ruffle-spread-shirt",
+          "title": "RUST COLOR RUFFLE SPREAD SHIRT - Serrena",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://mrtshop.neocities.org/rust-color-ruffle-spread-shirt",
+          "normalized_url": "https://mrtshop.neocities.org/rust-color-ruffle-spread-shirt",
+          "title": "mrtshop.neocities.org/rust-color-ruffle-spread-shirt",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jr413.neocities.org/bloodhex/bloodhex%20rust%20table%20test",
+          "normalized_url": "https://jr413.neocities.org/bloodhex/bloodhex%20rust%20table%20test",
+          "title": "JR Bloodhex Grid h000: RUST",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://jr413.neocities.org/bloodhex/bloodhex%20rust%20table%20test",
+          "normalized_url": "https://jr413.neocities.org/bloodhex/bloodhex%20rust%20table%20test",
+          "title": "jr413.neocities.org/bloodhex/bloodhex rust table test",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pizzapi.neocities.org/",
+          "normalized_url": "https://pizzapi.neocities.org/",
+          "title": "Rust Server & Radio Station",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pizzapi.neocities.org/",
+          "normalized_url": "https://pizzapi.neocities.org/",
+          "title": "pizzapi.neocities.org",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://culturevault.neocities.org/pipboy3000dcdtonor",
+          "normalized_url": "https://culturevault.neocities.org/pipboy3000dcdtonor",
+          "title": "Type O Negative - October Rust\"",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://culturevault.neocities.org/pipboy3000dcdtonor",
+          "normalized_url": "https://culturevault.neocities.org/pipboy3000dcdtonor",
+          "title": "culturevault.neocities.org/pipboy3000dcdtonor",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://marionrust.neocities.org/obit",
+          "normalized_url": "https://marionrust.neocities.org/obit",
+          "title": "Obituaries - The Marion Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://marionrust.neocities.org/obit",
+          "normalized_url": "https://marionrust.neocities.org/obit",
+          "title": "marionrust.neocities.org/obit",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://dukeofdumbass.neocities.org/poems/cavalleriarust",
+          "normalized_url": "https://dukeofdumbass.neocities.org/poems/cavalleriarust",
+          "title": "rust, and other accruals | Rose's Fics",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://dukeofdumbass.neocities.org/poems/cavalleriarust",
+          "normalized_url": "https://dukeofdumbass.neocities.org/poems/cavalleriarust",
+          "title": "dukeofdumbass.neocities.org/poems/cavalleriarust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://millionsofrorys.neocities.org/pages/music/thoughts",
+          "normalized_url": "https://millionsofrorys.neocities.org/pages/music/thoughts",
+          "title": "rust never sleeps",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://millionsofrorys.neocities.org/pages/music/thoughts",
+          "normalized_url": "https://millionsofrorys.neocities.org/pages/music/thoughts",
+          "title": "millionsofrorys.neocities.org/pages/music/thoughts",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://charlietrip.neocities.org/projects/indextree",
+          "normalized_url": "https://charlietrip.neocities.org/projects/indextree",
+          "title": "Rust: IndexTree · cB Space",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://charlietrip.neocities.org/projects/indextree",
+          "normalized_url": "https://charlietrip.neocities.org/projects/indextree",
+          "title": "charlietrip.neocities.org/projects/indextree",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://mudlord.neocities.org/2019/03/20/Rust-keygen-tut",
+          "normalized_url": "https://mudlord.neocities.org/2019/03/20/Rust-keygen-tut",
+          "title": "Keygenning diablo2oo2’s crackme 1 (in Rust) | .blog",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://mudlord.neocities.org/2019/03/20/Rust-keygen-tut",
+          "normalized_url": "https://mudlord.neocities.org/2019/03/20/Rust-keygen-tut",
+          "title": "mudlord.neocities.org/2019/03/20/Rust-keygen-tut",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://ourboypatrick.neocities.org/images/toldeo/the-land-of-steel",
+          "normalized_url": "https://ourboypatrick.neocities.org/images/toldeo/the-land-of-steel",
+          "title": "The Land of Steel and Rust~",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://ourboypatrick.neocities.org/images/toldeo/the-land-of-steel",
+          "normalized_url": "https://ourboypatrick.neocities.org/images/toldeo/the-land-of-steel",
+          "title": "ourboypatrick.neocities.org/images/toldeo/the-land-of-steel",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://3549.neocities.org/posts/cast-iron-pans-cleaning-rust-off-of-chrome",
+          "normalized_url": "https://3549.neocities.org/posts/cast-iron-pans-cleaning-rust-off-of-chrome",
+          "title": "Cast Iron Pans Cleaning Rust Off Of Chrome",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://3549.neocities.org/posts/cast-iron-pans-cleaning-rust-off-of-chrome",
+          "normalized_url": "https://3549.neocities.org/posts/cast-iron-pans-cleaning-rust-off-of-chrome",
+          "title": "3549.neocities.org/posts/cast-iron-pans-cleaning-rust-off-of-chrome",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://mnunley.neocities.org/num-test",
+          "normalized_url": "https://mnunley.neocities.org/num-test",
+          "title": "Fixed precision number experiment in rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://mnunley.neocities.org/num-test",
+          "normalized_url": "https://mnunley.neocities.org/num-test",
+          "title": "mnunley.neocities.org/num-test",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://metamind.neocities.org/",
+          "normalized_url": "https://metamind.neocities.org/",
+          "title": "MetaMind | Clash Royale & Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://metamind.neocities.org/",
+          "normalized_url": "https://metamind.neocities.org/",
+          "title": "metamind.neocities.org",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://perseoq.neocities.org/manual_rust_drivers",
+          "normalized_url": "https://perseoq.neocities.org/manual_rust_drivers",
+          "title": "Manual de Rust para Drivers Linux",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://perseoq.neocities.org/manual_rust_drivers",
+          "normalized_url": "https://perseoq.neocities.org/manual_rust_drivers",
+          "title": "perseoq.neocities.org/manual_rust_drivers",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust-and-moss.neocities.org/",
+          "normalized_url": "https://rust-and-moss.neocities.org/",
+          "title": "The web site of rust-and-moss",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust-and-moss.neocities.org/",
+          "normalized_url": "https://rust-and-moss.neocities.org/",
+          "title": "rust-and-moss.neocities.org",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rustfrequency.neocities.org/",
+          "normalized_url": "https://rustfrequency.neocities.org/",
+          "title": "Rust Frequency – Sound in the Decay of Metals",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rustfrequency.neocities.org/",
+          "normalized_url": "https://rustfrequency.neocities.org/",
+          "title": "rustfrequency.neocities.org",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://ollieofthebeholder.neocities.org/forget62",
+          "normalized_url": "https://ollieofthebeholder.neocities.org/forget62",
+          "title": "62 - Our treasures moth and rust corrupt",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://ollieofthebeholder.neocities.org/forget62",
+          "normalized_url": "https://ollieofthebeholder.neocities.org/forget62",
+          "title": "ollieofthebeholder.neocities.org/forget62",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://toliksemaniuk123.neocities.org/rust_site/rust",
+          "normalized_url": "https://toliksemaniuk123.neocities.org/rust_site/rust",
+          "title": "RUST",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://toliksemaniuk123.neocities.org/rust_site/rust",
+          "normalized_url": "https://toliksemaniuk123.neocities.org/rust_site/rust",
+          "title": "toliksemaniuk123.neocities.org/rust_site/rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://noname11111.neocities.org/blog_why-discord-is-switching-from-go-to-rust",
+          "normalized_url": "https://noname11111.neocities.org/blog_why-discord-is-switching-from-go-to-rust",
+          "title": "Why Discord is switching from Go to Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://noname11111.neocities.org/blog_why-discord-is-switching-from-go-to-rust",
+          "normalized_url": "https://noname11111.neocities.org/blog_why-discord-is-switching-from-go-to-rust",
+          "title": "noname11111.neocities.org/blog_why-discord-is-switching-from-go-to-rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://charris.neocities.org/rust-commentary",
+          "normalized_url": "https://charris.neocities.org/rust-commentary",
+          "title": "Commentary on the Rust book",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://charris.neocities.org/rust-commentary",
+          "normalized_url": "https://charris.neocities.org/rust-commentary",
+          "title": "charris.neocities.org/rust-commentary",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://thecultofnyx.neocities.org/games/textadventure/rustandsunlight",
+          "normalized_url": "https://thecultofnyx.neocities.org/games/textadventure/rustandsunlight",
+          "title": "A Memory of Rust and Sunlight",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://thecultofnyx.neocities.org/games/textadventure/rustandsunlight",
+          "normalized_url": "https://thecultofnyx.neocities.org/games/textadventure/rustandsunlight",
+          "title": "thecultofnyx.neocities.org/games/textadventure/rustandsunlight",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://magentamenace.neocities.org/RUST",
+          "normalized_url": "https://magentamenace.neocities.org/RUST",
+          "title": "RUST Interactive Zine",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://magentamenace.neocities.org/RUST",
+          "normalized_url": "https://magentamenace.neocities.org/RUST",
+          "title": "magentamenace.neocities.org/RUST",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fune.neocities.org/",
+          "normalized_url": "https://fune.neocities.org/",
+          "title": "rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fune.neocities.org/",
+          "normalized_url": "https://fune.neocities.org/",
+          "title": "fune.neocities.org",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://shukularuni.neocities.org/guide/ctf/picoctf/general/Rust_fixme_1",
+          "normalized_url": "https://shukularuni.neocities.org/guide/ctf/picoctf/general/Rust_fixme_1",
+          "title": "picoCTF Rust fixme 1 @ Shukularuni",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://shukularuni.neocities.org/guide/ctf/picoctf/general/Rust_fixme_1",
+          "normalized_url": "https://shukularuni.neocities.org/guide/ctf/picoctf/general/Rust_fixme_1",
+          "title": "shukularuni.neocities.org/guide/ctf/picoctf/general/Rust_fixme_1",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust.neocities.org/miscellaneous",
+          "normalized_url": "https://rust.neocities.org/miscellaneous",
+          "title": "rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://rust.neocities.org/miscellaneous",
+          "normalized_url": "https://rust.neocities.org/miscellaneous",
+          "title": "rust.neocities.org/miscellaneous",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gujie.neocities.org/bhznjns.github.io-2/pages/%E4%BD%BF%E7%94%A8%20Rust%20%E5%BC%80%E5%8F%91%E5%85%A8%E6%A0%88%E5%BA%94%E7%94%A8",
+          "normalized_url": "https://gujie.neocities.org/bhznjns.github.io-2/pages/%E4%BD%BF%E7%94%A8%20Rust%20%E5%BC%80%E5%8F%91%E5%85%A8%E6%A0%88%E5%BA%94%E7%94%A8",
+          "title": "使用 Rust 开发全栈应用",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gujie.neocities.org/bhznjns.github.io-2/pages/%E4%BD%BF%E7%94%A8%20Rust%20%E5%BC%80%E5%8F%91%E5%85%A8%E6%A0%88%E5%BA%94%E7%94%A8",
+          "normalized_url": "https://gujie.neocities.org/bhznjns.github.io-2/pages/%E4%BD%BF%E7%94%A8%20Rust%20%E5%BC%80%E5%8F%91%E5%85%A8%E6%A0%88%E5%BA%94%E7%94%A8",
+          "title": "gujie.neocities.org/bhznjns.github.io-2/pages/使用 Rust 开发全栈应用",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://bateto.neocities.org/old_toy_factory_dolls_rust_generator",
+          "normalized_url": "https://bateto.neocities.org/old_toy_factory_dolls_rust_generator",
+          "title": "Prompt Generator – Old Toy Factory, Forgotten Dolls, Rust, Light Horror & Humor",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://bateto.neocities.org/old_toy_factory_dolls_rust_generator",
+          "normalized_url": "https://bateto.neocities.org/old_toy_factory_dolls_rust_generator",
+          "title": "bateto.neocities.org/old_toy_factory_dolls_rust_generator",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://thegameguy.neocities.org/rust",
+          "normalized_url": "https://thegameguy.neocities.org/rust",
+          "title": "Rust Mini Survival + Keycards",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://thegameguy.neocities.org/rust",
+          "normalized_url": "https://thegameguy.neocities.org/rust",
+          "title": "thegameguy.neocities.org/rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gladhatter.neocities.org/rust_journey",
+          "normalized_url": "https://gladhatter.neocities.org/rust_journey",
+          "title": "Rust Journey",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://gladhatter.neocities.org/rust_journey",
+          "normalized_url": "https://gladhatter.neocities.org/rust_journey",
+          "title": "gladhatter.neocities.org/rust_journey",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://lykarust.neocities.org/",
+          "normalized_url": "https://lykarust.neocities.org/",
+          "title": "LYKA RUST",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://lykarust.neocities.org/",
+          "normalized_url": "https://lykarust.neocities.org/",
+          "title": "lykarust.neocities.org",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://mazda6.neocities.org/esicont/srvc/html/id098009740100",
+          "normalized_url": "https://mazda6.neocities.org/esicont/srvc/html/id098009740100",
+          "title": "RUST PREVENTIVE TREATMENT [WATER-PROOF AND RUST PREVENTIVE]",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://mazda6.neocities.org/esicont/srvc/html/id098009740100",
+          "normalized_url": "https://mazda6.neocities.org/esicont/srvc/html/id098009740100",
+          "title": "mazda6.neocities.org/esicont/srvc/html/id098009740100",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://geemesrust.neocities.org/newnewnewfil",
+          "normalized_url": "https://geemesrust.neocities.org/newnewnewfil",
+          "title": "GEMME's RUST",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://geemesrust.neocities.org/newnewnewfil",
+          "normalized_url": "https://geemesrust.neocities.org/newnewnewfil",
+          "title": "geemesrust.neocities.org/newnewnewfil",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://nugget.neocities.org/articles/gmsleep",
+          "normalized_url": "https://nugget.neocities.org/articles/gmsleep",
+          "title": "GM planned rust and sleeping-gas floormats",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://nugget.neocities.org/articles/gmsleep",
+          "normalized_url": "https://nugget.neocities.org/articles/gmsleep",
+          "title": "nugget.neocities.org/articles/gmsleep",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://bvazquez.neocities.org/Rust%20load%20and%20scan/Rust",
+          "normalized_url": "https://bvazquez.neocities.org/Rust%20load%20and%20scan/Rust",
+          "title": "El web site de RUST",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://bvazquez.neocities.org/Rust%20load%20and%20scan/Rust",
+          "normalized_url": "https://bvazquez.neocities.org/Rust%20load%20and%20scan/Rust",
+          "title": "bvazquez.neocities.org/Rust load and scan/Rust",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fckingtiredaf.neocities.org/rustruin",
+          "normalized_url": "https://fckingtiredaf.neocities.org/rustruin",
+          "title": "* Rust & Ruin *",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://fckingtiredaf.neocities.org/rustruin",
+          "normalized_url": "https://fckingtiredaf.neocities.org/rustruin",
+          "title": "fckingtiredaf.neocities.org/rustruin",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://neocities.org/about",
+          "normalized_url": "https://neocities.org/about",
+          "title": "About",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://neocities.org/donate",
+          "normalized_url": "https://neocities.org/donate",
+          "title": "Donate",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://neocities.org/cli",
+          "normalized_url": "https://neocities.org/cli",
+          "title": "CLI",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://blog.neocities.org/",
+          "normalized_url": "https://blog.neocities.org/",
+          "title": "Blog",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://neocities.org/api",
+          "normalized_url": "https://neocities.org/api",
+          "title": "API",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://neocities.org/press",
+          "normalized_url": "https://neocities.org/press",
+          "title": "Press",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "http://status.neocitiesops.net/",
+          "normalized_url": "http://status.neocitiesops.net/",
+          "title": "Status",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://neocities.org/terms",
+          "normalized_url": "https://neocities.org/terms",
+          "title": "Terms",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://neocities.org/contact",
+          "normalized_url": "https://neocities.org/contact",
+          "title": "Contact",
+          "content": "",
+          "engine": "neocities",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

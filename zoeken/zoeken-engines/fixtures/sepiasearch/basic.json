@@ -1,0 +1,60 @@
+{
+  "engine": "sepiasearch",
+  "case": "basic",
+  "query": {
+    "query": "peertube",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://sepiasearch.org",
+    "headers": {},
+    "body": "{\n      \"total\": 2,\n      \"data\": [\n        {\n          \"url\": \"https://framatube.org/w/abc\",\n          \"name\": \"Intro to PeerTube\",\n          \"description\": \"A <b>short</b> introduction.\",\n          \"views\": 1200,\n          \"duration\": 615,\n          \"publishedAt\": \"2021-01-02T03:04:05.000Z\"\n        },\n        {\n          \"url\": \"https://tube.example/w/xyz\",\n          \"name\": \"Rust in 100 seconds\",\n          \"description\": \"Quick overview.\",\n          \"views\": 9001,\n          \"duration\": 100,\n          \"publishedAt\": \"2022-02-03T00:00:00.000Z\"\n        }\n      ]\n    }"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://framatube.org/w/abc",
+          "normalized_url": "https://framatube.org/w/abc",
+          "title": "Intro to PeerTube",
+          "content": "A short introduction.",
+          "engine": "sepiasearch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Videos",
+          "thumbnail": "",
+          "iframe_src": ""
+        }
+      },
+      {
+        "Main": {
+          "url": "https://tube.example/w/xyz",
+          "normalized_url": "https://tube.example/w/xyz",
+          "title": "Rust in 100 seconds",
+          "content": "Quick overview.",
+          "engine": "sepiasearch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Videos",
+          "thumbnail": "",
+          "iframe_src": ""
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

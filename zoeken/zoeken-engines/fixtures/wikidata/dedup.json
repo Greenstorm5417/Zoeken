@@ -1,0 +1,43 @@
+{
+  "engine": "wikidata",
+  "case": "dedup",
+  "query": {
+    "query": "Douglas Adams",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://query.wikidata.org/sparql",
+    "headers": {},
+    "body": "{\n      \"results\": {\n        \"bindings\": [\n          {\n            \"item\": {\"type\": \"uri\", \"value\": \"http://www.wikidata.org/entity/Q42\"},\n            \"itemLabel\": {\"type\": \"literal\", \"value\": \"Douglas Adams\"},\n            \"itemDescription\": {\"type\": \"literal\", \"value\": \"English author and humorist\"}\n          },\n          {\n            \"item\": {\"type\": \"uri\", \"value\": \"http://www.wikidata.org/entity/Q42\"},\n            \"itemLabel\": {\"type\": \"literal\", \"value\": \"Douglas Adams\"},\n            \"itemDescription\": {\"type\": \"literal\", \"value\": \"English author and humorist\"}\n          }\n        ]\n      }\n    }"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": [
+      {
+        "infobox": "Douglas Adams",
+        "id": "https://www.wikidata.org/entity/Q42",
+        "content": "English author and humorist",
+        "img_src": null,
+        "urls": [
+          {
+            "title": "Wikidata",
+            "url": "http://www.wikidata.org/entity/Q42"
+          }
+        ],
+        "attributes": [],
+        "related_topics": [],
+        "engine": "wikidata"
+      }
+    ]
+  }
+}

@@ -1,0 +1,507 @@
+{
+  "engine": "openclipart",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://openclipart.org/search/?query=rust&p=1",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://openclipart.org/search/?query=rust&p=1",
+    "headers": {
+      "x-powered-by": "PHP/7.4.33",
+      "server": "nginx",
+      "date": "Thu, 09 Jul 2026 14:06:07 GMT",
+      "access-control-expose-headers": "Content-Length,Content-Range",
+      "access-control-allow-methods": "GET, POST, OPTIONS",
+      "content-type": "text/html; charset=UTF-8",
+      "access-control-allow-headers": "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range",
+      "access-control-allow-origin": "*"
+    },
+    "body": "<!doctype html><html lang='en'><head><meta charset='utf-8' /><title>Openclipart - Clipping Culture</title><meta name=\"description\" content=\"Clipart Search for rust\"/><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/><link rel=\"apple-touch-icon\" sizes=\"57x57\" href=\"/assets/images/favicons/apple-icon-57x57.png\"><link rel=\"apple-touch-icon\" sizes=\"60x60\" href=\"/assets/images/favicons/apple-icon-60x60.png\"><link rel=\"apple-touch-icon\" sizes=\"72x72\" href=\"/assets/images/favicons/apple-icon-72x72.png\"><link rel=\"apple-touch-icon\" sizes=\"76x76\" href=\"/assets/images/favicons/apple-icon-76x76.png\"><link rel=\"apple-touch-icon\" sizes=\"114x114\" href=\"/assets/images/favicons/apple-icon-114x114.png\"><link rel=\"apple-touch-icon\" sizes=\"120x120\" href=\"/assets/images/favicons/apple-icon-120x120.png\"><link rel=\"apple-touch-icon\" sizes=\"144x144\" href=\"/assets/images/favicons/apple-icon-144x144.png\"><link rel=\"apple-touch-icon\" sizes=\"152x152\" href=\"/assets/images/favicons/apple-icon-152x152.png\"><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/assets/images/favicons/apple-icon-180x180.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"/assets/images/favicons/android-icon-192x192.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/assets/images/favicons/favicon-32x32.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"96x96\" href=\"/assets/images/favicons/favicon-96x96.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/assets/images/favicons/favicon-16x16.png\"><link rel=\"manifest\" href=\"/assets/images/favicons/manifest.json\"><meta name=\"msapplication-TileColor\" content=\"#ffffff\"><meta name=\"msapplication-TileImage\" content=\"/assets/images/favicons/ms-icon-144x144.png\"><meta name=\"theme-color\" content=\"#ffffff\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /><!-- <link rel=\"search\" type=\"application/opensearchdescription+xml\" title=\"Openclipart\" href=\"/opensearch.xml\" /><meta name=\"robots\" content=\"NOODP,NOYDIR\" />--><link rel=\"alternate\" type=\"application/atom+xml\" href=\"https://openclipart.org/feed\" title=\"Latest OpenClipart\" /> <!-- insert bootstrap here --> <link href=\"/assets/css/style.css?v=1783605967\" rel=\"stylesheet\" media=\"screen\" type=\"text/css\"> <link href=\"/vendor/twbs/bootstrap/dist/css/bootstrap.min.css\" rel=\"stylesheet\" media=\"screen\" type=\"text/css\"> <script src=\"/vendor/components/jquery/jquery.slim.min.js\"></script><script src=\"/vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js\"></script> <!-- debug for ads --> </head><body> <nav class=\"navbar navbar-expand-lg\" id=\"header\" role=\"navigation\"> <div id=\"logo\" class=\"navbar-brand\"> <a title=\"openclipart\" href=\"/\"> <img alt=\"Openclipart\" src=\"/assets/images/openclipart-logo-2019.svg\"> <span> OPENCLIPART </span> </a> </div> <div class=\"ml-auto\"> <div id=\"logged\"><span><a data-toggle=\"modal\" data-target=\"#loginModal\" href=\"/login\">Login</a><a title=\"Become Openclipart Member and Upload Clipart\" class=\"btn btn-info\" href=\"/join\">Join &amp; Become Member</a></span></div><!-- Modal --><div class=\"modal fade\" id=\"loginModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"loginModal\" aria-hidden=\"true\"><div class=\"modal-dialog modal-dialog-centered\" role=\"document\"><div class=\"modal-content\"><div class=\"modal-header\"><h5 class=\"modal-title\" id=\"exampleModalLongTitle\">Log into OpenClipart</h5><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div><div class=\"modal-body\"><form method=\"post\" action=\"/login\" class=\"form-group\"> <div class=\"form-group\"> <input class=\"form-control\" type=\"text\" placeholder=\"Username or Email\" name=\"username\" dir=\"\" /> </div> <div class=\"form-group\"> <input class=\"form-control\" type=\"password\" placeholder=\"Password\" name=\"password\" dir=\"\" /> </div> <div class=\"form-group\"> <input type=\"hidden\" name=\"process\" value=\"login\" /> <input class=\"form-control btn btn-success\" type=\"submit\" name=\"submit\" value=\"Log in\" /> </div> <div class=\"lost-password\"> <!-- <a href=\"/resetpassword\" title=\"Lost Password?\">Lost Password?</a> --><p>Email <a href=\"mailto:support@openclipart.org?subject=Openclipart Account Issue (Login)\">support@openclipart.org</a> for Lost Password or Account Issues. Thankyou.</p> </div> <br /> <div class=\"modal-footer\"> <p class=\"text-muted\"> Don't have an account?</p> <a href=\"/join\" type=\"button\" class=\"btn btn-outline-success\"> Join &amp; Become Member </a> </div></form></div></div></div></div> </div> </nav><div id=\"main-menu\" class=\"container-fluid\"><div class=\"row\"><div class=\"col-sm-10 col-md-6 offset-md-3\"><form id=\"search\" method=\"get\" action=\"/search/\" class=\"form-search form-group\"><div class=\"input-group mb-3\"> <input autofocus type=\"text\" class=\"form-control\" placeholder=\"Search Openclipart\" aria-label=\"Search Openclipart\" aria-describedby=\"button-search\" value=\"rust\" name=\"query\"> <div class=\"input-group-append\"> <button class=\"btn btn-success me-3\" type=\"submit\" id=\"button-search\">Search</button>&nbsp;<a class=\"btn btn-outline-warning\" id=\"button-random\" href=\"/random\">Random</a> </div></div></form></div></div></div> <div class=\"container-fluid\" id=\"notifications-bar\"></div> <div class=\"container-fluid\" id=\"content\" class=\"clearfix\"><!-- Adds --><script>\n  window.addEventListener( 'load', function() {\n    (adsbygoogle = window.adsbygoogle || []).push({});\n  })\n</script><script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script><h2 class=\"text-center\"> 78 clipart for \"rust\" <small> (Page 1 of 3) </small></h2><br /><div class=\"gallery\"> <div class=\"artwork\"> <a href=\"/detail/296518/wheel\"> <img src=\"/image/800px/296518\" alt=\"wheel\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/291625/rusty-lettering\"> <img src=\"/image/800px/291625\" alt=\"rusty lettering\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/288866/a-embossed\"> <img src=\"/image/800px/288866\" alt=\"A embossed\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/288865/3d-scratched-metal\"> <img src=\"/image/800px/288865\" alt=\"3D scratched metal\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/288824/gloss-and-rust\"> <img src=\"/image/800px/288824\" alt=\"gloss and rust\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/288729/faucet\"> <img src=\"/image/800px/288729\" alt=\"faucet\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/275196/copper-pack\"> <img src=\"/image/800px/275196\" alt=\"copper pack\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/267147/engraved-thistle-rust\"> <img src=\"/image/800px/267147\" alt=\"engraved thistle rust\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/260218/quilt-block-geometric-flower\"> <img src=\"/image/800px/260218\" alt=\"Quilt Block - Geometric Flower\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/259513/cube\"> <img src=\"/image/800px/259513\" alt=\"cube\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/259509/cube\"> <img src=\"/image/800px/259509\" alt=\"cube\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/244860/blocky-filter-pack-2\"> <img src=\"/image/800px/244860\" alt=\"blocky filter pack 2\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/244637/blocky-filter-pack\"> <img src=\"/image/800px/244637\" alt=\"blocky filter pack\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/244214/red-dragon\"> <img src=\"/image/800px/244214\" alt=\"red dragon \" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/244166/grunge-filter-pack\"> <img src=\"/image/800px/244166\" alt=\"grunge filter pack\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/244042/flower-pattern-2\"> <img src=\"/image/800px/244042\" alt=\"flower pattern 2\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/243436/filters\"> <img src=\"/image/800px/243436\" alt=\"filters\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/242473/interlocking-squares\"> <img src=\"/image/800px/242473\" alt=\"interlocking squares\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/241126/glen-plaid-cloth-black-gray-rust-mustard\"> <img src=\"/image/800px/241126\" alt=\"Glen Plaid Cloth Black Gray Rust Mustard\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/236177/1987-toyota-with-russian-winter-tribute-camo\"> <img src=\"/image/800px/236177\" alt=\"1987 Toyota with Russian winter tribute camo\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/232349/grungy-valve\"> <img src=\"/image/800px/232349\" alt=\"Grungy valve\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/223295/triangle-tiling-6\"> <img src=\"/image/800px/223295\" alt=\"triangle tiling 6\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/219114/openclipart-wallpaper\"> <img src=\"/image/800px/219114\" alt=\"openclipart wallpaper\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/216614/holzkohlegrill\"> <img src=\"/image/800px/216614\" alt=\"Holzkohlegrill\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/27596/iron-filters\"> <img src=\"/image/800px/27596\" alt=\"Iron Filters\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/27230/grommet-sampler\"> <img src=\"/image/800px/27230\" alt=\"Grommet Sampler\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/27235/grommet-sampler\"> <img src=\"/image/800px/27235\" alt=\"Grommet Sampler\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/27234/grommet-sampler\"> <img src=\"/image/800px/27234\" alt=\"Grommet Sampler\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/27233/grommet-sampler\"> <img src=\"/image/800px/27233\" alt=\"Grommet Sampler\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/27232/grommet-sampler\"> <img src=\"/image/800px/27232\" alt=\"Grommet Sampler\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/27231/grommet-sampler\"> <img src=\"/image/800px/27231\" alt=\"Grommet Sampler\" /> </a> </div> <div class=\"artwork\"> <a href=\"/detail/14536/plane-tree-autumn-leaf\"> <img src=\"/image/800px/14536\" alt=\"plane tree autumn leaf\" /> </a> </div> </div><div class=\"artwork gallery-ads\"> <!-- search-list-responsive --> <ins class=\"adsbygoogle\" style=\"display:block\" data-ad-client=\"ca-pub-0352842915813820\" data-ad-slot=\"3277910319\" data-ad-format=\"auto\" data-full-width-responsive=\"true\"></ins></div><nav aria-label=\"Clipart Browsing Navigation\" id=\"paginator\"><ul class=\"pagination pagination-lg justify-content-center\"> <li class=\"page-item disabled\"><a class=\"page-link\" href=\"?p=0&query=rust\" aria-label=\"Previous\"> <span aria-hidden=\"true\">&laquo;</span> <span class=\"sr-only\">Previous</span> </a> </li><li class=\"page-item\"><a class=\"page-link\" aria-label=\"Statistics\" href=\"?query=rust\">1 / 3</a></li> <li class=\"page-item \"><a class=\"page-link\" href=\"?p=2&query=rust\" aria-label=\"Next\"> <span aria-hidden=\"true\">&raquo;</span> <span class=\"sr-only\">Next</span> </a></li> </ul></nav></div><div id=\"footer\"><div class=\"clearfix\" id=\"forfooter\"> <h4 id=\"support\"> For questions, please email <a href=\"mailto:support@openclipart.org\" title=\"For questions, please email support@openclipart.org\">support@openclipart.org</a> </h4></div><div id=\"links\"> <a href=\"/faq\" title=\"Frequently Asked Questions\">FAQ</a> <a href=\"/privacy\" title=\"Privacy Policy\">Privacy</a> <a href=\"/share\" title=\"Openclipart is 100% Public Domain\">License</a> <a href=\"/membership\">Membership</a> <a href=\"/feed\" title=\"Latest clipart (Atom feed)\">Feed</a><a href=\"/developers\" title=\"Developer Documentation and API Support\">API</a></div></div> <!-- Global site tag (gtag.js) - Google Analytics --> <script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-7908533-1\"></script> <script>\n    window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n    gtag('config', 'UA-7908533-1');\n  </script> </body></html>"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/296518/wheel",
+          "normalized_url": "https://openclipart.org/detail/296518/wheel",
+          "title": "wheel",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/291625/rusty-lettering",
+          "normalized_url": "https://openclipart.org/detail/291625/rusty-lettering",
+          "title": "rusty lettering",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/288866/a-embossed",
+          "normalized_url": "https://openclipart.org/detail/288866/a-embossed",
+          "title": "A embossed",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/288865/3d-scratched-metal",
+          "normalized_url": "https://openclipart.org/detail/288865/3d-scratched-metal",
+          "title": "3D scratched metal",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/288824/gloss-and-rust",
+          "normalized_url": "https://openclipart.org/detail/288824/gloss-and-rust",
+          "title": "gloss and rust",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/288729/faucet",
+          "normalized_url": "https://openclipart.org/detail/288729/faucet",
+          "title": "faucet",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/275196/copper-pack",
+          "normalized_url": "https://openclipart.org/detail/275196/copper-pack",
+          "title": "copper pack",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/267147/engraved-thistle-rust",
+          "normalized_url": "https://openclipart.org/detail/267147/engraved-thistle-rust",
+          "title": "engraved thistle rust",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/260218/quilt-block-geometric-flower",
+          "normalized_url": "https://openclipart.org/detail/260218/quilt-block-geometric-flower",
+          "title": "Quilt Block - Geometric Flower",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/259513/cube",
+          "normalized_url": "https://openclipart.org/detail/259513/cube",
+          "title": "cube",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/259509/cube",
+          "normalized_url": "https://openclipart.org/detail/259509/cube",
+          "title": "cube",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/244860/blocky-filter-pack-2",
+          "normalized_url": "https://openclipart.org/detail/244860/blocky-filter-pack-2",
+          "title": "blocky filter pack 2",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/244637/blocky-filter-pack",
+          "normalized_url": "https://openclipart.org/detail/244637/blocky-filter-pack",
+          "title": "blocky filter pack",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/244214/red-dragon",
+          "normalized_url": "https://openclipart.org/detail/244214/red-dragon",
+          "title": "red dragon",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/244166/grunge-filter-pack",
+          "normalized_url": "https://openclipart.org/detail/244166/grunge-filter-pack",
+          "title": "grunge filter pack",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/244042/flower-pattern-2",
+          "normalized_url": "https://openclipart.org/detail/244042/flower-pattern-2",
+          "title": "flower pattern 2",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/243436/filters",
+          "normalized_url": "https://openclipart.org/detail/243436/filters",
+          "title": "filters",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/242473/interlocking-squares",
+          "normalized_url": "https://openclipart.org/detail/242473/interlocking-squares",
+          "title": "interlocking squares",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/241126/glen-plaid-cloth-black-gray-rust-mustard",
+          "normalized_url": "https://openclipart.org/detail/241126/glen-plaid-cloth-black-gray-rust-mustard",
+          "title": "Glen Plaid Cloth Black Gray Rust Mustard",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/236177/1987-toyota-with-russian-winter-tribute-camo",
+          "normalized_url": "https://openclipart.org/detail/236177/1987-toyota-with-russian-winter-tribute-camo",
+          "title": "1987 Toyota with Russian winter tribute camo",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/232349/grungy-valve",
+          "normalized_url": "https://openclipart.org/detail/232349/grungy-valve",
+          "title": "Grungy valve",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/223295/triangle-tiling-6",
+          "normalized_url": "https://openclipart.org/detail/223295/triangle-tiling-6",
+          "title": "triangle tiling 6",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/219114/openclipart-wallpaper",
+          "normalized_url": "https://openclipart.org/detail/219114/openclipart-wallpaper",
+          "title": "openclipart wallpaper",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/216614/holzkohlegrill",
+          "normalized_url": "https://openclipart.org/detail/216614/holzkohlegrill",
+          "title": "Holzkohlegrill",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/27596/iron-filters",
+          "normalized_url": "https://openclipart.org/detail/27596/iron-filters",
+          "title": "Iron Filters",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/27230/grommet-sampler",
+          "normalized_url": "https://openclipart.org/detail/27230/grommet-sampler",
+          "title": "Grommet Sampler",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/27235/grommet-sampler",
+          "normalized_url": "https://openclipart.org/detail/27235/grommet-sampler",
+          "title": "Grommet Sampler",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/27234/grommet-sampler",
+          "normalized_url": "https://openclipart.org/detail/27234/grommet-sampler",
+          "title": "Grommet Sampler",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/27233/grommet-sampler",
+          "normalized_url": "https://openclipart.org/detail/27233/grommet-sampler",
+          "title": "Grommet Sampler",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/27232/grommet-sampler",
+          "normalized_url": "https://openclipart.org/detail/27232/grommet-sampler",
+          "title": "Grommet Sampler",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/27231/grommet-sampler",
+          "normalized_url": "https://openclipart.org/detail/27231/grommet-sampler",
+          "title": "Grommet Sampler",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://openclipart.org/detail/14536/plane-tree-autumn-leaf",
+          "normalized_url": "https://openclipart.org/detail/14536/plane-tree-autumn-leaf",
+          "title": "plane tree autumn leaf",
+          "content": "",
+          "engine": "openclipart",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

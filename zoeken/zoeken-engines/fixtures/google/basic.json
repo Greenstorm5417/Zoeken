@@ -1,0 +1,61 @@
+{
+  "engine": "google",
+  "case": "basic",
+  "query": {
+    "query": "rust programming",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://www.google.com/search",
+    "headers": {},
+    "body": "<!DOCTYPE html>\n<html><body>\n<div id=\"search\">\n  <div class=\"g\">\n    <div class=\"tf\">\n      <a data-ved=\"0ah1\" href=\"/url?q=https://www.rust-lang.org/&amp;sa=U&amp;ved=xyz\">\n        <div style=\"color:#1a0dab\">Rust Programming Language</div>\n      </a>\n    </div>\n    <div class=\"vt\">\n      <div class=\"ilUpNd H66NU aSRlid\">A language empowering everyone to build reliable software.<script>var a=1;</script></div>\n    </div>\n  </div>\n  <div class=\"g\">\n    <div class=\"tf\">\n      <a data-ved=\"0ah2\" href=\"https://doc.rust-lang.org/book/\">\n        <div style=\"color:#1a0dab\">The Rust Programming Language - Book</div>\n      </a>\n    </div>\n    <div class=\"vt\">\n      <div class=\"ilUpNd H66NU aSRlid\">This book teaches the concepts of Rust.</div>\n    </div>\n  </div>\n</div>\n<div class=\"gGQDvd iIWm4b\"><a href=\"/search?q=rustup\">rustup install</a></div>\n</body></html>"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://www.rust-lang.org/",
+          "normalized_url": "https://www.rust-lang.org/",
+          "title": "Rust Programming Language",
+          "content": "A language empowering everyone to build reliable software.",
+          "engine": "google",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://doc.rust-lang.org/book/",
+          "normalized_url": "https://doc.rust-lang.org/book/",
+          "title": "The Rust Programming Language - Book",
+          "content": "This book teaches the concepts of Rust.",
+          "engine": "google",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [
+      {
+        "suggestion": "rustup install",
+        "engine": "google"
+      }
+    ],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

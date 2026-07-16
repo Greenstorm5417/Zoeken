@@ -1,0 +1,198 @@
+{
+  "engine": "steam",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://store.steampowered.com/api/storesearch/?term=rust&cc=us&l=en",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://store.steampowered.com/api/storesearch/?term=rust&cc=us&l=en",
+    "headers": {
+      "content-type": "application/json; charset=utf-8",
+      "x-frame-options": "DENY",
+      "date": "Thu, 09 Jul 2026 14:06:33 GMT",
+      "connection": "keep-alive",
+      "vary": "Accept-Encoding",
+      "strict-transport-security": "max-age=63072000",
+      "server": "nginx"
+    },
+    "body": "{\"total\":10,\"items\":[{\"type\":\"app\",\"name\":\"Rust\",\"id\":252490,\"price\":{\"currency\":\"USD\",\"initial\":3999,\"final\":1999},\"tiny_image\":\"https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/252490\\/21aac0b6e20e1ba12f635e7deb730e32a51afbd5\\/capsule_231x87.jpg?t=1781536981\",\"metascore\":\"69\",\"platforms\":{\"windows\":true,\"mac\":true,\"linux\":false},\"streamingvideo\":false},{\"type\":\"app\",\"name\":\"Rust - Warhammer 40,000 Pack\",\"id\":3891560,\"price\":{\"currency\":\"USD\",\"initial\":1299,\"final\":1039},\"tiny_image\":\"https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/3891560\\/00ff5fc51c2a52ec2a04fbd8bcb8da9609ad1bab\\/capsule_231x87.jpg?t=1761238974\",\"metascore\":\"\",\"platforms\":{\"windows\":true,\"mac\":true,\"linux\":false},\"streamingvideo\":false},{\"type\":\"app\",\"name\":\"Rust - Sunburn Pack\",\"id\":1353060,\"price\":{\"currency\":\"USD\",\"initial\":999,\"final\":499},\"tiny_image\":\"https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1353060\\/capsule_231x87.jpg?t=1604016443\",\"metascore\":\"\",\"platforms\":{\"windows\":true,\"mac\":true,\"linux\":false},\"streamingvideo\":false},{\"type\":\"app\",\"name\":\"Rust - Voice Props Pack\",\"id\":1670430,\"price\":{\"currency\":\"USD\",\"initial\":1299,\"final\":649},\"tiny_image\":\"https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1670430\\/capsule_231x87.jpg?t=1733417297\",\"metascore\":\"\",\"platforms\":{\"windows\":true,\"mac\":true,\"linux\":false},\"streamingvideo\":false},{\"type\":\"app\",\"name\":\"Rust - Instruments Pack\",\"id\":1174370,\"price\":{\"currency\":\"USD\",\"initial\":999,\"final\":499},\"tiny_image\":\"https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1174370\\/capsule_231x87.jpg?t=1656077608\",\"metascore\":\"\",\"platforms\":{\"windows\":true,\"mac\":true,\"linux\":false},\"streamingvideo\":false},{\"type\":\"app\",\"name\":\"Rust Soundtrack\",\"id\":1701720,\"price\":{\"currency\":\"USD\",\"initial\":999,\"final\":499},\"tiny_image\":\"https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1701720\\/capsule_231x87.jpg?t=1677846699\",\"metascore\":\"\",\"platforms\":{\"windows\":true,\"mac\":true,\"linux\":true},\"streamingvideo\":false},{\"type\":\"app\",\"name\":\"Ash & Rust\",\"id\":1358490,\"price\":{\"currency\":\"USD\",\"initial\":1999,\"final\":1399},\"tiny_image\":\"https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/1358490\\/f46b89b0811da873f8ac73c3bf703964e9c231ab\\/capsule_231x87.jpg?t=1776712872\",\"metascore\":\"\",\"platforms\":{\"windows\":true,\"mac\":false,\"linux\":false},\"streamingvideo\":false,\"controller_support\":\"full\"},{\"type\":\"app\",\"name\":\"RustForge Sign Painter\",\"id\":4266520,\"tiny_image\":\"https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/4266520\\/bdc7ac61485f456315a4c91fd76746915f69f5ea\\/capsule_231x87.jpg?t=1780176080\",\"metascore\":\"\",\"platforms\":{\"windows\":true,\"mac\":false,\"linux\":false},\"streamingvideo\":false},{\"type\":\"app\",\"name\":\"Sniper Rust VR\",\"id\":710740,\"price\":{\"currency\":\"USD\",\"initial\":999,\"final\":649},\"tiny_image\":\"https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/710740\\/capsule_231x87.jpg?t=1709034133\",\"metascore\":\"\",\"platforms\":{\"windows\":true,\"mac\":false,\"linux\":false},\"streamingvideo\":false},{\"type\":\"app\",\"name\":\"Neon Marble Rust\",\"id\":2587360,\"tiny_image\":\"https:\\/\\/shared.akamai.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/2587360\\/2dab11a2c92e453b3ed2f9e1630dadec8c75fb56\\/capsule_231x87.jpg?t=1775238435\",\"metascore\":\"\",\"platforms\":{\"windows\":true,\"mac\":true,\"linux\":false},\"streamingvideo\":false}]}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://store.steampowered.com/app/252490",
+          "normalized_url": "https://store.steampowered.com/app/252490",
+          "title": "Rust",
+          "content": "",
+          "engine": "steam",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://store.steampowered.com/app/3891560",
+          "normalized_url": "https://store.steampowered.com/app/3891560",
+          "title": "Rust - Warhammer 40,000 Pack",
+          "content": "",
+          "engine": "steam",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://store.steampowered.com/app/1353060",
+          "normalized_url": "https://store.steampowered.com/app/1353060",
+          "title": "Rust - Sunburn Pack",
+          "content": "",
+          "engine": "steam",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://store.steampowered.com/app/1670430",
+          "normalized_url": "https://store.steampowered.com/app/1670430",
+          "title": "Rust - Voice Props Pack",
+          "content": "",
+          "engine": "steam",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://store.steampowered.com/app/1174370",
+          "normalized_url": "https://store.steampowered.com/app/1174370",
+          "title": "Rust - Instruments Pack",
+          "content": "",
+          "engine": "steam",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://store.steampowered.com/app/1701720",
+          "normalized_url": "https://store.steampowered.com/app/1701720",
+          "title": "Rust Soundtrack",
+          "content": "",
+          "engine": "steam",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://store.steampowered.com/app/1358490",
+          "normalized_url": "https://store.steampowered.com/app/1358490",
+          "title": "Ash & Rust",
+          "content": "",
+          "engine": "steam",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://store.steampowered.com/app/4266520",
+          "normalized_url": "https://store.steampowered.com/app/4266520",
+          "title": "RustForge Sign Painter",
+          "content": "",
+          "engine": "steam",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://store.steampowered.com/app/710740",
+          "normalized_url": "https://store.steampowered.com/app/710740",
+          "title": "Sniper Rust VR",
+          "content": "",
+          "engine": "steam",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://store.steampowered.com/app/2587360",
+          "normalized_url": "https://store.steampowered.com/app/2587360",
+          "title": "Neon Marble Rust",
+          "content": "",
+          "engine": "steam",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

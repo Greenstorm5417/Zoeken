@@ -1,0 +1,27 @@
+{
+  "engine": "wikipedia",
+  "case": "status-404",
+  "query": {
+    "query": "Nonexistent",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 404,
+    "url": "https://en.wikipedia.org/",
+    "headers": {},
+    "body": ""
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

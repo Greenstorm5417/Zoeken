@@ -1,0 +1,347 @@
+{
+  "engine": "habrahabr",
+  "case": "live",
+  "query": {
+    "query": "python",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "python",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://habr.com/en/rss/search/?q=python&order_by=relevance&target_type=posts&hl=en&fl=en",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://habr.com/en/rss/search/?q=python&order_by=relevance&target_type=posts&hl=en&fl=en",
+    "headers": {
+      "x-request-id": "411e38263f475457cb5ebdcdbc5b0fd6",
+      "pragma": "no-cache",
+      "vary": "Accept-Encoding",
+      "date": "Thu, 09 Jul 2026 14:05:46 GMT",
+      "cache-control": "no-cache, no-store, must-revalidate",
+      "x-content-type-options": "nosniff",
+      "x-request-geoip-country-code": "US",
+      "x-frame-options": "SAMEORIGIN",
+      "x-request-detected-device": "desktop",
+      "server": "QRATOR",
+      "x-feature-sc": "enabled",
+      "content-type": "text/xml; charset=utf-8",
+      "set-cookie": "qrator_msid2=v2.0.1783605946.068.614496c2QRyLNsoB|ezKs5UDahVhmSbnp|m1BlU9YNTLPFlq+henIbsSSst38Pi3h39sjYf7qm7ulW1zGAWQ0UnF2PmrcQLjEwpCdEuxhFC+mSCwZjUWHBHA==-9BmZEfx703nMbLsYVDosMMc5Ghg=; Max-Age=1000; Path=/; HttpOnly;  Domain=.habr.com;",
+      "expires": "0",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "x-feature-sc-split": "spliton"
+    },
+    "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<rss version=\"2.0\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" >\n\n  <channel>\n    <title><![CDATA[Результаты поиска по запросу «python»]]></title>\n    <link>https://habr.com/ru/</link>\n    <description><![CDATA[Результаты поиска по запросу «python»]]></description>\n    <language>ru</language>\n    <managingEditor>editor@habr.com</managingEditor>\n    <generator>habr.com</generator>\n    <pubDate>Thu, 09 Jul 2026 14:05:46 GMT</pubDate>\n    \n    \n      <image>\n        <link>https://habr.com/ru/</link>\n        <url>https://habrastorage.org/webt/ym/el/wk/ymelwk3zy1gawz4nkejl_-ammtc.png</url>\n        <title>Хабр</title>\n      </image>\n    \n\n    \n      \n        \n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[Google reCAPTCHA с жестами обойдена обычным статическим файлом]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/news/1053692/</guid>\n\t\t<link>https://habr.com/ru/news/1053692/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=1053692</link>\n\t\t<description><![CDATA[<img src=\"https://habrastorage.org/getpro/habr/upload_files/f51/bdd/0ed/f51bdd0ed2a78f07fa6ddaf5b2a2115c.png\" /><p>Разработчики из команды <strong>RTF Labs Studio</strong> обнаружили критическую уязвимость в новой системе защиты <strong>Google reCAPTCHA Hand Gesture Verification</strong>. Новейшая биометрическая капча, заставляющая пользователей включать веб-камеру и показывать жесты (кулак, лайк и т.д.), полностью обходится трансляцией обычного статичного изображения.</p><p>Несмотря на громкие заявления Google о продвинутом ИИ-трекинге анатомии рук и проверке «живости» пользователя (Liveness), антифрод-система оказалась неспособна отличить реальное потоковое видео от статичного кадра.</p><p>Для успешного обхода защиты инженеры использовали простейший скрипт на Python:</p> <a href=\"https://habr.com/ru/articles/1053692/#habracut\">Читать далее</a>]]></description>\n\t\t\n\t\t<pubDate>Tue, 30 Jun 2026 07:02:26 GMT</pubDate>\n    <dc:creator><![CDATA[Dark_bear]]></dc:creator>\n\t\t<category><![CDATA[Информационная безопасность]]></category><category><![CDATA[Искусственный интеллект]]></category>\n\t\t<category><![CDATA[reCAPTCHA v4]]></category><category><![CDATA[Информационная безопасность]]></category><category><![CDATA[Python]]></category><category><![CDATA[reCAPTCHA Hand Gesture]]></category><category><![CDATA[RTF Labs Studio]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[Один из ключевых разработчиков CPython Тим Питерс вернулся в сообщество Python после трехмесячного бана]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/news/869196/</guid>\n\t\t<link>https://habr.com/ru/news/869196/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=869196</link>\n\t\t<description><![CDATA[<img src=\"https://habrastorage.org/getpro/habr/upload_files/ffe/aba/428/ffeaba428b5222a538e7ab4b8109d2c1.png\" /><p>Один из&nbsp;ключевых разработчиков CPython <a href=\"https://discuss.python.org/u/tim.one/summary\" rel=\"noopener noreferrer nofollow\">Тим Питерс</a> (tim.one, CPython core developer, автор гибридного алгоритма сортировки <a href=\"https://ru.wikipedia.org/wiki/Timsort\" rel=\"noopener noreferrer nofollow\">Timsort</a>, член Python Core Team и один из&nbsp;старожилов проекта) <a href=\"https://lwn.net/SubscriberLink/1002340/0f6e04d38cf6576a/\" rel=\"noopener noreferrer nofollow\">вернулся</a> в&nbsp;сообщество Python после <a href=\"https://discuss.python.org/t/three-month-suspension-for-a-core-developer/60250\" rel=\"noopener noreferrer nofollow\">трехмесячого бана</a>.</p><p></p> <a href=\"https://habr.com/ru/articles/869196/#habracut\">Читать далее</a>]]></description>\n\t\t\n\t\t<pubDate>Tue, 24 Dec 2024 06:20:36 GMT</pubDate>\n    <dc:creator><![CDATA[denis-19]]></dc:creator>\n\t\t<category><![CDATA[Python]]></category><category><![CDATA[Управление персоналом]]></category><category><![CDATA[Управление разработкой]]></category><category><![CDATA[Управление сообществом]]></category><category><![CDATA[История IT]]></category>\n\t\t<category><![CDATA[Тим Питерс]]></category><category><![CDATA[бан]]></category><category><![CDATA[Python Core Team]]></category><category><![CDATA[Python]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[Жаждущим автоматизации: открытый урок «ChatOps c Errbot на Python», 21 декабря]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/companies/slurm/news/595093/</guid>\n\t\t<link>https://habr.com/ru/companies/slurm/news/595093/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=595093</link>\n\t\t<description><![CDATA[<img src=\"https://habrastorage.org/getpro/habr/upload_files/d74/5fd/e49/d745fde490350cfe5b4438b1ff3ca6f2.png\" /><p>21 декабря Слёрм проведёт открытый урок «ChatOps c Errbot на Python». Вещает Антон Рязанцев – спикер курса «Python для инженеров». Начнём в 18:00 по Москве, действо продлится примерно один час, запись будет.</p><p>Поговорим о том, что такое ChatOps и как организовать ChatOps-процессы при помощи популярного фреймворка Errbot. Напишем своего бота в прямом эфире, без каскадёров и дублей. Кратко расскажем о курсе «Python для инженеров».</p> <a href=\"https://habr.com/ru/articles/595093/#habracut\">Читать далее</a>]]></description>\n\t\t\n\t\t<pubDate>Mon, 13 Dec 2021 06:00:03 GMT</pubDate>\n    <dc:creator><![CDATA[geniyoctober (Слёрм)]]></dc:creator>\n\t\t<category><![CDATA[Блог компании Слёрм]]></category>\n\t\t<category><![CDATA[слёрм]]></category><category><![CDATA[python]]></category><category><![CDATA[открытый урок]]></category><category><![CDATA[обучение]]></category><category><![CDATA[devops]]></category><category><![CDATA[chatops]]></category><category><![CDATA[программирование]]></category><category><![CDATA[образование]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[Курс «Python для инженеров». Старт 3 потока 31 января]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/companies/slurm/news/646825/</guid>\n\t\t<link>https://habr.com/ru/companies/slurm/news/646825/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=646825</link>\n\t\t<description><![CDATA[<img src=\"https://habrastorage.org/getpro/habr/upload_files/de8/e08/ae4/de8e08ae46a2805756a85cbc8758c31c.png\" /><p>Курс нацелен дать максимальную пользу, поэтому в нём нет абстрактных задач и любых проявлений Python для веба, аналитики и бекенда.</p><p>Будет разбор библиотек Python для DevOps, правила эффективного и поддерживаемого кода, решение конкретных задач DevOps, например:</p><p>— Написать модуль управления правами для ansible,</p><p>— Внедрить commit conventions и генерировать ченджлоги из коммитов при слиянии dev-бранча с релизным,</p><p>— Запросить данные о лимитах с облачных сервисов SBS по протоколу SSH.</p><p>Обучение закрепим проектом. Мы предлагаем тему на выбор, но рекомендуем взять свою рабочую задачу.</p> <a href=\"https://habr.com/ru/articles/646825/#habracut\">Узнать больше</a>]]></description>\n\t\t\n\t\t<pubDate>Thu, 20 Jan 2022 15:37:16 GMT</pubDate>\n    <dc:creator><![CDATA[Hedgehog_art (Слёрм)]]></dc:creator>\n\t\t<category><![CDATA[Блог компании Слёрм]]></category>\n\t\t<category><![CDATA[python]]></category><category><![CDATA[devops]]></category><category><![CDATA[программирование]]></category><category><![CDATA[обучение]]></category><category><![CDATA[образование]]></category><category><![CDATA[Слёрм]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[55% Python-разработчиков используют Linux-окружение и 22% — редактор Visual Studio Code]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/news/840224/</guid>\n\t\t<link>https://habr.com/ru/news/840224/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=840224</link>\n\t\t<description><![CDATA[<img src=\"https://habrastorage.org/getpro/habr/upload_files/430/020/c3d/430020c3dca97064b225219fe9943a9a.JPG\" /><p>Организация Python Software Foundation и компания JetBrains <a href=\"https://lp.jetbrains.com/python-developers-survey-2023/?utm_campaign=pycharm&amp;utm_content=python-survey-23&amp;utm_medium=referral&amp;utm_source=PSF-blog\" rel=\"noopener noreferrer nofollow\">провели</a> ежегодный опрос, который затронул более 25 тысяч разработчиков на языке программирования Python. Они опубликовали результаты своего исследования.</p><p></p> <a href=\"https://habr.com/ru/articles/840224/#habracut\">Читать далее</a>]]></description>\n\t\t\n\t\t<pubDate>Mon, 02 Sep 2024 07:27:25 GMT</pubDate>\n    <dc:creator><![CDATA[maybe_elf]]></dc:creator>\n\t\t<category><![CDATA[Python]]></category><category><![CDATA[Программирование]]></category><category><![CDATA[Исследования и прогнозы в IT]]></category><category><![CDATA[Статистика в IT]]></category>\n\t\t<category><![CDATA[python]]></category><category><![CDATA[python software foundation]]></category><category><![CDATA[jetbrains]]></category><category><![CDATA[исследование]]></category><category><![CDATA[опрос]]></category><category><![CDATA[разработчики]]></category><category><![CDATA[статистика]]></category><category><![CDATA[python-разработка]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[Вышел Python 3.14 RC1 (release candidate 1) с официальной поддержкой Free-threaded]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/news/930292/</guid>\n\t\t<link>https://habr.com/ru/news/930292/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=930292</link>\n\t\t<description><![CDATA[<img src=\"https://habrastorage.org/getpro/habr/upload_files/e18/faa/f6a/e18faaf6ac309e76a89de8d4df9dc7d2.png\" /><p>22 июля 2025&nbsp;года <a href=\"https://www.python.org/downloads/release/python-3130/\" rel=\"noopener noreferrer nofollow\">состоялся</a> выпуск Python 3.14&nbsp;RC1&nbsp;(release candidate 1) с&nbsp;официальной поддержкой Free-threaded. Выпуск Python 3.14&nbsp;RC2&nbsp;ожидается в&nbsp;конце августа.</p> <a href=\"https://habr.com/ru/articles/930292/#habracut\">Читать далее</a>]]></description>\n\t\t\n\t\t<pubDate>Wed, 23 Jul 2025 10:04:56 GMT</pubDate>\n    <dc:creator><![CDATA[denis-19]]></dc:creator>\n\t\t<category><![CDATA[Open source]]></category><category><![CDATA[Python]]></category><category><![CDATA[Компиляторы]]></category><category><![CDATA[Программирование]]></category><category><![CDATA[Управление разработкой]]></category>\n\t\t<category><![CDATA[Python 3.14 RC1]]></category><category><![CDATA[Python 3.14]]></category><category><![CDATA[Free-threading]]></category><category><![CDATA[Free-threaded]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[Результаты опроса Python-разработчиков от JetBrains: экосистема, машинное обучение и демография]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/news/939564/</guid>\n\t\t<link>https://habr.com/ru/news/939564/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=939564</link>\n\t\t<description><![CDATA[<img src=\"https://habrastorage.org/getpro/habr/upload_files/991/8e5/c0c/9918e5c0cc35f878f97ee70a27ad165e.jpg\" /><p>Команды JetBrains PyCharm и Python Software Foundation опубликовали результаты восьмого опроса Python-разработчиков. Полностью итоги исследования можно посмотреть на <a href=\"https://lp.jetbrains.com/python-developers-survey-2024/#demographics\" rel=\"noopener noreferrer nofollow\">официальной странице</a>, а в этой статье собрали самое интересное.</p> <a href=\"https://habr.com/ru/articles/939564/#habracut\">Читать далее</a>]]></description>\n\t\t\n\t\t<pubDate>Thu, 21 Aug 2025 17:53:35 GMT</pubDate>\n    <dc:creator><![CDATA[daniilshat]]></dc:creator>\n\t\t<category><![CDATA[Python]]></category><category><![CDATA[Программирование]]></category><category><![CDATA[Статистика в IT]]></category>\n\t\t<category><![CDATA[python]]></category><category><![CDATA[jetbrains]]></category><category><![CDATA[опрос]]></category><category><![CDATA[исследование]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[Релиз Python 3.14]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/news/954394/</guid>\n\t\t<link>https://habr.com/ru/news/954394/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=954394</link>\n\t\t<description><![CDATA[<img src=\"https://habrastorage.org/getpro/habr/upload_files/f3d/a1a/338/f3da1a3385d3c3b9ab0958aa4946e799.png\" /><p>7 октября 2025 года <a href=\"https://www.python.org/downloads/release/python-3140/\" rel=\"noopener noreferrer nofollow\">состоялся</a> релиз стабильной версии языка программирования Python 3.14, который обеспечивает официальную поддержку свободно-поточного кода Python (free-threaded Python code path), имеет новый модуль сжатия Zstd, различные улучшения производительности, внешний отладчик Python с нулевыми издержками, улучшения C API, улучшенные сообщения об ошибках, новый интерпретатор с возможностью выбора. </p> <a href=\"https://habr.com/ru/articles/954394/#habracut\">Читать далее</a>]]></description>\n\t\t\n\t\t<pubDate>Wed, 08 Oct 2025 04:02:43 GMT</pubDate>\n    <dc:creator><![CDATA[denis-19]]></dc:creator>\n\t\t<category><![CDATA[Python]]></category><category><![CDATA[Программирование]]></category><category><![CDATA[Управление разработкой]]></category><category><![CDATA[Управление проектами]]></category><category><![CDATA[Open source]]></category>\n\t\t<category><![CDATA[Python 3.14]]></category><category><![CDATA[Python]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[Вышел Python 2.7.18, последний релиз ветки Python 2.x]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/news/498364/</guid>\n\t\t<link>https://habr.com/ru/news/498364/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=498364</link>\n\t\t<description><![CDATA[<div style=\"text-align:center;\"><img src=\"https://habrastorage.org/webt/xa/le/34/xale34yhytai0hggk7dxtrk6gee.jpeg\"></div><br>\r\n20 апреля 2020 года, спустя почти десять лет после выхода Python 2.7, <a href=\"https://www.python.org/downloads/release/python-2718/\" rel=\"nofollow\">выпущен</a> «на волю» Python версии 2.7.18. Это последний релиз ветки Python 2.x, поддерживаемый параллельно с веткой 3.x. <br> <a href=\"https://habr.com/ru/articles/498364/#habracut\">Читать дальше &rarr;</a>]]></description>\n\t\t\n\t\t<pubDate>Tue, 21 Apr 2020 15:35:14 GMT</pubDate>\n    <dc:creator><![CDATA[denis-19]]></dc:creator>\n\t\t<category><![CDATA[Python]]></category><category><![CDATA[История IT]]></category>\n\t\t<category><![CDATA[Python 2]]></category><category><![CDATA[последний релиз]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[Microsoft представила дополнение Python Editor от команды Excel Labs]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/news/761862/</guid>\n\t\t<link>https://habr.com/ru/news/761862/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=761862</link>\n\t\t<description><![CDATA[<img src=\"https://habrastorage.org/getpro/habr/upload_files/ac1/735/a74/ac1735a748ee30cf06f36efa7a62ea43.png\" /><p>Microsoft <a href=\"https://techcommunity.microsoft.com/t5/excel-blog/introducing-the-python-editor-from-excel-labs/ba-p/3928986\" rel=\"noopener noreferrer nofollow\">представила</a> дополнение Python Editor от команды Excel Labs для расширенной и экспериментальной работы с языком программирования <a href=\"https://techcommunity.microsoft.com/t5/excel-blog/announcing-python-in-excel-combining-the-power-of-python-and-the/ba-p/3893439\" rel=\"noopener noreferrer nofollow\">Python в Excel</a>. Дополнение Python Editor позволяет вводить более длинный и сложный код в электронные таблицы и ячейки Excel.</p> <a href=\"https://habr.com/ru/articles/761862/#habracut\">Читать далее</a>]]></description>\n\t\t\n\t\t<pubDate>Tue, 19 Sep 2023 04:42:15 GMT</pubDate>\n    <dc:creator><![CDATA[denis-19]]></dc:creator>\n\t\t<category><![CDATA[Python]]></category><category><![CDATA[Программирование]]></category><category><![CDATA[Windows]]></category><category><![CDATA[Microsoft Excel]]></category>\n\t\t<category><![CDATA[windows]]></category><category><![CDATA[python]]></category><category><![CDATA[Excel Labs]]></category><category><![CDATA[Excel]]></category><category><![CDATA[Python Editor]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[Alchemer совместно с JetBrains и Python Software Foundation запустила «Опрос Python-разработчиков 2023»]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/news/772872/</guid>\n\t\t<link>https://habr.com/ru/news/772872/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=772872</link>\n\t\t<description><![CDATA[<img src=\"https://habrastorage.org/getpro/habr/upload_files/66c/a59/636/66ca59636b1acaab969ef74fde0ef3e0.png\" /><p>Alchemer совместно с JetBrains и Python Software Foundation запустила «<a href=\"https://survey.alchemer.com/s3/7554174/python-developers-survey-2023\" rel=\"noopener noreferrer nofollow\">Опрос Python-разработчиков 2023</a>».</p> <a href=\"https://habr.com/ru/articles/772872/#habracut\">Читать далее</a>]]></description>\n\t\t\n\t\t<pubDate>Thu, 09 Nov 2023 11:05:15 GMT</pubDate>\n    <dc:creator><![CDATA[denis-19]]></dc:creator>\n\t\t<category><![CDATA[Python]]></category><category><![CDATA[Социальные сети]]></category><category><![CDATA[Управление разработкой]]></category><category><![CDATA[Учебный процесс в IT]]></category>\n\t\t<category><![CDATA[Python Software Foundation]]></category><category><![CDATA[Python]]></category><category><![CDATA[опрос]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[Открытый урок «Пишем Custom Prometheus Exporter на Python», 19 января]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/companies/slurm/news/645485/</guid>\n\t\t<link>https://habr.com/ru/companies/slurm/news/645485/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=645485</link>\n\t\t<description><![CDATA[<img src=\"https://habrastorage.org/getpro/habr/upload_files/ba3/d11/4a7/ba3d114a76981e14bf961820f78afbcb.jpg\" /><p>19 января Слёрм проведёт открытый урок «Пишем Custom Prometheus Exporter на Python». В главной роли Денис Наумов – спикер курса «Python для инженеров». Начало в 19:00 по Москве.</p><p>Научим писать Prometheus Exporter для случаев, когда сервис не умеет работать по протоколу Prometheus, а готовых экспортеров нет. Все что нужно – Python и библиотеки.</p><p>Покажем, как экспортировать данные в популярные типы протокола Prometheus: Counters, Gauges, Histograms, Summary на примере задачи с расчетом SLA ответов по API и слежением за бизнес-метриками.</p><p>И расскажем, как запустить экспортер в продакшен.</p> <a href=\"https://habr.com/ru/articles/645485/#habracut\">Читать далее</a>]]></description>\n\t\t\n\t\t<pubDate>Thu, 13 Jan 2022 15:35:30 GMT</pubDate>\n    <dc:creator><![CDATA[Hedgehog_art (Слёрм)]]></dc:creator>\n\t\t<category><![CDATA[Блог компании Слёрм]]></category>\n\t\t<category><![CDATA[Слёрм]]></category><category><![CDATA[python]]></category><category><![CDATA[открытый урок]]></category><category><![CDATA[обучение]]></category><category><![CDATA[devops]]></category><category><![CDATA[программирование]]></category><category><![CDATA[prometheus]]></category><category><![CDATA[образование]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[Python Community Meetup 8/07: видео и материалы встречи]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/companies/raiffeisenbank/news/566370/</guid>\n\t\t<link>https://habr.com/ru/companies/raiffeisenbank/news/566370/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=566370</link>\n\t\t<description><![CDATA[<img src=\"https://habrastorage.org/getpro/habr/upload_files/784/ac9/7b8/784ac97b85d11f1331e38f5a72273504.png\" /><p>Первый открытый онлайн-митап сообщества, для которого собрали огонь-программу. Вместе со спикерами из Райффайзенбанка и Яндекса обсудили новости с полей — «Python ускоряется?», поговорили об использовании Dependency Injection и применении Python в highload-проектах с большой кодовой базой. <br><br><strong><a href=\"https://www.youtube.com/watch?v=qfMWyStoyS4\">Смотрите митап в записи</a></strong></p> <a href=\"https://habr.com/ru/articles/566370/#habracut\">Читать далее</a>]]></description>\n\t\t\n\t\t<pubDate>Tue, 06 Jul 2021 10:29:57 GMT</pubDate>\n    <dc:creator><![CDATA[Raiffeisenbank (Райффайзен Банк)]]></dc:creator>\n\t\t<category><![CDATA[Блог компании Райффайзен Банк]]></category><category><![CDATA[Python]]></category><category><![CDATA[ООП]]></category><category><![CDATA[Конференции]]></category>\n\t\t<category><![CDATA[python]]></category><category><![CDATA[dependency injection]]></category><category><![CDATA[highload]]></category><category><![CDATA[meetup]]></category><category><![CDATA[raiffeisendgtl]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[Вышел документальный фильм «Python: The Documentary»]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/news/941924/</guid>\n\t\t<link>https://habr.com/ru/news/941924/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=941924</link>\n\t\t<description><![CDATA[<img src=\"https://habrastorage.org/getpro/habr/upload_files/5de/30b/712/5de30b712d6f6cfb8c2028b007f9fba3.jpg\" /><p>Состоялся открытый релиз документального фильма «<a href=\"https://youtu.be/GfH4QL4VqJ0\" rel=\"noopener noreferrer nofollow\">Python: The Documentary</a>» про&nbsp;историю развития популярного языка программирования, созданный CultRepo.</p> <a href=\"https://habr.com/ru/articles/941924/#habracut\">Читать далее</a>]]></description>\n\t\t\n\t\t<pubDate>Fri, 29 Aug 2025 07:45:38 GMT</pubDate>\n    <dc:creator><![CDATA[denis-19]]></dc:creator>\n\t\t<category><![CDATA[Программирование]]></category><category><![CDATA[Python]]></category><category><![CDATA[История IT]]></category><category><![CDATA[Биографии гиков]]></category><category><![CDATA[Управление разработкой]]></category>\n\t\t<category><![CDATA[Python The Documentary]]></category><category><![CDATA[python]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[Представлен проект отдельного процессора под названием PyXL для выполнения байткода Python]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/news/905458/</guid>\n\t\t<link>https://habr.com/ru/news/905458/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=905458</link>\n\t\t<description><![CDATA[<img src=\"https://habrastorage.org/getpro/habr/upload_files/c3d/be3/2c1/c3dbe32c10422bfaa664b00bada016e4.png\" /><p><a href=\"https://news.ycombinator.com/item?id=43820228\" rel=\"noopener noreferrer nofollow\">Представлен</a> проект отдельного процессора под&nbsp;названием <a href=\"https://www.runpyxl.com/gpio\" rel=\"noopener noreferrer nofollow\">PyXL</a> для&nbsp;выполнения байткода Python под&nbsp;девизом «No VM, No C, No JIT. Just PyXL and actual Python executed in silicon». Проект развивает инженер и разработчик Рон Ливне (<a href=\"https://us.pycon.org/2025/speaker/profile/42/\" rel=\"noopener noreferrer nofollow\">Ron Livne</a>), специализирующийся на оптимизации производительности и разработке аппаратных ускорителей. </p> <a href=\"https://habr.com/ru/articles/905458/#habracut\">Читать далее</a>]]></description>\n\t\t\n\t\t<pubDate>Tue, 29 Apr 2025 09:18:12 GMT</pubDate>\n    <dc:creator><![CDATA[denis-19]]></dc:creator>\n\t\t<category><![CDATA[Процессоры]]></category><category><![CDATA[Программирование]]></category><category><![CDATA[Python]]></category><category><![CDATA[Программирование микроконтроллеров]]></category><category><![CDATA[Производство и разработка электроники]]></category>\n\t\t<category><![CDATA[Python]]></category><category><![CDATA[PyXL]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[Руководящий комитет Python единогласно одобрил предложение по улучшению языка «PEP 810 — Явный ленивый импорт»]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/news/962898/</guid>\n\t\t<link>https://habr.com/ru/news/962898/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=962898</link>\n\t\t<description><![CDATA[<p>В этом <a href=\"https://peps.python.org/pep-0810/\" rel=\"noopener noreferrer nofollow\">Предложении по улучшению Python</a> (Python Enhancement Proposal, PEP) синтаксис ленивого импорта вводится как явная языковая функция:</p><p><code>lazy import json </code><br><code>lazy from json import dumps</code></p><p>Ленивый импорт откладывает загрузку и выполнение модуля до первого использования импортируемого имени, в отличие от обычного импорта, который сразу загружает и выполняет модуль в точке указания импорта.</p><p>Позволяя разработчикам отмечать отдельные импортируемые операции как ленивые с помощью явного синтаксиса, программы на Python могут сократить время запуска, потребление памяти и объем ненужной работы. Это особенно полезно для инструментов командной строки, наборов тестов и приложений с большими графами зависимостей.</p><p>Это предложение сохраняет полную обратную совместимость: обычные операторы импорта остаются неизменными, а ленивый импорт включается только при явном запросе.</p> <a href=\"https://habr.com/ru/articles/962898/#habracut\">Читать далее</a>]]></description>\n\t\t\n\t\t<pubDate>Tue, 04 Nov 2025 04:36:11 GMT</pubDate>\n    <dc:creator><![CDATA[alan_dani]]></dc:creator>\n\t\t<category><![CDATA[Python]]></category>\n\t\t<category><![CDATA[python]]></category><category><![CDATA[pep]]></category><category><![CDATA[lazy]]></category><category><![CDATA[import]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[Релиз открытой библиотеки для быстрой обработки данных Python Polars 1.0]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/news/825868/</guid>\n\t\t<link>https://habr.com/ru/news/825868/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=825868</link>\n\t\t<description><![CDATA[<img src=\"https://habrastorage.org/getpro/habr/upload_files/65e/5fb/dc9/65e5fbdc990d927542183f84d32e35f0.png\" /><p>1 июля 2024 года <a href=\"https://pola.rs/posts/announcing-polars-1/\" rel=\"noopener noreferrer nofollow\">состоялся</a> релиз открытой библиотеки для быстрой <a href=\"https://habr.com/ru/articles/710240/\" rel=\"noopener noreferrer nofollow\">обработки данных</a> <a href=\"https://github.com/pola-rs/polars/releases/tag/py-1.0.0\" rel=\"noopener noreferrer nofollow\">Python Polars 1.0</a>. Исходный код проекта написан на Rust и Python и <a href=\"https://github.com/pola-rs/polars/\" rel=\"noopener noreferrer nofollow\">опубликован</a> на GitHub.</p> <a href=\"https://habr.com/ru/articles/825868/#habracut\">Читать далее</a>]]></description>\n\t\t\n\t\t<pubDate>Mon, 01 Jul 2024 11:46:51 GMT</pubDate>\n    <dc:creator><![CDATA[denis-19]]></dc:creator>\n\t\t<category><![CDATA[Open source]]></category><category><![CDATA[Python]]></category><category><![CDATA[Управление разработкой]]></category><category><![CDATA[Data Engineering]]></category>\n\t\t<category><![CDATA[Python Polars 1.0]]></category><category><![CDATA[Python Polars]]></category><category><![CDATA[Python]]></category><category><![CDATA[Polars]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[Microsoft добавила Python в Excel]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/news/756266/</guid>\n\t\t<link>https://habr.com/ru/news/756266/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=756266</link>\n\t\t<description><![CDATA[<img src=\"https://habrastorage.org/getpro/habr/upload_files/9ca/469/ff1/9ca469ff1694a699b26ca41859be9f2a.png\" /><p>22 августа 2023 года Microsoft <a href=\"https://techcommunity.microsoft.com/t5/microsoft-365-blog/introducing-python-in-excel-the-best-of-both-worlds-for-data/ba-p/3905482\" rel=\"noopener noreferrer nofollow\">сообщила</a>, что <a href=\"https://www.theverge.com/2023/8/22/23841167/microsoft-excel-python-integration-support\" rel=\"noopener noreferrer nofollow\">добавила</a> в бета-версию Microsoft 365 язык программирования Python в Excel для улучшения возможности анализа и визуализации данных.</p> <a href=\"https://habr.com/ru/articles/756266/#habracut\">Читать далее</a>]]></description>\n\t\t\n\t\t<pubDate>Tue, 22 Aug 2023 17:14:29 GMT</pubDate>\n    <dc:creator><![CDATA[denis-19]]></dc:creator>\n\t\t<category><![CDATA[Python]]></category><category><![CDATA[Программирование]]></category><category><![CDATA[Windows]]></category><category><![CDATA[История IT]]></category><category><![CDATA[Софт]]></category>\n\t\t<category><![CDATA[windows]]></category><category><![CDATA[python]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[Как мы обновили курсы для Python-разработчиков]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/companies/yandex_praktikum/news/859368/</guid>\n\t\t<link>https://habr.com/ru/companies/yandex_praktikum/news/859368/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=859368</link>\n\t\t<description><![CDATA[<img src=\"https://habrastorage.org/getpro/habr/upload_files/09b/fa9/15a/09bfa915a8d9bd8c0cd2bc08a5b556f6.png\" /><p>Привет! На связи команда Яндекс Практикума. Мы обновили курсы&nbsp;<a href=\"https://practicum.yandex.ru/backend-developer/?utm_source=pr&amp;utm_medium=media&amp;utm_campaign=habr_media_RF_Prog_backDe_b2c_Article_None_new-python&amp;utm_content=18-11-24\"><u>«Python-разработчик»</u></a>. В этой заметке кратко расскажем, как именно.</p> <a href=\"https://habr.com/ru/articles/859368/#habracut\">Подробнее</a>]]></description>\n\t\t\n\t\t<pubDate>Wed, 20 Nov 2024 06:05:09 GMT</pubDate>\n    <dc:creator><![CDATA[ira-k (Яндекс Практикум)]]></dc:creator>\n\t\t<category><![CDATA[Блог компании Яндекс Практикум]]></category><category><![CDATA[Карьера в IT-индустрии]]></category><category><![CDATA[Учебный процесс в IT]]></category><category><![CDATA[Программирование]]></category><category><![CDATA[Python]]></category>\n\t\t<category><![CDATA[онлайн-курсы]]></category><category><![CDATA[python-разработка]]></category><category><![CDATA[курс по python]]></category><category><![CDATA[python]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n    \n\n  \n\n  \n\n\t\n\t<item>\n\t\t<title><![CDATA[JetBrains и Python Software Foundation рассказали, как разработчики использовали Python в 2022 году]]></title>\n    <guid isPermaLink=\"true\">https://habr.com/ru/news/766124/</guid>\n\t\t<link>https://habr.com/ru/news/766124/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=766124</link>\n\t\t<description><![CDATA[<img src=\"https://habrastorage.org/getpro/habr/upload_files/2fc/31d/842/2fc31d842f587052348c1c2bc9953bc3.jpg\" /><p>JetBrain совместно с Python Software Foundation <a href=\"https://lp.jetbrains.com/python-developers-survey-2022/\" rel=\"noopener noreferrer nofollow\">опубликовали</a> результаты большого исследования, помогающего понять, как разработчики использовали Python в 2022 году. Исследование строит на базе опроса разработчиков. В 2022 году в нём приняло участие более 23 тыс. человек из почти 200 регионов.</p><p></p> <a href=\"https://habr.com/ru/articles/766124/#habracut\">Читать далее</a>]]></description>\n\t\t\n\t\t<pubDate>Mon, 09 Oct 2023 05:39:37 GMT</pubDate>\n    <dc:creator><![CDATA[daniilshat]]></dc:creator>\n\t\t<category><![CDATA[Python]]></category><category><![CDATA[Программирование]]></category><category><![CDATA[Статистика в IT]]></category>\n\t\t<category><![CDATA[python]]></category><category><![CDATA[jetbrains]]></category><category><![CDATA[исследование]]></category><category><![CDATA[разработка]]></category><category><![CDATA[программирование]]></category><category><![CDATA[статистика]]></category>\n\t</item>\n\t\n  \n\n  \n\n  \n\n      \n\n      \n\n      \n\n    \n  </channel>\n</rss>\n"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://habr.com/ru/news/1053692/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1053692",
+          "normalized_url": "https://habr.com/ru/news/1053692/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1053692",
+          "title": "Google reCAPTCHA с жестами обойдена обычным статическим файлом",
+          "content": "Разработчики из команды RTF Labs Studio обнаружили критическую уязвимость в новой системе защиты Google reCAPTCHA Hand Gesture Verification. Новейшая биометрическая капча, заставляющая пользователей включать веб-камеру и показывать жесты (кулак, лайк и т.д.), полностью обходится трансляцией обычного статичного изображения.Несмотря на громкие заявления Google о продвинутом ИИ-трекинге анатомии рук и проверке «живости» пользователя (Liveness), антифрод-система оказалась неспособна отличить реальное потоковое видео от статичного кадра.Для успешного обхода защиты инженеры использовали простейший скрипт на Python: Читать далее",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/news/869196/?utm_source=habrahabr&utm_medium=rss&utm_campaign=869196",
+          "normalized_url": "https://habr.com/ru/news/869196/?utm_source=habrahabr&utm_medium=rss&utm_campaign=869196",
+          "title": "Один из ключевых разработчиков CPython Тим Питерс вернулся в сообщество Python после трехмесячного бана",
+          "content": "Один из ключевых разработчиков CPython Тим Питерс (tim.one, CPython core developer, автор гибридного алгоритма сортировки Timsort, член Python Core Team и один из старожилов проекта) вернулся в сообщество Python после трехмесячого бана. Читать далее",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/companies/slurm/news/595093/?utm_source=habrahabr&utm_medium=rss&utm_campaign=595093",
+          "normalized_url": "https://habr.com/ru/companies/slurm/news/595093/?utm_source=habrahabr&utm_medium=rss&utm_campaign=595093",
+          "title": "Жаждущим автоматизации: открытый урок «ChatOps c Errbot на Python», 21 декабря",
+          "content": "21 декабря Слёрм проведёт открытый урок «ChatOps c Errbot на Python». Вещает Антон Рязанцев – спикер курса «Python для инженеров». Начнём в 18:00 по Москве, действо продлится примерно один час, запись будет.Поговорим о том, что такое ChatOps и как организовать ChatOps-процессы при помощи популярного фреймворка Errbot. Напишем своего бота в прямом эфире, без каскадёров и дублей. Кратко расскажем о курсе «Python для инженеров». Читать далее",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/companies/slurm/news/646825/?utm_source=habrahabr&utm_medium=rss&utm_campaign=646825",
+          "normalized_url": "https://habr.com/ru/companies/slurm/news/646825/?utm_source=habrahabr&utm_medium=rss&utm_campaign=646825",
+          "title": "Курс «Python для инженеров». Старт 3 потока 31 января",
+          "content": "Курс нацелен дать максимальную пользу, поэтому в нём нет абстрактных задач и любых проявлений Python для веба, аналитики и бекенда.Будет разбор библиотек Python для DevOps, правила эффективного и поддерживаемого кода, решение конкретных задач DevOps, например:— Написать модуль управления правами для ansible,— Внедрить commit conventions и генерировать ченджлоги из коммитов при слиянии dev-бранча с релизным,— Запросить данные о лимитах с облачных сервисов SBS по протоколу SSH.Обучение закрепим проектом. Мы предлагаем тему на выбор, но рекомендуем взять свою рабочую задачу. Узнать больше",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/news/840224/?utm_source=habrahabr&utm_medium=rss&utm_campaign=840224",
+          "normalized_url": "https://habr.com/ru/news/840224/?utm_source=habrahabr&utm_medium=rss&utm_campaign=840224",
+          "title": "55% Python-разработчиков используют Linux-окружение и 22% — редактор Visual Studio Code",
+          "content": "Организация Python Software Foundation и компания JetBrains провели ежегодный опрос, который затронул более 25 тысяч разработчиков на языке программирования Python. Они опубликовали результаты своего исследования. Читать далее",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/news/930292/?utm_source=habrahabr&utm_medium=rss&utm_campaign=930292",
+          "normalized_url": "https://habr.com/ru/news/930292/?utm_source=habrahabr&utm_medium=rss&utm_campaign=930292",
+          "title": "Вышел Python 3.14 RC1 (release candidate 1) с официальной поддержкой Free-threaded",
+          "content": "22 июля 2025 года состоялся выпуск Python 3.14 RC1 (release candidate 1) с официальной поддержкой Free-threaded. Выпуск Python 3.14 RC2 ожидается в конце августа. Читать далее",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/news/939564/?utm_source=habrahabr&utm_medium=rss&utm_campaign=939564",
+          "normalized_url": "https://habr.com/ru/news/939564/?utm_source=habrahabr&utm_medium=rss&utm_campaign=939564",
+          "title": "Результаты опроса Python-разработчиков от JetBrains: экосистема, машинное обучение и демография",
+          "content": "Команды JetBrains PyCharm и Python Software Foundation опубликовали результаты восьмого опроса Python-разработчиков. Полностью итоги исследования можно посмотреть на официальной странице, а в этой статье собрали самое интересное. Читать далее",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/news/954394/?utm_source=habrahabr&utm_medium=rss&utm_campaign=954394",
+          "normalized_url": "https://habr.com/ru/news/954394/?utm_source=habrahabr&utm_medium=rss&utm_campaign=954394",
+          "title": "Релиз Python 3.14",
+          "content": "7 октября 2025 года состоялся релиз стабильной версии языка программирования Python 3.14, который обеспечивает официальную поддержку свободно-поточного кода Python (free-threaded Python code path), имеет новый модуль сжатия Zstd, различные улучшения производительности, внешний отладчик Python с нулевыми издержками, улучшения C API, улучшенные сообщения об ошибках, новый интерпретатор с возможностью выбора. Читать далее",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/news/498364/?utm_source=habrahabr&utm_medium=rss&utm_campaign=498364",
+          "normalized_url": "https://habr.com/ru/news/498364/?utm_source=habrahabr&utm_medium=rss&utm_campaign=498364",
+          "title": "Вышел Python 2.7.18, последний релиз ветки Python 2.x",
+          "content": "20 апреля 2020 года, спустя почти десять лет после выхода Python 2.7, выпущен «на волю» Python версии 2.7.18. Это последний релиз ветки Python 2.x, поддерживаемый параллельно с веткой 3.x. Читать дальше →",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/news/761862/?utm_source=habrahabr&utm_medium=rss&utm_campaign=761862",
+          "normalized_url": "https://habr.com/ru/news/761862/?utm_source=habrahabr&utm_medium=rss&utm_campaign=761862",
+          "title": "Microsoft представила дополнение Python Editor от команды Excel Labs",
+          "content": "Microsoft представила дополнение Python Editor от команды Excel Labs для расширенной и экспериментальной работы с языком программирования Python в Excel. Дополнение Python Editor позволяет вводить более длинный и сложный код в электронные таблицы и ячейки Excel. Читать далее",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/news/772872/?utm_source=habrahabr&utm_medium=rss&utm_campaign=772872",
+          "normalized_url": "https://habr.com/ru/news/772872/?utm_source=habrahabr&utm_medium=rss&utm_campaign=772872",
+          "title": "Alchemer совместно с JetBrains и Python Software Foundation запустила «Опрос Python-разработчиков 2023»",
+          "content": "Alchemer совместно с JetBrains и Python Software Foundation запустила «Опрос Python-разработчиков 2023». Читать далее",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/companies/slurm/news/645485/?utm_source=habrahabr&utm_medium=rss&utm_campaign=645485",
+          "normalized_url": "https://habr.com/ru/companies/slurm/news/645485/?utm_source=habrahabr&utm_medium=rss&utm_campaign=645485",
+          "title": "Открытый урок «Пишем Custom Prometheus Exporter на Python», 19 января",
+          "content": "19 января Слёрм проведёт открытый урок «Пишем Custom Prometheus Exporter на Python». В главной роли Денис Наумов – спикер курса «Python для инженеров». Начало в 19:00 по Москве.Научим писать Prometheus Exporter для случаев, когда сервис не умеет работать по протоколу Prometheus, а готовых экспортеров нет. Все что нужно – Python и библиотеки.Покажем, как экспортировать данные в популярные типы протокола Prometheus: Counters, Gauges, Histograms, Summary на примере задачи с расчетом SLA ответов по API и слежением за бизнес-метриками.И расскажем, как запустить экспортер в продакшен. Читать далее",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/companies/raiffeisenbank/news/566370/?utm_source=habrahabr&utm_medium=rss&utm_campaign=566370",
+          "normalized_url": "https://habr.com/ru/companies/raiffeisenbank/news/566370/?utm_source=habrahabr&utm_medium=rss&utm_campaign=566370",
+          "title": "Python Community Meetup 8/07: видео и материалы встречи",
+          "content": "Первый открытый онлайн-митап сообщества, для которого собрали огонь-программу. Вместе со спикерами из Райффайзенбанка и Яндекса обсудили новости с полей — «Python ускоряется?», поговорили об использовании Dependency Injection и применении Python в highload-проектах с большой кодовой базой. Смотрите митап в записи Читать далее",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/news/941924/?utm_source=habrahabr&utm_medium=rss&utm_campaign=941924",
+          "normalized_url": "https://habr.com/ru/news/941924/?utm_source=habrahabr&utm_medium=rss&utm_campaign=941924",
+          "title": "Вышел документальный фильм «Python: The Documentary»",
+          "content": "Состоялся открытый релиз документального фильма «Python: The Documentary» про историю развития популярного языка программирования, созданный CultRepo. Читать далее",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/news/905458/?utm_source=habrahabr&utm_medium=rss&utm_campaign=905458",
+          "normalized_url": "https://habr.com/ru/news/905458/?utm_source=habrahabr&utm_medium=rss&utm_campaign=905458",
+          "title": "Представлен проект отдельного процессора под названием PyXL для выполнения байткода Python",
+          "content": "Представлен проект отдельного процессора под названием PyXL для выполнения байткода Python под девизом «No VM, No C, No JIT. Just PyXL and actual Python executed in silicon». Проект развивает инженер и разработчик Рон Ливне (Ron Livne), специализирующийся на оптимизации производительности и разработке аппаратных ускорителей. Читать далее",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/news/962898/?utm_source=habrahabr&utm_medium=rss&utm_campaign=962898",
+          "normalized_url": "https://habr.com/ru/news/962898/?utm_source=habrahabr&utm_medium=rss&utm_campaign=962898",
+          "title": "Руководящий комитет Python единогласно одобрил предложение по улучшению языка «PEP 810 — Явный ленивый импорт»",
+          "content": "В этом Предложении по улучшению Python (Python Enhancement Proposal, PEP) синтаксис ленивого импорта вводится как явная языковая функция:lazy import json lazy from json import dumpsЛенивый импорт откладывает загрузку и выполнение модуля до первого использования импортируемого имени, в отличие от обычного импорта, который сразу загружает и выполняет модуль в точке указания импорта.Позволяя разработчикам отмечать отдельные импортируемые операции как ленивые с помощью явного синтаксиса, программы на Python могут сократить время запуска, потребление памяти и объем ненужной работы. Это особенно полезно для инструментов командной строки, наборов тестов и приложений с большими графами зависимостей.Это предложение сохраняет полную обратную совместимость: обычные операторы импорта остаются неизменными, а ленивый импорт включается только при явном запросе. Читать далее",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/news/825868/?utm_source=habrahabr&utm_medium=rss&utm_campaign=825868",
+          "normalized_url": "https://habr.com/ru/news/825868/?utm_source=habrahabr&utm_medium=rss&utm_campaign=825868",
+          "title": "Релиз открытой библиотеки для быстрой обработки данных Python Polars 1.0",
+          "content": "1 июля 2024 года состоялся релиз открытой библиотеки для быстрой обработки данных Python Polars 1.0. Исходный код проекта написан на Rust и Python и опубликован на GitHub. Читать далее",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/news/756266/?utm_source=habrahabr&utm_medium=rss&utm_campaign=756266",
+          "normalized_url": "https://habr.com/ru/news/756266/?utm_source=habrahabr&utm_medium=rss&utm_campaign=756266",
+          "title": "Microsoft добавила Python в Excel",
+          "content": "22 августа 2023 года Microsoft сообщила, что добавила в бета-версию Microsoft 365 язык программирования Python в Excel для улучшения возможности анализа и визуализации данных. Читать далее",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/companies/yandex_praktikum/news/859368/?utm_source=habrahabr&utm_medium=rss&utm_campaign=859368",
+          "normalized_url": "https://habr.com/ru/companies/yandex_praktikum/news/859368/?utm_source=habrahabr&utm_medium=rss&utm_campaign=859368",
+          "title": "Как мы обновили курсы для Python-разработчиков",
+          "content": "Привет! На связи команда Яндекс Практикума. Мы обновили курсы «Python-разработчик». В этой заметке кратко расскажем, как именно. Подробнее",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://habr.com/ru/news/766124/?utm_source=habrahabr&utm_medium=rss&utm_campaign=766124",
+          "normalized_url": "https://habr.com/ru/news/766124/?utm_source=habrahabr&utm_medium=rss&utm_campaign=766124",
+          "title": "JetBrains и Python Software Foundation рассказали, как разработчики использовали Python в 2022 году",
+          "content": "JetBrain совместно с Python Software Foundation опубликовали результаты большого исследования, помогающего понять, как разработчики использовали Python в 2022 году. Исследование строит на базе опроса разработчиков. В 2022 году в нём приняло участие более 23 тыс. человек из почти 200 регионов. Читать далее",
+          "engine": "habrahabr",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

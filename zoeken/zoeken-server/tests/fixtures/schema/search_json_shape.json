@@ -1,0 +1,20 @@
+{
+  "query": "rust",
+  "results": [
+    {
+      "url": "https://example.test/rust",
+      "title": "Rust",
+      "content": "A systems language.",
+      "engine": "duckduckgo"
+    }
+  ],
+  "answers": [
+    {
+      "answer": "42"
+    }
+  ],
+  "corrections": [],
+  "infoboxes": [],
+  "suggestions": [],
+  "unresponsive_engines": [["bing", "timeout"]]
+}

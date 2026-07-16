@@ -1,0 +1,271 @@
+{
+  "engine": "encyclosearch",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://encyclosearch.org/encyclosphere/search?q=rust&page=1&resultsPerPage=15",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://encyclosearch.org/encyclosphere/search?q=rust&page=1&resultsPerPage=15",
+    "headers": {
+      "content-type": "application/json",
+      "server": "cloudflare",
+      "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=VMKo%2Frixs7a6SGnGjv3ZzA3YkGt9vphtiTCag1UYdT2uBPHXabJoYUFU1%2Fge4P35BFKnECIMMnoc%2BSFOQRu0SGhMKMPdfAjyFcKySCrCDkP8Jj2DSkMqfHms1Oq4tbmRQNL1ow%3D%3D\"}]}",
+      "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "access-control-allow-origin": "*",
+      "server-timing": "cfEdge;dur=7,cfOrigin;dur=145",
+      "cf-ray": "a187e2705bdeb112-MIA",
+      "date": "Thu, 09 Jul 2026 14:05:36 GMT",
+      "cf-cache-status": "DYNAMIC"
+    },
+    "body": "{\"ResultsCount\":250,\"PageCount\":17,\"PublisherCount\":21,\"Results\":[{\"SourceURL\":\"https://www.newworldencyclopedia.org/entry/Rust\",\"Description\":\"Rust is the material formed when iron or its alloys corrode in the presence of oxygen and water. It is a mixture of iron oxides and hydroxides. In today's world, iron is commonly used in the alloy known as steel. Thus, rusting usually refers to the corrosion of steel. Several methods are available to prevent and control the formation of rust, collo\",\"Title\":\"Rust\",\"Publisher\":\"nwe\",\"ReaderSupported\":true},{\"SourceURL\":\"https://en.wikiversity.org/wiki/Rust\",\"Description\":\"Rust is a programming language that runs fast, prevents segfaults, and guarantees thread safety. Open-Source Online tutors Online learning sites Online content instructor Bold textOnline Code Environment Online Community Good Programming Patterns\",\"Title\":\"Rust\",\"Publisher\":\"wikiversity\",\"ReaderSupported\":true},{\"SourceURL\":\"https://www.biblestudytools.com/encyclopedias/isbe/rust.html\",\"Description\":\"(chel'ah; brosis): Strictly speaking rust is the red oxide of iron formed by the corrosion of that metal, but by extension it has come to mean corrosion produced on any metal. Chel'ah is translated \\\"rust\\\" in Ezekiel 24:11,12. This rendering is probably based on 24:11. Copper caldrons are still used in Bible lands.\",\"Title\":\"Rust\",\"Publisher\":\"isbe\",\"ReaderSupported\":true},{\"SourceURL\":\"https://www.pcmag.com/encyclopedia/term/rust\",\"Description\":\"An open source and widely praised programming language for developing system software and applications. Developed at Mozilla Research in the mid-2000s, Rust was released to the public in 2015, and its syntax evolved from OCaml, the Cyclone variant of C and C++. Rust is primarily known for its error handling and compiler safety checks that prevent a\",\"Title\":\"Rust\",\"Publisher\":\"pcmag\",\"ReaderSupported\":false},{\"SourceURL\":\"https://handwiki.org/wiki/Rust_(color)\",\"Description\":\"Rust is an orange-brown color resembling iron oxide. It is a commonly used color in stage lighting and appears roughly the same color as photographic safelights when used over a standard tungsten light source\",\"Title\":\"Rust (color)\",\"Publisher\":\"handwiki\",\"ReaderSupported\":true},{\"SourceURL\":\"https://en.wikipedia.org/wiki/Rust_(video_game)\",\"Description\":\"Rust is a multiplayer-only survival video game developed by Facepunch Studios. Rust was first released in early access in December 2013 and received its full release in February 2018\",\"Title\":\"Rust (video game)\",\"Publisher\":\"wikipedia\",\"ReaderSupported\":true},{\"SourceURL\":\"https://handwiki.org/wiki/Rust_(programming_language)\",\"Description\":\"Rust is a multi-paradigm, high-level, general-purpose programming language designed for performance and safety, especially safe concurrency. Rust is syntactically similar to C++, but can guarantee memory safety by using a borrow checker to validate references\",\"Title\":\"Rust (programming language)\",\"Publisher\":\"handwiki\",\"ReaderSupported\":true},{\"SourceURL\":\"https://en.wikipedia.org/wiki/Rust_(suspended_film)\",\"Description\":\"Rust is a suspended American Western film production written and directed by Joel Souza. It was set to star Alec Baldwin, Travis Fimmel, Brady Noon, Frances Fisher, and Jensen Ackles\",\"Title\":\"Rust (suspended film)\",\"Publisher\":\"wikipedia\",\"ReaderSupported\":true},{\"SourceURL\":\"https://en.wikipedia.org/wiki/Graham_Rust\",\"Description\":\"Graham Rust (born 1942, Hertfordshire, England) is a painter and muralist. Graham Redgrave-Rust was born in Hertfordshire, England in 1942\",\"Title\":\"Graham Rust\",\"Publisher\":\"wikipedia\",\"ReaderSupported\":true},{\"SourceURL\":\"https://en.wikipedia.org/wiki/Henry_Rust\",\"Description\":\"Henry Rust (5 May 1831 \\u2013 29 May 1902) was a British trade unionist. Born in Stroud, Rust began working on canal boats when he was nine years old\",\"Title\":\"Henry Rust\",\"Publisher\":\"wikipedia\",\"ReaderSupported\":true},{\"SourceURL\":\"https://en.wikipedia.org/wiki/David_Rust\",\"Description\":\"David S. Rust (born December 8, 1945) is an American politician\",\"Title\":\"David Rust\",\"Publisher\":\"wikipedia\",\"ReaderSupported\":true},{\"SourceURL\":\"https://www.conservapedia.com/Rust_Belt\",\"Description\":\"The Rust Belt is the region from northern Illinois eastward and northward through Michigan and Pennsylvania where heavy industry\\u2014particularly steel and products using steel\\u2014have declined (\\\"rusted\\\"). Ohio, Pennsylvania, and Michigan are the primary Rust Belt states\",\"Title\":\"Rust Belt\",\"Publisher\":\"conservapedia\",\"ReaderSupported\":true},{\"SourceURL\":\"https://en.wikipedia.org/wiki/Roland_Rust\",\"Description\":\"Roland Rust is an American business professor, author and consultant. Rust is Distinguished University Professor and holds the David Bruce Smith Chair in Marketing at the Smith School of Business, University of Maryland, College Park, the first business professor to be named a Distinguished University Professor at Maryland\",\"Title\":\"Roland Rust\",\"Publisher\":\"wikipedia\",\"ReaderSupported\":true},{\"SourceURL\":\"https://handwiki.org/wiki/Engineering:Rust_converter\",\"Description\":\"Rust converters are chemical solutions or primers that can be applied directly to an iron or iron alloy surface to convert iron oxides (rust) into a protective chemical barrier. These compounds interact with iron oxides, especially iron(III) oxide, converting them into an adherent black layer that is more resistant to moisture and protects the surf\",\"Title\":\"Rust converter\",\"Publisher\":\"handwiki\",\"ReaderSupported\":true},{\"SourceURL\":\"https://handwiki.org/wiki/Chemistry:After-rust\",\"Description\":\"After-rust is a form of rust which sometimes develops on a non-ferrous metal surface when that surface has been finished, deburred, or cleaned with a carbon steel brush or steel wool. It is caused by microscopic deposits of the steel which become embedded in the metal surface and which over time begin to oxidize\",\"Title\":\"After-rust\",\"Publisher\":\"handwiki\",\"ReaderSupported\":true}]}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://www.newworldencyclopedia.org/entry/Rust",
+          "normalized_url": "https://www.newworldencyclopedia.org/entry/Rust",
+          "title": "Rust",
+          "content": "Rust is the material formed when iron or its alloys corrode in the presence of oxygen and water. It is a mixture of iron oxides and hydroxides. In today's world, iron is commonly used in the alloy known as steel. Thus, rusting usually refers to the corrosion of steel. Several methods are available to prevent and control the formation of rust, collo",
+          "engine": "encyclosearch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://en.wikiversity.org/wiki/Rust",
+          "normalized_url": "https://en.wikiversity.org/wiki/Rust",
+          "title": "Rust",
+          "content": "Rust is a programming language that runs fast, prevents segfaults, and guarantees thread safety. Open-Source Online tutors Online learning sites Online content instructor Bold textOnline Code Environment Online Community Good Programming Patterns",
+          "engine": "encyclosearch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.biblestudytools.com/encyclopedias/isbe/rust.html",
+          "normalized_url": "https://www.biblestudytools.com/encyclopedias/isbe/rust.html",
+          "title": "Rust",
+          "content": "(chel'ah; brosis): Strictly speaking rust is the red oxide of iron formed by the corrosion of that metal, but by extension it has come to mean corrosion produced on any metal. Chel'ah is translated \"rust\" in Ezekiel 24:11,12. This rendering is probably based on 24:11. Copper caldrons are still used in Bible lands.",
+          "engine": "encyclosearch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.pcmag.com/encyclopedia/term/rust",
+          "normalized_url": "https://www.pcmag.com/encyclopedia/term/rust",
+          "title": "Rust",
+          "content": "An open source and widely praised programming language for developing system software and applications. Developed at Mozilla Research in the mid-2000s, Rust was released to the public in 2015, and its syntax evolved from OCaml, the Cyclone variant of C and C++. Rust is primarily known for its error handling and compiler safety checks that prevent a",
+          "engine": "encyclosearch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://handwiki.org/wiki/Rust_(color)",
+          "normalized_url": "https://handwiki.org/wiki/Rust_(color)",
+          "title": "Rust (color)",
+          "content": "Rust is an orange-brown color resembling iron oxide. It is a commonly used color in stage lighting and appears roughly the same color as photographic safelights when used over a standard tungsten light source",
+          "engine": "encyclosearch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://en.wikipedia.org/wiki/Rust_(video_game)",
+          "normalized_url": "https://en.wikipedia.org/wiki/Rust_(video_game)",
+          "title": "Rust (video game)",
+          "content": "Rust is a multiplayer-only survival video game developed by Facepunch Studios. Rust was first released in early access in December 2013 and received its full release in February 2018",
+          "engine": "encyclosearch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://handwiki.org/wiki/Rust_(programming_language)",
+          "normalized_url": "https://handwiki.org/wiki/Rust_(programming_language)",
+          "title": "Rust (programming language)",
+          "content": "Rust is a multi-paradigm, high-level, general-purpose programming language designed for performance and safety, especially safe concurrency. Rust is syntactically similar to C++, but can guarantee memory safety by using a borrow checker to validate references",
+          "engine": "encyclosearch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://en.wikipedia.org/wiki/Rust_(suspended_film)",
+          "normalized_url": "https://en.wikipedia.org/wiki/Rust_(suspended_film)",
+          "title": "Rust (suspended film)",
+          "content": "Rust is a suspended American Western film production written and directed by Joel Souza. It was set to star Alec Baldwin, Travis Fimmel, Brady Noon, Frances Fisher, and Jensen Ackles",
+          "engine": "encyclosearch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://en.wikipedia.org/wiki/Graham_Rust",
+          "normalized_url": "https://en.wikipedia.org/wiki/Graham_Rust",
+          "title": "Graham Rust",
+          "content": "Graham Rust (born 1942, Hertfordshire, England) is a painter and muralist. Graham Redgrave-Rust was born in Hertfordshire, England in 1942",
+          "engine": "encyclosearch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://en.wikipedia.org/wiki/Henry_Rust",
+          "normalized_url": "https://en.wikipedia.org/wiki/Henry_Rust",
+          "title": "Henry Rust",
+          "content": "Henry Rust (5 May 1831 – 29 May 1902) was a British trade unionist. Born in Stroud, Rust began working on canal boats when he was nine years old",
+          "engine": "encyclosearch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://en.wikipedia.org/wiki/David_Rust",
+          "normalized_url": "https://en.wikipedia.org/wiki/David_Rust",
+          "title": "David Rust",
+          "content": "David S. Rust (born December 8, 1945) is an American politician",
+          "engine": "encyclosearch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.conservapedia.com/Rust_Belt",
+          "normalized_url": "https://www.conservapedia.com/Rust_Belt",
+          "title": "Rust Belt",
+          "content": "The Rust Belt is the region from northern Illinois eastward and northward through Michigan and Pennsylvania where heavy industry—particularly steel and products using steel—have declined (\"rusted\"). Ohio, Pennsylvania, and Michigan are the primary Rust Belt states",
+          "engine": "encyclosearch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://en.wikipedia.org/wiki/Roland_Rust",
+          "normalized_url": "https://en.wikipedia.org/wiki/Roland_Rust",
+          "title": "Roland Rust",
+          "content": "Roland Rust is an American business professor, author and consultant. Rust is Distinguished University Professor and holds the David Bruce Smith Chair in Marketing at the Smith School of Business, University of Maryland, College Park, the first business professor to be named a Distinguished University Professor at Maryland",
+          "engine": "encyclosearch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://handwiki.org/wiki/Engineering:Rust_converter",
+          "normalized_url": "https://handwiki.org/wiki/Engineering:Rust_converter",
+          "title": "Rust converter",
+          "content": "Rust converters are chemical solutions or primers that can be applied directly to an iron or iron alloy surface to convert iron oxides (rust) into a protective chemical barrier. These compounds interact with iron oxides, especially iron(III) oxide, converting them into an adherent black layer that is more resistant to moisture and protects the surf",
+          "engine": "encyclosearch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://handwiki.org/wiki/Chemistry:After-rust",
+          "normalized_url": "https://handwiki.org/wiki/Chemistry:After-rust",
+          "title": "After-rust",
+          "content": "After-rust is a form of rust which sometimes develops on a non-ferrous metal surface when that surface has been finished, deburred, or cleaned with a carbon steel brush or steel wool. It is caused by microscopic deposits of the steel which become embedded in the metal surface and which over time begin to oxidize",
+          "engine": "encyclosearch",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

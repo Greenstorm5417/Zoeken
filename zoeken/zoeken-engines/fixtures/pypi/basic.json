@@ -1,0 +1,56 @@
+{
+  "engine": "pypi",
+  "case": "basic",
+  "query": {
+    "query": "http",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://pypi.org",
+    "headers": {},
+    "body": "<!DOCTYPE html>\n<html><body><main><div><div><div><form><div><ul>\n  <li>\n    <a class=\"package-snippet\" href=\"/project/requests/\">\n      <h3>\n        <span class=\"package-snippet__name\">requests</span>\n        <span class=\"package-snippet__version\">2.31.0</span>\n        <span class=\"package-snippet__created\"><time datetime=\"2023-05-22T15:12:00+0000\">May 22, 2023</time></span>\n      </h3>\n      <p class=\"package-snippet__description\">Python HTTP for Humans.</p>\n    </a>\n  </li>\n  <li>\n    <a class=\"package-snippet\" href=\"/project/flask/\">\n      <h3>\n        <span class=\"package-snippet__name\">Flask</span>\n        <span class=\"package-snippet__version\">3.0.0</span>\n        <span class=\"package-snippet__created\"><time datetime=\"2023-09-30T00:00:00+0000\">Sep 30, 2023</time></span>\n      </h3>\n      <p class=\"package-snippet__description\">A simple framework for building complex web applications.</p>\n    </a>\n  </li>\n</ul></div></form></div></div></div></main></body></html>"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://pypi.org/project/requests/",
+          "normalized_url": "https://pypi.org/project/requests/",
+          "title": "requests",
+          "content": "Python HTTP for Humans.",
+          "engine": "pypi",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://pypi.org/project/flask/",
+          "normalized_url": "https://pypi.org/project/flask/",
+          "title": "Flask",
+          "content": "A simple framework for building complex web applications.",
+          "engine": "pypi",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

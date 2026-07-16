@@ -1,0 +1,49 @@
+{
+  "engine": "invidious",
+  "case": "request-page2-timerange",
+  "query": {
+    "query": "rust",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": "Week",
+    "locale": "en-US",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": "Week",
+    "locale_key": "en-US",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://invidious.example/api/v1/search?q=rust&page=2&date=week&range=US",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://invidious.example",
+    "headers": {},
+    "body": "[]"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

@@ -1,0 +1,311 @@
+//! PeerTube engine.
+//!
+//! Queries a PeerTube instance's search-index-compatible REST API. Shares the
+//! same JSON response shape as [`super::sepiasearch`], but issues its own
+//! request (adding `searchTarget=search-index` and `resultType=videos`).
+
+use zoeken_engine_core::{
+    About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod, Processor,
+    RequestParams, SafeSearch, SearchQueryView, TimeRange,
+};
+use zoeken_results::{MainResult, Result_, Template};
+
+use super::util::encode_query;
+
+/// Engine name / identifier.
+pub const NAME: &str = "peertube";
+
+const BASE_URL: &str = "https://peer.tube";
+
+#[derive(Debug, Clone)]
+pub struct Peertube {
+    meta: EngineMeta,
+}
+
+impl Peertube {
+    pub fn new() -> Self {
+        Peertube {
+            meta: EngineMeta {
+                name: NAME.to_string(),
+                engine_type: Processor::Online,
+                categories: vec!["videos".to_string()],
+                paging: true,
+                max_page: 0,
+                time_range_support: true,
+                safesearch: true,
+                language_support: false,
+                weight: 1,
+                shortcut: "ptb".to_string(),
+                about: About {
+                    website: Some("https://joinpeertube.org".to_string()),
+                    wikidata_id: Some("Q50938515".to_string()),
+                    official_api_documentation: Some(
+                        "https://docs.joinpeertube.org/api-rest-reference.html".to_string(),
+                    ),
+                    use_official_api: true,
+                    require_api_key: false,
+                    results: "JSON".to_string(),
+                },
+            },
+        }
+    }
+}
+
+impl Default for Peertube {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+fn nsfw_flag(safesearch: SafeSearch) -> &'static str {
+    match safesearch {
+        SafeSearch::Off => "both",
+        SafeSearch::Moderate | SafeSearch::Strict => "false",
+    }
+}
+
+/// The `startDate` ISO date for a time range (mirrors PeerTube's
+/// `time_range_table`: day -> today, week/month/year -> N units back).
+fn start_date(time_range: TimeRange) -> String {
+    use chrono::{Duration, Local, Months};
+    let now = Local::now().date_naive();
+    let date = match time_range {
+        TimeRange::Day => now,
+        TimeRange::Week => now - Duration::weeks(1),
+        TimeRange::Month => now.checked_sub_months(Months::new(1)).unwrap_or(now),
+        TimeRange::Year => now.checked_sub_months(Months::new(12)).unwrap_or(now),
+    };
+    date.format("%Y-%m-%d").to_string()
+}
+
+impl Engine for Peertube {
+    fn metadata(&self) -> &EngineMeta {
+        &self.meta
+    }
+
+    fn request(&self, q: &SearchQueryView, p: &mut RequestParams) {
+        if q.query.is_empty() {
+            p.url = None;
+            return;
+        }
+        p.method = HttpMethod::Get;
+
+        let start = p.pageno.saturating_sub(1) * 10;
+        let args: Vec<(&str, String)> = vec![
+            ("search", q.query.clone()),
+            ("searchTarget", "search-index".to_string()),
+            ("resultType", "videos".to_string()),
+            ("start", start.to_string()),
+            ("count", "10".to_string()),
+            ("sort", "-match".to_string()),
+            ("nsfw", nsfw_flag(q.safesearch).to_string()),
+        ];
+        let mut url = format!("{BASE_URL}/api/v1/search/videos?{}", encode_query(&args));
+
+        if let Some(time_range) = p.time_range {
+            url.push_str(&format!("&startDate={}", start_date(time_range)));
+        }
+
+        p.url = Some(url);
+    }
+
+    fn response(&self, resp: &EngineResponse) -> Result<EngineResults, EngineError> {
+        let mut res = EngineResults::new();
+
+        let value: serde_json::Value = serde_json::from_slice(&resp.body)
+            .map_err(|e| EngineError::Parse(format!("invalid PeerTube JSON: {e}")))?;
+
+        let Some(data) = value.get("data").and_then(|d| d.as_array()) else {
+            return Ok(res);
+        };
+
+        for item in data {
+            let url = item.get("url").and_then(|u| u.as_str()).unwrap_or("");
+            let title = item
+                .get("name")
+                .and_then(|n| n.as_str())
+                .unwrap_or("")
+                .to_string();
+            let description = item
+                .get("description")
+                .and_then(|d| d.as_str())
+                .unwrap_or("");
+            let content = zoeken_engine_core::html_to_text(description);
+            let thumbnail = peertube_thumbnail(item, url);
+
+            res.add(Result_::Main(MainResult {
+                url: url.to_string(),
+                normalized_url: url.to_string(),
+                title,
+                content,
+                engine: NAME.to_string(),
+                template: Template::Videos,
+                thumbnail,
+                ..MainResult::default()
+            }));
+        }
+
+        Ok(res)
+    }
+}
+
+fn peertube_thumbnail(item: &serde_json::Value, video_url: &str) -> String {
+    for key in ["thumbnailUrl", "previewUrl"] {
+        if let Some(abs) = item
+            .get(key)
+            .and_then(|v| v.as_str())
+            .filter(|s| !s.is_empty())
+        {
+            return abs.to_string();
+        }
+    }
+    let path = item
+        .get("thumbnailPath")
+        .or_else(|| item.get("previewPath"))
+        .and_then(|v| v.as_str())
+        .unwrap_or("");
+    if path.is_empty() {
+        return String::new();
+    }
+    if path.starts_with("http://") || path.starts_with("https://") {
+        return path.to_string();
+    }
+    if let Ok(base) = url::Url::parse(video_url)
+        && let Ok(joined) = base.join(path)
+    {
+        return joined.to_string();
+    }
+    String::new()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::conformance::{Fixture, load_fixtures_for, run_all};
+    use std::path::PathBuf;
+
+    fn fixtures_root() -> PathBuf {
+        PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("fixtures")
+    }
+
+    fn query(q: &str, pageno: u32) -> SearchQueryView {
+        SearchQueryView {
+            query: q.to_string(),
+            pageno,
+            ..SearchQueryView::default()
+        }
+    }
+
+    fn main_result(url: &str, title: &str, content: &str) -> Result_ {
+        Result_::Main(MainResult {
+            url: url.to_string(),
+            normalized_url: url.to_string(),
+            title: title.to_string(),
+            content: content.to_string(),
+            engine: NAME.to_string(),
+            ..MainResult::default()
+        })
+    }
+
+    fn response(status: u16, body: &str) -> EngineResponse {
+        EngineResponse {
+            status,
+            url: BASE_URL.to_string(),
+            body: body.as_bytes().to_vec(),
+            ..EngineResponse::default()
+        }
+    }
+
+    fn prepopulated(q: &SearchQueryView) -> RequestParams {
+        RequestParams {
+            query: q.query.clone(),
+            pageno: q.pageno,
+            safesearch: q.safesearch,
+            time_range: q.time_range,
+            locale_key: q.locale.clone(),
+            ..RequestParams::default()
+        }
+    }
+
+    const BASIC_JSON: &str = r#"{
+      "total": 1,
+      "data": [
+        {
+          "url": "https://framatube.org/w/abc",
+          "name": "Intro to PeerTube",
+          "description": "A <b>short</b> introduction."
+        }
+      ]
+    }"#;
+
+    #[test]
+    #[ignore = "regenerates the on-disk conformance fixtures"]
+    fn generate_fixtures() {
+        let dir = fixtures_root().join(NAME);
+
+        let mut basic = EngineResults::new();
+        basic.add(main_result(
+            "https://framatube.org/w/abc",
+            "Intro to PeerTube",
+            "A short introduction.",
+        ));
+        Fixture::capture(NAME, query("peertube", 1), response(200, BASIC_JSON), basic)
+            .with_case("basic")
+            .save(dir.join("basic.json"))
+            .unwrap();
+
+        Fixture::capture(
+            NAME,
+            query("peertube", 1),
+            response(200, r#"{"total":0}"#),
+            EngineResults::new(),
+        )
+        .with_case("no-data")
+        .save(dir.join("no-data.json"))
+        .unwrap();
+
+        let q = query("rust videos", 2);
+        let mut golden = prepopulated(&q);
+        golden.method = HttpMethod::Get;
+        golden.url = Some(format!(
+            "{BASE_URL}/api/v1/search/videos?search=rust+videos&searchTarget=search-index&resultType=videos&start=10&count=10&sort=-match&nsfw=both"
+        ));
+        Fixture::capture(
+            NAME,
+            q.clone(),
+            response(200, r#"{"data":[]}"#),
+            EngineResults::new(),
+        )
+        .with_case("request-page2")
+        .with_golden_request(golden)
+        .save(dir.join("request-page2.json"))
+        .unwrap();
+    }
+
+    #[test]
+    fn peertube_conformance() {
+        let fixtures = load_fixtures_for(fixtures_root(), NAME).expect("load fixtures");
+        assert!(
+            !fixtures.is_empty(),
+            "no fixtures found under fixtures/{NAME}"
+        );
+        let engine = Peertube::new();
+        if let Err(mismatches) = run_all(&engine, &fixtures) {
+            let report = mismatches
+                .iter()
+                .map(|m| m.to_string())
+                .collect::<Vec<_>>()
+                .join("\n");
+            panic!("conformance failures:\n{report}");
+        }
+    }
+
+    #[test]
+    fn empty_query_clears_url() {
+        let engine = Peertube::new();
+        let q = query("", 1);
+        let mut p = prepopulated(&q);
+        engine.request(&q, &mut p);
+        assert!(p.url.is_none());
+    }
+}

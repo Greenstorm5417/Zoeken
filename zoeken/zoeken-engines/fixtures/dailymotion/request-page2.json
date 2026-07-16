@@ -1,0 +1,49 @@
+{
+  "engine": "dailymotion",
+  "case": "request-page2",
+  "query": {
+    "query": "rust",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 2,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://api.dailymotion.com/videos?search=rust&family_filter=false&thumbnail_ratio=original&languages=en&page=2&password_protected=false&private=false&sort=relevance&limit=10&fields=allow_embed%2Cdescription%2Ctitle%2Ccreated_time%2Cduration%2Curl%2Cthumbnail_360_url%2Cid",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": true,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://api.dailymotion.com/videos?",
+    "headers": {},
+    "body": "{\"list\":[]}"
+  },
+  "golden_results": {
+    "results": [],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}
