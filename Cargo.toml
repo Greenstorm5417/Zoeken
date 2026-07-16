@@ -92,7 +92,7 @@ chrono = { version = "0.4.45", default-features = false, features = [
     "std",
     "alloc",
 ] }
-quick-xml = { version = "0.40.1", features = ["serialize", "overlapped-lists"] }
+quick-xml = { version = "0.41.0", features = ["serialize", "overlapped-lists"] }
 csv = "1.4.0"
 moka = { version = "0.12.15", features = ["future"] }
 rusqlite = { version = "0.40.1", features = ["bundled"] }
