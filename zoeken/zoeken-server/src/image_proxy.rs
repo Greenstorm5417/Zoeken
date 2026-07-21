@@ -123,7 +123,11 @@ async fn read_body_capped(
     Ok(body)
 }
 
-fn image_proxy_enabled(state: &AppState, headers: &HeaderMap, params: &[(String, String)]) -> bool {
+pub(crate) fn image_proxy_enabled(
+    state: &AppState,
+    headers: &HeaderMap,
+    params: &[(String, String)],
+) -> bool {
     let pref_cookie = crate::preferences::read_pref_cookie(headers);
     let form = zoeken_query::FormParams::from_pairs(params.to_vec());
     let resolved = zoeken_prefs::resolve_with_data(

@@ -132,6 +132,7 @@ impl Engine for Peertube {
                 .unwrap_or("");
             let content = zoeken_engine_core::html_to_text(description);
             let thumbnail = peertube_thumbnail(item, url);
+            let iframe_src = peertube_embed(item, url);
 
             res.add(Result_::Main(MainResult {
                 url: url.to_string(),
@@ -141,12 +142,43 @@ impl Engine for Peertube {
                 engine: NAME.to_string(),
                 template: Template::Videos,
                 thumbnail,
+                iframe_src,
                 ..MainResult::default()
             }));
         }
 
         Ok(res)
     }
+}
+
+fn peertube_embed(item: &serde_json::Value, video_url: &str) -> String {
+    if let Some(embed) = item
+        .get("embedUrl")
+        .and_then(|v| v.as_str())
+        .filter(|s| !s.is_empty())
+    {
+        return embed.to_string();
+    }
+    let Ok(base) = url::Url::parse(video_url) else {
+        return String::new();
+    };
+    let path = base.path();
+    // /w/<uuid> or /videos/watch/<uuid> → /videos/embed/<uuid>
+    let uuid = path
+        .strip_prefix("/w/")
+        .or_else(|| path.strip_prefix("/videos/watch/"))
+        .unwrap_or("")
+        .trim_matches('/');
+    if uuid.is_empty() {
+        return String::new();
+    }
+    format!(
+        "{}://{}{}/videos/embed/{}",
+        base.scheme(),
+        base.host_str().unwrap_or(""),
+        base.port().map(|p| format!(":{p}")).unwrap_or_default(),
+        uuid
+    )
 }
 
 fn peertube_thumbnail(item: &serde_json::Value, video_url: &str) -> String {
@@ -197,12 +229,15 @@ mod tests {
     }
 
     fn main_result(url: &str, title: &str, content: &str) -> Result_ {
+        let iframe_src = peertube_embed(&serde_json::json!({}), url);
         Result_::Main(MainResult {
             url: url.to_string(),
             normalized_url: url.to_string(),
             title: title.to_string(),
             content: content.to_string(),
             engine: NAME.to_string(),
+            template: Template::Videos,
+            iframe_src,
             ..MainResult::default()
         })
     }

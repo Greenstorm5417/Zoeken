@@ -8,6 +8,7 @@ use std::pin::Pin;
 use std::sync::Arc;
 use std::time::Duration;
 
+use serde::Serialize;
 use zoeken_network::{DEFAULT_NETWORK, NetworkManager, NetworkRequest};
 
 use backends::{
@@ -23,6 +24,46 @@ pub const DEFAULT_AUTOCOMPLETE_TIMEOUT: Duration = Duration::from_secs(3);
 /// DuckDuckGo's "all locales" region token (reference `traits.all_locale`).
 const DUCKDUCKGO_ALL_LOCALE: &str = "wt-wt";
 
+/// One autocomplete suggestion. Plain backends fill `text` only; rich backends
+/// (Brave with `rich=true`) may also set `subtext` / `image`.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct Suggestion {
+    pub text: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub subtext: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub image: Option<String>,
+}
+
+impl Suggestion {
+    #[must_use]
+    pub fn text(text: impl Into<String>) -> Self {
+        Self {
+            text: text.into(),
+            subtext: None,
+            image: None,
+        }
+    }
+}
+
+impl From<String> for Suggestion {
+    fn from(text: String) -> Self {
+        Self::text(text)
+    }
+}
+
+impl From<&str> for Suggestion {
+    fn from(text: &str) -> Self {
+        Self::text(text)
+    }
+}
+
+/// Map plain suggestion strings into the shared DTO.
+#[must_use]
+pub fn suggestions_from_texts(texts: impl IntoIterator<Item = String>) -> Vec<Suggestion> {
+    texts.into_iter().map(Suggestion::from).collect()
+}
+
 /// Backend error: request failed or response unparseable.
 #[derive(Debug, thiserror::Error)]
 pub enum BackendError {
@@ -33,7 +74,7 @@ pub enum BackendError {
 }
 
 pub type SuggestFuture<'a> =
-    Pin<Box<dyn Future<Output = Result<Vec<String>, BackendError>> + Send + 'a>>;
+    Pin<Box<dyn Future<Output = Result<Vec<Suggestion>, BackendError>> + Send + 'a>>;
 
 /// A pluggable autocomplete backend producing suggestions for a partial query.
 /// Trait objects are injected: network-backed in production, in-memory in tests.
@@ -50,7 +91,7 @@ const CACHE_CAPACITY: usize = 2048;
 
 struct CacheEntry {
     at: std::time::Instant,
-    suggestions: Vec<String>,
+    suggestions: Vec<Suggestion>,
 }
 
 /// The autocomplete dispatch point: holds a backend and timeout, returning
@@ -102,7 +143,7 @@ impl AutocompleteService {
 
     /// Return suggestions for the partial `query` in `locale`.
     /// Returns empty lists when no backend is configured, on error, or timeout.
-    pub async fn suggest(&self, query: &str, locale: &str) -> Vec<String> {
+    pub async fn suggest(&self, query: &str, locale: &str) -> Vec<Suggestion> {
         let Some(backend) = self.backend.as_ref() else {
             return Vec::new();
         };
@@ -276,7 +317,7 @@ impl AutocompleteBackend for DuckDuckGoBackend {
             let value: serde_json::Value =
                 serde_json::from_str(&text).map_err(|e| BackendError::Response(e.to_string()))?;
 
-            Ok(parse_duckduckgo_suggestions(&value))
+            Ok(suggestions_from_texts(parse_duckduckgo_suggestions(&value)))
         })
     }
 }
@@ -297,7 +338,7 @@ pub fn parse_duckduckgo_suggestions(value: &serde_json::Value) -> Vec<String> {
     parse_opensearch_suggestions(value)
 }
 
-/// OpenSearch-style `[query, [suggestions...]]` payload (DDG / Brave / Startpage / Wikipedia).
+/// OpenSearch-style `[query, [suggestions...]]` payload (DDG / Startpage / Wikipedia).
 #[must_use]
 pub fn parse_opensearch_suggestions(value: &serde_json::Value) -> Vec<String> {
     value
@@ -311,6 +352,56 @@ pub fn parse_opensearch_suggestions(value: &serde_json::Value) -> Vec<String> {
                 .collect()
         })
         .unwrap_or_default()
+}
+
+/// Brave `?rich=true` payload: second element is objects with `q`/`name`/`desc`/`img`,
+/// or plain strings when rich data is absent.
+#[must_use]
+pub fn parse_brave_suggestions(value: &serde_json::Value) -> Vec<Suggestion> {
+    let Some(items) = value
+        .as_array()
+        .and_then(|arr| arr.get(1))
+        .and_then(serde_json::Value::as_array)
+    else {
+        return Vec::new();
+    };
+
+    items
+        .iter()
+        .filter_map(|item| {
+            if let Some(text) = item.as_str() {
+                return Some(Suggestion::text(text));
+            }
+            let obj = item.as_object()?;
+            let q = obj.get("q").and_then(serde_json::Value::as_str)?;
+            // Prefer entity display name for the inserted query when present.
+            let text = obj
+                .get("name")
+                .and_then(serde_json::Value::as_str)
+                .filter(|s| !s.is_empty())
+                .unwrap_or(q);
+            if text.is_empty() {
+                return None;
+            }
+            let subtext = obj
+                .get("desc")
+                .and_then(serde_json::Value::as_str)
+                .map(str::trim)
+                .filter(|s| !s.is_empty())
+                .map(str::to_string);
+            let image = obj
+                .get("img")
+                .and_then(serde_json::Value::as_str)
+                .map(str::trim)
+                .filter(|s| !s.is_empty())
+                .map(str::to_string);
+            Some(Suggestion {
+                text: text.to_string(),
+                subtext,
+                image,
+            })
+        })
+        .collect()
 }
 
 /// Google `gws-wiz` complete payload: `[[[html, ...], ...], ...]` — strip tags from first cell.
@@ -406,7 +497,7 @@ impl AutocompleteBackend for GoogleBackend {
             })?;
             let value: serde_json::Value = serde_json::from_str(&text[start..=end])
                 .map_err(|e| BackendError::Response(e.to_string()))?;
-            Ok(parse_google_suggestions(&value))
+            Ok(suggestions_from_texts(parse_google_suggestions(&value)))
         })
     }
 }
@@ -458,12 +549,12 @@ impl AutocompleteBackend for WikipediaBackend {
                 .map_err(|e| BackendError::Response(e.to_string()))?;
             let value: serde_json::Value =
                 serde_json::from_str(&text).map_err(|e| BackendError::Response(e.to_string()))?;
-            Ok(parse_opensearch_suggestions(&value))
+            Ok(suggestions_from_texts(parse_opensearch_suggestions(&value)))
         })
     }
 }
 
-/// Brave Search suggest API.
+/// Brave Search suggest API (public `rich=true` entity enrichments).
 pub struct BraveBackend {
     network: Arc<NetworkManager>,
     network_name: String,
@@ -480,7 +571,7 @@ impl BraveBackend {
 
     fn build_url(query: &str) -> String {
         format!(
-            "https://search.brave.com/api/suggest?q={}",
+            "https://search.brave.com/api/suggest?q={}&rich=true",
             encode_query(query)
         )
     }
@@ -505,7 +596,7 @@ impl AutocompleteBackend for BraveBackend {
                 .map_err(|e| BackendError::Response(e.to_string()))?;
             let value: serde_json::Value =
                 serde_json::from_str(&text).map_err(|e| BackendError::Response(e.to_string()))?;
-            Ok(parse_opensearch_suggestions(&value))
+            Ok(parse_brave_suggestions(&value))
         })
     }
 }
@@ -577,7 +668,7 @@ impl AutocompleteBackend for StartpageBackend {
                 .map_err(|e| BackendError::Response(e.to_string()))?;
             let value: serde_json::Value =
                 serde_json::from_str(&text).map_err(|e| BackendError::Response(e.to_string()))?;
-            Ok(parse_opensearch_suggestions(&value))
+            Ok(suggestions_from_texts(parse_opensearch_suggestions(&value)))
         })
     }
 }
@@ -585,13 +676,22 @@ impl AutocompleteBackend for StartpageBackend {
 /// An in-memory backend that always returns a fixed list of suggestions.
 pub struct StaticBackend {
     name: String,
-    suggestions: Vec<String>,
+    suggestions: Vec<Suggestion>,
 }
 
 impl StaticBackend {
     /// A backend named `name` that returns `suggestions` for every query.
     #[must_use]
     pub fn new(name: impl Into<String>, suggestions: Vec<String>) -> Self {
+        Self {
+            name: name.into(),
+            suggestions: suggestions_from_texts(suggestions),
+        }
+    }
+
+    /// A backend that returns rich suggestions as-is.
+    #[must_use]
+    pub fn with_suggestions(name: impl Into<String>, suggestions: Vec<Suggestion>) -> Self {
         Self {
             name: name.into(),
             suggestions,
@@ -634,7 +734,7 @@ mod tests {
         fn suggest<'a>(&'a self, _query: &'a str, _locale: &'a str) -> SuggestFuture<'a> {
             Box::pin(async {
                 tokio::time::sleep(Duration::from_secs(60)).await;
-                Ok(vec!["never".to_string()])
+                Ok(vec![Suggestion::text("never")])
             })
         }
     }
@@ -651,7 +751,7 @@ mod tests {
 
         assert_eq!(
             suggestions,
-            vec!["rust".to_string(), "rustlang".to_string()]
+            vec![Suggestion::text("rust"), Suggestion::text("rustlang")]
         );
         assert!(service.is_enabled());
         assert_eq!(service.backend_name(), Some("stub"));
@@ -759,14 +859,45 @@ mod tests {
     }
 
     #[test]
-    fn brave_url_and_parse() {
-        let url = BraveBackend::build_url("rust");
+    fn brave_url_and_rich_parse() {
+        let url = BraveBackend::build_url("einstein");
         assert!(url.contains("search.brave.com/api/suggest"));
-        assert!(url.contains("q=rust"));
+        assert!(url.contains("q=einstein"));
+        assert!(url.contains("rich=true"));
+        let value = serde_json::json!([
+            "einstein",
+            [
+                {
+                    "is_entity": true,
+                    "q": "einstein",
+                    "name": "Albert Einstein",
+                    "desc": "German-born theoretical physicist",
+                    "img": "https://imgs.search.brave.com/einstein.jpg"
+                },
+                {"is_entity": false, "q": "einstein iq"},
+                "plain string fallback"
+            ]
+        ]);
+        assert_eq!(
+            parse_brave_suggestions(&value),
+            vec![
+                Suggestion {
+                    text: "Albert Einstein".to_string(),
+                    subtext: Some("German-born theoretical physicist".to_string()),
+                    image: Some("https://imgs.search.brave.com/einstein.jpg".to_string()),
+                },
+                Suggestion::text("einstein iq"),
+                Suggestion::text("plain string fallback"),
+            ]
+        );
+    }
+
+    #[test]
+    fn brave_plain_opensearch_still_parses() {
         let value = serde_json::json!(["rust", ["rust lang", "rustc"]]);
         assert_eq!(
-            parse_opensearch_suggestions(&value),
-            vec!["rust lang".to_string(), "rustc".to_string()]
+            parse_brave_suggestions(&value),
+            vec![Suggestion::text("rust lang"), Suggestion::text("rustc")]
         );
     }
 

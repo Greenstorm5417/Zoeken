@@ -126,17 +126,37 @@ impl Engine for Unsplash {
                 .and_then(|u| u.as_str())
                 .map(clean_url)
                 .unwrap_or_default();
+            if url.is_empty() || img_src.is_empty() {
+                continue;
+            }
+            let thumbnail_src = if thumbnail_src.is_empty() {
+                img_src.clone()
+            } else {
+                thumbnail_src
+            };
             let title = item
                 .get("alt_description")
                 .and_then(|t| t.as_str())
                 .filter(|s| !s.is_empty())
-                .unwrap_or("unknown")
+                .or_else(|| {
+                    item.get("description")
+                        .and_then(|d| d.as_str())
+                        .filter(|s| !s.is_empty())
+                })
+                .unwrap_or("Image")
                 .to_string();
             let content = item
                 .get("description")
                 .and_then(|d| d.as_str())
                 .unwrap_or("")
                 .to_string();
+            let width = item.get("width").and_then(|v| v.as_u64()).unwrap_or(0);
+            let height = item.get("height").and_then(|v| v.as_u64()).unwrap_or(0);
+            let resolution = if width > 0 && height > 0 {
+                format!("{width}x{height}")
+            } else {
+                "unknown".to_string()
+            };
 
             res.add(Result_::Image(Image {
                 url: url.clone(),
@@ -145,6 +165,7 @@ impl Engine for Unsplash {
                 content,
                 thumbnail_src,
                 img_src,
+                resolution,
                 engine: NAME.to_string(),
                 ..Image::default()
             }));
@@ -172,19 +193,6 @@ mod tests {
         }
     }
 
-    fn image(url: &str, title: &str, content: &str, thumb: &str, img: &str) -> Result_ {
-        Result_::Image(Image {
-            url: url.to_string(),
-            normalized_url: url.to_string(),
-            title: title.to_string(),
-            content: content.to_string(),
-            thumbnail_src: thumb.to_string(),
-            img_src: img.to_string(),
-            engine: NAME.to_string(),
-            ..Image::default()
-        })
-    }
-
     fn response(status: u16, body: &str) -> EngineResponse {
         EngineResponse {
             status,
@@ -210,6 +218,8 @@ mod tests {
         {
           "alt_description": "a blue cat",
           "description": "A very blue cat.",
+          "width": 4000,
+          "height": 3000,
           "links": {"html": "https://unsplash.com/photos/1?ixid=abc"},
           "urls": {
             "thumb": "https://images.unsplash.com/1?ixid=abc&w=200",
@@ -225,13 +235,17 @@ mod tests {
         let dir = fixtures_root().join(NAME);
 
         let mut basic = EngineResults::new();
-        basic.add(image(
-            "https://unsplash.com/photos/1",
-            "a blue cat",
-            "A very blue cat.",
-            "https://images.unsplash.com/1?w=200",
-            "https://images.unsplash.com/1?w=1080",
-        ));
+        basic.add(Result_::Image(Image {
+            url: "https://unsplash.com/photos/1".to_string(),
+            normalized_url: "https://unsplash.com/photos/1".to_string(),
+            title: "a blue cat".to_string(),
+            content: "A very blue cat.".to_string(),
+            thumbnail_src: "https://images.unsplash.com/1?w=200".to_string(),
+            img_src: "https://images.unsplash.com/1?w=1080".to_string(),
+            resolution: "4000x3000".to_string(),
+            engine: NAME.to_string(),
+            ..Image::default()
+        }));
         Fixture::capture(NAME, query("cat", 1), response(200, BASIC_JSON), basic)
             .with_case("basic")
             .save(dir.join("basic.json"))
@@ -294,12 +308,12 @@ mod tests {
     }
 
     #[test]
-    fn missing_alt_description_falls_back_to_unknown() {
+    fn missing_alt_description_falls_back_to_image() {
         let engine = Unsplash::new();
         let body = r#"{"results":[{"links":{"html":"https://unsplash.com/photos/2"},"urls":{"thumb":"t","regular":"r"}}]}"#;
         let res = engine.response(&response(200, body)).unwrap();
         match &res.results[0] {
-            Result_::Image(img) => assert_eq!(img.title, "unknown"),
+            Result_::Image(img) => assert_eq!(img.title, "Image"),
             _ => panic!("expected image result"),
         }
     }

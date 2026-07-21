@@ -167,7 +167,7 @@ JSON bundle).
 4. **Assets**: ship `./assets` next to the binary, or use the deb/Docker paths above.
 5. **Probes**: liveness `/healthz`, readiness `/readyz` (returns not-ready while draining).
 6. **Image proxy**: leave off unless you need it; when on, URLs stay HMAC-gated and redirects are not followed.
-7. **Metrics**: `/metrics` and `/stats` are unauthenticated — restrict at the reverse proxy if the instance is public.
+7. **Metrics**: set `general.open_metrics` to a password so `/metrics` and `/stats` require HTTP Basic auth; empty hides `/metrics` and leaves `/stats` open.
 8. Read [`docs/security/audit.md`](security/audit.md) before go-live.
 
 ## Reverse proxy
@@ -175,7 +175,7 @@ JSON bundle).
 Terminate TLS at nginx/Caddy. Trust only the proxy CIDRs via
 `deployment.trusted_proxies` and/or `trusted_proxies` in `limiter.toml` so
 `X-Forwarded-For` / scheme forwarding is honored. Do not trust the open
-internet as a proxy. Optionally block `/metrics` and `/stats` from the public.
+internet as a proxy. Prefer `general.open_metrics`; optionally also block those paths at the edge.
 
 Example (`settings.yml`):
 
@@ -199,9 +199,13 @@ deployment:
 
 ## Cutting a release
 
-1. Bump `[workspace.package].version` in `Cargo.toml` and `zoeken-client/package.json`
-   to the same semver (e.g. `1.0.0`). Update `CHANGELOG.md`.
-2. Commit, then tag and push: `git tag v1.0.0 && git push origin v1.0.0`.
+1. Bump `[workspace.package].version` in `Cargo.toml` (source of truth), then sync
+   dependents via **Actions → Sync versions** (or locally:
+   `uv run --no-project --python 3.13 tools/sync_versions.py [--bump X.Y.Z]`).
+   The workflow commits `chore: sync package versions to X.Y.Z` when needed.
+   Update `CHANGELOG.md`.
+2. Commit remaining release notes if needed, then tag and push:
+   `git tag v1.0.0 && git push origin v1.0.0`.
 3. GitHub Actions verifies Cargo + client versions match the tag, builds `.deb`s
    on native amd64/arm64 runners, pushes GHCR via `Dockerfile.runtime`, and opens
    the GitHub Release.

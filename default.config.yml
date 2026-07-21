@@ -21,16 +21,25 @@ use_default_settings: false
 general:
   debug: false
   instance_name: "Search"
-  # null, false, or a URL string
+  # About-page privacy / contact links. null or false hides the link.
+  # Set a real URL for your instance — do not invent one.
+  # Examples:
+  #   privacypolicy_url: "https://example.test/privacy"
+  #   contact_url: "mailto:ops@example.test"
   privacypolicy_url: null
   contact_url: null
   donation_url: null
   enable_metrics: true
-  # Empty disables /metrics. A non-empty value is its HTTP Basic password.
+  # Empty disables /metrics and leaves /stats open. A non-empty value is the
+  # HTTP Basic password for /metrics, /stats, and /stats/errors (any username).
   open_metrics: ""
 
 brand:
+  # About Source / GIT_URL: prefer custom.links.Source, else strip /issues from
+  # issue_url. Leave empty for private instances.
+  # Example: "https://github.com/example/zoeken/issues"
   issue_url: ""
+  # Example: "https://github.com/example/zoeken#readme"
   docs_url: ""
   public_instances: ""
   wiki_url: null
@@ -40,18 +49,18 @@ brand:
     # links:
     #   Source: "https://example.test/source"
   pwa_colors:
-    theme_color_light: "#3050ff"
-    background_color_light: "#fff"
-    theme_color_dark: "#58f"
-    background_color_dark: "#222428"
-    theme_color_black: "#3050ff"
+    theme_color_light: "#246018"
+    background_color_light: "#f2f5ee"
+    theme_color_dark: "#8fd46a"
+    background_color_dark: "#0f1410"
+    theme_color_black: "#246018"
     background_color_black: "#000"
 
 search:
   # 0 = off, 1 = moderate, 2 = strict
   safe_search: 0
-  # Empty disables autocomplete.
-  autocomplete: "duckduckgo"
+  # Empty disables autocomplete. Prefer `brave` for rich suggestions (image + subtext).
+  autocomplete: "brave"
   autocomplete_min: 1
   # Empty disables result favicons. Allowed providers: allesedv, duckduckgo,
   # google, yandex.
@@ -202,6 +211,7 @@ categories_as_tabs:
   music: {}
   news: {}
   science: {}
+  shopping: {}
   social media: {}
   videos: {}
 
@@ -223,13 +233,18 @@ doi_resolvers: {}
 default_doi_resolver: null
 
 # Flattened hostname plugin settings: replace map and remove/high_priority/
-# low_priority string lists.
+# low_priority string lists. Enable/disable the plugin in Preferences; rules
+# themselves are instance-level only (not per-user cookies).
 hostnames: {}
 # hostnames:
-#   replace: {}
-#   remove: []
-#   high_priority: []
-#   low_priority: []
+#   replace:
+#     "(www\\.)?youtube\\.com$": "yewtu.be"
+#   remove:
+#     - "(^|\\.)tracker\\.example$"
+#   high_priority:
+#     - "(^|\\.)wikipedia\\.org$"
+#   low_priority:
+#     - "(^|\\.)pinterest\\."
 
 # Empty uses the bundled limiter data asset. Optional keys are file, toml, and
 # link_token. file and toml are mutually prioritized, with toml first.

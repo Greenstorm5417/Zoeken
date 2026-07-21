@@ -3,11 +3,11 @@
 use std::collections::BTreeMap;
 use std::sync::Arc;
 
-use axum::extract::{Path, State};
+use axum::extract::{Path, Query, State};
 use axum::http::{HeaderMap, HeaderValue, StatusCode, header};
 use axum::response::{IntoResponse, Response};
 use base64::Engine as _;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 
 use zoeken_metrics::{
     CATEGORY_LABEL, ENGINE_ERRORS_TOTAL, ENGINE_LABEL, ENGINE_RESPONSE_TIME_HTTP,
@@ -54,6 +54,34 @@ struct ConfigResponse {
     default_doi_resolver: String,
     categories_as_tabs: Vec<String>,
     ui: UiInfo,
+    /// Instance-level hostname rewrite rules (from `hostnames:` in settings).
+    hostnames: HostnamesInfo,
+}
+
+#[derive(Debug, Serialize)]
+struct HostnamesInfo {
+    replace: BTreeMap<String, String>,
+    remove: Vec<String>,
+    high_priority: Vec<String>,
+    low_priority: Vec<String>,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct BangsQuery {
+    #[serde(default)]
+    q: String,
+    #[serde(default = "default_bangs_limit")]
+    limit: usize,
+}
+
+fn default_bangs_limit() -> usize {
+    40
+}
+
+#[derive(Debug, Serialize)]
+struct BangInfo {
+    shortcut: String,
+    url: String,
 }
 
 #[derive(Debug, Serialize)]
@@ -173,7 +201,7 @@ pub async fn config(State(state): State<Arc<AppState>>) -> Response {
                 .unwrap_or(serde_json::Value::Null),
             CONTACT_URL: serde_json::to_value(&state.settings.general.contact_url)
                 .unwrap_or(serde_json::Value::Null),
-            GIT_URL: String::new(),
+            GIT_URL: git_url_from_brand(&state.settings.brand),
             GIT_BRANCH: String::new(),
             DOCS_URL: state.settings.brand.docs_url.clone(),
         },
@@ -203,10 +231,33 @@ pub async fn config(State(state): State<Arc<AppState>>) -> Response {
             url_formatting: state.settings.ui.url_formatting.clone(),
         },
         public_instance: state.settings.server.public_instance,
+        hostnames: hostnames_info(&state.data.plugin_data.hostnames),
     };
     let mut response = json(&response);
     // Instance config changes only on redeploy; let the browser reuse it
     // instead of refetching on every SPA load.
+    response.headers_mut().insert(
+        header::CACHE_CONTROL,
+        axum::http::HeaderValue::from_static("private, max-age=300"),
+    );
+    response
+}
+
+/// `GET /bangs?q=` — searchable external bang shortcuts (DuckDuckGo-style `!g`).
+pub async fn bangs(
+    State(state): State<Arc<AppState>>,
+    Query(params): Query<BangsQuery>,
+) -> Response {
+    let limit = params.limit.clamp(1, 100);
+    let matches = state.data.bangs.suggest(&params.q, limit);
+    let body: Vec<BangInfo> = matches
+        .into_iter()
+        .map(|(shortcut, entry)| BangInfo {
+            shortcut,
+            url: entry.url_template,
+        })
+        .collect();
+    let mut response = json(&body);
     response.headers_mut().insert(
         header::CACHE_CONTROL,
         axum::http::HeaderValue::from_static("private, max-age=300"),
@@ -274,8 +325,15 @@ struct ErrorStatsResponse {
     engines: Vec<EngineErrors>,
 }
 
-/// `GET /stats` timing summaries.
-pub async fn stats(State(state): State<Arc<AppState>>) -> Response {
+/// `GET /stats` timing summaries (JSON), or SPA document for browser navigations.
+pub async fn stats(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Response {
+    // SPA shell stays public so the page can show a configure-auth message on 401.
+    if crate::preferences::prefers_html(&headers) {
+        return crate::frontend_index_response(&state, &headers);
+    }
+    if let Some(denied) = open_metrics_unauthorized(&state, &headers) {
+        return denied;
+    }
     let rendered = state
         .metrics_handle
         .as_ref()
@@ -287,7 +345,10 @@ pub async fn stats(State(state): State<Arc<AppState>>) -> Response {
 }
 
 /// `GET /stats/errors` error counts.
-pub async fn stats_errors(State(state): State<Arc<AppState>>) -> Response {
+pub async fn stats_errors(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Response {
+    if let Some(denied) = open_metrics_unauthorized(&state, &headers) {
+        return denied;
+    }
     let rendered = state
         .metrics_handle
         .as_ref()
@@ -370,11 +431,12 @@ fn error_stats(rendered: &str) -> ErrorStatsResponse {
 
 const METRICS_CONTENT_TYPE: &str = "text/plain; version=0.0.4; charset=utf-8";
 
-/// `GET /metrics` exposition.
-pub async fn metrics(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Response {
+/// When `general.open_metrics` is set, require HTTP Basic with that password.
+/// Empty password: no gate (stats stay open; `/metrics` uses a separate 404 path).
+fn open_metrics_unauthorized(state: &AppState, headers: &HeaderMap) -> Option<Response> {
     let password = state.settings.general.open_metrics.as_str();
-    if !state.metrics_enabled || password.is_empty() {
-        return StatusCode::NOT_FOUND.into_response();
+    if password.is_empty() {
+        return None;
     }
     let authorized = headers
         .get(header::AUTHORIZATION)
@@ -392,12 +454,27 @@ pub async fn metrics(State(state): State<Arc<AppState>>, headers: HeaderMap) -> 
                 .map(|(_, pass)| pass.to_string())
         })
         .is_some_and(|presented| presented == password);
-    if !authorized {
-        return (
-            StatusCode::UNAUTHORIZED,
-            [(header::WWW_AUTHENTICATE, "Basic realm=\"metrics\"")],
+    if authorized {
+        None
+    } else {
+        Some(
+            (
+                StatusCode::UNAUTHORIZED,
+                [(header::WWW_AUTHENTICATE, "Basic realm=\"metrics\"")],
+            )
+                .into_response(),
         )
-            .into_response();
+    }
+}
+
+/// `GET /metrics` exposition.
+pub async fn metrics(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Response {
+    let password = state.settings.general.open_metrics.as_str();
+    if !state.metrics_enabled || password.is_empty() {
+        return StatusCode::NOT_FOUND.into_response();
+    }
+    if let Some(denied) = open_metrics_unauthorized(&state, &headers) {
+        return denied;
     }
     let body = state
         .metrics_handle
@@ -437,18 +514,78 @@ pub async fn opensearch(State(state): State<Arc<AppState>>) -> Response {
 }
 
 /// `GET /robots.txt` crawler policy.
-pub async fn robots() -> Response {
-    let body = concat!(
-        "User-agent: *\n",
-        "Allow: /\n",
-        "Disallow: /search\n",
-        "Disallow: /autocompleter\n",
-        "Disallow: /preferences\n",
-        "Disallow: /stats\n",
-        "Disallow: /image_proxy\n",
-        "Disallow: /*?*q=\n",
+pub async fn robots(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Response {
+    let origin = request_origin(&state, &headers).unwrap_or_default();
+    let sitemap = if origin.is_empty() {
+        "/sitemap.xml".to_string()
+    } else {
+        format!("{origin}/sitemap.xml")
+    };
+    let body = format!(
+        concat!(
+            "User-agent: *\n",
+            "Allow: /\n",
+            "Disallow: /search\n",
+            "Disallow: /autocompleter\n",
+            "Disallow: /bangs\n",
+            "Disallow: /preferences\n",
+            "Disallow: /stats\n",
+            "Disallow: /image_proxy\n",
+            "Disallow: /favicon_proxy\n",
+            "Disallow: /*?*q=\n",
+            "\n",
+            "Sitemap: {sitemap}\n",
+        ),
+        sitemap = sitemap
     );
     ([(header::CONTENT_TYPE, "text/plain; charset=utf-8")], body).into_response()
+}
+
+/// `GET /sitemap.xml` — indexable SPA surfaces only (not search/API).
+pub async fn sitemap(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Response {
+    let origin = request_origin(&state, &headers).unwrap_or_default();
+    let home = if origin.is_empty() {
+        "/".to_string()
+    } else {
+        format!("{origin}/")
+    };
+    let about = if origin.is_empty() {
+        "/about".to_string()
+    } else {
+        format!("{origin}/about")
+    };
+    let body = format!(
+        concat!(
+            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+            "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n",
+            "  <url>\n",
+            "    <loc>{home}</loc>\n",
+            "    <changefreq>weekly</changefreq>\n",
+            "    <priority>1.0</priority>\n",
+            "  </url>\n",
+            "  <url>\n",
+            "    <loc>{about}</loc>\n",
+            "    <changefreq>monthly</changefreq>\n",
+            "    <priority>0.6</priority>\n",
+            "  </url>\n",
+            "</urlset>\n",
+        ),
+        home = home,
+        about = about
+    );
+    (
+        [(header::CONTENT_TYPE, "application/xml; charset=utf-8")],
+        body,
+    )
+        .into_response()
+}
+
+fn request_origin(state: &Arc<AppState>, headers: &HeaderMap) -> Option<String> {
+    let base = match state.settings.server.base_url.as_ref() {
+        Some(zoeken_settings::BoolOrString::Str(url)) if !url.is_empty() => Some(url.as_str()),
+        _ => None,
+    };
+    crate::middleware::instance_origin(base, state.deployment.hsts, headers)
 }
 
 /// `GET /manifest.json`.
@@ -458,32 +595,57 @@ pub async fn manifest(State(state): State<Arc<AppState>>) -> Response {
     let body = serde_json::json!({
         "name": name,
         "short_name": name,
+        "description": format!("{name} — private metasearch"),
         "start_url": "/",
         "display": "standalone",
         "theme_color": colors.theme_color_light,
         "background_color": colors.background_color_light,
         "icons": [
             {
-                "src": "/favicon.ico",
+                "src": "/zoeken-logo.svg",
                 "sizes": "any",
                 "type": "image/svg+xml",
-            }
+                "purpose": "any",
+            },
+            {
+                "src": "/icon-192.png",
+                "sizes": "192x192",
+                "type": "image/png",
+            },
+            {
+                "src": "/icon-512.png",
+                "sizes": "512x512",
+                "type": "image/png",
+            },
+            {
+                "src": "/apple-touch-icon.png",
+                "sizes": "180x180",
+                "type": "image/png",
+            },
         ],
     })
     .to_string();
     ([(header::CONTENT_TYPE, "application/manifest+json")], body).into_response()
 }
 
+/// Fallback favicon when the brand SVG asset is missing (tests / bare boots).
 pub(crate) const FAVICON_SVG: &str = concat!(
     "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\">",
-    "<circle cx=\"10\" cy=\"10\" r=\"6\" fill=\"none\" stroke=\"#3050ff\" stroke-width=\"2\"/>",
-    "<line x1=\"15\" y1=\"15\" x2=\"21\" y2=\"21\" stroke=\"#3050ff\" stroke-width=\"2\" ",
+    "<circle cx=\"10\" cy=\"10\" r=\"6\" fill=\"none\" stroke=\"#246018\" stroke-width=\"2\"/>",
+    "<line x1=\"15\" y1=\"15\" x2=\"21\" y2=\"21\" stroke=\"#246018\" stroke-width=\"2\" ",
     "stroke-linecap=\"round\"/>",
     "</svg>",
 );
 
-/// `GET /favicon.ico`.
-pub async fn favicon() -> Response {
+/// `GET /favicon.ico` — brand logo SVG from assets when present.
+pub async fn favicon(State(state): State<Arc<AppState>>) -> Response {
+    if let Some(bytes) = state.assets.get("zoeken-logo.svg") {
+        return (
+            [(header::CONTENT_TYPE, "image/svg+xml")],
+            bytes.into_owned(),
+        )
+            .into_response();
+    }
     ([(header::CONTENT_TYPE, "image/svg+xml")], FAVICON_SVG).into_response()
 }
 
@@ -513,6 +675,31 @@ pub async fn engine_descriptions(State(state): State<Arc<AppState>>) -> Response
 fn json<T: Serialize>(value: &T) -> Response {
     let body = serde_json::to_string(value).unwrap_or_else(|_| "{}".to_string());
     ([(header::CONTENT_TYPE, "application/json")], body).into_response()
+}
+
+fn hostnames_info(rules: &zoeken_data::HostnamesRules) -> HostnamesInfo {
+    HostnamesInfo {
+        replace: rules.replace.iter().cloned().collect(),
+        remove: rules.remove.clone(),
+        high_priority: rules.high_priority.clone(),
+        low_priority: rules.low_priority.clone(),
+    }
+}
+
+fn git_url_from_brand(brand: &zoeken_settings::BrandSettings) -> String {
+    if let Some(source) = brand.custom.links.get("Source") {
+        if !source.is_empty() {
+            return source.clone();
+        }
+    }
+    // Derive repo URL from GitHub-style issue_url (.../issues).
+    let issue = brand.issue_url.trim_end_matches('/');
+    if let Some(base) = issue.strip_suffix("/issues") {
+        if !base.is_empty() {
+            return base.to_string();
+        }
+    }
+    String::new()
 }
 
 fn plugin_infos(state: &AppState) -> Vec<PluginInfo> {
@@ -702,6 +889,24 @@ mod tests {
         assert!(!engines.is_empty(), "at least one engine is configured");
         assert!(engines.iter().any(|e| e["name"] == "duckduckgo"));
         assert_eq!(value["safe_search"], 0);
+        assert!(value["hostnames"].is_object());
+    }
+
+    #[tokio::test]
+    async fn bangs_filters_by_query() {
+        let response = get("/bangs?q=g").await;
+        assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(content_type(&response), "application/json");
+        let value = body_json(response).await;
+        let arr = value.as_array().expect("bangs array");
+        assert!(!arr.is_empty(), "embedded bangs should match q=g");
+        for item in arr {
+            let shortcut = item["shortcut"].as_str().unwrap_or("");
+            assert!(shortcut.contains('g'), "unexpected bang {shortcut}");
+        }
+
+        let empty = body_json(get("/bangs").await).await;
+        assert_eq!(empty.as_array().map(|a| a.len()).unwrap_or(1), 0);
     }
 
     // Calculator and unit conversion have exactly one implementation each
@@ -777,6 +982,36 @@ mod tests {
     }
 
     #[tokio::test]
+    async fn stats_requires_basic_auth_when_open_metrics_set() {
+        let mut state = AppState::new().expect("build app state");
+        state.settings.general.open_metrics = "secret".to_string();
+        let app = app(state);
+
+        for path in ["/stats", "/stats/errors"] {
+            let unauthorized = app
+                .clone()
+                .oneshot(Request::builder().uri(path).body(Body::empty()).unwrap())
+                .await
+                .unwrap();
+            assert_eq!(unauthorized.status(), StatusCode::UNAUTHORIZED, "{path}");
+
+            let authorized = app
+                .clone()
+                .oneshot(
+                    Request::builder()
+                        .uri(path)
+                        .header(header::AUTHORIZATION, "Basic dXNlcjpzZWNyZXQ=")
+                        .body(Body::empty())
+                        .unwrap(),
+                )
+                .await
+                .unwrap();
+            assert_eq!(authorized.status(), StatusCode::OK, "{path}");
+            assert_eq!(content_type(&authorized), "application/json", "{path}");
+        }
+    }
+
+    #[tokio::test]
     async fn opensearch_returns_description_document() {
         let response = get("/opensearch.xml").await;
         assert_eq!(response.status(), StatusCode::OK);
@@ -797,6 +1032,18 @@ mod tests {
         let body = body_text(response).await;
         assert!(body.contains("User-agent: *"));
         assert!(body.contains("Disallow: /search"));
+        assert!(body.contains("Sitemap: /sitemap.xml"));
+    }
+
+    #[tokio::test]
+    async fn sitemap_lists_indexable_pages() {
+        let response = get("/sitemap.xml").await;
+        assert_eq!(response.status(), StatusCode::OK);
+        assert!(content_type(&response).starts_with("application/xml"));
+        let body = body_text(response).await;
+        assert!(body.contains("<urlset"));
+        assert!(body.contains("<loc>/</loc>") || body.contains("<loc>http"));
+        assert!(body.contains("/about</loc>"));
     }
 
     #[tokio::test]
@@ -807,6 +1054,11 @@ mod tests {
         let value = body_json(response).await;
         assert!(value["name"].is_string());
         assert_eq!(value["start_url"], "/");
+        assert!(
+            value["icons"]
+                .as_array()
+                .is_some_and(|icons| !icons.is_empty())
+        );
     }
 
     #[tokio::test]

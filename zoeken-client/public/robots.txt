@@ -1,3 +1,11 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /search
+Disallow: /autocompleter
+Disallow: /preferences
+Disallow: /stats
+Disallow: /image_proxy
+Disallow: /favicon_proxy
+Disallow: /*?*q=
+
+Sitemap: /sitemap.xml

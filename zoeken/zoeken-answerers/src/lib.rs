@@ -15,10 +15,12 @@ use zoeken_data::DataBundle;
 use zoeken_query::SearchQuery;
 use zoeken_results::{Answer, Template};
 
+mod crypto;
 mod datetime;
 mod random;
 mod statistics;
 
+pub use crypto::CryptoAnswerer;
 pub use datetime::DateTimeAnswerer;
 pub use random::{RandomAnswerer, RandomKind};
 pub use statistics::{StatisticsAnswerer, StatisticsOp};
@@ -65,6 +67,7 @@ impl AnswererRegistry {
             Arc::new(StatisticsAnswerer::new()) as Arc<dyn Answerer>,
             Arc::new(RandomAnswerer::new()) as Arc<dyn Answerer>,
             Arc::new(DateTimeAnswerer::new()) as Arc<dyn Answerer>,
+            Arc::new(CryptoAnswerer::new()) as Arc<dyn Answerer>,
         ])
     }
 
@@ -247,7 +250,7 @@ mod tests {
     #[test]
     fn builtins_are_registered() {
         let registry = AnswererRegistry::with_builtins();
-        assert_eq!(registry.len(), 3);
+        assert_eq!(registry.len(), 4);
         let answers = registry.ask(&query("sum 1 2 3"));
         assert_eq!(answers.len(), 1);
         assert!(answers[0].answer.contains('6'));

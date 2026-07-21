@@ -112,15 +112,27 @@ export function PaperResult({
 	result: SearchResult;
 	newTab?: boolean;
 }) {
-	const meta: string[] = [];
-	if (result.authors?.length) meta.push(result.authors.slice(0, 4).join(", "));
-	if (result.journal) meta.push(result.journal);
-	if (result.publishedDate) meta.push(result.publishedDate.slice(0, 10));
+	const authors = result.authors?.length
+		? result.authors.length > 4
+			? `${result.authors.slice(0, 4).join(", ")} et al.`
+			: result.authors.join(", ")
+		: null;
+	const meta = [
+		authors,
+		result.journal,
+		result.publisher,
+		result.publishedDate?.slice(0, 10),
+	].filter(Boolean) as string[];
 	return (
 		<article className="max-w-[40rem]">
 			<ResultTitle result={result} newTab={newTab} />
 			{meta.length > 0 ? (
 				<p className="mt-1 text-[0.8rem] text-ink-subtle">{meta.join(" · ")}</p>
+			) : null}
+			{result.tags && result.tags.length > 0 ? (
+				<p className="mt-1 text-[0.75rem] text-ink-subtle">
+					{result.tags.slice(0, 6).join(" · ")}
+				</p>
 			) : null}
 			{result.content ? (
 				<p className="mt-1.5 line-clamp-3 text-[0.9rem] text-ink-muted">
@@ -139,17 +151,48 @@ export function PaperResult({
 						PDF
 					</a>
 				) : null}
+				{result.html_url ? (
+					<a
+						href={result.html_url}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="text-ink-subtle hover:text-accent"
+					>
+						HTML
+					</a>
+				) : null}
 				{result.doi ? (
 					<a
 						href={`https://doi.org/${result.doi}`}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-ink-subtle hover:text-accent"
+						className="font-mono text-ink-subtle hover:text-accent"
 					>
 						doi:{result.doi}
 					</a>
 				) : null}
 			</div>
+			<EngineLine result={result} />
+		</article>
+	);
+}
+
+/** Shopping / product listing: title, price-or-snippet in content, link. */
+export function ProductResult({
+	result,
+	newTab,
+}: {
+	result: SearchResult;
+	newTab?: boolean;
+}) {
+	return (
+		<article className="max-w-[40rem]">
+			<ResultTitle result={result} newTab={newTab} />
+			{result.content ? (
+				<p className="mt-1.5 text-[1.05rem] font-medium tracking-tight text-ink">
+					{result.content}
+				</p>
+			) : null}
 			<EngineLine result={result} />
 		</article>
 	);
@@ -232,13 +275,12 @@ export function MapResult({
 	result: SearchResult;
 	newTab?: boolean;
 }) {
-	// OSM result URLs carry mlat/mlon; surface them as a directions link too.
 	let lat = "";
 	let lon = "";
 	try {
 		const u = new URL(result.url);
-		lat = u.searchParams.get("mlat") ?? "";
-		lon = u.searchParams.get("mlon") ?? "";
+		lat = u.searchParams.get("mlat") ?? u.searchParams.get("lat") ?? "";
+		lon = u.searchParams.get("mlon") ?? u.searchParams.get("lon") ?? "";
 	} catch {
 		// leave blank
 	}
@@ -282,7 +324,7 @@ export function MapResult({
 }
 
 /** Pick the specialized template for a result, or `null` for the default. */
-export function specializedTemplate(result: SearchResult) {
+export function specializedTemplate(result: SearchResult, category?: string) {
 	switch (result.template) {
 		case "file.html":
 		case "files.html":
@@ -293,9 +335,14 @@ export function specializedTemplate(result: SearchResult) {
 			return CodeResult;
 		case "keyvalue.html":
 			return KeyValueResult;
+		case "products.html":
+		case "product.html":
+			return ProductResult;
 		default:
 			// Torrents sometimes arrive without a template but with a magnet link.
 			if (result.magnetlink) return TorrentResult;
+			// ebay/geizhals put price in content — no dedicated product fields.
+			if (category === "shopping") return ProductResult;
 			return null;
 	}
 }

@@ -26,8 +26,9 @@ arbitrary queries, forge headers, and try to turn zoeken into an open proxy.
   hostname that later resolves to a private IP is not re-checked on the
   connecting address. Mitigate by keeping image/favicon proxy off when untrusted,
   or front with an egress firewall.
-- **Unauthenticated `/metrics` and `/stats`**: restrict at the reverse proxy on
-  public instances.
+- **`/metrics` and `/stats` auth**: set `general.open_metrics` (HTTP Basic
+  password) on public instances; empty leaves `/stats` open and hides `/metrics`.
+  Edge restriction remains optional defense in depth.
 - **Per-request TLS verify disable**: fails closed (`intentional-differences.md`).
 - **No CORS layer**: SPA is same-origin. Do not enable open CORS without review.
 - **Theme cookie field**: still accepted for SearXNG cookie compatibility; SPA
@@ -39,5 +40,5 @@ arbitrary queries, forge headers, and try to turn zoeken into an open proxy.
 2. Leave `image_proxy` off unless needed; HMAC URLs come from result rendering.
 3. Configure `trusted_proxies` only for real reverse proxies.
 4. Enable the limiter for public instances (`public_instance` / limiter config).
-5. Block or auth-gate `/metrics` and `/stats` at the edge if the instance is public.
+5. Set `general.open_metrics` (Basic auth for `/metrics` and `/stats`); optionally also block them at the edge.
 6. Keep `command` engines unsupported; do not add shell-out without a sandbox.

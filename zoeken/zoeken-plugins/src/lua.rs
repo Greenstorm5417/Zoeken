@@ -871,10 +871,10 @@ fn has_capability(info: &PluginInfo, capability: &str) -> bool {
 
 fn data_to_table(lua: &Lua, data: &zoeken_data::DataBundle) -> mlua::Result<Table> {
     let table = lua.create_table()?;
-    table.set("currency_count", data.currencies.iso4217.len())?;
+    table.set("currency_count", data.currencies.iso_len())?;
     table.set("locale_count", data.locales.locale_names.len())?;
-    table.set("unit_count", data.units.units.len())?;
-    table.set("tracker_pattern_count", data.tracker_patterns.rules.len())?;
+    table.set("unit_count", data.units.len())?;
+    table.set("tracker_pattern_count", data.tracker_patterns.rule_count())?;
     table.set("ahmia_blacklist_count", data.ahmia_blacklist.len())?;
     table.set("currencies", currencies_to_table(lua, &data.currencies)?)?;
     table.set("units", units_to_table(lua, &data.units)?)?;
@@ -884,7 +884,7 @@ fn data_to_table(lua: &Lua, data: &zoeken_data::DataBundle) -> mlua::Result<Tabl
     )?;
     table.set(
         "ahmia_blacklist",
-        string_set_to_table(lua, &data.ahmia_blacklist)?,
+        ahmia_blacklist_to_table(lua, &data.ahmia_blacklist)?,
     )?;
     table.set("doi_resolver", data.plugin_data.doi_resolver.clone())?;
     table.set("using_tor_proxy", data.plugin_data.using_tor_proxy)?;
@@ -898,21 +898,21 @@ fn data_to_table(lua: &Lua, data: &zoeken_data::DataBundle) -> mlua::Result<Tabl
 fn currencies_to_table(lua: &Lua, currencies: &zoeken_data::CurrencyTable) -> mlua::Result<Table> {
     let table = lua.create_table()?;
     let iso = lua.create_table()?;
-    for (code, names) in &currencies.iso4217 {
+    for (code, langs) in currencies.iter_iso() {
         let names_tbl = lua.create_table()?;
-        for (lang, name) in names {
-            names_tbl.set(lang.as_str(), name.as_str())?;
+        for (lang, name) in langs {
+            names_tbl.set(lang, name)?;
         }
-        iso.set(code.as_str(), names_tbl)?;
+        iso.set(code, names_tbl)?;
     }
     table.set("iso4217", iso)?;
     let names = lua.create_table()?;
-    for (name, codes) in &currencies.names {
+    for (name, codes) in currencies.iter_names() {
         let codes_tbl = lua.create_table()?;
-        for (idx, code) in codes.iter().enumerate() {
-            codes_tbl.set(idx + 1, code.as_str())?;
+        for (idx, code) in codes.enumerate() {
+            codes_tbl.set(idx + 1, code)?;
         }
-        names.set(name.as_str(), codes_tbl)?;
+        names.set(name, codes_tbl)?;
     }
     table.set("names", names)?;
     Ok(table)
@@ -920,16 +920,16 @@ fn currencies_to_table(lua: &Lua, currencies: &zoeken_data::CurrencyTable) -> ml
 
 fn units_to_table(lua: &Lua, units: &zoeken_data::UnitTable) -> mlua::Result<Table> {
     let table = lua.create_table()?;
-    for entry in units.units.values() {
-        let (Some(si_name), Some(to_si_factor)) = (&entry.si_name, entry.to_si_factor) else {
+    for (_id, entry) in units.iter() {
+        let (Some(si_name), Some(to_si_factor)) = (entry.si_name, entry.to_si_factor) else {
             continue;
         };
         if entry.symbol.is_empty() {
             continue;
         }
         let item = lua.create_table()?;
-        item.set("si_name", si_name.as_str())?;
-        item.set("symbol", entry.symbol.as_str())?;
+        item.set("si_name", si_name)?;
+        item.set("symbol", entry.symbol)?;
         item.set("to_si_factor", to_si_factor)?;
         table.push(item)?;
     }
@@ -963,7 +963,10 @@ fn tracker_patterns_to_table(
     patterns: &zoeken_data::TrackerPatterns,
 ) -> mlua::Result<Table> {
     let table = lua.create_table()?;
-    for rule in &patterns.rules {
+    // Materialize display rules if the embedded static path left `rules` empty.
+    let mut owned = patterns.clone();
+    owned.materialize_rules_for_display();
+    for rule in &owned.rules {
         let item = lua.create_table()?;
         item.set("url", rule.url_pattern.as_str())?;
         item.set("exceptions", string_vec_to_table(lua, &rule.exceptions)?)?;
@@ -1535,7 +1538,91 @@ fn answer_from_table(table: &Table) -> mlua::Result<Answer> {
             .get::<Option<String>>("engine")?
             .unwrap_or_else(|| "lua".to_string()),
         template: Template::Answer,
+        interactive: interactive_from_table(table)?,
     })
+}
+
+fn interactive_from_table(
+    table: &Table,
+) -> mlua::Result<Option<zoeken_results::InteractiveAnswer>> {
+    let Some(interactive) = table.get::<Option<Table>>("interactive")? else {
+        return Ok(None);
+    };
+    let kind = interactive
+        .get::<Option<String>>("type")?
+        .unwrap_or_default();
+    match kind.as_str() {
+        "unit" => Ok(Some(zoeken_results::InteractiveAnswer::Unit {
+            amount: interactive.get::<f64>("amount")?,
+            from: interactive.get::<String>("from")?,
+            to: interactive.get::<String>("to")?,
+            result: interactive.get::<f64>("result")?,
+            dimension: interactive.get::<String>("dimension")?,
+        })),
+        "currency" => Ok(Some(zoeken_results::InteractiveAnswer::Currency {
+            amount: interactive.get::<f64>("amount")?,
+            from: interactive.get::<String>("from")?,
+            to: interactive.get::<String>("to")?,
+            result: interactive.get::<f64>("result")?,
+            rate: interactive.get::<f64>("rate")?,
+        })),
+        "calculator" => Ok(Some(zoeken_results::InteractiveAnswer::Calculator {
+            expression: interactive.get::<String>("expression")?,
+            result: interactive.get::<f64>("result")?,
+        })),
+        "weather" => Ok(Some(zoeken_results::InteractiveAnswer::Weather {
+            place: interactive.get::<String>("place")?,
+            description: interactive.get::<String>("description")?,
+            temp_c: interactive.get::<String>("temp_c")?,
+            temp_f: interactive.get::<String>("temp_f")?,
+            feels_c: interactive.get::<String>("feels_c")?,
+            wind_kmph: interactive.get::<String>("wind_kmph")?,
+            wind_dir: interactive.get::<String>("wind_dir")?,
+            humidity: interactive.get::<String>("humidity")?,
+        })),
+        "self_info" => Ok(Some(zoeken_results::InteractiveAnswer::SelfInfo {
+            kind: interactive.get::<String>("kind")?,
+            value: interactive.get::<String>("value")?,
+        })),
+        "crypto" => Ok(Some(zoeken_results::InteractiveAnswer::Crypto {
+            mode: interactive.get::<String>("mode")?,
+            algorithm: interactive.get::<String>("algorithm")?,
+            input: interactive.get::<String>("input")?,
+        })),
+        "translate" => Ok(Some(zoeken_results::InteractiveAnswer::Translate {
+            source: interactive.get::<String>("source")?,
+            target_lang: interactive.get::<String>("target_lang")?,
+            translated: interactive.get::<String>("translated")?,
+        })),
+        "dictionary" => {
+            let definitions = interactive
+                .get::<Option<Vec<String>>>("definitions")?
+                .unwrap_or_default();
+            Ok(Some(zoeken_results::InteractiveAnswer::Dictionary {
+                term: interactive.get::<String>("term")?,
+                definitions,
+            }))
+        }
+        "wikipedia" => Ok(Some(zoeken_results::InteractiveAnswer::Wikipedia {
+            title: interactive.get::<String>("title")?,
+            extract: interactive
+                .get::<Option<String>>("extract")?
+                .unwrap_or_default(),
+            description: interactive
+                .get::<Option<String>>("description")?
+                .unwrap_or_default(),
+            img_src: interactive
+                .get::<Option<String>>("img_src")?
+                .unwrap_or_default(),
+            url: interactive
+                .get::<Option<String>>("url")?
+                .unwrap_or_default(),
+        })),
+        "" => Ok(None),
+        other => Err(mlua::Error::external(format!(
+            "unknown interactive answer type: {other}"
+        ))),
+    }
 }
 
 fn infobox_from_table(table: &Table) -> mlua::Result<Infobox> {
@@ -1557,14 +1644,19 @@ fn string_vec_to_table(lua: &Lua, values: &[String]) -> mlua::Result<Table> {
     Ok(table)
 }
 
-fn string_set_to_table(
+/// Membership table for Ahmia hashes without materializing ~57k keys into Lua.
+fn ahmia_blacklist_to_table(
     lua: &Lua,
-    values: &std::collections::HashSet<String>,
+    blacklist: &zoeken_data::AhmiaBlacklist,
 ) -> mlua::Result<Table> {
     let table = lua.create_table()?;
-    for value in values {
-        table.set(value.as_str(), true)?;
-    }
+    let blacklist = blacklist.clone();
+    let mt = lua.create_table()?;
+    mt.set(
+        "__index",
+        lua.create_function(move |_, (_tbl, key): (Table, String)| Ok(blacklist.contains(&key)))?,
+    )?;
+    table.set_metatable(Some(mt))?;
     Ok(table)
 }
 
@@ -2026,7 +2118,6 @@ mod tests {
             vec![
                 "calculator",
                 "unit_converter",
-                "hash_plugin",
                 "self_info",
                 "time_zone",
                 "tracker_url_remover",
@@ -2046,19 +2137,26 @@ mod tests {
         let answers = calc.on_pre_search_answers(&query("2 + 2"), &PluginCtx::all_enabled());
         assert_eq!(answers[0].answer, "4");
 
-        let hash = builtin("hash", data.clone());
-        let answers = hash.on_pre_search_answers(&query("sha256 abc"), &PluginCtx::all_enabled());
-        assert_eq!(
-            answers[0].answer,
-            "sha256 hash digest: ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
-        );
-
         let ctx = PluginCtx::all_enabled()
             .with_client_ip("192.0.2.5")
             .with_user_agent("Mozilla/5.0");
         let self_info = builtin("self_info", data);
         let answers = self_info.on_pre_search_answers(&query("ip"), &ctx);
         assert_eq!(answers[0].answer, "Your IP is: 192.0.2.5");
+        match &answers[0].interactive {
+            Some(zoeken_results::InteractiveAnswer::SelfInfo { kind, value }) => {
+                assert_eq!(kind, "ip");
+                assert_eq!(value, "192.0.2.5");
+            }
+            other => panic!("expected SelfInfo interactive, got {other:?}"),
+        }
+
+        let answers = self_info.on_pre_search_answers(&query("whats my ip"), &ctx);
+        assert_eq!(answers[0].answer, "Your IP is: 192.0.2.5");
+        assert!(matches!(
+            &answers[0].interactive,
+            Some(zoeken_results::InteractiveAnswer::SelfInfo { kind, .. }) if kind == "ip"
+        ));
     }
 
     #[test]
@@ -2080,6 +2178,30 @@ mod tests {
             &PluginCtx::all_enabled(),
         );
         assert_eq!(answers[0].answer, "1 gal = 16 cup");
+    }
+
+    #[test]
+    fn builtin_unit_converter_treats_oz_as_floz_with_volume() {
+        let data = zoeken_data::DataBundle::default();
+        let plugin = builtin("unit_converter", data);
+        let answers =
+            plugin.on_pre_search_answers(&query("how many oz in a gal"), &PluginCtx::all_enabled());
+        assert_eq!(answers[0].answer, "1 gal = 128 floz");
+        match &answers[0].interactive {
+            Some(zoeken_results::InteractiveAnswer::Unit {
+                from,
+                to,
+                result,
+                dimension,
+                ..
+            }) => {
+                assert_eq!(from, "gal");
+                assert_eq!(to, "floz");
+                assert!((*result - 128.0).abs() < 1e-9);
+                assert_eq!(dimension, "volume");
+            }
+            other => panic!("expected unit interactive payload, got {other:?}"),
+        }
     }
 
     #[test]

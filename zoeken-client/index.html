@@ -4,18 +4,62 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#246018" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1410" media="(prefers-color-scheme: dark)" />
     <meta
       name="description"
-      content="Zoeken — a clean, private metasearch engine."
+      content="Zoeken — a clean, private metasearch engine that aggregates results without tracking your searches."
     />
-    <link rel="icon" href="/favicon.ico" />
+    <meta name="application-name" content="Zoeken" />
+    <meta name="robots" content="index, follow" />
+
+    <title>Zoeken — private metasearch</title>
+
+    <!-- Icons (root-absolute paths; served by zoeken-server / public/) -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/zoeken-logo.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Open Graph / Twitter: __ORIGIN__ rewritten to absolute by zoeken-server -->
+    <link rel="canonical" href="__ORIGIN__/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Zoeken" />
+    <meta property="og:url" content="__ORIGIN__/" />
+    <meta property="og:title" content="Zoeken — private metasearch" />
+    <meta
+      property="og:description"
+      content="A clean, private metasearch engine that aggregates results without tracking your searches."
+    />
+    <meta property="og:image" content="__ORIGIN__/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Zoeken — private metasearch" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Zoeken — private metasearch" />
+    <meta
+      name="twitter:description"
+      content="A clean, private metasearch engine that aggregates results without tracking your searches."
+    />
+    <meta name="twitter:image" content="__ORIGIN__/og-image.png" />
+    <meta name="twitter:image:alt" content="Zoeken — private metasearch" />
+
+    <link
+      rel="search"
+      type="application/opensearchdescription+xml"
+      title="Zoeken"
+      href="/opensearch.xml"
+    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <title>Zoeken</title>
   </head>
   <body>
     <div id="app"></div>

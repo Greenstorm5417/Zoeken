@@ -32,9 +32,7 @@ fn test_bundle() -> DataBundle {
         bangs,
         currencies: CurrencyTable::default(),
         units: UnitTable::default(),
-        engine_traits: EngineTraitsMap {
-            engines: HashMap::new(),
-        },
+        engine_traits: EngineTraitsMap::from_engines(HashMap::new()),
         useragents: UserAgentPool::default(),
         locales: LocaleMap::default(),
         ..DataBundle::default()

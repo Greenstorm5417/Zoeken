@@ -262,6 +262,7 @@ fn answer() -> impl Strategy<Value = Answer> {
         url,
         engine,
         template,
+        ..Answer::default()
     })
 }
 

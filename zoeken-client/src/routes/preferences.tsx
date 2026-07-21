@@ -10,6 +10,12 @@ import {
 	preferencesGet,
 	preferencesPost,
 } from "#/lib/api";
+import { stringsFor } from "#/lib/i18n";
+import {
+	clearRecentSearches,
+	recentSearchesEnabled,
+	setRecentSearchesEnabled,
+} from "#/lib/recentSearches";
 import { getStoredTheme, setTheme, type Theme } from "#/lib/theme";
 import { useConfig } from "./__root";
 
@@ -29,6 +35,7 @@ function PreferencesPage() {
 	const queryClient = useQueryClient();
 	const [theme, setThemeState] = useState<Theme>(() => getStoredTheme());
 	const [copied, setCopied] = useState(false);
+	const [recentOn, setRecentOn] = useState(() => recentSearchesEnabled());
 	const preferences = useQuery({
 		queryKey: ["preferences"],
 		queryFn: preferencesGet,
@@ -61,13 +68,13 @@ function PreferencesPage() {
 	if (preferences.isLoading)
 		return (
 			<Page>
-				<p>Loading preferences…</p>
+				<p>{stringsFor(undefined).prefsLoading}</p>
 			</Page>
 		);
 	if (!preferences.data)
 		return (
 			<Page>
-				<p>Preferences are unavailable.</p>
+				<p>{stringsFor(undefined).prefsUnavailable}</p>
 			</Page>
 		);
 	const current = preferences.data;
@@ -82,24 +89,45 @@ function PreferencesPage() {
 	];
 	const engines = config?.engines ?? [];
 	const selectedEngines = new Set(current.engines);
+	const t = stringsFor(current.locale);
 
 	return (
 		<Page>
-			<h1 className="text-3xl font-bold tracking-tight">Preferences</h1>
-			<p className="mt-2 text-ink-muted">Changes are saved to this browser.</p>
+			<h1 className="text-3xl font-bold tracking-tight">{t.preferences}</h1>
+			<p className="mt-2 text-ink-muted">{t.prefsSavedLocally}</p>
 			<div className="mt-8 grid max-w-2xl gap-8">
 				<section className="grid gap-5">
-					<h2 className="text-lg font-medium text-ink">Search</h2>
+					<h2 className="text-lg font-medium text-ink">{t.prefsSearch}</h2>
 					<div>
 						<span className="mb-1.5 block text-sm font-medium text-ink">
-							Language
+							{t.prefsInterfaceLanguage}
 						</span>
 						<SelectMenu
 							fullWidth
-							label="Language"
+							label={t.prefsInterfaceLanguage}
+							value={current.locale}
+							options={[
+								{ value: "all", label: t.prefsAuto },
+								...Object.entries(config?.locales ?? {}).map(
+									([code, name]) => ({
+										value: code,
+										label: name,
+									}),
+								),
+							]}
+							onChange={(locale) => update({ locale })}
+						/>
+					</div>
+					<div>
+						<span className="mb-1.5 block text-sm font-medium text-ink">
+							{t.prefsSearchLanguage}
+						</span>
+						<SelectMenu
+							fullWidth
+							label={t.prefsSearchLanguage}
 							value={current.language}
 							options={[
-								{ value: "all", label: "Any language" },
+								{ value: "all", label: t.anyLanguage },
 								...Object.entries(config?.locales ?? {}).map(
 									([code, name]) => ({
 										value: code,
@@ -112,16 +140,37 @@ function PreferencesPage() {
 					</div>
 					<div>
 						<span className="mb-1.5 block text-sm font-medium text-ink">
-							Safe search
+							{t.prefsSearchMethod}
 						</span>
 						<SelectMenu
 							fullWidth
-							label="Safe search"
+							label={t.prefsSearchMethod}
+							value={current.method}
+							options={[
+								{ value: "POST", label: "POST (query stays out of the URL)" },
+								{ value: "GET", label: "GET (query in the URL)" },
+							]}
+							onChange={(method) =>
+								update({ method: method as Preferences["method"] })
+							}
+						/>
+						<p className="mt-1.5 text-xs text-ink-subtle">
+							GET is useful for shareable result links; POST keeps the query out
+							of browser history and server access logs.
+						</p>
+					</div>
+					<div>
+						<span className="mb-1.5 block text-sm font-medium text-ink">
+							{t.prefsSafeSearch}
+						</span>
+						<SelectMenu
+							fullWidth
+							label={t.prefsSafeSearch}
 							value={current.safesearch}
 							options={[
-								{ value: "Off", label: "Off" },
-								{ value: "Moderate", label: "Moderate" },
-								{ value: "Strict", label: "Strict" },
+								{ value: "Off", label: t.prefsOff },
+								{ value: "Moderate", label: t.moderate },
+								{ value: "Strict", label: t.strict },
 							]}
 							onChange={(safesearch) =>
 								update({
@@ -132,14 +181,14 @@ function PreferencesPage() {
 					</div>
 					<div>
 						<span className="mb-1.5 block text-sm font-medium text-ink">
-							Autocomplete
+							{t.prefsAutocomplete}
 						</span>
 						<SelectMenu
 							fullWidth
-							label="Autocomplete"
+							label={t.prefsAutocomplete}
 							value={current.autocomplete || ""}
 							options={[
-								{ value: "", label: "Off" },
+								{ value: "", label: t.prefsOff },
 								...autocompleteBackends.map((name) => ({
 									value: name,
 									label: name,
@@ -157,13 +206,43 @@ function PreferencesPage() {
 						/>
 						Use the image proxy
 					</label>
+					<label className="flex items-start gap-3 text-sm">
+						<input
+							type="checkbox"
+							checked={recentOn}
+							onChange={(e) => {
+								const on = e.target.checked;
+								setRecentSearchesEnabled(on);
+								setRecentOn(on);
+							}}
+							className="mt-0.5 size-4 rounded border-line accent-[var(--accent)]"
+						/>
+						<span>
+							<span className="font-medium text-ink">
+								Remember recent searches
+							</span>
+							<span className="mt-0.5 block text-xs text-ink-muted">
+								Off by default. When on, queries stay in this browser’s
+								localStorage only — never sent to the server.
+							</span>
+						</span>
+					</label>
+					{recentOn ? (
+						<button
+							type="button"
+							className="w-fit text-sm text-accent hover:underline"
+							onClick={() => clearRecentSearches()}
+						>
+							Clear recent searches
+						</button>
+					) : null}
 				</section>
 
 				<section className="grid gap-4">
-					<h2 className="text-lg font-medium text-ink">Appearance</h2>
+					<h2 className="text-lg font-medium text-ink">{t.prefsAppearance}</h2>
 					<div>
 						<span className="mb-1.5 block text-sm font-medium text-ink">
-							Theme
+							{t.prefsTheme}
 						</span>
 						<div className="inline-flex rounded-xl border border-line bg-surface-raised p-1">
 							{(["system", "light", "dark"] as const).map((option) => (
@@ -185,18 +264,13 @@ function PreferencesPage() {
 								</button>
 							))}
 						</div>
-						<p className="mt-1.5 text-xs text-ink-subtle">
-							Stored in this browser, independent of your search settings.
-						</p>
+						<p className="mt-1.5 text-xs text-ink-subtle">{t.prefsThemeHint}</p>
 					</div>
 				</section>
 
 				<section className="grid gap-3">
-					<h2 className="text-lg font-medium text-ink">Sync settings</h2>
-					<p className="text-sm text-ink-muted">
-						Copy a link that carries these settings — open it in another browser
-						or on another device to apply them, no account needed.
-					</p>
+					<h2 className="text-lg font-medium text-ink">{t.prefsSync}</h2>
+					<p className="text-sm text-ink-muted">{t.prefsSyncHint}</p>
 					<button
 						type="button"
 						onClick={() => {
@@ -212,12 +286,12 @@ function PreferencesPage() {
 						{copied ? (
 							<>
 								<Check className="size-4" aria-hidden />
-								Copied
+								{t.prefsCopied}
 							</>
 						) : (
 							<>
 								<Copy className="size-4" aria-hidden />
-								Copy settings link
+								{t.prefsCopyLink}
 							</>
 						)}
 					</button>
@@ -368,6 +442,76 @@ function PreferencesPage() {
 								);
 							})}
 						</div>
+					</section>
+				) : null}
+
+				{config?.plugins?.some((p) => p.id === "hostnames") ? (
+					<section className="grid gap-3">
+						<h2 className="text-lg font-medium text-ink">Hostname rewrite</h2>
+						<p className="text-sm text-ink-muted">
+							Enable or disable via the Hostnames plugin above. Replace / remove
+							/ priority rules are instance settings (
+							<code className="font-mono text-xs">hostnames:</code> in
+							settings.yml) — not per-browser cookies.
+						</p>
+						{(() => {
+							const h = config.hostnames;
+							const hasRules =
+								h &&
+								(Object.keys(h.replace ?? {}).length > 0 ||
+									(h.remove?.length ?? 0) > 0 ||
+									(h.high_priority?.length ?? 0) > 0 ||
+									(h.low_priority?.length ?? 0) > 0);
+							if (!hasRules) {
+								return (
+									<p className="text-xs text-ink-subtle">
+										No rewrite rules configured on this instance.
+									</p>
+								);
+							}
+							return (
+								<dl className="grid gap-2 rounded-xl border border-line bg-surface-raised p-4 text-sm">
+									{Object.entries(h.replace ?? {}).map(([from, to]) => (
+										<div key={from} className="contents">
+											<dt className="font-mono text-xs text-accent break-all">
+												replace {from}
+											</dt>
+											<dd className="font-mono text-xs text-ink-muted break-all">
+												→ {to}
+											</dd>
+										</div>
+									))}
+									{(h.remove ?? []).map((pat) => (
+										<div key={`rm-${pat}`} className="contents">
+											<dt className="font-mono text-xs text-accent">remove</dt>
+											<dd className="font-mono text-xs text-ink-muted break-all">
+												{pat}
+											</dd>
+										</div>
+									))}
+									{(h.high_priority ?? []).map((pat) => (
+										<div key={`hi-${pat}`} className="contents">
+											<dt className="font-mono text-xs text-accent">
+												high_priority
+											</dt>
+											<dd className="font-mono text-xs text-ink-muted break-all">
+												{pat}
+											</dd>
+										</div>
+									))}
+									{(h.low_priority ?? []).map((pat) => (
+										<div key={`lo-${pat}`} className="contents">
+											<dt className="font-mono text-xs text-accent">
+												low_priority
+											</dt>
+											<dd className="font-mono text-xs text-ink-muted break-all">
+												{pat}
+											</dd>
+										</div>
+									))}
+								</dl>
+							);
+						})()}
 					</section>
 				) : null}
 

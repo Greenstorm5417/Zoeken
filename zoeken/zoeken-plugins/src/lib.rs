@@ -8,10 +8,9 @@ use zoeken_results::{Answer, Infobox, Result_};
 
 pub mod lua;
 
-pub const STANDARD_PLUGIN_IDS: [&str; 11] = [
+pub const STANDARD_PLUGIN_IDS: [&str; 10] = [
     "calculator",
     "unit_converter",
-    "hash_plugin",
     "self_info",
     "time_zone",
     "tracker_url_remover",
@@ -566,9 +565,9 @@ mod tests {
 
     #[test]
     fn standard_plugin_set_matches_lua_builtins() {
-        assert_eq!(STANDARD_PLUGIN_IDS.len(), 11);
+        assert_eq!(STANDARD_PLUGIN_IDS.len(), 10);
         assert!(STANDARD_PLUGIN_IDS.contains(&"calculator"));
-        assert!(STANDARD_PLUGIN_IDS.contains(&"hash_plugin"));
+        assert!(!STANDARD_PLUGIN_IDS.contains(&"hash_plugin"));
         assert!(STANDARD_PLUGIN_IDS.contains(&"tracker_url_remover"));
         assert!(STANDARD_PLUGIN_IDS.contains(&"tor_check"));
         assert!(STANDARD_PLUGIN_IDS.contains(&"infiniteScroll"));

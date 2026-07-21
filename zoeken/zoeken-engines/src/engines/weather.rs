@@ -1,13 +1,13 @@
 //! Weather engine backed by wttr.in.
 //!
-//! Only fires when the query starts with a weather keyword
-//! (`weather berlin`, `forecast tokyo`); other queries produce no request.
+//! Fires on keyword-first/last (`weather berlin` / `berlin weather`) and
+//! natural-language forms (`what is the weather in miami`).
 
 use zoeken_engine_core::{
     About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod, Processor,
     RequestParams, SearchQueryView,
 };
-use zoeken_results::{Answer, Result_};
+use zoeken_results::{Answer, InteractiveAnswer, Result_};
 
 /// Engine name / identifier.
 pub const NAME: &str = "weather";
@@ -15,6 +15,8 @@ pub const NAME: &str = "weather";
 const BASE_URL: &str = "https://wttr.in";
 
 const KEYWORDS: &[&str] = &["weather", "forecast", "wetter"];
+const PREPS: &[&str] = &["in", "for", "at"];
+const FILLERS: &[&str] = &["what", "is", "the", "whats", "what's", "like", "a", "an"];
 
 /// The wttr.in weather engine.
 #[derive(Debug, Clone)]
@@ -57,22 +59,64 @@ impl Default for Weather {
     }
 }
 
+fn is_filler(word: &str) -> bool {
+    FILLERS.contains(&word.to_ascii_lowercase().as_str())
+}
+
 /// The location part of a weather query, or `None` when this is not one.
 fn weather_location(query: &str) -> Option<String> {
-    let mut tokens = query.split_whitespace();
-    let first = tokens.next()?.to_ascii_lowercase();
-    // Both orders: "weather berlin" and "berlin weather".
-    if KEYWORDS.contains(&first.as_str()) {
-        let rest = tokens.collect::<Vec<_>>().join(" ");
-        return (!rest.is_empty()).then_some(rest);
+    let cleaned = query.trim().trim_end_matches('?').trim();
+    if cleaned.is_empty() {
+        return None;
     }
-    let words: Vec<&str> = query.split_whitespace().collect();
-    if let Some((last, head)) = words.split_last()
-        && KEYWORDS.contains(&last.to_ascii_lowercase().as_str())
-        && !head.is_empty()
-    {
-        return Some(head.join(" "));
+    let words: Vec<&str> = cleaned.split_whitespace().collect();
+    let lower: Vec<String> = words.iter().map(|w| w.to_ascii_lowercase()).collect();
+    let kw_idx = lower.iter().position(|w| KEYWORDS.contains(&w.as_str()))?;
+
+    let after = &words[kw_idx + 1..];
+    let after_lower = &lower[kw_idx + 1..];
+
+    // `weather in miami` / `what is the weather in jax fl` / `forecast for tokyo`
+    if let Some(prep_rel) = after_lower.iter().position(|w| PREPS.contains(&w.as_str())) {
+        let loc = after[prep_rel + 1..]
+            .iter()
+            .copied()
+            .filter(|w| !is_filler(w))
+            .collect::<Vec<_>>()
+            .join(" ");
+        if !loc.is_empty() {
+            return Some(loc);
+        }
     }
+
+    // `weather berlin`
+    if kw_idx == 0 && !after.is_empty() {
+        let loc = after.join(" ");
+        return (!loc.is_empty()).then_some(loc);
+    }
+
+    // `berlin weather` / `what is berlin weather`
+    if kw_idx == words.len() - 1 {
+        let loc = words[..kw_idx]
+            .iter()
+            .copied()
+            .filter(|w| !is_filler(w))
+            .collect::<Vec<_>>()
+            .join(" ");
+        return (!loc.is_empty()).then_some(loc);
+    }
+
+    // Keyword mid-query with trailing location and no prep: `show weather miami`
+    if !after.is_empty() {
+        let loc = after
+            .iter()
+            .copied()
+            .filter(|w| !is_filler(w))
+            .collect::<Vec<_>>()
+            .join(" ");
+        return (!loc.is_empty()).then_some(loc);
+    }
+
     None
 }
 
@@ -189,6 +233,16 @@ impl Engine for Weather {
                 .map(|(base, _)| base.to_string())
                 .or_else(|| Some(resp.url.clone())),
             engine: NAME.to_string(),
+            interactive: Some(InteractiveAnswer::Weather {
+                place: place.clone(),
+                description: desc,
+                temp_c,
+                temp_f,
+                feels_c,
+                wind_kmph: wind,
+                wind_dir,
+                humidity,
+            }),
             ..Answer::default()
         }));
 
@@ -240,6 +294,34 @@ mod tests {
     }
 
     #[test]
+    fn detects_natural_language_weather_queries() {
+        assert_eq!(
+            weather_location("what is the weather in miami"),
+            Some("miami".to_string())
+        );
+        assert_eq!(
+            weather_location("whats the weather in miami"),
+            Some("miami".to_string())
+        );
+        assert_eq!(
+            weather_location("what is the weather in jax fl"),
+            Some("jax fl".to_string())
+        );
+        assert_eq!(
+            weather_location("weather in miami"),
+            Some("miami".to_string())
+        );
+        assert_eq!(
+            weather_location("forecast for tokyo"),
+            Some("tokyo".to_string())
+        );
+        assert_eq!(
+            weather_location("what's the weather at paris?"),
+            Some("paris".to_string())
+        );
+    }
+
+    #[test]
     fn non_weather_query_builds_no_request() {
         let engine = Weather::new();
         let q = query("rust programming");
@@ -276,6 +358,28 @@ mod tests {
         );
         assert_eq!(answer.url.as_deref(), Some("https://wttr.in/berlin"));
         assert_eq!(answer.engine, NAME);
+        match &answer.interactive {
+            Some(InteractiveAnswer::Weather {
+                place,
+                description,
+                temp_c,
+                temp_f,
+                feels_c,
+                wind_kmph,
+                wind_dir,
+                humidity,
+            }) => {
+                assert_eq!(place, "Berlin, Germany");
+                assert_eq!(description, "Partly cloudy");
+                assert_eq!(temp_c, "18");
+                assert_eq!(temp_f, "64");
+                assert_eq!(feels_c, "17");
+                assert_eq!(wind_kmph, "12");
+                assert_eq!(wind_dir, "SW");
+                assert_eq!(humidity, "67");
+            }
+            other => panic!("expected Weather interactive, got {other:?}"),
+        }
     }
 
     #[test]

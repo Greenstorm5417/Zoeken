@@ -10,6 +10,7 @@ description.workspace = true
 
 [dependencies]
 zoeken-network = { workspace = true }
+serde = { workspace = true }
 serde_json = { workspace = true }
 tokio = { workspace = true }
 thiserror = { workspace = true }

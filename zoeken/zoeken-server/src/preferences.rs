@@ -19,7 +19,7 @@ const COOKIE_MAX_AGE_SECS: i64 = 60 * 60 * 24 * 365;
 /// clients (the SPA itself fetches with `Accept: application/json`).
 pub async fn preferences_get(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Response {
     if prefers_html(&headers) {
-        return crate::frontend_index_response(&state);
+        return crate::frontend_index_response(&state, &headers);
     }
     let cookie = read_pref_cookie(&headers);
     let prefs = resolve_with_data(
@@ -105,7 +105,7 @@ pub async fn clear_cookies(State(state): State<Arc<AppState>>, headers: HeaderMa
 
 /// A browser navigation sends `Accept: text/html,...` with `text/html` ranked
 /// ahead of JSON; `fetch` with `Accept: application/json` must keep JSON.
-fn prefers_html(headers: &HeaderMap) -> bool {
+pub(crate) fn prefers_html(headers: &HeaderMap) -> bool {
     let Some(accept) = headers
         .get(header::ACCEPT)
         .and_then(|value| value.to_str().ok())

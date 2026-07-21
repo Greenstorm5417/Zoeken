@@ -24,8 +24,8 @@
       "Accept-Encoding": "gzip, deflate"
     },
     "cookies": {
-      "useLocation": "0",
       "safesearch": "off",
+      "useLocation": "0",
       "country": "all",
       "summarizer": "0",
       "ui_lang": "en-us"

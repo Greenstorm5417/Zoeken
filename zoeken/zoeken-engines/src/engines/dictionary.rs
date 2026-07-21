@@ -7,7 +7,7 @@ use zoeken_engine_core::{
     About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod, Processor,
     RequestParams, SearchQueryView,
 };
-use zoeken_results::{Answer, Result_};
+use zoeken_results::{Answer, InteractiveAnswer, Result_};
 
 /// Engine name / identifier.
 pub const NAME: &str = "dictionary";
@@ -132,6 +132,7 @@ impl Engine for Dictionary {
             .replace('_', " ");
 
         let mut lines = Vec::new();
+        let mut defs = Vec::new();
         for entry in entries {
             let part = entry
                 .get("partOfSpeech")
@@ -154,8 +155,10 @@ impl Engine for Dictionary {
                 let numbered = lines.len() + 1;
                 if part.is_empty() {
                     lines.push(format!("{numbered}. {text}"));
+                    defs.push(text);
                 } else {
                     lines.push(format!("{numbered}. ({part}) {text}"));
+                    defs.push(format!("({part}) {text}"));
                 }
                 if lines.len() >= MAX_DEFINITIONS {
                     break;
@@ -177,6 +180,10 @@ impl Engine for Dictionary {
                 term.replace(' ', "_")
             )),
             engine: NAME.to_string(),
+            interactive: Some(InteractiveAnswer::Dictionary {
+                term: term.clone(),
+                definitions: defs,
+            }),
             ..Answer::default()
         }));
 
@@ -267,6 +274,16 @@ mod tests {
         assert_eq!(
             results.answers[0].url.as_deref(),
             Some("https://en.wiktionary.org/wiki/serendipity")
+        );
+        assert_eq!(
+            results.answers[0].interactive,
+            Some(InteractiveAnswer::Dictionary {
+                term: "serendipity".to_string(),
+                definitions: vec![
+                    "(Noun) A fortunate discovery made by accident.".to_string(),
+                    "(Noun) Good luck in making unexpected finds.".to_string(),
+                ],
+            })
         );
     }
 

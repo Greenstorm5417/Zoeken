@@ -134,7 +134,12 @@ pub fn format_json_for_query_with_proxies(
     serde_json::to_string(&response).unwrap_or_else(|_| "{}".to_string())
 }
 
-fn signed_proxy_url(path: &str, parameter: &str, value: &str, secret_key: &str) -> String {
+pub(crate) fn signed_proxy_url(
+    path: &str,
+    parameter: &str,
+    value: &str,
+    secret_key: &str,
+) -> String {
     let h = zoeken_favicons::new_hmac(secret_key, value.as_bytes());
     let query = url::form_urlencoded::Serializer::new(String::new())
         .append_pair(parameter, value)
@@ -408,6 +413,9 @@ fn answer_json(answer: &Answer) -> Value {
     }
     insert_str(&mut obj, "engine", &answer.engine);
     obj.insert("template".to_string(), json!(answer.template.as_str()));
+    if let Some(interactive) = &answer.interactive {
+        obj.insert("interactive".to_string(), json!(interactive));
+    }
     Value::Object(obj)
 }
 

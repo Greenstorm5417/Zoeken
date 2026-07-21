@@ -5,7 +5,9 @@ use std::sync::Arc;
 use axum::extract::{RawQuery, State};
 use axum::http::{HeaderMap, header};
 use axum::response::{IntoResponse, Response};
+use zoeken_autocomplete::Suggestion;
 
+use crate::serialize::signed_proxy_url;
 use crate::{AppState, parse_pairs};
 
 const SUGGESTIONS_CONTENT_TYPE: &str = "application/x-suggestions+json";
@@ -40,7 +42,8 @@ async fn run_autocomplete(
         .or_else(|| param(&params, "language"))
         .unwrap_or_default();
 
-    let suggestions = state.autocomplete.suggest(&query, &locale).await;
+    let mut suggestions = state.autocomplete.suggest(&query, &locale).await;
+    maybe_proxy_suggestion_images(state, headers, &params, &mut suggestions);
 
     // Let the browser reuse suggestion responses for repeated prefixes; the
     // upstream lists barely change minute to minute.
@@ -50,15 +53,40 @@ async fn run_autocomplete(
         .and_then(|value| value.to_str().ok())
         == Some("XMLHttpRequest")
     {
+        // SPA: rich suggestion objects (`text` / optional `subtext` / `image`).
         let body = serde_json::to_string(&suggestions).unwrap_or_else(|_| "[]".to_string());
         ([(header::CONTENT_TYPE, "application/json"), CACHE], body).into_response()
     } else {
-        let body = serde_json::json!([query, suggestions]).to_string();
+        // OpenSearch Suggest: keep the second element as plain strings.
+        let texts: Vec<&str> = suggestions.iter().map(|s| s.text.as_str()).collect();
+        let body = serde_json::json!([query, texts]).to_string();
         (
             [(header::CONTENT_TYPE, SUGGESTIONS_CONTENT_TYPE), CACHE],
             body,
         )
             .into_response()
+    }
+}
+
+fn maybe_proxy_suggestion_images(
+    state: &AppState,
+    headers: &HeaderMap,
+    params: &[(String, String)],
+    suggestions: &mut [Suggestion],
+) {
+    if !crate::image_proxy::image_proxy_enabled(state, headers, params) {
+        return;
+    }
+    let secret = &state.settings.server.secret_key;
+    for suggestion in suggestions {
+        let Some(original) = suggestion.image.as_deref() else {
+            continue;
+        };
+        if zoeken_favicons::validate_proxy_url(original).is_ok() {
+            suggestion.image = Some(signed_proxy_url("/image_proxy", "url", original, secret));
+        } else {
+            suggestion.image = None;
+        }
     }
 }
 
@@ -76,7 +104,7 @@ mod tests {
     use axum::body::{Body, to_bytes};
     use axum::http::{Request, StatusCode};
     use tower::ServiceExt;
-    use zoeken_autocomplete::{AutocompleteService, StaticBackend};
+    use zoeken_autocomplete::{AutocompleteService, StaticBackend, Suggestion};
 
     fn app_with_autocomplete(service: AutocompleteService) -> axum::Router {
         let state = AppState::new()
@@ -113,6 +141,46 @@ mod tests {
         );
         let value = body_json(response).await;
         assert_eq!(value, serde_json::json!(["rus", ["rust", "rustlang"]]));
+    }
+
+    #[tokio::test]
+    async fn xhr_returns_rich_suggestion_objects() {
+        let backend = Arc::new(StaticBackend::with_suggestions(
+            "stub",
+            vec![Suggestion {
+                text: "Albert Einstein".into(),
+                subtext: Some("physicist".into()),
+                image: Some("https://cdn.example.com/e.jpg".into()),
+            }],
+        ));
+        let response = app_with_autocomplete(AutocompleteService::with_backend(backend))
+            .oneshot(
+                Request::builder()
+                    .uri("/autocompleter?q=ein")
+                    .header("X-Requested-With", "XMLHttpRequest")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(
+            response.headers().get(header::CONTENT_TYPE).unwrap(),
+            "application/json"
+        );
+        let value = body_json(response).await;
+        let obj = value
+            .as_array()
+            .and_then(|a| a.first())
+            .expect("one suggestion");
+        assert_eq!(obj["text"], "Albert Einstein");
+        assert_eq!(obj["subtext"], "physicist");
+        let image = obj["image"].as_str().expect("image");
+        assert!(
+            image.starts_with("/image_proxy?url=") && image.contains("cdn.example.com"),
+            "suggestion thumbnails should go through the image proxy, got {image}"
+        );
     }
 
     #[tokio::test]

@@ -789,7 +789,7 @@ mod tests {
                 },
             );
         }
-        EngineTraitsMap { engines }
+        EngineTraitsMap::from_engines(engines)
     }
 
     fn bundle(engines: &[&str], bangs: BangTrie) -> DataBundle {

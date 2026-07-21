@@ -29,7 +29,7 @@ Upstream engines: 289. Rust engines: 58. Ported: 249. Generic candidates: 0. Mis
 | base | ported | generic | science | online | yes | no | no | no | no | no | present |  |
 | bilibili | ported | generic | videos | online | yes | no | yes | no | no | no | present |  |
 | bing | ported | bing | general, web | online | no | yes | no | no | no | no | present | verify engine-traits parity |
-| bing_images | ported | generic | images, web | online | yes | yes | yes | no | no | no | present | verify engine-traits parity |
+| bing_images | ported | bing_images | images, web | online | yes | yes | yes | no | no | no | present |  |
 | bing_news | ported | generic | news | online | yes | no | yes | no | no | no | present | verify engine-traits parity |
 | bing_videos | ported | generic | videos, web | online | yes | yes | yes | no | no | no | present | verify engine-traits parity |
 | bitchute | ported | generic | videos | online | yes | no | no | no | no | no | present |  |

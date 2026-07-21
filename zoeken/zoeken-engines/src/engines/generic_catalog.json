@@ -521,7 +521,9 @@
     "results_xpath": "//ul[contains(@class, \"dgControl_list\")]/li[.//a[@class=\"iusc\"]]",
     "url_xpath": ".//a[@class=\"iusc\"]/@href",
     "title_xpath": ".//div[@class=\"infnmpt\"]//a",
-    "content_xpath": ".//div[@class=\"imgpt\"]"
+    "content_xpath": ".//div[@class=\"imgpt\"]",
+    "inactive": true,
+    "inactive_reason": "bespoke bing_images engine parses iusc JSON metadata"
   },
   {
     "name": "bing news",

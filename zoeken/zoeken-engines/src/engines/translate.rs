@@ -8,7 +8,7 @@ use zoeken_engine_core::{
     About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod, Processor,
     RequestParams, SearchQueryView,
 };
-use zoeken_results::{Answer, Result_};
+use zoeken_results::{Answer, InteractiveAnswer, Result_};
 
 /// Engine name / identifier.
 pub const NAME: &str = "translate";
@@ -176,6 +176,11 @@ impl Engine for Translate {
                 url::form_urlencoded::byte_serialize(source.as_bytes()).collect::<String>()
             )),
             engine: NAME.to_string(),
+            interactive: Some(InteractiveAnswer::Translate {
+                source: source.clone(),
+                target_lang: target.clone(),
+                translated: translated.to_string(),
+            }),
             ..Answer::default()
         }));
 
@@ -252,6 +257,14 @@ mod tests {
         assert_eq!(results.answers.len(), 1);
         assert_eq!(results.answers[0].answer, "“hello” in Spanish: hola");
         assert_eq!(results.answers[0].engine, NAME);
+        assert_eq!(
+            results.answers[0].interactive,
+            Some(InteractiveAnswer::Translate {
+                source: "hello".to_string(),
+                target_lang: "es".to_string(),
+                translated: "hola".to_string(),
+            })
+        );
     }
 
     #[test]

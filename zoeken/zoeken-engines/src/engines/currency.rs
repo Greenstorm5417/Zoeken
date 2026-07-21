@@ -9,7 +9,7 @@ use zoeken_engine_core::{
     About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod, Processor,
     RequestParams, SearchQueryView,
 };
-use zoeken_results::{Answer, Result_};
+use zoeken_results::{Answer, InteractiveAnswer, Result_};
 
 /// Engine name / identifier.
 pub const NAME: &str = "currency";
@@ -282,6 +282,7 @@ impl Engine for Currency {
 
         // Rates are units-per-EUR; cross rate via EUR.
         let converted = amount / from_rate * to_rate;
+        let rate = converted / amount;
 
         res.add(Result_::Answer(Answer {
             answer: format!(
@@ -294,6 +295,13 @@ impl Engine for Currency {
                     .to_string(),
             ),
             engine: NAME.to_string(),
+            interactive: Some(InteractiveAnswer::Currency {
+                amount,
+                from: from.clone(),
+                to: to.clone(),
+                result: converted,
+                rate,
+            }),
             ..Answer::default()
         }));
 
@@ -388,6 +396,16 @@ mod tests {
         // 100 USD -> EUR (100/1.085) -> GBP (*0.842) = 77.60…
         assert_eq!(results.answers[0].answer, "100 USD = 77.6037 GBP");
         assert_eq!(results.answers[0].engine, NAME);
+        assert_eq!(
+            results.answers[0].interactive,
+            Some(InteractiveAnswer::Currency {
+                amount: 100.0,
+                from: "USD".into(),
+                to: "GBP".into(),
+                result: 100.0 / 1.085 * 0.842,
+                rate: (100.0 / 1.085 * 0.842) / 100.0,
+            })
+        );
     }
 
     #[test]

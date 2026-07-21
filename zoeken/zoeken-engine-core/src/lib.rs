@@ -4,6 +4,7 @@ use std::borrow::Cow;
 use std::collections::HashMap;
 use std::time::{Duration, Instant};
 
+use indexmap::IndexMap;
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
 
@@ -159,9 +160,11 @@ pub struct RequestParams {
     pub engine_data: HashMap<String, String>,
     pub method: HttpMethod,
     pub url: Option<String>,
-    pub headers: HashMap<String, String>,
+    /// Insertion-ordered: some engines (notably DuckDuckGo) fingerprint header order.
+    pub headers: IndexMap<String, String>,
     pub cookies: HashMap<String, String>,
-    pub data: HashMap<String, String>,
+    /// Insertion-ordered form fields (POST body order can matter for bot checks).
+    pub data: IndexMap<String, String>,
     pub json: Option<serde_json::Value>,
     #[serde(with = "bytes_repr")]
     pub content: Vec<u8>,
@@ -186,9 +189,9 @@ impl Default for RequestParams {
             engine_data: HashMap::new(),
             method: HttpMethod::Get,
             url: None,
-            headers: HashMap::new(),
+            headers: IndexMap::new(),
             cookies: HashMap::new(),
-            data: HashMap::new(),
+            data: IndexMap::new(),
             json: None,
             content: Vec::new(),
             allow_redirects: false,

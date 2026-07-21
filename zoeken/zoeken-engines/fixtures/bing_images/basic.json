@@ -1,0 +1,66 @@
+{
+  "engine": "bing_images",
+  "case": "basic",
+  "query": {
+    "query": "cat",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": null,
+  "response": {
+    "status": 200,
+    "url": "https://www.bing.com/images/async",
+    "headers": {},
+    "body": "\n<ul class=\"dgControl_list\">\n  <li>\n    <a class=\"iusc\" m='{\"purl\":\"https://example.com/photos/1\",\"murl\":\"https://cdn.example.com/1.jpg\",\"turl\":\"https://th.bing.com/1.jpg\",\"desc\":\"A blue cat\",\"t\":\"Blue Cat\"}'></a>\n    <div class=\"infnmpt\"><a>Blue Cat</a></div>\n    <div class=\"imgpt\">\n      <div><span>1920×1080 · jpeg</span></div>\n      <div class=\"lnkw\"><a>example.com</a></div>\n    </div>\n  </li>\n  <li>\n    <a class=\"iusc\" m='{\"purl\":\"https://example.com/photos/2\",\"murl\":\"https://cdn.example.com/2.jpg\",\"turl\":\"\",\"t\":\"Green Cat\"}'></a>\n    <div class=\"infnmpt\"><a></a></div>\n    <div class=\"imgpt\"><div><span></span></div></div>\n  </li>\n  <li>\n    <a class=\"iusc\" m='{\"purl\":\"\",\"murl\":\"\"}'></a>\n  </li>\n</ul>\n"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Image": {
+          "url": "https://example.com/photos/1",
+          "normalized_url": "https://example.com/photos/1",
+          "title": "Blue Cat",
+          "content": "A blue cat",
+          "engine": "bing_images",
+          "img_src": "https://cdn.example.com/1.jpg",
+          "thumbnail_src": "https://th.bing.com/1.jpg",
+          "resolution": "1920×1080",
+          "img_format": "jpeg",
+          "source": "example.com",
+          "filesize": "",
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Image": {
+          "url": "https://example.com/photos/2",
+          "normalized_url": "https://example.com/photos/2",
+          "title": "Green Cat",
+          "content": "",
+          "engine": "bing_images",
+          "img_src": "https://cdn.example.com/2.jpg",
+          "thumbnail_src": "https://cdn.example.com/2.jpg",
+          "resolution": "unknown",
+          "img_format": "",
+          "source": "",
+          "filesize": "",
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

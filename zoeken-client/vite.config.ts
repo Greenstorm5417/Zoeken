@@ -42,6 +42,8 @@ export default defineConfig(async ({ mode }) => {
 				"/favicon_proxy": "http://127.0.0.1:8888",
 				"/favicon.ico": "http://127.0.0.1:8888",
 				"/manifest.json": "http://127.0.0.1:8888",
+				"/robots.txt": "http://127.0.0.1:8888",
+				"/sitemap.xml": "http://127.0.0.1:8888",
 				"/info": "http://127.0.0.1:8888",
 				"/logo": "http://127.0.0.1:8888",
 				"/about": "http://127.0.0.1:8888",

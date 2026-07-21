@@ -15,7 +15,7 @@
     "status": 200,
     "url": "https://api.openverse.org/v1/images/",
     "headers": {},
-    "body": "{\n      \"result_count\": 2,\n      \"results\": [\n        {\n          \"title\": \"Blue Cat\",\n          \"foreign_landing_url\": \"https://example.com/photos/1\",\n          \"url\": \"https://images.example.com/1.jpg\"\n        },\n        {\n          \"title\": \"Green Cat\",\n          \"foreign_landing_url\": \"https://example.com/photos/2\",\n          \"url\": \"https://images.example.com/2.jpg\"\n        }\n      ]\n    }"
+    "body": "{\n      \"result_count\": 2,\n      \"results\": [\n        {\n          \"title\": \"Blue Cat\",\n          \"foreign_landing_url\": \"https://example.com/photos/1\",\n          \"url\": \"https://images.example.com/1.jpg\",\n          \"thumbnail\": \"https://images.example.com/1_thumb.jpg\",\n          \"width\": 1200,\n          \"height\": 800,\n          \"provider\": \"flickr\",\n          \"filetype\": \"jpg\"\n        },\n        {\n          \"title\": \"Green Cat\",\n          \"foreign_landing_url\": \"https://example.com/photos/2\",\n          \"url\": \"https://images.example.com/2.jpg\"\n        }\n      ]\n    }"
   },
   "golden_results": {
     "results": [
@@ -27,10 +27,10 @@
           "content": "",
           "engine": "openverse",
           "img_src": "https://images.example.com/1.jpg",
-          "thumbnail_src": "",
-          "resolution": "",
-          "img_format": "",
-          "source": "",
+          "thumbnail_src": "https://images.example.com/1_thumb.jpg",
+          "resolution": "1200x800",
+          "img_format": "jpg",
+          "source": "flickr",
           "filesize": "",
           "score": 0.0,
           "positions": [],
@@ -46,8 +46,8 @@
           "content": "",
           "engine": "openverse",
           "img_src": "https://images.example.com/2.jpg",
-          "thumbnail_src": "",
-          "resolution": "",
+          "thumbnail_src": "https://images.example.com/2.jpg",
+          "resolution": "unknown",
           "img_format": "",
           "source": "",
           "filesize": "",

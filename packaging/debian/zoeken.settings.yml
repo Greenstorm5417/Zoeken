@@ -22,7 +22,8 @@ general:
   contact_url: false
   donation_url: false
   enable_metrics: true
-  # Prometheus scrape path label (empty = default /metrics handling)
+  # Empty disables /metrics and leaves /stats open. Non-empty = HTTP Basic
+  # password for /metrics, /stats, and /stats/errors (any username).
   open_metrics: ""
 
 # ---------------------------------------------------------------------------
@@ -40,11 +41,11 @@ brand:
     # links:
     #   Source: "https://github.com/Greenstorm5417/zoeken"
   pwa_colors:
-    theme_color_light: "#3050ff"
-    background_color_light: "#fff"
-    theme_color_dark: "#58f"
-    background_color_dark: "#222428"
-    theme_color_black: "#3050ff"
+    theme_color_light: "#246018"
+    background_color_light: "#f2f5ee"
+    theme_color_dark: "#8fd46a"
+    background_color_dark: "#0f1410"
+    theme_color_black: "#246018"
     background_color_black: "#000"
 
 # ---------------------------------------------------------------------------
@@ -54,7 +55,8 @@ search:
   # 0=none, 1=moderate, 2=strict
   safe_search: 0
   # Backend name, or "" to disable. Known: duckduckgo, google, brave, …
-  autocomplete: "duckduckgo"
+  # Prefer `brave` for rich suggestions (image + subtext).
+  autocomplete: "brave"
   autocomplete_min: 1
   favicon_resolver: ""
   # "" = all languages; or e.g. "en"
@@ -276,6 +278,7 @@ categories_as_tabs:
   it: {}
   science: {}
   files: {}
+  shopping: {}
   social media: {}
 
 # ---------------------------------------------------------------------------

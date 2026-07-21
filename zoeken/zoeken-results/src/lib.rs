@@ -109,6 +109,77 @@ pub struct Answer {
     pub engine: String,
     #[serde(default)]
     pub template: Template,
+    /// Structured payload for interactive SPA widgets (unit/currency/calculator).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub interactive: Option<InteractiveAnswer>,
+}
+
+/// Client-editable instant-answer widgets. Keep this flat — SPA switches on `type`.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(tag = "type", rename_all = "snake_case")]
+pub enum InteractiveAnswer {
+    Unit {
+        amount: f64,
+        from: String,
+        to: String,
+        result: f64,
+        dimension: String,
+    },
+    Currency {
+        amount: f64,
+        from: String,
+        to: String,
+        result: f64,
+        rate: f64,
+    },
+    Calculator {
+        expression: String,
+        result: f64,
+    },
+    Weather {
+        place: String,
+        description: String,
+        temp_c: String,
+        temp_f: String,
+        feels_c: String,
+        wind_kmph: String,
+        wind_dir: String,
+        humidity: String,
+    },
+    SelfInfo {
+        /// `"ip"` | `"user_agent"`
+        kind: String,
+        value: String,
+    },
+    Crypto {
+        /// `"hash"` | `"encode"` | `"decode"`
+        mode: String,
+        /// sha256, md5, base64, hex, url, …
+        algorithm: String,
+        input: String,
+        // Digest/result is computed in the browser — not here.
+    },
+    Translate {
+        source: String,
+        /// ISO 639-1 target code (e.g. `es`).
+        target_lang: String,
+        translated: String,
+    },
+    Dictionary {
+        term: String,
+        /// Short lines like `(Noun) a fortunate discovery…`.
+        definitions: Vec<String>,
+    },
+    Wikipedia {
+        title: String,
+        extract: String,
+        #[serde(default)]
+        description: String,
+        #[serde(default)]
+        img_src: String,
+        #[serde(default)]
+        url: String,
+    },
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, Default)]

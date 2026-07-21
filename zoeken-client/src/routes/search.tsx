@@ -1,25 +1,21 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import {
-	ArrowLeftRight,
-	Calculator,
-	CloudSun,
-	Settings2,
-	Sigma,
-	Sparkles,
-} from "lucide-react";
+import { Download, Rss, Settings2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { InstantAnswerCard } from "#/components/answers/InstantAnswerCard";
 import { ImageLightbox } from "#/components/ImageLightbox";
+import { coordsFromResult, MapCanvas } from "#/components/MapCanvas";
 import { MapResult, specializedTemplate } from "#/components/ResultTemplates";
 import { SearchForm } from "#/components/SearchForm";
 import { SelectMenu } from "#/components/SelectMenu";
 import {
 	ApiError,
+	autocomplete,
 	type Infobox,
-	type SearchAnswer,
 	type SearchResult,
 	search,
 } from "#/lib/api";
+import { pickDidYouMean } from "#/lib/didYouMean";
 import { stringsFor } from "#/lib/i18n";
 import {
 	parseSearchParams,
@@ -33,13 +29,105 @@ export const Route = createFileRoute("/search")({
 	component: SearchPage,
 });
 
-/** Keep the tab strip short — only surface the common buckets. */
+/** Sandboxed click-to-play video card when `iframe_src` is present. */
+function VideoCard({
+	result,
+	newTab,
+}: {
+	result: SearchResult;
+	newTab?: boolean;
+}) {
+	const [playing, setPlaying] = useState(false);
+	const thumb = result.thumbnail || result.img_src;
+	const embed = result.iframe_src?.trim();
+
+	return (
+		<article className="overflow-hidden rounded-xl border border-line bg-surface-raised">
+			<div className="aspect-video bg-ink/5">
+				{playing && embed ? (
+					<iframe
+						src={embed}
+						title={result.title}
+						className="size-full border-0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						sandbox="allow-scripts allow-same-origin allow-presentation allow-popups"
+						allowFullScreen
+					/>
+				) : (
+					<button
+						type="button"
+						onClick={() => {
+							if (embed) setPlaying(true);
+							else window.open(result.url, newTab ? "_blank" : "_self");
+						}}
+						className="group relative block size-full"
+						aria-label={embed ? `Play ${result.title}` : result.title}
+					>
+						{thumb ? (
+							<img
+								src={thumb}
+								alt=""
+								className="size-full object-cover transition-transform duration-150 group-hover:scale-[1.01]"
+								loading="lazy"
+							/>
+						) : (
+							<div className="flex size-full items-center justify-center text-sm text-ink-subtle">
+								Video
+							</div>
+						)}
+						{embed ? (
+							<span className="absolute inset-0 flex items-center justify-center bg-black/25 text-white opacity-90 transition-opacity group-hover:opacity-100">
+								<span className="rounded-full bg-black/60 px-3 py-1.5 text-sm font-medium">
+									Play
+								</span>
+							</span>
+						) : null}
+					</button>
+				)}
+			</div>
+			<div className="p-3">
+				{embed && playing ? (
+					<p className="line-clamp-2 text-sm font-medium text-ink">
+						{result.title}
+					</p>
+				) : (
+					<a
+						data-result-link
+						href={result.url}
+						target={newTab ? "_blank" : undefined}
+						rel={newTab ? "noopener noreferrer" : undefined}
+						className="line-clamp-2 text-sm font-medium text-ink no-underline hover:text-accent"
+					>
+						{result.title}
+					</a>
+				)}
+				{result.content ? (
+					<p className="mt-1 line-clamp-2 text-xs text-ink-muted">
+						{result.content}
+					</p>
+				) : null}
+				{engineNames(result).length ? (
+					<p className="mt-1.5 truncate text-[0.65rem] text-ink-subtle">
+						{engineNames(result).map(formatEngineLabel).join(" · ")}
+					</p>
+				) : null}
+			</div>
+		</article>
+	);
+}
+
+/** Align with `categories_as_tabs` in default.config.yml when engines exist. */
 const DEFAULT_CATEGORIES = [
 	"general",
 	"images",
 	"videos",
 	"news",
 	"map",
+	"science",
+	"it",
+	"files",
+	"music",
+	"shopping",
 ] as const;
 
 function suggestionText(s: string | { suggestion: string }) {
@@ -93,6 +181,24 @@ function searchLink(
 	updates: Partial<SearchRouteParams>,
 ) {
 	return serializeSearchParams({ ...search, ...updates });
+}
+
+/** GET export URL for the current query (`format=rss|csv`). */
+function exportSearchUrl(
+	params: SearchRouteParams,
+	format: "rss" | "csv",
+): string {
+	const qs = new URLSearchParams();
+	qs.set("q", params.q);
+	qs.set("format", format);
+	if (params.pageno != null) qs.set("pageno", String(params.pageno));
+	if (params.categories) qs.set("categories", params.categories);
+	if (params.language) qs.set("language", params.language);
+	if (params.safesearch != null)
+		qs.set("safesearch", String(params.safesearch));
+	if (params.time_range) qs.set("time_range", params.time_range);
+	if (params.engines) qs.set("engines", params.engines);
+	return `/search?${qs}`;
 }
 
 /** Sliding window of page numbers (SearXNG-style): 1–10, then centered on current. */
@@ -189,67 +295,15 @@ function ResultItem({
 	);
 }
 
-/** Icon + label for a local instant answer, keyed on the answering engine. */
-function answerKind(engine: string | undefined): {
-	Icon: typeof Sparkles;
-	label: string;
-} {
-	const name = (engine ?? "").toLowerCase();
-	if (name === "calculator") return { Icon: Calculator, label: "Calculator" };
-	if (name === "unit converter")
-		return { Icon: ArrowLeftRight, label: "Unit converter" };
-	if (name === "weather") return { Icon: CloudSun, label: "Weather" };
-	if (name.startsWith("answerer:"))
-		return { Icon: Sigma, label: formatEngineLabel(name.slice(9).trim()) };
-	return { Icon: Sparkles, label: formatEngineLabel(name || "Answer") };
-}
-
-/** `10 km = 6.21 mi` → emphasize the result side of the equation. */
-function splitEquation(text: string): [string, string] | null {
-	const index = text.lastIndexOf(" = ");
-	if (index <= 0) return null;
-	return [text.slice(0, index), text.slice(index + 3)];
-}
-
-function InstantAnswerCard({ answer }: { answer: SearchAnswer }) {
-	const { Icon, label } = answerKind(answer.engine);
-	const equation = splitEquation(answer.answer);
-	return (
-		<section className="mb-6 max-w-[40rem] rounded-2xl border border-line bg-surface-raised px-5 py-4">
-			<p className="mb-2 flex items-center gap-2 text-[0.7rem] font-semibold tracking-wide text-ink-subtle uppercase">
-				<Icon className="size-4 text-accent" aria-hidden />
-				{label}
-			</p>
-			{equation ? (
-				<p className="text-[1.6rem] leading-snug tracking-tight break-words">
-					<span className="text-ink-muted">{equation[0]}</span>
-					<span className="text-ink-muted"> = </span>
-					<span className="font-semibold text-ink">{equation[1]}</span>
-				</p>
-			) : (
-				<p className="text-[1.35rem] leading-snug tracking-tight break-words text-ink">
-					{answer.answer}
-				</p>
-			)}
-			{answer.url ? (
-				<a
-					href={answer.url}
-					target="_blank"
-					rel="noopener noreferrer"
-					className="mt-2 inline-block text-sm text-accent hover:underline"
-				>
-					{hostnameOf(answer.url)}
-				</a>
-			) : null}
-		</section>
-	);
-}
-
 function InfoboxCard({ box }: { box: Infobox }) {
 	const title = box.infobox || "Info";
 	const qid = wikidataId(box.id);
 	const source = box.engine ? formatEngineLabel(box.engine) : null;
 	const primaryUrl = box.urls?.[0]?.url ?? box.id ?? undefined;
+	const attributes = (box.attributes ?? []).filter(
+		(attr) => attr.label && (attr.value || attr.image?.src),
+	);
+	const topics = (box.related_topics ?? []).filter(Boolean);
 
 	return (
 		<article className="mb-4 overflow-hidden rounded-2xl border border-line bg-surface-raised">
@@ -287,6 +341,49 @@ function InfoboxCard({ box }: { box: Infobox }) {
 					<p className="mt-2 text-sm leading-relaxed text-ink-muted">
 						{box.content}
 					</p>
+				) : null}
+				{attributes.length > 0 ? (
+					<dl className="mt-3 space-y-2 border-t border-line pt-3">
+						{attributes.map((attr) => (
+							<div key={`${attr.label}:${attr.value ?? ""}`}>
+								<dt className="text-[0.7rem] font-medium tracking-wide text-ink-subtle uppercase">
+									{attr.label}
+								</dt>
+								{attr.image?.src ? (
+									<dd className="mt-1">
+										<img
+											src={attr.image.src}
+											alt={attr.image.alt || attr.label}
+											className="max-h-24 rounded-lg object-contain"
+										/>
+									</dd>
+								) : null}
+								{attr.value ? (
+									<dd className="mt-0.5 text-sm text-ink">{attr.value}</dd>
+								) : null}
+							</div>
+						))}
+					</dl>
+				) : null}
+				{topics.length > 0 ? (
+					<div className="mt-3 border-t border-line pt-3">
+						<p className="mb-1.5 text-[0.7rem] font-medium tracking-wide text-ink-subtle uppercase">
+							Related
+						</p>
+						<ul className="flex flex-wrap gap-1.5">
+							{topics.map((topic) => (
+								<li key={topic}>
+									<Link
+										to="/search"
+										search={{ q: topic }}
+										className="inline-block rounded-lg border border-line px-2 py-0.5 text-xs text-ink no-underline hover:border-accent hover:text-accent"
+									>
+										{topic}
+									</Link>
+								</li>
+							))}
+						</ul>
+					</div>
 				) : null}
 				{box.urls && box.urls.length > 0 ? (
 					<ul className="mt-3 flex flex-col gap-1">
@@ -401,6 +498,56 @@ function SearchPage() {
 	})();
 
 	const [lightbox, setLightbox] = useState<SearchResult | null>(null);
+	const [elapsedSec, setElapsedSec] = useState<number | null>(null);
+	const [clientCorrection, setClientCorrection] = useState<string | null>(null);
+	const fetchStarted = useRef(0);
+	// biome-ignore lint/correctness/useExhaustiveDependencies: reset timer when search params change; deps are intentional triggers
+	useEffect(() => {
+		fetchStarted.current = performance.now();
+		setElapsedSec(null);
+	}, [q, activeCategory, language, safesearch, time_range, pageno]);
+	// biome-ignore lint/correctness/useExhaustiveDependencies: dataUpdatedAt re-runs when a fresh page lands
+	useEffect(() => {
+		if (query.isSuccess && !query.isFetching && fetchStarted.current) {
+			setElapsedSec((performance.now() - fetchStarted.current) / 1000);
+		}
+	}, [query.isSuccess, query.isFetching, query.dataUpdatedAt]);
+
+	// Fallback “Did you mean?” when engines return no corrections and results look weak.
+	// ponytail: autocomplete-only hint, no dictionary — skip if autocomplete is off.
+	useEffect(() => {
+		setClientCorrection(null);
+		if (!firstPage || !q || !config?.autocomplete) return;
+		if (firstPage.corrections.length > 0) return;
+		const weak =
+			results.length === 0 ||
+			(results.length < 3 && (firstPage.number_of_results ?? 0) < 5);
+		if (!weak) return;
+		let cancelled = false;
+		void autocomplete(q)
+			.then((items) => {
+				if (cancelled) return;
+				setClientCorrection(
+					pickDidYouMean(
+						q,
+						(items ?? []).map((s) => s.text),
+					),
+				);
+			})
+			.catch(() => {
+				if (!cancelled) setClientCorrection(null);
+			});
+		return () => {
+			cancelled = true;
+		};
+	}, [
+		firstPage,
+		q,
+		results.length,
+		config?.autocomplete,
+		firstPage?.corrections.length,
+		firstPage?.number_of_results,
+	]);
 
 	const imageMode =
 		activeCategory === "images" ||
@@ -464,8 +611,20 @@ function SearchPage() {
 		available.has(category),
 	);
 
+	// Hide filters the active category's engines don't support.
+	const categoryEngines = (config?.engines ?? []).filter(
+		(engine) =>
+			engine.enabled &&
+			(activeCategory === "general" ||
+				engine.categories.map((c) => c.toLowerCase()).includes(activeCategory)),
+	);
+	const showTimeRange = categoryEngines.some((e) => e.time_range_support);
+	const showSafesearch = categoryEngines.some((e) => e.safesearch);
+	// Locale codes (en-US, nl-BE, …) are the region control — no separate region param.
+	const showLanguage = categoryEngines.some((e) => e.language_support);
+
 	const languageOptions = [
-		{ value: "", label: "Any language" },
+		{ value: "", label: "Any language / region" },
 		...Object.entries(config?.locales ?? {}).map(([code, name]) => ({
 			value: code,
 			label: name,
@@ -510,6 +669,39 @@ function SearchPage() {
 		{ value: "2", label: t.strict },
 	];
 
+	const filterMenus = (
+		<>
+			{showTimeRange ? (
+				<SelectMenu
+					label="Time range"
+					value={time_range}
+					options={timeRangeOptions}
+					onChange={onTimeRangeChange}
+				/>
+			) : null}
+			{showLanguage ? (
+				<SelectMenu
+					label="Language / region"
+					value={language ?? ""}
+					options={languageOptions}
+					onChange={onLanguageChange}
+				/>
+			) : null}
+			{showSafesearch ? (
+				<SelectMenu
+					label="Safe search"
+					value={String(safesearch)}
+					options={safesearchOptions}
+					onChange={onSafesearchChange}
+				/>
+			) : null}
+		</>
+	);
+
+	const resultCount =
+		firstPage?.number_of_results ??
+		(results.length > 0 ? results.length : undefined);
+
 	return (
 		<div className="zoeken-serp min-h-dvh text-ink">
 			<header className="sticky top-0 z-20 border-b border-line bg-surface">
@@ -527,24 +719,7 @@ function SearchPage() {
 					<div className="ml-auto flex shrink-0 items-center gap-1">
 						{q.trim() ? (
 							<div className="hidden items-center gap-2 lg:flex">
-								<SelectMenu
-									label="Time range"
-									value={time_range}
-									options={timeRangeOptions}
-									onChange={onTimeRangeChange}
-								/>
-								<SelectMenu
-									label="Language"
-									value={language ?? ""}
-									options={languageOptions}
-									onChange={onLanguageChange}
-								/>
-								<SelectMenu
-									label="Safe search"
-									value={String(safesearch)}
-									options={safesearchOptions}
-									onChange={onSafesearchChange}
-								/>
+								{filterMenus}
 							</div>
 						) : null}
 						<nav className="flex items-center text-sm">
@@ -627,26 +802,9 @@ function SearchPage() {
 					</div>
 				) : null}
 
-				{q.trim() ? (
+				{q.trim() && (showTimeRange || showLanguage || showSafesearch) ? (
 					<div className="mx-auto flex max-w-6xl items-center gap-2 overflow-x-auto border-t border-line/60 px-3 py-2 sm:px-6 lg:hidden">
-						<SelectMenu
-							label="Time range"
-							value={time_range}
-							options={timeRangeOptions}
-							onChange={onTimeRangeChange}
-						/>
-						<SelectMenu
-							label="Language"
-							value={language ?? ""}
-							options={languageOptions}
-							onChange={onLanguageChange}
-						/>
-						<SelectMenu
-							label="Safe search"
-							value={String(safesearch)}
-							options={safesearchOptions}
-							onChange={onSafesearchChange}
-						/>
+						{filterMenus}
 					</div>
 				) : null}
 			</header>
@@ -709,26 +867,64 @@ function SearchPage() {
 					].join(" ")}
 				>
 					{firstPage.unresponsive_engines.length > 0 ? (
-						<aside className="mb-6 max-w-[40rem] rounded-xl border border-line bg-surface-raised px-4 py-3">
+						<aside className="mb-6 max-w-[40rem] rounded-xl border border-amber-500/30 bg-amber-500/5 px-4 py-3">
 							<p className="text-sm font-medium text-ink">
 								{firstPage.unresponsive_engines.length} engine
-								{firstPage.unresponsive_engines.length === 1 ? "" : "s"} didn’t
-								respond
+								{firstPage.unresponsive_engines.length === 1 ? "" : "s"}{" "}
+								{t.enginesDidntRespond}
 							</p>
-							<ul className="mt-2 flex flex-col gap-1">
+							<ul className="mt-2 divide-y divide-line/60">
 								{firstPage.unresponsive_engines.map(([engine, reason]) => (
 									<li
 										key={`${engine}:${reason}`}
-										className="flex flex-wrap items-baseline gap-x-2 text-sm text-ink-muted"
+										className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5 py-1.5 text-sm"
 									>
-										<span className="font-medium text-ink">
+										<span className="font-medium capitalize text-ink">
 											{formatEngineLabel(engine)}
 										</span>
-										<span className="text-ink-subtle">{reason}</span>
+										<span className="text-ink-muted">{reason}</span>
 									</li>
 								))}
 							</ul>
 						</aside>
+					) : null}
+
+					{(resultCount != null || elapsedSec != null) && results.length > 0 ? (
+						<p className="mb-4 max-w-[40rem] text-sm text-ink-subtle">
+							{resultCount != null ? (
+								<>
+									About {resultCount.toLocaleString()} result
+									{resultCount === 1 ? "" : "s"}
+								</>
+							) : null}
+							{resultCount != null && elapsedSec != null ? " · " : null}
+							{elapsedSec != null ? `${elapsedSec.toFixed(2)}s` : null}
+						</p>
+					) : null}
+
+					{q.trim() ? (
+						<div className="mb-6 flex max-w-[40rem] flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+							<a
+								href={exportSearchUrl(params, "rss")}
+								className="inline-flex items-center gap-1.5 text-ink-muted no-underline hover:text-accent"
+							>
+								<Rss className="size-3.5" aria-hidden />
+								RSS
+							</a>
+							<a
+								href={exportSearchUrl(params, "csv")}
+								className="inline-flex items-center gap-1.5 text-ink-muted no-underline hover:text-accent"
+							>
+								<Download className="size-3.5" aria-hidden />
+								CSV
+							</a>
+							<a
+								href="/opensearch.xml"
+								className="inline-flex items-center gap-1.5 font-medium text-accent no-underline hover:underline"
+							>
+								Add search engine
+							</a>
+						</div>
 					) : null}
 
 					{firstPage.corrections.length > 0 ? (
@@ -754,6 +950,21 @@ function SearchPage() {
 							})}
 							?
 						</p>
+					) : clientCorrection ? (
+						<p className="mb-6 text-ink-muted">
+							Did you mean{" "}
+							<Link
+								to="/search"
+								search={searchLink(params, {
+									q: clientCorrection,
+									pageno: undefined,
+								})}
+								className="font-medium text-accent italic hover:underline"
+							>
+								{clientCorrection}
+							</Link>
+							?
+						</p>
 					) : null}
 
 					<div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-12">
@@ -775,105 +986,73 @@ function SearchPage() {
 								</div>
 							) : results.length === 0 ? null : videoMode ? (
 								<ul className="grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-									{results.map((result) => {
-										const thumb = result.thumbnail || result.img_src;
-										return (
-											<li key={result.url}>
-												<a
-													data-result-link
-													href={result.url}
-													target={
-														config?.ui?.results_on_new_tab
-															? "_blank"
-															: undefined
-													}
-													rel={
-														config?.ui?.results_on_new_tab
-															? "noopener noreferrer"
-															: undefined
-													}
-													className="group block overflow-hidden rounded-xl border border-line bg-surface-raised no-underline"
-												>
-													<div className="aspect-video bg-ink/5">
-														{thumb ? (
-															<img
-																src={thumb}
-																alt=""
-																className="size-full object-cover transition-transform duration-150 group-hover:scale-[1.01]"
-																loading="lazy"
-															/>
-														) : (
-															<div className="flex size-full items-center justify-center text-sm text-ink-subtle">
-																Video
-															</div>
-														)}
-													</div>
-													<div className="p-3">
-														<p className="line-clamp-2 text-sm font-medium text-ink group-hover:text-accent">
-															{result.title}
-														</p>
-														{result.content ? (
-															<p className="mt-1 line-clamp-2 text-xs text-ink-muted">
-																{result.content}
-															</p>
-														) : null}
-														{engineNames(result).length ? (
-															<p className="mt-1.5 truncate text-[0.65rem] text-ink-subtle">
-																{engineNames(result)
-																	.map(formatEngineLabel)
-																	.join(" · ")}
-															</p>
-														) : null}
-													</div>
-												</a>
-											</li>
-										);
-									})}
-								</ul>
-							) : imageMode ? (
-								<ul className="grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
 									{results.map((result) => (
 										<li key={result.url}>
-											<button
-												type="button"
-												onClick={() => setLightbox(result)}
-												className="group block w-full overflow-hidden rounded-xl text-left"
-											>
-												{result.thumbnail || result.img_src ? (
-													<img
-														src={result.thumbnail ?? result.img_src}
-														alt=""
-														className="aspect-square w-full bg-surface-raised object-cover transition-transform duration-150 group-hover:scale-[1.01]"
-														loading="lazy"
-													/>
-												) : null}
-												<p className="mt-1.5 truncate text-xs text-ink-muted group-hover:text-accent">
-													{result.title}
-												</p>
-												{result.resolution ? (
-													<p className="truncate text-[0.65rem] text-ink-subtle">
-														{result.resolution}
-													</p>
-												) : null}
-											</button>
-										</li>
-									))}
-								</ul>
-							) : mapMode ? (
-								<ul className="flex flex-col gap-4">
-									{results.map((result) => (
-										<li key={result.url}>
-											<MapResult
+											<VideoCard
 												result={result}
 												newTab={config?.ui?.results_on_new_tab}
 											/>
 										</li>
 									))}
 								</ul>
+							) : imageMode ? (
+								<ul className="grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+									{results
+										.filter((r) => r.thumbnail || r.img_src)
+										.map((result) => (
+											<li key={result.url}>
+												<button
+													type="button"
+													onClick={() => setLightbox(result)}
+													className="group block w-full overflow-hidden rounded-xl text-left"
+												>
+													<img
+														src={result.thumbnail || result.img_src}
+														alt={result.title || ""}
+														className="aspect-square w-full bg-surface-raised object-cover transition-transform duration-150 group-hover:scale-[1.01]"
+														loading="lazy"
+													/>
+													<p className="mt-1.5 truncate text-xs text-ink-muted group-hover:text-accent">
+														{result.title || "Image"}
+													</p>
+													{result.resolution &&
+													result.resolution !== "unknown" ? (
+														<p className="truncate text-[0.65rem] text-ink-subtle">
+															{result.resolution}
+															{result.img_format
+																? ` · ${result.img_format}`
+																: ""}
+														</p>
+													) : null}
+												</button>
+											</li>
+										))}
+								</ul>
+							) : mapMode ? (
+								<div className="flex flex-col gap-4">
+									<MapCanvas
+										points={results
+											.map(coordsFromResult)
+											.filter((p): p is NonNullable<typeof p> => p != null)}
+									/>
+									<ul className="flex flex-col gap-4">
+										{results.map((result) => (
+											<li key={result.url}>
+												<MapResult
+													result={result}
+													newTab={config?.ui?.results_on_new_tab}
+												/>
+											</li>
+										))}
+									</ul>
+								</div>
 							) : (
 								<ul className="flex flex-col gap-8">
 									{results.map((result) => {
-										const Template = specializedTemplate(result);
+										const Template = specializedTemplate(
+											result,
+											activeCategory,
+										);
 										return (
 											<li
 												key={`${result.url}:${engineNames(result).join(",")}`}
@@ -900,7 +1079,7 @@ function SearchPage() {
 							{firstPage.suggestions.length > 0 ? (
 								<section className="mt-14 max-w-[38rem]">
 									<h2 className="mb-3 text-base font-medium text-ink">
-										Related searches
+										{t.relatedSearches}
 									</h2>
 									<div className="flex flex-wrap gap-2">
 										{firstPage.suggestions.map((s) => {

@@ -15,7 +15,7 @@
     "status": 200,
     "url": "https://unsplash.com/napi/search/photos?",
     "headers": {},
-    "body": "{\n      \"results\": [\n        {\n          \"alt_description\": \"a blue cat\",\n          \"description\": \"A very blue cat.\",\n          \"links\": {\"html\": \"https://unsplash.com/photos/1?ixid=abc\"},\n          \"urls\": {\n            \"thumb\": \"https://images.unsplash.com/1?ixid=abc&w=200\",\n            \"regular\": \"https://images.unsplash.com/1?ixid=abc&w=1080\"\n          }\n        }\n      ]\n    }"
+    "body": "{\n      \"results\": [\n        {\n          \"alt_description\": \"a blue cat\",\n          \"description\": \"A very blue cat.\",\n          \"width\": 4000,\n          \"height\": 3000,\n          \"links\": {\"html\": \"https://unsplash.com/photos/1?ixid=abc\"},\n          \"urls\": {\n            \"thumb\": \"https://images.unsplash.com/1?ixid=abc&w=200\",\n            \"regular\": \"https://images.unsplash.com/1?ixid=abc&w=1080\"\n          }\n        }\n      ]\n    }"
   },
   "golden_results": {
     "results": [
@@ -28,7 +28,7 @@
           "engine": "unsplash",
           "img_src": "https://images.unsplash.com/1?w=1080",
           "thumbnail_src": "https://images.unsplash.com/1?w=200",
-          "resolution": "",
+          "resolution": "4000x3000",
           "img_format": "",
           "source": "",
           "filesize": "",

@@ -21,16 +21,18 @@
     "results": [
       {
         "Main": {
-          "url": "https://openstreetmap.org/node/1234",
-          "normalized_url": "https://openstreetmap.org/node/1234",
+          "url": "https://openstreetmap.org/node/1234?mlat=48.1&mlon=11.5",
+          "normalized_url": "https://openstreetmap.org/node/1234?mlat=48.1&mlon=11.5",
           "title": "Cafe Central",
-          "content": "",
+          "content": "Cafe Central, Munich, Germany",
           "engine": "openstreetmap",
           "engines": [],
           "score": 0.0,
           "positions": [],
           "priority": "",
-          "template": "Default"
+          "template": "Default",
+          "thumbnail": "",
+          "iframe_src": ""
         }
       },
       {
@@ -38,13 +40,15 @@
           "url": "https://www.openstreetmap.org/?mlat=51.5&mlon=-0.12&zoom=12&layers=M",
           "normalized_url": "https://www.openstreetmap.org/?mlat=51.5&mlon=-0.12&zoom=12&layers=M",
           "title": "London",
-          "content": "",
+          "content": "London, EC1M 5RF, United Kingdom",
           "engine": "openstreetmap",
           "engines": [],
           "score": 0.0,
           "positions": [],
           "priority": "",
-          "template": "Default"
+          "template": "Default",
+          "thumbnail": "",
+          "iframe_src": ""
         }
       }
     ],

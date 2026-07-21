@@ -108,23 +108,27 @@ fn get_title(result: &serde_json::Value) -> Option<String> {
 }
 
 fn get_url(result: &serde_json::Value) -> String {
+    let lat = result.get("lat").map(scalar_to_string).unwrap_or_default();
+    let lon = result.get("lon").map(scalar_to_string).unwrap_or_default();
     let osm_type = result
         .get("osm_type")
         .or_else(|| result.get("type"))
         .map(scalar_to_string)
         .unwrap_or_default();
 
-    match result.get("osm_id") {
+    let mut url = match result.get("osm_id") {
         Some(osm_id) => {
             let osm_id = scalar_to_string(osm_id);
             format!("https://openstreetmap.org/{osm_type}/{osm_id}")
         }
-        None => {
-            let lat = result.get("lat").map(scalar_to_string).unwrap_or_default();
-            let lon = result.get("lon").map(scalar_to_string).unwrap_or_default();
-            format!("https://www.openstreetmap.org/?mlat={lat}&mlon={lon}&zoom=12&layers=M")
-        }
+        None => format!("https://www.openstreetmap.org/?mlat={lat}&mlon={lon}&zoom=12&layers=M"),
+    };
+    // SPA map canvas reads mlat/mlon from the result URL.
+    if !lat.is_empty() && !lon.is_empty() && !url.contains("mlat=") {
+        let sep = if url.contains('?') { '&' } else { '?' };
+        url = format!("{url}{sep}mlat={lat}&mlon={lon}");
     }
+    url
 }
 
 impl Engine for Openstreetmap {
@@ -152,12 +156,18 @@ impl Engine for Openstreetmap {
             };
 
             let url = get_url(place);
+            let content = place
+                .get("display_name")
+                .and_then(|v| v.as_str())
+                .filter(|s| *s != title.as_str())
+                .unwrap_or("")
+                .to_string();
 
             res.add(Result_::Main(MainResult {
                 url: url.clone(),
                 normalized_url: url,
                 title,
-                content: String::new(),
+                content,
                 engine: NAME.to_string(),
                 ..MainResult::default()
             }));
@@ -183,17 +193,6 @@ mod tests {
             pageno: 1,
             ..SearchQueryView::default()
         }
-    }
-
-    fn main_result(url: &str, title: &str) -> Result_ {
-        Result_::Main(MainResult {
-            url: url.to_string(),
-            normalized_url: url.to_string(),
-            title: title.to_string(),
-            content: String::new(),
-            engine: NAME.to_string(),
-            ..MainResult::default()
-        })
     }
 
     fn response(status: u16, body: &str) -> EngineResponse {
@@ -264,14 +263,23 @@ mod tests {
         let dir = fixtures_root().join(NAME);
 
         let mut basic = EngineResults::new();
-        basic.add(main_result(
-            "https://openstreetmap.org/node/1234",
-            "Cafe Central",
-        ));
-        basic.add(main_result(
-            "https://www.openstreetmap.org/?mlat=51.5&mlon=-0.12&zoom=12&layers=M",
-            "London",
-        ));
+        basic.add(Result_::Main(MainResult {
+            url: "https://openstreetmap.org/node/1234?mlat=48.1&mlon=11.5".to_string(),
+            normalized_url: "https://openstreetmap.org/node/1234?mlat=48.1&mlon=11.5".to_string(),
+            title: "Cafe Central".to_string(),
+            content: "Cafe Central, Munich, Germany".to_string(),
+            engine: NAME.to_string(),
+            ..MainResult::default()
+        }));
+        basic.add(Result_::Main(MainResult {
+            url: "https://www.openstreetmap.org/?mlat=51.5&mlon=-0.12&zoom=12&layers=M".to_string(),
+            normalized_url: "https://www.openstreetmap.org/?mlat=51.5&mlon=-0.12&zoom=12&layers=M"
+                .to_string(),
+            title: "London".to_string(),
+            content: "London, EC1M 5RF, United Kingdom".to_string(),
+            engine: NAME.to_string(),
+            ..MainResult::default()
+        }));
         Fixture::capture(NAME, query("cafe"), response(200, BASIC_JSON), basic)
             .with_case("basic")
             .save(dir.join("basic.json"))

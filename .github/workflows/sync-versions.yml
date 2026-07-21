@@ -1,0 +1,78 @@
+# Sync package versions to Cargo.toml before cutting a release.
+#
+# How to run before release:
+#   1. Bump [workspace.package].version in Cargo.toml (or pass bump=X.Y.Z below).
+#   2. Actions -> "Sync versions" -> Run workflow (optional bump input).
+#   3. Bot commits "chore: sync package versions to X.Y.Z" if anything changed.
+#   4. Update CHANGELOG.md, then tag: git tag vX.Y.Z && git push origin vX.Y.Z
+#
+# Local: uv run --no-project --python 3.13 tools/sync_versions.py [--dry-run] [--bump X.Y.Z]
+#
+# Caveat: pushing to a protected branch may need a PAT with contents:write
+# (GITHUB_TOKEN cannot bypass branch protection). Forks/PRs are not auto-committed.
+
+name: Sync versions
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: "Optional new semver - sets Cargo.toml then syncs dependents"
+        required: false
+        type: string
+        default: ""
+  push:
+    branches: [main]
+    paths:
+      - Cargo.toml
+      - zoeken-client/package.json
+      - Cargo.lock
+      - tools/sync_versions.py
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-versions-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Sync versions + commit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          version: "0.11.8"
+
+      - name: Sync versions
+        id: sync
+        env:
+          BUMP: ${{ inputs.bump }}
+        run: |
+          set -euo pipefail
+          ARGS=()
+          if [ -n "${BUMP:-}" ]; then
+            ARGS+=(--bump "${BUMP}")
+          fi
+          uv run --no-project --python 3.13 tools/sync_versions.py "${ARGS[@]}"
+          VERSION="$(sed -n '/^\[workspace\.package\]/,/^\[/{s/^version *= *"\([^"]*\)".*/\1/p;}' Cargo.toml | head -n1)"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push if changed
+        run: |
+          set -euo pipefail
+          VERSION="${{ steps.sync.outputs.version }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- Cargo.toml zoeken-client/package.json Cargo.lock
+          if git diff --staged --quiet; then
+            echo "No version metadata changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: sync package versions to ${VERSION}"
+          git push

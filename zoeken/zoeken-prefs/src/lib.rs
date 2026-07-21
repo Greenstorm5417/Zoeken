@@ -75,7 +75,7 @@ impl Default for Preferences {
             categories: vec!["general".to_string()],
             engines: Vec::new(),
             safesearch: SafeSearch::Off,
-            autocomplete: "duckduckgo".to_string(),
+            autocomplete: "brave".to_string(),
             image_proxy: false,
             method: RequestMethod::Post,
             plugins: BTreeMap::new(),
@@ -606,15 +606,15 @@ mod tests {
     #[test]
     fn resolve_with_data_normalizes_locale_and_detects_auto_language() {
         let data = DataBundle {
-            locales: LocaleMap {
-                locale_names: [
+            locales: LocaleMap::from_owned(
+                [
                     ("en".to_string(), "English".to_string()),
                     ("fr".to_string(), "French".to_string()),
                 ]
                 .into_iter()
                 .collect(),
-                rtl_locales: Vec::new(),
-            },
+                Vec::new(),
+            ),
             ..Default::default()
         };
         let mut settings = Settings::defaults();

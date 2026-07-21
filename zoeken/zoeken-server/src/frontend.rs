@@ -10,7 +10,11 @@ use crate::static_assets::{AssetDecision, build_response, static_fallback};
 use crate::{AppState, frontend_index_response, parse_pairs};
 
 /// `GET /` — if `q` present, 308 → `/search?...`; else SPA index.
-pub async fn index(State(state): State<Arc<AppState>>, RawQuery(query): RawQuery) -> Response {
+pub async fn index(
+    State(state): State<Arc<AppState>>,
+    headers: HeaderMap,
+    RawQuery(query): RawQuery,
+) -> Response {
     let raw = query.as_deref().unwrap_or("");
     let params = parse_pairs(raw);
     let has_q = params.iter().any(|(k, v)| k == "q" && !v.trim().is_empty());
@@ -22,12 +26,12 @@ pub async fn index(State(state): State<Arc<AppState>>, RawQuery(query): RawQuery
         };
         return Redirect::permanent(&target).into_response();
     }
-    frontend_index_response(&state)
+    frontend_index_response(&state, &headers)
 }
 
 /// `GET /about` - serve the SPA information view.
-pub async fn about(State(state): State<Arc<AppState>>) -> Response {
-    frontend_index_response(&state)
+pub async fn about(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Response {
+    frontend_index_response(&state, &headers)
 }
 
 /// Compatible `GET`/`POST /rss.xsl` static stylesheet endpoint.

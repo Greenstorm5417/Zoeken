@@ -132,11 +132,11 @@ pub struct ThemeColors {
 impl Default for ThemeColors {
     fn default() -> Self {
         Self {
-            theme_color_light: "#3050ff".to_string(),
-            background_color_light: "#fff".to_string(),
-            theme_color_dark: "#58f".to_string(),
-            background_color_dark: "#222428".to_string(),
-            theme_color_black: "#3050ff".to_string(),
+            theme_color_light: "#246018".to_string(),
+            background_color_light: "#f2f5ee".to_string(),
+            theme_color_dark: "#8fd46a".to_string(),
+            background_color_dark: "#0f1410".to_string(),
+            theme_color_black: "#246018".to_string(),
             background_color_black: "#000".to_string(),
         }
     }
@@ -162,7 +162,7 @@ impl Default for SearchSettings {
     fn default() -> Self {
         Self {
             safe_search: 0,
-            autocomplete: "duckduckgo".to_string(),
+            autocomplete: "brave".to_string(),
             autocomplete_min: 1,
             favicon_resolver: "duckduckgo".to_string(),
             default_lang: String::new(),
@@ -628,6 +628,7 @@ impl Default for CategorySettings {
             "it",
             "science",
             "files",
+            "shopping",
             "social media",
         ];
         Self(
@@ -1272,7 +1273,8 @@ search:
         assert_eq!(s.brand.public_instances, "");
         assert_eq!(s.brand.wiki_url, None);
         assert_eq!(s.brand.new_issue_url, "");
-        assert_eq!(s.brand.pwa_colors.theme_color_light, "#3050ff");
+        assert_eq!(s.brand.pwa_colors.theme_color_light, "#246018");
+        assert_eq!(s.brand.pwa_colors.background_color_light, "#f2f5ee");
         assert_eq!(s.brand.pwa_colors.background_color_black, "#000");
         assert_eq!(s.search.safe_search, 0);
         assert_eq!(s.search.autocomplete_min, 1);
@@ -1339,6 +1341,7 @@ search:
             "it",
             "science",
             "files",
+            "shopping",
             "social media",
         ];
         assert_eq!(s.categories.0.len(), expected.len());

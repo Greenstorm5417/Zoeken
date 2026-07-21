@@ -94,21 +94,55 @@ impl Engine for Openverse {
                 .and_then(|u| u.as_str())
                 .unwrap_or("")
                 .to_string();
-            let title = item
-                .get("title")
-                .and_then(|t| t.as_str())
-                .unwrap_or("")
-                .to_string();
             let img_src = item
                 .get("url")
                 .and_then(|u| u.as_str())
                 .unwrap_or("")
                 .to_string();
+            if url.is_empty() || img_src.is_empty() {
+                continue;
+            }
+
+            let title = item
+                .get("title")
+                .and_then(|t| t.as_str())
+                .filter(|s| !s.is_empty())
+                .unwrap_or("Image")
+                .to_string();
+            let thumbnail_src = item
+                .get("thumbnail")
+                .and_then(|u| u.as_str())
+                .filter(|s| !s.is_empty())
+                .unwrap_or(img_src.as_str())
+                .to_string();
+            let width = item.get("width").and_then(|v| v.as_u64()).unwrap_or(0);
+            let height = item.get("height").and_then(|v| v.as_u64()).unwrap_or(0);
+            let resolution = if width > 0 && height > 0 {
+                format!("{width}x{height}")
+            } else {
+                "unknown".to_string()
+            };
+            let source = item
+                .get("provider")
+                .or_else(|| item.get("source"))
+                .and_then(|v| v.as_str())
+                .unwrap_or("")
+                .to_string();
+            let img_format = item
+                .get("filetype")
+                .and_then(|v| v.as_str())
+                .unwrap_or("")
+                .to_string();
+
             res.add(Result_::Image(Image {
                 url: url.clone(),
                 normalized_url: url,
                 title,
                 img_src,
+                thumbnail_src,
+                resolution,
+                source,
+                img_format,
                 engine: NAME.to_string(),
                 ..Image::default()
             }));
@@ -142,6 +176,8 @@ mod tests {
             normalized_url: url.to_string(),
             title: title.to_string(),
             img_src: img_src.to_string(),
+            thumbnail_src: img_src.to_string(),
+            resolution: "unknown".to_string(),
             engine: NAME.to_string(),
             ..Image::default()
         })
@@ -173,7 +209,12 @@ mod tests {
         {
           "title": "Blue Cat",
           "foreign_landing_url": "https://example.com/photos/1",
-          "url": "https://images.example.com/1.jpg"
+          "url": "https://images.example.com/1.jpg",
+          "thumbnail": "https://images.example.com/1_thumb.jpg",
+          "width": 1200,
+          "height": 800,
+          "provider": "flickr",
+          "filetype": "jpg"
         },
         {
           "title": "Green Cat",
@@ -189,11 +230,18 @@ mod tests {
         let dir = fixtures_root().join(NAME);
 
         let mut basic = EngineResults::new();
-        basic.add(image(
-            "https://example.com/photos/1",
-            "Blue Cat",
-            "https://images.example.com/1.jpg",
-        ));
+        basic.add(Result_::Image(Image {
+            url: "https://example.com/photos/1".to_string(),
+            normalized_url: "https://example.com/photos/1".to_string(),
+            title: "Blue Cat".to_string(),
+            img_src: "https://images.example.com/1.jpg".to_string(),
+            thumbnail_src: "https://images.example.com/1_thumb.jpg".to_string(),
+            resolution: "1200x800".to_string(),
+            source: "flickr".to_string(),
+            img_format: "jpg".to_string(),
+            engine: NAME.to_string(),
+            ..Image::default()
+        }));
         basic.add(image(
             "https://example.com/photos/2",
             "Green Cat",

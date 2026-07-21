@@ -22,7 +22,8 @@ general:
   contact_url: false
   donation_url: false
   enable_metrics: true
-  # Prometheus scrape path label (empty = default /metrics handling)
+  # Empty disables /metrics and leaves /stats open. Non-empty = HTTP Basic
+  # password for /metrics, /stats, and /stats/errors (any username).
   open_metrics: ""
 
 # ---------------------------------------------------------------------------
@@ -54,7 +55,8 @@ search:
   # 0=none, 1=moderate, 2=strict
   safe_search: 0
   # Backend name, or "" to disable. Known: duckduckgo, google, brave, …
-  autocomplete: "duckduckgo"
+  # Prefer `brave` for rich suggestions (image + subtext).
+  autocomplete: "brave"
   autocomplete_min: 1
   favicon_resolver: "duckduckgo"
   # "" = all languages; or e.g. "en"

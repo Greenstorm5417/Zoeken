@@ -100,6 +100,12 @@ export type Config = {
 		hotkeys: string;
 		url_formatting: string;
 	};
+	hostnames?: {
+		replace: Record<string, string>;
+		remove: string[];
+		high_priority: string[];
+		low_priority: string[];
+	};
 };
 
 export type Preferences = {
@@ -154,10 +160,76 @@ export type SearchResult = {
 	source?: string;
 };
 
+export type InteractiveAnswer =
+	| {
+			type: "unit";
+			amount: number;
+			from: string;
+			to: string;
+			result: number;
+			dimension: string;
+	  }
+	| {
+			type: "currency";
+			amount: number;
+			from: string;
+			to: string;
+			result: number;
+			rate: number;
+	  }
+	| {
+			type: "calculator";
+			expression: string;
+			result: number;
+	  }
+	| {
+			type: "weather";
+			place: string;
+			description: string;
+			temp_c: string;
+			temp_f: string;
+			feels_c: string;
+			wind_kmph: string;
+			wind_dir: string;
+			humidity: string;
+	  }
+	| {
+			type: "self_info";
+			kind: string;
+			value: string;
+	  }
+	| {
+			type: "crypto";
+			mode: string;
+			algorithm: string;
+			input: string;
+	  }
+	| {
+			type: "translate";
+			source: string;
+			target_lang: string;
+			translated: string;
+	  }
+	| {
+			type: "dictionary";
+			term: string;
+			definitions: string[];
+	  }
+	| {
+			type: "wikipedia";
+			title: string;
+			extract: string;
+			description?: string;
+			img_src?: string;
+			url?: string;
+	  };
+
 export type SearchAnswer = {
 	answer: string;
 	url?: string;
 	engine?: string;
+	template?: string;
+	interactive?: InteractiveAnswer;
 };
 
 export type InfoboxUrl = {
@@ -171,7 +243,11 @@ export type Infobox = {
 	content?: string;
 	img_src?: string | null;
 	urls?: InfoboxUrl[];
-	attributes?: Array<{ label: string; value?: string }>;
+	attributes?: Array<{
+		label: string;
+		value?: string;
+		image?: { src: string; alt?: string } | null;
+	}>;
 	related_topics?: string[];
 	engine?: string;
 };
@@ -205,9 +281,26 @@ export function search(params: SearchParams) {
 	});
 }
 
+export type Suggestion = {
+	text: string;
+	subtext?: string;
+	image?: string;
+};
+
+/** Query autocomplete (`GET /autocompleter`). XHR returns rich objects. */
 export function autocomplete(q: string) {
 	const qs = new URLSearchParams({ q });
-	return getJson<[string, string[]]>(`/autocompleter?${qs}`);
+	return getJson<Suggestion[]>(`/autocompleter?${qs}`, {
+		headers: { "X-Requested-With": "XMLHttpRequest" },
+	});
+}
+
+export type BangInfo = { shortcut: string; url: string };
+
+/** Searchable external bangs (`GET /bangs?q=`). Empty `q` returns []. */
+export function bangs(q: string, limit = 40) {
+	const qs = new URLSearchParams({ q, limit: String(limit) });
+	return getJson<BangInfo[]>(`/bangs?${qs}`);
 }
 
 export function config() {
@@ -248,4 +341,47 @@ export async function clearCookies() {
 		credentials: "same-origin",
 	});
 	if (!response.ok) throw new ApiError(response.status, await response.text());
+}
+
+export type EngineTiming = {
+	engine: string;
+	total_count: number;
+	total_sum_seconds: number;
+	total_avg_seconds: number;
+	http_count: number;
+	http_sum_seconds: number;
+	http_avg_seconds: number;
+};
+
+export type PluginStats = {
+	id: string;
+	hook_failures: number;
+	load_failures: number;
+	init_failures: number;
+	timeouts: number;
+	dropped_results: number;
+	appended_results: number;
+};
+
+export type StatsResponse = {
+	engines: EngineTiming[];
+	plugins?: PluginStats[];
+};
+
+export type EngineErrors = {
+	engine: string;
+	errors: Record<string, number>;
+	total: number;
+};
+
+export type ErrorStatsResponse = {
+	engines: EngineErrors[];
+};
+
+export function stats() {
+	return getJson<StatsResponse>("/stats");
+}
+
+export function statsErrors() {
+	return getJson<ErrorStatsResponse>("/stats/errors");
 }

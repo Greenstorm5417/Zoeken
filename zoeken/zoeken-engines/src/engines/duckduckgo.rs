@@ -97,6 +97,26 @@ impl Engine for DuckDuckGo {
         p.method = HttpMethod::Post;
         p.url = Some(DDG_URL.to_string());
 
+        // Browser-like order matters for DDG's bot checks (UA comes from the
+        // emulated client defaults; these trail it). See SearXNG #4824.
+        p.headers.insert(
+            "Accept".to_string(),
+            "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8".to_string(),
+        );
+        if !q.locale.is_empty() && q.locale != "all" {
+            let loc = &q.locale;
+            p.headers.insert(
+                "Accept-Language".to_string(),
+                format!("{loc},{loc}-{};q=0.7", loc.to_uppercase()),
+            );
+        }
+        p.headers.insert(
+            "Content-Type".to_string(),
+            "application/x-www-form-urlencoded".to_string(),
+        );
+        // Final SearXNG referer is the form URL (Referrer-Policy: origin on
+        // earlier hops; subsequent POSTs use the full html endpoint).
+        p.headers.insert("Referer".to_string(), DDG_URL.to_string());
         p.headers
             .insert("Sec-Fetch-Dest".to_string(), "document".to_string());
         p.headers
@@ -105,19 +125,8 @@ impl Engine for DuckDuckGo {
             .insert("Sec-Fetch-Site".to_string(), "same-origin".to_string());
         p.headers
             .insert("Sec-Fetch-User".to_string(), "?1".to_string());
-        p.headers.insert(
-            "Content-Type".to_string(),
-            "application/x-www-form-urlencoded".to_string(),
-        );
-        p.headers.insert("Referer".to_string(), DDG_URL.to_string());
 
-        if !q.locale.is_empty() && q.locale != "all" {
-            let loc = &q.locale;
-            p.headers
-                .entry("Accept-Language".to_string())
-                .or_insert_with(|| format!("{loc},{loc}-{};q=0.7", loc.to_uppercase()));
-        }
-
+        // Form field order: q, b / next-page fields, then kl/df.
         p.data.insert("q".to_string(), query);
 
         if p.pageno <= 1 {
@@ -208,6 +217,7 @@ impl Engine for DuckDuckGo {
                     url,
                     engine: NAME.to_string(),
                     template: Template::Answer,
+                    ..Answer::default()
                 }));
             }
         }
@@ -262,12 +272,16 @@ mod tests {
         p.method = HttpMethod::Post;
         p.url = Some(DDG_URL.to_string());
         for (k, v) in [
+            (
+                "Accept",
+                "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            ),
+            ("Content-Type", "application/x-www-form-urlencoded"),
+            ("Referer", DDG_URL),
             ("Sec-Fetch-Dest", "document"),
             ("Sec-Fetch-Mode", "navigate"),
             ("Sec-Fetch-Site", "same-origin"),
             ("Sec-Fetch-User", "?1"),
-            ("Content-Type", "application/x-www-form-urlencoded"),
-            ("Referer", DDG_URL),
         ] {
             p.headers.insert(k.to_string(), v.to_string());
         }
@@ -357,6 +371,7 @@ mod tests {
             url: Some("https://en.wikipedia.org/wiki/Rust_(programming_language)".to_string()),
             engine: NAME.to_string(),
             template: Template::Answer,
+            ..Answer::default()
         }));
         Fixture::capture(
             NAME,

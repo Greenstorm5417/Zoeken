@@ -51,8 +51,17 @@ return {
     if query.pageno > 1 then return nil end
     local expr = (query.query or ""):match("^%s*(.-)%s*$")
     if not looks_like_expression(expr) then return nil end
-    local value = ctx.utils.eval(normalize(expr, query.locale))
+    local normalized = normalize(expr, query.locale)
+    local value = ctx.utils.eval(normalized)
     if value == nil then return nil end
-    return { answer = format_number(value), engine = "calculator" }
+    return {
+      answer = format_number(value),
+      engine = "calculator",
+      interactive = {
+        type = "calculator",
+        expression = normalized,
+        result = value,
+      },
+    }
   end,
 }

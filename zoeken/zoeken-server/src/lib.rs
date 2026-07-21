@@ -29,15 +29,16 @@ use std::net::SocketAddr;
 use url::form_urlencoded;
 use zoeken_engine_core::SuspendConfig;
 use zoeken_engines::{
-    AppleAppStore, Arxiv, Bandcamp, Bing, Brave, Core, Crates, Crossref, Currency, Dailymotion,
-    Dictionary, DockerHub, Dogpile, DogpileConfig, DuckDuckGo, Elasticsearch, ElasticsearchConfig,
-    GenericEngineConfig, GenericHtmlConfig, GenericHtmlEngine, GenericJsonConfig,
-    GenericJsonEngine, Genius, Github, GithubCode, Gitlab, Google, Hackernews, Imdb, Invidious,
-    Lemmy, Marginalia, MarginaliaConfig, Mastodon, Meilisearch, MeilisearchConfig, Mojeek, NineGag,
-    Nyaa, Openstreetmap, Openverse, Peertube, Photon, Piped, Piratebay, Pypi, Qwant, Reddit,
-    SemanticScholar, SensCritique, SepiaSearch, SolidTorrents, Soundcloud, Sqlite, SqliteConfig,
-    Stackexchange, Startpage, Swisscows, SwisscowsConfig, Tootfinder, Translate, Unsplash, Vimeo,
-    Weather, Wikibooks, Wikidata, Wikipedia, Yacy, YacyConfig, builtin_generic_config,
+    AppleAppStore, Arxiv, Bandcamp, Bing, BingImages, Brave, Core, Crates, Crossref, Currency,
+    Dailymotion, Dictionary, DockerHub, Dogpile, DogpileConfig, DuckDuckGo, Elasticsearch,
+    ElasticsearchConfig, GenericEngineConfig, GenericHtmlConfig, GenericHtmlEngine,
+    GenericJsonConfig, GenericJsonEngine, Genius, Github, GithubCode, Gitlab, Google, Hackernews,
+    Imdb, Invidious, Lemmy, Marginalia, MarginaliaConfig, Mastodon, Meilisearch, MeilisearchConfig,
+    Mojeek, NineGag, Nyaa, Openstreetmap, Openverse, Peertube, Photon, Piped, Piratebay, Pypi,
+    Qwant, Reddit, SemanticScholar, SensCritique, SepiaSearch, SolidTorrents, Soundcloud, Sqlite,
+    SqliteConfig, Stackexchange, Startpage, Swisscows, SwisscowsConfig, Tootfinder, Translate,
+    Unsplash, Vimeo, Weather, Wikibooks, Wikidata, Wikipedia, Yacy, YacyConfig,
+    builtin_generic_config,
 };
 use zoeken_network::{NetworkError, NetworkManager};
 use zoeken_plugins::{PluginCtx, PluginGating};
@@ -102,6 +103,7 @@ fn default_engines() -> Vec<RegisteredEngine> {
         "wikidata",
         "openverse",
         "unsplash",
+        "bing_images",
         "peertube",
         "dailymotion",
         "sepiasearch",
@@ -151,6 +153,7 @@ fn default_engines() -> Vec<RegisteredEngine> {
         Arc::new(Bandcamp::new()),
         Arc::new(Soundcloud::new()),
         Arc::new(Openverse::new()),
+        Arc::new(BingImages::new()),
         Arc::new(SepiaSearch::new()),
         Arc::new(Openstreetmap::new()),
         Arc::new(Peertube::new()),
@@ -447,6 +450,7 @@ fn engine_from_settings(cfg: &zoeken_settings::EngineSettings) -> Option<Registe
             "duckduckgo" => Arc::new(DuckDuckGo::new()),
             "google" => Arc::new(Google::new()),
             "bing" => Arc::new(Bing::new()),
+            "bing_images" | "bing images" => Arc::new(BingImages::new()),
             "brave" => Arc::new(Brave::new()),
             "startpage" => Arc::new(Startpage::new()),
             "mojeek" => Arc::new(Mojeek::new()),
@@ -925,6 +929,7 @@ pub fn app(state: AppState) -> Router {
         .route("/rss.xsl", get(frontend::rss_xsl).post(frontend::rss_xsl))
         .route("/logo/{resolution}", get(frontend::logo))
         .route("/config", get(info::config))
+        .route("/bangs", get(info::bangs))
         .route("/healthz", get(info::healthz))
         .route("/readyz", get(readiness::readyz))
         .route("/stats", get(info::stats))
@@ -932,6 +937,7 @@ pub fn app(state: AppState) -> Router {
         .route("/metrics", get(info::metrics))
         .route("/opensearch.xml", get(info::opensearch))
         .route("/robots.txt", get(info::robots))
+        .route("/sitemap.xml", get(info::sitemap))
         .route("/manifest.json", get(info::manifest))
         .route("/favicon.ico", get(info::favicon))
         .route("/engine_descriptions.json", get(info::engine_descriptions))
@@ -997,7 +1003,7 @@ async fn run_search(
     }
 
     if matches!(format, serialize::OutputFormat::Html) {
-        return frontend_index_response(state);
+        return frontend_index_response(state, headers);
     }
 
     let pref_cookie = preferences::read_pref_cookie(headers);
@@ -1054,7 +1060,7 @@ async fn run_search(
     // JSON (Req 14.2), CSV (Req 14.3), and RSS (Req 14.4) are served. The match
     // keeps the format → serializer wiring explicit.
     match format {
-        serialize::OutputFormat::Html => frontend_index_response(state),
+        serialize::OutputFormat::Html => frontend_index_response(state, headers),
         serialize::OutputFormat::Json => {
             let body = serialize::format_json_for_query_with_proxies(
                 &query.query,
@@ -1169,19 +1175,28 @@ fn split_csv_set(value: &str) -> HashSet<String> {
         .collect()
 }
 
-pub(crate) fn frontend_index_response(state: &AppState) -> Response {
+pub(crate) fn frontend_index_response(state: &AppState, headers: &HeaderMap) -> Response {
     match state.assets.get(INDEX_HTML) {
-        Some(bytes) => (
-            [(header::CONTENT_TYPE, "text/html; charset=utf-8")],
-            bytes.into_owned(),
-        )
-            .into_response(),
+        Some(bytes) => {
+            let html = String::from_utf8_lossy(&bytes);
+            let origin = configured_or_request_origin(state, headers).unwrap_or_default();
+            let body = html.replace("__ORIGIN__", &origin);
+            ([(header::CONTENT_TYPE, "text/html; charset=utf-8")], body).into_response()
+        }
         None => (
             StatusCode::INTERNAL_SERVER_ERROR,
             "frontend assets missing: index.html",
         )
             .into_response(),
     }
+}
+
+fn configured_or_request_origin(state: &AppState, headers: &HeaderMap) -> Option<String> {
+    let base = match state.settings.server.base_url.as_ref() {
+        Some(zoeken_settings::BoolOrString::Str(url)) if !url.is_empty() => Some(url.as_str()),
+        _ => None,
+    };
+    crate::middleware::instance_origin(base, state.deployment.hsts, headers)
 }
 
 pub(crate) fn parse_pairs(raw: &str) -> Vec<(String, String)> {
@@ -1249,6 +1264,7 @@ mod tests {
                 "wikipedia",
                 "wikidata",
                 "openverse",
+                "bing_images",
                 "sepiasearch",
                 "openstreetmap",
                 "peertube",

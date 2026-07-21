@@ -532,7 +532,7 @@
       "network_required": false,
       "paging": true,
       "processor_type": "online",
-      "rust_module": "generic",
+      "rust_module": "bing_images",
       "safe_search": true,
       "status": "ported",
       "time_range": true,

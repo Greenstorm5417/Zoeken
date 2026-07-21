@@ -8,7 +8,7 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "crates" / "zoeken-data" / "data" / "tracker_patterns.json"
+OUT = ROOT / "zoeken" / "zoeken-data" / "data" / "tracker_patterns.json"
 URLS = [
     "https://rules1.clearurls.xyz/data.minify.json",
     "https://rules2.clearurls.xyz/data.minify.json",

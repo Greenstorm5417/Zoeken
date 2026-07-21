@@ -6,7 +6,9 @@ use zoeken_engine_core::{
     About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod,
     LocaleTranslate, Processor, RequestParams, SearchQueryView,
 };
-use zoeken_results::{Infobox, InfoboxUrl, MainResult, Result_};
+use zoeken_results::{
+    Answer, Infobox, InfoboxAttribute, InfoboxUrl, InteractiveAnswer, MainResult, Result_,
+};
 
 use super::util::encode_path;
 
@@ -197,7 +199,7 @@ impl Engine for Wikipedia {
                 url: wikipedia_link.clone(),
                 normalized_url: wikipedia_link.clone(),
                 title: title.clone(),
-                content: description,
+                content: description.clone(),
                 engine: NAME.to_string(),
                 ..MainResult::default()
             }));
@@ -214,6 +216,31 @@ impl Engine for Wikipedia {
                 .and_then(|t| t.get("source"))
                 .and_then(|s| s.as_str())
                 .map(str::to_string);
+            let mut attributes = Vec::new();
+            if !description.is_empty() {
+                attributes.push(InfoboxAttribute {
+                    label: "Description".to_string(),
+                    value: description.clone(),
+                    image: None,
+                });
+            }
+            res.add(Result_::Answer(Answer {
+                answer: if extract.is_empty() {
+                    title.clone()
+                } else {
+                    format!("{title}: {extract}")
+                },
+                url: Some(wikipedia_link.clone()),
+                engine: NAME.to_string(),
+                interactive: Some(InteractiveAnswer::Wikipedia {
+                    title: title.clone(),
+                    extract: extract.clone(),
+                    description: description.clone(),
+                    img_src: img_src.clone().unwrap_or_default(),
+                    url: wikipedia_link.clone(),
+                }),
+                ..Answer::default()
+            }));
             res.add(Result_::Infobox(Infobox {
                 infobox: title,
                 id: Some(wikipedia_link.clone()),
@@ -223,7 +250,7 @@ impl Engine for Wikipedia {
                     title: "Wikipedia".to_string(),
                     url: wikipedia_link,
                 }],
-                attributes: Vec::new(),
+                attributes,
                 related_topics: Vec::new(),
                 engine: NAME.to_string(),
             }));
@@ -297,6 +324,20 @@ mod tests {
         let dir = fixtures_root().join(NAME);
 
         let mut infobox = EngineResults::new();
+        infobox.add(Result_::Answer(Answer {
+            answer: "Rust (programming language): Rust is a multi-paradigm, general-purpose programming language.".to_string(),
+            url: Some("https://en.wikipedia.org/wiki/Rust_(programming_language)".to_string()),
+            engine: NAME.to_string(),
+            interactive: Some(InteractiveAnswer::Wikipedia {
+                title: "Rust (programming language)".to_string(),
+                extract: "Rust is a multi-paradigm, general-purpose programming language."
+                    .to_string(),
+                description: "General-purpose programming language".to_string(),
+                img_src: "https://upload.wikimedia.org/rust.png".to_string(),
+                url: "https://en.wikipedia.org/wiki/Rust_(programming_language)".to_string(),
+            }),
+            ..Answer::default()
+        }));
         infobox.add(Result_::Infobox(Infobox {
             infobox: "Rust (programming language)".to_string(),
             id: Some("https://en.wikipedia.org/wiki/Rust_(programming_language)".to_string()),
@@ -306,7 +347,11 @@ mod tests {
                 title: "Wikipedia".to_string(),
                 url: "https://en.wikipedia.org/wiki/Rust_(programming_language)".to_string(),
             }],
-            attributes: Vec::new(),
+            attributes: vec![InfoboxAttribute {
+                label: "Description".to_string(),
+                value: "General-purpose programming language".to_string(),
+                image: None,
+            }],
             related_topics: Vec::new(),
             engine: NAME.to_string(),
         }));

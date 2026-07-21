@@ -5,7 +5,7 @@ use std::time::Duration;
 
 use zoeken_autocomplete::{
     AutocompleteBackend, AutocompleteService, BackendError, StaticBackend, SuggestFuture,
-    parse_duckduckgo_suggestions,
+    Suggestion, parse_duckduckgo_suggestions, suggestions_from_texts,
 };
 
 /// A backend that always fails.
@@ -29,7 +29,7 @@ impl AutocompleteBackend for SlowBackend {
     fn suggest<'a>(&'a self, _query: &'a str, _locale: &'a str) -> SuggestFuture<'a> {
         Box::pin(async {
             tokio::time::sleep(Duration::from_secs(60)).await;
-            Ok(vec!["too-late".to_string()])
+            Ok(vec![Suggestion::text("too-late")])
         })
     }
 }
@@ -47,7 +47,7 @@ async fn configured_backend_returns_fixed_suggestions() {
 
     let suggestions = service.suggest("rus", "en-US").await;
 
-    assert_eq!(suggestions, fixed);
+    assert_eq!(suggestions, suggestions_from_texts(fixed));
     assert!(service.is_enabled());
     assert_eq!(service.backend_name(), Some("fixture"));
 }

@@ -93,7 +93,7 @@ pub fn aggregate(
 
         match outcome.status {
             EngineRunStatus::Completed(results) => {
-                builder.ingest(&outcome.engine, results);
+                builder.ingest(&outcome.engine, results, weights);
             }
             EngineRunStatus::Failed(error) => {
                 builder
@@ -118,8 +118,8 @@ struct ContainerBuilder {
     by_key: HashMap<String, usize>,
     answers: Vec<Answer>,
     seen_answers: std::collections::HashSet<String>,
-    suggestions: Vec<Suggestion>,
-    seen_suggestions: std::collections::HashSet<String>,
+    /// Case-insensitive key → (display suggestion, engine-weight sum, hit count).
+    suggestion_rank: HashMap<String, (Suggestion, f64, usize)>,
     corrections: Vec<Correction>,
     seen_corrections: std::collections::HashSet<String>,
     infoboxes: Vec<Infobox>,
@@ -129,7 +129,7 @@ struct ContainerBuilder {
 }
 
 impl ContainerBuilder {
-    fn ingest(&mut self, engine: &str, results: EngineResults) {
+    fn ingest(&mut self, engine: &str, results: EngineResults, weights: &EngineWeights) {
         let EngineResults {
             results,
             answers,
@@ -154,13 +154,22 @@ impl ContainerBuilder {
                 self.answers.push(answer);
             }
         }
+        let engine_weight = weights.weight_of(engine);
         for mut suggestion in suggestions {
             if suggestion.engine.is_empty() {
                 suggestion.engine = engine.to_string();
             }
-            if self.seen_suggestions.insert(suggestion.suggestion.clone()) {
-                self.suggestions.push(suggestion);
+            let key = suggestion.suggestion.trim().to_ascii_lowercase();
+            if key.is_empty() {
+                continue;
             }
+            self.suggestion_rank
+                .entry(key)
+                .and_modify(|(_, weight_sum, count)| {
+                    *weight_sum += engine_weight;
+                    *count += 1;
+                })
+                .or_insert((suggestion, engine_weight, 1));
         }
         for mut correction in corrections {
             if correction.engine.is_empty() {
@@ -241,11 +250,28 @@ impl ContainerBuilder {
                 .unwrap_or(std::cmp::Ordering::Equal)
         });
 
+        // Frequency × engine-weight sum; case-insensitive dedupe already done in ingest.
+        let mut ranked: Vec<(Suggestion, f64, usize)> =
+            self.suggestion_rank.into_values().collect();
+        ranked.sort_by(|(a, aw, ac), (b, bw, bc)| {
+            let score_a = aw * (*ac as f64);
+            let score_b = bw * (*bc as f64);
+            score_b
+                .partial_cmp(&score_a)
+                .unwrap_or(std::cmp::Ordering::Equal)
+                .then_with(|| {
+                    a.suggestion
+                        .to_ascii_lowercase()
+                        .cmp(&b.suggestion.to_ascii_lowercase())
+                })
+        });
+        let suggestions: Vec<Suggestion> = ranked.into_iter().map(|(s, _, _)| s).collect();
+
         let number_of_results = results.len();
         ResultContainer {
             results,
             answers: self.answers,
-            suggestions: self.suggestions,
+            suggestions,
             corrections: self.corrections,
             infoboxes: self.infoboxes,
             unresponsive_engines: self.unresponsive_engines,
@@ -859,7 +885,7 @@ mod tests {
         }));
         let mut b = EngineResults::new();
         b.add(Result_::Suggestion(Suggestion {
-            suggestion: "same".to_string(),
+            suggestion: "Same".to_string(),
             ..Suggestion::default()
         }));
 
@@ -869,6 +895,47 @@ mod tests {
             &NoopRecorder,
         );
         assert_eq!(container.suggestions.len(), 1);
+    }
+
+    #[test]
+    fn ranks_suggestions_by_frequency_and_weight() {
+        let mut a = EngineResults::new();
+        a.add(Result_::Suggestion(Suggestion {
+            suggestion: "rare".to_string(),
+            ..Suggestion::default()
+        }));
+        a.add(Result_::Suggestion(Suggestion {
+            suggestion: "popular".to_string(),
+            ..Suggestion::default()
+        }));
+        let mut b = EngineResults::new();
+        b.add(Result_::Suggestion(Suggestion {
+            suggestion: "popular".to_string(),
+            ..Suggestion::default()
+        }));
+        let mut c = EngineResults::new();
+        c.add(Result_::Suggestion(Suggestion {
+            suggestion: "heavy".to_string(),
+            ..Suggestion::default()
+        }));
+
+        let container = aggregate(
+            report(vec![
+                completed("a", a),
+                completed("b", b),
+                completed("c", c),
+            ]),
+            &weights(&[("a", 1.0), ("b", 1.0), ("c", 5.0)]),
+            &NoopRecorder,
+        );
+
+        let texts: Vec<&str> = container
+            .suggestions
+            .iter()
+            .map(|s| s.suggestion.as_str())
+            .collect();
+        // heavy: 1×5=5, popular: 2×1=2, rare: 1×1=1
+        assert_eq!(texts, vec!["heavy", "popular", "rare"]);
     }
 
     #[test]

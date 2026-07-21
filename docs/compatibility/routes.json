@@ -38,6 +38,15 @@
       ]
     },
     {
+      "path": "/bangs",
+      "status": "rust-only",
+      "upstream_methods": [],
+      "rust_methods": [
+        "GET"
+      ],
+      "notes": "External bang discovery (`?q=` filter); SPA help panel"
+    },
+    {
       "notes": "implemented path; status/header/body parity needs route tests",
       "path": "/clear_cookies",
       "rust_methods": [
@@ -242,6 +251,15 @@
       ]
     },
     {
+      "path": "/sitemap.xml",
+      "status": "rust-only",
+      "upstream_methods": [],
+      "rust_methods": [
+        "GET"
+      ],
+      "notes": "SPA SEO sitemap; Zoeken-only"
+    },
+    {
       "notes": "implemented; schema parity needs golden tests",
       "path": "/stats",
       "rust_methods": [
@@ -265,9 +283,9 @@
     }
   ],
   "summary": {
+    "upstream_routes": 22,
+    "rust_routes": 25,
     "matching_paths": 22,
-    "missing": 0,
-    "rust_routes": 23,
-    "upstream_routes": 22
+    "missing": 0
   }
 }

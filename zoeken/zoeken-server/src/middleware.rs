@@ -396,6 +396,28 @@ pub fn self_origin(base_url: Option<&str>, scheme: Scheme, host: &str) -> String
     format!("{}://{}", scheme.as_str(), host)
 }
 
+/// Build the public origin for this request (configured `base_url`, else Host).
+#[must_use]
+pub fn instance_origin(base_url: Option<&str>, hsts: bool, headers: &HeaderMap) -> Option<String> {
+    let host = headers
+        .get(header::HOST)
+        .and_then(|value| value.to_str().ok())
+        .filter(|host| !host.is_empty());
+    let forwarded = headers
+        .get("x-forwarded-proto")
+        .and_then(|value| value.to_str().ok());
+    let fallback = if hsts { Scheme::Https } else { Scheme::Http };
+    let scheme = forwarded_scheme(true, forwarded, fallback);
+    match (base_url, host) {
+        (Some(base), _) if !base.is_empty() => {
+            let origin = self_origin(Some(base), scheme, host.unwrap_or("localhost"));
+            Some(origin)
+        }
+        (_, Some(host)) => Some(self_origin(None, scheme, host)),
+        _ => None,
+    }
+}
+
 /// Build a self-referential absolute URL from origin and path.
 #[must_use]
 pub fn absolute_url(base_url: Option<&str>, scheme: Scheme, host: &str, path: &str) -> String {
@@ -596,6 +618,24 @@ mod reverse_proxy_tests {
         assert_eq!(
             self_origin(Some("not a url"), Scheme::Http, "example.test"),
             "http://example.test"
+        );
+    }
+
+    #[test]
+    fn instance_origin_uses_host_when_base_url_missing() {
+        let mut headers = HeaderMap::new();
+        headers.insert(header::HOST, HeaderValue::from_static("zoeken.test"));
+        assert_eq!(
+            instance_origin(None, false, &headers).as_deref(),
+            Some("http://zoeken.test")
+        );
+        headers.insert(
+            HeaderName::from_static("x-forwarded-proto"),
+            HeaderValue::from_static("https"),
+        );
+        assert_eq!(
+            instance_origin(None, false, &headers).as_deref(),
+            Some("https://zoeken.test")
         );
     }
 

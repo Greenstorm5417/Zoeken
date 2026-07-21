@@ -133,7 +133,27 @@ impl Engine for Photon {
                 })
                 .unwrap_or_default();
 
-            let url = format!("https://openstreetmap.org/{osm_type}/{osm_id}");
+            let mut url = format!("https://openstreetmap.org/{osm_type}/{osm_id}");
+            // Photon GeoJSON is [lon, lat]; SPA map canvas reads mlat/mlon.
+            if let Some(coords) = feature
+                .pointer("/geometry/coordinates")
+                .and_then(|v| v.as_array())
+                && coords.len() >= 2
+            {
+                let lon = match &coords[0] {
+                    serde_json::Value::Number(n) => n.to_string(),
+                    serde_json::Value::String(s) => s.clone(),
+                    _ => String::new(),
+                };
+                let lat = match &coords[1] {
+                    serde_json::Value::Number(n) => n.to_string(),
+                    serde_json::Value::String(s) => s.clone(),
+                    _ => String::new(),
+                };
+                if !lat.is_empty() && !lon.is_empty() {
+                    url = format!("{url}?mlat={lat}&mlon={lon}");
+                }
+            }
 
             res.add(Result_::Main(MainResult {
                 url: url.clone(),
@@ -201,6 +221,7 @@ mod tests {
     const BASIC_JSON: &str = r#"{
       "features": [
         {
+          "geometry": {"type":"Point","coordinates":[11.5,48.1]},
           "properties": {
             "osm_type": "N",
             "osm_id": 123,
@@ -208,6 +229,7 @@ mod tests {
           }
         },
         {
+          "geometry": {"type":"Point","coordinates":[11.6,48.2]},
           "properties": {
             "osm_type": "W",
             "osm_id": 456,
@@ -231,11 +253,11 @@ mod tests {
 
         let mut basic = EngineResults::new();
         basic.add(main_result(
-            "https://openstreetmap.org/node/123",
+            "https://openstreetmap.org/node/123?mlat=48.1&mlon=11.5",
             "Cafe Central",
         ));
         basic.add(main_result(
-            "https://openstreetmap.org/way/456",
+            "https://openstreetmap.org/way/456?mlat=48.2&mlon=11.6",
             "Hauptstrasse",
         ));
         Fixture::capture(NAME, query("cafe"), response(200, BASIC_JSON), basic)

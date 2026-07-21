@@ -46,7 +46,7 @@ fn test_bundle() -> DataBundle {
         bangs: BangTrie::new(),
         currencies: CurrencyTable::default(),
         units: UnitTable::default(),
-        engine_traits: EngineTraitsMap { engines },
+        engine_traits: EngineTraitsMap::from_engines(engines),
         useragents: UserAgentPool::default(),
         locales: LocaleMap::default(),
         ..DataBundle::default()

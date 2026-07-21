@@ -1,0 +1,863 @@
+{
+	"units": [
+		{
+			"id": "mm",
+			"name": "millimeter",
+			"dimension": "length",
+			"si_unit": "m",
+			"to_si": 0.001,
+			"abbreviations": [
+				"mm",
+				"millimeter",
+				"millimeters",
+				"millimetre",
+				"millimetres"
+			]
+		},
+		{
+			"id": "cm",
+			"name": "centimeter",
+			"dimension": "length",
+			"si_unit": "m",
+			"to_si": 0.01,
+			"abbreviations": [
+				"cm",
+				"centimeter",
+				"centimeters",
+				"centimetre",
+				"centimetres"
+			]
+		},
+		{
+			"id": "m",
+			"name": "meter",
+			"dimension": "length",
+			"si_unit": "m",
+			"to_si": 1,
+			"abbreviations": ["m", "meter", "meters", "metre", "metres"]
+		},
+		{
+			"id": "km",
+			"name": "kilometer",
+			"dimension": "length",
+			"si_unit": "m",
+			"to_si": 1000,
+			"abbreviations": [
+				"km",
+				"kilometer",
+				"kilometers",
+				"kilometre",
+				"kilometres"
+			]
+		},
+		{
+			"id": "in",
+			"name": "inch",
+			"dimension": "length",
+			"si_unit": "m",
+			"to_si": 0.0254,
+			"abbreviations": ["in", "inch", "inches"]
+		},
+		{
+			"id": "ft",
+			"name": "foot",
+			"dimension": "length",
+			"si_unit": "m",
+			"to_si": 0.3048,
+			"abbreviations": ["ft", "foot", "feet"]
+		},
+		{
+			"id": "yd",
+			"name": "yard",
+			"dimension": "length",
+			"si_unit": "m",
+			"to_si": 0.9144,
+			"abbreviations": ["yd", "yard", "yards"]
+		},
+		{
+			"id": "mi",
+			"name": "mile",
+			"dimension": "length",
+			"si_unit": "m",
+			"to_si": 1609.344,
+			"abbreviations": ["mi", "mile", "miles"]
+		},
+		{
+			"id": "nmi",
+			"name": "nautical mile",
+			"dimension": "length",
+			"si_unit": "m",
+			"to_si": 1852,
+			"abbreviations": [
+				"nmi",
+				"nautical mile",
+				"nautical miles",
+				"nautical-mile",
+				"nauticalmiles"
+			]
+		},
+
+		{
+			"id": "mg",
+			"name": "milligram",
+			"dimension": "mass",
+			"si_unit": "kg",
+			"to_si": 1e-6,
+			"abbreviations": ["mg", "milligram", "milligrams"]
+		},
+		{
+			"id": "g",
+			"name": "gram",
+			"dimension": "mass",
+			"si_unit": "kg",
+			"to_si": 0.001,
+			"abbreviations": ["g", "gram", "grams"]
+		},
+		{
+			"id": "kg",
+			"name": "kilogram",
+			"dimension": "mass",
+			"si_unit": "kg",
+			"to_si": 1,
+			"abbreviations": ["kg", "kilogram", "kilograms", "kilo", "kilos"]
+		},
+		{
+			"id": "t",
+			"name": "tonne",
+			"dimension": "mass",
+			"si_unit": "kg",
+			"to_si": 1000,
+			"abbreviations": ["t", "tonne", "tonnes", "metric ton", "metric tons"]
+		},
+		{
+			"id": "oz",
+			"name": "ounce",
+			"dimension": "mass",
+			"si_unit": "kg",
+			"to_si": 0.028349523125,
+			"abbreviations": ["oz", "ounce", "ounces"]
+		},
+		{
+			"id": "lb",
+			"name": "pound",
+			"dimension": "mass",
+			"si_unit": "kg",
+			"to_si": 0.45359237,
+			"abbreviations": ["lb", "lbs", "pound", "pounds"]
+		},
+		{
+			"id": "st",
+			"name": "stone",
+			"dimension": "mass",
+			"si_unit": "kg",
+			"to_si": 6.35029318,
+			"abbreviations": ["st", "stone", "stones"]
+		},
+		{
+			"id": "ton",
+			"name": "short ton",
+			"dimension": "mass",
+			"si_unit": "kg",
+			"to_si": 907.18474,
+			"abbreviations": ["ton", "tons", "short ton", "short tons", "us ton"]
+		},
+
+		{
+			"id": "°C",
+			"name": "Celsius",
+			"dimension": "temperature",
+			"si_unit": "K",
+			"to_si": 1,
+			"abbreviations": ["c", "°c", "celsius", "centigrade"]
+		},
+		{
+			"id": "°F",
+			"name": "Fahrenheit",
+			"dimension": "temperature",
+			"si_unit": "K",
+			"to_si": 1,
+			"abbreviations": ["f", "°f", "fahrenheit"]
+		},
+		{
+			"id": "K",
+			"name": "Kelvin",
+			"dimension": "temperature",
+			"si_unit": "K",
+			"to_si": 1,
+			"abbreviations": ["k", "kelvin", "kelvins"]
+		},
+
+		{
+			"id": "ml",
+			"name": "milliliter",
+			"dimension": "volume",
+			"si_unit": "m³",
+			"to_si": 1e-6,
+			"abbreviations": [
+				"ml",
+				"milliliter",
+				"milliliters",
+				"millilitre",
+				"millilitres",
+				"cc"
+			]
+		},
+		{
+			"id": "l",
+			"name": "liter",
+			"dimension": "volume",
+			"si_unit": "m³",
+			"to_si": 0.001,
+			"abbreviations": ["l", "liter", "liters", "litre", "litres"]
+		},
+		{
+			"id": "m³",
+			"name": "cubic meter",
+			"dimension": "volume",
+			"si_unit": "m³",
+			"to_si": 1,
+			"abbreviations": [
+				"m3",
+				"m³",
+				"cubic meter",
+				"cubic meters",
+				"cubic metre",
+				"cubic metres"
+			]
+		},
+		{
+			"id": "gal",
+			"name": "US gallon",
+			"dimension": "volume",
+			"si_unit": "m³",
+			"to_si": 0.003785411784,
+			"abbreviations": [
+				"gal",
+				"gallon",
+				"gallons",
+				"us gal",
+				"us gallon",
+				"us gallons"
+			]
+		},
+		{
+			"id": "ukgal",
+			"name": "imperial gallon",
+			"dimension": "volume",
+			"si_unit": "m³",
+			"to_si": 0.00454609,
+			"abbreviations": [
+				"ukgal",
+				"uk gal",
+				"imperial gallon",
+				"imperial gallons",
+				"imp gal",
+				"imperial gal"
+			]
+		},
+		{
+			"id": "qt",
+			"name": "quart",
+			"dimension": "volume",
+			"si_unit": "m³",
+			"to_si": 0.000946352946,
+			"abbreviations": ["qt", "quart", "quarts"]
+		},
+		{
+			"id": "pt",
+			"name": "pint",
+			"dimension": "volume",
+			"si_unit": "m³",
+			"to_si": 0.000473176473,
+			"abbreviations": ["pt", "pint", "pints"]
+		},
+		{
+			"id": "cup",
+			"name": "cup",
+			"dimension": "volume",
+			"si_unit": "m³",
+			"to_si": 0.0002365882365,
+			"abbreviations": ["cup", "cups"]
+		},
+		{
+			"id": "tbsp",
+			"name": "tablespoon",
+			"dimension": "volume",
+			"si_unit": "m³",
+			"to_si": 1.47867648e-5,
+			"abbreviations": ["tbsp", "tablespoon", "tablespoons", "tbs"]
+		},
+		{
+			"id": "tsp",
+			"name": "teaspoon",
+			"dimension": "volume",
+			"si_unit": "m³",
+			"to_si": 4.92892159e-6,
+			"abbreviations": ["tsp", "teaspoon", "teaspoons"]
+		},
+		{
+			"id": "floz",
+			"name": "fluid ounce",
+			"dimension": "volume",
+			"si_unit": "m³",
+			"to_si": 2.95735295625e-5,
+			"abbreviations": [
+				"floz",
+				"fl oz",
+				"fl-oz",
+				"fluid ounce",
+				"fluid ounces",
+				"oz"
+			]
+		},
+
+		{
+			"id": "m/s",
+			"name": "meters per second",
+			"dimension": "speed",
+			"si_unit": "m/s",
+			"to_si": 1,
+			"abbreviations": ["m/s", "mps", "meters per second", "metres per second"]
+		},
+		{
+			"id": "km/h",
+			"name": "kilometers per hour",
+			"dimension": "speed",
+			"si_unit": "m/s",
+			"to_si": 0.2777777777777778,
+			"abbreviations": [
+				"km/h",
+				"kmh",
+				"kph",
+				"kilometers per hour",
+				"kilometres per hour"
+			]
+		},
+		{
+			"id": "mph",
+			"name": "miles per hour",
+			"dimension": "speed",
+			"si_unit": "m/s",
+			"to_si": 0.44704,
+			"abbreviations": ["mph", "miles per hour"]
+		},
+		{
+			"id": "kn",
+			"name": "knot",
+			"dimension": "speed",
+			"si_unit": "m/s",
+			"to_si": 0.514444444,
+			"abbreviations": ["kn", "kt", "knot", "knots"]
+		},
+		{
+			"id": "ft/s",
+			"name": "feet per second",
+			"dimension": "speed",
+			"si_unit": "m/s",
+			"to_si": 0.3048,
+			"abbreviations": ["ft/s", "fps", "feet per second"]
+		},
+
+		{
+			"id": "bit",
+			"name": "bit",
+			"dimension": "data",
+			"si_unit": "B",
+			"to_si": 0.125,
+			"abbreviations": ["bit", "bits"]
+		},
+		{
+			"id": "B",
+			"name": "byte",
+			"dimension": "data",
+			"si_unit": "B",
+			"to_si": 1,
+			"abbreviations": ["b", "byte", "bytes"]
+		},
+		{
+			"id": "kB",
+			"name": "kilobyte",
+			"dimension": "data",
+			"si_unit": "B",
+			"to_si": 1000,
+			"abbreviations": ["kb", "kilobyte", "kilobytes"]
+		},
+		{
+			"id": "MB",
+			"name": "megabyte",
+			"dimension": "data",
+			"si_unit": "B",
+			"to_si": 1000000,
+			"abbreviations": ["mb", "megabyte", "megabytes"]
+		},
+		{
+			"id": "GB",
+			"name": "gigabyte",
+			"dimension": "data",
+			"si_unit": "B",
+			"to_si": 1000000000,
+			"abbreviations": ["gb", "gigabyte", "gigabytes"]
+		},
+		{
+			"id": "TB",
+			"name": "terabyte",
+			"dimension": "data",
+			"si_unit": "B",
+			"to_si": 1000000000000,
+			"abbreviations": ["tb", "terabyte", "terabytes"]
+		},
+		{
+			"id": "PB",
+			"name": "petabyte",
+			"dimension": "data",
+			"si_unit": "B",
+			"to_si": 1000000000000000,
+			"abbreviations": ["pb", "petabyte", "petabytes"]
+		},
+		{
+			"id": "KiB",
+			"name": "kibibyte",
+			"dimension": "data",
+			"si_unit": "B",
+			"to_si": 1024,
+			"abbreviations": ["kib", "kibibyte", "kibibytes"]
+		},
+		{
+			"id": "MiB",
+			"name": "mebibyte",
+			"dimension": "data",
+			"si_unit": "B",
+			"to_si": 1048576,
+			"abbreviations": ["mib", "mebibyte", "mebibytes"]
+		},
+		{
+			"id": "GiB",
+			"name": "gibibyte",
+			"dimension": "data",
+			"si_unit": "B",
+			"to_si": 1073741824,
+			"abbreviations": ["gib", "gibibyte", "gibibytes"]
+		},
+		{
+			"id": "TiB",
+			"name": "tebibyte",
+			"dimension": "data",
+			"si_unit": "B",
+			"to_si": 1099511627776,
+			"abbreviations": ["tib", "tebibyte", "tebibytes"]
+		},
+		{
+			"id": "PiB",
+			"name": "pebibyte",
+			"dimension": "data",
+			"si_unit": "B",
+			"to_si": 1125899906842624,
+			"abbreviations": ["pib", "pebibyte", "pebibytes"]
+		},
+
+		{
+			"id": "ms",
+			"name": "millisecond",
+			"dimension": "time",
+			"si_unit": "s",
+			"to_si": 0.001,
+			"abbreviations": ["ms", "millisecond", "milliseconds", "msec"]
+		},
+		{
+			"id": "s",
+			"name": "second",
+			"dimension": "time",
+			"si_unit": "s",
+			"to_si": 1,
+			"abbreviations": ["s", "sec", "secs", "second", "seconds"]
+		},
+		{
+			"id": "min",
+			"name": "minute",
+			"dimension": "time",
+			"si_unit": "s",
+			"to_si": 60,
+			"abbreviations": ["min", "mins", "minute", "minutes"]
+		},
+		{
+			"id": "h",
+			"name": "hour",
+			"dimension": "time",
+			"si_unit": "s",
+			"to_si": 3600,
+			"abbreviations": ["h", "hr", "hrs", "hour", "hours"]
+		},
+		{
+			"id": "days",
+			"name": "day",
+			"dimension": "time",
+			"si_unit": "s",
+			"to_si": 86400,
+			"abbreviations": ["day", "days", "d"]
+		},
+		{
+			"id": "weeks",
+			"name": "week",
+			"dimension": "time",
+			"si_unit": "s",
+			"to_si": 604800,
+			"abbreviations": ["week", "weeks", "wk", "wks"]
+		},
+
+		{
+			"id": "mm²",
+			"name": "square millimeter",
+			"dimension": "area",
+			"si_unit": "m²",
+			"to_si": 1e-6,
+			"abbreviations": [
+				"mm2",
+				"mm²",
+				"sqmm",
+				"square millimeter",
+				"square millimeters"
+			]
+		},
+		{
+			"id": "cm²",
+			"name": "square centimeter",
+			"dimension": "area",
+			"si_unit": "m²",
+			"to_si": 0.0001,
+			"abbreviations": [
+				"cm2",
+				"cm²",
+				"sqcm",
+				"square centimeter",
+				"square centimeters"
+			]
+		},
+		{
+			"id": "m²",
+			"name": "square meter",
+			"dimension": "area",
+			"si_unit": "m²",
+			"to_si": 1,
+			"abbreviations": [
+				"m2",
+				"m²",
+				"sqm",
+				"square meter",
+				"square meters",
+				"square metre",
+				"square metres"
+			]
+		},
+		{
+			"id": "km²",
+			"name": "square kilometer",
+			"dimension": "area",
+			"si_unit": "m²",
+			"to_si": 1000000,
+			"abbreviations": [
+				"km2",
+				"km²",
+				"sqkm",
+				"square kilometer",
+				"square kilometers"
+			]
+		},
+		{
+			"id": "in²",
+			"name": "square inch",
+			"dimension": "area",
+			"si_unit": "m²",
+			"to_si": 0.00064516,
+			"abbreviations": ["in2", "in²", "sqin", "square inch", "square inches"]
+		},
+		{
+			"id": "ft²",
+			"name": "square foot",
+			"dimension": "area",
+			"si_unit": "m²",
+			"to_si": 0.09290304,
+			"abbreviations": ["ft2", "ft²", "sqft", "square foot", "square feet"]
+		},
+		{
+			"id": "yd²",
+			"name": "square yard",
+			"dimension": "area",
+			"si_unit": "m²",
+			"to_si": 0.83612736,
+			"abbreviations": ["yd2", "yd²", "sqyd", "square yard", "square yards"]
+		},
+		{
+			"id": "acres",
+			"name": "acre",
+			"dimension": "area",
+			"si_unit": "m²",
+			"to_si": 4046.8564224,
+			"abbreviations": ["acre", "acres"]
+		},
+		{
+			"id": "ha",
+			"name": "hectare",
+			"dimension": "area",
+			"si_unit": "m²",
+			"to_si": 10000,
+			"abbreviations": ["ha", "hectare", "hectares"]
+		},
+		{
+			"id": "mi²",
+			"name": "square mile",
+			"dimension": "area",
+			"si_unit": "m²",
+			"to_si": 2589988.110336,
+			"abbreviations": ["mi2", "mi²", "sqmi", "square mile", "square miles"]
+		},
+
+		{
+			"id": "Pa",
+			"name": "pascal",
+			"dimension": "pressure",
+			"si_unit": "Pa",
+			"to_si": 1,
+			"abbreviations": ["pa", "pascal", "pascals"]
+		},
+		{
+			"id": "kPa",
+			"name": "kilopascal",
+			"dimension": "pressure",
+			"si_unit": "Pa",
+			"to_si": 1000,
+			"abbreviations": ["kpa", "kilopascal", "kilopascals"]
+		},
+		{
+			"id": "bar",
+			"name": "bar",
+			"dimension": "pressure",
+			"si_unit": "Pa",
+			"to_si": 100000,
+			"abbreviations": ["bar", "bars"]
+		},
+		{
+			"id": "atm",
+			"name": "atmosphere",
+			"dimension": "pressure",
+			"si_unit": "Pa",
+			"to_si": 101325,
+			"abbreviations": ["atm", "atmosphere", "atmospheres"]
+		},
+		{
+			"id": "psi",
+			"name": "pound per square inch",
+			"dimension": "pressure",
+			"si_unit": "Pa",
+			"to_si": 6894.757293168,
+			"abbreviations": ["psi", "lbf/in2", "pounds per square inch"]
+		},
+		{
+			"id": "mmHg",
+			"name": "millimeter of mercury",
+			"dimension": "pressure",
+			"si_unit": "Pa",
+			"to_si": 133.322387415,
+			"abbreviations": [
+				"mmhg",
+				"torr",
+				"millimeter of mercury",
+				"millimetre of mercury"
+			]
+		},
+
+		{
+			"id": "J",
+			"name": "joule",
+			"dimension": "energy",
+			"si_unit": "J",
+			"to_si": 1,
+			"abbreviations": ["j", "joule", "joules"]
+		},
+		{
+			"id": "kJ",
+			"name": "kilojoule",
+			"dimension": "energy",
+			"si_unit": "J",
+			"to_si": 1000,
+			"abbreviations": ["kj", "kilojoule", "kilojoules"]
+		},
+		{
+			"id": "cal",
+			"name": "calorie",
+			"dimension": "energy",
+			"si_unit": "J",
+			"to_si": 4.184,
+			"abbreviations": ["cal", "calorie", "calories"]
+		},
+		{
+			"id": "kcal",
+			"name": "kilocalorie",
+			"dimension": "energy",
+			"si_unit": "J",
+			"to_si": 4184,
+			"abbreviations": [
+				"kcal",
+				"kilocalorie",
+				"kilocalories",
+				"Cal",
+				"Calories"
+			]
+		},
+		{
+			"id": "Wh",
+			"name": "watt-hour",
+			"dimension": "energy",
+			"si_unit": "J",
+			"to_si": 3600,
+			"abbreviations": [
+				"wh",
+				"watt-hour",
+				"watt-hours",
+				"watt hour",
+				"watt hours"
+			]
+		},
+		{
+			"id": "kWh",
+			"name": "kilowatt-hour",
+			"dimension": "energy",
+			"si_unit": "J",
+			"to_si": 3600000,
+			"abbreviations": [
+				"kwh",
+				"kilowatt-hour",
+				"kilowatt-hours",
+				"kilowatt hour",
+				"kilowatt hours"
+			]
+		},
+		{
+			"id": "BTU",
+			"name": "British thermal unit",
+			"dimension": "energy",
+			"si_unit": "J",
+			"to_si": 1055.05585262,
+			"abbreviations": [
+				"btu",
+				"btus",
+				"british thermal unit",
+				"british thermal units"
+			]
+		},
+
+		{
+			"id": "W",
+			"name": "watt",
+			"dimension": "power",
+			"si_unit": "W",
+			"to_si": 1,
+			"abbreviations": ["w", "watt", "watts"]
+		},
+		{
+			"id": "kW",
+			"name": "kilowatt",
+			"dimension": "power",
+			"si_unit": "W",
+			"to_si": 1000,
+			"abbreviations": ["kw", "kilowatt", "kilowatts"]
+		},
+		{
+			"id": "MW",
+			"name": "megawatt",
+			"dimension": "power",
+			"si_unit": "W",
+			"to_si": 1000000,
+			"abbreviations": ["mw", "megawatt", "megawatts"]
+		},
+		{
+			"id": "hp",
+			"name": "horsepower",
+			"dimension": "power",
+			"si_unit": "W",
+			"to_si": 745.6998715822702,
+			"abbreviations": ["hp", "horsepower", "bhp"]
+		},
+
+		{
+			"id": "N",
+			"name": "newton",
+			"dimension": "force",
+			"si_unit": "N",
+			"to_si": 1,
+			"abbreviations": ["n", "newton", "newtons"]
+		},
+		{
+			"id": "kN",
+			"name": "kilonewton",
+			"dimension": "force",
+			"si_unit": "N",
+			"to_si": 1000,
+			"abbreviations": ["kilonewton", "kilonewtons"]
+		},
+		{
+			"id": "lbf",
+			"name": "pound-force",
+			"dimension": "force",
+			"si_unit": "N",
+			"to_si": 4.4482216152605,
+			"abbreviations": ["lbf", "pound-force", "pounds-force", "lb force"]
+		},
+		{
+			"id": "kgf",
+			"name": "kilogram-force",
+			"dimension": "force",
+			"si_unit": "N",
+			"to_si": 9.80665,
+			"abbreviations": ["kgf", "kilogram-force", "kilopond", "kp"]
+		},
+
+		{
+			"id": "rad",
+			"name": "radian",
+			"dimension": "angle",
+			"si_unit": "rad",
+			"to_si": 1,
+			"abbreviations": ["rad", "radian", "radians"]
+		},
+		{
+			"id": "deg",
+			"name": "degree",
+			"dimension": "angle",
+			"si_unit": "rad",
+			"to_si": 0.017453292519943295,
+			"abbreviations": ["deg", "degree", "degrees", "°"]
+		},
+		{
+			"id": "grad",
+			"name": "gradian",
+			"dimension": "angle",
+			"si_unit": "rad",
+			"to_si": 0.015707963267948967,
+			"abbreviations": ["grad", "gradian", "gradians", "gon"]
+		},
+		{
+			"id": "arcmin",
+			"name": "arcminute",
+			"dimension": "angle",
+			"si_unit": "rad",
+			"to_si": 0.0002908882086657216,
+			"abbreviations": ["arcmin", "arcminute", "arcminutes"]
+		},
+		{
+			"id": "arcsec",
+			"name": "arcsecond",
+			"dimension": "angle",
+			"si_unit": "rad",
+			"to_si": 4.84813681109536e-6,
+			"abbreviations": ["arcsec", "arcsecond", "arcseconds"]
+		},
+		{
+			"id": "turn",
+			"name": "turn",
+			"dimension": "angle",
+			"si_unit": "rad",
+			"to_si": 6.283185307179586,
+			"abbreviations": ["turn", "turns", "rev", "revolution", "revolutions"]
+		}
+	]
+}

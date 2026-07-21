@@ -7,6 +7,7 @@ use zoeken_network::{DEFAULT_NETWORK, NetworkManager, NetworkRequest};
 
 use crate::{
     AutocompleteBackend, BackendError, SuggestFuture, encode_query, parse_opensearch_suggestions,
+    suggestions_from_texts,
 };
 
 async fn fetch_json(
@@ -72,7 +73,7 @@ macro_rules! simple_backend {
                     let value =
                         fetch_json(&self.network, &self.network_name, NetworkRequest::get(url))
                             .await?;
-                    Ok(($parse)(&value))
+                    Ok(suggestions_from_texts(($parse)(&value)))
                 })
             }
         }
@@ -163,7 +164,7 @@ impl AutocompleteBackend for BingBackend {
             let url = Self::build_url(query);
             let value =
                 fetch_json(&self.network, &self.network_name, NetworkRequest::get(url)).await?;
-            Ok(parse_bing_suggestions(&value))
+            Ok(suggestions_from_texts(parse_bing_suggestions(&value)))
         })
     }
 }
@@ -219,7 +220,7 @@ impl AutocompleteBackend for DbpediaBackend {
             let url = Self::build_url(query);
             let text =
                 fetch_text(&self.network, &self.network_name, NetworkRequest::get(url)).await?;
-            Ok(parse_dbpedia_labels(&text))
+            Ok(suggestions_from_texts(parse_dbpedia_labels(&text)))
         })
     }
 }
@@ -479,7 +480,7 @@ impl AutocompleteBackend for SogouBackend {
             let url = Self::build_url(query);
             let text =
                 fetch_text(&self.network, &self.network_name, NetworkRequest::get(url)).await?;
-            Ok(parse_sogou_suggestions_text(&text))
+            Ok(suggestions_from_texts(parse_sogou_suggestions_text(&text)))
         })
     }
 }

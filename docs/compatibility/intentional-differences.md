@@ -57,6 +57,12 @@ Deliberate compatibility gaps between Zoeken and SearXNG.
 - **Behavior**: `tracker_patterns.json` is a bundled ClearURLs provider snapshot
   (regenerate with `tools/fetch_tracker_patterns.py`). Runtime does not fetch ClearURLs
   on boot.
+- **Refresh**:
+  ```sh
+  uv run --no-project --python 3.13 tools/fetch_tracker_patterns.py
+  ```
+  Writes `zoeken/zoeken-data/data/tracker_patterns.json`. Rebuild so the binary
+  picks up the new snapshot (`zoeken-data` embed).
 - **Revisit when**: operators want live rule updates without rebuild.
 
 ## Frontend / static routes
@@ -75,12 +81,25 @@ Deliberate compatibility gaps between Zoeken and SearXNG.
 - **Behavior**: All 18 SearXNG `autocomplete.backends` names are registered.
   An unknown `settings.search.autocomplete` name disables autocomplete. DBpedia uses
   a light `<Label>` string extract instead of a full XML DOM.
+- **Rich suggestions**: The SPA (`X-Requested-With: XMLHttpRequest`) receives
+  objects `{ text, subtext?, image? }`. OpenSearch / non-XHR still gets
+  `[query, [string, ...]]`. Brave uses `?rich=true` and may populate `subtext` /
+  `image`; other backends fill `text` only. Suggestion thumbnails go through
+  `/image_proxy` when the image proxy is enabled.
+
+## DOI resolver preference
+
+- **Behavior**: `/config` exposes `doi_resolvers` / `default_doi_resolver`. The
+  resolver URL is applied instance-wide via plugin data at boot. There is no
+  per-user DOI preference cookie field (unlike SearXNG).
+- **Revisit when**: `oa_doi_rewrite` needs per-request resolver overrides.
 
 ## UI theme (SPA)
 
 - **Behavior**: `/config` still exposes `themes` / `default_theme`, and the prefs
-  cookie still stores `theme` for SearXNG cookie compatibility. The SPA follows
-  `prefers-color-scheme` only (no theme picker).
+  cookie still stores `theme` for SearXNG cookie compatibility. The SPA has its
+  own light/dark/system picker (`zoeken-client` theme helper) stored in
+  `localStorage`, independent of the SearXNG theme cookie.
 
 ## Zoeken-only engines
 
@@ -88,6 +107,15 @@ Deliberate compatibility gaps between Zoeken and SearXNG.
   distinct SearXNG engine module. It is tracked as `zoeken_only` in
   `engines.json` / `engines.md`, not as an accidental orphan.
 - **Revisit when**: upstream adds a matching module or the engine is retired.
+
+## Stats / metrics Basic auth
+
+- **Behavior**: `general.open_metrics` is the HTTP Basic password for `/metrics`,
+  `/stats`, and `/stats/errors`. Empty hides `/metrics` (404) and leaves `/stats`
+  open. The SPA `/stats` shell stays public and shows a configure-auth message on 401.
+- **Why**: one existing knob gates both operator endpoints without a second secret.
+- **Impact**: public instances should set `open_metrics`; browsers without Basic
+  credentials see the SPA message instead of live stats JSON.
 
 ## No CORS middleware
 

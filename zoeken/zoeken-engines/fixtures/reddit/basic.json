@@ -49,7 +49,9 @@
           "score": 0.0,
           "positions": [],
           "priority": "",
-          "template": "Default"
+          "template": "Default",
+          "thumbnail": "",
+          "iframe_src": ""
         }
       }
     ],

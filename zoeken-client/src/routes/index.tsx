@@ -26,6 +26,13 @@ function Home() {
 				</Link>
 
 				<SearchForm autoFocus />
+
+				<a
+					href="/opensearch.xml"
+					className="text-sm font-medium text-accent no-underline hover:underline"
+				>
+					Add Zoeken as a search engine
+				</a>
 			</div>
 		</main>
 	);
