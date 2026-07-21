@@ -4,6 +4,8 @@ use std::future::Future;
 use std::pin::Pin;
 
 use futures_util::StreamExt;
+use std::sync::Arc;
+use zoeken_network::{NetworkManager, NetworkRequest};
 
 use crate::cache::Favicon;
 
@@ -128,7 +130,12 @@ pub async fn get_following_safe_redirects(
 /// Fetches `https://{authority}/favicon.ico` (shortest network path).
 pub struct HttpFaviconResolver {
     provider: String,
-    client: wreq::Client,
+    transport: ResolverTransport,
+}
+
+enum ResolverTransport {
+    Direct(wreq::Client),
+    Coordinated(Arc<NetworkManager>),
 }
 
 impl std::fmt::Debug for HttpFaviconResolver {
@@ -156,7 +163,17 @@ impl HttpFaviconResolver {
             .expect("build favicon HTTP client");
         Self {
             provider: provider.to_string(),
-            client,
+            transport: ResolverTransport::Direct(client),
+        }
+    }
+
+    /// Build a production resolver whose every hop uses shared origin
+    /// coordination. Redirect targets are still SSRF-validated individually.
+    #[must_use]
+    pub fn for_provider_with_network(provider: &str, network: Arc<NetworkManager>) -> Self {
+        Self {
+            provider: provider.to_string(),
+            transport: ResolverTransport::Coordinated(network),
         }
     }
 
@@ -174,6 +191,56 @@ impl HttpFaviconResolver {
             "allesedv" => format!("https://f1.allesedv.com/32/{authority}"),
             _ => format!("https://{authority}/favicon.ico"),
         }
+    }
+
+    async fn get_following_safe_redirects(&self, url: &str) -> Result<wreq::Response, String> {
+        let mut current = url.to_string();
+        for _ in 0..=MAX_REDIRECT_HOPS {
+            crate::validate_proxy_url(&current)
+                .map_err(|rejection| rejection.reason().to_string())?;
+            let response = match &self.transport {
+                ResolverTransport::Direct(client) => client
+                    .get(&current)
+                    .redirect(wreq::redirect::Policy::none())
+                    .header(http::header::ACCEPT, IMAGE_ACCEPT)
+                    .send()
+                    .await
+                    .map_err(|error| error.to_string())?,
+                ResolverTransport::Coordinated(network) => {
+                    let mut headers = http::HeaderMap::new();
+                    headers.insert(
+                        http::header::ACCEPT,
+                        http::HeaderValue::from_static(IMAGE_ACCEPT),
+                    );
+                    network
+                        .request(
+                            "favicon",
+                            NetworkRequest::get(&current)
+                                .with_headers(headers)
+                                .with_max_redirects(0)
+                                .with_timeout(std::time::Duration::from_secs(10)),
+                        )
+                        .await
+                        .map_err(|error| error.to_string())?
+                }
+            };
+            if !response.status().is_redirection() {
+                return Ok(response);
+            }
+            let Some(location) = response
+                .headers()
+                .get(http::header::LOCATION)
+                .and_then(|value| value.to_str().ok())
+            else {
+                return Ok(response);
+            };
+            current = url::Url::parse(&current)
+                .ok()
+                .and_then(|base| base.join(location).ok())
+                .map(String::from)
+                .ok_or_else(|| "invalid redirect location".to_string())?;
+        }
+        Err("too many redirects".to_string())
     }
 }
 
@@ -197,7 +264,8 @@ impl FaviconResolver for HttpFaviconResolver {
                 return Err(ResolveError::Upstream("disallowed authority".into()));
             }
             let url = self.url(authority);
-            let resp = get_following_safe_redirects(&self.client, &url, MAX_REDIRECT_HOPS)
+            let resp = self
+                .get_following_safe_redirects(&url)
                 .await
                 .map_err(ResolveError::Upstream)?;
             if resp.status().as_u16() != 200 {

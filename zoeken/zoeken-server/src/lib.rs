@@ -2,12 +2,14 @@
 
 pub mod autocompleter;
 pub mod boot;
+mod engine_health;
 pub mod executor;
 pub mod favicon_proxy;
 pub mod frontend;
 pub mod image_proxy;
 pub mod info;
 pub mod middleware;
+mod outbound_cache;
 pub mod preferences;
 pub mod readiness;
 pub mod serialize;
@@ -59,11 +61,13 @@ use zoeken_autocomplete::AutocompleteService;
 use zoeken_botdetect::{Detector, LimiterConfig};
 use zoeken_data::DataBundle;
 use zoeken_favicons::{
-    FaviconService, HttpFaviconResolver, ImageProxyPolicy, InMemoryFaviconCache, StaticResolver,
+    FaviconProvider, FaviconService, HttpFaviconResolver, ImageProxyPolicy, InMemoryFaviconCache,
+    StaticResolver, StorageFaviconService,
 };
+use zoeken_storage::FaviconPolicy;
 
 /// Type-erased favicon service held on [`AppState`].
-pub type AppFaviconService = FaviconService<InMemoryFaviconCache>;
+pub type AppFaviconService = dyn FaviconProvider;
 
 fn default_assets_dir() -> DirAssets {
     DirAssets::new(PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("assets"))
@@ -237,8 +241,6 @@ pub enum LimiterLoadError {
 pub enum AppStateError {
     #[error(transparent)]
     Limiter(#[from] LimiterLoadError),
-    #[error("remote Redis/Valkey storage is configured, but no server cache consumer is enabled")]
-    UnsupportedRemoteKv,
 }
 
 /// Union `deployment.trusted_proxies` into the limiter config (idempotent).
@@ -303,6 +305,26 @@ fn default_favicon_service(settings: &Settings) -> Arc<AppFaviconService> {
     ))
 }
 
+fn persistent_favicon_service(
+    settings: &Settings,
+    storage: Arc<dyn zoeken_storage::Storage>,
+    networks: Arc<NetworkManager>,
+) -> Arc<AppFaviconService> {
+    Arc::new(StorageFaviconService::new(
+        Arc::new(HttpFaviconResolver::for_provider_with_network(
+            &settings.search.favicon_resolver,
+            networks,
+        )),
+        storage,
+        FaviconPolicy {
+            positive_ttl: Duration::from_secs(settings.cache.favicons.positive_ttl_seconds),
+            negative_ttl: Duration::from_secs(settings.cache.favicons.negative_ttl_seconds),
+            max_blob_bytes: settings.cache.favicons.max_blob_bytes,
+            max_total_bytes: settings.cache.favicons.max_total_bytes,
+        },
+    ))
+}
+
 fn search_config_from_settings(settings: &Settings) -> SearchConfig {
     let default_engine_timeout = duration_from_secs_f64(settings.outgoing.request_timeout);
     let max_request_timeout = settings
@@ -344,7 +366,11 @@ fn duration_from_secs_f64(value: f64) -> Duration {
     }
 }
 
-fn build_plugins(settings: &Settings, data: Arc<DataBundle>) -> zoeken_plugins::PluginRegistry {
+fn build_plugins(
+    settings: &Settings,
+    data: Arc<DataBundle>,
+    outbound: Option<Arc<NetworkManager>>,
+) -> zoeken_plugins::PluginRegistry {
     let data = Arc::new(plugin_data_bundle(settings, &data));
     let mut plugins = Vec::new();
     if settings.lua_plugins.enabled {
@@ -354,10 +380,14 @@ fn build_plugins(settings: &Settings, data: Arc<DataBundle>) -> zoeken_plugins::
             .as_ref()
             .map(PathBuf::from)
             .unwrap_or_else(|| PathBuf::from("zoeken/zoeken-plugins/plugins"));
+        let runtime_config = zoeken_plugins::lua::LuaRuntimeConfig {
+            outbound,
+            ..zoeken_plugins::lua::LuaRuntimeConfig::default()
+        };
         plugins.extend(zoeken_plugins::lua::load_plugins_from_dir(
             &dir,
             data,
-            zoeken_plugins::lua::LuaRuntimeConfig::default(),
+            runtime_config,
         ));
     }
     zoeken_plugins::sort_plugins(&mut plugins, &settings.lua_plugins.order).unwrap_or_else(
@@ -692,7 +722,7 @@ impl AppState {
                 .expect("compile-time validated embedded data must load"),
         );
         let settings = Settings::default();
-        let plugins = build_plugins(&settings, Arc::clone(&data));
+        let plugins = build_plugins(&settings, Arc::clone(&data), None);
         let search = Search::new(registry, executor, SearchConfig::default())
             .with_answerers(
                 zoeken_answerers::AnswererRegistry::with_builtins().with_data(Arc::clone(&data)),
@@ -734,20 +764,6 @@ impl AppState {
             networks,
         } = boot;
 
-        let remote_kv_enabled =
-            [&settings.redis.url, &settings.valkey.url]
-                .into_iter()
-                .any(|url| {
-                    matches!(
-                        url,
-                        Some(zoeken_settings::BoolOrString::Str(_))
-                            | Some(zoeken_settings::BoolOrString::Bool(true))
-                    )
-                });
-        if remote_kv_enabled {
-            return Err(AppStateError::UnsupportedRemoteKv);
-        }
-
         let data = Arc::new(data);
         let networks = Arc::new(networks);
 
@@ -759,12 +775,17 @@ impl AppState {
         let executor: Arc<dyn EngineExecutor> = Arc::new(
             NetworkExecutor::new(Arc::clone(&networks))
                 .with_engine_networks(engine_networks)
-                .with_max_response_bytes(settings.outgoing.max_response_bytes),
+                .with_max_response_bytes(settings.outgoing.max_response_bytes)
+                .with_response_cache(
+                    Duration::from_secs(settings.cache.search.ttl_seconds),
+                    Duration::from_secs(settings.cache.search.structured_ttl_seconds),
+                    settings.cache.search.max_bytes,
+                ),
         );
 
         let registry = build_registry(&settings);
         let search_config = search_config_from_settings(&settings);
-        let plugins = build_plugins(&settings, Arc::clone(&data));
+        let plugins = build_plugins(&settings, Arc::clone(&data), Some(Arc::clone(&networks)));
         let search = Search::new(registry, executor, search_config)
             .with_answerers(
                 zoeken_answerers::AnswererRegistry::with_builtins().with_data(Arc::clone(&data)),
@@ -774,6 +795,10 @@ impl AppState {
         let autocomplete = zoeken_autocomplete::service_for(
             Some(&settings.search.autocomplete),
             Arc::clone(&networks),
+        )
+        .with_cache(
+            Duration::from_secs(settings.cache.autocomplete.ttl_seconds),
+            settings.cache.autocomplete.max_entries as usize,
         );
 
         let deployment = settings.deployment.clone();
@@ -787,11 +812,12 @@ impl AppState {
             prefs: StaticPreferences::default(),
             // Reuse the browser-emulating `image_proxy` network client so
             // proxied image fetches look like a real browser and share a pool.
-            image_fetcher: Arc::new(WreqImageFetcher::with_client(
-                networks.get("image_proxy").client().clone(),
-            )),
+            image_fetcher: Arc::new(WreqImageFetcher::with_networks(Arc::clone(&networks))),
             image_policy,
-            favicons: default_favicon_service(&settings),
+            favicons: networks.coordinator().map_or_else(
+                || default_favicon_service(&settings),
+                |storage| persistent_favicon_service(&settings, storage, Arc::clone(&networks)),
+            ),
             autocomplete,
             pref_defaults: Preferences::defaults(),
             settings,

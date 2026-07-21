@@ -301,6 +301,8 @@ pub enum EngineError {
     Parse(String),
     #[error("engine request timed out")]
     Timeout,
+    #[error("outbound request expired while waiting for its origin permit")]
+    QueueExpired,
     #[error("unexpected engine error: {0}")]
     Unexpected(String),
 }

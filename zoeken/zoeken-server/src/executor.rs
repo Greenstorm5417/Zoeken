@@ -1,7 +1,7 @@
 //! A network-backed [`EngineExecutor`] for engine HTTP calls.
 
 use std::collections::HashMap;
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
 use std::time::{Duration, Instant};
 
 use futures_util::StreamExt;
@@ -15,6 +15,11 @@ use zoeken_engine_core::{
 use zoeken_network::{DEFAULT_NETWORK, NetworkError, NetworkManager, NetworkRequest};
 use zoeken_search::{EngineExecResult, EngineExecutor, EngineFuture};
 
+use crate::engine_health::{PendingHealth, circuit_is_open, record_health};
+use crate::outbound_cache::{
+    ResponseCache, cache_key, response_is_cacheable, response_is_structured,
+};
+
 #[derive(Clone)]
 pub struct NetworkExecutor {
     networks: Arc<NetworkManager>,
@@ -25,68 +30,17 @@ pub struct NetworkExecutor {
 
 const DEFAULT_MAX_RESPONSE_BYTES: usize = 10 * 1024 * 1024;
 
-/// Engines whose upstream responses are safe to cache briefly: idempotent
-/// instant-answer / infobox lookups that repeat often and query rate-limited
-/// public endpoints (Wikidata's WDQS especially). Caching successful responses
-/// cuts repeat load — the main lever against WDQS's aggressive HTTP 429s.
-const CACHEABLE_ENGINES: &[&str] = &["wikidata", "currency", "dictionary"];
-
-/// Time a cached upstream response stays fresh.
-const RESPONSE_CACHE_TTL: Duration = Duration::from_secs(300);
-
-/// Cap on cached entries; the cache is cleared wholesale when it grows past.
-const RESPONSE_CACHE_CAPACITY: usize = 512;
-
-struct CachedResponse {
-    at: Instant,
-    response: EngineResponse,
-}
-
-/// A tiny TTL response cache keyed by `engine\u{1f}url\u{1f}body`.
-#[derive(Default)]
-struct ResponseCache {
-    entries: Mutex<HashMap<String, CachedResponse>>,
-}
-
-impl ResponseCache {
-    fn get(&self, key: &str) -> Option<EngineResponse> {
-        let entries = self.entries.lock().ok()?;
-        let entry = entries.get(key)?;
-        (entry.at.elapsed() < RESPONSE_CACHE_TTL).then(|| entry.response.clone())
-    }
-
-    fn put(&self, key: String, response: EngineResponse) {
-        let Ok(mut entries) = self.entries.lock() else {
-            return;
-        };
-        if entries.len() >= RESPONSE_CACHE_CAPACITY {
-            entries.clear();
-        }
-        entries.insert(
-            key,
-            CachedResponse {
-                at: Instant::now(),
-                response,
-            },
-        );
-    }
-}
-
-fn cache_key(engine: &str, url: &str, body: Option<&[u8]>) -> String {
-    let body = body.map(<[u8]>::to_vec).unwrap_or_default();
-    format!(
-        "{engine}\u{1f}{url}\u{1f}{}",
-        String::from_utf8_lossy(&body)
-    )
-}
-
 impl NetworkExecutor {
     pub fn new(networks: Arc<NetworkManager>) -> Self {
         NetworkExecutor {
             networks,
             engine_networks: HashMap::new(),
             max_response_bytes: DEFAULT_MAX_RESPONSE_BYTES,
-            response_cache: Arc::new(ResponseCache::default()),
+            response_cache: Arc::new(ResponseCache::new(
+                Duration::from_secs(60),
+                Duration::from_secs(300),
+                128 * 1024 * 1024,
+            )),
         }
     }
 
@@ -98,6 +52,17 @@ impl NetworkExecutor {
 
     pub fn with_max_response_bytes(mut self, max_response_bytes: usize) -> Self {
         self.max_response_bytes = max_response_bytes.max(1);
+        self
+    }
+
+    #[must_use]
+    pub fn with_response_cache(
+        mut self,
+        html_ttl: Duration,
+        structured_ttl: Duration,
+        max_bytes: usize,
+    ) -> Self {
+        self.response_cache = Arc::new(ResponseCache::new(html_ttl, structured_ttl, max_bytes));
         self
     }
 }
@@ -143,30 +108,81 @@ impl EngineExecutor for NetworkExecutor {
                 return EngineExecResult::from_result(Ok(EngineResults::new()));
             };
 
-            let request = match build_network_request(&params, &url) {
+            let mut request = match build_network_request(&params, &url) {
                 Ok(request) => request,
                 Err(error) => return EngineExecResult::from_result(Err(error)),
             };
+            if engine_name == "startpage" {
+                request = request.with_max_redirects(0);
+            }
 
-            // Serve a fresh cached upstream response for idempotent engines,
-            // skipping the network round-trip entirely.
-            let cacheable = CACHEABLE_ENGINES.contains(&engine_name.as_str());
-            let key = cacheable.then(|| cache_key(&engine_name, &url, request.body.as_deref()));
-            if let Some(key) = &key
-                && let Some(cached) = response_cache.get(key)
-            {
+            let key = cache_key(&response_cache.hmac_key, &engine_name, &request, &query);
+            if let Some(cached) = response_cache.get(&key) {
+                metrics::counter!("engine_response_cache_total", "outcome" => "hit").increment(1);
                 return EngineExecResult {
                     result: engine.response(&cached),
                     http_duration: None,
                 };
             }
 
+            let Some(flight) = response_cache.flight(&key) else {
+                return EngineExecResult::from_result(Err(EngineError::Unexpected(
+                    "response cache coordination unavailable".to_string(),
+                )));
+            };
+            let _flight_guard = flight.lock().await;
+            if let Some(cached) = response_cache.get(&key) {
+                metrics::counter!("engine_singleflight_total", "outcome" => "shared").increment(1);
+                return EngineExecResult {
+                    result: engine.response(&cached),
+                    http_duration: None,
+                };
+            }
+
+            let storage = networks.coordinator();
+            let previous_health = if let Some(storage) = storage.as_ref() {
+                match storage.latest_engine_health(&engine_name).await {
+                    Ok(snapshot) => snapshot,
+                    Err(_) => {
+                        response_cache.finish_flight(&key);
+                        return EngineExecResult::from_result(Err(EngineError::Unexpected(
+                            "outbound coordination storage is unavailable".to_string(),
+                        )));
+                    }
+                }
+            } else {
+                None
+            };
+            if circuit_is_open(previous_health.as_ref()) {
+                metrics::counter!("engine_circuit_total", "transition" => "rejected").increment(1);
+                response_cache.finish_flight(&key);
+                return EngineExecResult::from_result(Err(EngineError::AccessDenied(format!(
+                    "{engine_name} circuit is cooling down"
+                ))));
+            }
+
             let http_started = Instant::now();
+            let mut pending_health = PendingHealth::new(
+                storage.clone(),
+                engine_name.clone(),
+                previous_health.clone(),
+            );
             let response = match networks.request(&network_name, request).await {
                 Ok(response) => response,
                 Err(error) => {
+                    pending_health.complete();
+                    let mapped = map_network_error(error);
+                    record_health(
+                        storage.as_deref(),
+                        &engine_name,
+                        http_started.elapsed(),
+                        &Err(mapped.clone()),
+                        previous_health.as_ref(),
+                    )
+                    .await;
+                    response_cache.finish_flight(&key);
                     return EngineExecResult {
-                        result: Err(map_network_error(error)),
+                        result: Err(mapped),
                         http_duration: Some(http_started.elapsed()),
                     };
                 }
@@ -174,22 +190,45 @@ impl EngineExecutor for NetworkExecutor {
             let engine_response = match adapt_response(response, max_response_bytes).await {
                 Ok(response) => response,
                 Err(error) => {
+                    pending_health.complete();
+                    record_health(
+                        storage.as_deref(),
+                        &engine_name,
+                        http_started.elapsed(),
+                        &Err(error.clone()),
+                        previous_health.as_ref(),
+                    )
+                    .await;
+                    response_cache.finish_flight(&key);
                     return EngineExecResult {
                         result: Err(error),
                         http_duration: Some(http_started.elapsed()),
                     };
                 }
             };
-            // Only cache successful responses so a transient rate-limit / error
-            // is retried on the next search rather than pinned for the TTL.
-            if let Some(key) = key
-                && engine_response.status == 200
-            {
-                response_cache.put(key, engine_response.clone());
+            let result = engine.response(&engine_response);
+            pending_health.complete();
+            record_health(
+                storage.as_deref(),
+                &engine_name,
+                http_started.elapsed(),
+                &result,
+                previous_health.as_ref(),
+            )
+            .await;
+            if result.is_ok() && response_is_cacheable(&engine_response) {
+                let structured = response_is_structured(&engine_response);
+                response_cache.put(key.clone(), engine_response, structured);
+                metrics::counter!("engine_response_cache_total", "outcome" => "stored")
+                    .increment(1);
+            } else {
+                metrics::counter!("engine_response_cache_total", "outcome" => "rejected")
+                    .increment(1);
             }
+            response_cache.finish_flight(&key);
             let http_duration = Some(http_started.elapsed());
             EngineExecResult {
-                result: engine.response(&engine_response),
+                result,
                 http_duration,
             }
         })
@@ -414,6 +453,7 @@ fn map_network_error(error: NetworkError) -> EngineError {
         NetworkError::Captcha { .. } => EngineError::Captcha(message),
         NetworkError::CloudflareCaptcha { .. } => EngineError::CloudflareCaptcha(message),
         NetworkError::RecaptchaCaptcha { .. } => EngineError::RecaptchaCaptcha(message),
+        NetworkError::QueueExpired { .. } => EngineError::QueueExpired,
         _ => EngineError::Unexpected(message),
     }
 }
@@ -421,6 +461,8 @@ fn map_network_error(error: NetworkError) -> EngineError {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::engine_health::cooldown_for;
+    use zoeken_storage::EngineHealthSnapshot;
 
     /// A `POST` engine request with form data and cookies is translated into a
     /// `NetworkRequest` with a URL-encoded body and the cookies carried through.
@@ -464,8 +506,10 @@ mod tests {
 
     #[test]
     fn response_cache_serves_within_ttl_and_keys_on_body() {
-        let cache = ResponseCache::default();
-        let key = cache_key("wikidata", "https://wdqs/sparql", Some(b"query=A"));
+        let cache = ResponseCache::new(Duration::from_secs(60), Duration::from_secs(300), 4096);
+        let secret = [7_u8; 32];
+        let request_a = NetworkRequest::post("https://wdqs/sparql").with_body(b"query=A".to_vec());
+        let key = cache_key(&secret, "wikidata", &request_a, &SearchQueryView::default());
         assert!(cache.get(&key).is_none(), "cold cache misses");
 
         let response = EngineResponse {
@@ -474,31 +518,98 @@ mod tests {
             body: b"cached body".to_vec(),
             ..EngineResponse::default()
         };
-        cache.put(key.clone(), response.clone());
+        cache.put(key.clone(), response.clone(), true);
         assert_eq!(cache.get(&key), Some(response));
 
         // A different request body is a different cache key (a cache miss).
-        let other = cache_key("wikidata", "https://wdqs/sparql", Some(b"query=B"));
+        let request_b = NetworkRequest::post("https://wdqs/sparql").with_body(b"query=B".to_vec());
+        let other = cache_key(&secret, "wikidata", &request_b, &SearchQueryView::default());
         assert!(cache.get(&other).is_none());
     }
 
     #[test]
-    fn response_cache_evicts_wholesale_past_capacity() {
-        let cache = ResponseCache::default();
-        for i in 0..=RESPONSE_CACHE_CAPACITY {
-            cache.put(format!("k{i}"), EngineResponse::default());
+    fn response_cache_evicts_oldest_to_stay_within_byte_limit() {
+        let cache = ResponseCache::new(Duration::from_secs(60), Duration::from_secs(300), 24);
+        for i in 0..4 {
+            cache.put(
+                format!("k{i}"),
+                EngineResponse {
+                    status: 200,
+                    body: vec![i; 12],
+                    ..EngineResponse::default()
+                },
+                false,
+            );
         }
-        // The wholesale clear on overflow keeps the map bounded.
-        assert!(cache.entries.lock().unwrap().len() <= RESPONSE_CACHE_CAPACITY);
+        assert!(*cache.total_bytes.lock().unwrap() <= 24);
+        assert!(cache.entries.lock().unwrap().len() <= 2);
+    }
+
+    #[tokio::test]
+    async fn identical_cache_keys_share_one_in_flight_lock() {
+        let cache = Arc::new(ResponseCache::new(
+            Duration::from_secs(60),
+            Duration::from_secs(300),
+            4096,
+        ));
+        let first = cache.flight("digest").unwrap();
+        let second = cache.flight("digest").unwrap();
+        assert!(Arc::ptr_eq(&first, &second));
+
+        let guard = first.lock().await;
+        let follower = tokio::spawn(async move {
+            let _guard = second.lock().await;
+        });
+        tokio::task::yield_now().await;
+        assert!(!follower.is_finished());
+        drop(guard);
+        follower.await.unwrap();
     }
 
     #[test]
-    fn only_curated_engines_are_cacheable() {
-        assert!(CACHEABLE_ENGINES.contains(&"wikidata"));
-        // A general web engine must never be cached (results would go stale and
-        // caching mixes users' identical queries in surprising ways).
-        assert!(!CACHEABLE_ENGINES.contains(&"duckduckgo"));
-        assert!(!CACHEABLE_ENGINES.contains(&"soundcloud"));
+    fn personalized_responses_are_not_cacheable() {
+        let mut response = EngineResponse {
+            status: 200,
+            ..EngineResponse::default()
+        };
+        assert!(response_is_cacheable(&response));
+        response
+            .headers
+            .insert("Set-Cookie".to_string(), "session=secret".to_string());
+        assert!(!response_is_cacheable(&response));
+    }
+
+    #[test]
+    fn duckduckgo_challenge_has_jittered_minimum_cooldown() {
+        let cooldown = cooldown_for(
+            "duckduckgo",
+            &EngineError::Captcha("duckduckgo".into()),
+            None,
+        )
+        .unwrap();
+        assert!(cooldown >= Duration::from_secs(5 * 60));
+        assert!(cooldown <= Duration::from_secs(15 * 60));
+    }
+
+    #[test]
+    fn recurrent_circuit_failure_escalates_cooldown() {
+        let previous = EngineHealthSnapshot {
+            bucket: 1,
+            successes: 0,
+            timeouts: 0,
+            errors: 1,
+            circuit_status: "half_open".into(),
+            cooldown_until_ms: None,
+            last_error_category: Some("throttle".into()),
+        };
+        assert_eq!(
+            cooldown_for(
+                "qwant",
+                &EngineError::TooManyRequests("qwant".into()),
+                Some(&previous)
+            ),
+            Some(Duration::from_secs(10 * 60))
+        );
     }
 
     /// `Accept-Language` is emitted as a browser-style q-graded list, never a
@@ -526,7 +637,8 @@ mod tests {
         assert!(matches!(
             map_network_error(NetworkError::TooManyRequests {
                 name: "n".to_string(),
-                status: 429
+                status: 429,
+                retry_after: None,
             }),
             EngineError::TooManyRequests(_)
         ));

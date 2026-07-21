@@ -23,13 +23,16 @@ struct Vals {
     base_url: String,
     image_proxy: bool,
     method: String,
-    redis_url: String,
-    valkey_url: String,
+    sqlite_path: String,
     port: Port,
 }
 
 fn scalar() -> impl Strategy<Value = String> {
     "[a-zA-Z0-9._:/@-]{0,24}".prop_map(|s| s.to_string())
+}
+
+fn non_empty_path() -> impl Strategy<Value = String> {
+    "[a-zA-Z0-9._/-]{1,24}".prop_map(|s| s.to_string())
 }
 
 fn port() -> impl Strategy<Value = Port> {
@@ -49,8 +52,7 @@ fn vals() -> impl Strategy<Value = Vals> {
         scalar(),
         any::<bool>(),
         prop_oneof![Just("POST".to_string()), Just("GET".to_string())],
-        scalar(),
-        scalar(),
+        non_empty_path(),
         port(),
     )
         .prop_map(
@@ -63,8 +65,7 @@ fn vals() -> impl Strategy<Value = Vals> {
                 base_url,
                 image_proxy,
                 method,
-                redis_url,
-                valkey_url,
+                sqlite_path,
                 port,
             )| Vals {
                 debug,
@@ -75,8 +76,7 @@ fn vals() -> impl Strategy<Value = Vals> {
                 base_url,
                 image_proxy,
                 method,
-                redis_url,
-                valkey_url,
+                sqlite_path,
                 port,
             },
         )
@@ -121,17 +121,17 @@ fn file_yaml(v: &Vals) -> String {
     server.insert(str_val("method"), str_val(&v.method));
     server.insert(str_val("port"), port_val(&v.port));
 
-    let mut redis = Mapping::new();
-    redis.insert(str_val("url"), str_val(&v.redis_url));
-    let mut valkey = Mapping::new();
-    valkey.insert(str_val("url"), str_val(&v.valkey_url));
+    let mut sqlite = Mapping::new();
+    sqlite.insert(str_val("path"), str_val(&v.sqlite_path));
+    let mut storage = Mapping::new();
+    storage.insert(str_val("backend"), str_val("sqlite"));
+    storage.insert(str_val("sqlite"), Value::Mapping(sqlite));
 
     let mut top = Mapping::new();
     top.insert(str_val("use_default_settings"), Value::Bool(true));
     top.insert(str_val("general"), Value::Mapping(general));
     top.insert(str_val("server"), Value::Mapping(server));
-    top.insert(str_val("redis"), Value::Mapping(redis));
-    top.insert(str_val("valkey"), Value::Mapping(valkey));
+    top.insert(str_val("storage"), Value::Mapping(storage));
 
     serde_yaml_ng::to_string(&Value::Mapping(top)).expect("serialize file overlay")
 }
@@ -152,8 +152,8 @@ fn env_map(v: &Vals) -> EnvMap {
             if v.image_proxy { "true" } else { "false" },
         )
         .with("APP_METHOD", v.method.clone())
-        .with("APP_REDIS_URL", v.redis_url.clone())
-        .with("APP_VALKEY_URL", v.valkey_url.clone())
+        .with("APP_STORAGE_BACKEND", "sqlite")
+        .with("APP_SQLITE_PATH", v.sqlite_path.clone())
         .with("APP_PORT", port_env_raw(&v.port))
 }
 
@@ -200,14 +200,7 @@ proptest! {
         );
         prop_assert_eq!(settings.server.image_proxy, env_vals.image_proxy);
         prop_assert_eq!(&settings.server.method, &env_vals.method);
-        prop_assert_eq!(
-            settings.redis.url,
-            Some(BoolOrString::Str(env_vals.redis_url.clone()))
-        );
-        prop_assert_eq!(
-            settings.valkey.url,
-            Some(BoolOrString::Str(env_vals.valkey_url.clone()))
-        );
+        prop_assert_eq!(&settings.storage.sqlite.path, &env_vals.sqlite_path);
         prop_assert_eq!(settings.server.port, Some(expected_port(&env_vals.port)));
     }
 }

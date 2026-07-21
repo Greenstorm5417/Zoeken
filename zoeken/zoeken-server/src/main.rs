@@ -14,6 +14,7 @@ use zoeken_server::{AppState, app};
 use zoeken_settings::{
     EnvMap, SecretKeyDecision, load_settings, resolve_bind, secret_key_decision, secret_key_is_weak,
 };
+use zoeken_storage::{BackendConfig, StorageConfig};
 
 const SETTINGS_PATH_ENV: &str = "APP_SETTINGS_PATH";
 const DATA_DIR_ENV: &str = "APP_DATA_DIR";
@@ -51,8 +52,37 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     };
 
-    let boot = boot(&BootConfig::new(settings_path, data_dir))?;
+    let mut boot = boot(&BootConfig::new(settings_path, data_dir))?;
     let settings = boot.settings.clone();
+
+    let storage_config = match settings.storage.backend.as_str() {
+        "sqlite" => StorageConfig {
+            backend: BackendConfig::Sqlite {
+                path: settings.storage.sqlite.path.clone().into(),
+                busy_timeout: std::time::Duration::from_millis(
+                    settings.storage.sqlite.busy_timeout_ms,
+                ),
+                max_connections: 4,
+            },
+        },
+        "postgres" => StorageConfig {
+            backend: BackendConfig::Postgres {
+                url: settings
+                    .storage
+                    .postgres
+                    .url
+                    .clone()
+                    .expect("validated PostgreSQL URL"),
+                max_connections: settings.storage.postgres.max_connections,
+                acquire_timeout: std::time::Duration::from_secs(
+                    settings.storage.postgres.acquire_timeout_seconds,
+                ),
+            },
+        },
+        _ => unreachable!("storage backend was validated while loading settings"),
+    };
+    let storage = zoeken_storage::connect(&storage_config).await?;
+    boot.networks = boot.networks.with_coordinator(Arc::clone(&storage));
 
     let bind = resolve_bind(&settings.server)?;
     let is_loopback = bind.ip().is_loopback();
@@ -121,6 +151,27 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     tracing::info!(dir = %assets_dir.display(), "serving frontend assets from directory");
 
     let readiness = ReadinessState::new_not_ready();
+    let storage_monitor = Arc::clone(&storage);
+    let storage_readiness = readiness.clone();
+    let favicon_max_total_bytes = settings.cache.favicons.max_total_bytes;
+    tokio::spawn(async move {
+        let mut interval = tokio::time::interval(std::time::Duration::from_secs(5));
+        loop {
+            interval.tick().await;
+            let healthy = storage_monitor.healthcheck().await.is_ok();
+            storage_readiness.set_storage_healthy(healthy);
+            metrics::gauge!("storage_healthy").set(if healthy { 1.0 } else { 0.0 });
+            if healthy
+                && storage_monitor
+                    .maintenance(favicon_max_total_bytes)
+                    .await
+                    .is_err()
+            {
+                metrics::counter!("storage_operations_total", "operation" => "maintenance", "outcome" => "error")
+                    .increment(1);
+            }
+        }
+    });
     let mut state = AppState::from_boot(boot)?
         .with_assets(assets)
         .with_readiness(readiness.clone())

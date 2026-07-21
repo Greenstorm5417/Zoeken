@@ -73,6 +73,41 @@ jobs:
       - name: Test workspace (incl. conformance + property tests)
         run: cargo test --workspace --locked
 
+  postgres-storage:
+    name: PostgreSQL storage contract
+    runs-on: ubuntu-latest
+    container:
+      image: rust:1-bookworm
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: zoeken_test
+          POSTGRES_USER: zoeken
+          POSTGRES_PASSWORD: zoeken_test
+        options: >-
+          --health-cmd "pg_isready --username=zoeken --dbname=zoeken_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+    env:
+      TEST_POSTGRES_URL: postgres://zoeken:zoeken_test@postgres:5432/zoeken_test
+    steps:
+      - name: Check out sources
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Cache Rust build
+        uses: Swatinem/rust-cache@c19371144df3bb44fab255c43d04cbc2ab54d1c4 # v2.9.1
+        with:
+          shared-key: ci-postgres-storage
+          cache-all-crates: true
+
+      - name: Test SQLx PostgreSQL storage and cross-instance coordination
+        run: >-
+          cargo test -p zoeken-storage --locked
+          --test storage_contract
+          --test postgres_coordination
+
   client:
     name: Client (lint, test, build)
     runs-on: ubuntu-latest

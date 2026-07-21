@@ -66,8 +66,6 @@ proptest! {
         favicon in favicon_strategy(),
     ) {
         let cache = InMemoryFaviconCache::new();
-        prop_assert_eq!(cache.get(&resolver_name, &authority), CacheLookup::Absent);
-
         let resolver = Arc::new(CountingResolver::new(StaticResolver::serving(
             resolver_name.clone(),
             favicon.clone(),
@@ -80,12 +78,16 @@ proptest! {
             .expect("build current-thread runtime");
 
         runtime.block_on(async {
+            prop_assert_eq!(
+                service.cache().get(&resolver_name, &authority).await,
+                CacheLookup::Absent
+            );
             let first = service.get_favicon(&authority).await;
             prop_assert_eq!(first, FaviconOutcome::Serve(favicon.clone()));
             prop_assert_eq!(counter.calls(), 1, "resolver invoked once on miss");
 
             prop_assert_eq!(
-                service.cache().get(&resolver_name, &authority),
+                service.cache().get(&resolver_name, &authority).await,
                 CacheLookup::Hit(favicon.clone())
             );
 

@@ -9,8 +9,11 @@ homepage.workspace = true
 description.workspace = true
 
 [dependencies]
-rusqlite = { workspace = true }
 tokio = { workspace = true }
+async-trait = { workspace = true }
+zoeken-storage = { workspace = true }
+zoeken-network = { workspace = true }
+metrics = { workspace = true }
 thiserror = { workspace = true }
 hmac = { workspace = true }
 hex = { workspace = true }

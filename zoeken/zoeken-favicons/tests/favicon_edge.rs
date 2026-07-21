@@ -3,9 +3,10 @@
 use std::sync::Arc;
 use std::sync::atomic::{AtomicUsize, Ordering};
 
+use async_trait::async_trait;
 use zoeken_favicons::{
     CacheLookup, Favicon, FaviconCache, FaviconOutcome, FaviconResolver, FaviconService,
-    InMemoryFaviconCache, ResolveError, ResolveFuture, SqliteFaviconCache, StaticResolver,
+    InMemoryFaviconCache, ResolveError, ResolveFuture, StaticResolver,
 };
 
 /// A small deterministic PNG-ish favicon tagged by a single byte value.
@@ -45,7 +46,7 @@ impl FaviconResolver for CountingResolver {
 #[tokio::test]
 async fn cache_hit_returns_cached_without_resolving_in_memory() {
     let cache = InMemoryFaviconCache::new();
-    cache.set("duckduckgo", "example.com", Some(&png(1)));
+    cache.set("duckduckgo", "example.com", Some(&png(1))).await;
 
     let resolver = Arc::new(CountingResolver::new(StaticResolver::failing(
         "duckduckgo",
@@ -61,27 +62,9 @@ async fn cache_hit_returns_cached_without_resolving_in_memory() {
 }
 
 #[tokio::test]
-async fn cache_hit_returns_cached_without_resolving_sqlite() {
-    let cache = SqliteFaviconCache::in_memory().expect("open in-memory sqlite cache");
-    cache.set("google", "cached.example", Some(&png(2)));
-
-    let resolver = Arc::new(CountingResolver::new(StaticResolver::serving(
-        "google",
-        png(99),
-    )));
-    let counter = resolver.clone();
-    let service = FaviconService::new(resolver, cache);
-
-    let outcome = service.get_favicon("cached.example").await;
-
-    assert_eq!(outcome, FaviconOutcome::Serve(png(2)));
-    assert_eq!(counter.calls(), 0, "resolver was consulted on a cache hit");
-}
-
-#[tokio::test]
 async fn cached_favicon_wins_over_failing_resolver_in_memory() {
     let cache = InMemoryFaviconCache::new();
-    cache.set("duckduckgo", "example.net", Some(&png(3)));
+    cache.set("duckduckgo", "example.net", Some(&png(3))).await;
 
     let resolver = Arc::new(CountingResolver::new(StaticResolver::failing(
         "duckduckgo",
@@ -101,33 +84,21 @@ async fn cached_favicon_wins_over_failing_resolver_in_memory() {
 }
 
 #[tokio::test]
-async fn cached_favicon_wins_over_failing_resolver_sqlite() {
-    let cache = SqliteFaviconCache::in_memory().expect("open in-memory sqlite cache");
-    cache.set("google", "example.net", Some(&png(4)));
-
-    let resolver = Arc::new(StaticResolver::failing("google", "boom"));
-    let service = FaviconService::new(resolver, cache);
-
-    let outcome = service.get_favicon("example.net").await;
-
-    assert_eq!(outcome, FaviconOutcome::Serve(png(4)));
-}
-
-#[tokio::test]
 async fn resolution_failure_serves_favicon_that_appeared_after_miss() {
     struct AppearingCache {
         favicon: Favicon,
         gets: AtomicUsize,
     }
+    #[async_trait]
     impl FaviconCache for AppearingCache {
-        fn get(&self, _resolver: &str, _authority: &str) -> CacheLookup {
+        async fn get(&self, _resolver: &str, _authority: &str) -> CacheLookup {
             if self.gets.fetch_add(1, Ordering::SeqCst) == 0 {
                 CacheLookup::Absent
             } else {
                 CacheLookup::Hit(self.favicon.clone())
             }
         }
-        fn set(&self, _resolver: &str, _authority: &str, _favicon: Option<&Favicon>) -> bool {
+        async fn set(&self, _resolver: &str, _authority: &str, _favicon: Option<&Favicon>) -> bool {
             true
         }
     }
@@ -153,22 +124,7 @@ async fn unresolved_and_uncached_falls_back_and_does_not_cache_failure_in_memory
     assert_eq!(outcome, FaviconOutcome::Fallback);
 
     assert_eq!(
-        service.cache().get("duckduckgo", "missing.example"),
-        CacheLookup::Absent
-    );
-}
-
-#[tokio::test]
-async fn unresolved_and_uncached_falls_back_and_does_not_cache_failure_sqlite() {
-    let cache = SqliteFaviconCache::in_memory().expect("open in-memory sqlite cache");
-    let resolver = Arc::new(StaticResolver::failing("google", "boom"));
-    let service = FaviconService::new(resolver, cache);
-
-    let outcome = service.get_favicon("missing.example").await;
-    assert_eq!(outcome, FaviconOutcome::Fallback);
-
-    assert_eq!(
-        service.cache().get("google", "missing.example"),
+        service.cache().get("duckduckgo", "missing.example").await,
         CacheLookup::Absent
     );
 }
@@ -186,35 +142,7 @@ async fn definitive_no_favicon_caches_known_missing_and_avoids_reresolve_in_memo
     );
     assert_eq!(counter.calls(), 1);
     assert_eq!(
-        service.cache().get("duckduckgo", "none.example"),
-        CacheLookup::KnownMissing
-    );
-
-    assert_eq!(
-        service.get_favicon("none.example").await,
-        FaviconOutcome::Fallback
-    );
-    assert_eq!(
-        counter.calls(),
-        1,
-        "known-missing marker should prevent re-resolving"
-    );
-}
-
-#[tokio::test]
-async fn definitive_no_favicon_caches_known_missing_and_avoids_reresolve_sqlite() {
-    let cache = SqliteFaviconCache::in_memory().expect("open in-memory sqlite cache");
-    let resolver = Arc::new(CountingResolver::new(StaticResolver::empty("google")));
-    let counter = resolver.clone();
-    let service = FaviconService::new(resolver, cache);
-
-    assert_eq!(
-        service.get_favicon("none.example").await,
-        FaviconOutcome::Fallback
-    );
-    assert_eq!(counter.calls(), 1);
-    assert_eq!(
-        service.cache().get("google", "none.example"),
+        service.cache().get("duckduckgo", "none.example").await,
         CacheLookup::KnownMissing
     );
 

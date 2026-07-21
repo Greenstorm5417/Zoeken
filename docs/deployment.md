@@ -50,7 +50,9 @@ Useful env vars (see `zoeken-settings`):
 | `APP_ASSETS_DIR` | SPA directory override |
 | `APP_SETTINGS_PATH` | `settings.yml` path |
 | `APP_DATA_DIR` | Optional JSON data directory (must contain the full bundle; defaults are precompiled) |
-| `APP_REDIS_URL` / `APP_VALKEY_URL` | Optional remote KV URL |
+| `APP_STORAGE_BACKEND` | `sqlite` (default) or `postgres` |
+| `APP_SQLITE_PATH` | SQLite database path |
+| `APP_POSTGRES_URL` | PostgreSQL connection URL (never logged) |
 | `APP_LOG_LEVEL` | Tracing filter (`info`, `debug`, …) |
 | `APP_METRICS_ENABLED` | Expose `/metrics` when true |
 | `APP_DEBUG` | `general.debug` |
@@ -153,6 +155,22 @@ Image `HEALTHCHECK` curls `http://127.0.0.1:8888/healthz`. Compose mounts
 precompiled data bundle is used (set it only when shipping a full on-disk
 JSON bundle).
 
+SQLite is the default and supports one Zoeken process. For coordinated
+multi-replica development, start the optional PostgreSQL profile and point
+every replica at the same database:
+
+```sh
+docker compose --profile postgres up -d postgres
+APP_STORAGE_BACKEND=postgres \
+APP_POSTGRES_URL='postgres://zoeken:change-me-before-production@postgres/zoeken' \
+docker compose --profile postgres up -d zoeken
+```
+
+Set `POSTGRES_PASSWORD` and use the matching URL outside local development.
+Zoeken fails startup when the selected database cannot connect or migrate;
+after startup, `/readyz` becomes unhealthy and uncached outbound requests fail
+closed if storage coordination is unavailable.
+
 ## Production checklist
 
 1. **Bind + secret**: `0.0.0.0` (or LAN IP) with a random `APP_SECRET_KEY` ≥16 chars
@@ -165,10 +183,11 @@ JSON bundle).
    Settings values are **unioned** into the limiter list at boot (loopback stays
    trusted by default).
 4. **Assets**: ship `./assets` next to the binary, or use the deb/Docker paths above.
-5. **Probes**: liveness `/healthz`, readiness `/readyz` (returns not-ready while draining).
-6. **Image proxy**: leave off unless you need it; when on, URLs stay HMAC-gated and redirects are not followed.
-7. **Metrics**: set `general.open_metrics` to a password so `/metrics` and `/stats` require HTTP Basic auth; empty hides `/metrics` and leaves `/stats` open.
-8. Read [`docs/security/audit.md`](security/audit.md) before go-live.
+5. **Storage**: keep SQLite for one process. For multiple replicas, start the optional `postgres` Compose profile and set `APP_STORAGE_BACKEND=postgres` plus `APP_POSTGRES_URL`. Startup fails if connection or migration fails.
+6. **Probes**: liveness `/healthz`, readiness `/readyz` (returns not-ready while draining or while operational storage is unavailable).
+7. **Image proxy**: leave off unless you need it; when on, URLs stay HMAC-gated and redirects are not followed.
+8. **Metrics**: set `general.open_metrics` to a password so `/metrics` and `/stats` require HTTP Basic auth; empty hides `/metrics` and leaves `/stats` open.
+9. Read [`docs/security/audit.md`](security/audit.md) before go-live.
 
 ## Reverse proxy
 

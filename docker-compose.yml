@@ -21,6 +21,9 @@ services:
       APP_SECRET_KEY: "${APP_SECRET_KEY:?Set APP_SECRET_KEY in .env (openssl rand -hex 24)}"
       APP_PUBLIC_INSTANCE: "${APP_PUBLIC_INSTANCE:-true}"
       APP_ASSETS_DIR: /app/assets
+      APP_STORAGE_BACKEND: "${APP_STORAGE_BACKEND:-sqlite}"
+      APP_SQLITE_PATH: /var/lib/zoeken/zoeken.sqlite3
+      APP_POSTGRES_URL: "${APP_POSTGRES_URL:-}"
     volumes:
       # Optional writable state. Only set APP_DATA_DIR if you place a full
       # JSON data bundle there (defaults are precompiled into the binary).
@@ -33,5 +36,21 @@ services:
       retries: 3
       start_period: 10s
 
+  postgres:
+    image: postgres:17-alpine
+    profiles: ["postgres"]
+    environment:
+      POSTGRES_DB: zoeken
+      POSTGRES_USER: zoeken
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-change-me-before-production}"
+    volumes:
+      - zoeken-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U zoeken -d zoeken"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
 volumes:
   zoeken-data:
+  zoeken-postgres:

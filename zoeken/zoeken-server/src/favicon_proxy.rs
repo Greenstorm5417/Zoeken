@@ -93,7 +93,7 @@ mod tests {
         settings.server.secret_key = secret.into();
         let cache = InMemoryFaviconCache::new();
         let fav = Favicon::new(vec![1, 2, 3], "image/png");
-        cache.set("stub", "example.com", Some(&fav));
+        cache.set("stub", "example.com", Some(&fav)).await;
         let favicons = Arc::new(FaviconService::new(
             Arc::new(StaticResolver::failing("stub", "unused")),
             cache,

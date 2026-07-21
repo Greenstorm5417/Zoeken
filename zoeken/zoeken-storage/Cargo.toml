@@ -1,5 +1,5 @@
 [package]
-name = "zoeken-metrics"
+name = "zoeken-storage"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -9,14 +9,15 @@ homepage.workspace = true
 description.workspace = true
 
 [dependencies]
-zoeken-engine-core = { workspace = true }
-metrics = { workspace = true }
+async-trait = { workspace = true }
+sqlx = { workspace = true }
 tokio = { workspace = true }
 thiserror = { workspace = true }
+sha2 = { workspace = true }
+hex = { workspace = true }
 
 [dev-dependencies]
-proptest = { workspace = true }
-tokio = { workspace = true }
+tempfile = { workspace = true }
 
 [lints]
 workspace = true

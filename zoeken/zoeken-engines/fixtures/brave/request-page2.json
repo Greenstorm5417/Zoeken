@@ -20,9 +20,7 @@
     "engine_data": {},
     "method": "Get",
     "url": "https://search.brave.com/search?q=rust&source=web&offset=1",
-    "headers": {
-      "Accept-Encoding": "gzip, deflate"
-    },
+    "headers": {},
     "cookies": {
       "safesearch": "off",
       "useLocation": "0",

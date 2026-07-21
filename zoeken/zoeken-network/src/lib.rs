@@ -2,14 +2,17 @@
 
 use std::collections::BTreeMap;
 use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};
+use std::sync::Arc;
 use std::sync::atomic::{AtomicUsize, Ordering};
 use std::time::Duration;
 
-use wreq::header::{COOKIE, HeaderMap, HeaderValue, SERVER};
+use rand::Rng;
+use wreq::header::{COOKIE, HeaderMap, HeaderValue, RETRY_AFTER, SERVER};
 use wreq::redirect;
 use wreq::{Client, Method, Proxy, Response};
 use wreq_util::{Emulation, Profile};
 use zoeken_settings::{BoolOrString, NetworkSettings, OutgoingSettings, Proxies, StringOrVec};
+use zoeken_storage::{OriginPolicy, PermitDecision, Storage};
 
 /// Tor routing check endpoint.
 pub const TOR_CHECK_URL: &str = "https://check.torproject.org/api/ip";
@@ -44,7 +47,11 @@ pub enum NetworkError {
     #[error("cloudflare access denied on network '{name}' (HTTP {status})")]
     CloudflareAccessDenied { name: String, status: u16 },
     #[error("too many requests on network '{name}' (HTTP {status})")]
-    TooManyRequests { name: String, status: u16 },
+    TooManyRequests {
+        name: String,
+        status: u16,
+        retry_after: Option<Duration>,
+    },
     #[error("captcha challenge on network '{name}' (HTTP {status})")]
     Captcha { name: String, status: u16 },
     #[error("cloudflare captcha on network '{name}' (HTTP {status})")]
@@ -55,6 +62,10 @@ pub enum NetworkError {
     HttpStatus { name: String, status: u16 },
     #[error("network '{name}' is configured for Tor but is not routing through Tor")]
     Tor { name: String },
+    #[error("outbound request queue deadline expired for origin '{origin}'")]
+    QueueExpired { origin: String },
+    #[error("outbound coordination storage is unavailable")]
+    CoordinationUnavailable,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
@@ -164,7 +175,14 @@ impl std::fmt::Debug for NetworkConfig {
             )
             .field("max_redirects", &self.max_redirects)
             .field("verify", &self.verify)
-            .field("headers", &self.headers)
+            .field(
+                "header_names",
+                &self
+                    .headers
+                    .keys()
+                    .map(|name| name.as_str())
+                    .collect::<Vec<_>>(),
+            )
             .field("local_addresses", &self.local_addresses)
             .field("enable_http2", &self.enable_http2)
             .field("pool_connections", &self.pool_connections)
@@ -432,8 +450,23 @@ fn backoff_duration(attempt: u32) -> Duration {
     scaled.min(RETRY_BACKOFF_MAX)
 }
 
-async fn backoff_delay(attempt: u32) {
-    tokio::time::sleep(backoff_duration(attempt)).await;
+async fn backoff_delay(attempt: u32, remaining: Duration) -> bool {
+    let ceiling = backoff_duration(attempt).min(remaining);
+    if ceiling.is_zero() {
+        return false;
+    }
+    let millis = ceiling.as_millis().min(u128::from(u64::MAX)) as u64;
+    let jitter = rand::rng().random_range(0..=millis);
+    tokio::time::sleep(Duration::from_millis(jitter)).await;
+    true
+}
+
+fn parse_retry_after(value: &str) -> Option<Duration> {
+    if let Ok(seconds) = value.trim().parse::<u64>() {
+        return Some(Duration::from_secs(seconds));
+    }
+    let date = httpdate::parse_http_date(value).ok()?;
+    date.duration_since(std::time::SystemTime::now()).ok()
 }
 
 pub struct Network {
@@ -525,8 +558,10 @@ impl Network {
     }
 
     pub async fn request(&self, name: &str, req: NetworkRequest) -> Result<Response, NetworkError> {
-        let cursor = self.next_rotation();
-        // Sticky browser identity per upstream host; addresses/proxies rotate.
+        // Browser identity, source address and proxy are all stable for an
+        // origin. Rotating any one of them per request creates a conflicting
+        // fingerprint and prevents origin-scoped quotas from being meaningful.
+        let cursor = stable_origin_hash(&req.url).unwrap_or_else(|| self.next_rotation());
         let client = self.client_for(cursor, &req.url);
         let proxy = if self.config.proxies.is_empty() {
             None
@@ -536,6 +571,8 @@ impl Network {
 
         let max_attempts = self.config.retries.saturating_add(1);
         let mut attempt: u32 = 0;
+        let request_budget = req.timeout.unwrap_or(self.config.timeout);
+        let deadline = tokio::time::Instant::now() + request_budget;
 
         loop {
             attempt += 1;
@@ -557,9 +594,8 @@ impl Network {
             if let Some(proxy) = proxy {
                 builder = builder.proxy(proxy.clone());
             }
-            if let Some(timeout) = req.timeout {
-                builder = builder.timeout(timeout);
-            }
+            let remaining = deadline.saturating_duration_since(tokio::time::Instant::now());
+            builder = builder.timeout(remaining);
             if let Some(body) = req.body.clone() {
                 builder = builder.body(body);
             }
@@ -572,16 +608,25 @@ impl Network {
                     if !req.raise_for_httperror {
                         return Ok(resp);
                     }
-                    if !last_attempt && self.is_retryable_status(resp.status().as_u16()) {
-                        backoff_delay(attempt).await;
-                        continue;
+                    if !last_attempt
+                        && !matches!(resp.status().as_u16(), 403 | 429)
+                        && self.is_retryable_status(resp.status().as_u16())
+                    {
+                        let remaining =
+                            deadline.saturating_duration_since(tokio::time::Instant::now());
+                        if backoff_delay(attempt, remaining).await {
+                            continue;
+                        }
                     }
                     return self.map_response(name, resp).await;
                 }
                 Err(source) => {
                     if !last_attempt {
-                        backoff_delay(attempt).await;
-                        continue;
+                        let remaining =
+                            deadline.saturating_duration_since(tokio::time::Instant::now());
+                        if backoff_delay(attempt, remaining).await {
+                            continue;
+                        }
                     }
                     return Err(NetworkError::Transport {
                         name: name.to_string(),
@@ -600,6 +645,17 @@ impl Network {
         let status = resp.status().as_u16();
         if status < 400 {
             return Ok(resp);
+        }
+
+        metrics::counter!("outbound_http_status_total", "category" => format!("{}xx", status / 100))
+            .increment(1);
+        let retry_after = resp
+            .headers()
+            .get(RETRY_AFTER)
+            .and_then(|value| value.to_str().ok())
+            .and_then(parse_retry_after);
+        if let Some(delay) = retry_after {
+            metrics::histogram!("outbound_retry_after_seconds").record(delay.as_secs_f64());
         }
 
         let server_is_cloudflare = resp
@@ -643,6 +699,7 @@ impl Network {
             429 | 503 => Err(NetworkError::TooManyRequests {
                 name: name.to_string(),
                 status,
+                retry_after,
             }),
             _ => Err(NetworkError::HttpStatus {
                 name: name.to_string(),
@@ -699,6 +756,18 @@ impl Network {
     }
 }
 
+fn stable_origin_hash(raw_url: &str) -> Option<usize> {
+    use std::hash::{Hash, Hasher};
+
+    let origin = url::Url::parse(raw_url)
+        .ok()?
+        .origin()
+        .ascii_serialization();
+    let mut hasher = std::collections::hash_map::DefaultHasher::new();
+    origin.hash(&mut hasher);
+    Some(hasher.finish() as usize)
+}
+
 impl std::fmt::Debug for Network {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.debug_struct("Network")
@@ -750,10 +819,22 @@ fn build_client(
     })
 }
 
-#[derive(Debug)]
 pub struct NetworkManager {
     default: Network,
     networks: BTreeMap<String, Network>,
+    coordinator: Option<Arc<dyn Storage>>,
+    origin_policy: OriginPolicy,
+}
+
+impl std::fmt::Debug for NetworkManager {
+    fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        formatter
+            .debug_struct("NetworkManager")
+            .field("networks", &self.networks.keys().collect::<Vec<_>>())
+            .field("coordinated", &self.coordinator.is_some())
+            .field("origin_policy", &self.origin_policy)
+            .finish_non_exhaustive()
+    }
 }
 
 impl NetworkManager {
@@ -801,7 +882,30 @@ impl NetworkManager {
             networks.insert(name.clone(), Network::build(&name, cfg)?);
         }
 
-        Ok(Self { default, networks })
+        let limits = &outgoing.origin_limits;
+        Ok(Self {
+            default,
+            networks,
+            coordinator: None,
+            origin_policy: OriginPolicy {
+                requests_per_second: limits.requests_per_second,
+                burst: limits.burst,
+                max_concurrent: limits.max_concurrent,
+                lease_duration: Duration::from_secs(limits.lease_seconds),
+            },
+        })
+    }
+
+    /// Require storage-backed origin quotas for every request made by this manager.
+    #[must_use]
+    pub fn with_coordinator(mut self, storage: Arc<dyn Storage>) -> Self {
+        self.coordinator = Some(storage);
+        self
+    }
+
+    #[must_use]
+    pub fn coordinator(&self) -> Option<Arc<dyn Storage>> {
+        self.coordinator.clone()
     }
 
     #[must_use]
@@ -810,11 +914,115 @@ impl NetworkManager {
     }
 
     pub async fn request(&self, net: &str, req: NetworkRequest) -> Result<Response, NetworkError> {
-        self.get(net).request(net, req).await
+        let Some(storage) = &self.coordinator else {
+            return self.get(net).request(net, req).await;
+        };
+
+        let origin = normalized_origin(&req.url).ok_or(NetworkError::CoordinationUnavailable)?;
+        let wait_limit = req.timeout.unwrap_or(self.get(net).config.timeout);
+        let deadline = tokio::time::Instant::now() + wait_limit;
+        let started = std::time::Instant::now();
+
+        let lease = loop {
+            let permit = match storage.acquire_origin(&origin, &self.origin_policy).await {
+                Ok(permit) => permit,
+                Err(_) => {
+                    metrics::counter!("outbound_permits_total", "outcome" => "storage_error")
+                        .increment(1);
+                    return Err(NetworkError::CoordinationUnavailable);
+                }
+            };
+            match (permit.decision, permit.lease) {
+                (PermitDecision::Granted, Some(lease)) => {
+                    metrics::counter!("outbound_permits_total", "outcome" => "granted")
+                        .increment(1);
+                    break lease;
+                }
+                (
+                    decision @ (PermitDecision::RateLimited | PermitDecision::ConcurrencyLimited),
+                    _,
+                ) => {
+                    let outcome = match decision {
+                        PermitDecision::RateLimited => "rate_wait",
+                        PermitDecision::ConcurrencyLimited => "concurrency_wait",
+                        PermitDecision::Granted => unreachable!(),
+                    };
+                    metrics::counter!("outbound_permits_total", "outcome" => outcome).increment(1);
+                    let remaining = deadline.saturating_duration_since(tokio::time::Instant::now());
+                    if remaining.is_zero() {
+                        metrics::counter!("outbound_permits_total", "outcome" => "expired")
+                            .increment(1);
+                        return Err(NetworkError::QueueExpired { origin });
+                    }
+                    tokio::time::sleep(permit.retry_after.min(remaining)).await;
+                }
+                _ => return Err(NetworkError::CoordinationUnavailable),
+            }
+        };
+
+        metrics::histogram!("outbound_permit_wait_seconds").record(started.elapsed().as_secs_f64());
+        let request = self.get(net).request(net, req);
+        tokio::pin!(request);
+        let renewal_every = (self.origin_policy.lease_duration / 2).max(Duration::from_millis(100));
+        let mut renewal = tokio::time::interval(renewal_every);
+        renewal.set_missed_tick_behavior(tokio::time::MissedTickBehavior::Delay);
+        renewal.tick().await;
+        let result = loop {
+            tokio::select! {
+                result = &mut request => break result,
+                _ = renewal.tick() => {
+                    match storage
+                        .renew_origin(&lease, self.origin_policy.lease_duration)
+                        .await
+                    {
+                        Ok(true) => {}
+                        Ok(false) | Err(_) => {
+                            metrics::counter!("outbound_permits_total", "outcome" => "renewal_failed")
+                                .increment(1);
+                            let _ = storage.release_origin(&lease).await;
+                            return Err(NetworkError::CoordinationUnavailable);
+                        }
+                    }
+                }
+            }
+        };
+        if let Err(NetworkError::TooManyRequests {
+            retry_after: Some(delay),
+            ..
+        }) = &result
+            && storage.defer_origin(&origin, *delay).await.is_err()
+        {
+            let _ = storage.release_origin(&lease).await;
+            return Err(NetworkError::CoordinationUnavailable);
+        }
+        if storage.release_origin(&lease).await.is_err() {
+            return Err(NetworkError::CoordinationUnavailable);
+        }
+        result
     }
 
     pub async fn check_tor(&self, net: &str) -> Result<bool, NetworkError> {
-        self.get(net).check_tor(net).await
+        if !self.get(net).config.using_tor_proxy {
+            return Ok(false);
+        }
+        let response = self
+            .request(
+                net,
+                NetworkRequest::get(TOR_CHECK_URL).with_timeout(Duration::from_secs(60)),
+            )
+            .await?;
+        let payload: serde_json::Value =
+            response
+                .json()
+                .await
+                .map_err(|source| NetworkError::Transport {
+                    name: net.to_string(),
+                    source,
+                })?;
+        Ok(payload
+            .get("IsTor")
+            .and_then(serde_json::Value::as_bool)
+            .unwrap_or(false))
     }
 
     #[must_use]
@@ -832,10 +1040,83 @@ impl NetworkManager {
     }
 }
 
+fn normalized_origin(raw_url: &str) -> Option<String> {
+    let url = url::Url::parse(raw_url).ok()?;
+    match url.scheme() {
+        "http" | "https" => Some(url.origin().ascii_serialization()),
+        _ => None,
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+    use async_trait::async_trait;
     use zoeken_settings::Settings;
+    use zoeken_storage::{
+        EngineHealthSnapshot, EngineHealthUpdate, FaviconData, FaviconLookup, FaviconPolicy,
+        OriginLease, PermitResult, StorageError,
+    };
+
+    struct UnavailableStorage;
+
+    #[async_trait]
+    impl Storage for UnavailableStorage {
+        async fn healthcheck(&self) -> Result<(), StorageError> {
+            Err(StorageError::InvalidConnectionConfig)
+        }
+        async fn acquire_origin(
+            &self,
+            _origin: &str,
+            _policy: &OriginPolicy,
+        ) -> Result<PermitResult, StorageError> {
+            Err(StorageError::InvalidConnectionConfig)
+        }
+        async fn release_origin(&self, _lease: &OriginLease) -> Result<(), StorageError> {
+            Err(StorageError::InvalidConnectionConfig)
+        }
+        async fn renew_origin(
+            &self,
+            _lease: &OriginLease,
+            _lease_duration: Duration,
+        ) -> Result<bool, StorageError> {
+            Err(StorageError::InvalidConnectionConfig)
+        }
+        async fn defer_origin(&self, _origin: &str, _delay: Duration) -> Result<(), StorageError> {
+            Err(StorageError::InvalidConnectionConfig)
+        }
+        async fn favicon_get(
+            &self,
+            _resolver: &str,
+            _authority: &str,
+        ) -> Result<FaviconLookup, StorageError> {
+            Err(StorageError::InvalidConnectionConfig)
+        }
+        async fn favicon_put(
+            &self,
+            _resolver: &str,
+            _authority: &str,
+            _value: Option<&FaviconData>,
+            _policy: &FaviconPolicy,
+        ) -> Result<bool, StorageError> {
+            Err(StorageError::InvalidConnectionConfig)
+        }
+        async fn record_engine_health(
+            &self,
+            _update: &EngineHealthUpdate,
+        ) -> Result<(), StorageError> {
+            Err(StorageError::InvalidConnectionConfig)
+        }
+        async fn latest_engine_health(
+            &self,
+            _engine: &str,
+        ) -> Result<Option<EngineHealthSnapshot>, StorageError> {
+            Err(StorageError::InvalidConnectionConfig)
+        }
+        async fn maintenance(&self, _favicon_max_total_bytes: usize) -> Result<(), StorageError> {
+            Err(StorageError::InvalidConnectionConfig)
+        }
+    }
 
     fn default_outgoing() -> OutgoingSettings {
         Settings::defaults().outgoing
@@ -848,6 +1129,30 @@ mod tests {
             EmulationProfile::chrome(),
             EmulationProfile::Fixed(Profile::Chrome133)
         );
+    }
+
+    #[test]
+    fn retry_after_accepts_seconds_and_http_dates() {
+        assert_eq!(parse_retry_after("120"), Some(Duration::from_secs(120)));
+        let future = std::time::SystemTime::now() + Duration::from_secs(60);
+        let parsed = parse_retry_after(&httpdate::fmt_http_date(future)).unwrap();
+        assert!(parsed >= Duration::from_secs(58));
+        assert!(parsed <= Duration::from_secs(60));
+        assert_eq!(parse_retry_after("not-a-date"), None);
+    }
+
+    #[tokio::test]
+    async fn storage_outage_fails_closed_before_network_access() {
+        let manager = NetworkManager::from_settings(&default_outgoing())
+            .unwrap()
+            .with_coordinator(Arc::new(UnavailableStorage));
+        let result = manager
+            .request(
+                DEFAULT_NETWORK,
+                NetworkRequest::get("https://example.com/private"),
+            )
+            .await;
+        assert!(matches!(result, Err(NetworkError::CoordinationUnavailable)));
     }
 
     #[test]

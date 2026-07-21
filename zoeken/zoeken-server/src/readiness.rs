@@ -8,23 +8,33 @@ use axum::http::{StatusCode, header};
 use axum::response::{IntoResponse, Response};
 
 #[derive(Clone, Debug)]
-pub struct ReadinessState(Arc<AtomicBool>);
+pub struct ReadinessState {
+    serving: Arc<AtomicBool>,
+    storage_healthy: Arc<AtomicBool>,
+}
 
 impl ReadinessState {
     pub fn new_not_ready() -> Self {
-        ReadinessState(Arc::new(AtomicBool::new(false)))
+        ReadinessState {
+            serving: Arc::new(AtomicBool::new(false)),
+            storage_healthy: Arc::new(AtomicBool::new(true)),
+        }
     }
 
     pub fn set_ready(&self) {
-        self.0.store(true, Ordering::SeqCst);
+        self.serving.store(true, Ordering::SeqCst);
     }
 
     pub fn begin_draining(&self) {
-        self.0.store(false, Ordering::SeqCst);
+        self.serving.store(false, Ordering::SeqCst);
+    }
+
+    pub fn set_storage_healthy(&self, healthy: bool) {
+        self.storage_healthy.store(healthy, Ordering::SeqCst);
     }
 
     pub fn is_ready(&self) -> bool {
-        self.0.load(Ordering::SeqCst)
+        self.serving.load(Ordering::SeqCst) && self.storage_healthy.load(Ordering::SeqCst)
     }
 }
 

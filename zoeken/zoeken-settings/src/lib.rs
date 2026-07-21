@@ -47,13 +47,13 @@ pub struct Settings {
     pub deployment: DeploymentConfig,
     pub ui: UiSettings,
     pub outgoing: OutgoingSettings,
+    pub storage: StorageSettings,
+    pub cache: CacheSettings,
     pub engines: Vec<EngineSettings>,
     pub plugins: PluginSettings,
     pub lua_plugins: LuaPluginSettings,
     #[serde(rename = "categories_as_tabs")]
     pub categories: CategorySettings,
-    pub redis: KvUrlSettings,
-    pub valkey: KvUrlSettings,
     pub preferences: PreferencesSettings,
     pub doi_resolvers: BTreeMap<String, String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -497,6 +497,7 @@ pub struct OutgoingSettings {
     pub using_tor_proxy: bool,
     pub extra_proxy_timeout: u32,
     pub networks: BTreeMap<String, NetworkSettings>,
+    pub origin_limits: OriginLimitSettings,
 }
 
 impl Default for OutgoingSettings {
@@ -518,6 +519,149 @@ impl Default for OutgoingSettings {
             using_tor_proxy: false,
             extra_proxy_timeout: 0,
             networks: BTreeMap::new(),
+            origin_limits: OriginLimitSettings::default(),
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(default)]
+pub struct OriginLimitSettings {
+    pub requests_per_second: f64,
+    pub burst: u32,
+    pub max_concurrent: u32,
+    pub lease_seconds: u64,
+}
+
+impl Default for OriginLimitSettings {
+    fn default() -> Self {
+        Self {
+            requests_per_second: 1.0,
+            burst: 2,
+            max_concurrent: 2,
+            lease_seconds: 15,
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(default)]
+pub struct StorageSettings {
+    pub backend: String,
+    pub sqlite: SqliteStorageSettings,
+    pub postgres: PostgresStorageSettings,
+}
+
+impl Default for StorageSettings {
+    fn default() -> Self {
+        Self {
+            backend: "sqlite".into(),
+            sqlite: SqliteStorageSettings::default(),
+            postgres: PostgresStorageSettings::default(),
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(default)]
+pub struct SqliteStorageSettings {
+    pub path: String,
+    pub busy_timeout_ms: u64,
+}
+
+impl Default for SqliteStorageSettings {
+    fn default() -> Self {
+        Self {
+            path: "./zoeken.sqlite3".into(),
+            busy_timeout_ms: 5000,
+        }
+    }
+}
+
+#[derive(Clone, PartialEq, Serialize, Deserialize)]
+#[serde(default)]
+pub struct PostgresStorageSettings {
+    pub url: Option<String>,
+    pub max_connections: usize,
+    pub acquire_timeout_seconds: u64,
+}
+
+impl std::fmt::Debug for PostgresStorageSettings {
+    fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        formatter
+            .debug_struct("PostgresStorageSettings")
+            .field("url", &self.url.as_ref().map(|_| "<redacted>"))
+            .field("max_connections", &self.max_connections)
+            .field("acquire_timeout_seconds", &self.acquire_timeout_seconds)
+            .finish()
+    }
+}
+
+impl Default for PostgresStorageSettings {
+    fn default() -> Self {
+        Self {
+            url: None,
+            max_connections: 16,
+            acquire_timeout_seconds: 5,
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, Default)]
+#[serde(default)]
+pub struct CacheSettings {
+    pub search: SearchCacheSettings,
+    pub autocomplete: AutocompleteCacheSettings,
+    pub favicons: FaviconCacheSettings,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(default)]
+pub struct SearchCacheSettings {
+    pub ttl_seconds: u64,
+    pub structured_ttl_seconds: u64,
+    pub max_bytes: usize,
+}
+impl Default for SearchCacheSettings {
+    fn default() -> Self {
+        Self {
+            ttl_seconds: 60,
+            structured_ttl_seconds: 300,
+            max_bytes: 134_217_728,
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(default)]
+pub struct AutocompleteCacheSettings {
+    pub ttl_seconds: u64,
+    pub max_entries: u64,
+}
+impl Default for AutocompleteCacheSettings {
+    fn default() -> Self {
+        Self {
+            ttl_seconds: 300,
+            max_entries: 2048,
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(default)]
+pub struct FaviconCacheSettings {
+    pub positive_ttl_seconds: u64,
+    pub negative_ttl_seconds: u64,
+    pub max_blob_bytes: usize,
+    pub max_total_bytes: usize,
+}
+impl Default for FaviconCacheSettings {
+    fn default() -> Self {
+        Self {
+            positive_ttl_seconds: 2_592_000,
+            negative_ttl_seconds: 86_400,
+            max_blob_bytes: 20_480,
+            max_total_bytes: 268_435_456,
         }
     }
 }
@@ -658,20 +802,6 @@ pub struct HostnamesSettings {
     pub extra: ExtraMap,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(default)]
-pub struct KvUrlSettings {
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub url: Option<BoolOrString>,
-}
-
-impl Default for KvUrlSettings {
-    fn default() -> Self {
-        Self {
-            url: Some(BoolOrString::Bool(false)),
-        }
-    }
-}
 /// Read-only view over the process environment used by [`load_settings`].
 /// Recognized `APP_*` variables override file values and defaults.
 #[derive(Debug, Clone, Default)]
@@ -765,9 +895,12 @@ pub fn load_settings(path: Option<&Path>, env: &EnvMap) -> Result<Settings, Sett
                 path: path.display().to_string(),
                 source,
             })?;
+        reject_legacy_storage_keys(&file_value, env)?;
         if !file_value.is_null() {
             apply_file_overlay(&mut merged, &file_value)?;
         }
+    } else {
+        reject_legacy_storage_keys(&Value::Null, env)?;
     }
 
     apply_env_overrides(&mut merged, env)?;
@@ -776,6 +909,30 @@ pub fn load_settings(path: Option<&Path>, env: &EnvMap) -> Result<Settings, Sett
         .map_err(|source| SettingsError::Deserialize { source })?;
     validate_settings(&settings)?;
     Ok(settings)
+}
+
+fn reject_legacy_storage_keys(file: &Value, env: &EnvMap) -> Result<(), SettingsError> {
+    let has_legacy_file_key = file.as_mapping().is_some_and(|mapping| {
+        ["redis", "valkey"]
+            .iter()
+            .any(|key| mapping.contains_key(Value::String((*key).to_string())))
+    });
+    if has_legacy_file_key {
+        return Err(SettingsError::Validation {
+            setting: "storage".to_string(),
+            message: "redis/valkey configuration was removed; migrate to storage.backend with storage.sqlite or storage.postgres".to_string(),
+        });
+    }
+
+    for variable in ["APP_REDIS_URL", "APP_VALKEY_URL"] {
+        if env.get(variable).is_some() {
+            return Err(SettingsError::EnvOverride {
+                var: variable.to_string(),
+                message: "this variable was removed; use APP_STORAGE_BACKEND and APP_POSTGRES_URL or APP_SQLITE_PATH".to_string(),
+            });
+        }
+    }
+    Ok(())
 }
 
 enum FileMergeMode {
@@ -986,8 +1143,17 @@ fn apply_env_overrides(merged: &mut Value, env: &EnvMap) -> Result<(), SettingsE
         ("APP_BASE_URL", &["server", "base_url"], Kind::String),
         ("APP_IMAGE_PROXY", &["server", "image_proxy"], Kind::Bool),
         ("APP_METHOD", &["server", "method"], Kind::String),
-        ("APP_REDIS_URL", &["redis", "url"], Kind::String),
-        ("APP_VALKEY_URL", &["valkey", "url"], Kind::String),
+        ("APP_STORAGE_BACKEND", &["storage", "backend"], Kind::String),
+        (
+            "APP_SQLITE_PATH",
+            &["storage", "sqlite", "path"],
+            Kind::String,
+        ),
+        (
+            "APP_POSTGRES_URL",
+            &["storage", "postgres", "url"],
+            Kind::String,
+        ),
         ("APP_LOG_LEVEL", &["deployment", "log_level"], Kind::String),
         (
             "APP_METRICS_ENABLED",
@@ -1033,6 +1199,75 @@ pub fn validate_settings(s: &Settings) -> Result<(), SettingsError> {
         }
     }
 
+    match s.storage.backend.as_str() {
+        "sqlite" if s.storage.sqlite.path.trim().is_empty() => {
+            return Err(invalid("storage.sqlite.path", "must not be empty".into()));
+        }
+        "sqlite" if s.storage.sqlite.busy_timeout_ms == 0 => {
+            return Err(invalid(
+                "storage.sqlite.busy_timeout_ms",
+                "must be greater than zero".into(),
+            ));
+        }
+        "sqlite" => {}
+        "postgres" if s.storage.postgres.url.as_deref().is_none_or(str::is_empty) => {
+            return Err(invalid(
+                "storage.postgres.url",
+                "is required when storage.backend is postgres".into(),
+            ));
+        }
+        "postgres" if s.storage.postgres.max_connections == 0 => {
+            return Err(invalid(
+                "storage.postgres.max_connections",
+                "must be greater than zero".into(),
+            ));
+        }
+        "postgres" if s.storage.postgres.acquire_timeout_seconds == 0 => {
+            return Err(invalid(
+                "storage.postgres.acquire_timeout_seconds",
+                "must be greater than zero".into(),
+            ));
+        }
+        "postgres" => {}
+        other => {
+            return Err(invalid(
+                "storage.backend",
+                format!("must be 'sqlite' or 'postgres' (got '{other}')"),
+            ));
+        }
+    }
+    if s.outgoing.origin_limits.requests_per_second <= 0.0
+        || !s.outgoing.origin_limits.requests_per_second.is_finite()
+    {
+        return Err(invalid(
+            "outgoing.origin_limits.requests_per_second",
+            "must be finite and greater than zero".into(),
+        ));
+    }
+    if s.outgoing.origin_limits.burst == 0
+        || s.outgoing.origin_limits.max_concurrent == 0
+        || s.outgoing.origin_limits.lease_seconds == 0
+    {
+        return Err(invalid(
+            "outgoing.origin_limits",
+            "burst, max_concurrent, and lease_seconds must be greater than zero".into(),
+        ));
+    }
+    if s.cache.search.ttl_seconds == 0
+        || s.cache.search.structured_ttl_seconds == 0
+        || s.cache.search.max_bytes == 0
+        || s.cache.autocomplete.ttl_seconds == 0
+        || s.cache.autocomplete.max_entries == 0
+        || s.cache.favicons.positive_ttl_seconds == 0
+        || s.cache.favicons.negative_ttl_seconds == 0
+        || s.cache.favicons.max_blob_bytes == 0
+        || s.cache.favicons.max_total_bytes == 0
+    {
+        return Err(invalid(
+            "cache",
+            "all TTL and capacity limits must be greater than zero".into(),
+        ));
+    }
     if s.search.safe_search > 2 {
         return Err(invalid(
             "search.safe_search",
@@ -1321,8 +1556,8 @@ search:
         assert_eq!(s.outgoing.retries, 0);
         assert_eq!(s.outgoing.extra_proxy_timeout, 0);
         assert!(!s.outgoing.using_tor_proxy);
-        assert_eq!(s.redis.url, Some(BoolOrString::Bool(false)));
-        assert_eq!(s.valkey.url, Some(BoolOrString::Bool(false)));
+        assert_eq!(s.storage.backend, "sqlite");
+        assert_eq!(s.storage.sqlite.path, "./zoeken.sqlite3");
         assert!(s.engines.is_empty());
         assert!(s.plugins.0.is_empty());
         assert!(s.preferences.lock.is_empty());

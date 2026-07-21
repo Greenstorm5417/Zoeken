@@ -83,12 +83,6 @@ pub trait AutocompleteBackend: Send + Sync {
     fn suggest<'a>(&'a self, query: &'a str, locale: &'a str) -> SuggestFuture<'a>;
 }
 
-/// How long a cached suggestion list stays fresh.
-const CACHE_TTL: Duration = Duration::from_secs(300);
-
-/// Cap on cached entries; the cache is wiped when it grows past this.
-const CACHE_CAPACITY: usize = 2048;
-
 struct CacheEntry {
     at: std::time::Instant,
     suggestions: Vec<Suggestion>,
@@ -103,6 +97,10 @@ pub struct AutocompleteService {
     backend: Option<Arc<dyn AutocompleteBackend>>,
     timeout: Duration,
     cache: Arc<std::sync::Mutex<std::collections::HashMap<String, CacheEntry>>>,
+    flights: Arc<std::sync::Mutex<std::collections::HashMap<String, Arc<tokio::sync::Mutex<()>>>>>,
+    cache_ttl: Duration,
+    cache_capacity: usize,
+    hmac_key: Arc<[u8; 32]>,
 }
 
 impl AutocompleteService {
@@ -112,6 +110,10 @@ impl AutocompleteService {
             backend: None,
             timeout: DEFAULT_AUTOCOMPLETE_TIMEOUT,
             cache: Arc::default(),
+            flights: Arc::default(),
+            cache_ttl: Duration::from_secs(300),
+            cache_capacity: 2048,
+            hmac_key: Arc::new(rand::random()),
         }
     }
 
@@ -121,6 +123,10 @@ impl AutocompleteService {
             backend: Some(backend),
             timeout: DEFAULT_AUTOCOMPLETE_TIMEOUT,
             cache: Arc::default(),
+            flights: Arc::default(),
+            cache_ttl: Duration::from_secs(300),
+            cache_capacity: 2048,
+            hmac_key: Arc::new(rand::random()),
         }
     }
 
@@ -128,6 +134,14 @@ impl AutocompleteService {
     #[must_use]
     pub fn with_timeout(mut self, timeout: Duration) -> Self {
         self.timeout = timeout;
+        self
+    }
+
+    /// Configure the bounded, process-memory-only suggestion cache.
+    #[must_use]
+    pub fn with_cache(mut self, ttl: Duration, max_entries: usize) -> Self {
+        self.cache_ttl = ttl;
+        self.cache_capacity = max_entries.max(1);
         self
     }
 
@@ -148,35 +162,82 @@ impl AutocompleteService {
             return Vec::new();
         };
 
-        let key = format!("{locale}\u{1f}{query}");
+        let key = autocomplete_key(&self.hmac_key[..], backend.name(), query, locale);
         if let Ok(cache) = self.cache.lock()
             && let Some(entry) = cache.get(&key)
-            && entry.at.elapsed() < CACHE_TTL
+            && entry.at.elapsed() < self.cache_ttl
         {
+            metrics::counter!("autocomplete_cache_total", "outcome" => "hit").increment(1);
+            return entry.suggestions.clone();
+        }
+
+        let flight = {
+            let Ok(mut flights) = self.flights.lock() else {
+                return Vec::new();
+            };
+            flights
+                .entry(key.clone())
+                .or_insert_with(|| Arc::new(tokio::sync::Mutex::new(())))
+                .clone()
+        };
+        let _guard = flight.lock().await;
+
+        // The leader populates the cache while followers wait on the key lock.
+        if let Ok(cache) = self.cache.lock()
+            && let Some(entry) = cache.get(&key)
+            && entry.at.elapsed() < self.cache_ttl
+        {
+            metrics::counter!("autocomplete_singleflight_total", "outcome" => "shared")
+                .increment(1);
             return entry.suggestions.clone();
         }
 
         let suggestions =
             match tokio::time::timeout(self.timeout, backend.suggest(query, locale)).await {
                 Ok(Ok(suggestions)) => suggestions,
-                Ok(Err(_error)) => return Vec::new(),
-                Err(_elapsed) => return Vec::new(),
+                Ok(Err(_)) | Err(_) => {
+                    if let Ok(mut flights) = self.flights.lock() {
+                        flights.remove(&key);
+                    }
+                    return Vec::new();
+                }
             };
 
         if let Ok(mut cache) = self.cache.lock() {
-            if cache.len() >= CACHE_CAPACITY {
-                cache.clear();
+            cache.retain(|_, entry| entry.at.elapsed() < self.cache_ttl);
+            if cache.len() >= self.cache_capacity
+                && let Some(oldest) = cache
+                    .iter()
+                    .min_by_key(|(_, entry)| entry.at)
+                    .map(|(key, _)| key.clone())
+            {
+                cache.remove(&oldest);
             }
             cache.insert(
-                key,
+                key.clone(),
                 CacheEntry {
                     at: std::time::Instant::now(),
                     suggestions: suggestions.clone(),
                 },
             );
         }
+        if let Ok(mut flights) = self.flights.lock() {
+            flights.remove(&key);
+        }
         suggestions
     }
+}
+
+fn autocomplete_key(secret: &[u8], backend: &str, query: &str, locale: &str) -> String {
+    use hmac::{KeyInit, Mac};
+
+    let mut mac = <hmac::Hmac<sha2::Sha256> as KeyInit>::new_from_slice(secret)
+        .expect("HMAC accepts keys of any size");
+    for component in [backend, locale, query] {
+        mac.update(component.as_bytes());
+        mac.update(&[0]);
+    }
+    hex::encode(mac.finalize().into_bytes())
 }
 
 impl Default for AutocompleteService {
@@ -713,6 +774,7 @@ impl AutocompleteBackend for StaticBackend {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::sync::atomic::{AtomicUsize, Ordering};
 
     struct FailingBackend;
 
@@ -735,6 +797,22 @@ mod tests {
             Box::pin(async {
                 tokio::time::sleep(Duration::from_secs(60)).await;
                 Ok(vec![Suggestion::text("never")])
+            })
+        }
+    }
+
+    struct CountingBackend(AtomicUsize);
+
+    impl AutocompleteBackend for CountingBackend {
+        fn name(&self) -> &str {
+            "counting"
+        }
+
+        fn suggest<'a>(&'a self, _query: &'a str, _locale: &'a str) -> SuggestFuture<'a> {
+            self.0.fetch_add(1, Ordering::SeqCst);
+            Box::pin(async {
+                tokio::time::sleep(Duration::from_millis(20)).await;
+                Ok(vec![Suggestion::text("shared")])
             })
         }
     }
@@ -785,6 +863,20 @@ mod tests {
         let suggestions = service.suggest("rus", "en-US").await;
 
         assert!(suggestions.is_empty());
+    }
+
+    #[tokio::test]
+    async fn identical_concurrent_requests_are_singleflighted() {
+        let backend = Arc::new(CountingBackend(AtomicUsize::new(0)));
+        let service = AutocompleteService::with_backend(backend.clone());
+        let (a, b, c) = tokio::join!(
+            service.suggest("rus", "en-US"),
+            service.suggest("rus", "en-US"),
+            service.suggest("rus", "en-US")
+        );
+        assert_eq!(a, b);
+        assert_eq!(b, c);
+        assert_eq!(backend.0.load(Ordering::SeqCst), 1);
     }
 
     #[test]

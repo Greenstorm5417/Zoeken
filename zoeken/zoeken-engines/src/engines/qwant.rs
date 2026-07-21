@@ -107,6 +107,15 @@ impl Engine for Qwant {
     fn response(&self, resp: &EngineResponse) -> Result<EngineResults, EngineError> {
         let mut res = EngineResults::new();
 
+        // Qwant sometimes sends an HTML/text throttle page instead of its JSON
+        // error envelope. Classify from HTTP status before attempting JSON.
+        if resp.status == 429 {
+            return Err(EngineError::TooManyRequests(NAME.to_string()));
+        }
+        if resp.status == 403 {
+            return Err(EngineError::AccessDenied(NAME.to_string()));
+        }
+
         let value: serde_json::Value = serde_json::from_slice(&resp.body).unwrap_or_default();
         let data = value.get("data").cloned().unwrap_or_default();
 
@@ -325,6 +334,14 @@ mod tests {
         assert!(matches!(
             engine.response(&response(200, CAPTCHA_JSON)),
             Err(EngineError::Captcha(_))
+        ));
+    }
+
+    #[test]
+    fn maps_non_json_429_before_parsing() {
+        assert!(matches!(
+            Qwant::new().response(&response(429, "upstream throttled")),
+            Err(EngineError::TooManyRequests(_))
         ));
     }
 

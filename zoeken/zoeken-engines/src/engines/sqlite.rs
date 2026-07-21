@@ -14,8 +14,9 @@ use std::collections::HashMap;
 use std::sync::Mutex;
 use std::thread::ThreadId;
 
-use rusqlite::{Connection, OpenFlags, named_params};
 use serde::Deserialize;
+use sqlx::sqlite::{SqliteArguments, SqliteConnectOptions, SqliteRow};
+use sqlx::{Arguments, Column, Connection, Row, TypeInfo, ValueRef};
 use zoeken_engine_core::{
     About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, Processor,
     RequestParams, SearchQueryView,
@@ -129,15 +130,6 @@ impl Sqlite {
             state: Mutex::new(HashMap::new()),
         })
     }
-
-    fn open_ro(&self) -> Result<Connection, EngineError> {
-        let uri = format!("file:{}?mode=ro", self.database);
-        Connection::open_with_flags(
-            uri,
-            OpenFlags::SQLITE_OPEN_READ_ONLY | OpenFlags::SQLITE_OPEN_URI,
-        )
-        .map_err(|e| EngineError::Unexpected(format!("sqlite: failed to open database: {e}")))
-    }
 }
 
 impl Engine for Sqlite {
@@ -169,55 +161,11 @@ impl Engine for Sqlite {
             pageno: 1,
         });
 
-        let wildcard = format!("%{}%", query.replace(' ', "%"));
         let offset = (i64::from(pageno) - 1) * self.limit;
         let query_to_run = format!("{} LIMIT :limit OFFSET :offset", self.query_str);
-
-        let conn = self.open_ro()?;
-        let mut stmt = conn.prepare(&query_to_run).map_err(|e| {
-            EngineError::Unexpected(format!("sqlite: failed to prepare query: {e}"))
-        })?;
-        let col_names: Vec<String> = stmt.column_names().iter().map(|s| s.to_string()).collect();
-
+        let rows = execute_query(&self.database, &query_to_run, &query, self.limit, offset)?;
         let mut res = EngineResults::new();
-        let uses_query = query_to_run.contains(":query");
-        let uses_wildcard = query_to_run.contains(":wildcard");
-        let mut rows = match (uses_query, uses_wildcard) {
-            (true, true) => stmt.query(named_params! {
-                ":query": query,
-                ":wildcard": wildcard,
-                ":limit": self.limit,
-                ":offset": offset,
-            }),
-            (true, false) => stmt.query(named_params! {
-                ":query": query,
-                ":limit": self.limit,
-                ":offset": offset,
-            }),
-            (false, true) => stmt.query(named_params! {
-                ":wildcard": wildcard,
-                ":limit": self.limit,
-                ":offset": offset,
-            }),
-            (false, false) => stmt.query(named_params! {
-                ":limit": self.limit,
-                ":offset": offset,
-            }),
-        }
-        .map_err(|e| EngineError::Unexpected(format!("sqlite: query failed: {e}")))?;
-
-        while let Some(row) = rows
-            .next()
-            .map_err(|e| EngineError::Unexpected(format!("sqlite: failed to read row: {e}")))?
-        {
-            let mut kvmap: Vec<(String, String)> = Vec::with_capacity(col_names.len());
-            for (idx, name) in col_names.iter().enumerate() {
-                let value: rusqlite::types::Value = row.get(idx).map_err(|e| {
-                    EngineError::Unexpected(format!("sqlite: column read error: {e}"))
-                })?;
-                kvmap.push((name.clone(), sqlite_value_to_string(&value)));
-            }
-
+        for kvmap in rows {
             match self.result_type {
                 ResultType::MainResult => {
                     let get = |key: &str| -> String {
@@ -251,18 +199,104 @@ impl Engine for Sqlite {
     }
 }
 
-/// Render a SQLite cell the way Python's `str(value)` would for the types
-/// `sqlite3.Row` can produce. NULL maps to the literal `"None"` to match the
-/// upstream `map(str, row)` behavior; BLOBs are decoded lossily (upstream's
-/// `str(bytes)` produces a `b'...'` repr, which is not reproduced here).
-fn sqlite_value_to_string(value: &rusqlite::types::Value) -> String {
-    match value {
-        rusqlite::types::Value::Null => "None".to_string(),
-        rusqlite::types::Value::Integer(i) => i.to_string(),
-        rusqlite::types::Value::Real(f) => f.to_string(),
-        rusqlite::types::Value::Text(s) => s.clone(),
-        rusqlite::types::Value::Blob(b) => String::from_utf8_lossy(b).to_string(),
+fn execute_query(
+    database: &str,
+    statement: &str,
+    search_query: &str,
+    limit: i64,
+    offset: i64,
+) -> Result<Vec<Vec<(String, String)>>, EngineError> {
+    let database = database.to_string();
+    let statement = statement.to_string();
+    let search_query = search_query.to_string();
+    std::thread::spawn(move || {
+        let runtime = tokio::runtime::Builder::new_current_thread()
+            .enable_all()
+            .build()
+            .map_err(|error| EngineError::Unexpected(format!("sqlite runtime: {error}")))?;
+        runtime.block_on(async move {
+            let options = SqliteConnectOptions::new()
+                .filename(database)
+                .read_only(true);
+            let mut connection = sqlx::SqliteConnection::connect_with(&options)
+                .await
+                .map_err(sqlite_error("failed to open database"))?;
+            let wildcard = format!("%{}%", search_query.replace(' ', "%"));
+            let (sql, arguments) =
+                bind_named_arguments(&statement, &search_query, &wildcard, limit, offset)?;
+            let rows = sqlx::query_with(&sql, arguments)
+                .fetch_all(&mut connection)
+                .await
+                .map_err(sqlite_error("query failed"))?;
+            rows.iter().map(row_to_pairs).collect()
+        })
+    })
+    .join()
+    .map_err(|_| EngineError::Unexpected("sqlite worker panicked".to_string()))?
+}
+
+fn bind_named_arguments(
+    statement: &str,
+    search_query: &str,
+    wildcard: &str,
+    limit: i64,
+    offset: i64,
+) -> Result<(String, SqliteArguments<'static>), EngineError> {
+    const NAMES: [&str; 4] = [":query", ":wildcard", ":limit", ":offset"];
+    let mut sql = String::with_capacity(statement.len());
+    let mut remaining = statement;
+    let mut arguments = SqliteArguments::default();
+    while let Some((position, name)) = NAMES
+        .iter()
+        .filter_map(|name| remaining.find(name).map(|position| (position, *name)))
+        .min_by_key(|(position, _)| *position)
+    {
+        sql.push_str(&remaining[..position]);
+        sql.push('?');
+        match name {
+            ":query" => arguments.add(search_query.to_string()),
+            ":wildcard" => arguments.add(wildcard.to_string()),
+            ":limit" => arguments.add(limit),
+            ":offset" => arguments.add(offset),
+            _ => unreachable!(),
+        }
+        .map_err(|error| {
+            EngineError::Unexpected(format!("sqlite: failed to bind query parameter: {error}"))
+        })?;
+        remaining = &remaining[position + name.len()..];
     }
+    sql.push_str(remaining);
+    Ok((sql, arguments))
+}
+
+fn row_to_pairs(row: &SqliteRow) -> Result<Vec<(String, String)>, EngineError> {
+    row.columns()
+        .iter()
+        .enumerate()
+        .map(|(index, column)| {
+            let raw = row
+                .try_get_raw(index)
+                .map_err(sqlite_error("column read failed"))?;
+            let value = if raw.is_null() {
+                "None".to_string()
+            } else {
+                match raw.type_info().name() {
+                    "INTEGER" => row.try_get::<i64, _>(index).map(|value| value.to_string()),
+                    "REAL" => row.try_get::<f64, _>(index).map(|value| value.to_string()),
+                    "BLOB" => row
+                        .try_get::<Vec<u8>, _>(index)
+                        .map(|value| String::from_utf8_lossy(&value).to_string()),
+                    _ => row.try_get::<String, _>(index),
+                }
+                .map_err(sqlite_error("column decode failed"))?
+            };
+            Ok((column.name().to_string(), value))
+        })
+        .collect()
+}
+
+fn sqlite_error(context: &'static str) -> impl FnOnce(sqlx::Error) -> EngineError {
+    move |error| EngineError::Unexpected(format!("sqlite: {context}: {error}"))
 }
 
 #[cfg(test)]
@@ -272,10 +306,33 @@ mod tests {
     fn temp_db(sql: &[&str]) -> tempfile::TempPath {
         let file = tempfile::NamedTempFile::new().unwrap();
         let path = file.into_temp_path();
-        let conn = Connection::open(&path).unwrap();
-        for stmt in sql {
-            conn.execute(stmt, []).unwrap();
-        }
+        let database = path.to_path_buf();
+        let statements = sql
+            .iter()
+            .map(|value| value.to_string())
+            .collect::<Vec<_>>();
+        std::thread::spawn(move || {
+            let runtime = tokio::runtime::Builder::new_current_thread()
+                .enable_all()
+                .build()
+                .unwrap();
+            runtime.block_on(async move {
+                let options = SqliteConnectOptions::new()
+                    .filename(database)
+                    .create_if_missing(true);
+                let mut connection = sqlx::SqliteConnection::connect_with(&options)
+                    .await
+                    .unwrap();
+                for statement in statements {
+                    sqlx::raw_sql(&statement)
+                        .execute(&mut connection)
+                        .await
+                        .unwrap();
+                }
+            });
+        })
+        .join()
+        .unwrap();
         path
     }
 
@@ -456,12 +513,7 @@ mod tests {
 
     #[test]
     fn fixture_queries_remain_isolated_across_threads() {
-        let file = tempfile::NamedTempFile::new().unwrap();
-        let path = file.into_temp_path();
-        Connection::open(&path)
-            .unwrap()
-            .execute_batch(include_str!("../../fixtures/sqlite/search.sql"))
-            .unwrap();
+        let path = temp_db(&[include_str!("../../fixtures/sqlite/search.sql")]);
         let engine = std::sync::Arc::new(
             Sqlite::new(SqliteConfig {
                 database: path.to_string_lossy().to_string(),

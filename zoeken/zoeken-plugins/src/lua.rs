@@ -48,6 +48,7 @@ pub struct LuaRuntimeConfig {
     pub memory_limit: usize,
     pub instruction_budget: usize,
     pub allowed_capabilities: BTreeSet<String>,
+    pub outbound: Option<Arc<zoeken_network::NetworkManager>>,
 }
 
 impl Default for LuaRuntimeConfig {
@@ -68,6 +69,7 @@ impl Default for LuaRuntimeConfig {
             .into_iter()
             .map(str::to_string)
             .collect(),
+            outbound: None,
         }
     }
 }
@@ -116,7 +118,8 @@ impl LuaPlugin {
         let first_module = load_module(&first_lua, &name, &source)?;
         let info = plugin_info(&first_module, &config)?;
         let metrics = Arc::new(LuaPluginMetrics::default());
-        let (first_data, first_utils) = build_static_ctx_caches(&first_lua, &info, data.as_ref())?;
+        let (first_data, first_utils) =
+            build_static_ctx_caches(&first_lua, &info, data.as_ref(), &config)?;
 
         let mut pool = Vec::with_capacity(config.vm_pool_size.max(1));
         let first_disabled = run_init(
@@ -147,7 +150,8 @@ impl LuaPlugin {
             let built = build_lua(config.memory_limit, config.instruction_budget)?;
             let lua = built.lua;
             let module = load_module(&lua, &name, &source)?;
-            let (cached_data, cached_utils) = build_static_ctx_caches(&lua, &info, data.as_ref())?;
+            let (cached_data, cached_utils) =
+                build_static_ctx_caches(&lua, &info, data.as_ref(), &config)?;
             let disabled = run_init(
                 &lua,
                 &module,
@@ -629,6 +633,7 @@ fn build_static_ctx_caches(
     lua: &Lua,
     info: &PluginInfo,
     data: &zoeken_data::DataBundle,
+    config: &LuaRuntimeConfig,
 ) -> Result<(Option<RegistryKey>, Option<RegistryKey>), LuaPluginError> {
     let cached_data = if has_capability(info, "data") {
         let table = data_to_table(lua, data).map_err(|source| LuaPluginError::Load {
@@ -646,11 +651,12 @@ fn build_static_ctx_caches(
         None
     };
     let cached_utils = if has_capability(info, "utils") {
-        let table =
-            utils_to_table(lua, &data.tracker_patterns).map_err(|source| LuaPluginError::Load {
+        let table = utils_to_table(lua, &data.tracker_patterns, config.outbound.clone()).map_err(
+            |source| LuaPluginError::Load {
                 name: info.id.clone(),
                 source,
-            })?;
+            },
+        )?;
         Some(
             lua.create_registry_value(table)
                 .map_err(|source| LuaPluginError::Load {
@@ -976,7 +982,11 @@ fn tracker_patterns_to_table(
     Ok(table)
 }
 
-fn utils_to_table(lua: &Lua, patterns: &zoeken_data::TrackerPatterns) -> mlua::Result<Table> {
+fn utils_to_table(
+    lua: &Lua,
+    patterns: &zoeken_data::TrackerPatterns,
+    outbound: Option<Arc<zoeken_network::NetworkManager>>,
+) -> mlua::Result<Table> {
     let utils = lua.create_table()?;
     utils.set(
         "eval",
@@ -1028,8 +1038,11 @@ fn utils_to_table(lua: &Lua, patterns: &zoeken_data::TrackerPatterns) -> mlua::R
     )?;
     utils.set(
         "tor_exit_nodes",
-        lua.create_function(|lua, ()| {
-            let nodes = download_tor_exit_nodes().map_err(mlua::Error::external)?;
+        lua.create_function(move |lua, ()| {
+            let network = outbound
+                .clone()
+                .ok_or_else(|| mlua::Error::external("outbound coordination unavailable"))?;
+            let nodes = download_tor_exit_nodes(network).map_err(mlua::Error::external)?;
             string_vec_to_table(lua, &nodes)
         })?,
     )?;
@@ -1756,20 +1769,32 @@ fn normalize_ip(raw: &str) -> Option<String> {
         .map(|ip| ip.to_string())
 }
 
-fn download_tor_exit_nodes() -> anyhow::Result<Vec<String>> {
+fn download_tor_exit_nodes(
+    network: Arc<zoeken_network::NetworkManager>,
+) -> anyhow::Result<Vec<String>> {
     const EXIT_LIST_URL: &str = "https://check.torproject.org/exit-addresses";
     const EXIT_LIST_TIMEOUT: Duration = Duration::from_secs(5);
-    let runtime = tokio::runtime::Builder::new_current_thread()
-        .enable_all()
-        .build()?;
-    let text = runtime.block_on(async {
-        tokio::time::timeout(EXIT_LIST_TIMEOUT, async {
-            let response = wreq::Client::new().get(EXIT_LIST_URL).send().await?;
-            Ok::<_, anyhow::Error>(response.text().await?)
+    let text = std::thread::spawn(move || -> anyhow::Result<String> {
+        let runtime = tokio::runtime::Builder::new_current_thread()
+            .enable_all()
+            .build()?;
+        runtime.block_on(async {
+            tokio::time::timeout(EXIT_LIST_TIMEOUT, async {
+                let response = network
+                    .request(
+                        zoeken_network::DEFAULT_NETWORK,
+                        zoeken_network::NetworkRequest::get(EXIT_LIST_URL)
+                            .with_timeout(EXIT_LIST_TIMEOUT),
+                    )
+                    .await?;
+                Ok::<_, anyhow::Error>(response.text().await?)
+            })
+            .await
+            .map_err(|_| anyhow!("timed out downloading Tor exit node list"))?
         })
-        .await
-        .map_err(|_| anyhow!("timed out downloading Tor exit node list"))?
-    })?;
+    })
+    .join()
+    .map_err(|_| anyhow!("Tor exit node worker panicked"))??;
     let re = regex::Regex::new(r"(?m)^ExitAddress\s+(\S+)")?;
     Ok(re
         .captures_iter(&text)

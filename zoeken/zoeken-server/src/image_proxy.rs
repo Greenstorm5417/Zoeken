@@ -5,13 +5,14 @@ use std::pin::Pin;
 use std::sync::Arc;
 
 use axum::extract::{RawQuery, State};
-use axum::http::{HeaderMap, StatusCode, header};
+use axum::http::{HeaderMap, HeaderValue, StatusCode, header};
 use axum::response::{IntoResponse, Response};
 use futures_util::StreamExt;
 use zoeken_favicons::{
     DEFAULT_MAX_IMAGE_BYTES, ImageProxyDecision, ImageProxyPolicy, MAX_REDIRECT_HOPS,
     get_following_safe_redirects, image_proxy_decision, is_hmac_of, validate_proxy_url,
 };
+use zoeken_network::{NetworkManager, NetworkRequest};
 
 use crate::{AppState, parse_pairs};
 
@@ -37,7 +38,12 @@ pub trait ImageProxyFetcher: Send + Sync {
 }
 
 pub struct WreqImageFetcher {
-    client: wreq::Client,
+    transport: ImageTransport,
+}
+
+enum ImageTransport {
+    Direct(wreq::Client),
+    Coordinated(Arc<NetworkManager>),
 }
 
 impl WreqImageFetcher {
@@ -49,13 +55,24 @@ impl WreqImageFetcher {
             .timeout(std::time::Duration::from_secs(15))
             .build()
             .expect("build image proxy HTTP client");
-        Self { client }
+        Self {
+            transport: ImageTransport::Direct(client),
+        }
     }
 
     /// Use an externally built client (e.g. the browser-emulating
     /// `image_proxy` network client) instead of the plain default.
     pub fn with_client(client: wreq::Client) -> Self {
-        Self { client }
+        Self {
+            transport: ImageTransport::Direct(client),
+        }
+    }
+
+    #[must_use]
+    pub fn with_networks(networks: Arc<NetworkManager>) -> Self {
+        Self {
+            transport: ImageTransport::Coordinated(networks),
+        }
     }
 }
 
@@ -72,9 +89,16 @@ impl ImageProxyFetcher for WreqImageFetcher {
         Box::pin(async move {
             // Redirects are followed manually so every hop is re-validated
             // against the SSRF policy (a public URL can 302 to loopback).
-            let resp = get_following_safe_redirects(&self.client, &url, MAX_REDIRECT_HOPS)
-                .await
-                .map_err(ImageFetchError::Upstream)?;
+            let resp = match &self.transport {
+                ImageTransport::Direct(client) => {
+                    get_following_safe_redirects(client, &url, MAX_REDIRECT_HOPS)
+                        .await
+                        .map_err(ImageFetchError::Upstream)?
+                }
+                ImageTransport::Coordinated(networks) => {
+                    coordinated_image_get(networks, &url).await?
+                }
+            };
 
             let status = resp.status().as_u16();
             let content_type = resp
@@ -104,6 +128,48 @@ impl ImageProxyFetcher for WreqImageFetcher {
             })
         })
     }
+}
+
+async fn coordinated_image_get(
+    networks: &NetworkManager,
+    url: &str,
+) -> Result<wreq::Response, ImageFetchError> {
+    let mut current = url.to_string();
+    for _ in 0..=MAX_REDIRECT_HOPS {
+        validate_proxy_url(&current)
+            .map_err(|rejection| ImageFetchError::Upstream(rejection.reason().to_string()))?;
+        let mut headers = HeaderMap::new();
+        headers.insert(
+            header::ACCEPT,
+            HeaderValue::from_static(zoeken_favicons::IMAGE_ACCEPT),
+        );
+        let response = networks
+            .request(
+                "image_proxy",
+                NetworkRequest::get(&current)
+                    .with_headers(headers)
+                    .with_max_redirects(0)
+                    .with_timeout(std::time::Duration::from_secs(15)),
+            )
+            .await
+            .map_err(|error| ImageFetchError::Upstream(error.to_string()))?;
+        if !response.status().is_redirection() {
+            return Ok(response);
+        }
+        let Some(location) = response
+            .headers()
+            .get(header::LOCATION)
+            .and_then(|value| value.to_str().ok())
+        else {
+            return Ok(response);
+        };
+        current = url::Url::parse(&current)
+            .ok()
+            .and_then(|base| base.join(location).ok())
+            .map(String::from)
+            .ok_or_else(|| ImageFetchError::Upstream("invalid redirect location".into()))?;
+    }
+    Err(ImageFetchError::Upstream("too many redirects".into()))
 }
 
 async fn read_body_capped(

@@ -9,7 +9,7 @@ use zoeken_engine_core::{
 };
 use zoeken_results::{MainResult, Result_, Suggestion};
 
-use super::util::encode_query;
+use super::util::{encode_query, looks_like_bot_wall};
 
 /// Engine name / identifier.
 pub const NAME: &str = "brave";
@@ -113,8 +113,6 @@ impl Engine for Brave {
             args.push(("tf", time_range_tf(time_range).to_string()));
         }
 
-        p.headers
-            .insert("Accept-Encoding".to_string(), "gzip, deflate".to_string());
         p.url = Some(format!("{BASE_URL}/search?{}", encode_query(&args)));
 
         p.cookies.insert(
@@ -140,6 +138,15 @@ impl Engine for Brave {
     fn response(&self, resp: &EngineResponse) -> Result<EngineResults, EngineError> {
         let mut res = EngineResults::new();
         let html = resp.text();
+        if looks_like_bot_wall(resp.status, &html) {
+            return Err(EngineError::Captcha(NAME.to_string()));
+        }
+        if resp.status == 429 {
+            return Err(EngineError::TooManyRequests(NAME.to_string()));
+        }
+        if resp.status == 403 {
+            return Err(EngineError::AccessDenied(NAME.to_string()));
+        }
         let doc = Html::parse_document(&html);
 
         let snippet_sel = Selector::parse("div.snippet").unwrap();
@@ -199,6 +206,20 @@ impl Engine for Brave {
             }
         }
 
+        // A normal no-result page says so explicitly. A populated Brave search
+        // shell with neither results nor the no-result marker is their silent
+        // bot-wall variant and must not be cached as a successful empty page.
+        let lower = html.to_ascii_lowercase();
+        let has_search_shell = lower.contains("data-testid=\"web-results\"")
+            || lower.contains("id=\"results\"")
+            || lower.contains("class=\"search-results");
+        let explicit_zero = lower.contains("no results found")
+            || lower.contains("couldn't find any results")
+            || lower.contains("could not find any results");
+        if res.is_empty() && has_search_shell && !explicit_zero {
+            return Err(EngineError::Captcha(NAME.to_string()));
+        }
+
         Ok(res)
     }
 }
@@ -231,6 +252,22 @@ mod tests {
             engine: NAME.to_string(),
             ..MainResult::default()
         })
+    }
+
+    #[test]
+    fn challenge_and_silent_shell_are_not_successful_empty_results() {
+        let engine = Brave::new();
+        assert!(matches!(
+            engine.response(&response(200, "<title>Just a moment...</title>")),
+            Err(EngineError::Captcha(_))
+        ));
+        assert!(matches!(
+            engine.response(&response(
+                200,
+                "<main id=\"results\" data-testid=\"web-results\"></main>"
+            )),
+            Err(EngineError::Captcha(_))
+        ));
     }
 
     fn response(status: u16, body: &str) -> EngineResponse {
@@ -307,9 +344,6 @@ mod tests {
         let mut golden = prepopulated(&q);
         golden.method = HttpMethod::Get;
         golden.url = Some(format!("{BASE_URL}/search?q=rust&source=web&offset=1"));
-        golden
-            .headers
-            .insert("Accept-Encoding".to_string(), "gzip, deflate".to_string());
         for (k, v) in [
             ("safesearch", "off"),
             ("useLocation", "0"),

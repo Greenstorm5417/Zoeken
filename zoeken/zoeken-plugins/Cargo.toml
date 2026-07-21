@@ -12,6 +12,7 @@ description.workspace = true
 zoeken-data = { workspace = true }
 zoeken-results = { workspace = true }
 zoeken-query = { workspace = true }
+zoeken-network = { workspace = true }
 anyhow = { workspace = true }
 chrono = { workspace = true }
 fasteval = { workspace = true }
@@ -25,7 +26,6 @@ thiserror = { workspace = true }
 tokio = { workspace = true }
 tracing = { workspace = true }
 url = { workspace = true }
-wreq = { workspace = true }
 
 [dev-dependencies]
 proptest = { workspace = true }

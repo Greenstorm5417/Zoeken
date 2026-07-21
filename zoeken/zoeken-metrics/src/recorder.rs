@@ -37,6 +37,8 @@ pub enum ErrorCategory {
     Parse,
     /// Other unexpected failure.
     Unexpected,
+    /// Request budget expired in the shared-origin queue.
+    QueueExpired,
     /// Engine never responded.
     Unresponsive,
 }
@@ -51,6 +53,7 @@ impl ErrorCategory {
             ErrorCategory::Captcha => "captcha",
             ErrorCategory::Parse => "parse",
             ErrorCategory::Unexpected => "unexpected",
+            ErrorCategory::QueueExpired => "queue_expired",
             ErrorCategory::Unresponsive => "unresponsive",
         }
     }
@@ -68,6 +71,7 @@ pub const fn categorize_error(error: &EngineError) -> ErrorCategory {
         | EngineError::CloudflareCaptcha(_)
         | EngineError::RecaptchaCaptcha(_) => ErrorCategory::Captcha,
         EngineError::Parse(_) => ErrorCategory::Parse,
+        EngineError::QueueExpired => ErrorCategory::QueueExpired,
         EngineError::Unexpected(_) => ErrorCategory::Unexpected,
     }
 }

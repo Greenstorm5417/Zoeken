@@ -1,4 +1,3 @@
-use std::collections::BTreeSet;
 use std::net::{IpAddr, Ipv4Addr};
 use std::sync::{Arc, Mutex};
 use std::time::Duration;
@@ -29,7 +28,7 @@ async fn handle_conn(mut stream: TcpStream) {
     let _ = stream.shutdown().await;
 }
 
-async fn observe_rotation(addrs: &[IpAddr]) -> Vec<IpAddr> {
+async fn observe_origin_mapping(addrs: &[IpAddr]) -> Vec<IpAddr> {
     let listener = TcpListener::bind((Ipv4Addr::LOCALHOST, 0))
         .await
         .expect("bind loopback listener");
@@ -77,18 +76,16 @@ proptest! {
     #![proptest_config(ProptestConfig::with_cases(100))]
 
     #[test]
-    fn round_robin_covers_all_entries_in_order(addrs in distinct_source_addrs()) {
+    fn source_address_is_stable_for_one_origin(addrs in distinct_source_addrs()) {
         let rt = tokio::runtime::Builder::new_multi_thread()
             .worker_threads(1)
             .enable_all()
             .build()
             .expect("build tokio runtime");
-        let observed = rt.block_on(observe_rotation(&addrs));
+        let observed = rt.block_on(observe_origin_mapping(&addrs));
 
         prop_assert_eq!(observed.len(), addrs.len());
-        prop_assert_eq!(&observed, &addrs);
-
-        let unique: BTreeSet<IpAddr> = observed.iter().copied().collect();
-        prop_assert_eq!(unique.len(), addrs.len());
+        prop_assert!(addrs.contains(&observed[0]));
+        prop_assert!(observed.iter().all(|address| address == &observed[0]));
     }
 }

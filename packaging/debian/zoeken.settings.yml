@@ -170,6 +170,11 @@ outgoing:
   source_ips: null
   using_tor_proxy: false
   extra_proxy_timeout: 0
+  origin_limits:
+    requests_per_second: 1.0
+    burst: 2
+    max_concurrent: 2
+    lease_seconds: 15
   # Named network profiles engines can select with `network: name`
   networks: {}
   # Example:
@@ -282,13 +287,32 @@ categories_as_tabs:
   social media: {}
 
 # ---------------------------------------------------------------------------
-# redis / valkey (schema-compatible; this server build requires false)
-# Also APP_REDIS_URL / APP_VALKEY_URL
+# Unified operational storage. SQLite supports one server process; use
+# PostgreSQL when multiple replicas must share quotas, leases, and cooldowns.
 # ---------------------------------------------------------------------------
-redis:
-  url: false
-valkey:
-  url: false
+storage:
+  backend: sqlite
+  sqlite:
+    path: "/var/lib/zoeken/zoeken.sqlite3"
+    busy_timeout_ms: 5000
+  postgres:
+    url: null
+    max_connections: 16
+    acquire_timeout_seconds: 5
+
+cache:
+  search:
+    ttl_seconds: 60
+    structured_ttl_seconds: 300
+    max_bytes: 134217728
+  autocomplete:
+    ttl_seconds: 300
+    max_entries: 2048
+  favicons:
+    positive_ttl_seconds: 2592000
+    negative_ttl_seconds: 86400
+    max_blob_bytes: 20480
+    max_total_bytes: 268435456
 
 # ---------------------------------------------------------------------------
 # preferences (locked preference keys users cannot change)
