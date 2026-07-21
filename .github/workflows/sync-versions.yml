@@ -27,6 +27,9 @@ on:
       - Cargo.toml
       - zoeken-client/package.json
       - Cargo.lock
+      - Dockerfile
+      - Dockerfile.runtime
+      - docker-compose.yml
       - tools/sync_versions.py
 
 permissions:
@@ -69,7 +72,13 @@ jobs:
           VERSION="${{ steps.sync.outputs.version }}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- Cargo.toml zoeken-client/package.json Cargo.lock
+          git add -- \
+            Cargo.toml \
+            zoeken-client/package.json \
+            Cargo.lock \
+            Dockerfile \
+            Dockerfile.runtime \
+            docker-compose.yml
           if git diff --staged --quiet; then
             echo "No version metadata changes to commit."
             exit 0

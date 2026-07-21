@@ -12,7 +12,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        VERSION: ${VERSION:-1.1.0}
+        VERSION: ${VERSION:-1.2.0}
     ports:
       - "${ZOEKEN_PORT:-8888}:8888"
     environment:

@@ -5,6 +5,21 @@ All notable changes to Zoeken are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-07-21
+
+### Added
+
+- Interactive instant-answer cards (weather, crypto/hash, units, currency,
+  calculator, translate, dictionary, Wikipedia, self-info)
+- Rich Brave autocomplete (subtext/image suggestions) as the default backend
+- Extra category tabs, Bing Images, map canvas, `/stats` auth gate, `/bangs`
+- Precompiled `zoeken-data` assets and `tools/sync_versions.py` CI workflow
+
+### Fixed
+
+- Version sync now keeps Docker `ARG VERSION` / compose defaults aligned with
+  Cargo.toml (avoids shipping images labeled as the previous release)
+
 ## [1.1.0] - 2026-07-20
 
 ### Added
@@ -173,5 +188,6 @@ with Debian packages, systemd unit, and multi-arch Docker images on GHCR.
 - Command engines and several API-key / bespoke engines remain intentionally unsupported
 - See `docs/compatibility/intentional-differences.md` and `docs/security/audit.md`
 
+[1.2.0]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.2.0
 [1.1.0]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.1.0
 [1.0.0]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.0.0

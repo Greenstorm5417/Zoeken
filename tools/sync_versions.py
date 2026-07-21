@@ -5,6 +5,8 @@ Source of truth: root Cargo.toml `[workspace.package].version`.
 Updates:
   - zoeken-client/package.json
   - Cargo.lock packages named zoeken-* (workspace members)
+  - Dockerfile / Dockerfile.runtime `ARG VERSION=` defaults
+  - docker-compose.yml `${VERSION:-…}` build-arg default
 
 Debian/Nix packaging already substitute version at build time.
 Run before cutting a release (see .github/workflows/sync-versions.yml).
@@ -13,6 +15,7 @@ Examples:
   uv run --no-project --python 3.13 tools/sync_versions.py --dry-run
   uv run --no-project --python 3.13 tools/sync_versions.py
   uv run --no-project --python 3.13 tools/sync_versions.py --bump 1.2.0
+  uv run --no-project --python 3.13 tools/sync_versions.py --check
 """
 
 from __future__ import annotations
@@ -26,6 +29,8 @@ ROOT = Path(__file__).resolve().parents[1]
 CARGO_TOML = ROOT / "Cargo.toml"
 CLIENT_PKG = ROOT / "zoeken-client" / "package.json"
 CARGO_LOCK = ROOT / "Cargo.lock"
+DOCKERFILES = (ROOT / "Dockerfile", ROOT / "Dockerfile.runtime")
+COMPOSE = ROOT / "docker-compose.yml"
 
 SEMVER_RE = re.compile(r"^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$")
 WORKSPACE_VERSION_RE = re.compile(
@@ -36,6 +41,11 @@ PKG_JSON_VERSION_RE = re.compile(
 )
 LOCK_PKG_RE = re.compile(
     r'(?ms)(\[\[package\]\]\nname = "(zoeken-[^"]+)"\nversion = ")([^"]*)(")'
+)
+DOCKER_ARG_RE = re.compile(r"^(ARG VERSION=)(\S+)\s*$", re.MULTILINE)
+COMPOSE_VERSION_RE = re.compile(
+    r"^(?P<prefix>\s*VERSION:\s*\$\{VERSION:-)(?P<old>[^}]+)(?P<suffix>\})\s*$",
+    re.MULTILINE,
 )
 
 
@@ -74,6 +84,30 @@ def sync_cargo_lock(text: str, version: str) -> tuple[str, list[tuple[str, str]]
         return f"{m.group(1)}{version}{m.group(4)}"
 
     return LOCK_PKG_RE.sub(repl, text), changes
+
+
+def sync_dockerfile_arg(text: str, version: str, path: Path) -> tuple[str, str | None]:
+    m = DOCKER_ARG_RE.search(text)
+    if not m:
+        raise SystemExit(f"could not find ARG VERSION= in {path.name}")
+    old = m.group(2)
+    if old == version:
+        return text, None
+    return DOCKER_ARG_RE.sub(rf"\g<1>{version}", text, count=1), old
+
+
+def sync_compose_default(text: str, version: str) -> tuple[str, str | None]:
+    m = COMPOSE_VERSION_RE.search(text)
+    if not m:
+        raise SystemExit("could not find VERSION: ${VERSION:-…} in docker-compose.yml")
+    old = m.group("old")
+    if old == version:
+        return text, None
+    return COMPOSE_VERSION_RE.sub(
+        lambda mm: f"{mm.group('prefix')}{version}{mm.group('suffix')}",
+        text,
+        count=1,
+    ), old
 
 
 def main() -> int:
@@ -122,6 +156,17 @@ def main() -> int:
             planned.append(
                 (CARGO_LOCK, f"{len(lock_changes)} pkgs {sample_old} -> {version} ({names})", new_lock)
             )
+
+    for path in DOCKERFILES:
+        text = path.read_text(encoding="utf-8")
+        new_text, old = sync_dockerfile_arg(text, version, path)
+        if old is not None:
+            planned.append((path, f"{old} -> {version}", new_text))
+
+    compose_text = COMPOSE.read_text(encoding="utf-8")
+    new_compose, old_compose = sync_compose_default(compose_text, version)
+    if old_compose is not None:
+        planned.append((COMPOSE, f"{old_compose} -> {version}", new_compose))
 
     if not planned:
         print(f"ok: already synced to {version}")
