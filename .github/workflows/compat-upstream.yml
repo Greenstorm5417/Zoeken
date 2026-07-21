@@ -17,6 +17,8 @@ jobs:
 
       - name: Set up uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          enable-cache: false
 
       - name: Refresh compatibility inventory from upstream
         run: uv run --no-project --python 3.13 tools/compat_inventory.py --fetch-upstream
