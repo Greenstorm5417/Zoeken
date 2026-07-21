@@ -164,6 +164,37 @@ impl EngineRegistry {
             .collect()
     }
 
+    /// Engines that match the query but are currently suspended (e.g. Bing
+    /// after a CAPTCHA). Callers surface these in `unresponsive_engines` so
+    /// they don't vanish silently for the suspend window.
+    pub fn suspended_for_query<P: EnginePreferences + ?Sized>(
+        &self,
+        query: &SearchQuery,
+        prefs: &P,
+        available_tokens: &HashSet<String>,
+        now: Instant,
+    ) -> Vec<(String, String)> {
+        self.engines
+            .iter()
+            .filter_map(|re| {
+                if !self.is_eligible(re, query, prefs, available_tokens) {
+                    return None;
+                }
+                let Ok(state) = re.state.lock() else {
+                    return None;
+                };
+                if !state.is_suspended(now) {
+                    return None;
+                }
+                let reason = state
+                    .suspend_reason
+                    .clone()
+                    .unwrap_or_else(|| "suspended".to_string());
+                Some((re.name().to_string(), reason))
+            })
+            .collect()
+    }
+
     pub fn record_outcomes(
         &self,
         report: &ExecutionReport,
@@ -199,15 +230,23 @@ impl EngineRegistry {
         available_tokens: &HashSet<String>,
         now: Instant,
     ) -> bool {
+        self.is_eligible(re, query, prefs, available_tokens)
+            && !re.state.lock().is_ok_and(|state| state.is_suspended(now))
+    }
+
+    fn is_eligible<P: EnginePreferences + ?Sized>(
+        &self,
+        re: &RegisteredEngine,
+        query: &SearchQuery,
+        prefs: &P,
+        available_tokens: &HashSet<String>,
+    ) -> bool {
         let meta = re.engine.metadata();
         // A disabled engine can still be summoned explicitly (`!bang` or an
         // `engines=` selection), matching SearXNG semantics.
         let explicitly_requested = !query.engines.is_empty()
             && bang_match(&meta.name, &meta.shortcut, &re.shortcuts, &query.engines);
         if re.disabled && !explicitly_requested {
-            return false;
-        }
-        if re.state.lock().is_ok_and(|state| state.is_suspended(now)) {
             return false;
         }
         if !has_required_tokens(&re.tokens, available_tokens) {
@@ -448,6 +487,8 @@ mod tests {
         let q = query_with(&["general"], &[]);
         let selected = reg.select(&q, &AllEnginesEnabled, &HashSet::new(), now);
         assert_eq!(names(&selected), vec!["gamma"]);
+        let held = reg.suspended_for_query(&q, &AllEnginesEnabled, &HashSet::new(), now);
+        assert_eq!(held, vec![("alpha".to_string(), "boom".to_string())]);
     }
 
     #[test]

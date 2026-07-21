@@ -567,6 +567,8 @@ fn translated_cause(cause: &UnresponsiveCause) -> &'static str {
                 "rate limited"
             } else if lower.contains("parse") {
                 "bad upstream response"
+            } else if lower.contains("suspend") {
+                "temporarily suspended"
             } else {
                 "error"
             }

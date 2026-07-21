@@ -2,7 +2,7 @@
 
 FROM debian:bookworm-slim AS runtime
 
-ARG VERSION=1.2.0
+ARG VERSION=1.2.1
 ARG REVISION=unknown
 ARG CREATED=unknown
 

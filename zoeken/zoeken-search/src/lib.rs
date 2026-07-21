@@ -146,9 +146,27 @@ impl Search {
         let proceed = self.run_pre_search_plugins(&mut query, plugin_ctx);
 
         let mut container = if proceed {
+            let now = Instant::now();
             let report = self.run_engines(&query, prefs, available_tokens).await;
             let weights = self.engine_weights();
-            aggregate(report, &weights, recorder)
+            let mut container = aggregate(report, &weights, recorder);
+            for (engine, reason) in
+                self.registry
+                    .suspended_for_query(&query, prefs, available_tokens, now)
+            {
+                if container
+                    .unresponsive_engines
+                    .iter()
+                    .any(|entry| entry.engine == engine)
+                {
+                    continue;
+                }
+                container.unresponsive_engines.push(UnresponsiveEngine {
+                    engine,
+                    cause: UnresponsiveCause::Error(reason),
+                });
+            }
+            container
         } else {
             ResultContainer::default()
         };

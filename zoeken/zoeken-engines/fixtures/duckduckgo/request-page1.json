@@ -21,13 +21,12 @@
     "method": "Post",
     "url": "https://html.duckduckgo.com/html/",
     "headers": {
-      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-      "Content-Type": "application/x-www-form-urlencoded",
-      "Referer": "https://html.duckduckgo.com/html/",
       "Sec-Fetch-Dest": "document",
       "Sec-Fetch-Mode": "navigate",
       "Sec-Fetch-Site": "same-origin",
-      "Sec-Fetch-User": "?1"
+      "Sec-Fetch-User": "?1",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Referer": "https://html.duckduckgo.com/html/"
     },
     "cookies": {},
     "data": {

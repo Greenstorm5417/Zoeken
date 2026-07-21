@@ -33,12 +33,6 @@ function rememberSuggestions(query: string, suggestions: Suggestion[]) {
 	suggestionCache.set(query, suggestions);
 }
 
-const OPERATORS = [
-	{ label: "site:", insert: "site:", tip: "Limit to a site" },
-	{ label: "filetype:", insert: "filetype:", tip: "Filter by file type" },
-	{ label: "-exclude", insert: "-", tip: "Exclude a word" },
-] as const;
-
 type SearchFormProps = {
 	initialQuery?: string;
 	autoFocus?: boolean;
@@ -127,23 +121,6 @@ export function SearchForm({
 		void navigate({
 			to: "/search",
 			search: { ...baseSearch, q: query, pageno: undefined },
-		});
-	}
-
-	function insertOperator(op: string) {
-		const el = inputRef.current;
-		const start = el?.selectionStart ?? q.length;
-		const end = el?.selectionEnd ?? q.length;
-		const before = q.slice(0, start);
-		const after = q.slice(end);
-		const needsSpace = before.length > 0 && !/\s$/.test(before);
-		const next = `${before}${needsSpace ? " " : ""}${op}${after}`;
-		setQ(next);
-		setSuggestions([]);
-		requestAnimationFrame(() => {
-			el?.focus();
-			const caret = before.length + (needsSpace ? 1 : 0) + op.length;
-			el?.setSelectionRange(caret, caret);
 		});
 	}
 
@@ -494,19 +471,6 @@ export function SearchForm({
 					) : null}
 				</div>
 			</form>
-			<div className="mt-2 flex flex-wrap gap-1.5">
-				{OPERATORS.map((op) => (
-					<button
-						key={op.label}
-						type="button"
-						title={op.tip}
-						onClick={() => insertOperator(op.insert)}
-						className="rounded-lg border border-line bg-surface-raised px-2 py-0.5 font-mono text-[0.75rem] text-ink-muted transition-colors hover:border-accent hover:text-accent"
-					>
-						{op.label}
-					</button>
-				))}
-			</div>
 		</search>
 	);
 }

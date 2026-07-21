@@ -5,6 +5,17 @@ All notable changes to Zoeken are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1] - 2026-07-21
+
+### Fixed
+
+- DuckDuckGo: drop Firefox-like `Accept` override that conflicted with the
+  Chrome client fingerprint and triggered CAPTCHA challenges
+- Bing: treat missing `#b_results` shells as CAPTCHA; surface suspended
+  engines in the unresponsive list so they no longer vanish silently
+- SPA: remove operator chips, OpenSearch / RSS / CSV clutter from home and
+  results pages
+
 ## [1.2.0] - 2026-07-21
 
 ### Added
@@ -188,6 +199,7 @@ with Debian packages, systemd unit, and multi-arch Docker images on GHCR.
 - Command engines and several API-key / bespoke engines remain intentionally unsupported
 - See `docs/compatibility/intentional-differences.md` and `docs/security/audit.md`
 
+[1.2.1]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.2.1
 [1.2.0]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.2.0
 [1.1.0]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.1.0
 [1.0.0]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.0.0

@@ -179,6 +179,13 @@ impl Engine for Bing {
             return Err(EngineError::Captcha(NAME.to_string()));
         }
 
+        let results_sel = Selector::parse("ol#b_results").unwrap();
+        // A 200 without `#b_results` is Bing's bot/consent shell — treat as
+        // captcha so the engine suspends visibly instead of returning empty.
+        if doc.select(&results_sel).next().is_none() {
+            return Err(EngineError::Captcha(NAME.to_string()));
+        }
+
         let item_sel = Selector::parse("ol#b_results > li.b_algo").unwrap();
         let link_sel = Selector::parse("h2 a").unwrap();
         let p_sel = Selector::parse("p").unwrap();
@@ -260,6 +267,19 @@ mod tests {
         let resp = response(
             200,
             r#"<html><body><div class="captcha"><div class="captcha_header">One last step</div></div></body></html>"#,
+        );
+        assert!(matches!(
+            engine.response(&resp),
+            Err(EngineError::Captcha(_))
+        ));
+    }
+
+    #[test]
+    fn response_maps_missing_results_shell_to_captcha_error() {
+        let engine = Bing::new();
+        let resp = response(
+            200,
+            r#"<html><body><div id="b_content">blocked</div></body></html>"#,
         );
         assert!(matches!(
             engine.response(&resp),

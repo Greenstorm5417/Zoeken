@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { Download, Rss, Settings2 } from "lucide-react";
+import { Settings2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { InstantAnswerCard } from "#/components/answers/InstantAnswerCard";
 import { ImageLightbox } from "#/components/ImageLightbox";
@@ -181,24 +181,6 @@ function searchLink(
 	updates: Partial<SearchRouteParams>,
 ) {
 	return serializeSearchParams({ ...search, ...updates });
-}
-
-/** GET export URL for the current query (`format=rss|csv`). */
-function exportSearchUrl(
-	params: SearchRouteParams,
-	format: "rss" | "csv",
-): string {
-	const qs = new URLSearchParams();
-	qs.set("q", params.q);
-	qs.set("format", format);
-	if (params.pageno != null) qs.set("pageno", String(params.pageno));
-	if (params.categories) qs.set("categories", params.categories);
-	if (params.language) qs.set("language", params.language);
-	if (params.safesearch != null)
-		qs.set("safesearch", String(params.safesearch));
-	if (params.time_range) qs.set("time_range", params.time_range);
-	if (params.engines) qs.set("engines", params.engines);
-	return `/search?${qs}`;
 }
 
 /** Sliding window of page numbers (SearXNG-style): 1–10, then centered on current. */
@@ -900,31 +882,6 @@ function SearchPage() {
 							{resultCount != null && elapsedSec != null ? " · " : null}
 							{elapsedSec != null ? `${elapsedSec.toFixed(2)}s` : null}
 						</p>
-					) : null}
-
-					{q.trim() ? (
-						<div className="mb-6 flex max-w-[40rem] flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-							<a
-								href={exportSearchUrl(params, "rss")}
-								className="inline-flex items-center gap-1.5 text-ink-muted no-underline hover:text-accent"
-							>
-								<Rss className="size-3.5" aria-hidden />
-								RSS
-							</a>
-							<a
-								href={exportSearchUrl(params, "csv")}
-								className="inline-flex items-center gap-1.5 text-ink-muted no-underline hover:text-accent"
-							>
-								<Download className="size-3.5" aria-hidden />
-								CSV
-							</a>
-							<a
-								href="/opensearch.xml"
-								className="inline-flex items-center gap-1.5 font-medium text-accent no-underline hover:underline"
-							>
-								Add search engine
-							</a>
-						</div>
 					) : null}
 
 					{firstPage.corrections.length > 0 ? (
