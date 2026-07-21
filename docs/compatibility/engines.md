@@ -1,6 +1,6 @@
 # Engine Compatibility Matrix
 
-Upstream engines: 289. Rust engines: 54. Ported: 248. Generic candidates: 0. Missing: 1. Intentionally skipped: 40.
+Upstream engines: 289. Rust engines: 58. Ported: 249. Generic candidates: 0. Missing: 0. Intentionally skipped: 40.
 
 | Upstream module | Status | Rust module | Categories | Processor | Paging | Safe | Time | Lang | API key | Network | Fixtures | Known gaps |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -254,7 +254,7 @@ Upstream engines: 289. Rust engines: 54. Ported: 248. Generic candidates: 0. Mis
 | zlibrary | ported | generic |  | online | no | no | no | yes | no | no | present | verify engine-traits parity |
 | abcnyheter | ported | generic | general | online | yes | no | no | yes | no | no | present |  |
 | anaconda | ported | generic | it | online | yes | no | no | no | no | no | present |  |
-| avalw | missing |  | general | online | yes | no | no | no | no | no | not-applicable | not ported |
+| avalw | ported | generic | general | online | yes | no | no | no | no | no | present |  |
 | ayo | ported | generic | general | online | no | no | no | no | no | no | present |  |
 | bitbucket | ported | generic | it, repos | online | yes | no | no | no | no | no | present |  |
 | cl0q | ported | generic | general | online | yes | no | no | no | no | no | present |  |
@@ -296,4 +296,8 @@ Upstream engines: 289. Rust engines: 54. Ported: 248. Generic candidates: 0. Mis
 
 ## Zoeken-Only Engines (No Upstream Module)
 
+- `currency` — Zoeken-only currency conversion instant answer (ECB rates); SearXNG's equivalent is a Python answerer, not an engine module
+- `dictionary` — Zoeken-only dictionary definition instant answer (Wiktionary); no distinct SearXNG engine module
+- `translate` — Zoeken-only translation instant answer (MyMemory); no distinct SearXNG engine module
+- `weather` — Zoeken-only weather instant answer (wttr.in), gated to weather-shaped queries; no distinct SearXNG engine module
 - `wikibooks` — Zoeken-only MediaWiki books engine; no distinct SearXNG module

@@ -29,15 +29,15 @@ use std::net::SocketAddr;
 use url::form_urlencoded;
 use zoeken_engine_core::SuspendConfig;
 use zoeken_engines::{
-    AppleAppStore, Arxiv, Bandcamp, Bing, Brave, Core, Crates, Crossref, Dailymotion, DockerHub,
-    Dogpile, DogpileConfig, DuckDuckGo, Elasticsearch, ElasticsearchConfig, GenericEngineConfig,
-    GenericHtmlConfig, GenericHtmlEngine, GenericJsonConfig, GenericJsonEngine, Genius, Github,
-    GithubCode, Gitlab, Google, Hackernews, Imdb, Invidious, Lemmy, Marginalia, MarginaliaConfig,
-    Mastodon, Meilisearch, MeilisearchConfig, Mojeek, NineGag, Nyaa, Openstreetmap, Openverse,
-    Peertube, Photon, Piped, Piratebay, Pypi, Qwant, Reddit, SemanticScholar, SensCritique,
-    SepiaSearch, SolidTorrents, Soundcloud, Sqlite, SqliteConfig, Stackexchange, Startpage,
-    Swisscows, SwisscowsConfig, Tootfinder, Unsplash, Vimeo, Wikibooks, Wikidata, Wikipedia, Yacy,
-    YacyConfig, builtin_generic_config,
+    AppleAppStore, Arxiv, Bandcamp, Bing, Brave, Core, Crates, Crossref, Currency, Dailymotion,
+    Dictionary, DockerHub, Dogpile, DogpileConfig, DuckDuckGo, Elasticsearch, ElasticsearchConfig,
+    GenericEngineConfig, GenericHtmlConfig, GenericHtmlEngine, GenericJsonConfig,
+    GenericJsonEngine, Genius, Github, GithubCode, Gitlab, Google, Hackernews, Imdb, Invidious,
+    Lemmy, Marginalia, MarginaliaConfig, Mastodon, Meilisearch, MeilisearchConfig, Mojeek, NineGag,
+    Nyaa, Openstreetmap, Openverse, Peertube, Photon, Piped, Piratebay, Pypi, Qwant, Reddit,
+    SemanticScholar, SensCritique, SepiaSearch, SolidTorrents, Soundcloud, Sqlite, SqliteConfig,
+    Stackexchange, Startpage, Swisscows, SwisscowsConfig, Tootfinder, Translate, Unsplash, Vimeo,
+    Weather, Wikibooks, Wikidata, Wikipedia, Yacy, YacyConfig, builtin_generic_config,
 };
 use zoeken_network::{NetworkError, NetworkManager};
 use zoeken_plugins::{PluginCtx, PluginGating};
@@ -96,6 +96,8 @@ fn default_engines() -> Vec<RegisteredEngine> {
         "duckduckgo",
         "brave",
         "bing",
+        "mojeek",
+        "dogpile",
         "wikipedia",
         "wikidata",
         "openverse",
@@ -104,8 +106,25 @@ fn default_engines() -> Vec<RegisteredEngine> {
         "dailymotion",
         "sepiasearch",
         "openstreetmap",
+        "weather",
+        "currency",
+        "dictionary",
+        "translate",
+        "swisscows news",
     ];
     let engines: Vec<Arc<dyn zoeken_engine_core::Engine>> = vec![
+        Arc::new(Weather::new()),
+        Arc::new(Currency::new()),
+        Arc::new(Dictionary::new()),
+        Arc::new(Translate::new()),
+        Arc::new(
+            Swisscows::new(SwisscowsConfig {
+                base_url: "https://api.swisscows.com".to_string(),
+                swisscows_category: "news".to_string(),
+                results_per_page: 10,
+            })
+            .unwrap_or_default(),
+        ),
         Arc::new(DuckDuckGo::new()),
         Arc::new(Google::new()),
         Arc::new(Bing::new()),
@@ -498,6 +517,10 @@ fn engine_from_settings(cfg: &zoeken_settings::EngineSettings) -> Option<Registe
             "peertube" => Arc::new(Peertube::new()),
             "dailymotion" => Arc::new(Dailymotion::new()),
             "vimeo" => Arc::new(Vimeo::new()),
+            "weather" | "wttr.in" | "wttr" => Arc::new(Weather::new()),
+            "currency" | "currency_convert" => Arc::new(Currency::new()),
+            "dictionary" | "wiktionary_define" => Arc::new(Dictionary::new()),
+            "translate" | "mymemory" | "mymemory translated" => Arc::new(Translate::new()),
             "unsplash" => Arc::new(Unsplash::new()),
             "genius" => Arc::new(Genius::new()),
             "semantic scholar" | "semantic_scholar" => Arc::new(SemanticScholar::new()),
@@ -758,7 +781,11 @@ impl AppState {
             search,
             recorder: Arc::new(zoeken_metrics::EngineMetricsRecorder::new()),
             prefs: StaticPreferences::default(),
-            image_fetcher: Arc::new(WreqImageFetcher::new()),
+            // Reuse the browser-emulating `image_proxy` network client so
+            // proxied image fetches look like a real browser and share a pool.
+            image_fetcher: Arc::new(WreqImageFetcher::with_client(
+                networks.get("image_proxy").client().clone(),
+            )),
             image_policy,
             favicons: default_favicon_service(&settings),
             autocomplete,
@@ -1209,9 +1236,16 @@ mod tests {
         assert_eq!(
             enabled,
             vec![
+                "weather",
+                "currency",
+                "dictionary",
+                "translate",
+                "swisscows news",
                 "duckduckgo",
                 "bing",
                 "brave",
+                "mojeek",
+                "dogpile",
                 "wikipedia",
                 "wikidata",
                 "openverse",

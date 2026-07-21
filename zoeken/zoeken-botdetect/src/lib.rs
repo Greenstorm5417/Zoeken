@@ -96,6 +96,21 @@ impl Detector {
             return Decision::Allow;
         }
 
+        // Only the expensive endpoints are metered and heuristic-checked. A
+        // single results page legitimately fires dozens of subresource
+        // requests (favicons, proxied images, static assets); charging those
+        // against the token bucket 429'd normal browsing.
+        if !is_metered_path(&features.path) {
+            let ip = features.client_ip;
+            if ip_lists::pass_ip(ip, &self.config) {
+                return Decision::Allow;
+            }
+            if ip_lists::block_ip(ip, &self.config) {
+                return Decision::Block(format!("IP {ip} is on the block list"));
+            }
+            return Decision::Allow;
+        }
+
         let ip = features.client_ip;
         let network =
             ip_lists::client_network(ip, self.config.ipv4_prefix, self.config.ipv6_prefix);
@@ -140,6 +155,11 @@ impl Detector {
             detector: Arc::new(self),
         }
     }
+}
+
+/// The endpoints worth metering: upstream-fanning search and autocomplete.
+fn is_metered_path(path: &str) -> bool {
+    matches!(path, "/search" | "/autocompleter")
 }
 
 pub fn layer(detector: Arc<Detector>) -> BotDetectLayer {
@@ -344,6 +364,40 @@ mod tests {
         let mut features = browser_features("203.0.113.1", "/readyz");
         features.headers = HeaderView::default();
         assert_eq!(detector.evaluate(&features), Decision::Allow);
+    }
+
+    /// Subresource/asset paths (favicon proxy, image proxy, static files) are
+    /// not charged against the token bucket — a results page fires dozens of
+    /// them and normal browsing must not 429.
+    #[test]
+    fn unmetered_paths_bypass_rate_limit_and_heuristics() {
+        let mut cfg = base_config();
+        cfg.rate_limit = RateLimitConfig {
+            capacity: 1.0,
+            refill_per_second: 0.0,
+            suspicious_capacity: 1.0,
+            suspicious_refill_per_second: 0.0,
+        };
+        let detector = Detector::new(cfg, "tok");
+        for path in ["/favicon_proxy", "/image_proxy", "/assets/index-abc123.js"] {
+            let mut features = browser_features("203.0.113.9", path);
+            // Image subresources send image Accept + no-cors; must still pass.
+            features.headers.accept = Some("image/avif,image/webp,*/*".to_string());
+            features.headers.sec_fetch_mode = Some("no-cors".to_string());
+            for _ in 0..10 {
+                assert_eq!(
+                    detector.evaluate_at(&features, 0.0),
+                    Decision::Allow,
+                    "{path} must not be metered"
+                );
+            }
+        }
+        // But blocked IPs stay blocked even on unmetered paths.
+        let mut cfg = base_config();
+        cfg.block_ip = vec![IpNet::from_str("198.51.100.0/24").unwrap()];
+        let detector = Detector::new(cfg, "tok");
+        let features = browser_features("198.51.100.9", "/image_proxy");
+        assert!(matches!(detector.evaluate(&features), Decision::Block(_)));
     }
 
     #[test]

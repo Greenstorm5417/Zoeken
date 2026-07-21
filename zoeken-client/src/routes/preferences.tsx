@@ -1,5 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Check, Copy } from "lucide-react";
+import { useState } from "react";
 import { SelectMenu } from "#/components/SelectMenu";
 import { SiteNav } from "#/components/SiteNav";
 import {
@@ -8,15 +10,25 @@ import {
 	preferencesGet,
 	preferencesPost,
 } from "#/lib/api";
+import { getStoredTheme, setTheme, type Theme } from "#/lib/theme";
 import { useConfig } from "./__root";
 
 export const Route = createFileRoute("/preferences")({
 	component: PreferencesPage,
 });
 
+/** Encode preferences into a shareable `#prefs=` URL fragment (base64 JSON). */
+function preferencesUrl(prefs: Preferences): string {
+	const json = JSON.stringify(prefs);
+	const encoded = btoa(unescape(encodeURIComponent(json)));
+	return `${window.location.origin}/preferences#prefs=${encoded}`;
+}
+
 function PreferencesPage() {
 	const config = useConfig();
 	const queryClient = useQueryClient();
+	const [theme, setThemeState] = useState<Theme>(() => getStoredTheme());
+	const [copied, setCopied] = useState(false);
 	const preferences = useQuery({
 		queryKey: ["preferences"],
 		queryFn: preferencesGet,
@@ -29,6 +41,21 @@ function PreferencesPage() {
 		mutationFn: clearCookies,
 		onSuccess: () =>
 			void queryClient.invalidateQueries({ queryKey: ["preferences"] }),
+	});
+
+	// Import settings shared via a `#prefs=` fragment, then clean the URL.
+	useState(() => {
+		if (typeof window === "undefined") return;
+		const match = /#prefs=([^&]+)/.exec(window.location.hash);
+		if (!match) return;
+		try {
+			const json = decodeURIComponent(escape(atob(match[1])));
+			const imported = JSON.parse(json) as Preferences;
+			save.mutate(imported);
+			window.history.replaceState(null, "", window.location.pathname);
+		} catch {
+			// ignore a malformed fragment
+		}
 	});
 
 	if (preferences.isLoading)
@@ -121,23 +148,6 @@ function PreferencesPage() {
 							onChange={(autocomplete) => update({ autocomplete })}
 						/>
 					</div>
-					<div>
-						<span className="mb-1.5 block text-sm font-medium text-ink">
-							Search method
-						</span>
-						<SelectMenu
-							fullWidth
-							label="Search method"
-							value={current.method}
-							options={[
-								{ value: "POST", label: "POST" },
-								{ value: "GET", label: "GET" },
-							]}
-							onChange={(method) =>
-								update({ method: method as Preferences["method"] })
-							}
-						/>
-					</div>
 					<label className="flex items-center gap-3 text-sm">
 						<input
 							type="checkbox"
@@ -147,6 +157,92 @@ function PreferencesPage() {
 						/>
 						Use the image proxy
 					</label>
+				</section>
+
+				<section className="grid gap-4">
+					<h2 className="text-lg font-medium text-ink">Appearance</h2>
+					<div>
+						<span className="mb-1.5 block text-sm font-medium text-ink">
+							Theme
+						</span>
+						<div className="inline-flex rounded-xl border border-line bg-surface-raised p-1">
+							{(["system", "light", "dark"] as const).map((option) => (
+								<button
+									key={option}
+									type="button"
+									onClick={() => {
+										setTheme(option);
+										setThemeState(option);
+									}}
+									className={[
+										"rounded-lg px-4 py-1.5 text-sm capitalize transition-colors",
+										theme === option
+											? "bg-accent text-surface"
+											: "text-ink-muted hover:text-ink",
+									].join(" ")}
+								>
+									{option}
+								</button>
+							))}
+						</div>
+						<p className="mt-1.5 text-xs text-ink-subtle">
+							Stored in this browser, independent of your search settings.
+						</p>
+					</div>
+				</section>
+
+				<section className="grid gap-3">
+					<h2 className="text-lg font-medium text-ink">Sync settings</h2>
+					<p className="text-sm text-ink-muted">
+						Copy a link that carries these settings — open it in another browser
+						or on another device to apply them, no account needed.
+					</p>
+					<button
+						type="button"
+						onClick={() => {
+							void navigator.clipboard
+								.writeText(preferencesUrl(current))
+								.then(() => {
+									setCopied(true);
+									window.setTimeout(() => setCopied(false), 2000);
+								});
+						}}
+						className="inline-flex w-fit items-center gap-2 rounded-xl border border-line bg-surface-raised px-4 py-2 text-sm text-ink transition-colors hover:border-accent hover:text-accent"
+					>
+						{copied ? (
+							<>
+								<Check className="size-4" aria-hidden />
+								Copied
+							</>
+						) : (
+							<>
+								<Copy className="size-4" aria-hidden />
+								Copy settings link
+							</>
+						)}
+					</button>
+				</section>
+
+				<section className="grid gap-3">
+					<h2 className="text-lg font-medium text-ink">Search operators</h2>
+					<p className="text-sm text-ink-muted">
+						Refine any query with these operators (support varies by engine):
+					</p>
+					<dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 rounded-xl border border-line bg-surface-raised p-4 text-sm">
+						{[
+							['"exact phrase"', "Match the words together, in order"],
+							["site:example.com", "Limit results to one site"],
+							["-word", "Exclude results containing a word"],
+							["filetype:pdf", "Match a specific file type"],
+							["!g query", "Search a specific engine by its bang shortcut"],
+							[":en query", "Search in a specific language"],
+						].map(([op, desc]) => (
+							<div key={op} className="contents">
+								<dt className="font-mono text-accent">{op}</dt>
+								<dd className="text-ink-muted">{desc}</dd>
+							</div>
+						))}
+					</dl>
 				</section>
 
 				<section className="grid gap-3">

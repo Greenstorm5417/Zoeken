@@ -42,12 +42,26 @@ pub trait AutocompleteBackend: Send + Sync {
     fn suggest<'a>(&'a self, query: &'a str, locale: &'a str) -> SuggestFuture<'a>;
 }
 
+/// How long a cached suggestion list stays fresh.
+const CACHE_TTL: Duration = Duration::from_secs(300);
+
+/// Cap on cached entries; the cache is wiped when it grows past this.
+const CACHE_CAPACITY: usize = 2048;
+
+struct CacheEntry {
+    at: std::time::Instant,
+    suggestions: Vec<String>,
+}
+
 /// The autocomplete dispatch point: holds a backend and timeout, returning
-/// empty lists on error/timeout.
+/// empty lists on error/timeout. Results are cached in memory for
+/// [`CACHE_TTL`] so repeated prefixes (backspacing, retyping) skip the
+/// upstream round-trip entirely.
 #[derive(Clone)]
 pub struct AutocompleteService {
     backend: Option<Arc<dyn AutocompleteBackend>>,
     timeout: Duration,
+    cache: Arc<std::sync::Mutex<std::collections::HashMap<String, CacheEntry>>>,
 }
 
 impl AutocompleteService {
@@ -56,6 +70,7 @@ impl AutocompleteService {
         Self {
             backend: None,
             timeout: DEFAULT_AUTOCOMPLETE_TIMEOUT,
+            cache: Arc::default(),
         }
     }
 
@@ -64,6 +79,7 @@ impl AutocompleteService {
         Self {
             backend: Some(backend),
             timeout: DEFAULT_AUTOCOMPLETE_TIMEOUT,
+            cache: Arc::default(),
         }
     }
 
@@ -91,11 +107,34 @@ impl AutocompleteService {
             return Vec::new();
         };
 
-        match tokio::time::timeout(self.timeout, backend.suggest(query, locale)).await {
-            Ok(Ok(suggestions)) => suggestions,
-            Ok(Err(_error)) => Vec::new(),
-            Err(_elapsed) => Vec::new(),
+        let key = format!("{locale}\u{1f}{query}");
+        if let Ok(cache) = self.cache.lock()
+            && let Some(entry) = cache.get(&key)
+            && entry.at.elapsed() < CACHE_TTL
+        {
+            return entry.suggestions.clone();
         }
+
+        let suggestions =
+            match tokio::time::timeout(self.timeout, backend.suggest(query, locale)).await {
+                Ok(Ok(suggestions)) => suggestions,
+                Ok(Err(_error)) => return Vec::new(),
+                Err(_elapsed) => return Vec::new(),
+            };
+
+        if let Ok(mut cache) = self.cache.lock() {
+            if cache.len() >= CACHE_CAPACITY {
+                cache.clear();
+            }
+            cache.insert(
+                key,
+                CacheEntry {
+                    at: std::time::Instant::now(),
+                    suggestions: suggestions.clone(),
+                },
+            );
+        }
+        suggestions
     }
 }
 

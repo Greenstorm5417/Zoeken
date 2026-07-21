@@ -55,7 +55,7 @@ search:
   autocomplete_min: 1
   # Empty disables result favicons. Allowed providers: allesedv, duckduckgo,
   # google, yandex.
-  favicon_resolver: ""
+  favicon_resolver: "duckduckgo"
   # Empty means all languages.
   default_lang: ""
   languages: []
@@ -86,7 +86,7 @@ server:
   secret_key: ""
   # false or an absolute public URL.
   base_url: false
-  image_proxy: false
+  image_proxy: true
   # 1.0 or 1.1
   http_protocol_version: "1.0"
   # POST or GET
@@ -117,7 +117,9 @@ ui:
   center_alignment: false
   results_on_new_tab: false
   query_in_title: false
-  cache_url: "https://web.archive.org/web/"
+  # Empty by default (no "archive" link on results). Set to a Wayback
+  # Machine base URL (e.g. "https://web.archive.org/web/") to enable it.
+  cache_url: ""
   search_on_category_select: true
   # default or vim
   hotkeys: "default"

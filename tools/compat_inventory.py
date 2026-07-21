@@ -50,6 +50,14 @@ SYSTEMS = {
 # Rust engines with no distinct SearXNG module (intentional Zoeken additions).
 ZOEKEN_ONLY_ENGINES = {
     "wikibooks": "Zoeken-only MediaWiki books engine; no distinct SearXNG module",
+    "currency": "Zoeken-only currency conversion instant answer (ECB rates); "
+    "SearXNG's equivalent is a Python answerer, not an engine module",
+    "dictionary": "Zoeken-only dictionary definition instant answer (Wiktionary); "
+    "no distinct SearXNG engine module",
+    "translate": "Zoeken-only translation instant answer (MyMemory); no distinct "
+    "SearXNG engine module",
+    "weather": "Zoeken-only weather instant answer (wttr.in), gated to "
+    "weather-shaped queries; no distinct SearXNG engine module",
 }
 
 UPSTREAM_DATA_ASSETS = {

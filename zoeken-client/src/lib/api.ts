@@ -128,6 +128,30 @@ export type SearchResult = {
 	iframe_src?: string;
 	template?: string;
 	publishedDate?: string;
+	// Torrent / file results (files.html)
+	magnetlink?: string;
+	seed?: number;
+	leech?: number;
+	filesize?: string;
+	filename?: string;
+	// Paper results (paper.html)
+	authors?: string[];
+	journal?: string;
+	doi?: string;
+	publisher?: string;
+	pdf_url?: string;
+	html_url?: string;
+	tags?: string[];
+	// Code results (code.html)
+	repository?: string;
+	codelines?: Array<[number, string]>;
+	code_language?: string;
+	// Key-value results (keyvalue.html)
+	kvmap?: Record<string, string>;
+	// Image results (images.html)
+	resolution?: string;
+	img_format?: string;
+	source?: string;
 };
 
 export type SearchAnswer = {
@@ -164,17 +188,21 @@ export type SearchResponse = {
 };
 
 export function search(params: SearchParams) {
-	const qs = new URLSearchParams();
-	qs.set("q", params.q);
-	qs.set("format", params.format ?? "json");
-	if (params.pageno != null) qs.set("pageno", String(params.pageno));
-	if (params.language) qs.set("language", params.language);
+	const body = new URLSearchParams();
+	body.set("q", params.q);
+	body.set("format", params.format ?? "json");
+	if (params.pageno != null) body.set("pageno", String(params.pageno));
+	if (params.language) body.set("language", params.language);
 	if (params.safesearch != null)
-		qs.set("safesearch", String(params.safesearch));
-	if (params.categories) qs.set("categories", params.categories);
-	if (params.time_range) qs.set("time_range", params.time_range);
-	if (params.engines) qs.set("engines", params.engines);
-	return getJson<SearchResponse>(`/search?${qs}`);
+		body.set("safesearch", String(params.safesearch));
+	if (params.categories) body.set("categories", params.categories);
+	if (params.time_range) body.set("time_range", params.time_range);
+	if (params.engines) body.set("engines", params.engines);
+	return getJson<SearchResponse>("/search", {
+		method: "POST",
+		headers: { "Content-Type": "application/x-www-form-urlencoded" },
+		body,
+	});
 }
 
 export function autocomplete(q: string) {

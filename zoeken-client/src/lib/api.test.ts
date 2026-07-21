@@ -1,11 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import {
-	type ApiError,
-	clearCookies,
-	type Preferences,
-	preferencesPost,
-	search,
-} from "./api";
+import { clearCookies, type Preferences, preferencesPost, search } from "./api";
 
 const originalFetch = globalThis.fetch;
 
@@ -41,9 +35,11 @@ describe("API client", () => {
 			safesearch: 2,
 		});
 
-		expect(fetch).toHaveBeenCalledWith(
-			"/search?q=rust+search&format=json&pageno=2&safesearch=2&categories=it",
-			expect.any(Object),
+		expect(fetch).toHaveBeenCalledWith("/search", expect.any(Object));
+		const init = fetch.mock.calls[0]?.[1] as RequestInit;
+		expect(init.method).toBe("POST");
+		expect(String(init.body)).toBe(
+			"q=rust+search&format=json&pageno=2&safesearch=2&categories=it",
 		);
 	});
 
@@ -52,7 +48,7 @@ describe("API client", () => {
 			vi.fn().mockResolvedValue(new Response("limited", { status: 429 })),
 		);
 		await expect(search({ q: "rust" })).rejects.toEqual(
-			expect.objectContaining<ApiError>({ status: 429 }),
+			expect.objectContaining({ status: 429 }),
 		);
 	});
 

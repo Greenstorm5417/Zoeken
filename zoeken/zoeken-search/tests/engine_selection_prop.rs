@@ -126,7 +126,9 @@ fn reference_selection(
     universe
         .iter()
         .filter(|s| {
-            if s.disabled || s.suspended {
+            // An explicit `engines=` selection may summon a disabled engine.
+            let explicitly_requested = !query_engines.is_empty() && query_engines.contains(&s.name);
+            if (s.disabled && !explicitly_requested) || s.suspended {
                 return false;
             }
             if !s

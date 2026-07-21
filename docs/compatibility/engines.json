@@ -5101,17 +5101,15 @@
         "general"
       ],
       "engine_traits": false,
-      "fixture_status": "not-applicable",
-      "known_gaps": [
-        "not ported"
-      ],
+      "fixture_status": "present",
+      "known_gaps": [],
       "language_support": false,
       "network_required": false,
       "paging": true,
       "processor_type": "online",
-      "rust_module": null,
+      "rust_module": "generic",
       "safe_search": false,
-      "status": "missing",
+      "status": "ported",
       "time_range": false,
       "upstream_module": "avalw",
       "upstream_name": "avalw",
@@ -5888,14 +5886,30 @@
   "summary": {
     "generic_candidates": 0,
     "intentionally_skipped": 40,
-    "missing": 1,
+    "missing": 0,
     "orphaned_rust_engines": 0,
-    "ported": 248,
-    "rust_engines": 54,
+    "ported": 249,
+    "rust_engines": 58,
     "upstream_engines": 289,
-    "zoeken_only_engines": 1
+    "zoeken_only_engines": 5
   },
   "zoeken_only_engines": [
+    {
+      "name": "currency",
+      "reason": "Zoeken-only currency conversion instant answer (ECB rates); SearXNG's equivalent is a Python answerer, not an engine module"
+    },
+    {
+      "name": "dictionary",
+      "reason": "Zoeken-only dictionary definition instant answer (Wiktionary); no distinct SearXNG engine module"
+    },
+    {
+      "name": "translate",
+      "reason": "Zoeken-only translation instant answer (MyMemory); no distinct SearXNG engine module"
+    },
+    {
+      "name": "weather",
+      "reason": "Zoeken-only weather instant answer (wttr.in), gated to weather-shaped queries; no distinct SearXNG engine module"
+    },
     {
       "name": "wikibooks",
       "reason": "Zoeken-only MediaWiki books engine; no distinct SearXNG module"

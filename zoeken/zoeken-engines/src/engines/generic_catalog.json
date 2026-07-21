@@ -369,6 +369,29 @@
     "inactive_reason": "requires API key"
   },
   {
+    "name": "avalw",
+    "engine": "json_engine",
+    "shortcut": "av",
+    "categories": [
+      "general"
+    ],
+    "paging": true,
+    "search_url": "https://avalw.org/api/search?q={query}&page={pageno}&limit=10&tbm=all",
+    "about": {
+      "website": "https://avalw.com",
+      "description": "Search engine from the Romanian news company AVALW S.R.L.",
+      "use_official_api": false,
+      "require_api_key": false,
+      "results": "JSON"
+    },
+    "results_query": "results",
+    "url_query": "url",
+    "title_query": "title",
+    "content_query": "snippet",
+    "inactive": true,
+    "inactive_reason": "upstream disabled by default; unreliable through the app's browser-profile HTTP client in testing (intermittent zero-result/error responses despite a healthy plain-curl response)"
+  },
+  {
     "name": "ayo",
     "engine": "xpath",
     "shortcut": "ayo",

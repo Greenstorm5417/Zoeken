@@ -174,6 +174,11 @@ impl Engine for Bing {
         let html = resp.text();
         let doc = Html::parse_document(&html);
 
+        let challenge_sel = Selector::parse("div.captcha").unwrap();
+        if doc.select(&challenge_sel).next().is_some() {
+            return Err(EngineError::Captcha(NAME.to_string()));
+        }
+
         let item_sel = Selector::parse("ol#b_results > li.b_algo").unwrap();
         let link_sel = Selector::parse("h2 a").unwrap();
         let p_sel = Selector::parse("p").unwrap();
@@ -247,6 +252,19 @@ mod tests {
             body: body.as_bytes().to_vec(),
             ..EngineResponse::default()
         }
+    }
+
+    #[test]
+    fn response_maps_captcha_challenge_page_to_captcha_error() {
+        let engine = Bing::new();
+        let resp = response(
+            200,
+            r#"<html><body><div class="captcha"><div class="captcha_header">One last step</div></div></body></html>"#,
+        );
+        assert!(matches!(
+            engine.response(&resp),
+            Err(EngineError::Captcha(_))
+        ));
     }
 
     fn prepopulated(q: &SearchQueryView) -> RequestParams {

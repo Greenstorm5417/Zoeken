@@ -1698,8 +1698,7 @@ fn strip_doi_suffixes(raw: &str) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::collections::HashMap;
-    use zoeken_data::{HostnamesRules, UnitEntry, UnitTable};
+    use zoeken_data::HostnamesRules;
 
     use crate::SimpleResultContainer;
 
@@ -2063,31 +2062,24 @@ mod tests {
     }
 
     #[test]
-    fn builtin_unit_converter_uses_data_bundle_units() {
-        let mut units = HashMap::new();
-        units.insert(
-            "m".to_string(),
-            UnitEntry {
-                si_name: Some("length".to_string()),
-                symbol: "m".to_string(),
-                to_si_factor: Some(1.0),
-            },
-        );
-        units.insert(
-            "km".to_string(),
-            UnitEntry {
-                si_name: Some("length".to_string()),
-                symbol: "km".to_string(),
-                to_si_factor: Some(1000.0),
-            },
-        );
-        let data = zoeken_data::DataBundle {
-            units: UnitTable { units },
-            ..zoeken_data::DataBundle::default()
-        };
+    fn builtin_unit_converter_converts_from_its_own_curated_units() {
+        // Self-contained (no ctx.data.units — that Wikidata dump has no "cup"
+        // and maps "gal" to the acceleration unit, not gallon).
+        let data = zoeken_data::DataBundle::default();
         let plugin = builtin("unit_converter", data);
         let answers = plugin.on_pre_search_answers(&query("2 km in m"), &PluginCtx::all_enabled());
-        assert_eq!(answers[0].answer, "2000 m");
+        assert_eq!(answers[0].answer, "2 km = 2000 m");
+    }
+
+    #[test]
+    fn builtin_unit_converter_understands_how_many_phrasing() {
+        let data = zoeken_data::DataBundle::default();
+        let plugin = builtin("unit_converter", data);
+        let answers = plugin.on_pre_search_answers(
+            &query("how many cups in a gallon"),
+            &PluginCtx::all_enabled(),
+        );
+        assert_eq!(answers[0].answer, "1 gal = 16 cup");
     }
 
     #[test]

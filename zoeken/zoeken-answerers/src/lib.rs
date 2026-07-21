@@ -4,6 +4,10 @@
 //! and [`RandomAnswerer`] (string/int/float/sha256/uuid/color).
 //! An answerer runs when its trigger keyword matches the query's first token
 //! or when configured unconditional.
+//!
+//! Calculator and unit-conversion answers are *not* here: those live solely
+//! as the `calculator`/`unit_converter` Lua plugins in `zoeken-plugins`, so
+//! there's exactly one implementation of each instead of a native/Lua pair.
 
 use std::sync::Arc;
 
@@ -11,9 +15,11 @@ use zoeken_data::DataBundle;
 use zoeken_query::SearchQuery;
 use zoeken_results::{Answer, Template};
 
+mod datetime;
 mod random;
 mod statistics;
 
+pub use datetime::DateTimeAnswerer;
 pub use random::{RandomAnswerer, RandomKind};
 pub use statistics::{StatisticsAnswerer, StatisticsOp};
 
@@ -51,11 +57,14 @@ impl AnswererRegistry {
         }
     }
 
-    /// A registry pre-loaded with the built-in answerers (statistics + random).
+    /// A registry pre-loaded with the built-in answerers (statistics +
+    /// random + date/time math). Calculator and unit conversion are Lua
+    /// plugins, not here — see the module docs.
     pub fn with_builtins() -> Self {
         AnswererRegistry::from_answerers([
             Arc::new(StatisticsAnswerer::new()) as Arc<dyn Answerer>,
             Arc::new(RandomAnswerer::new()) as Arc<dyn Answerer>,
+            Arc::new(DateTimeAnswerer::new()) as Arc<dyn Answerer>,
         ])
     }
 
@@ -238,7 +247,7 @@ mod tests {
     #[test]
     fn builtins_are_registered() {
         let registry = AnswererRegistry::with_builtins();
-        assert_eq!(registry.len(), 2);
+        assert_eq!(registry.len(), 3);
         let answers = registry.ask(&query("sum 1 2 3"));
         assert_eq!(answers.len(), 1);
         assert!(answers[0].answer.contains('6'));

@@ -42,16 +42,23 @@ async fn run_autocomplete(
 
     let suggestions = state.autocomplete.suggest(&query, &locale).await;
 
+    // Let the browser reuse suggestion responses for repeated prefixes; the
+    // upstream lists barely change minute to minute.
+    const CACHE: (header::HeaderName, &str) = (header::CACHE_CONTROL, "private, max-age=300");
     if headers
         .get("X-Requested-With")
         .and_then(|value| value.to_str().ok())
         == Some("XMLHttpRequest")
     {
         let body = serde_json::to_string(&suggestions).unwrap_or_else(|_| "[]".to_string());
-        ([(header::CONTENT_TYPE, "application/json")], body).into_response()
+        ([(header::CONTENT_TYPE, "application/json"), CACHE], body).into_response()
     } else {
         let body = serde_json::json!([query, suggestions]).to_string();
-        ([(header::CONTENT_TYPE, SUGGESTIONS_CONTENT_TYPE)], body).into_response()
+        (
+            [(header::CONTENT_TYPE, SUGGESTIONS_CONTENT_TYPE), CACHE],
+            body,
+        )
+            .into_response()
     }
 }
 

@@ -9,6 +9,7 @@ homepage.workspace = true
 description.workspace = true
 
 [dependencies]
+chrono = { workspace = true, features = ["clock"] }
 zoeken-data = { workspace = true }
 zoeken-results = { workspace = true }
 zoeken-query = { workspace = true }

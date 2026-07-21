@@ -204,7 +204,14 @@ pub async fn config(State(state): State<Arc<AppState>>) -> Response {
         },
         public_instance: state.settings.server.public_instance,
     };
-    json(&response)
+    let mut response = json(&response);
+    // Instance config changes only on redeploy; let the browser reuse it
+    // instead of refetching on every SPA load.
+    response.headers_mut().insert(
+        header::CACHE_CONTROL,
+        axum::http::HeaderValue::from_static("private, max-age=300"),
+    );
+    response
 }
 
 /// `GET /healthz` liveness probe.
@@ -696,6 +703,14 @@ mod tests {
         assert!(engines.iter().any(|e| e["name"] == "duckduckgo"));
         assert_eq!(value["safe_search"], 0);
     }
+
+    // Calculator and unit conversion have exactly one implementation each
+    // (Lua, `default_enabled = true`) — no more native/Lua pair, so no
+    // server-side filtering of `/config`'s plugin list is needed here.
+    // Coverage for the plugins themselves (default-on, correct answers,
+    // "how many X in Y" phrasing) lives in `zoeken-plugins/src/lua.rs`;
+    // `AppState::new()` in this test module uses `Settings::default()`,
+    // which doesn't load real plugins from disk, so it can't exercise them.
 
     #[tokio::test]
     async fn healthz_reports_ok() {

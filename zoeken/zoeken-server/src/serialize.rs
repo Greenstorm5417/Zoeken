@@ -549,7 +549,20 @@ impl JsonResponse {
 
 fn translated_cause(cause: &UnresponsiveCause) -> &'static str {
     match cause {
-        UnresponsiveCause::Error(_) => "unexpected crash",
+        UnresponsiveCause::Error(message) => {
+            let lower = message.to_ascii_lowercase();
+            if lower.contains("captcha") {
+                "blocked by CAPTCHA"
+            } else if lower.contains("access denied") {
+                "access denied"
+            } else if lower.contains("too many requests") {
+                "rate limited"
+            } else if lower.contains("parse") {
+                "bad upstream response"
+            } else {
+                "error"
+            }
+        }
         UnresponsiveCause::Timeout | UnresponsiveCause::DeadlineExceeded => "timeout",
     }
 }
@@ -631,7 +644,7 @@ mod tests {
         let value: serde_json::Value = serde_json::from_str(&format_json(&container)).unwrap();
         let engines = value["unresponsive_engines"].as_array().unwrap();
         assert_eq!(engines.len(), 3);
-        assert_eq!(engines[0], serde_json::json!(["boom", "unexpected crash"]));
+        assert_eq!(engines[0], serde_json::json!(["boom", "error"]));
         assert_eq!(engines[1], serde_json::json!(["slow", "timeout"]));
         assert_eq!(engines[2], serde_json::json!(["late", "timeout"]));
     }

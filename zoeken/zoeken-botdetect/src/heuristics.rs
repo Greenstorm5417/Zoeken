@@ -28,7 +28,9 @@ pub enum HeuristicFailure {
 impl HeuristicFailure {
     pub fn reason(self) -> &'static str {
         match self {
-            HeuristicFailure::Accept => "HTTP header Accept did not contain text/html",
+            HeuristicFailure::Accept => {
+                "HTTP header Accept did not contain text/html or application/json"
+            }
             HeuristicFailure::AcceptEncoding => {
                 "HTTP header Accept-Encoding did not contain gzip nor deflate"
             }
@@ -40,8 +42,12 @@ impl HeuristicFailure {
     }
 }
 
+/// Browsers navigate with `text/html`; the SPA fetches `/search` with
+/// `application/json`. Both are legitimate; scrapers commonly send neither.
 pub fn check_accept(accept: Option<&str>) -> bool {
-    accept.is_some_and(|value| value.contains("text/html"))
+    accept.is_some_and(|value| {
+        value.contains("text/html") || value.contains("application/json") || value.contains("*/*")
+    })
 }
 
 pub fn check_accept_encoding(accept_encoding: Option<&str>) -> bool {
@@ -77,9 +83,11 @@ pub fn check_sec_fetch(view: &HeaderView) -> bool {
     if !is_browser_supported(ua) {
         return true;
     }
+    // `navigate`: address-bar / form navigation; `cors` and `same-origin`:
+    // the SPA's own `fetch` calls.
     matches!(
         view.sec_fetch_mode.as_deref(),
-        Some("navigate") | Some("cors")
+        Some("navigate") | Some("cors") | Some("same-origin")
     )
 }
 
@@ -238,13 +246,23 @@ mod tests {
     }
 
     #[test]
-    fn accept_without_text_html_is_rejected() {
+    fn accept_without_html_or_json_is_rejected() {
         let mut view = browser_view();
-        view.accept = Some("application/json".to_string());
+        view.accept = Some("application/xml".to_string());
         assert_eq!(
             evaluate(&view, &HeaderHeuristics::default()),
             Err(HeuristicFailure::Accept)
         );
+    }
+
+    /// The SPA fetches `/search` with a JSON Accept and `Sec-Fetch-Mode: cors`;
+    /// that traffic must pass the heuristics.
+    #[test]
+    fn spa_json_fetch_passes_all_heuristics() {
+        let mut view = browser_view();
+        view.accept = Some("application/json".to_string());
+        view.sec_fetch_mode = Some("cors".to_string());
+        assert_eq!(evaluate(&view, &HeaderHeuristics::default()), Ok(()));
     }
 
     #[test]

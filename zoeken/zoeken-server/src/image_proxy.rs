@@ -9,8 +9,8 @@ use axum::http::{HeaderMap, StatusCode, header};
 use axum::response::{IntoResponse, Response};
 use futures_util::StreamExt;
 use zoeken_favicons::{
-    DEFAULT_MAX_IMAGE_BYTES, ImageProxyDecision, ImageProxyPolicy, image_proxy_decision,
-    is_hmac_of, validate_proxy_url,
+    DEFAULT_MAX_IMAGE_BYTES, ImageProxyDecision, ImageProxyPolicy, MAX_REDIRECT_HOPS,
+    get_following_safe_redirects, image_proxy_decision, is_hmac_of, validate_proxy_url,
 };
 
 use crate::{AppState, parse_pairs};
@@ -36,12 +36,32 @@ pub trait ImageProxyFetcher: Send + Sync {
     fn fetch<'a>(&'a self, url: &'a str) -> FetchFuture<'a>;
 }
 
-#[derive(Default)]
-pub struct WreqImageFetcher;
+pub struct WreqImageFetcher {
+    client: wreq::Client,
+}
 
 impl WreqImageFetcher {
     pub fn new() -> Self {
-        Self
+        // One shared pooled client for the whole proxy: per-request client
+        // construction cost a fresh TLS setup on every image.
+        let client = wreq::Client::builder()
+            .redirect(wreq::redirect::Policy::none())
+            .timeout(std::time::Duration::from_secs(15))
+            .build()
+            .expect("build image proxy HTTP client");
+        Self { client }
+    }
+
+    /// Use an externally built client (e.g. the browser-emulating
+    /// `image_proxy` network client) instead of the plain default.
+    pub fn with_client(client: wreq::Client) -> Self {
+        Self { client }
+    }
+}
+
+impl Default for WreqImageFetcher {
+    fn default() -> Self {
+        Self::new()
     }
 }
 
@@ -50,16 +70,11 @@ impl ImageProxyFetcher for WreqImageFetcher {
         let url = url.to_string();
         let max_bytes = DEFAULT_MAX_IMAGE_BYTES;
         Box::pin(async move {
-            // Never follow redirects: a public URL can 302 to loopback/metadata.
-            let client = wreq::Client::builder()
-                .redirect(wreq::redirect::Policy::none())
-                .build()
-                .map_err(|e| ImageFetchError::Upstream(e.to_string()))?;
-            let resp = client
-                .get(&url)
-                .send()
+            // Redirects are followed manually so every hop is re-validated
+            // against the SSRF policy (a public URL can 302 to loopback).
+            let resp = get_following_safe_redirects(&self.client, &url, MAX_REDIRECT_HOPS)
                 .await
-                .map_err(|e| ImageFetchError::Upstream(e.to_string()))?;
+                .map_err(ImageFetchError::Upstream)?;
 
             let status = resp.status().as_u16();
             let content_type = resp
@@ -177,7 +192,16 @@ pub async fn image_proxy_get(
             let content_type = fetched
                 .content_type
                 .unwrap_or_else(|| "application/octet-stream".to_string());
-            ([(header::CONTENT_TYPE, content_type)], fetched.body).into_response()
+            (
+                [
+                    (header::CONTENT_TYPE, content_type),
+                    // Proxied URLs are HMAC-stable per image; let the browser
+                    // cache them instead of re-proxying on every render.
+                    (header::CACHE_CONTROL, "public, max-age=86400".to_string()),
+                ],
+                fetched.body,
+            )
+                .into_response()
         }
         ImageProxyDecision::Reject(reason) => {
             (StatusCode::BAD_REQUEST, reason.reason()).into_response()
@@ -278,6 +302,7 @@ mod tests {
         }));
         let mut settings = Settings::default();
         settings.server.secret_key = "secret".into();
+        settings.server.image_proxy = false;
         let state = AppState::new()
             .unwrap()
             .with_image_fetcher(fetcher)

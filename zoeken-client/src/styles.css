@@ -51,8 +51,10 @@
 		linear-gradient(180deg, #f2f5ee 0%, #e6ede1 100%);
 }
 
+/* Dark palette: applied automatically by OS preference, or forced when the
+   document root carries data-theme="dark" (manual toggle). */
 @media (prefers-color-scheme: dark) {
-	:root {
+	:root:not([data-theme="light"]) {
 		--surface: #0f1410;
 		--surface-raised: #171d18;
 		--ink: #e8efe6;
@@ -74,6 +76,29 @@
 			),
 			linear-gradient(180deg, #0f1410 0%, #121812 100%);
 	}
+}
+
+:root[data-theme="dark"] {
+	--surface: #0f1410;
+	--surface-raised: #171d18;
+	--ink: #e8efe6;
+	--ink-muted: #a3b3a6;
+	--ink-subtle: #7a8a7c;
+	--line: #2a342c;
+	--accent: #7cbc4a;
+	--accent-soft: #1a2a16;
+	--focus: #7cbc4a;
+	--atmosphere: radial-gradient(
+			ellipse 90% 60% at 50% -10%,
+			rgba(124, 188, 74, 0.14),
+			transparent 55%
+		),
+		radial-gradient(
+			ellipse 50% 40% at 10% 90%,
+			rgba(47, 107, 29, 0.12),
+			transparent 50%
+		),
+		linear-gradient(180deg, #0f1410 0%, #121812 100%);
 }
 
 * {
@@ -121,11 +146,11 @@ body {
 }
 
 .animate-rise {
-	animation: rise 0.55s ease-out both;
+	animation: rise 0.3s ease-out both;
 }
 
 .animate-fade {
-	animation: fade-in 0.4s ease-out both;
+	animation: fade-in 0.15s ease-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -15,8 +15,12 @@ const PREFERENCES_COOKIE: &str = "preferences";
 
 const COOKIE_MAX_AGE_SECS: i64 = 60 * 60 * 24 * 365;
 
-/// `GET /preferences` as JSON.
+/// `GET /preferences`: the SPA document for browser navigations, JSON for API
+/// clients (the SPA itself fetches with `Accept: application/json`).
 pub async fn preferences_get(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Response {
+    if prefers_html(&headers) {
+        return crate::frontend_index_response(&state);
+    }
     let cookie = read_pref_cookie(&headers);
     let prefs = resolve_with_data(
         &state.pref_defaults,
@@ -99,6 +103,24 @@ pub async fn clear_cookies(State(state): State<Arc<AppState>>, headers: HeaderMa
     response
 }
 
+/// A browser navigation sends `Accept: text/html,...` with `text/html` ranked
+/// ahead of JSON; `fetch` with `Accept: application/json` must keep JSON.
+fn prefers_html(headers: &HeaderMap) -> bool {
+    let Some(accept) = headers
+        .get(header::ACCEPT)
+        .and_then(|value| value.to_str().ok())
+    else {
+        return false;
+    };
+    let html = accept.find("text/html");
+    let json = accept.find("application/json");
+    match (html, json) {
+        (Some(html), Some(json)) => html < json,
+        (Some(_), None) => true,
+        _ => false,
+    }
+}
+
 fn secure_cookie(state: &AppState) -> bool {
     state.deployment.hsts
         || matches!(
@@ -163,6 +185,69 @@ mod tests {
     async fn body_json(response: Response) -> serde_json::Value {
         let bytes = to_bytes(response.into_body(), usize::MAX).await.unwrap();
         serde_json::from_slice(&bytes).unwrap()
+    }
+
+    struct IndexOnlyAssets;
+
+    impl crate::static_assets::AssetSource for IndexOnlyAssets {
+        fn get(&self, path: &str) -> Option<std::borrow::Cow<'static, [u8]>> {
+            (path == crate::static_assets::INDEX_HTML)
+                .then_some(std::borrow::Cow::Borrowed(b"<!doctype html>" as &[u8]))
+        }
+        fn has_index(&self) -> bool {
+            true
+        }
+    }
+
+    #[tokio::test]
+    async fn browser_navigation_gets_the_spa_document_not_json() {
+        let app = app(AppState::new()
+            .expect("build app state")
+            .with_assets(std::sync::Arc::new(IndexOnlyAssets)));
+        let response = app
+            .oneshot(
+                Request::builder()
+                    .uri("/preferences")
+                    .header(
+                        header::ACCEPT,
+                        "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                    )
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::OK);
+        let content_type = response
+            .headers()
+            .get(header::CONTENT_TYPE)
+            .and_then(|v| v.to_str().ok())
+            .unwrap_or_default()
+            .to_string();
+        assert!(
+            content_type.starts_with("text/html"),
+            "browser reload of /preferences must get HTML, got {content_type}"
+        );
+    }
+
+    #[tokio::test]
+    async fn api_clients_still_get_json() {
+        let app = app(AppState::new().expect("build app state"));
+        let response = app
+            .oneshot(
+                Request::builder()
+                    .uri("/preferences")
+                    .header(header::ACCEPT, "application/json")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(
+            response.headers().get(header::CONTENT_TYPE).unwrap(),
+            "application/json"
+        );
     }
 
     #[tokio::test]

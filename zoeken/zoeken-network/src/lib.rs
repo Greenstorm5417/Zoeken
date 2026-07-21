@@ -438,7 +438,9 @@ async fn backoff_delay(attempt: u32) {
 
 pub struct Network {
     config: NetworkConfig,
+    /// Built as `addresses × emulations`: index = addr * emulations_per_addr + emu.
     clients: Vec<Client>,
+    emulations_per_addr: usize,
     rotation: AtomicUsize,
 }
 
@@ -465,6 +467,7 @@ impl Network {
         Ok(Self {
             config,
             clients,
+            emulations_per_addr: emulations.len().max(1),
             rotation: AtomicUsize::new(0),
         })
     }
@@ -488,6 +491,29 @@ impl Network {
         self.rotation.fetch_add(1, Ordering::Relaxed)
     }
 
+    /// Pick a client for a request: source addresses keep rotating round-robin
+    /// (`cursor`), but the emulation profile is stable per upstream host, so a
+    /// given upstream always sees the same browser identity (TLS + header
+    /// profile). Flapping between profiles per request from one IP is itself a
+    /// detectable fingerprint.
+    fn client_for(&self, cursor: usize, url: &str) -> &Client {
+        use std::hash::{Hash, Hasher};
+        let addr_groups = (self.clients.len() / self.emulations_per_addr).max(1);
+        let addr_idx = cursor % addr_groups;
+        let emu_idx = match url::Url::parse(url)
+            .ok()
+            .and_then(|u| u.host_str().map(str::to_ascii_lowercase))
+        {
+            Some(host) => {
+                let mut hasher = std::collections::hash_map::DefaultHasher::new();
+                host.hash(&mut hasher);
+                (hasher.finish() as usize) % self.emulations_per_addr
+            }
+            None => 0,
+        };
+        &self.clients[addr_idx * self.emulations_per_addr + emu_idx]
+    }
+
     fn select(&self, cursor: usize) -> (&Client, Option<&Proxy>) {
         let client = &self.clients[cursor % self.clients.len()];
         let proxy = if self.config.proxies.is_empty() {
@@ -500,7 +526,13 @@ impl Network {
 
     pub async fn request(&self, name: &str, req: NetworkRequest) -> Result<Response, NetworkError> {
         let cursor = self.next_rotation();
-        let (client, proxy) = self.select(cursor);
+        // Sticky browser identity per upstream host; addresses/proxies rotate.
+        let client = self.client_for(cursor, &req.url);
+        let proxy = if self.config.proxies.is_empty() {
+            None
+        } else {
+            Some(&self.config.proxies[cursor % self.config.proxies.len()])
+        };
 
         let max_attempts = self.config.retries.saturating_add(1);
         let mut attempt: u32 = 0;

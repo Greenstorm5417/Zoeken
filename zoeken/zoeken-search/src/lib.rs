@@ -460,8 +460,19 @@ mod tests {
         let mut query = search_query();
         query.query = "2 + 2".to_string();
 
+        let ctx = zoeken_plugins::PluginCtx::new(zoeken_plugins::PluginGating {
+            globally_enabled: true,
+            per_plugin: [("calculator".to_string(), true)].into_iter().collect(),
+            default_enabled: true,
+        });
         let container = search
-            .run(&query, &AllEnginesEnabled, &HashSet::new(), &NoopRecorder)
+            .run_with_plugin_ctx(
+                &query,
+                &AllEnginesEnabled,
+                &HashSet::new(),
+                &NoopRecorder,
+                &ctx,
+            )
             .await;
 
         assert!(container.answers.iter().any(|a| a.answer == "4"));

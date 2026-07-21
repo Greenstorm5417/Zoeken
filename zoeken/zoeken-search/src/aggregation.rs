@@ -190,6 +190,7 @@ impl ContainerBuilder {
             Some(key) => match self.by_key.get(&key).copied() {
                 Some(existing) => {
                     let merged = &mut self.merged[existing];
+                    maybe_upgrade_content(&mut merged.result, &result);
                     push_position(&mut merged.result, position);
                     if !merged.engines.iter().any(|e| e == engine) {
                         merged.engines.push(engine.to_string());
@@ -326,6 +327,9 @@ fn canonical_merge_key(raw: &str) -> String {
 
     if matches!(url.scheme(), "http" | "https") {
         let _ = url.set_port(None);
+        // Engines disagree on scheme for the same page; treat http == https.
+        let _ = url.set_scheme("https");
+        strip_tracking_params(&mut url);
     }
 
     if let Some(host) = url.host_str() {
@@ -343,6 +347,31 @@ fn canonical_merge_key(raw: &str) -> String {
     url.set_path(&canonical_path);
 
     url.to_string()
+}
+
+/// Query parameters that vary per engine/click without changing the page.
+const TRACKING_PARAMS: &[&str] = &[
+    "gclid", "fbclid", "msclkid", "yclid", "wbraid", "gbraid", "mc_eid", "igshid", "ref_src",
+    "ref_url", "spm", "sk", "ved", "ei",
+];
+
+fn strip_tracking_params(url: &mut url::Url) {
+    if url.query().is_none() {
+        return;
+    }
+    let kept: Vec<(String, String)> = url
+        .query_pairs()
+        .filter(|(key, _)| !key.starts_with("utm_") && !TRACKING_PARAMS.contains(&key.as_ref()))
+        .map(|(k, v)| (k.into_owned(), v.into_owned()))
+        .collect();
+    if kept.is_empty() {
+        url.set_query(None);
+    } else {
+        let query = url::form_urlencoded::Serializer::new(String::new())
+            .extend_pairs(kept)
+            .finish();
+        url.set_query(Some(&query));
+    }
 }
 
 fn is_locale_root_path(path: &str) -> bool {
@@ -386,6 +415,57 @@ fn positions_of(result: &Result_) -> &[usize] {
 
 fn priority_of(result: &Result_) -> &str {
     main_get!(result, priority, "")
+}
+
+fn content_of(result: &Result_) -> &str {
+    main_get!(result, content, "")
+}
+
+fn title_of(result: &Result_) -> &str {
+    main_get!(result, title, "")
+}
+
+/// Heuristic for stub/junk descriptions (stale redirect snapshots, empty
+/// snippets) that shouldn't win the canonical description when a duplicate
+/// result from another engine has real content.
+fn is_low_quality_content(content: &str) -> bool {
+    let trimmed = content.trim();
+    if trimmed.is_empty() || trimmed.chars().count() < 12 {
+        return true;
+    }
+    let lower = trimmed.to_ascii_lowercase();
+    lower.starts_with("redirecting to") || lower.starts_with("redirect to")
+}
+
+/// Swap in `incoming`'s title/content as canonical when the merged result's
+/// current description is low quality and the incoming one is better.
+fn maybe_upgrade_content(existing: &mut Result_, incoming: &Result_) {
+    if !is_low_quality_content(content_of(existing)) {
+        return;
+    }
+    let incoming_content = content_of(incoming);
+    if is_low_quality_content(incoming_content) {
+        return;
+    }
+    let new_content = incoming_content.to_string();
+    let new_title = title_of(incoming).to_string();
+    macro_rules! set {
+        ($r:expr) => {{
+            $r.content = new_content;
+            if !new_title.is_empty() {
+                $r.title = new_title;
+            }
+        }};
+    }
+    match existing {
+        Result_::Main(r) => set!(r),
+        Result_::Image(r) => set!(r),
+        Result_::Paper(r) => set!(r),
+        Result_::Code(r) => set!(r),
+        Result_::File(r) => set!(r),
+        Result_::KeyValue(r) => set!(r),
+        _ => {}
+    }
 }
 
 fn score_of_field(result: &Result_) -> f64 {
@@ -483,6 +563,16 @@ mod tests {
         })
     }
 
+    fn main_result_with_content(url: &str, title: &str, content: &str) -> Result_ {
+        Result_::Main(MainResult {
+            url: url.to_string(),
+            normalized_url: url.to_string(),
+            title: title.to_string(),
+            content: content.to_string(),
+            ..MainResult::default()
+        })
+    }
+
     fn completed(engine: &str, results: EngineResults) -> EngineRunOutcome {
         EngineRunOutcome {
             engine: engine.to_string(),
@@ -505,6 +595,72 @@ mod tests {
             Result_::Main(m) => m,
             other => panic!("expected MainResult, got {other:?}"),
         }
+    }
+
+    #[test]
+    fn merge_prefers_real_content_over_redirect_stub() {
+        let mut alpha = EngineResults::new();
+        alpha.add(main_result_with_content(
+            "https://a.test/",
+            "Install Rust",
+            "Redirecting to /tools/install",
+        ));
+        let mut beta = EngineResults::new();
+        beta.add(main_result_with_content(
+            "https://a.test/",
+            "Rust Programming Language",
+            "A language empowering everyone to build reliable and efficient software.",
+        ));
+
+        let container = aggregate(
+            report(vec![completed("alpha", alpha), completed("beta", beta)]),
+            &weights(&[("alpha", 1.0), ("beta", 1.0)]),
+            &NoopRecorder,
+        );
+
+        let merged = container
+            .results
+            .iter()
+            .map(as_main)
+            .find(|m| m.normalized_url == "https://a.test/")
+            .expect("merged result present");
+        assert_eq!(
+            merged.content,
+            "A language empowering everyone to build reliable and efficient software."
+        );
+        assert_eq!(merged.title, "Rust Programming Language");
+        // Both engines still get credit for the merged result.
+        assert_eq!(
+            merged.engines,
+            vec!["alpha".to_string(), "beta".to_string()]
+        );
+    }
+
+    #[test]
+    fn merge_keeps_first_content_when_incoming_is_also_low_quality() {
+        let mut alpha = EngineResults::new();
+        alpha.add(main_result_with_content(
+            "https://a.test/",
+            "First",
+            "Redirecting to /somewhere",
+        ));
+        let mut beta = EngineResults::new();
+        beta.add(main_result_with_content("https://a.test/", "Second", ""));
+
+        let container = aggregate(
+            report(vec![completed("alpha", alpha), completed("beta", beta)]),
+            &weights(&[("alpha", 1.0), ("beta", 1.0)]),
+            &NoopRecorder,
+        );
+
+        let merged = container
+            .results
+            .iter()
+            .map(as_main)
+            .find(|m| m.normalized_url == "https://a.test/")
+            .expect("merged result present");
+        assert_eq!(merged.content, "Redirecting to /somewhere");
+        assert_eq!(merged.title, "First");
     }
 
     #[test]
@@ -564,6 +720,43 @@ mod tests {
             vec!["alpha".to_string(), "beta".to_string()]
         );
         assert_eq!(result.positions, vec![1, 1]);
+    }
+
+    #[test]
+    fn dedups_across_scheme_and_tracking_params() {
+        let mut alpha = EngineResults::new();
+        alpha.add(main_result("http://example.com/page", "Page"));
+        let mut beta = EngineResults::new();
+        beta.add(main_result(
+            "https://example.com/page?utm_source=x&utm_medium=y&fbclid=abc",
+            "Page",
+        ));
+
+        let container = aggregate(
+            report(vec![completed("alpha", alpha), completed("beta", beta)]),
+            &weights(&[("alpha", 1.0), ("beta", 1.0)]),
+            &NoopRecorder,
+        );
+
+        assert_eq!(container.results.len(), 1);
+        assert_eq!(
+            as_main(&container.results[0]).engines,
+            vec!["alpha".to_string(), "beta".to_string()]
+        );
+    }
+
+    #[test]
+    fn meaningful_query_params_still_distinguish_results() {
+        let mut alpha = EngineResults::new();
+        alpha.add(main_result("https://example.com/watch?v=abc", "A"));
+        alpha.add(main_result("https://example.com/watch?v=def", "B"));
+
+        let container = aggregate(
+            report(vec![completed("alpha", alpha)]),
+            &weights(&[("alpha", 1.0)]),
+            &NoopRecorder,
+        );
+        assert_eq!(container.results.len(), 2);
     }
 
     #[test]

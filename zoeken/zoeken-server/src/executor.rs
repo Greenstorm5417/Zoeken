@@ -1,8 +1,8 @@
 //! A network-backed [`EngineExecutor`] for engine HTTP calls.
 
 use std::collections::HashMap;
-use std::sync::Arc;
-use std::time::Instant;
+use std::sync::{Arc, Mutex};
+use std::time::{Duration, Instant};
 
 use futures_util::StreamExt;
 use url::form_urlencoded;
@@ -20,9 +20,65 @@ pub struct NetworkExecutor {
     networks: Arc<NetworkManager>,
     engine_networks: HashMap<String, String>,
     max_response_bytes: usize,
+    response_cache: Arc<ResponseCache>,
 }
 
 const DEFAULT_MAX_RESPONSE_BYTES: usize = 10 * 1024 * 1024;
+
+/// Engines whose upstream responses are safe to cache briefly: idempotent
+/// instant-answer / infobox lookups that repeat often and query rate-limited
+/// public endpoints (Wikidata's WDQS especially). Caching successful responses
+/// cuts repeat load — the main lever against WDQS's aggressive HTTP 429s.
+const CACHEABLE_ENGINES: &[&str] = &["wikidata", "currency", "dictionary"];
+
+/// Time a cached upstream response stays fresh.
+const RESPONSE_CACHE_TTL: Duration = Duration::from_secs(300);
+
+/// Cap on cached entries; the cache is cleared wholesale when it grows past.
+const RESPONSE_CACHE_CAPACITY: usize = 512;
+
+struct CachedResponse {
+    at: Instant,
+    response: EngineResponse,
+}
+
+/// A tiny TTL response cache keyed by `engine\u{1f}url\u{1f}body`.
+#[derive(Default)]
+struct ResponseCache {
+    entries: Mutex<HashMap<String, CachedResponse>>,
+}
+
+impl ResponseCache {
+    fn get(&self, key: &str) -> Option<EngineResponse> {
+        let entries = self.entries.lock().ok()?;
+        let entry = entries.get(key)?;
+        (entry.at.elapsed() < RESPONSE_CACHE_TTL).then(|| entry.response.clone())
+    }
+
+    fn put(&self, key: String, response: EngineResponse) {
+        let Ok(mut entries) = self.entries.lock() else {
+            return;
+        };
+        if entries.len() >= RESPONSE_CACHE_CAPACITY {
+            entries.clear();
+        }
+        entries.insert(
+            key,
+            CachedResponse {
+                at: Instant::now(),
+                response,
+            },
+        );
+    }
+}
+
+fn cache_key(engine: &str, url: &str, body: Option<&[u8]>) -> String {
+    let body = body.map(<[u8]>::to_vec).unwrap_or_default();
+    format!(
+        "{engine}\u{1f}{url}\u{1f}{}",
+        String::from_utf8_lossy(&body)
+    )
+}
 
 impl NetworkExecutor {
     pub fn new(networks: Arc<NetworkManager>) -> Self {
@@ -30,6 +86,7 @@ impl NetworkExecutor {
             networks,
             engine_networks: HashMap::new(),
             max_response_bytes: DEFAULT_MAX_RESPONSE_BYTES,
+            response_cache: Arc::new(ResponseCache::default()),
         }
     }
 
@@ -51,6 +108,7 @@ impl EngineExecutor for NetworkExecutor {
         let engine_name = engine.metadata().name.clone();
         let engine_networks = self.engine_networks.clone();
         let max_response_bytes = self.max_response_bytes;
+        let response_cache = self.response_cache.clone();
         Box::pin(async move {
             let mut params = RequestParams {
                 query: query.query.clone(),
@@ -90,6 +148,19 @@ impl EngineExecutor for NetworkExecutor {
                 Err(error) => return EngineExecResult::from_result(Err(error)),
             };
 
+            // Serve a fresh cached upstream response for idempotent engines,
+            // skipping the network round-trip entirely.
+            let cacheable = CACHEABLE_ENGINES.contains(&engine_name.as_str());
+            let key = cacheable.then(|| cache_key(&engine_name, &url, request.body.as_deref()));
+            if let Some(key) = &key
+                && let Some(cached) = response_cache.get(key)
+            {
+                return EngineExecResult {
+                    result: engine.response(&cached),
+                    http_duration: None,
+                };
+            }
+
             let http_started = Instant::now();
             let response = match networks.request(&network_name, request).await {
                 Ok(response) => response,
@@ -109,6 +180,13 @@ impl EngineExecutor for NetworkExecutor {
                     };
                 }
             };
+            // Only cache successful responses so a transient rate-limit / error
+            // is retried on the next search rather than pinned for the TTL.
+            if let Some(key) = key
+                && engine_response.status == 200
+            {
+                response_cache.put(key, engine_response.clone());
+            }
             let http_duration = Some(http_started.elapsed());
             EngineExecResult {
                 result: engine.response(&engine_response),
@@ -142,7 +220,7 @@ fn build_network_request(params: &RequestParams, url: &str) -> Result<NetworkReq
     if !params.locale_key.is_empty()
         && !matches!(params.locale_key.as_str(), "all" | "auto")
         && !headers.contains_key(ACCEPT_LANGUAGE)
-        && let Ok(value) = HeaderValue::from_str(&params.locale_key)
+        && let Ok(value) = HeaderValue::from_str(&browser_accept_language(&params.locale_key))
     {
         headers.insert(ACCEPT_LANGUAGE, value);
     }
@@ -185,6 +263,27 @@ fn build_network_request(params: &RequestParams, url: &str) -> Result<NetworkReq
     }
 
     Ok(request)
+}
+
+/// Format a locale as a browser-style `Accept-Language` q-list. Real browsers
+/// never send a bare `de-DE`; a q-graded list blends in with organic traffic.
+fn browser_accept_language(locale: &str) -> String {
+    let lang = locale
+        .split(['-', '_'])
+        .next()
+        .unwrap_or(locale)
+        .to_ascii_lowercase();
+    if lang == "en" {
+        if locale == lang {
+            "en-US,en;q=0.9".to_string()
+        } else {
+            format!("{locale},en;q=0.9")
+        }
+    } else if locale == lang {
+        format!("{locale},en;q=0.8")
+    } else {
+        format!("{locale},{lang};q=0.9,en;q=0.8")
+    }
 }
 
 /// Set a `Content-Type` header on `request` unless the engine already supplied
@@ -361,6 +460,56 @@ mod tests {
         let request = build_network_request(&params, "https://example.test/api").unwrap();
         let body = String::from_utf8(request.body.clone().expect("body")).unwrap();
         assert_eq!(body, r#"{"q":"rust"}"#);
+    }
+
+    #[test]
+    fn response_cache_serves_within_ttl_and_keys_on_body() {
+        let cache = ResponseCache::default();
+        let key = cache_key("wikidata", "https://wdqs/sparql", Some(b"query=A"));
+        assert!(cache.get(&key).is_none(), "cold cache misses");
+
+        let response = EngineResponse {
+            status: 200,
+            url: "https://wdqs/sparql".to_string(),
+            body: b"cached body".to_vec(),
+            ..EngineResponse::default()
+        };
+        cache.put(key.clone(), response.clone());
+        assert_eq!(cache.get(&key), Some(response));
+
+        // A different request body is a different cache key (a cache miss).
+        let other = cache_key("wikidata", "https://wdqs/sparql", Some(b"query=B"));
+        assert!(cache.get(&other).is_none());
+    }
+
+    #[test]
+    fn response_cache_evicts_wholesale_past_capacity() {
+        let cache = ResponseCache::default();
+        for i in 0..=RESPONSE_CACHE_CAPACITY {
+            cache.put(format!("k{i}"), EngineResponse::default());
+        }
+        // The wholesale clear on overflow keeps the map bounded.
+        assert!(cache.entries.lock().unwrap().len() <= RESPONSE_CACHE_CAPACITY);
+    }
+
+    #[test]
+    fn only_curated_engines_are_cacheable() {
+        assert!(CACHEABLE_ENGINES.contains(&"wikidata"));
+        // A general web engine must never be cached (results would go stale and
+        // caching mixes users' identical queries in surprising ways).
+        assert!(!CACHEABLE_ENGINES.contains(&"duckduckgo"));
+        assert!(!CACHEABLE_ENGINES.contains(&"soundcloud"));
+    }
+
+    /// `Accept-Language` is emitted as a browser-style q-graded list, never a
+    /// bare locale tag.
+    #[test]
+    fn accept_language_is_browser_shaped() {
+        assert_eq!(browser_accept_language("en"), "en-US,en;q=0.9");
+        assert_eq!(browser_accept_language("en-GB"), "en-GB,en;q=0.9");
+        assert_eq!(browser_accept_language("de"), "de,en;q=0.8");
+        assert_eq!(browser_accept_language("de-DE"), "de-DE,de;q=0.9,en;q=0.8");
+        assert_eq!(browser_accept_language("fr-FR"), "fr-FR,fr;q=0.9,en;q=0.8");
     }
 
     /// Network access/rate-limit/CAPTCHA errors map onto the matching engine

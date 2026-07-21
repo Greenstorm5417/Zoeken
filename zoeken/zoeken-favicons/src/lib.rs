@@ -29,6 +29,7 @@ pub use proxy::{
     ProxyUrlRejection, image_proxy_decision, validate_proxy_authority, validate_proxy_url,
 };
 pub use resolver::{
-    FaviconResolver, HttpFaviconResolver, ResolveError, ResolveFuture, StaticResolver,
+    FaviconResolver, HttpFaviconResolver, IMAGE_ACCEPT, MAX_REDIRECT_HOPS, ResolveError,
+    ResolveFuture, StaticResolver, get_following_safe_redirects,
 };
 pub use service::{FaviconOutcome, FaviconService};

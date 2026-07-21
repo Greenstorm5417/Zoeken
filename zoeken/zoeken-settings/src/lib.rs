@@ -164,7 +164,7 @@ impl Default for SearchSettings {
             safe_search: 0,
             autocomplete: "duckduckgo".to_string(),
             autocomplete_min: 1,
-            favicon_resolver: String::new(),
+            favicon_resolver: "duckduckgo".to_string(),
             default_lang: String::new(),
             languages: Vec::new(),
             ban_time_on_fail: 5.0,
@@ -237,7 +237,7 @@ impl Default for ServerSettings {
             public_instance: false,
             secret_key: String::new(),
             base_url: Some(BoolOrString::Bool(false)),
-            image_proxy: false,
+            image_proxy: true,
             http_protocol_version: "1.0".to_string(),
             method: "POST".to_string(),
             default_http_headers: BTreeMap::new(),
@@ -452,7 +452,7 @@ impl Default for UiSettings {
             center_alignment: false,
             results_on_new_tab: false,
             query_in_title: false,
-            cache_url: "https://web.archive.org/web/".to_string(),
+            cache_url: String::new(),
             search_on_category_select: true,
             hotkeys: "default".to_string(),
             url_formatting: "pretty".to_string(),
@@ -1298,13 +1298,13 @@ search:
         assert_eq!(s.server.bind_address, "127.0.0.1");
         assert!(!s.server.limiter);
         assert!(!s.server.public_instance);
-        assert!(!s.server.image_proxy);
+        assert!(s.server.image_proxy);
         assert_eq!(s.server.base_url, Some(BoolOrString::Bool(false)));
         assert_eq!(s.server.http_protocol_version, "1.0");
         assert_eq!(s.server.method, "POST");
         assert_eq!(s.ui.default_theme, "simple");
         assert_eq!(s.ui.theme_args.simple_style, "auto");
-        assert_eq!(s.ui.cache_url, "https://web.archive.org/web/");
+        assert_eq!(s.ui.cache_url, "");
         assert!(s.ui.search_on_category_select);
         assert_eq!(s.ui.hotkeys, "default");
         assert_eq!(s.ui.url_formatting, "pretty");

@@ -199,7 +199,12 @@ impl EngineRegistry {
         available_tokens: &HashSet<String>,
         now: Instant,
     ) -> bool {
-        if re.disabled {
+        let meta = re.engine.metadata();
+        // A disabled engine can still be summoned explicitly (`!bang` or an
+        // `engines=` selection), matching SearXNG semantics.
+        let explicitly_requested = !query.engines.is_empty()
+            && bang_match(&meta.name, &meta.shortcut, &re.shortcuts, &query.engines);
+        if re.disabled && !explicitly_requested {
             return false;
         }
         if re.state.lock().is_ok_and(|state| state.is_suspended(now)) {
@@ -208,8 +213,6 @@ impl EngineRegistry {
         if !has_required_tokens(&re.tokens, available_tokens) {
             return false;
         }
-
-        let meta = re.engine.metadata();
         if query.pageno > 1 && (!meta.paging || (meta.max_page > 0 && query.pageno > meta.max_page))
         {
             return false;
@@ -263,6 +266,14 @@ impl SuspensionPolicy {
         match error {
             EngineError::AccessDenied(_) => Some(self.access_denied),
             EngineError::CloudflareAccessDenied(_) => Some(self.cf_access_denied),
+            // DuckDuckGo's html endpoint has no client session: its CAPTCHA is a
+            // per-request heuristic, not a durable IP ban, and upstream SearXNG
+            // deliberately suspends it for 0s on this error (their comment: "set
+            // suspend time to zero is OK --> ddg does not block the IP"). The
+            // generic 24h captcha suspend below is right for engines with real
+            // IP bans, but for DDG it would otherwise hide the engine for a full
+            // day after a single transient challenge.
+            EngineError::Captcha(name) if name == "duckduckgo" => Some(Duration::ZERO),
             EngineError::Captcha(_) => Some(self.captcha),
             EngineError::CloudflareCaptcha(_) => Some(self.cf_captcha),
             EngineError::RecaptchaCaptcha(_) => Some(self.recaptcha_captcha),
@@ -437,5 +448,35 @@ mod tests {
         let q = query_with(&["general"], &[]);
         let selected = reg.select(&q, &AllEnginesEnabled, &HashSet::new(), now);
         assert_eq!(names(&selected), vec!["gamma"]);
+    }
+
+    #[test]
+    fn duckduckgo_captcha_does_not_suspend_but_other_engines_do() {
+        let policy = SuspensionPolicy::default();
+        assert_eq!(
+            policy.explicit_duration(&EngineError::Captcha("duckduckgo".to_string())),
+            Some(Duration::ZERO)
+        );
+        assert_eq!(
+            policy.explicit_duration(&EngineError::Captcha("bing".to_string())),
+            Some(policy.captcha)
+        );
+    }
+
+    #[test]
+    fn duckduckgo_stays_selectable_immediately_after_a_captcha_hit() {
+        let now = Instant::now();
+        let ddg = RegisteredEngine::new(StubEngine::arc("duckduckgo", &["general"]));
+        let policy = SuspensionPolicy::default();
+        let explicit = policy.explicit_duration(&EngineError::Captcha("duckduckgo".to_string()));
+        ddg.state
+            .lock()
+            .unwrap()
+            .on_error(now, &policy.config, "captcha", explicit);
+
+        let reg = EngineRegistry::from_engines([ddg]);
+        let q = query_with(&["general"], &[]);
+        let selected = reg.select(&q, &AllEnginesEnabled, &HashSet::new(), now);
+        assert_eq!(names(&selected), vec!["duckduckgo"]);
     }
 }

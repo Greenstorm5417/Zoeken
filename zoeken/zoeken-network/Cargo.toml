@@ -23,6 +23,7 @@ wreq = { workspace = true, features = [
 wreq-util = { workspace = true }
 thiserror = { workspace = true }
 serde_json = { workspace = true }
+url = { workspace = true }
 
 [dev-dependencies]
 tokio = { workspace = true, features = ["rt", "macros", "time"] }

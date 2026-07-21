@@ -136,10 +136,27 @@ impl Engine for Wikidata {
             "Accept".to_string(),
             "application/sparql-results+json".to_string(),
         );
+        // The public WDQS endpoint rate-limits aggressively (HTTP 429). Handle
+        // the status ourselves so a transient limit becomes a brief back-off
+        // rather than the default hour-long `too_many_requests` suspension that
+        // would take an optional infobox engine offline for everyone.
+        p.raise_for_httperror = false;
     }
 
     fn response(&self, resp: &EngineResponse) -> Result<EngineResults, EngineError> {
         let mut res = EngineResults::new();
+
+        // WDQS rate-limit / overload: surface as a plain transient error so the
+        // engine is suspended only for the short default ban window, not the
+        // hour reserved for genuine `TooManyRequests`.
+        if matches!(resp.status, 429 | 500 | 502 | 503 | 504) {
+            return Err(EngineError::Timeout);
+        }
+        // Any other non-success (e.g. a 400 from a malformed query): no
+        // infobox, but don't penalise the engine.
+        if resp.status != 200 {
+            return Ok(res);
+        }
 
         let json: serde_json::Value = serde_json::from_slice(&resp.body)
             .map_err(|e| EngineError::Parse(format!("invalid Wikidata SPARQL JSON: {e}")))?;
@@ -409,6 +426,35 @@ mod tests {
             p.headers.get("Accept").map(String::as_str),
             Some("application/sparql-results+json")
         );
+        // We handle WDQS status codes ourselves rather than letting a 429
+        // become an hour-long `TooManyRequests` suspension.
+        assert!(!p.raise_for_httperror);
+    }
+
+    #[test]
+    fn wdqs_rate_limit_is_a_transient_timeout_not_a_parse_error() {
+        let engine = Wikidata::new();
+        // A 429 body is HTML, not SPARQL JSON; it must not be parsed, and must
+        // map to a short-suspension Timeout, not a Parse error or (worse) a
+        // `TooManyRequests` that suspends for an hour.
+        for status in [429, 500, 503] {
+            let result = engine.response(&response(status, "<html>rate limited</html>"));
+            assert!(
+                matches!(result, Err(EngineError::Timeout)),
+                "status {status} should map to Timeout, got {result:?}"
+            );
+        }
+    }
+
+    #[test]
+    fn other_non_200_yields_empty_without_penalty() {
+        let engine = Wikidata::new();
+        // A 400 (e.g. malformed query) yields no infobox but no error, so the
+        // engine is not suspended.
+        let results = engine
+            .response(&response(400, "bad request"))
+            .expect("non-200 non-retryable is a soft miss");
+        assert!(results.infoboxes.is_empty());
     }
 
     #[test]

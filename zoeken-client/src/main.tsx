@@ -1,7 +1,11 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { createRoot } from "react-dom/client";
+import { initTheme } from "#/lib/theme";
 import { routeTree } from "./routeTree.gen";
+
+// Apply the saved theme before first paint to avoid a flash.
+initTheme();
 
 const queryClient = new QueryClient({
 	defaultOptions: {

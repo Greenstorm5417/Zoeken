@@ -1,0 +1,80 @@
+{
+  "engine": "avalw",
+  "case": "live",
+  "query": {
+    "query": "rust",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale": "all",
+    "categories": [],
+    "engines": []
+  },
+  "golden_request": {
+    "query": "rust",
+    "category": "",
+    "pageno": 1,
+    "safesearch": "Off",
+    "time_range": null,
+    "locale_key": "all",
+    "engine_data": {},
+    "method": "Get",
+    "url": "https://avalw.org/api/search?q=rust&page=1&limit=10&tbm=all",
+    "headers": {},
+    "cookies": {},
+    "data": {},
+    "json": null,
+    "content": "",
+    "allow_redirects": false,
+    "max_redirects": 0,
+    "soft_max_redirects": 0,
+    "auth": null,
+    "verify": "Default",
+    "raise_for_httperror": false,
+    "network": null
+  },
+  "response": {
+    "status": 200,
+    "url": "https://avalw.org/api/search?q=rust&page=1&limit=10&tbm=all",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "body": "{\"success\":true,\"results\":[{\"title\":\"rustup.rs - The Rust toolchain installer\",\"url\":\"https://rustup.rs\",\"domain\":\"rustup.rs\",\"snippet\":\"The Rust toolchain installer\",\"category\":\"content_index\",\"country\":\"\",\"favicon\":\"https://www.google.com/s2/favicons?domain=rustup.rs&sz=64\",\"votes\":0,\"upvotes\":0,\"userVote\":0,\"page_count\":0,\"image_count\":0,\"is_shop\":false,\"image_url\":null},{\"title\":\"Rust Programming Language\",\"url\":\"https://www.rust-lang.org\",\"domain\":\"rust-lang.org\",\"snippet\":\"A language empowering everyone to build reliable and efficient software.\",\"category\":\"content_index\",\"country\":\"\",\"favicon\":\"https://www.google.com/s2/favicons?domain=rust-lang.org&sz=64\",\"votes\":0,\"upvotes\":0,\"userVote\":0,\"page_count\":0,\"image_count\":0,\"is_shop\":false,\"image_url\":null}],\"total\":2,\"query\":\"rust\",\"page\":1,\"limit\":10,\"totalPages\":1}"
+  },
+  "golden_results": {
+    "results": [
+      {
+        "Main": {
+          "url": "https://rustup.rs/",
+          "normalized_url": "https://rustup.rs/",
+          "title": "rustup.rs - The Rust toolchain installer",
+          "content": "The Rust toolchain installer",
+          "engine": "avalw",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      },
+      {
+        "Main": {
+          "url": "https://www.rust-lang.org/",
+          "normalized_url": "https://www.rust-lang.org/",
+          "title": "Rust Programming Language",
+          "content": "A language empowering everyone to build reliable and efficient software.",
+          "engine": "avalw",
+          "engines": [],
+          "score": 0.0,
+          "positions": [],
+          "priority": "",
+          "template": "Default"
+        }
+      }
+    ],
+    "answers": [],
+    "suggestions": [],
+    "corrections": [],
+    "infoboxes": []
+  }
+}

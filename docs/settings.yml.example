@@ -56,7 +56,7 @@ search:
   # Backend name, or "" to disable. Known: duckduckgo, google, brave, …
   autocomplete: "duckduckgo"
   autocomplete_min: 1
-  favicon_resolver: ""
+  favicon_resolver: "duckduckgo"
   # "" = all languages; or e.g. "en"
   default_lang: "en"
   # Restrict selectable languages (empty = all bundled)
@@ -93,7 +93,7 @@ server:
   secret_key: ""
   # false | "https://search.example.com"
   base_url: false
-  image_proxy: false
+  image_proxy: true
   # "1.0" | "1.1"
   http_protocol_version: "1.0"
   # Default search form method: "POST" | "GET"
@@ -139,7 +139,7 @@ ui:
   center_alignment: false
   results_on_new_tab: false
   query_in_title: false
-  cache_url: "https://web.archive.org/web/"
+  cache_url: ""
   search_on_category_select: true
   # default | vim
   hotkeys: "default"
