@@ -2,7 +2,10 @@ import { describe, expect, it } from "vitest";
 import type { Config, SearchResult } from "../api";
 import { applyClientFeatures } from "./index";
 
-function result(url: string, overrides: Partial<SearchResult> = {}): SearchResult {
+function result(
+	url: string,
+	overrides: Partial<SearchResult> = {},
+): SearchResult {
 	return { url, title: "", ...overrides };
 }
 
@@ -66,16 +69,29 @@ describe("applyClientFeatures", () => {
 		const results = [result("https://spam.example.com/a")];
 		const cfg = config({
 			plugins: [plugin("hostnames", false)],
-			hostnames: { replace: {}, remove: ["^spam\\."], high_priority: [], low_priority: [] },
+			hostnames: {
+				replace: {},
+				remove: ["^spam\\."],
+				high_priority: [],
+				low_priority: [],
+			},
 		});
 		expect(applyClientFeatures(results, cfg)).toEqual(results);
 	});
 
 	it("applies hostname removal when the plugin is enabled", () => {
-		const results = [result("https://spam.example.com/a"), result("https://good.test/b")];
+		const results = [
+			result("https://spam.example.com/a"),
+			result("https://good.test/b"),
+		];
 		const cfg = config({
 			plugins: [plugin("hostnames", true)],
-			hostnames: { replace: {}, remove: ["^spam\\."], high_priority: [], low_priority: [] },
+			hostnames: {
+				replace: {},
+				remove: ["^spam\\."],
+				high_priority: [],
+				low_priority: [],
+			},
 		});
 		const out = applyClientFeatures(results, cfg);
 		expect(out).toHaveLength(1);

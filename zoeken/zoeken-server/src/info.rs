@@ -1005,10 +1005,7 @@ hostnames:
             .await
             .unwrap();
         let value = body_json(response).await;
-        assert_eq!(
-            value["hostnames"]["remove"][0],
-            "(.*\\.)?facebook\\.com$"
-        );
+        assert_eq!(value["hostnames"]["remove"][0], "(.*\\.)?facebook\\.com$");
         assert_eq!(
             value["hostnames"]["high_priority"][0],
             "(.*\\.)?wikipedia\\.org$"

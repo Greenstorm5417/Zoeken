@@ -564,12 +564,7 @@ mod tests {
     fn captcha_uses_suspended_times_duration() {
         let policy = SuspensionPolicy::default();
         assert_eq!(
-            cooldown_for(
-                "bing",
-                &EngineError::Captcha("bing".into()),
-                None,
-                &policy,
-            ),
+            cooldown_for("bing", &EngineError::Captcha("bing".into()), None, &policy,),
             Some(policy.captcha)
         );
     }

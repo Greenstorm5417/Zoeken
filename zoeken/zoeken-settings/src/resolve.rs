@@ -72,10 +72,7 @@ impl From<&EngineSettings> for ResolvedEngine {
     fn from(cfg: &EngineSettings) -> Self {
         Self {
             name: cfg.name.clone(),
-            engine_key: cfg
-                .engine
-                .clone()
-                .unwrap_or_else(|| cfg.name.clone()),
+            engine_key: cfg.engine.clone().unwrap_or_else(|| cfg.name.clone()),
             disabled: cfg.disabled == Some(true),
             inactive: cfg.inactive == Some(true),
             shortcut: cfg.shortcut.clone(),
@@ -272,12 +269,10 @@ mod tests {
                     (
                         "replace".to_string(),
                         Value::Mapping(
-                            [
-                                (
-                                    Value::String("(www\\.)?old\\.test".to_string()),
-                                    Value::String("new.test".to_string()),
-                                ),
-                            ]
+                            [(
+                                Value::String("(www\\.)?old\\.test".to_string()),
+                                Value::String("new.test".to_string()),
+                            )]
                             .into_iter()
                             .collect(),
                         ),
@@ -314,7 +309,10 @@ mod tests {
                     "file".to_string(),
                     Value::String("/etc/zoeken/limiter.toml".to_string()),
                 ),
-                ("link_token".to_string(), Value::String("secret".to_string())),
+                (
+                    "link_token".to_string(),
+                    Value::String("secret".to_string()),
+                ),
             ]),
             ..Default::default()
         };
@@ -348,10 +346,8 @@ mod tests {
 
     #[test]
     fn engine_list_mode_deserializes_from_yaml() {
-        let settings: Settings = serde_yaml_ng::from_str(
-            "search:\n  engine_list_mode: merge\n",
-        )
-        .expect("parse");
+        let settings: Settings =
+            serde_yaml_ng::from_str("search:\n  engine_list_mode: merge\n").expect("parse");
         assert_eq!(settings.search.engine_list_mode, EngineListMode::Merge);
     }
 }

@@ -10,7 +10,10 @@ function nowUtc(): string {
 }
 
 /** Whole query must be time-related keywords only (matches the reference plugin). */
-export function computeTimeZoneAnswer(query: string, pageno: number): SearchAnswer | null {
+export function computeTimeZoneAnswer(
+	query: string,
+	pageno: number,
+): SearchAnswer | null {
 	if (pageno > 1) return null;
 	const parts = query.trim().split(/\s+/).filter(Boolean);
 	if (parts.length === 0) return null;

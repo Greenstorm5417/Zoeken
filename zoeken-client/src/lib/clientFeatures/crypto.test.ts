@@ -30,18 +30,22 @@ describe("computeCryptoAnswer", () => {
 			algorithm: "base64",
 			input: "hello",
 		});
-		expect(computeCryptoAnswer("base 64 encode hello world")?.interactive).toEqual({
+		expect(
+			computeCryptoAnswer("base 64 encode hello world")?.interactive,
+		).toEqual({
 			type: "crypto",
 			mode: "encode",
 			algorithm: "base64",
 			input: "hello world",
 		});
-		expect(computeCryptoAnswer("what is hello in base64")?.interactive).toEqual({
-			type: "crypto",
-			mode: "encode",
-			algorithm: "base64",
-			input: "hello",
-		});
+		expect(computeCryptoAnswer("what is hello in base64")?.interactive).toEqual(
+			{
+				type: "crypto",
+				mode: "encode",
+				algorithm: "base64",
+				input: "hello",
+			},
+		);
 		expect(computeCryptoAnswer("decode base64 aGVsbG8=")?.interactive).toEqual({
 			type: "crypto",
 			mode: "decode",

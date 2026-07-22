@@ -1,6 +1,8 @@
 /** Strip ClearURLs-style tracker query params from result URLs. */
 import type { SearchResult } from "../api";
-import trackerPatterns from "../generated/tracker_patterns.json" with { type: "json" };
+import trackerPatterns from "../generated/tracker_patterns.json" with {
+	type: "json",
+};
 
 type TrackerRule = {
 	url: string;
@@ -48,7 +50,10 @@ function compileRules(): CompiledRule[] {
 }
 
 /** Remove matching tracker query args from a single URL. */
-export function stripTrackerParams(raw: string, rules: CompiledRule[] = compileRules()): string {
+export function stripTrackerParams(
+	raw: string,
+	rules: CompiledRule[] = compileRules(),
+): string {
 	let parsed: URL;
 	try {
 		parsed = new URL(raw);
@@ -86,7 +91,9 @@ function cleanField(
 }
 
 /** Strip trackers from `url` / `img_src` / `thumbnail` on each result. */
-export function applyTrackerUrlRemover(results: SearchResult[]): SearchResult[] {
+export function applyTrackerUrlRemover(
+	results: SearchResult[],
+): SearchResult[] {
 	const rules = compileRules();
 	return results.map((result) => {
 		const next = { ...result };

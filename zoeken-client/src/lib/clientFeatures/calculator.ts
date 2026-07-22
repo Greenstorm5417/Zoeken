@@ -1,13 +1,45 @@
 /** Local "looks like a calculation" detector and locale-aware normalizer. */
-import { calcEval, formatCalcNumber } from "../calcEval";
+
 import type { InteractiveAnswer, SearchAnswer } from "../api";
+import { calcEval, formatCalcNumber } from "../calcEval";
 
 // Locales that write decimals with a comma and thousands with a dot
 // (mirrors the reference SearXNG calculator plugin's language list).
 const COMMA_DECIMAL_LANGS = new Set([
-	"de", "fr", "es", "it", "nl", "pt", "ru", "pl", "sv", "da", "fi", "nb",
-	"nn", "no", "cs", "sk", "sl", "hr", "sr", "uk", "bg", "ro", "hu", "tr",
-	"el", "lt", "lv", "et", "is", "ca", "gl", "eu", "af", "id",
+	"de",
+	"fr",
+	"es",
+	"it",
+	"nl",
+	"pt",
+	"ru",
+	"pl",
+	"sv",
+	"da",
+	"fi",
+	"nb",
+	"nn",
+	"no",
+	"cs",
+	"sk",
+	"sl",
+	"hr",
+	"sr",
+	"uk",
+	"bg",
+	"ro",
+	"hu",
+	"tr",
+	"el",
+	"lt",
+	"lv",
+	"et",
+	"is",
+	"ca",
+	"gl",
+	"eu",
+	"af",
+	"id",
 ]);
 
 function looksLikeExpression(text: string): boolean {

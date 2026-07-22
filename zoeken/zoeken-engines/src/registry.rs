@@ -520,10 +520,7 @@ mod tests {
             }],
             ..Default::default()
         };
-        assert_eq!(
-            settings.search.engine_list_mode,
-            EngineListMode::Replace
-        );
+        assert_eq!(settings.search.engine_list_mode, EngineListMode::Replace);
         let reg = registry_from_settings(&settings);
         assert_eq!(reg.engines().len(), 1);
         assert_eq!(reg.engines()[0].name(), "gitlab");

@@ -275,16 +275,14 @@ fn duration_from_secs_f64(secs: f64) -> Duration {
     }
 }
 
-fn require_tls_verify(
-    verify: Option<&BoolOrString>,
-    scope: &str,
-) -> Result<(), NetworkError> {
+fn require_tls_verify(verify: Option<&BoolOrString>, scope: &str) -> Result<(), NetworkError> {
     match verify {
         None | Some(BoolOrString::Bool(true)) => Ok(()),
         Some(BoolOrString::Bool(false)) => Err(NetworkError::UnsupportedTls {
             scope: scope.to_string(),
-            detail: "verify: false is not supported; TLS certificate verification is always enabled"
-                .to_string(),
+            detail:
+                "verify: false is not supported; TLS certificate verification is always enabled"
+                    .to_string(),
         }),
         Some(BoolOrString::Str(path)) => Err(NetworkError::UnsupportedTls {
             scope: scope.to_string(),
@@ -1178,8 +1176,8 @@ mod tests {
             retry_on_http_error: Some(vec![429, 503]),
             ..Default::default()
         };
-        let cfg = NetworkConfig::from_network_settings(&outgoing, &ns, "test")
-            .expect("named network");
+        let cfg =
+            NetworkConfig::from_network_settings(&outgoing, &ns, "test").expect("named network");
         assert_eq!(cfg.retries, 3);
         assert!(!cfg.enable_http2);
         assert_eq!(cfg.retry_on_http_error, vec![429, 503]);

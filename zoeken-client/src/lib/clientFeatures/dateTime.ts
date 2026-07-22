@@ -63,7 +63,11 @@ function parseIsoDate(text: string): YMD | null {
 	// Round-trip through epoch day + back to reject invalid calendar dates
 	// (e.g. 2026-02-30), matching chrono's NaiveDate::parse_from_str strictness.
 	const roundTrip = new Date(Date.UTC(y, m - 1, d));
-	if (roundTrip.getUTCFullYear() !== y || roundTrip.getUTCMonth() !== m - 1 || roundTrip.getUTCDate() !== d) {
+	if (
+		roundTrip.getUTCFullYear() !== y ||
+		roundTrip.getUTCMonth() !== m - 1 ||
+		roundTrip.getUTCDate() !== d
+	) {
 		return null;
 	}
 	return { y, m, d };
@@ -76,7 +80,9 @@ function parseTargetDate(text: string, today: YMD): YMD | null {
 	if (!named) return null;
 	const [month, day] = named;
 	const thisYear = { y: today.y, m: month, d: day };
-	return epochDay(thisYear) >= epochDay(today) ? thisYear : { y: today.y + 1, m: month, d: day };
+	return epochDay(thisYear) >= epochDay(today)
+		? thisYear
+		: { y: today.y + 1, m: month, d: day };
 }
 
 /** Exported for tests: same logic as computeDateTimeAnswer's date branch, with an injectable `today`. */
@@ -90,7 +96,11 @@ export function daysUntil(query: string, today: YMD): string | null {
 	];
 	const prefix = prefixes.find((p) => lower.startsWith(p));
 	if (!prefix) return null;
-	const targetText = lower.slice(prefix.length).trim().replace(/\?+$/, "").trim();
+	const targetText = lower
+		.slice(prefix.length)
+		.trim()
+		.replace(/\?+$/, "")
+		.trim();
 
 	const target = parseTargetDate(targetText, today);
 	if (!target) return null;
@@ -176,14 +186,19 @@ export function zoneConvert(query: string): string | null {
 	const delta = minutes - from + to;
 	const converted = euclidMod(delta, 24 * 60);
 	const dayShift = euclidDiv(delta, 24 * 60);
-	const shiftNote = dayShift === 1 ? " (next day)" : dayShift === -1 ? " (previous day)" : "";
+	const shiftNote =
+		dayShift === 1 ? " (next day)" : dayShift === -1 ? " (previous day)" : "";
 	return `${formatClock(minutes)} ${fromRaw.toUpperCase()} = ${formatClock(converted)} ${toRaw.toUpperCase()}${shiftNote}`;
 }
 
 export function computeDateTimeAnswer(query: string): SearchAnswer | null {
 	const text = query.trim();
 	const now = new Date();
-	const today: YMD = { y: now.getUTCFullYear(), m: now.getUTCMonth() + 1, d: now.getUTCDate() };
+	const today: YMD = {
+		y: now.getUTCFullYear(),
+		m: now.getUTCMonth() + 1,
+		d: now.getUTCDate(),
+	};
 
 	const days = daysUntil(text, today);
 	if (days) return { answer: days, engine: "date math" };

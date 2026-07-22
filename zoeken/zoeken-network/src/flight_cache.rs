@@ -139,7 +139,11 @@ mod tests {
     fn get_put_round_trip_and_ttl_expiry() {
         let cache: FlightCache<String, String> = FlightCache::new(1024, |v: &String| v.len());
         assert!(cache.get(&"a".to_string()).is_none());
-        cache.put("a".to_string(), "hello".to_string(), Duration::from_millis(20));
+        cache.put(
+            "a".to_string(),
+            "hello".to_string(),
+            Duration::from_millis(20),
+        );
         assert_eq!(cache.get(&"a".to_string()), Some("hello".to_string()));
         std::thread::sleep(Duration::from_millis(30));
         assert!(cache.get(&"a".to_string()).is_none());
@@ -161,7 +165,11 @@ mod tests {
     #[test]
     fn oversized_entry_is_dropped_not_stored() {
         let cache: FlightCache<String, String> = FlightCache::new(2, |v: &String| v.len());
-        cache.put("a".to_string(), "too big".to_string(), Duration::from_secs(60));
+        cache.put(
+            "a".to_string(),
+            "too big".to_string(),
+            Duration::from_secs(60),
+        );
         assert!(cache.get(&"a".to_string()).is_none());
         assert_eq!(cache.len(), 0);
     }

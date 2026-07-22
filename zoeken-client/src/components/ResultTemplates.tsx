@@ -1,6 +1,11 @@
 import { Download, ExternalLink, FileText, Magnet } from "lucide-react";
 import type { SearchResult } from "#/lib/api";
-import { engineNames, formatEngineLabel, hostnameOf, pathOf } from "#/lib/searchDisplay";
+import {
+	engineNames,
+	formatEngineLabel,
+	hostnameOf,
+	pathOf,
+} from "#/lib/searchDisplay";
 
 function EngineLine({ result }: { result: SearchResult }) {
 	const engines = engineNames(result);

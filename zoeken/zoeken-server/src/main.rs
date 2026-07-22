@@ -148,7 +148,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let assets_dir = resolve_assets_dir();
     let assets: Arc<dyn AssetSource> = Arc::new(DirAssets::new(&assets_dir));
     if settings.server.disable_ui {
-        tracing::info!("UI disabled (server.disable_ui / APP_DISABLE_UI); skipping SPA asset check");
+        tracing::info!(
+            "UI disabled (server.disable_ui / APP_DISABLE_UI); skipping SPA asset check"
+        );
     } else {
         startup_asset_check(assets.as_ref(), &assets_dir.display().to_string())?;
         tracing::info!(dir = %assets_dir.display(), "serving frontend assets from directory");

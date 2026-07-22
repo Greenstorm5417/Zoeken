@@ -1,13 +1,26 @@
 import { describe, expect, it } from "vitest";
 import type { SearchResult } from "../api";
-import { applyHostnames, type HostnamesRules, sortByPriority } from "./hostnames";
+import {
+	applyHostnames,
+	type HostnamesRules,
+	sortByPriority,
+} from "./hostnames";
 
-function result(url: string, overrides: Partial<SearchResult> = {}): SearchResult {
+function result(
+	url: string,
+	overrides: Partial<SearchResult> = {},
+): SearchResult {
 	return { url, title: "", ...overrides };
 }
 
 function rules(overrides: Partial<HostnamesRules> = {}): HostnamesRules {
-	return { replace: {}, remove: [], high_priority: [], low_priority: [], ...overrides };
+	return {
+		replace: {},
+		remove: [],
+		high_priority: [],
+		low_priority: [],
+		...overrides,
+	};
 }
 
 describe("applyHostnames", () => {
@@ -26,7 +39,10 @@ describe("applyHostnames", () => {
 
 	it("drops results whose host matches a remove pattern", () => {
 		const out = applyHostnames(
-			[result("https://spam.example.com/a"), result("https://good.example.com/b")],
+			[
+				result("https://spam.example.com/a"),
+				result("https://good.example.com/b"),
+			],
 			rules({ remove: ["^spam\\."] }),
 		);
 		expect(out).toHaveLength(1);
@@ -34,8 +50,13 @@ describe("applyHostnames", () => {
 	});
 
 	it("keeps results with no parseable host untouched", () => {
-		const out = applyHostnames([result("not a url")], rules({ remove: [".*"] }));
-		expect(out).toEqual([{ result: { url: "not a url", title: "" }, priority: "normal" }]);
+		const out = applyHostnames(
+			[result("not a url")],
+			rules({ remove: [".*"] }),
+		);
+		expect(out).toEqual([
+			{ result: { url: "not a url", title: "" }, priority: "normal" },
+		]);
 	});
 
 	it("rewrites hostnames per the replace map", () => {
@@ -62,10 +83,15 @@ describe("applyHostnames", () => {
 
 	it("tags high and low priority by host pattern", () => {
 		const out = applyHostnames(
-			[result("https://good.example.com/a"), result("https://bad.example.com/b")],
+			[
+				result("https://good.example.com/a"),
+				result("https://bad.example.com/b"),
+			],
 			rules({ high_priority: ["^good\\."], low_priority: ["^bad\\."] }),
 		);
-		expect(out.find((e) => e.result.url.includes("good"))?.priority).toBe("high");
+		expect(out.find((e) => e.result.url.includes("good"))?.priority).toBe(
+			"high",
+		);
 		expect(out.find((e) => e.result.url.includes("bad"))?.priority).toBe("low");
 	});
 });

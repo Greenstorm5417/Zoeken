@@ -131,7 +131,10 @@ impl AutocompleteService {
     #[must_use]
     pub fn with_cache(mut self, ttl: Duration, max_entries: usize) -> Self {
         self.cache_ttl = ttl;
-        self.cache = Arc::new(FlightCache::new(max_entries.max(1), |_: &Vec<Suggestion>| 1));
+        self.cache = Arc::new(FlightCache::new(
+            max_entries.max(1),
+            |_: &Vec<Suggestion>| 1,
+        ));
         self
     }
 

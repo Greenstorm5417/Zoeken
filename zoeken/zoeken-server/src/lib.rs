@@ -1,5 +1,6 @@
 //! `zoeken-server` axum application.
 
+mod ahmia_filter;
 pub mod autocompleter;
 pub mod boot;
 mod engine_health;
@@ -8,6 +9,7 @@ pub mod favicon_proxy;
 pub mod frontend;
 pub mod image_proxy;
 pub mod info;
+pub mod limiter;
 pub mod middleware;
 mod outbound_cache;
 pub mod preferences;
@@ -15,8 +17,6 @@ pub mod readiness;
 pub mod serialize;
 pub mod serve;
 pub mod static_assets;
-pub mod limiter;
-mod ahmia_filter;
 
 use std::collections::HashSet;
 use std::path::PathBuf;
@@ -244,7 +244,6 @@ fn resolved_data_bundle(settings: &Settings, data: &DataBundle) -> DataBundle {
     };
     data
 }
-
 
 impl AppState {
     pub fn new() -> Result<Self, NetworkError> {
@@ -777,7 +776,6 @@ deployment:
         // 127.0.0.0/8 was already present — merge must not duplicate it.
         assert_eq!(config.trusted_proxies.len(), before + 1);
     }
-
 }
 
 #[cfg(test)]

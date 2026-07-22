@@ -18,7 +18,6 @@ export function useLocalAnswers(
 	config: Config | undefined,
 	prefs?: Preferences | null,
 ): SearchAnswer[] {
-	// biome-ignore lint/correctness/useExhaustiveDependencies: navigator.userAgent is stable per session
 	return useMemo(() => {
 		const ua = typeof navigator === "undefined" ? "" : navigator.userAgent;
 		return [

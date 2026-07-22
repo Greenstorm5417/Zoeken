@@ -45,8 +45,12 @@ describe("zoneConvert", () => {
 	});
 
 	it("flags midnight crossing", () => {
-		expect(zoneConvert("11pm est in cet")).toBe("11:00 PM EST = 5:00 AM CET (next day)");
-		expect(zoneConvert("1am cet in pst")).toBe("1:00 AM CET = 4:00 PM PST (previous day)");
+		expect(zoneConvert("11pm est in cet")).toBe(
+			"11:00 PM EST = 5:00 AM CET (next day)",
+		);
+		expect(zoneConvert("1am cet in pst")).toBe(
+			"1:00 AM CET = 4:00 PM PST (previous day)",
+		);
 	});
 });
 

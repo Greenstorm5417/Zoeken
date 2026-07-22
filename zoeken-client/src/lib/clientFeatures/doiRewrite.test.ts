@@ -23,9 +23,9 @@ describe("extractDoi", () => {
 	});
 
 	it("falls back to a query parameter value", () => {
-		expect(
-			extractDoi("https://publisher.test/view?doi=10.5555/xyz"),
-		).toBe("10.5555/xyz");
+		expect(extractDoi("https://publisher.test/view?doi=10.5555/xyz")).toBe(
+			"10.5555/xyz",
+		);
 	});
 
 	it("returns null when there's no DOI", () => {

@@ -732,6 +732,9 @@ mod tests {
     fn normalize_plugin_id_snake_cases_camel() {
         assert_eq!(normalize_plugin_id("infiniteScroll"), "infinite_scroll");
         assert_eq!(normalize_plugin_id("oa_doi_rewrite"), "oa_doi_rewrite");
-        assert_eq!(normalize_plugin_id("tracker-url-remover"), "tracker_url_remover");
+        assert_eq!(
+            normalize_plugin_id("tracker-url-remover"),
+            "tracker_url_remover"
+        );
     }
 }

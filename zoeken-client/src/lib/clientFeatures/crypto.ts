@@ -10,7 +10,11 @@ const CODEC_ALGS = ["base64", "hex", "url"];
 type ParsedCrypto = { mode: string; algorithm: string; input: string };
 
 function normalizeAlg(raw: string): string | null {
-	const n = raw.toLowerCase().replaceAll("-", "").replaceAll("_", "").replaceAll(" ", "");
+	const n = raw
+		.toLowerCase()
+		.replaceAll("-", "")
+		.replaceAll("_", "")
+		.replaceAll(" ", "");
 	switch (n) {
 		case "sha1":
 		case "sha224":
@@ -44,14 +48,18 @@ function collapseBase64Token(text: string): string {
 	for (const needle of ["base 64", "base-64"]) {
 		const idx = lower.indexOf(needle);
 		if (idx !== -1) {
-			return trimmed.slice(0, idx) + "base64" + trimmed.slice(idx + needle.length);
+			return `${trimmed.slice(0, idx)}base64${trimmed.slice(idx + needle.length)}`;
 		}
 	}
 	return trimmed;
 }
 
 /** Slice of `original` matching the same byte range as `matched` inside `lowered`. */
-function preserveCase(original: string, lowered: string, matched: string): string {
+function preserveCase(
+	original: string,
+	lowered: string,
+	matched: string,
+): string {
 	const start = lowered.lastIndexOf(matched);
 	if (start !== -1) {
 		const end = start + matched.length;
@@ -75,7 +83,11 @@ function parseCrypto(query: string): ParsedCrypto | null {
 			const algRaw = rest.slice(idx + sep.length);
 			const alg = normalizeAlg(algRaw.trim());
 			if (alg && isHash(alg) && text.trim() !== "") {
-				return { mode: "hash", algorithm: alg, input: preserveCase(collapsed, q, text.trim()) };
+				return {
+					mode: "hash",
+					algorithm: alg,
+					input: preserveCase(collapsed, q, text.trim()),
+				};
 			}
 		}
 	}
@@ -105,8 +117,17 @@ function parseCrypto(query: string): ParsedCrypto | null {
 		const b = parts[1] ?? "";
 		const rest = parts.slice(2).join(" ").trim();
 		const alg = normalizeAlg(a);
-		if (rest !== "" && alg && isCodec(alg) && (b === "encode" || b === "decode")) {
-			return { mode: b, algorithm: alg, input: preserveCase(collapsed, q, rest) };
+		if (
+			rest !== "" &&
+			alg &&
+			isCodec(alg) &&
+			(b === "encode" || b === "decode")
+		) {
+			return {
+				mode: b,
+				algorithm: alg,
+				input: preserveCase(collapsed, q, rest),
+			};
 		}
 	}
 
@@ -122,10 +143,18 @@ function parseCrypto(query: string): ParsedCrypto | null {
 		const alg = normalizeAlg(algRaw);
 		if (!alg) continue;
 		if (isHash(alg)) {
-			return { mode: "hash", algorithm: alg, input: preserveCase(collapsed, q, text) };
+			return {
+				mode: "hash",
+				algorithm: alg,
+				input: preserveCase(collapsed, q, text),
+			};
 		}
 		if (isCodec(alg)) {
-			return { mode: "encode", algorithm: alg, input: preserveCase(collapsed, q, text) };
+			return {
+				mode: "encode",
+				algorithm: alg,
+				input: preserveCase(collapsed, q, text),
+			};
 		}
 	}
 
@@ -139,7 +168,11 @@ function parseCrypto(query: string): ParsedCrypto | null {
 			if (rest !== "" && alg) {
 				const mode = isHash(alg) ? "hash" : isCodec(alg) ? "encode" : "";
 				if (mode !== "") {
-					return { mode, algorithm: alg, input: preserveCase(collapsed, q, rest) };
+					return {
+						mode,
+						algorithm: alg,
+						input: preserveCase(collapsed, q, rest),
+					};
 				}
 			}
 		}

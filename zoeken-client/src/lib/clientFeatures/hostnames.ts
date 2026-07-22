@@ -37,7 +37,11 @@ function hostOf(url: string): string | null {
 	}
 }
 
-function rewriteHost(url: string, pattern: string, replacement: string): string | null {
+function rewriteHost(
+	url: string,
+	pattern: string,
+	replacement: string,
+): string | null {
 	const regex = safeRegex(pattern);
 	if (!regex) return null;
 	let parsed: URL;
@@ -71,7 +75,10 @@ function filterUrlField(
 	result[field] = current;
 }
 
-export type PrioritizedResult = { result: SearchResult; priority: "high" | "low" | "normal" };
+export type PrioritizedResult = {
+	result: SearchResult;
+	priority: "high" | "low" | "normal";
+};
 
 /**
  * Apply hostname replace/remove and tag high/low priority. Only results
@@ -112,6 +119,9 @@ export function sortByPriority(entries: PrioritizedResult[]): SearchResult[] {
 	const rank = { high: 0, normal: 1, low: 2 } as const;
 	return entries
 		.map((entry, index) => ({ entry, index }))
-		.sort((a, b) => rank[a.entry.priority] - rank[b.entry.priority] || a.index - b.index)
+		.sort(
+			(a, b) =>
+				rank[a.entry.priority] - rank[b.entry.priority] || a.index - b.index,
+		)
 		.map(({ entry }) => entry.result);
 }

@@ -1,8 +1,14 @@
 import { describe, expect, it } from "vitest";
 import type { SearchResult } from "../api";
-import { applyTrackerUrlRemover, stripTrackerParams } from "./trackerUrlRemover";
+import {
+	applyTrackerUrlRemover,
+	stripTrackerParams,
+} from "./trackerUrlRemover";
 
-function result(url: string, overrides: Partial<SearchResult> = {}): SearchResult {
+function result(
+	url: string,
+	overrides: Partial<SearchResult> = {},
+): SearchResult {
 	return { url, title: "", ...overrides };
 }
 

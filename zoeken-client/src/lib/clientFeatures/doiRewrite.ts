@@ -30,7 +30,10 @@ export function extractDoi(raw: string): string | null {
 }
 
 /** Rewrite `result.url` to `resolver + doi` when a short DOI is present. */
-export function applyDoiRewrite(result: SearchResult, resolver: string): SearchResult {
+export function applyDoiRewrite(
+	result: SearchResult,
+	resolver: string,
+): SearchResult {
 	if (!result.url) return result;
 	const doi = extractDoi(result.url);
 	if (!doi || doi.length >= 50) return result;

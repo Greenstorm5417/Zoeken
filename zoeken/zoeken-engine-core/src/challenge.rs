@@ -169,10 +169,7 @@ mod tests {
 
     #[test]
     fn cloudflare_challenge_status_gating() {
-        assert!(is_cloudflare_challenge(
-            429,
-            "x __cf_chl_jschl_tk__=y"
-        ));
+        assert!(is_cloudflare_challenge(429, "x __cf_chl_jschl_tk__=y"));
         assert!(is_cloudflare_challenge(
             503,
             "/cdn-cgi/challenge-platform/x orchestrate/jsch/v1 window._cf_chl_enter("

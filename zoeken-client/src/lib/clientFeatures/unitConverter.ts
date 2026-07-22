@@ -1,6 +1,6 @@
 /** "10 km to miles" / "how many cups in a gallon" phrase parser and answerer. */
 import type { SearchAnswer } from "../api";
-import { convertUnits, formatUnitNumber, type UnitDef, UNITS } from "../units";
+import { convertUnits, formatUnitNumber, UNITS, type UnitDef } from "../units";
 
 type PhraseAlias = { phrase: string; unit: UnitDef };
 
@@ -70,12 +70,17 @@ function lookupAll(raw: string): UnitDef[] | undefined {
 }
 
 /** Prefer a candidate matching `preferredDimension` when the alias is ambiguous (oz). */
-function lookup(raw: string, preferredDimension: string | null): UnitDef | null {
+function lookup(
+	raw: string,
+	preferredDimension: string | null,
+): UnitDef | null {
 	const candidates = lookupAll(raw);
 	if (!candidates || candidates.length === 0) return null;
 	if (candidates.length === 1) return candidates[0];
 	if (preferredDimension) {
-		const match = candidates.find((unit) => unit.dimension === preferredDimension);
+		const match = candidates.find(
+			(unit) => unit.dimension === preferredDimension,
+		);
 		if (match) return match;
 	}
 	return candidates[0];

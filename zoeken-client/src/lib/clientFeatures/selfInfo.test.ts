@@ -3,7 +3,12 @@ import { computeSelfInfoAnswer } from "./selfInfo";
 
 describe("computeSelfInfoAnswer", () => {
 	it("answers ip queries with the client IP", () => {
-		const answer = computeSelfInfoAnswer("what's my ip", 1, "203.0.113.9", "ua");
+		const answer = computeSelfInfoAnswer(
+			"what's my ip",
+			1,
+			"203.0.113.9",
+			"ua",
+		);
 		expect(answer?.answer).toBe("Your IP is: 203.0.113.9");
 		expect(answer?.interactive).toEqual({
 			type: "self_info",
@@ -13,7 +18,12 @@ describe("computeSelfInfoAnswer", () => {
 	});
 
 	it("is tolerant of punctuation and casing", () => {
-		const answer = computeSelfInfoAnswer("What Is My IP?", 1, "203.0.113.9", "ua");
+		const answer = computeSelfInfoAnswer(
+			"What Is My IP?",
+			1,
+			"203.0.113.9",
+			"ua",
+		);
 		expect(answer?.engine).toBe("self_info");
 	});
 
@@ -23,7 +33,12 @@ describe("computeSelfInfoAnswer", () => {
 	});
 
 	it("answers user-agent queries with the browser UA", () => {
-		const answer = computeSelfInfoAnswer("my user agent", 1, null, "Mozilla/5.0");
+		const answer = computeSelfInfoAnswer(
+			"my user agent",
+			1,
+			null,
+			"Mozilla/5.0",
+		);
 		expect(answer?.answer).toBe("Your user-agent is: Mozilla/5.0");
 		expect(answer?.interactive).toEqual({
 			type: "self_info",
@@ -33,7 +48,9 @@ describe("computeSelfInfoAnswer", () => {
 	});
 
 	it("does not match ip inside an unrelated sentence", () => {
-		expect(computeSelfInfoAnswer("skip the tutorial", 1, "1.2.3.4", "ua")).toBeNull();
+		expect(
+			computeSelfInfoAnswer("skip the tutorial", 1, "1.2.3.4", "ua"),
+		).toBeNull();
 	});
 
 	it("returns null past the first page", () => {

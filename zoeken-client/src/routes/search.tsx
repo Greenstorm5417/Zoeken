@@ -18,15 +18,15 @@ import {
 import { applyClientFeatures, pluginEnabled } from "#/lib/clientFeatures";
 import { pickDidYouMean } from "#/lib/didYouMean";
 import { stringsFor } from "#/lib/i18n";
-import { parseSearchParams } from "#/lib/searchParams";
 import {
-	DEFAULT_CATEGORIES,
 	correctionText,
+	DEFAULT_CATEGORIES,
 	formatEngineLabel,
 	pageNumbers,
 	searchLink,
 	suggestionText,
 } from "#/lib/searchDisplay";
+import { parseSearchParams } from "#/lib/searchParams";
 import { useLocalAnswers } from "#/lib/useLocalAnswers";
 import { useConfig } from "./__root";
 
