@@ -651,7 +651,7 @@ fn set_engines(result: &mut Result_, engines: &[String]) {
 /// Collapse Wikipedia Answer + Wikidata Infobox (and duplicate Infobox pairs)
 /// into one coherent knowledge panel so the SPA does not show the same abstract
 /// twice (top Answer + bottom Infobox / Q-id panel).
-fn coalesce_knowledge_panels(answers: &mut Vec<Answer>, infoboxes: &mut Vec<Infobox>) {
+fn coalesce_knowledge_panels(answers: &mut [Answer], infoboxes: &mut Vec<Infobox>) {
     let mut keep_infoboxes: Vec<Infobox> = Vec::new();
 
     for box_ in infoboxes.drain(..) {

@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   aggregation merges matching Wikidata panels into that answer.
 - Wikidata SPARQL fills Description / Instance of attributes, related topics,
   and optional Commons images.
+- `sync_versions` is pure bash (`tools/sync_versions.sh`); workflow and Makefile
+  no longer depend on uv/Python for version bumps.
 
 ### Fixed
 
