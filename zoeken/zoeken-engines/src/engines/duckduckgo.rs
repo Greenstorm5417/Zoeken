@@ -13,6 +13,38 @@ pub const NAME: &str = "duckduckgo";
 
 const DDG_URL: &str = "https://html.duckduckgo.com/html/";
 
+/// Recover the real destination from a DuckDuckGo `/l/?uddg=` click wrapper.
+fn resolve_uddg_redirect(href: &str) -> String {
+    let candidate = if href.starts_with("//") {
+        format!("https:{href}")
+    } else if href.starts_with("/l/") || href.starts_with("/l?") {
+        format!("https://duckduckgo.com{href}")
+    } else {
+        href.to_string()
+    };
+
+    let Ok(url) = url::Url::parse(&candidate) else {
+        return href.to_string();
+    };
+    let host = url.host_str().unwrap_or("").to_ascii_lowercase();
+    if !(host == "duckduckgo.com" || host.ends_with(".duckduckgo.com")) {
+        return href.to_string();
+    }
+    if !url.path().starts_with("/l") {
+        return href.to_string();
+    }
+    for (key, value) in url.query_pairs() {
+        if key == "uddg" {
+            let dest = value.into_owned();
+            if dest.starts_with("http://") || dest.starts_with("https://") {
+                return dest;
+            }
+            break;
+        }
+    }
+    href.to_string()
+}
+
 #[derive(Debug, Clone)]
 pub struct DuckDuckGo {
     meta: EngineMeta,
@@ -179,10 +211,11 @@ impl Engine for DuckDuckGo {
                 .next()
                 .map(|el| element_text(&el))
                 .unwrap_or_default();
+            let url = resolve_uddg_redirect(href);
 
             res.add(Result_::Main(MainResult {
-                url: href.to_string(),
-                normalized_url: href.to_string(),
+                url: url.clone(),
+                normalized_url: url,
                 title,
                 content,
                 engine: NAME.to_string(),
@@ -440,5 +473,39 @@ mod tests {
             engine.response(&resp),
             Err(EngineError::Captcha(_))
         ));
+    }
+
+    #[test]
+    fn resolves_uddg_redirect() {
+        let href = "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.rust-lang.org%2F&rut=abc";
+        assert_eq!(resolve_uddg_redirect(href), "https://www.rust-lang.org/");
+        assert_eq!(
+            resolve_uddg_redirect("https://www.rust-lang.org/"),
+            "https://www.rust-lang.org/"
+        );
+    }
+
+    #[test]
+    fn response_unwraps_uddg_result_urls() {
+        let engine = DuckDuckGo::new();
+        let html = r#"<!DOCTYPE html><html><body>
+<div id="links" class="results">
+  <div class="result results_links results_links_deep web-result">
+    <div class="links_main links_deep result__body">
+      <h2 class="result__title"><a class="result__a" href="//duckduckgo.com/l/?uddg=https%3A%2F%2Fdoc.rust-lang.org%2Fbook%2F">The Book</a></h2>
+      <a class="result__snippet" href="//duckduckgo.com/l/?uddg=https%3A%2F%2Fdoc.rust-lang.org%2Fbook%2F">Teaches Rust.</a>
+    </div>
+  </div>
+</div>
+</body></html>"#;
+        let results = engine.response(&response(200, html)).expect("parse ok");
+        assert_eq!(results.results.len(), 1);
+        match &results.results[0] {
+            Result_::Main(m) => {
+                assert_eq!(m.url, "https://doc.rust-lang.org/book/");
+                assert_eq!(m.normalized_url, "https://doc.rust-lang.org/book/");
+            }
+            other => panic!("expected Main, got {other:?}"),
+        }
     }
 }

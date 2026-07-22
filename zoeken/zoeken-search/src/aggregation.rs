@@ -256,11 +256,7 @@ impl ContainerBuilder {
             })
             .collect();
 
-        results.sort_by(|a, b| {
-            score_of_field(b)
-                .partial_cmp(&score_of_field(a))
-                .unwrap_or(std::cmp::Ordering::Equal)
-        });
+        sort_results(&mut results);
 
         // Frequency × engine-weight sum; case-insensitive dedupe already done in ingest.
         let mut ranked: Vec<(Suggestion, f64, usize)> =
@@ -323,6 +319,49 @@ fn score_of(
     score
 }
 
+/// Score ↓, then engine consensus ↓, best position ↑, URL ↑.
+/// Equal scores are common when redirect wrappers block merge; without
+/// tie-breakers, ingest order (engine finish order) decides the top hit.
+fn sort_results(results: &mut [Result_]) {
+    results.sort_by(|a, b| {
+        score_of_field(b)
+            .partial_cmp(&score_of_field(a))
+            .unwrap_or(std::cmp::Ordering::Equal)
+            .then_with(|| engines_of(b).len().cmp(&engines_of(a).len()))
+            .then_with(|| min_position(a).cmp(&min_position(b)))
+            .then_with(|| url_of(a).cmp(url_of(b)))
+    });
+}
+
+fn min_position(result: &Result_) -> usize {
+    positions_of(result)
+        .iter()
+        .copied()
+        .min()
+        .unwrap_or(usize::MAX)
+}
+
+fn engines_of(result: &Result_) -> Vec<String> {
+    match result {
+        Result_::Main(r) if !r.engines.is_empty() => r.engines.clone(),
+        Result_::Main(r) => non_empty_engine(&r.engine),
+        Result_::Image(r) => non_empty_engine(&r.engine),
+        Result_::Paper(r) => non_empty_engine(&r.engine),
+        Result_::Code(r) => non_empty_engine(&r.engine),
+        Result_::File(r) => non_empty_engine(&r.engine),
+        Result_::KeyValue(r) => non_empty_engine(&r.engine),
+        _ => Vec::new(),
+    }
+}
+
+fn non_empty_engine(engine: &str) -> Vec<String> {
+    if engine.is_empty() {
+        Vec::new()
+    } else {
+        vec![engine.to_string()]
+    }
+}
+
 fn ensure_engine(result: &mut Result_, engine: &str) {
     macro_rules! fill {
         ($r:expr) => {
@@ -356,8 +395,9 @@ fn merge_key(result: &Result_) -> Option<String> {
 }
 
 fn canonical_merge_key(raw: &str) -> String {
-    let Ok(mut url) = url::Url::parse(raw) else {
-        return raw.trim_end_matches('/').to_ascii_lowercase();
+    let unwrapped = unwrap_engine_redirect(raw);
+    let Ok(mut url) = url::Url::parse(&unwrapped) else {
+        return unwrapped.trim_end_matches('/').to_ascii_lowercase();
     };
 
     // Normalize common URL variants so equivalent pages merge together.
@@ -385,6 +425,41 @@ fn canonical_merge_key(raw: &str) -> String {
     url.set_path(&canonical_path);
 
     url.to_string()
+}
+
+/// Peel common engine click-wrappers so the same page merges across engines.
+fn unwrap_engine_redirect(raw: &str) -> String {
+    let candidate = if raw.starts_with("//") {
+        format!("https:{raw}")
+    } else {
+        raw.to_string()
+    };
+    let Ok(url) = url::Url::parse(&candidate) else {
+        return raw.to_string();
+    };
+    let host = url.host_str().unwrap_or("").to_ascii_lowercase();
+
+    if (host == "duckduckgo.com" || host.ends_with(".duckduckgo.com"))
+        && url.path().starts_with("/l")
+    {
+        if let Some((_, value)) = url.query_pairs().find(|(key, _)| key == "uddg") {
+            let dest = value.into_owned();
+            if dest.starts_with("http://") || dest.starts_with("https://") {
+                return dest;
+            }
+        }
+    }
+
+    if host.ends_with("google.com") && url.path() == "/url" {
+        if let Some((_, value)) = url.query_pairs().find(|(key, _)| key == "q") {
+            let dest = value.into_owned();
+            if dest.starts_with("http://") || dest.starts_with("https://") {
+                return dest;
+            }
+        }
+    }
+
+    raw.to_string()
 }
 
 /// Query parameters that vary per engine/click without changing the page.
@@ -860,6 +935,59 @@ mod tests {
         assert_eq!(titles, vec!["high", "mid", "low"]);
         let scores: Vec<f64> = container.results.iter().map(|r| as_main(r).score).collect();
         assert!(scores.windows(2).all(|w| w[0] >= w[1]));
+    }
+
+    #[test]
+    fn merges_duckduckgo_uddg_wrapper_with_bare_url() {
+        let mut ddg = EngineResults::new();
+        ddg.add(main_result(
+            "https://duckduckgo.com/l/?uddg=https%3A%2F%2Frust-lang.org%2F&rut=x",
+            "Rust",
+        ));
+        let mut brave = EngineResults::new();
+        brave.add(main_result("https://www.rust-lang.org/", "Rust"));
+
+        let container = aggregate(
+            report(vec![completed("duckduckgo", ddg), completed("brave", brave)]),
+            &weights(&[("duckduckgo", 1.0), ("brave", 1.0)]),
+            &NoopRecorder,
+        );
+
+        assert_eq!(container.results.len(), 1);
+        let merged = as_main(&container.results[0]);
+        assert_eq!(
+            merged.engines,
+            vec!["duckduckgo".to_string(), "brave".to_string()]
+        );
+        assert!(merged.score > 1.0);
+    }
+
+    #[test]
+    fn equal_score_ties_break_by_position_then_url_not_ingest_order() {
+        // Distinct URLs so nothing merges: both #1 hits score 1.0.
+        // Ingest "z" first so a finish-order sort would put it on top.
+        let mut first = EngineResults::new();
+        first.add(main_result("https://z.test/", "z-first"));
+        let mut second = EngineResults::new();
+        second.add(main_result("https://a.test/", "a-second"));
+        second.add(main_result("https://m.test/", "m-third"));
+
+        let container = aggregate(
+            report(vec![completed("first", first), completed("second", second)]),
+            &weights(&[("first", 1.0), ("second", 1.0)]),
+            &NoopRecorder,
+        );
+
+        let titles: Vec<&str> = container
+            .results
+            .iter()
+            .map(|r| as_main(r).title.as_str())
+            .collect();
+        assert_eq!(
+            titles,
+            vec!["a-second", "z-first", "m-third"],
+            "equal #1 scores must order by URL, not engine ingest order"
+        );
     }
 
     #[test]
