@@ -77,41 +77,6 @@ function StatsPage() {
 				)}
 			</section>
 
-			{(timing.data?.plugins?.length ?? 0) > 0 ? (
-				<section className="mt-8">
-					<h2 className="text-lg font-medium text-ink">{t.statsPlugins}</h2>
-					<div className="mt-3 overflow-x-auto rounded-xl border border-line">
-						<table className="w-full min-w-[28rem] text-left text-sm">
-							<thead className="border-b border-line bg-surface-raised text-ink-muted">
-								<tr>
-									<th className="px-3 py-2 font-medium">Plugin</th>
-									<th className="px-3 py-2 font-medium">Timeouts</th>
-									<th className="px-3 py-2 font-medium">Dropped</th>
-									<th className="px-3 py-2 font-medium">Appended</th>
-								</tr>
-							</thead>
-							<tbody>
-								{timing.data?.plugins?.map((row) => (
-									<tr
-										key={row.id}
-										className="border-b border-line last:border-0"
-									>
-										<td className="px-3 py-2 font-medium text-ink">{row.id}</td>
-										<td className="px-3 py-2 text-ink-muted">{row.timeouts}</td>
-										<td className="px-3 py-2 text-ink-muted">
-											{row.dropped_results}
-										</td>
-										<td className="px-3 py-2 text-ink-muted">
-											{row.appended_results}
-										</td>
-									</tr>
-								))}
-							</tbody>
-						</table>
-					</div>
-				</section>
-			) : null}
-
 			<section className="mt-8">
 				<h2 className="text-lg font-medium text-ink">{t.statsErrors}</h2>
 				{errors.isLoading ? (

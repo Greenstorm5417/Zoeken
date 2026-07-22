@@ -720,9 +720,8 @@ fn plugin_infos() -> Vec<PluginInfo> {
     client_feature_plugin_infos().collect()
 }
 
-/// Every plugin id `/preferences` and the SPA client-features gate on.
-/// Former plugins are SPA client-features except server-side `ahmia_filter`;
-/// these entries keep `/config` listing the same ids/defaults for gating.
+/// Preference ids the SPA client-features (and server `ahmia_filter`) gate on.
+/// Listed on `/config.plugins` for SearXNG-compat prefs wiring.
 fn client_feature_plugin_infos() -> impl Iterator<Item = PluginInfo> {
     fn info(
         id: &str,
@@ -761,7 +760,7 @@ fn client_feature_plugin_infos() -> impl Iterator<Item = PluginInfo> {
         ),
         info(
             "time_zone",
-            "Timezones plugin",
+            "Time zones",
             "Display the current time on different time zones.",
             "answerer",
             "query",
@@ -779,7 +778,7 @@ fn client_feature_plugin_infos() -> impl Iterator<Item = PluginInfo> {
         ),
         info(
             "hostnames",
-            "Hostnames plugin",
+            "Hostnames",
             "Rewrite hostnames and remove or prioritize results based on the hostname",
             "result_plugin",
             "general",

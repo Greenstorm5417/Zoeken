@@ -60,7 +60,6 @@ export type UiStrings = {
 	statsBlurb: string;
 	statsTiming: string;
 	statsErrors: string;
-	statsPlugins: string;
 	statsLoading: string;
 	statsNoSamples: string;
 	statsNoErrors: string;
@@ -129,7 +128,6 @@ const EN: UiStrings = {
 	statsBlurb: "Response timing and error counts for this instance.",
 	statsTiming: "Timing",
 	statsErrors: "Errors",
-	statsPlugins: "Plugins",
 	statsLoading: "Loading…",
 	statsNoSamples: "No engine samples yet. Run some searches first.",
 	statsNoErrors: "No recorded engine errors.",
@@ -199,7 +197,6 @@ const DICTS: Record<string, Partial<UiStrings>> = {
 		statsBlurb: "Tiempos de respuesta y errores de esta instancia.",
 		statsTiming: "Tiempos",
 		statsErrors: "Errores",
-		statsPlugins: "Plugins",
 		statsLoading: "Cargando…",
 		statsNoSamples: "Aún no hay muestras. Haz algunas búsquedas primero.",
 		statsNoErrors: "No hay errores registrados.",
@@ -268,7 +265,6 @@ const DICTS: Record<string, Partial<UiStrings>> = {
 		statsBlurb: "Temps de réponse et erreurs pour cette instance.",
 		statsTiming: "Temps",
 		statsErrors: "Erreurs",
-		statsPlugins: "Plugins",
 		statsLoading: "Chargement…",
 		statsNoSamples: "Aucun échantillon encore. Lancez d’abord des recherches.",
 		statsNoErrors: "Aucune erreur enregistrée.",
@@ -336,7 +332,6 @@ const DICTS: Record<string, Partial<UiStrings>> = {
 		statsBlurb: "Antwortzeiten und Fehlerzahlen dieser Instanz.",
 		statsTiming: "Zeiten",
 		statsErrors: "Fehler",
-		statsPlugins: "Plugins",
 		statsLoading: "Laden…",
 		statsNoSamples: "Noch keine Stichproben. Zuerst etwas suchen.",
 		statsNoErrors: "Keine aufgezeichneten Fehler.",
@@ -403,7 +398,6 @@ const DICTS: Record<string, Partial<UiStrings>> = {
 		statsBlurb: "Responstijden en fouttellingen voor deze instantie.",
 		statsTiming: "Timing",
 		statsErrors: "Fouten",
-		statsPlugins: "Plugins",
 		statsLoading: "Laden…",
 		statsNoSamples: "Nog geen samples. Zoek eerst wat.",
 		statsNoErrors: "Geen geregistreerde motorfouten.",

@@ -95,7 +95,7 @@ function SearchPage() {
 		document.addEventListener("keydown", onKeyDown);
 		return () => document.removeEventListener("keydown", onKeyDown);
 	}, [config?.ui?.hotkeys]);
-	// Infinite scroll is opt-in via the `infinite_scroll` plugin preference.
+	// Infinite scroll is opt-in via the `infinite_scroll` feature preference.
 	const infiniteScroll = pluginEnabled(config, "infinite_scroll", prefs);
 	const query = useInfiniteQuery({
 		queryKey: ["search", { ...params, categories: activeCategory }],

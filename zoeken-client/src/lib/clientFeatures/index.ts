@@ -1,10 +1,17 @@
-/** Post-search result pipeline: former server plugins, now client-side. */
+/** Post-search result pipeline and preference-gated client features. */
 import type { Config, Preferences, SearchResult } from "../api";
+import { CLIENT_FEATURE_CATALOG } from "./catalog";
 import { applyDoiRewrite } from "./doiRewrite";
 import { applyHostnames, sortByPriority } from "./hostnames";
 import { applyTrackerUrlRemover } from "./trackerUrlRemover";
 
-/** Prefer cookie/settings prefs; fall back to `/config` catalog defaults. */
+export {
+	CLIENT_FEATURE_CATALOG,
+	featureCatalog,
+	type ClientFeatureInfo,
+} from "./catalog";
+
+/** Prefer cookie/settings prefs; fall back to `/config` then local catalog defaults. */
 export function pluginEnabled(
 	config: Config | undefined,
 	id: string,
@@ -15,7 +22,11 @@ export function pluginEnabled(
 		return fromPrefs;
 	}
 	const plugin = config?.plugins?.find((p) => p.id === id);
-	return Boolean(plugin?.default_enabled ?? plugin?.enabled);
+	if (plugin) {
+		return Boolean(plugin.default_enabled ?? plugin.enabled);
+	}
+	const fallback = CLIENT_FEATURE_CATALOG.find((f) => f.id === id);
+	return Boolean(fallback?.default_enabled);
 }
 
 /** Filter/map/re-sort a page of results per the user's enabled client features. */

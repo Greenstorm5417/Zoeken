@@ -356,19 +356,8 @@ export type EngineTiming = {
 	http_avg_seconds: number;
 };
 
-export type PluginStats = {
-	id: string;
-	hook_failures: number;
-	load_failures: number;
-	init_failures: number;
-	timeouts: number;
-	dropped_results: number;
-	appended_results: number;
-};
-
 export type StatsResponse = {
 	engines: EngineTiming[];
-	plugins?: PluginStats[];
 };
 
 export type EngineErrors = {

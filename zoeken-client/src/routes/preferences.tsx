@@ -10,6 +10,7 @@ import {
 	preferencesGet,
 	preferencesPost,
 } from "#/lib/api";
+import { featureCatalog } from "#/lib/clientFeatures";
 import { stringsFor } from "#/lib/i18n";
 import {
 	clearRecentSearches,
@@ -90,6 +91,7 @@ function PreferencesPage() {
 	const engines = config?.engines ?? [];
 	const selectedEngines = new Set(current.engines);
 	const t = stringsFor(current.locale);
+	const features = featureCatalog(config?.plugins);
 
 	return (
 		<Page>
@@ -405,52 +407,52 @@ function PreferencesPage() {
 					</button>
 				</section>
 
-				{(config?.plugins?.length ?? 0) > 0 ? (
-					<section className="grid gap-3">
-						<h2 className="text-lg font-medium text-ink">Plugins</h2>
-						<div className="grid gap-2">
-							{config?.plugins.map((plugin) => {
-								const checked =
-									current.plugins?.[plugin.id] ?? plugin.default_enabled;
-								return (
-									<label
-										key={plugin.id}
-										className="flex items-start gap-3 rounded-xl border border-line bg-surface-raised px-3 py-2 text-sm"
-									>
-										<input
-											type="checkbox"
-											checked={checked}
-											onChange={(e) =>
-												update({
-													plugins: {
-														...current.plugins,
-														[plugin.id]: e.target.checked,
-													},
-												})
-											}
-											className="mt-0.5 size-4 accent-[var(--accent)]"
-										/>
-										<span>
-											<span className="font-medium text-ink">
-												{plugin.name}
-											</span>
-											<span className="mt-0.5 block text-xs text-ink-muted">
-												{plugin.description}
-											</span>
+				<section className="grid gap-3">
+					<h2 className="text-lg font-medium text-ink">Features</h2>
+					<p className="text-sm text-ink-muted">
+						Client-side helpers and result transforms for this browser. Ahmia
+						filtering still runs on the server when enabled.
+					</p>
+					<div className="grid gap-2">
+						{features.map((feature) => {
+							const checked =
+								current.plugins?.[feature.id] ?? feature.default_enabled;
+							return (
+								<label
+									key={feature.id}
+									className="flex items-start gap-3 rounded-xl border border-line bg-surface-raised px-3 py-2 text-sm"
+								>
+									<input
+										type="checkbox"
+										checked={checked}
+										onChange={(e) =>
+											update({
+												plugins: {
+													...current.plugins,
+													[feature.id]: e.target.checked,
+												},
+											})
+										}
+										className="mt-0.5 size-4 accent-[var(--accent)]"
+									/>
+									<span>
+										<span className="font-medium text-ink">{feature.name}</span>
+										<span className="mt-0.5 block text-xs text-ink-muted">
+											{feature.description}
 										</span>
-									</label>
-								);
-							})}
-						</div>
-					</section>
-				) : null}
+									</span>
+								</label>
+							);
+						})}
+					</div>
+				</section>
 
-				{config?.plugins?.some((p) => p.id === "hostnames") ? (
+				{features.some((p) => p.id === "hostnames") ? (
 					<section className="grid gap-3">
 						<h2 className="text-lg font-medium text-ink">Hostname rewrite</h2>
 						<p className="text-sm text-ink-muted">
-							Enable or disable via the Hostnames plugin above. Replace / remove
-							/ priority rules are instance settings (
+							Enable or disable via the Hostnames feature above. Replace /
+							remove / priority rules are instance settings (
 							<code className="font-mono text-xs">hostnames:</code> in
 							settings.yml) — not per-browser cookies.
 						</p>
