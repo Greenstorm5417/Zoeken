@@ -64,7 +64,9 @@ export function TorrentResult({
 		<article className="max-w-[40rem]">
 			<ResultTitle result={result} newTab={newTab} />
 			{blurb ? (
-				<p className="mt-1 line-clamp-2 text-[0.9rem] text-ink-muted">{blurb}</p>
+				<p className="mt-1 line-clamp-2 text-[0.9rem] text-ink-muted">
+					{blurb}
+				</p>
 			) : null}
 			{stats.length > 0 ? (
 				<div className="mt-2 flex flex-wrap items-center gap-2 text-[0.8rem]">
