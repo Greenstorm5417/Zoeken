@@ -332,7 +332,6 @@ pub struct NetworkRequest {
     pub timeout: Option<Duration>,
     pub raise_for_httperror: bool,
     pub max_redirects: Option<usize>,
-    pub verify: Option<bool>,
 }
 
 impl NetworkRequest {
@@ -347,7 +346,6 @@ impl NetworkRequest {
             timeout: None,
             raise_for_httperror: true,
             max_redirects: None,
-            verify: None,
         }
     }
 
@@ -400,12 +398,6 @@ impl NetworkRequest {
     #[must_use]
     pub fn with_max_redirects(mut self, max_redirects: usize) -> Self {
         self.max_redirects = Some(max_redirects);
-        self
-    }
-
-    #[must_use]
-    pub fn with_verify(mut self, verify: bool) -> Self {
-        self.verify = Some(verify);
         self
     }
 

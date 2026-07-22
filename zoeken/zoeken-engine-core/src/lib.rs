@@ -140,14 +140,6 @@ pub enum HttpMethod {
     Post,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Default, Serialize, Deserialize)]
-pub enum TlsVerify {
-    #[default]
-    Default,
-    Disabled,
-    CaFile(String),
-}
-
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct RequestParams {
     pub query: String,
@@ -171,7 +163,6 @@ pub struct RequestParams {
     pub max_redirects: u32,
     pub soft_max_redirects: u32,
     pub auth: Option<String>,
-    pub verify: TlsVerify,
     pub raise_for_httperror: bool,
     pub network: Option<String>,
 }
@@ -197,7 +188,6 @@ impl Default for RequestParams {
             max_redirects: 0,
             soft_max_redirects: 0,
             auth: None,
-            verify: TlsVerify::Default,
             raise_for_httperror: true,
             network: None,
         }

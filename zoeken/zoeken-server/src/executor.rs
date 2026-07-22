@@ -10,7 +10,7 @@ use wreq::header::{ACCEPT_LANGUAGE, AUTHORIZATION, HeaderMap, HeaderName, Header
 use wreq::{Method, Response};
 use zoeken_engine_core::{
     Engine, EngineError, EngineResponse, EngineResults, HttpMethod, Processor, RequestParams,
-    SearchQueryView, TlsVerify,
+    SearchQueryView,
 };
 use zoeken_network::{DEFAULT_NETWORK, NetworkError, NetworkManager, NetworkRequest};
 use zoeken_search::{EngineExecResult, EngineExecutor, EngineFuture};
@@ -281,12 +281,6 @@ fn build_network_request(params: &RequestParams, url: &str) -> Result<NetworkReq
             .max(u32::from(params.allow_redirects));
         request = request.with_max_redirects(max_redirects as usize);
     }
-    match &params.verify {
-        TlsVerify::Default => {}
-        TlsVerify::Disabled => request = request.with_verify(false),
-        TlsVerify::CaFile(_) => request = request.with_verify(true),
-    }
-
     if let Some(json) = &params.json {
         let body = serde_json::to_vec(json).map_err(|e| EngineError::Unexpected(e.to_string()))?;
         set_content_type_if_absent(&mut request, "application/json");
