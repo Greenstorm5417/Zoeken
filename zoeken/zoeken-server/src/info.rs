@@ -498,24 +498,42 @@ pub async fn metrics(State(state): State<Arc<AppState>>, headers: HeaderMap) -> 
     ([(header::CONTENT_TYPE, METRICS_CONTENT_TYPE)], body).into_response()
 }
 
-/// `GET /opensearch.xml`.
-pub async fn opensearch(State(state): State<Arc<AppState>>) -> Response {
+/// `GET /opensearch.xml` — browser “add search engine” description.
+pub async fn opensearch(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Response {
     let name = xml_escape(&state.settings.general.instance_name);
+    // Firefox caps ShortName at 16 characters.
+    let short = {
+        let raw = state.settings.general.instance_name.as_str();
+        let truncated: String = raw.chars().take(16).collect();
+        xml_escape(&truncated)
+    };
+    let origin = request_origin(&state, &headers).unwrap_or_default();
+    let base = origin.trim_end_matches('/');
+    let search_url = format!("{base}/search?q={{searchTerms}}");
+    let suggest_url = format!("{base}/autocompleter?q={{searchTerms}}");
+    let form_url = format!("{base}/search");
+    let image_url = format!("{base}/zoeken-logo.svg");
     let body = format!(
         concat!(
             "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
             "<OpenSearchDescription xmlns=\"http://a9.com/-/spec/opensearch/1.1/\" ",
             "xmlns:moz=\"http://www.mozilla.org/2006/browser/search/\">\n",
-            "  <ShortName>{name}</ShortName>\n",
-            "  <Description>{name} search</Description>\n",
+            "  <ShortName>{short}</ShortName>\n",
+            "  <Description>{name} — private metasearch</Description>\n",
             "  <InputEncoding>UTF-8</InputEncoding>\n",
-            "  <Url type=\"text/html\" method=\"get\" template=\"/search?q={{searchTerms}}\"/>\n",
+            "  <Image height=\"16\" width=\"16\" type=\"image/svg+xml\">{image}</Image>\n",
+            "  <Url type=\"text/html\" method=\"get\" template=\"{search}\"/>\n",
             "  <Url type=\"application/json\" method=\"get\" ",
-            "template=\"/autocompleter?q={{searchTerms}}\"/>\n",
-            "  <moz:SearchForm>/search</moz:SearchForm>\n",
+            "rel=\"suggestions\" template=\"{suggest}\"/>\n",
+            "  <moz:SearchForm>{form}</moz:SearchForm>\n",
             "</OpenSearchDescription>\n",
         ),
-        name = name
+        short = short,
+        name = name,
+        image = xml_escape(&image_url),
+        search = xml_escape(&search_url),
+        suggest = xml_escape(&suggest_url),
+        form = xml_escape(&form_url),
     );
     (
         [(
@@ -1156,7 +1174,10 @@ hostnames:
         );
         let body = body_text(response).await;
         assert!(body.contains("<OpenSearchDescription"));
-        assert!(body.contains("/search?q="));
+        assert!(body.contains("/search?q={searchTerms}"));
+        assert!(body.contains("rel=\"suggestions\""));
+        assert!(body.contains("<Image "));
+        assert!(body.contains("zoeken-logo.svg"));
     }
 
     #[tokio::test]
