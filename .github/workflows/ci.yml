@@ -73,11 +73,15 @@ jobs:
       - name: Test workspace (incl. conformance + property tests)
         run: cargo test --workspace --locked
 
-      - name: Export native TypeScript bindings
-        run: cargo run --locked -p zoeken-server --bin export-native-ts
-
       - name: Check native TypeScript bindings are up to date
-        run: git diff --exit-code -- zoeken-client/src/lib/generated/native.ts
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp)"
+          trap 'rm -f "$tmp"' EXIT
+          cargo run --locked -p zoeken-server --bin export-native-ts -- "$tmp"
+          # Prefer plain diff over `git diff`: container jobs often lack a usable
+          # safe.directory for the mounted workspace, so git treats it as non-repo.
+          diff -u zoeken-client/src/lib/generated/native.ts "$tmp"
 
   postgres-storage:
     name: PostgreSQL storage contract
