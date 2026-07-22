@@ -17,3 +17,7 @@
 # Local compose secrets
 .env
 .env.local
+
+# Local runtime SQLite DB (verify / APP_DATA_DIR default cwd)
+zoeken.sqlite3
+zoeken.sqlite3-*
