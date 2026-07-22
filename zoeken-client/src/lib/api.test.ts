@@ -58,6 +58,8 @@ describe("API client", () => {
 					favicon: "/favicon_proxy?authority=www.rust-lang.org",
 					pretty_url: "www.rust-lang.org",
 					published_date: null,
+					length: "",
+					author: "",
 				},
 			],
 		});

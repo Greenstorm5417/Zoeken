@@ -52,7 +52,12 @@
           "score": 0.0,
           "positions": [],
           "priority": "",
-          "template": "Default"
+          "template": "Default",
+          "thumbnail": "https://example.com/news.jpg",
+          "iframe_src": "",
+          "published_date": "2024-01-01T00:00:00+00:00",
+          "length": "",
+          "author": ""
         }
       }
     ],

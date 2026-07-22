@@ -2,13 +2,13 @@
 //!
 //! Resolves entity labels/descriptions and handles de-duplication and dummy-entity filtering.
 
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 
 use zoeken_engine_core::{
     About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod, Processor,
     RequestParams, SearchQueryView,
 };
-use zoeken_results::{Infobox, InfoboxUrl, Result_};
+use zoeken_results::{Infobox, InfoboxAttribute, InfoboxUrl, Result_};
 
 /// Engine name / identifier.
 pub const NAME: &str = "wikidata";
@@ -96,7 +96,7 @@ fn sparql_string_escape(value: &str) -> String {
 fn build_query(query: &str, language: &str) -> String {
     let search = sparql_string_escape(query);
     format!(
-        "SELECT ?item ?itemLabel ?itemDescription\n\
+        "SELECT ?item ?itemLabel ?itemDescription ?image ?instanceLabel\n\
          WHERE\n\
          {{\n\
          \x20\x20SERVICE wikibase:mwapi {{\n\
@@ -107,10 +107,13 @@ fn build_query(query: &str, language: &str) -> String {
          \x20\x20\x20\x20\x20\x20\x20\x20mwapi:language \"{language}\".\n\
          \x20\x20\x20\x20\x20\x20\x20\x20?item wikibase:apiOutputItem mwapi:item.\n\
          \x20\x20}}\n\
+         \x20\x20OPTIONAL {{ ?item wdt:P18 ?image. }}\n\
+         \x20\x20OPTIONAL {{ ?item wdt:P31 ?instance. }}\n\
          \x20\x20SERVICE wikibase:label {{\n\
          \x20\x20\x20\x20\x20\x20bd:serviceParam wikibase:language \"{language},en\".\n\
          \x20\x20\x20\x20\x20\x20?item rdfs:label ?itemLabel .\n\
          \x20\x20\x20\x20\x20\x20?item schema:description ?itemDescription .\n\
+         \x20\x20\x20\x20\x20\x20?instance rdfs:label ?instanceLabel .\n\
          \x20\x20}}\n\
          }}"
     )
@@ -170,15 +173,16 @@ impl Engine for Wikidata {
 
         let dummy = dummy_entity_urls();
         let mut seen_entities: HashSet<String> = HashSet::new();
+        // Multiple OPTIONAL bindings (P31 / P18) can yield several rows per item.
+        let mut by_item: HashMap<String, Infobox> = HashMap::new();
+        let mut order: Vec<String> = Vec::new();
 
         for binding in &bindings {
-            // Collect {key: value["value"]} into a flat attribute map.
             let obj = match binding.as_object() {
                 Some(o) => o,
                 None => continue,
             };
 
-            // `item` is the entity URL used for de-duplication.
             let Some(item) = obj
                 .get("item")
                 .and_then(|v| v.get("value"))
@@ -188,44 +192,120 @@ impl Engine for Wikidata {
             };
             let item = item.to_string();
 
-            // Skip dummy entities and entities already emitted.
-            if dummy.contains(&item) || seen_entities.contains(&item) {
+            if dummy.contains(&item) {
                 continue;
             }
-            seen_entities.insert(item.clone());
 
-            let infobox = obj
-                .get("itemLabel")
-                .and_then(|v| v.get("value"))
-                .and_then(|v| v.as_str())
-                .unwrap_or("")
-                .to_string();
-            let content = obj
-                .get("itemDescription")
-                .and_then(|v| v.get("value"))
-                .and_then(|v| v.as_str())
-                .unwrap_or("")
-                .to_string();
+            let binding_value = |key: &str| -> String {
+                obj.get(key)
+                    .and_then(|v| v.get("value"))
+                    .and_then(|v| v.as_str())
+                    .unwrap_or("")
+                    .to_string()
+            };
 
-            res.add(Result_::Infobox(Infobox {
-                infobox,
-                // Rewrite http: -> https: in the entity ID
-                id: Some(replace_http_by_https(&item)),
-                content,
-                img_src: None,
-                // Use original (unrewritten) item URL in the link
-                urls: vec![InfoboxUrl {
-                    title: "Wikidata".to_string(),
-                    url: item,
-                }],
-                attributes: Vec::new(),
-                related_topics: Vec::new(),
-                engine: NAME.to_string(),
-            }));
+            let label = binding_value("itemLabel");
+            let description = binding_value("itemDescription");
+            let image = binding_value("image");
+            let instance = binding_value("instanceLabel");
+
+            if !seen_entities.contains(&item) {
+                seen_entities.insert(item.clone());
+                order.push(item.clone());
+                let mut attributes = Vec::new();
+                if !description.is_empty() {
+                    attributes.push(InfoboxAttribute {
+                        label: "Description".to_string(),
+                        value: description.clone(),
+                        image: None,
+                    });
+                }
+                let mut related_topics = Vec::new();
+                if !instance.is_empty() {
+                    attributes.push(InfoboxAttribute {
+                        label: "Instance of".to_string(),
+                        value: instance.clone(),
+                        image: None,
+                    });
+                    related_topics.push(instance);
+                }
+                by_item.insert(
+                    item.clone(),
+                    Infobox {
+                        infobox: label,
+                        id: Some(replace_http_by_https(&item)),
+                        content: description,
+                        img_src: commons_image_url(&image),
+                        urls: vec![InfoboxUrl {
+                            title: "Wikidata".to_string(),
+                            url: item,
+                        }],
+                        attributes,
+                        related_topics,
+                        engine: NAME.to_string(),
+                    },
+                );
+            } else if let Some(existing) = by_item.get_mut(&item) {
+                if existing.img_src.is_none() {
+                    existing.img_src = commons_image_url(&image);
+                }
+                if !instance.is_empty() {
+                    if !existing
+                        .attributes
+                        .iter()
+                        .any(|a| a.label == "Instance of" && a.value == instance)
+                    {
+                        if let Some(attr) = existing
+                            .attributes
+                            .iter_mut()
+                            .find(|a| a.label == "Instance of")
+                        {
+                            if !attr.value.split(", ").any(|p| p == instance) {
+                                attr.value = format!("{}, {}", attr.value, instance);
+                            }
+                        } else {
+                            existing.attributes.push(InfoboxAttribute {
+                                label: "Instance of".to_string(),
+                                value: instance.clone(),
+                                image: None,
+                            });
+                        }
+                    }
+                    if !existing
+                        .related_topics
+                        .iter()
+                        .any(|t| t.eq_ignore_ascii_case(&instance))
+                    {
+                        existing.related_topics.push(instance);
+                    }
+                }
+            }
+        }
+
+        for item in order {
+            if let Some(box_) = by_item.remove(&item) {
+                res.add(Result_::Infobox(box_));
+            }
         }
 
         Ok(res)
     }
+}
+
+fn commons_image_url(raw: &str) -> Option<String> {
+    let trimmed = raw.trim();
+    if trimmed.is_empty() {
+        return None;
+    }
+    // P18 may be a direct Special:FilePath URL or a bare Commons filename.
+    if trimmed.starts_with("http://") || trimmed.starts_with("https://") {
+        return Some(replace_http_by_https(trimmed));
+    }
+    let encoded = trimmed.replace(' ', "_");
+    Some(format!(
+        "https://commons.wikimedia.org/wiki/Special:FilePath/{}",
+        encoded
+    ))
 }
 
 #[cfg(test)]
@@ -248,6 +328,14 @@ mod tests {
     }
 
     fn infobox_result(label: &str, description: &str, item: &str) -> Result_ {
+        let mut attributes = Vec::new();
+        if !description.is_empty() {
+            attributes.push(InfoboxAttribute {
+                label: "Description".to_string(),
+                value: description.to_string(),
+                image: None,
+            });
+        }
         Result_::Infobox(Infobox {
             infobox: label.to_string(),
             id: Some(replace_http_by_https(item)),
@@ -257,7 +345,7 @@ mod tests {
                 title: "Wikidata".to_string(),
                 url: item.to_string(),
             }],
-            attributes: Vec::new(),
+            attributes,
             related_topics: Vec::new(),
             engine: NAME.to_string(),
         })

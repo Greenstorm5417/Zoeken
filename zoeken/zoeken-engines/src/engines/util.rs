@@ -249,6 +249,18 @@ pub fn text_content_skipping(el: scraper::ElementRef<'_>, skip_classes: &[&str])
     zoeken_engine_core::normalize_whitespace(&out)
 }
 
+/// Format a duration in seconds as `H:MM:SS` / `M:SS`.
+pub fn format_duration_secs(secs: u64) -> String {
+    let hours = secs / 3600;
+    let minutes = (secs % 3600) / 60;
+    let seconds = secs % 60;
+    if hours > 0 {
+        format!("{hours}:{minutes:02}:{seconds:02}")
+    } else {
+        format!("{minutes}:{seconds:02}")
+    }
+}
+
 /// Detect anti-bot JavaScript gates or captcha walls in HTML body.
 pub use zoeken_engine_core::looks_like_bot_wall;
 
@@ -303,5 +315,12 @@ mod tests {
         let sel = Selector::parse("p").unwrap();
         let p = doc.select(&sel).next().unwrap();
         assert_eq!(text_content_skipping(p, &["algoSlug_icon"]), "Web result");
+    }
+
+    #[test]
+    fn formats_duration_secs() {
+        assert_eq!(super::format_duration_secs(100), "1:40");
+        assert_eq!(super::format_duration_secs(615), "10:15");
+        assert_eq!(super::format_duration_secs(3661), "1:01:01");
     }
 }

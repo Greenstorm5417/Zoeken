@@ -5,7 +5,7 @@ use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
 use ts_rs::TS;
 
-pub const NATIVE_SCHEMA_VERSION: u32 = 1;
+pub const NATIVE_SCHEMA_VERSION: u32 = 2;
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, TS)]
 pub struct NativeSearchRequest {
@@ -61,6 +61,8 @@ pub enum NativeResult {
         favicon: String,
         pretty_url: String,
         published_date: Option<String>,
+        length: String,
+        author: String,
     },
     Image {
         url: String,
@@ -230,6 +232,12 @@ pub enum NativeInteractiveAnswer {
         img_src: String,
         #[serde(default)]
         url: String,
+        #[serde(default)]
+        wikidata_id: String,
+        #[serde(default)]
+        attributes: Vec<NativeInfoboxAttribute>,
+        #[serde(default)]
+        related_topics: Vec<String>,
     },
 }
 

@@ -32,7 +32,10 @@
           "priority": "",
           "template": "Videos",
           "thumbnail": "",
-          "iframe_src": ""
+          "iframe_src": "https://framatube.org/videos/embed/abc",
+          "published_date": "2021-01-02T03:04:05.000Z",
+          "length": "10:15",
+          "author": ""
         }
       },
       {
@@ -48,7 +51,10 @@
           "priority": "",
           "template": "Videos",
           "thumbnail": "",
-          "iframe_src": ""
+          "iframe_src": "https://tube.example/videos/embed/xyz",
+          "published_date": "2022-02-03T00:00:00.000Z",
+          "length": "1:40",
+          "author": ""
         }
       }
     ],

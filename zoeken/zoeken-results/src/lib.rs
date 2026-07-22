@@ -98,6 +98,15 @@ pub struct MainResult {
     /// Embeddable player URL when available (SearXNG `iframe_src`).
     #[serde(default)]
     pub iframe_src: String,
+    /// ISO-8601 / engine-native publish time when known (news, video).
+    #[serde(default)]
+    pub published_date: Option<String>,
+    /// Human-readable duration for video results (e.g. `1:40`, `10:15`).
+    #[serde(default)]
+    pub length: String,
+    /// Channel / uploader for video results.
+    #[serde(default)]
+    pub author: String,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, Default)]
@@ -179,6 +188,13 @@ pub enum InteractiveAnswer {
         img_src: String,
         #[serde(default)]
         url: String,
+        /// Wikidata Q-id when known (e.g. `Q42`), without a URL prefix.
+        #[serde(default)]
+        wikidata_id: String,
+        #[serde(default)]
+        attributes: Vec<InfoboxAttribute>,
+        #[serde(default)]
+        related_topics: Vec<String>,
     },
 }
 

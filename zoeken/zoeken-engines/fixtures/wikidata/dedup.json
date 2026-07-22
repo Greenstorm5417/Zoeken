@@ -34,7 +34,13 @@
             "url": "http://www.wikidata.org/entity/Q42"
           }
         ],
-        "attributes": [],
+        "attributes": [
+          {
+            "label": "Description",
+            "value": "English author and humorist",
+            "image": null
+          }
+        ],
         "related_topics": [],
         "engine": "wikidata"
       }

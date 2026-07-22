@@ -80,6 +80,11 @@ export function VideoCard({
 						{result.content}
 					</p>
 				) : null}
+				{result.kind === "main" && (result.author || result.length) ? (
+					<p className="mt-1 truncate text-[0.7rem] text-ink-subtle">
+						{[result.author, result.length].filter(Boolean).join(" · ")}
+					</p>
+				) : null}
 				{engineNames(result).length ? (
 					<p className="mt-1.5 truncate text-[0.65rem] text-ink-subtle">
 						{engineNames(result).map(formatEngineLabel).join(" · ")}

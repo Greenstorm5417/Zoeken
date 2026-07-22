@@ -6,9 +6,7 @@ use zoeken_engine_core::{
     About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod,
     LocaleTranslate, Processor, RequestParams, SearchQueryView,
 };
-use zoeken_results::{
-    Answer, Infobox, InfoboxAttribute, InfoboxUrl, InteractiveAnswer, MainResult, Result_,
-};
+use zoeken_results::{Answer, InteractiveAnswer, MainResult, Result_};
 
 use super::util::encode_path;
 
@@ -215,15 +213,15 @@ impl Engine for Wikipedia {
                 .get("thumbnail")
                 .and_then(|t| t.get("source"))
                 .and_then(|s| s.as_str())
-                .map(str::to_string);
-            let mut attributes = Vec::new();
-            if !description.is_empty() {
-                attributes.push(InfoboxAttribute {
-                    label: "Description".to_string(),
-                    value: description.clone(),
-                    image: None,
-                });
-            }
+                .unwrap_or("")
+                .to_string();
+            let wikidata_id = api
+                .get("wikibase_item")
+                .and_then(|v| v.as_str())
+                .unwrap_or("")
+                .to_string();
+            // Emit a single Answer widget — not a duplicate Infobox with the same
+            // extract. Wikidata attributes are merged into this answer at aggregation.
             res.add(Result_::Answer(Answer {
                 answer: if extract.is_empty() {
                     title.clone()
@@ -234,25 +232,15 @@ impl Engine for Wikipedia {
                 engine: NAME.to_string(),
                 interactive: Some(InteractiveAnswer::Wikipedia {
                     title: title.clone(),
-                    extract: extract.clone(),
+                    extract,
                     description: description.clone(),
-                    img_src: img_src.clone().unwrap_or_default(),
-                    url: wikipedia_link.clone(),
+                    img_src,
+                    url: wikipedia_link,
+                    wikidata_id,
+                    attributes: Vec::new(),
+                    related_topics: Vec::new(),
                 }),
                 ..Answer::default()
-            }));
-            res.add(Result_::Infobox(Infobox {
-                infobox: title,
-                id: Some(wikipedia_link.clone()),
-                content: extract,
-                img_src,
-                urls: vec![InfoboxUrl {
-                    title: "Wikipedia".to_string(),
-                    url: wikipedia_link,
-                }],
-                attributes,
-                related_topics: Vec::new(),
-                engine: NAME.to_string(),
             }));
         }
 
@@ -306,6 +294,7 @@ mod tests {
       "description": "General-purpose programming language",
       "extract": "Rust is a multi-paradigm, general-purpose programming language.",
       "thumbnail": {"source": "https://upload.wikimedia.org/rust.png"},
+      "wikibase_item": "Q575650",
       "content_urls": {"desktop": {"page": "https://en.wikipedia.org/wiki/Rust_(programming_language)"}}
     }"#;
 
@@ -335,25 +324,11 @@ mod tests {
                 description: "General-purpose programming language".to_string(),
                 img_src: "https://upload.wikimedia.org/rust.png".to_string(),
                 url: "https://en.wikipedia.org/wiki/Rust_(programming_language)".to_string(),
+                wikidata_id: "Q575650".to_string(),
+                attributes: Vec::new(),
+                related_topics: Vec::new(),
             }),
             ..Answer::default()
-        }));
-        infobox.add(Result_::Infobox(Infobox {
-            infobox: "Rust (programming language)".to_string(),
-            id: Some("https://en.wikipedia.org/wiki/Rust_(programming_language)".to_string()),
-            content: "Rust is a multi-paradigm, general-purpose programming language.".to_string(),
-            img_src: Some("https://upload.wikimedia.org/rust.png".to_string()),
-            urls: vec![InfoboxUrl {
-                title: "Wikipedia".to_string(),
-                url: "https://en.wikipedia.org/wiki/Rust_(programming_language)".to_string(),
-            }],
-            attributes: vec![InfoboxAttribute {
-                label: "Description".to_string(),
-                value: "General-purpose programming language".to_string(),
-                image: None,
-            }],
-            related_topics: Vec::new(),
-            engine: NAME.to_string(),
         }));
         Fixture::capture(
             NAME,

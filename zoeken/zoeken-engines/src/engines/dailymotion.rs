@@ -167,6 +167,21 @@ impl Engine for Dailymotion {
                 .filter(|id| !id.is_empty())
                 .map(|id| format!("https://www.dailymotion.com/embed/video/{id}"))
                 .unwrap_or_default();
+            let length = item
+                .get("duration")
+                .and_then(|v| v.as_u64())
+                .map(super::util::format_duration_secs)
+                .unwrap_or_default();
+            let published_date = item
+                .get("created_time")
+                .and_then(|v| v.as_i64())
+                .filter(|&ts| ts > 0)
+                .and_then(|ts| {
+                    use chrono::{TimeZone, Utc};
+                    Utc.timestamp_opt(ts, 0)
+                        .single()
+                        .map(|dt| dt.format("%Y-%m-%dT%H:%M:%SZ").to_string())
+                });
 
             res.add(Result_::Main(MainResult {
                 url: url.to_string(),
@@ -177,6 +192,8 @@ impl Engine for Dailymotion {
                 template: Template::Videos,
                 thumbnail,
                 iframe_src,
+                length,
+                published_date,
                 ..MainResult::default()
             }));
         }

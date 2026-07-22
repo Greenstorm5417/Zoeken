@@ -85,7 +85,9 @@ fn map_main(result: &MainResult, category: &str) -> NativeResult {
         iframe_src: result.iframe_src.clone(),
         favicon: String::new(),
         pretty_url: pretty_url(&result.url),
-        published_date: None,
+        published_date: result.published_date.clone(),
+        length: result.length.clone(),
+        author: result.author.clone(),
     }
 }
 
@@ -301,12 +303,28 @@ fn map_interactive(interactive: &InteractiveAnswer) -> NativeInteractiveAnswer {
             description,
             img_src,
             url,
+            wikidata_id,
+            attributes,
+            related_topics,
         } => NativeInteractiveAnswer::Wikipedia {
             title: title.clone(),
             extract: extract.clone(),
             description: description.clone(),
             img_src: img_src.clone(),
             url: url.clone(),
+            wikidata_id: wikidata_id.clone(),
+            attributes: attributes
+                .iter()
+                .map(|attr| NativeInfoboxAttribute {
+                    label: attr.label.clone(),
+                    value: attr.value.clone(),
+                    image: attr.image.as_ref().map(|img| NativeInfoboxImage {
+                        src: img.src.clone(),
+                        alt: img.alt.clone(),
+                    }),
+                })
+                .collect(),
+            related_topics: related_topics.clone(),
         },
     }
 }
@@ -620,7 +638,7 @@ mod tests {
                 category: "general",
             },
         );
-        assert_eq!(response.schema_version, 1);
+        assert_eq!(response.schema_version, 2);
         assert_eq!(response.number_of_results, 42);
         assert_eq!(response.results.len(), 6);
         assert!(matches!(response.results[0], NativeResult::Main { .. }));
@@ -706,7 +724,7 @@ mod tests {
     }
 
     #[test]
-    fn schema_version_is_one() {
+    fn schema_version_is_current() {
         let response = NativeSearchResponse::from_container(
             "",
             &ResultContainer::default(),
@@ -719,7 +737,7 @@ mod tests {
         );
         assert_eq!(response.schema_version, NATIVE_SCHEMA_VERSION);
         let json = serde_json::to_value(&response).unwrap();
-        assert_eq!(json["schema_version"], 1);
+        assert_eq!(json["schema_version"], 2);
         assert_eq!(json["number_of_results"], 0);
     }
 }

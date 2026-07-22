@@ -13,12 +13,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - SPA `search()` now requests MessagePack (`Accept: application/msgpack`) from
   `POST /api/v1/search`; JSON remains available for curl/compat.
+- Native `Main` results expose `published_date`, `length`, and `author` (schema
+  version 2) for news dates and video cards.
+- Wikipedia standard pages emit a single Answer widget (no duplicate Infobox);
+  aggregation merges matching Wikidata panels into that answer.
+- Wikidata SPARQL fills Description / Instance of attributes, related topics,
+  and optional Commons images.
 
 ### Fixed
 
 - SPA native search field consumption: render full paper citation fields, torrent
   author/abstract/size, and main `published_date`/`pretty_url`; rewrite paper/file
   URLs in client features; honor `correction.url`.
+- Duplicate Wikipedia/Wikidata knowledge panels for the same entity.
+- Swisscows news maps `created` → `published_date` (and `og:image` → thumbnail).
+- Invidious / SepiaSearch (and PeerTube / Dailymotion) populate video thumbnail,
+  embed, duration, and author metadata for SPA cards.
 
 ## [1.3.0] - 2026-07-22
 

@@ -8,7 +8,7 @@ use zoeken_engine_core::{
     About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod, Processor,
     RequestParams, SearchQueryView, TimeRange,
 };
-use zoeken_results::{MainResult, Result_};
+use zoeken_results::{MainResult, Result_, Template};
 
 /// Engine name / identifier.
 pub const NAME: &str = "invidious";
@@ -132,6 +132,23 @@ impl Engine for Invidious {
                 .and_then(|d| d.as_str())
                 .unwrap_or("")
                 .to_string();
+            let thumbnail = invidious_thumbnail(item, video_id);
+            let iframe_src = format!("{}/embed/{video_id}", self.base_url);
+            let length = item
+                .get("lengthSeconds")
+                .and_then(|v| v.as_u64())
+                .map(super::util::format_duration_secs)
+                .unwrap_or_default();
+            let author = item
+                .get("author")
+                .and_then(|a| a.as_str())
+                .unwrap_or("")
+                .to_string();
+            let published_date = item
+                .get("published")
+                .and_then(|v| v.as_i64())
+                .filter(|&ts| ts > 0)
+                .and_then(unix_to_iso);
 
             res.add(Result_::Main(MainResult {
                 url: url.clone(),
@@ -139,12 +156,50 @@ impl Engine for Invidious {
                 title,
                 content,
                 engine: NAME.to_string(),
+                template: Template::Videos,
+                thumbnail,
+                iframe_src,
+                length,
+                author,
+                published_date,
                 ..MainResult::default()
             }));
         }
 
         Ok(res)
     }
+}
+
+fn invidious_thumbnail(item: &serde_json::Value, video_id: &str) -> String {
+    if let Some(thumbs) = item.get("videoThumbnails").and_then(|v| v.as_array()) {
+        for quality in ["medium", "high", "default", "maxres"] {
+            if let Some(url) = thumbs.iter().find_map(|t| {
+                let q = t.get("quality").and_then(|q| q.as_str()).unwrap_or("");
+                if q == quality {
+                    t.get("url").and_then(|u| u.as_str())
+                } else {
+                    None
+                }
+            }) {
+                return url.to_string();
+            }
+        }
+        if let Some(url) = thumbs
+            .first()
+            .and_then(|t| t.get("url"))
+            .and_then(|u| u.as_str())
+        {
+            return url.to_string();
+        }
+    }
+    format!("https://i.ytimg.com/vi/{video_id}/hqdefault.jpg")
+}
+
+fn unix_to_iso(ts: i64) -> Option<String> {
+    use chrono::{TimeZone, Utc};
+    Utc.timestamp_opt(ts, 0)
+        .single()
+        .map(|dt| dt.format("%Y-%m-%dT%H:%M:%SZ").to_string())
 }
 
 #[cfg(test)]
@@ -172,6 +227,12 @@ mod tests {
             title: title.to_string(),
             content: content.to_string(),
             engine: NAME.to_string(),
+            template: Template::Videos,
+            thumbnail: "https://i.ytimg.com/vi/abc123/hqdefault.jpg".to_string(),
+            iframe_src: "https://invidious.example/embed/abc123".to_string(),
+            length: "1:40".to_string(),
+            author: "Fireship".to_string(),
+            published_date: Some("2024-01-01T00:00:00Z".to_string()),
             ..MainResult::default()
         })
     }
@@ -202,9 +263,10 @@ mod tests {
         "videoId": "abc123",
         "title": "Rust in 100 seconds",
         "description": "A quick overview.",
+        "author": "Fireship",
         "viewCount": 5000,
         "lengthSeconds": 100,
-        "published": 0
+        "published": 1704067200
       },
       {
         "type": "channel",

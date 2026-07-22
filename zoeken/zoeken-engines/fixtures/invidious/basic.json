@@ -15,7 +15,7 @@
     "status": 200,
     "url": "https://invidious.example",
     "headers": {},
-    "body": "[\n      {\n        \"type\": \"video\",\n        \"videoId\": \"abc123\",\n        \"title\": \"Rust in 100 seconds\",\n        \"description\": \"A quick overview.\",\n        \"viewCount\": 5000,\n        \"lengthSeconds\": 100,\n        \"published\": 0\n      },\n      {\n        \"type\": \"channel\",\n        \"author\": \"Someone\"\n      }\n    ]"
+    "body": "[\n      {\n        \"type\": \"video\",\n        \"videoId\": \"abc123\",\n        \"title\": \"Rust in 100 seconds\",\n        \"description\": \"A quick overview.\",\n        \"author\": \"Fireship\",\n        \"viewCount\": 5000,\n        \"lengthSeconds\": 100,\n        \"published\": 1704067200\n      },\n      {\n        \"type\": \"channel\",\n        \"author\": \"Someone\"\n      }\n    ]"
   },
   "golden_results": {
     "results": [
@@ -30,9 +30,12 @@
           "score": 0.0,
           "positions": [],
           "priority": "",
-          "template": "Default",
-          "thumbnail": "",
-          "iframe_src": ""
+          "template": "Videos",
+          "thumbnail": "https://i.ytimg.com/vi/abc123/hqdefault.jpg",
+          "iframe_src": "https://invidious.example/embed/abc123",
+          "published_date": "2024-01-01T00:00:00Z",
+          "length": "1:40",
+          "author": "Fireship"
         }
       }
     ],

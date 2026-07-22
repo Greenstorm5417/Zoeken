@@ -127,6 +127,18 @@ impl Engine for SepiaSearch {
                 .unwrap_or("");
             let content = zoeken_engine_core::html_to_text(description);
             let thumbnail = peertube_style_thumbnail(item, url);
+            let iframe_src = peertube_style_embed(item, url);
+            let length = item
+                .get("duration")
+                .and_then(|v| v.as_u64())
+                .map(super::util::format_duration_secs)
+                .unwrap_or_default();
+            let author = peertube_author(item);
+            let published_date = item
+                .get("publishedAt")
+                .and_then(|v| v.as_str())
+                .filter(|s| !s.is_empty())
+                .map(str::to_string);
 
             res.add(Result_::Main(MainResult {
                 url: url.to_string(),
@@ -136,12 +148,58 @@ impl Engine for SepiaSearch {
                 engine: NAME.to_string(),
                 template: Template::Videos,
                 thumbnail,
+                iframe_src,
+                length,
+                author,
+                published_date,
                 ..MainResult::default()
             }));
         }
 
         Ok(res)
     }
+}
+
+fn peertube_author(item: &serde_json::Value) -> String {
+    item.get("account")
+        .and_then(|a| a.get("displayName").or_else(|| a.get("name")))
+        .and_then(|v| v.as_str())
+        .or_else(|| {
+            item.get("channel")
+                .and_then(|c| c.get("displayName").or_else(|| c.get("name")))
+                .and_then(|v| v.as_str())
+        })
+        .unwrap_or("")
+        .to_string()
+}
+
+fn peertube_style_embed(item: &serde_json::Value, video_url: &str) -> String {
+    if let Some(embed) = item
+        .get("embedUrl")
+        .and_then(|v| v.as_str())
+        .filter(|s| !s.is_empty())
+    {
+        return embed.to_string();
+    }
+    let Ok(base) = url::Url::parse(video_url) else {
+        return String::new();
+    };
+    let path = base.path();
+    let uuid = path
+        .strip_prefix("/w/")
+        .or_else(|| path.strip_prefix("/videos/watch/"))
+        .unwrap_or("")
+        .trim_matches('/');
+    if uuid.is_empty() {
+        return String::new();
+    }
+    format!(
+        "{}://{}{}/videos/embed/{}",
+        base.scheme(),
+        base.host_str().unwrap_or(""),
+        base.port().map(|p| format!(":{p}")).unwrap_or_default(),
+        uuid
+    )
 }
 
 fn peertube_style_thumbnail(item: &serde_json::Value, video_url: &str) -> String {
@@ -191,13 +249,24 @@ mod tests {
         }
     }
 
-    fn main_result(url: &str, title: &str, content: &str) -> Result_ {
+    fn main_result(
+        url: &str,
+        title: &str,
+        content: &str,
+        length: &str,
+        published: &str,
+        iframe_src: &str,
+    ) -> Result_ {
         Result_::Main(MainResult {
             url: url.to_string(),
             normalized_url: url.to_string(),
             title: title.to_string(),
             content: content.to_string(),
             engine: NAME.to_string(),
+            template: Template::Videos,
+            iframe_src: iframe_src.to_string(),
+            length: length.to_string(),
+            published_date: Some(published.to_string()),
             ..MainResult::default()
         })
     }
@@ -254,11 +323,17 @@ mod tests {
             "https://framatube.org/w/abc",
             "Intro to PeerTube",
             "A short introduction.",
+            "10:15",
+            "2021-01-02T03:04:05.000Z",
+            "https://framatube.org/videos/embed/abc",
         ));
         basic.add(main_result(
             "https://tube.example/w/xyz",
             "Rust in 100 seconds",
             "Quick overview.",
+            "1:40",
+            "2022-02-03T00:00:00.000Z",
+            "https://tube.example/videos/embed/xyz",
         ));
         Fixture::capture(NAME, query("peertube", 1), response(200, BASIC_JSON), basic)
             .with_case("basic")

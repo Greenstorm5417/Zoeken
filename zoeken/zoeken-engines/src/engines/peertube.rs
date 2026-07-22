@@ -133,6 +133,27 @@ impl Engine for Peertube {
             let content = zoeken_engine_core::html_to_text(description);
             let thumbnail = peertube_thumbnail(item, url);
             let iframe_src = peertube_embed(item, url);
+            let length = item
+                .get("duration")
+                .and_then(|v| v.as_u64())
+                .map(super::util::format_duration_secs)
+                .unwrap_or_default();
+            let author = item
+                .get("account")
+                .and_then(|a| a.get("displayName").or_else(|| a.get("name")))
+                .and_then(|v| v.as_str())
+                .or_else(|| {
+                    item.get("channel")
+                        .and_then(|c| c.get("displayName").or_else(|| c.get("name")))
+                        .and_then(|v| v.as_str())
+                })
+                .unwrap_or("")
+                .to_string();
+            let published_date = item
+                .get("publishedAt")
+                .and_then(|v| v.as_str())
+                .filter(|s| !s.is_empty())
+                .map(str::to_string);
 
             res.add(Result_::Main(MainResult {
                 url: url.to_string(),
@@ -143,6 +164,9 @@ impl Engine for Peertube {
                 template: Template::Videos,
                 thumbnail,
                 iframe_src,
+                length,
+                author,
+                published_date,
                 ..MainResult::default()
             }));
         }

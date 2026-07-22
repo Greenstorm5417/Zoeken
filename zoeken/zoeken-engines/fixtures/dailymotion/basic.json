@@ -32,7 +32,10 @@
           "priority": "",
           "template": "Videos",
           "thumbnail": "http://s.dm/x123.jpg",
-          "iframe_src": "https://www.dailymotion.com/embed/video/x123"
+          "iframe_src": "https://www.dailymotion.com/embed/video/x123",
+          "published_date": null,
+          "length": "1:40",
+          "author": ""
         }
       }
     ],

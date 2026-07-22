@@ -1,7 +1,9 @@
 use std::collections::HashMap;
 
 use zoeken_engine_core::{EngineResults, ErrorCategory};
-use zoeken_results::{Answer, Correction, Infobox, Result_, Suggestion};
+use zoeken_results::{
+    Answer, Correction, Infobox, InfoboxAttribute, InteractiveAnswer, Result_, Suggestion,
+};
 
 use crate::execution::{EngineRunStatus, ExecutionReport, UnresponsiveReason};
 use crate::metrics::{EngineOutcome, EngineSample, MetricsRecorder};
@@ -275,13 +277,17 @@ impl ContainerBuilder {
         });
         let suggestions: Vec<Suggestion> = ranked.into_iter().map(|(s, _, _)| s).collect();
 
+        let mut answers = self.answers;
+        let mut infoboxes = self.infoboxes;
+        coalesce_knowledge_panels(&mut answers, &mut infoboxes);
+
         let number_of_results = results.len();
         ResultContainer {
             results,
-            answers: self.answers,
+            answers,
             suggestions,
             corrections: self.corrections,
-            infoboxes: self.infoboxes,
+            infoboxes,
             unresponsive_engines: self.unresponsive_engines,
             engine_data: self.engine_data,
             number_of_results,
@@ -642,6 +648,239 @@ fn set_engines(result: &mut Result_, engines: &[String]) {
     }
 }
 
+/// Collapse Wikipedia Answer + Wikidata Infobox (and duplicate Infobox pairs)
+/// into one coherent knowledge panel so the SPA does not show the same abstract
+/// twice (top Answer + bottom Infobox / Q-id panel).
+fn coalesce_knowledge_panels(answers: &mut Vec<Answer>, infoboxes: &mut Vec<Infobox>) {
+    let mut keep_infoboxes: Vec<Infobox> = Vec::new();
+
+    for box_ in infoboxes.drain(..) {
+        let mut absorbed = false;
+        for answer in answers.iter_mut() {
+            if absorb_infobox_into_wikipedia_answer(answer, &box_) {
+                absorbed = true;
+                break;
+            }
+        }
+        if !absorbed {
+            keep_infoboxes.push(box_);
+        }
+    }
+
+    *infoboxes = merge_related_infoboxes(keep_infoboxes);
+}
+
+fn absorb_infobox_into_wikipedia_answer(answer: &mut Answer, box_: &Infobox) -> bool {
+    let Some(InteractiveAnswer::Wikipedia {
+        title,
+        extract,
+        description,
+        img_src,
+        url,
+        wikidata_id,
+        attributes,
+        related_topics,
+    }) = answer.interactive.as_mut()
+    else {
+        return false;
+    };
+
+    let answer_qid = normalize_qid(wikidata_id);
+    let box_qid = box_.id.as_deref().and_then(qid_from_url);
+    let same_entity = match (&answer_qid, &box_qid) {
+        (Some(a), Some(b)) => a == b,
+        _ => false,
+    };
+    let same_url = answer
+        .url
+        .as_deref()
+        .zip(box_.id.as_deref())
+        .is_some_and(|(a, b)| urls_loosely_equal(a, b))
+        || (!url.is_empty() && box_.urls.iter().any(|u| urls_loosely_equal(url, &u.url)));
+    let same_topic = topics_match(title, &box_.infobox)
+        || (!description.is_empty() && topics_match(description, &box_.content));
+
+    if !(same_entity || same_url || (same_topic && is_knowledge_engine(&box_.engine))) {
+        return false;
+    }
+
+    if wikidata_id.is_empty()
+        && let Some(qid) = box_qid
+    {
+        *wikidata_id = qid;
+    }
+    if img_src.is_empty()
+        && let Some(src) = box_.img_src.as_deref().filter(|s| !s.is_empty())
+    {
+        *img_src = src.to_string();
+    }
+    if extract.is_empty() && !box_.content.is_empty() && box_.engine != "wikidata" {
+        *extract = box_.content.clone();
+    }
+    if description.is_empty() && box_.engine == "wikidata" && !box_.content.is_empty() {
+        *description = box_.content.clone();
+    }
+
+    merge_attributes(attributes, &box_.attributes);
+    if !description.is_empty() {
+        attributes.retain(|a| !a.label.eq_ignore_ascii_case("description"));
+    }
+    if box_.engine == "wikidata"
+        && !box_.content.is_empty()
+        && description.is_empty()
+        && !attributes
+            .iter()
+            .any(|a| a.label.eq_ignore_ascii_case("description"))
+    {
+        attributes.push(InfoboxAttribute {
+            label: "Description".to_string(),
+            value: box_.content.clone(),
+            image: None,
+        });
+    }
+    merge_topics(related_topics, &box_.related_topics);
+    true
+}
+
+fn merge_related_infoboxes(boxes: Vec<Infobox>) -> Vec<Infobox> {
+    let mut merged: Vec<Infobox> = Vec::new();
+    for box_ in boxes {
+        if let Some(existing) = merged
+            .iter_mut()
+            .find(|other| infoboxes_related(other, &box_))
+        {
+            merge_infobox(existing, box_);
+        } else {
+            merged.push(box_);
+        }
+    }
+    merged
+}
+
+fn infoboxes_related(a: &Infobox, b: &Infobox) -> bool {
+    let aq = a.id.as_deref().and_then(qid_from_url);
+    let bq = b.id.as_deref().and_then(qid_from_url);
+    if let (Some(a), Some(b)) = (aq, bq) {
+        return a == b;
+    }
+    // Fuzzy title merge is only for Wikipedia/Wikidata knowledge panels —
+    // arbitrary engines must not collapse just because titles look similar.
+    if is_knowledge_engine(&a.engine) && is_knowledge_engine(&b.engine) {
+        return topics_match(&a.infobox, &b.infobox);
+    }
+    false
+}
+
+fn is_knowledge_engine(engine: &str) -> bool {
+    let e = engine.to_ascii_lowercase();
+    e == "wikipedia" || e == "wikidata" || e.contains("wikipedia") || e.contains("wikidata")
+}
+
+fn merge_infobox(into: &mut Infobox, from: Infobox) {
+    if into.content.len() < from.content.len() {
+        into.content = from.content;
+    }
+    if into.img_src.as_ref().is_none_or(|s| s.is_empty()) {
+        into.img_src = from.img_src;
+    }
+    if into.id.as_ref().and_then(|id| qid_from_url(id)).is_none()
+        && from.id.as_ref().and_then(|id| qid_from_url(id)).is_some()
+    {
+        into.id = from.id;
+    }
+    if into.infobox.len() < from.infobox.len() {
+        into.infobox = from.infobox;
+    }
+    for url in from.urls {
+        if !into
+            .urls
+            .iter()
+            .any(|u| urls_loosely_equal(&u.url, &url.url))
+        {
+            into.urls.push(url);
+        }
+    }
+    merge_attributes(&mut into.attributes, &from.attributes);
+    merge_topics(&mut into.related_topics, &from.related_topics);
+    if into.engine.is_empty() {
+        into.engine = from.engine;
+    } else if into.engine != from.engine && !into.engine.contains(&from.engine) {
+        into.engine = format!("{}, {}", into.engine, from.engine);
+    }
+}
+
+fn merge_attributes(into: &mut Vec<InfoboxAttribute>, from: &[InfoboxAttribute]) {
+    for attr in from {
+        if attr.label.is_empty() {
+            continue;
+        }
+        if into
+            .iter()
+            .any(|a| a.label.eq_ignore_ascii_case(&attr.label) && a.value == attr.value)
+        {
+            continue;
+        }
+        if into
+            .iter()
+            .any(|a| a.label.eq_ignore_ascii_case(&attr.label) && !a.value.is_empty())
+        {
+            continue;
+        }
+        into.push(attr.clone());
+    }
+}
+
+fn merge_topics(into: &mut Vec<String>, from: &[String]) {
+    for topic in from {
+        let trimmed = topic.trim();
+        if trimmed.is_empty() {
+            continue;
+        }
+        if into.iter().any(|t| t.eq_ignore_ascii_case(trimmed)) {
+            continue;
+        }
+        into.push(trimmed.to_string());
+    }
+}
+
+fn topics_match(a: &str, b: &str) -> bool {
+    let a = normalize_topic(a);
+    let b = normalize_topic(b);
+    !a.is_empty() && !b.is_empty() && (a == b || a.contains(&b) || b.contains(&a))
+}
+
+fn normalize_topic(s: &str) -> String {
+    let lower = s.trim().to_ascii_lowercase();
+    match lower.find('(') {
+        Some(i) => lower[..i].trim().to_string(),
+        None => lower,
+    }
+}
+
+fn qid_from_url(raw: &str) -> Option<String> {
+    let trimmed = raw.trim().trim_end_matches('/');
+    let marker = "/entity/";
+    let idx = trimmed.rfind(marker)?;
+    let qid = &trimmed[idx + marker.len()..];
+    normalize_qid(qid)
+}
+
+fn normalize_qid(raw: &str) -> Option<String> {
+    let q = raw.trim();
+    if q.len() >= 2
+        && q.as_bytes()[0].eq_ignore_ascii_case(&b'Q')
+        && q[1..].chars().all(|c| c.is_ascii_digit())
+    {
+        Some(format!("Q{}", &q[1..]))
+    } else {
+        None
+    }
+}
+
+fn urls_loosely_equal(a: &str, b: &str) -> bool {
+    canonical_merge_key(a) == canonical_merge_key(b)
+}
+
 const EMPTY_POSITIONS: &[usize] = &[];
 
 #[cfg(test)]
@@ -651,7 +890,10 @@ mod tests {
     use std::time::Duration;
 
     use zoeken_engine_core::{EngineError, EngineResults};
-    use zoeken_results::{Answer, MainResult, Result_, Suggestion};
+    use zoeken_results::{
+        Answer, Infobox, InfoboxAttribute, InfoboxUrl, InteractiveAnswer, MainResult, Result_,
+        Suggestion,
+    };
 
     use crate::execution::{EngineRunOutcome, EngineRunStatus, ExecutionReport};
     use crate::metrics::NoopRecorder;
@@ -1165,5 +1407,131 @@ mod tests {
             &NoopRecorder,
         );
         assert_eq!(as_main(&container.results[0]).score, 1.0);
+    }
+
+    #[test]
+    fn absorbs_wikidata_infobox_into_wikipedia_answer() {
+        let mut wiki = EngineResults::new();
+        wiki.add(Result_::Answer(Answer {
+            answer: "Rust: A language.".to_string(),
+            url: Some("https://en.wikipedia.org/wiki/Rust_(programming_language)".to_string()),
+            engine: "wikipedia".to_string(),
+            interactive: Some(InteractiveAnswer::Wikipedia {
+                title: "Rust (programming language)".to_string(),
+                extract: "Rust is a systems programming language.".to_string(),
+                description: "General-purpose programming language".to_string(),
+                img_src: "https://upload.wikimedia.org/rust.png".to_string(),
+                url: "https://en.wikipedia.org/wiki/Rust_(programming_language)".to_string(),
+                wikidata_id: "Q575650".to_string(),
+                attributes: Vec::new(),
+                related_topics: Vec::new(),
+            }),
+            ..Answer::default()
+        }));
+
+        let mut wd = EngineResults::new();
+        wd.add(Result_::Infobox(Infobox {
+            infobox: "Rust".to_string(),
+            id: Some("https://www.wikidata.org/entity/Q575650".to_string()),
+            content: "multi-paradigm system programming language".to_string(),
+            img_src: None,
+            urls: vec![InfoboxUrl {
+                title: "Wikidata".to_string(),
+                url: "http://www.wikidata.org/entity/Q575650".to_string(),
+            }],
+            attributes: vec![InfoboxAttribute {
+                label: "Instance of".to_string(),
+                value: "programming language".to_string(),
+                image: None,
+            }],
+            related_topics: vec!["programming language".to_string()],
+            engine: "wikidata".to_string(),
+        }));
+
+        let container = aggregate(
+            report(vec![
+                completed("wikipedia", wiki),
+                completed("wikidata", wd),
+            ]),
+            &weights(&[("wikipedia", 1.0), ("wikidata", 1.0)]),
+            &NoopRecorder,
+        );
+
+        assert_eq!(container.answers.len(), 1);
+        assert!(
+            container.infoboxes.is_empty(),
+            "Wikidata panel should merge into the Wikipedia answer"
+        );
+        let InteractiveAnswer::Wikipedia {
+            wikidata_id,
+            attributes,
+            related_topics,
+            extract,
+            ..
+        } = container.answers[0].interactive.as_ref().unwrap()
+        else {
+            panic!("expected wikipedia interactive");
+        };
+        assert_eq!(wikidata_id, "Q575650");
+        assert!(extract.contains("systems programming"));
+        assert!(
+            attributes
+                .iter()
+                .any(|a| a.label == "Instance of" && a.value == "programming language")
+        );
+        assert!(related_topics.iter().any(|t| t == "programming language"));
+    }
+
+    #[test]
+    fn merges_duplicate_infoboxes_by_qid() {
+        let mut a = EngineResults::new();
+        a.add(Result_::Infobox(Infobox {
+            infobox: "Berlin".to_string(),
+            id: Some("https://www.wikidata.org/entity/Q64".to_string()),
+            content: "capital of Germany".to_string(),
+            img_src: None,
+            urls: vec![InfoboxUrl {
+                title: "Wikidata".to_string(),
+                url: "http://www.wikidata.org/entity/Q64".to_string(),
+            }],
+            attributes: vec![InfoboxAttribute {
+                label: "Description".to_string(),
+                value: "capital of Germany".to_string(),
+                image: None,
+            }],
+            related_topics: Vec::new(),
+            engine: "wikidata".to_string(),
+        }));
+        let mut b = EngineResults::new();
+        b.add(Result_::Infobox(Infobox {
+            infobox: "Berlin, Germany".to_string(),
+            id: Some("https://www.wikidata.org/entity/Q64".to_string()),
+            content: "capital and largest city of Germany".to_string(),
+            img_src: Some("https://commons.wikimedia.org/wiki/Special:FilePath/Berlin.jpg".into()),
+            urls: vec![InfoboxUrl {
+                title: "Wikipedia".to_string(),
+                url: "https://en.wikipedia.org/wiki/Berlin".to_string(),
+            }],
+            attributes: vec![InfoboxAttribute {
+                label: "Instance of".to_string(),
+                value: "city".to_string(),
+                image: None,
+            }],
+            related_topics: vec!["city".to_string()],
+            engine: "wikipedia".to_string(),
+        }));
+
+        let container = aggregate(
+            report(vec![completed("wikidata", a), completed("wikipedia", b)]),
+            &weights(&[("wikidata", 1.0), ("wikipedia", 1.0)]),
+            &NoopRecorder,
+        );
+
+        assert_eq!(container.infoboxes.len(), 1);
+        let box_ = &container.infoboxes[0];
+        assert_eq!(box_.content, "capital and largest city of Germany");
+        assert!(box_.img_src.is_some());
+        assert_eq!(box_.urls.len(), 2);
+        assert!(box_.attributes.iter().any(|a| a.label == "Instance of"));
     }
 }

@@ -34,7 +34,13 @@
             "url": "http://www.wikidata.org/entity/Q64"
           }
         ],
-        "attributes": [],
+        "attributes": [
+          {
+            "label": "Description",
+            "value": "capital and largest city of Germany",
+            "image": null
+          }
+        ],
         "related_topics": [],
         "engine": "wikidata"
       }

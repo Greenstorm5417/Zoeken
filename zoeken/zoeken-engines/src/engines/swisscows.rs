@@ -334,12 +334,24 @@ fn add_news(out: &mut EngineResults, item: &Value, engine: &str) {
     if url.is_empty() {
         return;
     }
+    let published_date = item
+        .get("created")
+        .and_then(Value::as_str)
+        .filter(|s| !s.is_empty())
+        .map(str::to_string);
+    let thumbnail = item
+        .get("og:image")
+        .and_then(Value::as_str)
+        .unwrap_or_default()
+        .to_string();
     out.add(Result_::Main(MainResult {
         url: url.clone(),
         normalized_url: url,
         title: html_to_text(&text(item, "title")),
         content: text(item, "description"),
         engine: engine.to_string(),
+        published_date,
+        thumbnail,
         ..MainResult::default()
     }));
 }

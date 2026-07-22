@@ -1203,7 +1203,7 @@ mod route_tests {
         );
         let body = to_bytes(response.into_body(), usize::MAX).await.unwrap();
         let value: serde_json::Value = serde_json::from_slice(&body).unwrap();
-        assert_eq!(value["schema_version"], 1);
+        assert_eq!(value["schema_version"], 2);
         assert_eq!(value["query"], "rust");
         assert_eq!(value["number_of_results"], 1);
         assert_eq!(value["results"][0]["kind"], "main");
@@ -1270,7 +1270,7 @@ mod route_tests {
         );
         let body = to_bytes(response.into_body(), usize::MAX).await.unwrap();
         let value: native::NativeSearchResponse = rmp_serde::from_slice(&body).unwrap();
-        assert_eq!(value.schema_version, 1);
+        assert_eq!(value.schema_version, 2);
         assert_eq!(value.query, "rust");
         assert_eq!(value.results.len(), 1);
     }

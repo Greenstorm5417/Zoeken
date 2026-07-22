@@ -79,6 +79,7 @@ fn main_result() -> impl Strategy<Value = MainResult> {
                     template,
                     thumbnail,
                     iframe_src,
+                    ..MainResult::default()
                 }
             },
         )

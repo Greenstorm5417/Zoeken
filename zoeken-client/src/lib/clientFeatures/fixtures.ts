@@ -22,6 +22,8 @@ export function mainResult(
 		favicon: overrides.favicon ?? "",
 		pretty_url: overrides.pretty_url ?? "",
 		published_date: overrides.published_date ?? null,
+		length: overrides.length ?? "",
+		author: overrides.author ?? "",
 	};
 }
 
