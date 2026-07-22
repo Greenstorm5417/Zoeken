@@ -690,7 +690,7 @@ fn render_safe_search(
     if !supported {
         return String::new();
     }
-    map.get(&safe_search.level().to_string())
+    map.get(&safe_search.as_u8().to_string())
         .cloned()
         .unwrap_or_default()
 }

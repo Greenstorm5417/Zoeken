@@ -10,6 +10,7 @@ description.workspace = true
 
 [dependencies]
 zoeken-results = { workspace = true }
+zoeken-query = { workspace = true }
 zoeken-data = { workspace = true }
 scraper = { workspace = true }
 ego-tree = { workspace = true }

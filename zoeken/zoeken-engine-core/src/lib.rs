@@ -13,6 +13,7 @@ pub mod error_category;
 
 pub use challenge::{ChallengeKind, classify_challenge, looks_like_bot_wall};
 pub use error_category::ErrorCategory;
+pub use zoeken_query::{SafeSearch, TimeRange};
 pub use zoeken_results::{
     Answer, Code, Correction, FileResult, Image, Infobox, KeyValue, MainResult, Paper, Result_,
     ResultItem, ResultKind, Suggestion, Template,
@@ -30,43 +31,6 @@ impl Processor {
         match self {
             Processor::Online => "online",
             Processor::Offline => "offline",
-        }
-    }
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize)]
-pub enum SafeSearch {
-    #[default]
-    Off,
-    Moderate,
-    Strict,
-}
-
-impl SafeSearch {
-    pub fn level(&self) -> u8 {
-        match self {
-            SafeSearch::Off => 0,
-            SafeSearch::Moderate => 1,
-            SafeSearch::Strict => 2,
-        }
-    }
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
-pub enum TimeRange {
-    Day,
-    Week,
-    Month,
-    Year,
-}
-
-impl TimeRange {
-    pub fn as_str(&self) -> &'static str {
-        match self {
-            TimeRange::Day => "day",
-            TimeRange::Week => "week",
-            TimeRange::Month => "month",
-            TimeRange::Year => "year",
         }
     }
 }

@@ -150,8 +150,8 @@ pub fn search_query_view(query: &SearchQuery) -> SearchQueryView {
     SearchQueryView {
         query: query.query.clone(),
         pageno: query.pageno,
-        safesearch: map_safesearch(query.safesearch),
-        time_range: query.time_range.map(map_time_range),
+        safesearch: query.safesearch,
+        time_range: query.time_range,
         locale: query.locale.as_str().to_string(),
         categories: query.categories.clone(),
         engines: query.engines.clone(),
@@ -168,23 +168,6 @@ pub fn engine_query_view(view: &SearchQueryView, meta: &EngineMeta) -> SearchQue
         tailored.time_range = None;
     }
     tailored
-}
-
-fn map_safesearch(level: zoeken_query::SafeSearch) -> zoeken_engine_core::SafeSearch {
-    match level {
-        zoeken_query::SafeSearch::Off => zoeken_engine_core::SafeSearch::Off,
-        zoeken_query::SafeSearch::Moderate => zoeken_engine_core::SafeSearch::Moderate,
-        zoeken_query::SafeSearch::Strict => zoeken_engine_core::SafeSearch::Strict,
-    }
-}
-
-fn map_time_range(range: zoeken_query::TimeRange) -> zoeken_engine_core::TimeRange {
-    match range {
-        zoeken_query::TimeRange::Day => zoeken_engine_core::TimeRange::Day,
-        zoeken_query::TimeRange::Week => zoeken_engine_core::TimeRange::Week,
-        zoeken_query::TimeRange::Month => zoeken_engine_core::TimeRange::Month,
-        zoeken_query::TimeRange::Year => zoeken_engine_core::TimeRange::Year,
-    }
 }
 
 #[cfg(test)]

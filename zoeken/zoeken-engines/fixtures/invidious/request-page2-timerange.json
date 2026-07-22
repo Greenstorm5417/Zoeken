@@ -5,7 +5,7 @@
     "query": "rust",
     "pageno": 2,
     "safesearch": "Off",
-    "time_range": "Week",
+    "time_range": "week",
     "locale": "en-US",
     "categories": [],
     "engines": []
@@ -15,7 +15,7 @@
     "category": "",
     "pageno": 2,
     "safesearch": "Off",
-    "time_range": "Week",
+    "time_range": "week",
     "locale_key": "en-US",
     "engine_data": {},
     "method": "Get",

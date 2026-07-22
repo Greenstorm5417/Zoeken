@@ -4196,6 +4196,7 @@ dependencies = [
  "tracing",
  "url",
  "zoeken-data",
+ "zoeken-query",
  "zoeken-results",
 ]
 
