@@ -6,7 +6,7 @@ Upstream routes: 22. Rust routes: 26. Matching paths: 22. Missing upstream paths
 | --- | --- | --- | --- | --- |
 | / | ported | GET, POST | GET, POST | implemented path; status/header/body parity needs route tests |
 | /about | ported | GET | GET | implemented path; status/header/body parity needs route tests |
-| /api/v1/search | rust-only |  | POST | Zoeken native typed search (SPA); JSON + optional msgpack |
+| /api/v1/search | rust-only |  | POST | Zoeken native typed search (SPA msgpack default; JSON + `?format=` also) |
 | /autocompleter | ported | GET, POST | GET, POST | implemented path; status/header/body parity needs route tests |
 | /bangs | rust-only |  | GET | External bang discovery (`?q=` filter); SPA help panel |
 | /clear_cookies | ported | GET | GET | implemented path; status/header/body parity needs route tests |

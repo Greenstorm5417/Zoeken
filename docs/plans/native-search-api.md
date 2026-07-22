@@ -8,10 +8,10 @@ Related: `docs/compatibility/targets.md`, `zoeken/zoeken-server/src/serialize.rs
 
 - [x] Phase 0 — Wire DTOs + mapper + golden/unit fixtures
 - [x] Phase 1 — `POST /api/v1/search` JSON + TypeScript codegen + SPA cutover
-- [x] Phase 2 — MessagePack Accept / `?format=msgpack` (SPA remains JSON by default)
+- [x] Phase 2 — MessagePack Accept / `?format=msgpack` (SPA default = msgpack)
 - [x] Phase 3 — CI drift check, docs, CHANGELOG
 
-**Deferred / optional (not blocking “done”):** SPA defaulting to MessagePack in production (needs benchmarks); `@msgpack/msgpack` client dep unused while SPA stays JSON; dedicated `kind=video|product|news`; native `/api/v1/config`.
+**Deferred / optional (not blocking “done”):** dedicated `kind=video|product|news`; native `/api/v1/config`.
 ## Goal
 
 Keep SearXNG `format=json|csv|rss` as a frozen-ish **compat layer**. Give the SPA a first-class **Zoeken native** search response that:
@@ -76,7 +76,7 @@ Legacy `/search` keeps accepting the same form params. Native route reuses the s
 1. Accept `Accept: application/msgpack` or `?format=msgpack` on `/api/v1/search`.
 2. Rust: `rmp-serde`. Client: `@msgpack/msgpack`.
 3. Keep `Accept: application/json` (or `?format=json`) for DevTools / debugging forever.
-4. Default SPA to msgpack in production builds only if benchmarks justify it; JSON remains supported.
+4. SPA defaults to msgpack (`Accept: application/msgpack`); JSON remains supported for debugging/curl.
 
 ### Phase 3 — Harden
 

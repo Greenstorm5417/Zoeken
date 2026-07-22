@@ -13,6 +13,7 @@ export type {
 	NativeUnresponsiveEngine,
 } from "./generated/native";
 
+import { decode } from "@msgpack/msgpack";
 import type {
 	NativeResult,
 	NativeSearchRequest,
@@ -41,6 +42,20 @@ async function getJson<T>(path: string, init?: RequestInit): Promise<T> {
 		throw new ApiError(res.status, await res.text());
 	}
 	return res.json() as Promise<T>;
+}
+
+async function getMsgpack<T>(path: string, init?: RequestInit): Promise<T> {
+	const res = await fetch(path, {
+		...init,
+		headers: {
+			Accept: "application/msgpack",
+			...init?.headers,
+		},
+	});
+	if (!res.ok) {
+		throw new ApiError(res.status, await res.text());
+	}
+	return decode(new Uint8Array(await res.arrayBuffer())) as T;
 }
 
 export type SearchParams = {
@@ -141,7 +156,7 @@ export type Preferences = {
 	plugins: Record<string, boolean>;
 };
 
-/** Native typed search (`POST /api/v1/search`). */
+/** Native typed search (`POST /api/v1/search`, MessagePack response). */
 export function search(params: SearchParams) {
 	const body: NativeSearchRequest = {
 		q: params.q,
@@ -152,7 +167,7 @@ export function search(params: SearchParams) {
 		time_range: params.time_range ?? null,
 		engines: params.engines ?? null,
 	};
-	return getJson<NativeSearchResponse>("/api/v1/search", {
+	return getMsgpack<NativeSearchResponse>("/api/v1/search", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(body),

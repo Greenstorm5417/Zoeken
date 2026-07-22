@@ -31,7 +31,7 @@
       "rust_methods": [
         "POST"
       ],
-      "notes": "Zoeken native typed search (SPA); JSON + optional msgpack"
+      "notes": "Zoeken native typed search (SPA msgpack default; JSON + format also)"
     },
     {
       "notes": "implemented path; status/header/body parity needs route tests",

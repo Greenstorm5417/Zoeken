@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- SPA `search()` now requests MessagePack (`Accept: application/msgpack`) from
+  `POST /api/v1/search`; JSON remains available for curl/compat.
+
 ## [1.3.0] - 2026-07-22
 
 ### Added
@@ -14,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Native typed search API: `POST /api/v1/search` with tagged result variants,
   `schema_version`, full corrections/suggestions/unresponsive objects, and
   optional MessagePack (`Accept: application/msgpack` or `?format=msgpack`).
-  SPA uses the native JSON endpoint; SearXNG `/search?format=json|csv|rss`
+  SPA uses the native endpoint; SearXNG `/search?format=json|csv|rss`
   remains the external compat layer. TypeScript bindings are generated via
   `export-native-ts` / `make native-types`.
 - Absolute OpenSearch description URLs so browsers can add Zoeken as a search

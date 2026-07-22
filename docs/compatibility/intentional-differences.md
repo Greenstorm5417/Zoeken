@@ -150,7 +150,7 @@ Deliberate compatibility gaps between Zoeken and SearXNG.
 
 ## Native search API (Zoeken-only)
 
-- **Behavior**: The SPA consumes `POST /api/v1/search` with a typed, tagged
+- **Behavior**: The SPA consumes `POST /api/v1/search` (MessagePack by default) with a typed, tagged
   result schema (`schema_version`, `kind` unions). This is **not** SearXNG-
   compatible. External clients keep `/search?format=json|csv|rss`.
 - **Why**: Preserve a frozen-ish compat layer while giving the SPA full field
