@@ -131,6 +131,9 @@ impl Engine for Startpage {
         p.headers.insert("Origin".to_string(), BASE_URL.to_string());
         p.headers
             .insert("Referer".to_string(), format!("{BASE_URL}/"));
+        // A captcha challenge redirects; treat that as a signal to classify,
+        // not follow transparently.
+        p.disable_redirects = true;
 
         p.data.insert("query".to_string(), q.query.clone());
         p.data.insert("cat".to_string(), "web".to_string());

@@ -162,6 +162,12 @@ pub struct RequestParams {
     pub allow_redirects: bool,
     pub max_redirects: u32,
     pub soft_max_redirects: u32,
+    /// Engine wants zero redirects followed for this request (e.g. Startpage,
+    /// where a captcha challenge redirects and must not be transparently
+    /// followed). Distinct from the zero-valued defaults above, which mean
+    /// "no preference, use network config."
+    #[serde(default)]
+    pub disable_redirects: bool,
     pub auth: Option<String>,
     pub raise_for_httperror: bool,
     pub network: Option<String>,
@@ -187,6 +193,7 @@ impl Default for RequestParams {
             allow_redirects: false,
             max_redirects: 0,
             soft_max_redirects: 0,
+            disable_redirects: false,
             auth: None,
             raise_for_httperror: true,
             network: None,

@@ -108,13 +108,10 @@ impl EngineExecutor for NetworkExecutor {
                 return EngineExecResult::from_result(Ok(EngineResults::new()));
             };
 
-            let mut request = match build_network_request(&params, &url) {
+            let request = match build_network_request(&params, &url) {
                 Ok(request) => request,
                 Err(error) => return EngineExecResult::from_result(Err(error)),
             };
-            if engine_name == "startpage" {
-                request = request.with_max_redirects(0);
-            }
 
             let key = cache_key(&response_cache.hmac_key, &engine_name, &request, &query);
             if let Some(cached) = response_cache.get(&key) {
@@ -274,7 +271,9 @@ fn build_network_request(params: &RequestParams, url: &str) -> Result<NetworkReq
         .with_headers(headers)
         .with_cookies(cookies)
         .with_raise_for_httperror(params.raise_for_httperror);
-    if params.allow_redirects || params.max_redirects > 0 || params.soft_max_redirects > 0 {
+    if params.disable_redirects {
+        request = request.with_max_redirects(0);
+    } else if params.allow_redirects || params.max_redirects > 0 || params.soft_max_redirects > 0 {
         let max_redirects = params
             .max_redirects
             .max(params.soft_max_redirects)
