@@ -38,7 +38,7 @@ Or `make build` / `make package` on Unix.
 
 ## Releases
 
-Current version: **1.0.0**. Tagged versions (`vX.Y.Z`, matching `Cargo.toml` and
+Current version: **1.3.0**. Tagged versions (`vX.Y.Z`, matching `Cargo.toml` and
 `zoeken-client/package.json`) publish:
 
 - Debian packages (`amd64` / `arm64`) with systemd unit + `/usr/share/zoeken/assets`
