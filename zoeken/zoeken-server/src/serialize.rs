@@ -555,9 +555,6 @@ impl JsonResponse {
     }
 }
 
-/// User-facing label for an unresponsive engine. Delegates to the typed
-/// `ErrorCategory` vocabulary shared with metrics/storage health instead of
-/// substring-matching the stringified error (architecture-cleanup Phase 1).
 fn translated_cause(cause: &UnresponsiveCause) -> &'static str {
     match cause {
         UnresponsiveCause::Error { category, .. } => category.user_label(),

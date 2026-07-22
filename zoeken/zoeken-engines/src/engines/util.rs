@@ -250,11 +250,6 @@ pub fn text_content_skipping(el: scraper::ElementRef<'_>, skip_classes: &[&str])
 }
 
 /// Detect anti-bot JavaScript gates or captcha walls in HTML body.
-///
-/// Thin re-export of the shared classifier in `zoeken_engine_core::challenge`
-/// so network and engine parse paths agree on one taxonomy (architecture-cleanup
-/// Phase 0). Engines add vendor-specific selectors on top of this, not a
-/// separate string soup.
 pub use zoeken_engine_core::looks_like_bot_wall;
 
 #[cfg(test)]

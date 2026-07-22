@@ -86,9 +86,8 @@ pub trait AutocompleteBackend: Send + Sync {
 /// The autocomplete dispatch point: holds a backend and timeout, returning
 /// empty lists on error/timeout. Results are cached in memory for
 /// [`CACHE_TTL`] so repeated prefixes (backspacing, retyping) skip the
-/// upstream round-trip entirely. Cache + singleflight is the shared
-/// [`FlightCache`] (architecture-cleanup Phase 2), weighted as one entry
-/// each so `cache_capacity` bounds entry count.
+/// upstream round-trip entirely. Entries are weighted as one each so
+/// `cache_capacity` bounds entry count.
 #[derive(Clone)]
 pub struct AutocompleteService {
     backend: Option<Arc<dyn AutocompleteBackend>>,

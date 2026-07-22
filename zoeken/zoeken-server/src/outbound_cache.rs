@@ -17,8 +17,7 @@ fn response_weight(response: &EngineResponse) -> usize {
 }
 
 /// Keys are opaque HMAC digests; raw queries, bodies, and responses never
-/// enter persistent storage. Thin wrapper over the shared [`FlightCache`]
-/// (architecture-cleanup Phase 2) picking a per-entry TTL by response kind.
+/// enter persistent storage.
 pub(crate) struct ResponseCache {
     cache: FlightCache<String, EngineResponse>,
     pub(crate) hmac_key: [u8; 32],

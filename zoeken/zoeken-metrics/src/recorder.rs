@@ -6,10 +6,9 @@ use std::time::Duration;
 use metrics::{counter, histogram};
 use zoeken_engine_core::EngineError;
 
-/// Shared error-category vocabulary (architecture-cleanup Phase 1): the same
-/// enum backs metrics labels, storage health categories, and user-facing
-/// `unresponsive_engines` labels. Kept as a re-export so existing
-/// `zoeken_metrics::ErrorCategory` call sites are unaffected.
+/// Re-exported so existing `zoeken_metrics::ErrorCategory` call sites are
+/// unaffected; the same enum also backs storage health categories and
+/// user-facing `unresponsive_engines` labels.
 pub use zoeken_engine_core::ErrorCategory;
 
 /// Histogram name for engine's total wall-clock response time in seconds (labeled by ENGINE_LABEL).

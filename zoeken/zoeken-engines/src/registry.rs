@@ -1,7 +1,5 @@
 //! Build an [`EngineRegistry`] from [`Settings`]: default engine set, and the
-//! `settings.engines[]` name -> built-in-engine factory (architecture-cleanup
-//! Phase 3 -- moved out of `zoeken-server` so adding an engine no longer means
-//! editing the HTTP crate).
+//! `settings.engines[]` name -> built-in-engine factory.
 
 use std::time::Duration;
 

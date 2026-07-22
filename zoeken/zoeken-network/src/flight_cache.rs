@@ -1,11 +1,7 @@
 //! Generic bounded in-process cache with per-key async singleflight.
 //!
-//! Extracted from the search executor's response cache and autocomplete's
-//! suggestion cache, which independently hand-rolled the same
-//! `Mutex<HashMap<K, timestamped entry>>` + per-key flight-lock skeleton
-//! (architecture-cleanup Phase 2). Callers supply a weight function so byte
-//! budgets (response bytes) and entry-count caps (autocomplete) both fit the
-//! same eviction loop.
+//! Callers supply a weight function so byte budgets (response bytes) and
+//! entry-count caps both fit the same eviction loop.
 
 use std::collections::HashMap;
 use std::hash::Hash;
