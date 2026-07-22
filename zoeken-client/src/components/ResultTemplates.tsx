@@ -1,5 +1,5 @@
-import type { ComponentType } from "react";
 import { Download, ExternalLink, FileText, Magnet } from "lucide-react";
+import type { ComponentType } from "react";
 import type { SearchResult } from "#/lib/api";
 import { resultFavicon } from "#/lib/api";
 import {
@@ -209,10 +209,9 @@ export function CodeResult({
 						{lines.map(([n, text]) => (
 							<div
 								key={n}
-								className={[
-									"flex gap-3",
-									hl.has(n) ? "bg-accent/10" : "",
-								].join(" ")}
+								className={["flex gap-3", hl.has(n) ? "bg-accent/10" : ""].join(
+									" ",
+								)}
 							>
 								<span className="w-8 shrink-0 select-none text-right text-ink-subtle">
 									{n}

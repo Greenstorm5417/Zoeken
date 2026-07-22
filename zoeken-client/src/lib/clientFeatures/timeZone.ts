@@ -18,5 +18,10 @@ export function computeTimeZoneAnswer(
 	const parts = query.trim().split(/\s+/).filter(Boolean);
 	if (parts.length === 0) return null;
 	if (!parts.every((part) => KEYWORDS.has(part.toLowerCase()))) return null;
-	return { answer: nowUtc(), engine: "time_zone", url: null, interactive: null };
+	return {
+		answer: nowUtc(),
+		engine: "time_zone",
+		url: null,
+		interactive: null,
+	};
 }

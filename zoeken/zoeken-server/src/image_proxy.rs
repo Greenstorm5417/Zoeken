@@ -61,16 +61,15 @@ impl CachedImageFetcher {
     }
 
     #[must_use]
-    pub fn with_limits(
-        inner: Arc<dyn ImageProxyFetcher>,
-        max_bytes: usize,
-        ttl: Duration,
-    ) -> Self {
+    pub fn with_limits(inner: Arc<dyn ImageProxyFetcher>, max_bytes: usize, ttl: Duration) -> Self {
         Self {
             inner,
             cache: FlightCache::new(max_bytes.max(1), |img: &FetchedImage| {
                 img.body.len().saturating_add(
-                    img.content_type.as_ref().map_or(0, String::len).saturating_add(32),
+                    img.content_type
+                        .as_ref()
+                        .map_or(0, String::len)
+                        .saturating_add(32),
                 )
             }),
             ttl,
@@ -402,8 +401,9 @@ mod tests {
                 body: vec![1, 2, 3],
             },
         });
-        let cached: Arc<dyn ImageProxyFetcher> =
-            Arc::new(CachedImageFetcher::new(Arc::clone(&inner) as Arc<dyn ImageProxyFetcher>));
+        let cached: Arc<dyn ImageProxyFetcher> = Arc::new(CachedImageFetcher::new(
+            Arc::clone(&inner) as Arc<dyn ImageProxyFetcher>,
+        ));
 
         let first = cached.fetch("https://cdn.example.com/a.png").await.unwrap();
         let second = cached.fetch("https://cdn.example.com/a.png").await.unwrap();

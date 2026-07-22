@@ -67,5 +67,10 @@ export function computeRandomAnswer(query: string): SearchAnswer | null {
 	if (parts.length !== 2 || parts[0] !== "random") return null;
 	const kind = KINDS.find((candidate) => candidate === parts[1]);
 	if (!kind) return null;
-	return { answer: generate(kind), engine: "random", url: null, interactive: null };
+	return {
+		answer: generate(kind),
+		engine: "random",
+		url: null,
+		interactive: null,
+	};
 }

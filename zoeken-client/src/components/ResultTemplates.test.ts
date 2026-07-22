@@ -73,9 +73,9 @@ describe("specializedTemplate by kind", () => {
 		expect(specializedTemplate(paperResult())?.name).toBe("PaperResult");
 		expect(specializedTemplate(codeResult())?.name).toBe("CodeResult");
 		expect(specializedTemplate(keyValueResult())?.name).toBe("KeyValueResult");
-		expect(specializedTemplate(mainResult({ category: "shopping" }))?.name).toBe(
-			"ProductResult",
-		);
+		expect(
+			specializedTemplate(mainResult({ category: "shopping" }))?.name,
+		).toBe("ProductResult");
 		expect(specializedTemplate(mainResult(), "shopping")?.name).toBe(
 			"ProductResult",
 		);

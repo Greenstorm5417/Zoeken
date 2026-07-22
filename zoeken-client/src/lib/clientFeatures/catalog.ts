@@ -53,8 +53,7 @@ export const CLIENT_FEATURE_CATALOG: readonly ClientFeatureInfo[] = [
 	{
 		id: "ahmia_filter",
 		name: "Ahmia blacklist",
-		description:
-			"Filter out onion results that appear in Ahmia's blacklist.",
+		description: "Filter out onion results that appear in Ahmia's blacklist.",
 		default_enabled: true,
 	},
 	{

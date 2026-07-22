@@ -198,8 +198,7 @@ function SearchPage() {
 				results.every(
 					(r) =>
 						r.kind === "main" &&
-						(Boolean(r.iframe_src) ||
-							(Boolean(r.thumbnail) && !r.iframe_src)),
+						(Boolean(r.iframe_src) || (Boolean(r.thumbnail) && !r.iframe_src)),
 				) &&
 				results.some((r) => r.kind === "main" && Boolean(r.iframe_src)),
 		);

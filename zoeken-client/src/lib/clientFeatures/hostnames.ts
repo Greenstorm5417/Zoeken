@@ -67,7 +67,10 @@ function filterUrl(value: string, rules: HostnamesRules): string {
 	return current;
 }
 
-function applyUrlRules(result: SearchResult, rules: HostnamesRules): SearchResult {
+function applyUrlRules(
+	result: SearchResult,
+	rules: HostnamesRules,
+): SearchResult {
 	const url = filterUrl(result.url, rules);
 	switch (result.kind) {
 		case "main":

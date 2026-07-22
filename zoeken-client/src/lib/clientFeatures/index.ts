@@ -7,8 +7,8 @@ import { applyTrackerUrlRemover } from "./trackerUrlRemover";
 
 export {
 	CLIENT_FEATURE_CATALOG,
-	featureCatalog,
 	type ClientFeatureInfo,
+	featureCatalog,
 } from "./catalog";
 
 /** Prefer cookie/settings prefs; fall back to `/config` then local catalog defaults. */
