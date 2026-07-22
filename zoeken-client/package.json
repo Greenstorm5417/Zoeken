@@ -1,7 +1,7 @@
 {
   "name": "zoeken-client",
   "private": true,
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Zoeken web UI (React SPA)",
   "author": "Greenstorm <sdussinger1007@gmail.com>",
   "license": "AGPL-3.0-or-later",

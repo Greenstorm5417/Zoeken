@@ -7,21 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.2] - 2026-07-22
+
 ### Fixed
 
 - SPA client-features and infinite scroll honor preference cookies (and
   settings `plugins.*.active` defaults) instead of ignoring toggles; plugin id
   is consistently `infinite_scroll`.
+- Result ranking: unwrap DuckDuckGo `uddg` click wrappers and break equal-score
+  ties so multi-engine consensus hits merge and float above finish-order noise.
 
 ### Changed
 
+- Architecture cleanup: Lua/server plugins and answerers → SPA client-features
+  (calculator, units, hostnames/DOI, crypto, datetime, etc.); JSON/CSV/RSS stay
+  raw aggregation except server-side `ahmia_filter` when Tor proxy is enabled.
 - Engine health: storage circuit is the sole gate; `search.suspended_times` /
   ban knobs feed circuit cooldown policy only (no in-process suspend).
   DuckDuckGo captcha does not open a circuit (no durable IP ban).
 - `search.engine_list_mode`: `replace` (default) vs `merge` for non-empty
   `engines:` lists — see settings examples and registry docs.
-- Former Lua/server plugins → SPA client-features; JSON/CSV/RSS stay raw
-  aggregation (except server-side `ahmia_filter` when Tor proxy is enabled).
 - Dropped unused brand settings: `public_instances`, `wiki_url`,
   `new_issue_url` (still ignored if present in overlay YAML).
 
@@ -224,6 +229,7 @@ with Debian packages, systemd unit, and multi-arch Docker images on GHCR.
 - Command engines and several API-key / bespoke engines remain intentionally unsupported
 - See `docs/compatibility/intentional-differences.md` and `docs/security/audit.md`
 
+[1.2.2]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.2.2
 [1.2.1]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.2.1
 [1.2.0]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.2.0
 [1.1.0]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.1.0
