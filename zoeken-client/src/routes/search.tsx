@@ -19,6 +19,7 @@ import { applyClientFeatures, pluginEnabled } from "#/lib/clientFeatures";
 import { computeCalculatorAnswer } from "#/lib/clientFeatures/calculator";
 import { computeSelfInfoAnswer } from "#/lib/clientFeatures/selfInfo";
 import { computeTimeZoneAnswer } from "#/lib/clientFeatures/timeZone";
+import { computeUnitConverterAnswer } from "#/lib/clientFeatures/unitConverter";
 import { pickDidYouMean } from "#/lib/didYouMean";
 import { stringsFor } from "#/lib/i18n";
 import {
@@ -494,6 +495,9 @@ function SearchPage() {
 			pluginEnabled(config, "time_zone") ? computeTimeZoneAnswer(q, pageno) : null,
 			pluginEnabled(config, "self_info")
 				? computeSelfInfoAnswer(q, pageno, config?.client_ip ?? null, ua)
+				: null,
+			pluginEnabled(config, "unit_converter")
+				? computeUnitConverterAnswer(q, pageno)
 				: null,
 		].filter((answer) => answer !== null);
 	}, [q, language, pageno, config]);

@@ -844,6 +844,24 @@ fn client_feature_plugin_infos() -> impl Iterator<Item = PluginInfo> {
             true,
             &[],
         ),
+        info(
+            "unit_converter",
+            "Unit converter",
+            "Convert between units (\"10 km to miles\", \"how many cups in a gallon\").",
+            "answerer",
+            "general",
+            true,
+            &[],
+        ),
+        info(
+            "infiniteScroll",
+            "Infinite scroll",
+            "Automatically loads the next page when scrolling to bottom of the current page",
+            "result_plugin",
+            "ui",
+            false,
+            &[],
+        ),
     ]
     .into_iter()
 }

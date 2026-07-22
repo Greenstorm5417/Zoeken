@@ -1840,24 +1840,8 @@ mod tests {
         }
     }
 
-    fn builtin(id: &str, data: zoeken_data::DataBundle) -> LuaPlugin {
-        LuaPlugin::from_file(
-            &builtins_dir().join(format!("{id}.lua")),
-            Arc::new(data),
-            LuaRuntimeConfig::default(),
-        )
-        .expect("load builtin plugin")
-    }
-
     fn builtins_dir() -> PathBuf {
         PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("plugins")
-    }
-
-    fn query(text: &str) -> SearchQuery {
-        SearchQuery {
-            query: text.to_string(),
-            ..SearchQuery::default()
-        }
     }
 
     fn main(url: &str, title: &str) -> Result_ {
@@ -2136,53 +2120,11 @@ mod tests {
             Arc::new(zoeken_data::DataBundle::default()),
             LuaRuntimeConfig::default(),
         );
-        let ids: Vec<_> = plugins.iter().map(|plugin| plugin.id()).collect();
-        assert_eq!(ids, vec!["unit_converter", "infiniteScroll"]);
-    }
-
-    #[test]
-    fn builtin_unit_converter_converts_from_its_own_curated_units() {
-        // Self-contained (no ctx.data.units — that Wikidata dump has no "cup"
-        // and maps "gal" to the acceleration unit, not gallon).
-        let data = zoeken_data::DataBundle::default();
-        let plugin = builtin("unit_converter", data);
-        let answers = plugin.on_pre_search_answers(&query("2 km in m"), &PluginCtx::all_enabled());
-        assert_eq!(answers[0].answer, "2 km = 2000 m");
-    }
-
-    #[test]
-    fn builtin_unit_converter_understands_how_many_phrasing() {
-        let data = zoeken_data::DataBundle::default();
-        let plugin = builtin("unit_converter", data);
-        let answers = plugin.on_pre_search_answers(
-            &query("how many cups in a gallon"),
-            &PluginCtx::all_enabled(),
-        );
-        assert_eq!(answers[0].answer, "1 gal = 16 cup");
-    }
-
-    #[test]
-    fn builtin_unit_converter_treats_oz_as_floz_with_volume() {
-        let data = zoeken_data::DataBundle::default();
-        let plugin = builtin("unit_converter", data);
-        let answers =
-            plugin.on_pre_search_answers(&query("how many oz in a gal"), &PluginCtx::all_enabled());
-        assert_eq!(answers[0].answer, "1 gal = 128 floz");
-        match &answers[0].interactive {
-            Some(zoeken_results::InteractiveAnswer::Unit {
-                from,
-                to,
-                result,
-                dimension,
-                ..
-            }) => {
-                assert_eq!(from, "gal");
-                assert_eq!(to, "floz");
-                assert!((*result - 128.0).abs() < 1e-9);
-                assert_eq!(dimension, "volume");
-            }
-            other => panic!("expected unit interactive payload, got {other:?}"),
-        }
+        // All former Lua plugins now have Rust/SPA equivalents (see
+        // zoeken-server's tracker_cleanup/ahmia_filter modules and
+        // zoeken-client's clientFeatures/); the builtin plugins directory
+        // is intentionally empty.
+        assert!(plugins.is_empty());
     }
 
     #[test]
@@ -2217,15 +2159,5 @@ mod tests {
         assert!(plugin.on_result(&mut result, &query, &PluginCtx::all_enabled()));
         assert!(matches!(result, Result_::Main(ref main) if main.url == "https://ok.test/"));
         assert!(plugin.metrics().hook_failures.load(Ordering::Relaxed) >= 1);
-    }
-
-    #[test]
-    fn embedded_data_hooks_do_not_oom_or_timeout_per_result() {
-        let data = Arc::new(zoeken_data::load_embedded_bundle().expect("embedded data"));
-        let unit = builtin("unit_converter", (*data).clone());
-        let answers = unit.on_pre_search_answers(&query("rust lang"), &PluginCtx::all_enabled());
-        assert!(answers.is_empty());
-        assert_eq!(unit.metrics().hook_failures.load(Ordering::Relaxed), 0);
-        assert_eq!(unit.metrics().timeouts.load(Ordering::Relaxed), 0);
     }
 }
