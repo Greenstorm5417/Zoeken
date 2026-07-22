@@ -7,7 +7,6 @@ use std::collections::HashMap;
 use std::collections::HashSet;
 use std::time::{Duration, Instant};
 
-use zoeken_answerers::AnswererRegistry;
 use zoeken_engine_core::{EngineMeta, SearchQueryView};
 use zoeken_query::SearchQuery;
 
@@ -46,7 +45,6 @@ pub struct Search {
     registry: EngineRegistry,
     executor: std::sync::Arc<dyn EngineExecutor>,
     config: SearchConfig,
-    answerers: AnswererRegistry,
 }
 
 impl Search {
@@ -59,17 +57,7 @@ impl Search {
             registry,
             executor,
             config,
-            answerers: AnswererRegistry::new(),
         }
-    }
-
-    pub fn with_answerers(mut self, answerers: AnswererRegistry) -> Self {
-        self.answerers = answerers;
-        self
-    }
-
-    pub fn answerers(&self) -> &AnswererRegistry {
-        &self.answerers
     }
 
     pub fn registry(&self) -> &EngineRegistry {
@@ -132,9 +120,6 @@ impl Search {
                 cause: UnresponsiveCause::Error { category, message },
             });
         }
-
-        let answers = self.answerers.ask(query);
-        container.answers.extend(answers);
 
         container
     }
@@ -363,49 +348,6 @@ mod tests {
         assert_eq!(responders.len(), 1);
         assert_eq!(responders[0].0, "alpha");
         assert!(report.unresponsive_engines().is_empty());
-    }
-
-    #[tokio::test]
-    async fn run_folds_answerer_output_into_container() {
-        let registry =
-            EngineRegistry::from_engines([RegisteredEngine::new(stub("alpha", &["general"]))]);
-        let search = Search::new(
-            registry,
-            Arc::new(ImmediateExecutor),
-            SearchConfig::default(),
-        )
-        .with_answerers(zoeken_answerers::AnswererRegistry::with_builtins());
-
-        let mut query = search_query();
-        query.query = "sum 1 2 3".to_string();
-
-        let container = search
-            .run(&query, &AllEnginesEnabled, &HashSet::new(), &NoopRecorder)
-            .await;
-
-        assert_eq!(container.answers.len(), 1);
-        assert!(container.answers[0].answer.contains('6'));
-        assert_eq!(container.results.len(), 1);
-    }
-
-    #[tokio::test]
-    async fn run_without_answerers_produces_no_local_answers() {
-        let registry =
-            EngineRegistry::from_engines([RegisteredEngine::new(stub("alpha", &["general"]))]);
-        let search = Search::new(
-            registry,
-            Arc::new(ImmediateExecutor),
-            SearchConfig::default(),
-        );
-
-        let mut query = search_query();
-        query.query = "sum 1 2 3".to_string();
-
-        let container = search
-            .run(&query, &AllEnginesEnabled, &HashSet::new(), &NoopRecorder)
-            .await;
-
-        assert!(container.answers.is_empty());
     }
 
     #[test]

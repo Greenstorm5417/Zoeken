@@ -12,7 +12,6 @@ description.workspace = true
 zoeken-engine-core = { workspace = true }
 zoeken-results = { workspace = true }
 zoeken-query = { workspace = true }
-zoeken-answerers = { workspace = true }
 zoeken-metrics = { workspace = true }
 tokio = { workspace = true }
 tracing = { workspace = true }

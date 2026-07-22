@@ -17,7 +17,11 @@ import {
 } from "#/lib/api";
 import { applyClientFeatures, pluginEnabled } from "#/lib/clientFeatures";
 import { computeCalculatorAnswer } from "#/lib/clientFeatures/calculator";
+import { computeCryptoAnswer } from "#/lib/clientFeatures/crypto";
+import { computeDateTimeAnswer } from "#/lib/clientFeatures/dateTime";
+import { computeRandomAnswer } from "#/lib/clientFeatures/random";
 import { computeSelfInfoAnswer } from "#/lib/clientFeatures/selfInfo";
+import { computeStatisticsAnswer } from "#/lib/clientFeatures/statistics";
 import { computeTimeZoneAnswer } from "#/lib/clientFeatures/timeZone";
 import { computeUnitConverterAnswer } from "#/lib/clientFeatures/unitConverter";
 import { pickDidYouMean } from "#/lib/didYouMean";
@@ -499,6 +503,10 @@ function SearchPage() {
 			pluginEnabled(config, "unit_converter")
 				? computeUnitConverterAnswer(q, pageno)
 				: null,
+			computeStatisticsAnswer(q),
+			computeRandomAnswer(q),
+			computeDateTimeAnswer(q),
+			computeCryptoAnswer(q),
 		].filter((answer) => answer !== null);
 	}, [q, language, pageno, config]);
 	const answers = [...localAnswers, ...(firstPage?.answers ?? [])];

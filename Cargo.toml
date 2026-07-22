@@ -9,7 +9,6 @@ members = [
     "zoeken/zoeken-engines",
     "zoeken/zoeken-query",
     "zoeken/zoeken-search",
-    "zoeken/zoeken-answerers",
     "zoeken/zoeken-autocomplete",
     "zoeken/zoeken-favicons",
     "zoeken/zoeken-botdetect",
@@ -51,7 +50,6 @@ zoeken-engine-core = { path = "zoeken/zoeken-engine-core" }
 zoeken-engines = { path = "zoeken/zoeken-engines" }
 zoeken-query = { path = "zoeken/zoeken-query" }
 zoeken-search = { path = "zoeken/zoeken-search" }
-zoeken-answerers = { path = "zoeken/zoeken-answerers" }
 zoeken-autocomplete = { path = "zoeken/zoeken-autocomplete" }
 zoeken-favicons = { path = "zoeken/zoeken-favicons" }
 zoeken-botdetect = { path = "zoeken/zoeken-botdetect" }

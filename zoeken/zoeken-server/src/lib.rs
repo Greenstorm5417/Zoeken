@@ -327,9 +327,7 @@ impl AppState {
             &zoeken_data::load_embedded_bundle()
                 .expect("compile-time validated embedded data must load"),
         ));
-        let search = Search::new(registry, executor, SearchConfig::default()).with_answerers(
-            zoeken_answerers::AnswererRegistry::with_builtins().with_data(Arc::clone(&data)),
-        );
+        let search = Search::new(registry, executor, SearchConfig::default());
 
         Ok(AppState::from_search(search).with_data(data))
     }
@@ -386,9 +384,7 @@ impl AppState {
 
         let registry = zoeken_engines::registry_from_settings(&settings);
         let search_config = search_config_from_settings(&settings);
-        let search = Search::new(registry, executor, search_config).with_answerers(
-            zoeken_answerers::AnswererRegistry::with_builtins().with_data(Arc::clone(&data)),
-        );
+        let search = Search::new(registry, executor, search_config);
 
         let autocomplete = zoeken_autocomplete::service_for(
             Some(&settings.search.autocomplete),

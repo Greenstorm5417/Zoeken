@@ -4129,18 +4129,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b8848ee67ecc8aedbaf3e4122217aff892639231befc6a1b58d29fff4c2cabaa"
 
 [[package]]
-name = "zoeken-answerers"
-version = "1.2.1"
-dependencies = [
- "chrono",
- "proptest",
- "rand 0.9.4",
- "zoeken-data",
- "zoeken-query",
- "zoeken-results",
-]
-
-[[package]]
 name = "zoeken-autocomplete"
 version = "1.2.1"
 dependencies = [
@@ -4334,7 +4322,6 @@ dependencies = [
  "tokio",
  "tracing",
  "url",
- "zoeken-answerers",
  "zoeken-engine-core",
  "zoeken-metrics",
  "zoeken-query",
@@ -4371,7 +4358,6 @@ dependencies = [
  "tracing-subscriber",
  "url",
  "wreq",
- "zoeken-answerers",
  "zoeken-autocomplete",
  "zoeken-botdetect",
  "zoeken-data",
