@@ -246,6 +246,7 @@ impl SuspensionPolicy {
 
     /// Build circuit cooldown policy from resolved health durations.
     #[must_use]
+    #[allow(clippy::too_many_arguments)]
     pub fn from_durations(
         ban_time_on_fail: Duration,
         max_ban_time_on_fail: Duration,
