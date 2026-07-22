@@ -11,6 +11,7 @@ Related: `docs/compatibility/targets.md`, `zoeken/zoeken-server/src/serialize.rs
 - [x] Phase 2 — MessagePack Accept / `?format=msgpack` (SPA remains JSON by default)
 - [x] Phase 3 — CI drift check, docs, CHANGELOG
 
+**Deferred / optional (not blocking “done”):** SPA defaulting to MessagePack in production (needs benchmarks); `@msgpack/msgpack` client dep unused while SPA stays JSON; dedicated `kind=video|product|news`; native `/api/v1/config`.
 ## Goal
 
 Keep SearXNG `format=json|csv|rss` as a frozen-ish **compat layer**. Give the SPA a first-class **Zoeken native** search response that:

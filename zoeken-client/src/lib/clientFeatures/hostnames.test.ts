@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { SearchResult } from "../api";
-import { mainResult } from "./fixtures";
+import { mainResult, paperResult } from "./fixtures";
 import {
 	applyHostnames,
 	type HostnamesRules,
@@ -101,6 +101,26 @@ describe("applyHostnames", () => {
 		if (r.kind === "image") {
 			expect(r.img_src).toBe("https://new.example.com/i.png");
 			expect(r.thumbnail_src).toBe("https://new.example.com/t.png");
+		}
+	});
+
+	it("rewrites paper pdf_url and html_url alongside url", () => {
+		const out = applyHostnames(
+			[
+				paperResult({
+					url: "https://old.example.com/abs",
+					pdf_url: "https://old.example.com/paper.pdf",
+					html_url: "https://old.example.com/html",
+				}),
+			],
+			rules({ replace: { "^old\\.example\\.com$": "new.example.com" } }),
+		);
+		const r = out[0].result;
+		expect(r.kind).toBe("paper");
+		if (r.kind === "paper") {
+			expect(r.url).toBe("https://new.example.com/abs");
+			expect(r.pdf_url).toBe("https://new.example.com/paper.pdf");
+			expect(r.html_url).toBe("https://new.example.com/html");
 		}
 	});
 

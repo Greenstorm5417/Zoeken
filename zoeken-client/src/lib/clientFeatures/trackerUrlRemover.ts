@@ -105,6 +105,19 @@ export function applyTrackerUrlRemover(
 					img_src: clean(result.img_src, rules),
 					thumbnail_src: clean(result.thumbnail_src, rules),
 				};
+			case "paper":
+				return {
+					...result,
+					url,
+					pdf_url: clean(result.pdf_url, rules),
+					html_url: clean(result.html_url, rules),
+				};
+			case "file":
+				return {
+					...result,
+					url,
+					magnetlink: clean(result.magnetlink, rules),
+				};
 			default:
 				return { ...result, url };
 		}

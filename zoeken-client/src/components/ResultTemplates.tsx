@@ -53,17 +53,18 @@ export function TorrentResult({
 	newTab?: boolean;
 }) {
 	const stats: string[] = [];
-	if (result.filesize) stats.push(result.filesize);
+	const size = result.filesize || result.size;
+	if (size) stats.push(size);
 	if (result.time) stats.push(result.time);
+	if (result.author) stats.push(result.author);
 	if (typeof result.seed === "number") stats.push(`${result.seed} seeders`);
 	if (typeof result.leech === "number") stats.push(`${result.leech} leechers`);
+	const blurb = result.abstract || result.content;
 	return (
 		<article className="max-w-[40rem]">
 			<ResultTitle result={result} newTab={newTab} />
-			{result.content ? (
-				<p className="mt-1 line-clamp-2 text-[0.9rem] text-ink-muted">
-					{result.content}
-				</p>
+			{blurb ? (
+				<p className="mt-1 line-clamp-2 text-[0.9rem] text-ink-muted">{blurb}</p>
 			) : null}
 			{stats.length > 0 ? (
 				<div className="mt-2 flex flex-wrap items-center gap-2 text-[0.8rem]">
@@ -91,7 +92,7 @@ export function TorrentResult({
 	);
 }
 
-/** Academic paper: authors, journal, DOI, direct PDF link. */
+/** Academic paper: authors, citation fields, DOI, direct PDF link. */
 export function PaperResult({
 	result,
 	newTab,
@@ -104,17 +105,36 @@ export function PaperResult({
 			? `${result.authors.slice(0, 4).join(", ")} et al.`
 			: result.authors.join(", ")
 		: null;
+	const citation = [
+		result.volume ? `vol. ${result.volume}` : "",
+		result.number ? `no. ${result.number}` : "",
+		result.pages ? `pp. ${result.pages}` : "",
+	]
+		.filter(Boolean)
+		.join(", ");
 	const meta = [
 		authors,
+		result.type,
 		result.journal,
 		result.publisher,
+		result.editor ? `ed. ${result.editor}` : "",
+		citation,
 		result.published_date?.slice(0, 10),
 	].filter(Boolean) as string[];
+	const ids = [
+		...(result.issn ?? []).map((id) => `ISSN ${id}`),
+		...(result.isbn ?? []).map((id) => `ISBN ${id}`),
+	];
 	return (
 		<article className="max-w-[40rem]">
 			<ResultTitle result={result} newTab={newTab} />
 			{meta.length > 0 ? (
 				<p className="mt-1 text-[0.8rem] text-ink-subtle">{meta.join(" · ")}</p>
+			) : null}
+			{ids.length > 0 ? (
+				<p className="mt-1 font-mono text-[0.75rem] text-ink-subtle">
+					{ids.join(" · ")}
+				</p>
 			) : null}
 			{result.tags && result.tags.length > 0 ? (
 				<p className="mt-1 text-[0.75rem] text-ink-subtle">
@@ -125,6 +145,9 @@ export function PaperResult({
 				<p className="mt-1.5 line-clamp-3 text-[0.9rem] text-ink-muted">
 					{result.content}
 				</p>
+			) : null}
+			{result.comments ? (
+				<p className="mt-1 text-[0.8rem] text-ink-subtle">{result.comments}</p>
 			) : null}
 			<div className="mt-2 flex flex-wrap items-center gap-3 text-[0.8rem]">
 				{result.pdf_url ? (
@@ -384,10 +407,16 @@ export function ResultItem({
 			? result.url
 			: urlFormatting === "host"
 				? host
-				: `${host}${crumbs ? ` > ${crumbs}` : ""}`;
+				: result.kind === "main" && result.pretty_url
+					? result.pretty_url
+					: `${host}${crumbs ? ` > ${crumbs}` : ""}`;
 	const favicon = resultFavicon(result);
 	const thumb =
 		result.kind === "main" && result.thumbnail ? result.thumbnail : "";
+	const published =
+		result.kind === "main" && result.published_date
+			? result.published_date.slice(0, 10)
+			: "";
 
 	return (
 		<article className="max-w-[40rem]">
@@ -425,6 +454,9 @@ export function ResultItem({
 					{result.title}
 				</h2>
 			</a>
+			{published ? (
+				<p className="mt-1 text-[0.75rem] text-ink-subtle">{published}</p>
+			) : null}
 			{thumb ? (
 				<img
 					src={thumb}

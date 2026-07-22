@@ -86,6 +86,19 @@ function applyUrlRules(
 				img_src: filterUrl(result.img_src, rules),
 				thumbnail_src: filterUrl(result.thumbnail_src, rules),
 			};
+		case "paper":
+			return {
+				...result,
+				url,
+				pdf_url: filterUrl(result.pdf_url, rules),
+				html_url: filterUrl(result.html_url, rules),
+			};
+		case "file":
+			return {
+				...result,
+				url,
+				magnetlink: filterUrl(result.magnetlink, rules),
+			};
 		default:
 			return { ...result, url };
 	}

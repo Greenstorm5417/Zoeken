@@ -537,19 +537,27 @@ function SearchPage() {
 							Did you mean{" "}
 							{firstPage.corrections.map((c, i) => {
 								const text = correctionText(c);
+								const className =
+									"font-medium text-accent italic hover:underline";
 								return (
-									<span key={text}>
+									<span key={`${text}:${c.engine}:${c.url ?? ""}`}>
 										{i > 0 ? ", " : null}
-										<Link
-											to="/search"
-											search={searchLink(params, {
-												q: text,
-												pageno: undefined,
-											})}
-											className="font-medium text-accent italic hover:underline"
-										>
-											{text}
-										</Link>
+										{c.url ? (
+											<a href={c.url} className={className}>
+												{text}
+											</a>
+										) : (
+											<Link
+												to="/search"
+												search={searchLink(params, {
+													q: text,
+													pageno: undefined,
+												})}
+												className={className}
+											>
+												{text}
+											</Link>
+										)}
 									</span>
 								);
 							})}

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { mainResult } from "./fixtures";
+import { mainResult, paperResult } from "./fixtures";
 import {
 	applyTrackerUrlRemover,
 	stripTrackerParams,
@@ -69,6 +69,23 @@ describe("applyTrackerUrlRemover", () => {
 		);
 		expect(out[0].kind === "image" && out[0].thumbnail_src).toBe(
 			"https://cdn.example.com/t.png",
+		);
+	});
+
+	it("cleans pdf_url and html_url on paper results", () => {
+		const out = applyTrackerUrlRemover([
+			paperResult({
+				url: "https://arxiv.org/abs/1?utm_source=a",
+				pdf_url: "https://arxiv.org/pdf/1?fbclid=1",
+				html_url: "https://arxiv.org/html/1?gclid=2",
+			}),
+		]);
+		expect(out[0].url).toBe("https://arxiv.org/abs/1");
+		expect(out[0].kind === "paper" && out[0].pdf_url).toBe(
+			"https://arxiv.org/pdf/1",
+		);
+		expect(out[0].kind === "paper" && out[0].html_url).toBe(
+			"https://arxiv.org/html/1",
 		);
 	});
 });

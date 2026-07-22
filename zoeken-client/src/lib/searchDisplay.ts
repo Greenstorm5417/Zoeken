@@ -17,12 +17,12 @@ export const DEFAULT_CATEGORIES = [
 	"shopping",
 ] as const;
 
-export function suggestionText(s: string | NativeSuggestion) {
-	return typeof s === "string" ? s : s.suggestion;
+export function suggestionText(s: NativeSuggestion) {
+	return s.suggestion;
 }
 
-export function correctionText(c: string | NativeCorrection) {
-	return typeof c === "string" ? c : c.correction;
+export function correctionText(c: NativeCorrection) {
+	return c.correction;
 }
 
 export function hostnameOf(url: string) {
