@@ -141,148 +141,145 @@ fn default_engines() -> Vec<RegisteredEngine> {
 fn engine_from_settings(cfg: &zoeken_settings::EngineSettings) -> Option<RegisteredEngine> {
     let key = cfg.engine.as_deref().unwrap_or(&cfg.name);
     let base_url = engine_extra_string(cfg, "base_url");
-    let engine: std::sync::Arc<dyn zoeken_engine_core::Engine> =
-        match key {
-            "duckduckgo" => std::sync::Arc::new(DuckDuckGo::new()),
-            "google" => std::sync::Arc::new(Google::new()),
-            "bing" => std::sync::Arc::new(Bing::new()),
-            "bing_images" | "bing images" => std::sync::Arc::new(BingImages::new()),
-            "brave" => std::sync::Arc::new(Brave::new()),
-            "startpage" => std::sync::Arc::new(Startpage::new()),
-            "mojeek" => std::sync::Arc::new(Mojeek::new()),
-            "qwant" => std::sync::Arc::new(Qwant::new()),
-            "dogpile" => {
-                let engine = engine_config_from_settings::<DogpileConfig>(cfg)
-                    .and_then(|config| Dogpile::new(config).ok())
-                    .unwrap_or_default();
-                std::sync::Arc::new(engine)
-            }
-            "swisscows" | "swisscows_news" | "swisscows news" => {
-                let mut config = engine_config_from_settings::<SwisscowsConfig>(cfg)
-                    .unwrap_or_else(|| SwisscowsConfig {
+    let engine: std::sync::Arc<dyn zoeken_engine_core::Engine> = match key {
+        "duckduckgo" => std::sync::Arc::new(DuckDuckGo::new()),
+        "google" => std::sync::Arc::new(Google::new()),
+        "bing" => std::sync::Arc::new(Bing::new()),
+        "bing_images" | "bing images" => std::sync::Arc::new(BingImages::new()),
+        "brave" => std::sync::Arc::new(Brave::new()),
+        "startpage" => std::sync::Arc::new(Startpage::new()),
+        "mojeek" => std::sync::Arc::new(Mojeek::new()),
+        "qwant" => std::sync::Arc::new(Qwant::new()),
+        "dogpile" => {
+            let engine = engine_config_from_settings::<DogpileConfig>(cfg)
+                .and_then(|config| Dogpile::new(config).ok())
+                .unwrap_or_default();
+            std::sync::Arc::new(engine)
+        }
+        "swisscows" | "swisscows_news" | "swisscows news" => {
+            let mut config =
+                engine_config_from_settings::<SwisscowsConfig>(cfg).unwrap_or_else(|| {
+                    SwisscowsConfig {
                         base_url: "https://api.swisscows.com".to_string(),
                         swisscows_category: "web".to_string(),
                         results_per_page: 20,
-                    });
-                if matches!(key, "swisscows_news" | "swisscows news") {
-                    config.swisscows_category = "news".to_string();
-                }
-                let engine = Swisscows::new(config).unwrap_or_default();
-                std::sync::Arc::new(engine)
+                    }
+                });
+            if matches!(key, "swisscows_news" | "swisscows news") {
+                config.swisscows_category = "news".to_string();
             }
-            "marginalia" => {
-                let config = engine_config_from_settings::<MarginaliaConfig>(cfg)?;
-                std::sync::Arc::new(Marginalia::new(config).ok()?)
-            }
-            "wikipedia" => std::sync::Arc::new(Wikipedia::new()),
-            "wikidata" => std::sync::Arc::new(Wikidata::new()),
-            "wikibooks" => std::sync::Arc::new(Wikibooks::new()),
-            "arxiv" => std::sync::Arc::new(Arxiv::new()),
-            "crates" => std::sync::Arc::new(Crates::new()),
-            "docker_hub" | "docker hub" => std::sync::Arc::new(DockerHub::new()),
-            "github" => std::sync::Arc::new(Github::new()),
-            "gitlab" => {
-                let engine = base_url
-                    .map(|url| Gitlab::new().with_base_url(url))
-                    .unwrap_or_default();
-                std::sync::Arc::new(engine)
-            }
-            "pypi" => std::sync::Arc::new(Pypi::new()),
-            "hackernews" | "hacker news" => std::sync::Arc::new(Hackernews::new()),
-            "reddit" => std::sync::Arc::new(Reddit::new()),
-            "lemmy" => {
-                let engine = base_url
-                    .map(|url| Lemmy::new().with_base_url(url))
-                    .unwrap_or_default();
-                std::sync::Arc::new(engine)
-            }
-            "mastodon" | "mastodon users" => std::sync::Arc::new(Mastodon::accounts()),
-            "mastodon hashtags" => std::sync::Arc::new(Mastodon::hashtags()),
-            "stackoverflow" | "stackexchange" => {
-                std::sync::Arc::new(Stackexchange::stackoverflow())
-            }
-            "askubuntu" => std::sync::Arc::new(Stackexchange::askubuntu()),
-            "superuser" => std::sync::Arc::new(Stackexchange::superuser()),
-            "bandcamp" => std::sync::Arc::new(Bandcamp::new()),
-            "soundcloud" => std::sync::Arc::new(Soundcloud::new()),
-            "openverse" => std::sync::Arc::new(Openverse::new()),
-            "sepiasearch" | "sepia search" => std::sync::Arc::new(SepiaSearch::new()),
-            "openstreetmap" | "openstreetmap search" => std::sync::Arc::new(Openstreetmap::new()),
-            "piped" => std::sync::Arc::new(Piped::videos()),
-            "piped.music" | "piped music" => std::sync::Arc::new(Piped::music()),
-            "invidious" => {
-                let engine = base_url
-                    .map(|url| Invidious::new().with_base_url(url))
-                    .unwrap_or_default();
-                std::sync::Arc::new(engine)
-            }
-            "peertube" => std::sync::Arc::new(Peertube::new()),
-            "dailymotion" => std::sync::Arc::new(Dailymotion::new()),
-            "vimeo" => std::sync::Arc::new(Vimeo::new()),
-            "weather" | "wttr.in" | "wttr" => std::sync::Arc::new(Weather::new()),
-            "currency" | "currency_convert" => std::sync::Arc::new(Currency::new()),
-            "dictionary" | "wiktionary_define" => std::sync::Arc::new(Dictionary::new()),
-            "translate" | "mymemory" | "mymemory translated" => {
-                std::sync::Arc::new(Translate::new())
-            }
-            "unsplash" => std::sync::Arc::new(Unsplash::new()),
-            "genius" => std::sync::Arc::new(Genius::new()),
-            "semantic scholar" | "semantic_scholar" => std::sync::Arc::new(SemanticScholar::new()),
-            "crossref" => std::sync::Arc::new(Crossref::new()),
-            "core.ac.uk" | "core" => {
-                let engine = engine_extra_string(cfg, "api_key")
-                    .map(Core::with_api_key)
-                    .unwrap_or_default();
-                std::sync::Arc::new(engine)
-            }
-            "github code" | "github_code" => std::sync::Arc::new(GithubCode::new()),
-            "piratebay" => std::sync::Arc::new(Piratebay::new()),
-            "nyaa" => std::sync::Arc::new(Nyaa::new()),
-            "solidtorrents" => {
-                let engine = base_url
-                    .map(SolidTorrents::with_base_url)
-                    .unwrap_or_default();
-                std::sync::Arc::new(engine)
-            }
-            "photon" => std::sync::Arc::new(Photon::new()),
-            "imdb" => std::sync::Arc::new(Imdb::new()),
-            "apple_app_store" | "apple app store" => std::sync::Arc::new(AppleAppStore::new()),
-            "tootfinder" => std::sync::Arc::new(Tootfinder::new()),
-            "senscritique" => std::sync::Arc::new(SensCritique::new()),
-            "9gag" => std::sync::Arc::new(NineGag::new()),
-            "yacy" => {
-                let config = engine_config_from_settings::<YacyConfig>(cfg)?;
-                std::sync::Arc::new(Yacy::new(config).ok()?)
-            }
-            "elasticsearch" => {
-                let config = engine_config_from_settings::<ElasticsearchConfig>(cfg)?;
-                std::sync::Arc::new(Elasticsearch::new(config).ok()?)
-            }
-            "meilisearch" => {
-                let config = engine_config_from_settings::<MeilisearchConfig>(cfg)?;
-                std::sync::Arc::new(Meilisearch::new(config).ok()?)
-            }
-            "sqlite" => {
-                let config = engine_config_from_settings::<SqliteConfig>(cfg)?;
-                std::sync::Arc::new(Sqlite::new(config).ok()?)
-            }
-            "xpath" | "html" | "generic_xpath" => {
-                let config = generic_html_config_from_settings(cfg)?;
+            let engine = Swisscows::new(config).unwrap_or_default();
+            std::sync::Arc::new(engine)
+        }
+        "marginalia" => {
+            let config = engine_config_from_settings::<MarginaliaConfig>(cfg)?;
+            std::sync::Arc::new(Marginalia::new(config).ok()?)
+        }
+        "wikipedia" => std::sync::Arc::new(Wikipedia::new()),
+        "wikidata" => std::sync::Arc::new(Wikidata::new()),
+        "wikibooks" => std::sync::Arc::new(Wikibooks::new()),
+        "arxiv" => std::sync::Arc::new(Arxiv::new()),
+        "crates" => std::sync::Arc::new(Crates::new()),
+        "docker_hub" | "docker hub" => std::sync::Arc::new(DockerHub::new()),
+        "github" => std::sync::Arc::new(Github::new()),
+        "gitlab" => {
+            let engine = base_url
+                .map(|url| Gitlab::new().with_base_url(url))
+                .unwrap_or_default();
+            std::sync::Arc::new(engine)
+        }
+        "pypi" => std::sync::Arc::new(Pypi::new()),
+        "hackernews" | "hacker news" => std::sync::Arc::new(Hackernews::new()),
+        "reddit" => std::sync::Arc::new(Reddit::new()),
+        "lemmy" => {
+            let engine = base_url
+                .map(|url| Lemmy::new().with_base_url(url))
+                .unwrap_or_default();
+            std::sync::Arc::new(engine)
+        }
+        "mastodon" | "mastodon users" => std::sync::Arc::new(Mastodon::accounts()),
+        "mastodon hashtags" => std::sync::Arc::new(Mastodon::hashtags()),
+        "stackoverflow" | "stackexchange" => std::sync::Arc::new(Stackexchange::stackoverflow()),
+        "askubuntu" => std::sync::Arc::new(Stackexchange::askubuntu()),
+        "superuser" => std::sync::Arc::new(Stackexchange::superuser()),
+        "bandcamp" => std::sync::Arc::new(Bandcamp::new()),
+        "soundcloud" => std::sync::Arc::new(Soundcloud::new()),
+        "openverse" => std::sync::Arc::new(Openverse::new()),
+        "sepiasearch" | "sepia search" => std::sync::Arc::new(SepiaSearch::new()),
+        "openstreetmap" | "openstreetmap search" => std::sync::Arc::new(Openstreetmap::new()),
+        "piped" => std::sync::Arc::new(Piped::videos()),
+        "piped.music" | "piped music" => std::sync::Arc::new(Piped::music()),
+        "invidious" => {
+            let engine = base_url
+                .map(|url| Invidious::new().with_base_url(url))
+                .unwrap_or_default();
+            std::sync::Arc::new(engine)
+        }
+        "peertube" => std::sync::Arc::new(Peertube::new()),
+        "dailymotion" => std::sync::Arc::new(Dailymotion::new()),
+        "vimeo" => std::sync::Arc::new(Vimeo::new()),
+        "weather" | "wttr.in" | "wttr" => std::sync::Arc::new(Weather::new()),
+        "currency" | "currency_convert" => std::sync::Arc::new(Currency::new()),
+        "dictionary" | "wiktionary_define" => std::sync::Arc::new(Dictionary::new()),
+        "translate" | "mymemory" | "mymemory translated" => std::sync::Arc::new(Translate::new()),
+        "unsplash" => std::sync::Arc::new(Unsplash::new()),
+        "genius" => std::sync::Arc::new(Genius::new()),
+        "semantic scholar" | "semantic_scholar" => std::sync::Arc::new(SemanticScholar::new()),
+        "crossref" => std::sync::Arc::new(Crossref::new()),
+        "core.ac.uk" | "core" => {
+            let engine = engine_extra_string(cfg, "api_key")
+                .map(Core::with_api_key)
+                .unwrap_or_default();
+            std::sync::Arc::new(engine)
+        }
+        "github code" | "github_code" => std::sync::Arc::new(GithubCode::new()),
+        "piratebay" => std::sync::Arc::new(Piratebay::new()),
+        "nyaa" => std::sync::Arc::new(Nyaa::new()),
+        "solidtorrents" => {
+            let engine = base_url
+                .map(SolidTorrents::with_base_url)
+                .unwrap_or_default();
+            std::sync::Arc::new(engine)
+        }
+        "photon" => std::sync::Arc::new(Photon::new()),
+        "imdb" => std::sync::Arc::new(Imdb::new()),
+        "apple_app_store" | "apple app store" => std::sync::Arc::new(AppleAppStore::new()),
+        "tootfinder" => std::sync::Arc::new(Tootfinder::new()),
+        "senscritique" => std::sync::Arc::new(SensCritique::new()),
+        "9gag" => std::sync::Arc::new(NineGag::new()),
+        "yacy" => {
+            let config = engine_config_from_settings::<YacyConfig>(cfg)?;
+            std::sync::Arc::new(Yacy::new(config).ok()?)
+        }
+        "elasticsearch" => {
+            let config = engine_config_from_settings::<ElasticsearchConfig>(cfg)?;
+            std::sync::Arc::new(Elasticsearch::new(config).ok()?)
+        }
+        "meilisearch" => {
+            let config = engine_config_from_settings::<MeilisearchConfig>(cfg)?;
+            std::sync::Arc::new(Meilisearch::new(config).ok()?)
+        }
+        "sqlite" => {
+            let config = engine_config_from_settings::<SqliteConfig>(cfg)?;
+            std::sync::Arc::new(Sqlite::new(config).ok()?)
+        }
+        "xpath" | "html" | "generic_xpath" => {
+            let config = generic_html_config_from_settings(cfg)?;
+            std::sync::Arc::new(GenericHtmlEngine::new(config).ok()?)
+        }
+        "json_engine" | "json" | "generic_json" => {
+            let config = generic_json_config_from_settings(cfg)?;
+            std::sync::Arc::new(GenericJsonEngine::new(config).ok()?)
+        }
+        _ => match builtin_generic_config(key)? {
+            GenericEngineConfig::Html(config) => {
                 std::sync::Arc::new(GenericHtmlEngine::new(config).ok()?)
             }
-            "json_engine" | "json" | "generic_json" => {
-                let config = generic_json_config_from_settings(cfg)?;
+            GenericEngineConfig::Json(config) => {
                 std::sync::Arc::new(GenericJsonEngine::new(config).ok()?)
             }
-            _ => match builtin_generic_config(key)? {
-                GenericEngineConfig::Html(config) => {
-                    std::sync::Arc::new(GenericHtmlEngine::new(config).ok()?)
-                }
-                GenericEngineConfig::Json(config) => {
-                    std::sync::Arc::new(GenericJsonEngine::new(config).ok()?)
-                }
-            },
-        };
+        },
+    };
     Some(RegisteredEngine::new(engine))
 }
 

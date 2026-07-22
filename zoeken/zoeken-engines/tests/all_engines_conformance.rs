@@ -4,14 +4,15 @@ use std::path::PathBuf;
 
 use zoeken_engine_core::Engine;
 use zoeken_engines::{
-    AppleAppStore, Arxiv, Bandcamp, Bing, Brave, Core, Crates, Crossref, Dailymotion, DockerHub,
-    Dogpile, DuckDuckGo, Elasticsearch, ElasticsearchConfig, Fixture, GenericEngineConfig,
-    GenericHtmlEngine, GenericJsonEngine, Genius, Github, GithubCode, Gitlab, Google, Hackernews,
-    Imdb, Invidious, Lemmy, Marginalia, MarginaliaConfig, Mastodon, Meilisearch, MeilisearchConfig,
-    Mojeek, NineGag, Nyaa, Openstreetmap, Openverse, Peertube, Photon, Piped, Piratebay, Pypi,
-    Qwant, Reddit, SemanticScholar, SensCritique, SepiaSearch, SolidTorrents, Soundcloud,
-    Stackexchange, Startpage, Swisscows, Tootfinder, Unsplash, Vimeo, Wikibooks, Wikidata,
-    Wikipedia, Yacy, YacyConfig, builtin_generic_config, load_fixtures_for, run_conformance,
+    AppleAppStore, Arxiv, Bandcamp, Bing, BingImages, Brave, Core, Crates, Crossref, Dailymotion,
+    DockerHub, Dogpile, DuckDuckGo, Elasticsearch, ElasticsearchConfig, Fixture,
+    GenericEngineConfig, GenericHtmlEngine, GenericJsonEngine, Genius, Github, GithubCode, Gitlab,
+    Google, Hackernews, Imdb, Invidious, Lemmy, Marginalia, MarginaliaConfig, Mastodon,
+    Meilisearch, MeilisearchConfig, Mojeek, NineGag, Nyaa, Openstreetmap, Openverse, Peertube,
+    Photon, Piped, Piratebay, Pypi, Qwant, Reddit, SemanticScholar, SensCritique, SepiaSearch,
+    SolidTorrents, Soundcloud, Stackexchange, Startpage, Swisscows, Tootfinder, Unsplash, Vimeo,
+    Wikibooks, Wikidata, Wikipedia, Yacy, YacyConfig, builtin_generic_config, load_fixtures_for,
+    run_conformance,
 };
 
 fn fixtures_root() -> PathBuf {
@@ -47,6 +48,12 @@ fn engine_entries() -> Vec<EngineEntry> {
             name: "bing",
             dir: "bing",
             engine_for: |_| Box::new(Bing::new()),
+            expect_error: never_errors,
+        },
+        EngineEntry {
+            name: "bing_images",
+            dir: "bing_images",
+            engine_for: |_| Box::new(BingImages::new()),
             expect_error: never_errors,
         },
         EngineEntry {
@@ -508,5 +515,44 @@ fn all_ported_engines_conform_to_golden_output() {
         passed,
         entries.len(),
         "every ported engine must pass the conformance harness"
+    );
+}
+
+/// Catches the case this file exists to prevent: a fixtures/<engine> directory
+/// with real conformance fixtures that nothing here loads, so it silently
+/// never runs. Directories with no `.json` files (e.g. sqlite's `.sql` seed)
+/// aren't conformance fixtures and are skipped.
+#[test]
+fn every_fixture_directory_with_json_is_registered() {
+    let root = fixtures_root();
+    let registered: std::collections::HashSet<&str> =
+        engine_entries().iter().map(|e| e.dir).collect();
+
+    let mut unregistered = Vec::new();
+    for entry in std::fs::read_dir(&root).expect("read fixtures dir") {
+        let entry = entry.expect("read fixtures dir entry");
+        if !entry.file_type().expect("file type").is_dir() {
+            continue;
+        }
+        let has_json = std::fs::read_dir(entry.path())
+            .into_iter()
+            .flatten()
+            .filter_map(Result::ok)
+            .any(|f| f.path().extension().is_some_and(|ext| ext == "json"));
+        if !has_json {
+            continue;
+        }
+        let name = entry.file_name();
+        let name = name.to_string_lossy();
+        if !registered.contains(name.as_ref()) {
+            unregistered.push(name.into_owned());
+        }
+    }
+
+    assert!(
+        unregistered.is_empty(),
+        "fixtures/{{{}}} have golden fixtures but no EngineEntry in \
+         engine_entries() -- they're never conformance-tested by this harness",
+        unregistered.join(", ")
     );
 }
