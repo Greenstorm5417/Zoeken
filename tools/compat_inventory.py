@@ -595,10 +595,20 @@ def upstream_asset_exists(upstream: Path | None, candidate: str) -> bool:
 
 
 def data_asset_notes(asset: str, status: str) -> str:
+    if asset == "tracker patterns":
+        return (
+            "SPA source in zoeken-data/data; synced to zoeken-client (not server-embedded)"
+            if status == "present"
+            else "needed by SPA tracker_url_remover client feature"
+        )
+    if asset == "Ahmia blacklist":
+        return (
+            "bundled in zoeken/zoeken-data/data"
+            if status == "present"
+            else "needed by server-side ahmia_filter"
+        )
     if status == "present":
         return "bundled in zoeken/zoeken-data/data"
-    if asset in {"tracker patterns", "Ahmia blacklist"}:
-        return "needed by bundled plugins"
     return "not bundled yet"
 
 

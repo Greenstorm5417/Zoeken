@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- SPA client-features and infinite scroll honor preference cookies (and
+  settings `plugins.*.active` defaults) instead of ignoring toggles; plugin id
+  is consistently `infinite_scroll`.
+
 ### Changed
 
 - Engine health: storage circuit is the sole gate; `search.suspended_times` /
@@ -18,6 +24,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   aggregation (except server-side `ahmia_filter` when Tor proxy is enabled).
 - Dropped unused brand settings: `public_instances`, `wiki_url`,
   `new_issue_url` (still ignored if present in overlay YAML).
+
+### Removed
+
+- Lua plugin host, `zoeken-plugins` / `zoeken-answerers`, and unused workspace
+  `fasteval` dependency.
 
 ## [1.2.1] - 2026-07-21
 

@@ -390,8 +390,21 @@ fn normalize_plugin_id(id: &str) -> String {
         .unwrap_or(class_stripped)
         .rsplit('.')
         .next()
-        .unwrap_or(class_stripped);
-    short.replace('-', "_")
+        .unwrap_or(class_stripped)
+        .replace('-', "_");
+    // camelCase / PascalCase → snake_case (e.g. infiniteScroll → infinite_scroll)
+    let mut out = String::with_capacity(short.len() + 4);
+    for (i, ch) in short.chars().enumerate() {
+        if ch.is_ascii_uppercase() {
+            if i > 0 && !out.ends_with('_') {
+                out.push('_');
+            }
+            out.push(ch.to_ascii_lowercase());
+        } else {
+            out.push(ch);
+        }
+    }
+    out
 }
 
 fn apply_data(prefs: &mut Preferences, params: &FormParams, data: &DataBundle) {
@@ -713,5 +726,12 @@ mod tests {
         assert_eq!(RequestMethod::parse("get"), Some(RequestMethod::Get));
         assert_eq!(RequestMethod::parse("Post"), Some(RequestMethod::Post));
         assert_eq!(RequestMethod::parse("put"), None);
+    }
+
+    #[test]
+    fn normalize_plugin_id_snake_cases_camel() {
+        assert_eq!(normalize_plugin_id("infiniteScroll"), "infinite_scroll");
+        assert_eq!(normalize_plugin_id("oa_doi_rewrite"), "oa_doi_rewrite");
+        assert_eq!(normalize_plugin_id("tracker-url-remover"), "tracker_url_remover");
     }
 }

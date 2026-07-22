@@ -106,7 +106,6 @@ impl InfoPages {
 pub struct PluginData {
     pub doi_resolver: Option<String>,
     pub hostnames: HostnamesRules,
-    pub using_tor_proxy: bool,
 }
 
 #[derive(Debug, Default, Clone)]

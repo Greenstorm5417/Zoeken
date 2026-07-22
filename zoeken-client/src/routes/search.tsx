@@ -1,4 +1,4 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Settings2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -8,8 +8,14 @@ import { InfoboxCard } from "#/components/InfoboxCard";
 import { SearchForm } from "#/components/SearchForm";
 import { SearchResultList } from "#/components/SearchResultList";
 import { SelectMenu } from "#/components/SelectMenu";
-import { ApiError, autocomplete, type SearchResult, search } from "#/lib/api";
-import { applyClientFeatures } from "#/lib/clientFeatures";
+import {
+	ApiError,
+	autocomplete,
+	preferencesGet,
+	type SearchResult,
+	search,
+} from "#/lib/api";
+import { applyClientFeatures, pluginEnabled } from "#/lib/clientFeatures";
 import { pickDidYouMean } from "#/lib/didYouMean";
 import { stringsFor } from "#/lib/i18n";
 import { parseSearchParams } from "#/lib/searchParams";
@@ -41,6 +47,11 @@ function SearchPage() {
 		time_range = "",
 	} = params;
 	const config = useConfig();
+	const prefsQuery = useQuery({
+		queryKey: ["preferences"],
+		queryFn: preferencesGet,
+	});
+	const prefs = prefsQuery.data;
 	const activeCategory = categories || "general";
 	const [pendingCategory, setPendingCategory] = useState(activeCategory);
 	useEffect(() => setPendingCategory(activeCategory), [activeCategory]);
@@ -85,9 +96,7 @@ function SearchPage() {
 		return () => document.removeEventListener("keydown", onKeyDown);
 	}, [config?.ui?.hotkeys]);
 	// Infinite scroll is opt-in via the `infinite_scroll` plugin preference.
-	const infiniteScroll = Boolean(
-		config?.plugins?.find((p) => p.id === "infinite_scroll")?.enabled,
-	);
+	const infiniteScroll = pluginEnabled(config, "infinite_scroll", prefs);
 	const query = useInfiniteQuery({
 		queryKey: ["search", { ...params, categories: activeCategory }],
 		initialPageParam: pageno,
@@ -117,10 +126,10 @@ function SearchPage() {
 				merged.push(result);
 			}
 		}
-		return applyClientFeatures(merged, config);
+		return applyClientFeatures(merged, config, prefs);
 	})();
 
-	const localAnswers = useLocalAnswers(q, language, pageno, config);
+	const localAnswers = useLocalAnswers(q, language, pageno, config, prefs);
 	const answers = [...localAnswers, ...(firstPage?.answers ?? [])];
 
 	const [lightbox, setLightbox] = useState<SearchResult | null>(null);

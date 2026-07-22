@@ -2,8 +2,8 @@
 
 Former SearXNG / Zoeken server plugins mostly run in the SPA
 (`zoeken-client/src/lib/clientFeatures/`). `/config` lists feature preference
-ids so the client can gate transforms and local answers. There is no Lua
-runtime.
+ids and defaults; the SPA gates on `/preferences` (cookie + settings
+`plugins.*.active`). There is no Lua runtime.
 
 **Placement rule:** SPA owns cosmetic/prefs UX. Anything that is a
 safety/moderation filter, must apply to `/search?format=json` and non-SPA
@@ -33,5 +33,5 @@ that bar.
 Network-backed instant answers (`weather`, `currency`, `dictionary`, `translate`,
 Wikipedia/Wikidata) stay as engines on the server.
 
-`infiniteScroll` remains a UI preference only. `tor_check` is not ported.
+`infinite_scroll` remains a UI preference only. `tor_check` is not ported.
 Unknown settings keys such as legacy `lua_plugins` are ignored.

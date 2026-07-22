@@ -823,7 +823,7 @@ fn client_feature_plugin_infos() -> impl Iterator<Item = PluginInfo> {
             &[],
         ),
         info(
-            "infiniteScroll",
+            "infinite_scroll",
             "Infinite scroll",
             "Automatically loads the next page when scrolling to bottom of the current page",
             "result_plugin",

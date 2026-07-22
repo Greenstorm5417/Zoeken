@@ -1,8 +1,7 @@
 # Plan: Architecture cleanup (before native search API)
 
 Status: **complete** (exit checklist 100%; verified green after final gap-close)  
-Execute **before** [`native-search-api.md`](native-search-api.md).  
-Park or finish the storage/metrics WIP first so this sequence does not fight it. Captcha classification work is **nearly done** — close it as Phase 0, then continue.
+Execute **before** [`native-search-api.md`](native-search-api.md).
 
 **Verification:** `cargo test --workspace --locked` + `zoeken-client` `bun run test` green after final gap-close. Server `ahmia_filter` wired in `run_search`; SPA has no `ahmiaFilter` (tracker remover stays client-side).
 
@@ -130,7 +129,7 @@ Land as focused PRs. Prefer: SPA features (4) ready before Lua/plugins deletion 
 | `hostnames` | replace/remove + re-sort priority | Rules already on `/config` |
 | `oa_doi_rewrite` | DOI link rewrite | `doi_resolvers` on `/config` |
 | `ahmia_filter` | **Exception — server-side** (not SPA): drop blacklisted onions when Tor is enabled | Bundled `AhmiaBlacklist` in `zoeken-data`; applied in `zoeken-server` search path |
-| `infiniteScroll` | UI prefs only | Flag only |
+| `infinite_scroll` | UI prefs only | Flag only |
 
 Only `ahmia_filter` is “must be server” (safety + large blacklist + JSON/API
 consumers). Other former plugins stay SPA; see [`docs/client-features.md`](../client-features.md).

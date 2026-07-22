@@ -244,15 +244,13 @@ engines: []
 #     disabled: true
 
 # ---------------------------------------------------------------------------
-# plugins (preference defaults for plugin toggles)
-# Keys are plugin ids; `active` seeds user prefs. Extra keys are plugin-specific.
+# plugins (preference defaults for SPA client-feature / ahmia toggles)
+# Keys are preference ids; `active` seeds user prefs. Only `active` is used.
 # ---------------------------------------------------------------------------
 plugins:
   ahmia_filter:
     active: true
   calculator:
-    active: true
-  hash:
     active: true
   hostnames:
     active: true

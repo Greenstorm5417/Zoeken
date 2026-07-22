@@ -102,9 +102,6 @@ pub enum LimiterLoadError {
         #[source]
         source: std::io::Error,
     },
-    #[error("limiter.{key} must be a string")]
-    #[allow(dead_code)]
-    InvalidType { key: &'static str },
 }
 
 #[derive(Debug, thiserror::Error)]
@@ -221,8 +218,8 @@ fn duration_from_secs_f64(value: f64) -> Duration {
     }
 }
 
-/// Resolve settings-derived fields (`hostnames`, DOI resolver, Tor flag) onto
-/// a `DataBundle` clone. Feeds `/config` (`info.rs`'s `hostnames`/`doi_resolvers`)
+/// Resolve settings-derived fields (`hostnames`, DOI resolver) onto a
+/// `DataBundle` clone. Feeds `/config` (`info.rs`'s `hostnames`/`doi_resolvers`)
 /// and the SPA client-features that read them.
 fn resolved_data_bundle(settings: &Settings, data: &DataBundle) -> DataBundle {
     let resolved = settings.resolve();
@@ -245,7 +242,6 @@ fn resolved_data_bundle(settings: &Settings, data: &DataBundle) -> DataBundle {
         high_priority: resolved.hostnames.high_priority.clone(),
         low_priority: resolved.hostnames.low_priority.clone(),
     };
-    data.plugin_data.using_tor_proxy = settings.outgoing.using_tor_proxy;
     data
 }
 

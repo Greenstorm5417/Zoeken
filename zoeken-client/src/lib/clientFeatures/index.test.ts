@@ -116,4 +116,22 @@ describe("applyClientFeatures", () => {
 		const cfg = config({ plugins: [plugin("tracker_url_remover", false)] });
 		expect(applyClientFeatures(results, cfg)).toEqual(results);
 	});
+
+	it("lets preferences override /config defaults", () => {
+		const results = [result("https://example.com/?utm_source=x")];
+		const cfg = config({ plugins: [plugin("tracker_url_remover", true)] });
+		expect(
+			applyClientFeatures(results, cfg, {
+				locale: "en",
+				language: "en",
+				categories: [],
+				engines: [],
+				safesearch: "Off",
+				autocomplete: "",
+				image_proxy: false,
+				method: "POST",
+				plugins: { tracker_url_remover: false },
+			}),
+		).toEqual(results);
+	});
 });
