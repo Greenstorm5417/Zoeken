@@ -13,14 +13,12 @@ zoeken-engine-core = { workspace = true }
 zoeken-results = { workspace = true }
 zoeken-query = { workspace = true }
 zoeken-answerers = { workspace = true }
-zoeken-plugins = { workspace = true }
 zoeken-metrics = { workspace = true }
 tokio = { workspace = true }
 tracing = { workspace = true }
 url = { workspace = true }
 
 [dev-dependencies]
-zoeken-data = { workspace = true }
 tokio = { workspace = true, features = ["test-util", "rt", "macros"] }
 proptest = { workspace = true }
 metrics = { workspace = true }

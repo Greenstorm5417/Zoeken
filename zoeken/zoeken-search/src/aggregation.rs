@@ -53,20 +53,6 @@ pub struct ResultContainer {
     pub number_of_results: usize,
 }
 
-impl zoeken_plugins::ResultContainerMut for ResultContainer {
-    fn main_results_mut(&mut self) -> &mut Vec<Result_> {
-        &mut self.results
-    }
-
-    fn answers_mut(&mut self) -> &mut Vec<Answer> {
-        &mut self.answers
-    }
-
-    fn infoboxes_mut(&mut self) -> &mut Vec<Infobox> {
-        &mut self.infoboxes
-    }
-}
-
 struct Merged {
     result: Result_,
     engines: Vec<String>,

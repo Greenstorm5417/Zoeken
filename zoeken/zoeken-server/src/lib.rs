@@ -28,11 +28,9 @@ use axum::extract::{FromRef, RawQuery, State};
 use axum::http::{HeaderMap, StatusCode, header};
 use axum::response::{IntoResponse, Response};
 use axum::routing::get;
-use std::net::SocketAddr;
 use url::form_urlencoded;
 use zoeken_engine_core::SuspendConfig;
 use zoeken_network::{NetworkError, NetworkManager};
-use zoeken_plugins::{PluginCtx, PluginGating};
 use zoeken_prefs::Preferences;
 use zoeken_query::FormParams;
 use zoeken_search::{
@@ -238,39 +236,10 @@ fn duration_from_secs_f64(value: f64) -> Duration {
     }
 }
 
-fn build_plugins(
-    settings: &Settings,
-    data: Arc<DataBundle>,
-    outbound: Option<Arc<NetworkManager>>,
-) -> zoeken_plugins::PluginRegistry {
-    let data = Arc::new(plugin_data_bundle(settings, &data));
-    let mut plugins = Vec::new();
-    if settings.lua_plugins.enabled {
-        let dir = settings
-            .lua_plugins
-            .directory
-            .as_ref()
-            .map(PathBuf::from)
-            .unwrap_or_else(|| PathBuf::from("zoeken/zoeken-plugins/plugins"));
-        let runtime_config = zoeken_plugins::lua::LuaRuntimeConfig {
-            outbound,
-            ..zoeken_plugins::lua::LuaRuntimeConfig::default()
-        };
-        plugins.extend(zoeken_plugins::lua::load_plugins_from_dir(
-            &dir,
-            data,
-            runtime_config,
-        ));
-    }
-    zoeken_plugins::sort_plugins(&mut plugins, &settings.lua_plugins.order).unwrap_or_else(
-        |error| {
-            tracing::warn!(%error, "using fallback plugin order");
-        },
-    );
-    zoeken_plugins::PluginRegistry::from_plugins(plugins)
-}
-
-fn plugin_data_bundle(settings: &Settings, data: &DataBundle) -> DataBundle {
+/// Resolve settings-derived fields (`hostnames`, DOI resolver, Tor flag) onto
+/// a `DataBundle` clone. Feeds `/config` (`info.rs`'s `hostnames`/`doi_resolvers`)
+/// and the SPA client-features that read them.
+fn resolved_data_bundle(settings: &Settings, data: &DataBundle) -> DataBundle {
     let mut data = data.clone();
     data.plugin_data.doi_resolver = settings
         .default_doi_resolver
@@ -352,17 +321,15 @@ impl AppState {
         let executor: Arc<dyn EngineExecutor> = Arc::new(NetworkExecutor::new(networks));
 
         let registry = zoeken_engines::registry_from_settings(&Settings::default());
-        let data = Arc::new(
-            zoeken_data::load_embedded_bundle()
-                .expect("compile-time validated embedded data must load"),
-        );
         let settings = Settings::default();
-        let plugins = build_plugins(&settings, Arc::clone(&data), None);
-        let search = Search::new(registry, executor, SearchConfig::default())
-            .with_answerers(
-                zoeken_answerers::AnswererRegistry::with_builtins().with_data(Arc::clone(&data)),
-            )
-            .with_plugins(plugins);
+        let data = Arc::new(resolved_data_bundle(
+            &settings,
+            &zoeken_data::load_embedded_bundle()
+                .expect("compile-time validated embedded data must load"),
+        ));
+        let search = Search::new(registry, executor, SearchConfig::default()).with_answerers(
+            zoeken_answerers::AnswererRegistry::with_builtins().with_data(Arc::clone(&data)),
+        );
 
         Ok(AppState::from_search(search).with_data(data))
     }
@@ -398,7 +365,7 @@ impl AppState {
             networks,
         } = boot;
 
-        let data = Arc::new(data);
+        let data = Arc::new(resolved_data_bundle(&settings, &data));
         let networks = Arc::new(networks);
 
         let engine_networks: std::collections::HashMap<String, String> = settings
@@ -419,12 +386,9 @@ impl AppState {
 
         let registry = zoeken_engines::registry_from_settings(&settings);
         let search_config = search_config_from_settings(&settings);
-        let plugins = build_plugins(&settings, Arc::clone(&data), Some(Arc::clone(&networks)));
-        let search = Search::new(registry, executor, search_config)
-            .with_answerers(
-                zoeken_answerers::AnswererRegistry::with_builtins().with_data(Arc::clone(&data)),
-            )
-            .with_plugins(plugins);
+        let search = Search::new(registry, executor, search_config).with_answerers(
+            zoeken_answerers::AnswererRegistry::with_builtins().with_data(Arc::clone(&data)),
+        );
 
         let autocomplete = zoeken_autocomplete::service_for(
             Some(&settings.search.autocomplete),
@@ -613,31 +577,24 @@ pub fn app(state: AppState) -> Router {
 async fn search_get(
     State(state): State<Arc<AppState>>,
     headers: HeaderMap,
-    crate::middleware::OptionalPeer(peer): crate::middleware::OptionalPeer,
     RawQuery(query): RawQuery,
 ) -> Response {
     let params = FormParams::from_pairs(parse_pairs(query.as_deref().unwrap_or("")));
-    run_search(&state, &headers, peer, params).await
+    run_search(&state, &headers, params).await
 }
 
 async fn search_post(
     State(state): State<Arc<AppState>>,
     headers: HeaderMap,
-    crate::middleware::OptionalPeer(peer): crate::middleware::OptionalPeer,
     RawQuery(query): RawQuery,
     body: String,
 ) -> Response {
     let mut pairs = parse_pairs(query.as_deref().unwrap_or(""));
     pairs.extend(parse_pairs(&body));
-    run_search(&state, &headers, peer, FormParams::from_pairs(pairs)).await
+    run_search(&state, &headers, FormParams::from_pairs(pairs)).await
 }
 
-async fn run_search(
-    state: &AppState,
-    headers: &HeaderMap,
-    peer: Option<SocketAddr>,
-    params: FormParams,
-) -> Response {
+async fn run_search(state: &AppState, headers: &HeaderMap, params: FormParams) -> Response {
     let format = match serialize::OutputFormat::from_param(params.get("format")) {
         Ok(format) => format,
         Err(error) => return (StatusCode::BAD_REQUEST, error.to_string()).into_response(),
@@ -689,15 +646,13 @@ async fn run_search(
     }
 
     let tokens = request_tokens(&params);
-    let plugin_ctx = plugin_context(state, headers, peer, &resolved_prefs);
     let mut container = state
         .search
-        .run_with_plugin_ctx(
+        .run(
             &query,
             &engine_preferences(&resolved_prefs),
             &tokens,
             state.recorder.as_ref(),
-            &plugin_ctx,
         )
         .await;
     if resolved_prefs
@@ -796,43 +751,6 @@ fn request_tokens(params: &FormParams) -> HashSet<String> {
         .or_else(|| params.get("engine_tokens"))
         .map(split_csv_set)
         .unwrap_or_default()
-}
-
-fn plugin_context(
-    state: &AppState,
-    headers: &HeaderMap,
-    peer: Option<SocketAddr>,
-    prefs: &Preferences,
-) -> PluginCtx {
-    let gating = PluginGating {
-        globally_enabled: true,
-        per_plugin: prefs.plugins.iter().map(|(k, v)| (k.clone(), *v)).collect(),
-        // Prefer each plugin's own default_enabled via is_enabled_with_default.
-        default_enabled: true,
-    };
-    let mut ctx = PluginCtx::new(gating)
-        .with_method(prefs.method.as_str())
-        .with_locale(prefs.locale.clone())
-        .with_image_proxy(prefs.image_proxy);
-    if let Some(ip) = crate::middleware::request_client_ip(
-        peer,
-        headers,
-        &state.bot_detector.config().trusted_proxies,
-    ) {
-        ctx = ctx.with_client_ip(ip.to_string());
-    }
-    if let Some(ua) = headers
-        .get(header::USER_AGENT)
-        .and_then(|value| value.to_str().ok())
-    {
-        ctx = ctx.with_user_agent(ua.to_string());
-    }
-    for (name, value) in headers {
-        if let Ok(value) = value.to_str() {
-            ctx = ctx.with_header(name.as_str().to_string(), value.to_string());
-        }
-    }
-    ctx
 }
 
 fn split_csv_set(value: &str) -> HashSet<String> {

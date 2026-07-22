@@ -10,7 +10,6 @@ members = [
     "zoeken/zoeken-query",
     "zoeken/zoeken-search",
     "zoeken/zoeken-answerers",
-    "zoeken/zoeken-plugins",
     "zoeken/zoeken-autocomplete",
     "zoeken/zoeken-favicons",
     "zoeken/zoeken-botdetect",
@@ -53,7 +52,6 @@ zoeken-engines = { path = "zoeken/zoeken-engines" }
 zoeken-query = { path = "zoeken/zoeken-query" }
 zoeken-search = { path = "zoeken/zoeken-search" }
 zoeken-answerers = { path = "zoeken/zoeken-answerers" }
-zoeken-plugins = { path = "zoeken/zoeken-plugins" }
 zoeken-autocomplete = { path = "zoeken/zoeken-autocomplete" }
 zoeken-favicons = { path = "zoeken/zoeken-favicons" }
 zoeken-botdetect = { path = "zoeken/zoeken-botdetect" }
@@ -126,7 +124,6 @@ http = "1.4.2"
 httpdate = "1.0.3"
 ipnet = "2.12.0"
 toml = "1.1.3"
-mlua = { version = "0.12", features = ["anyhow", "lua55", "vendored", "send", "serialize"] }
 md5 = { package = "md-5", version = "0.10.6" }
 sha1 = "0.11.0"
 sha2 = "0.11.0"

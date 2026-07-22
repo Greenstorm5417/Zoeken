@@ -13,7 +13,6 @@ use zoeken_metrics::{
     CATEGORY_LABEL, ENGINE_ERRORS_TOTAL, ENGINE_LABEL, ENGINE_RESPONSE_TIME_HTTP,
     ENGINE_RESPONSE_TIME_TOTAL,
 };
-use zoeken_plugins::PluginMetricsSnapshot;
 
 use crate::AppState;
 
@@ -188,7 +187,7 @@ pub async fn config(
         client_ip,
         categories: engine_categories(&state),
         engines: engine_infos(&state),
-        plugins: plugin_infos(&state),
+        plugins: plugin_infos(),
         instance_name: state.settings.general.instance_name.clone(),
         locales: state
             .data
@@ -328,8 +327,6 @@ struct EngineTiming {
 #[derive(Debug, Default, Serialize)]
 struct StatsResponse {
     engines: Vec<EngineTiming>,
-    #[serde(skip_serializing_if = "Vec::is_empty")]
-    plugins: Vec<PluginMetricsSnapshot>,
 }
 
 #[derive(Debug, Default, Serialize)]
@@ -358,8 +355,7 @@ pub async fn stats(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Re
         .as_ref()
         .map(|h| h.render())
         .unwrap_or_default();
-    let mut response = timing_stats(&rendered);
-    response.plugins = state.search.plugins().metrics_snapshots();
+    let response = timing_stats(&rendered);
     json(&response)
 }
 
@@ -415,7 +411,6 @@ fn timing_stats(rendered: &str) -> StatsResponse {
 
     StatsResponse {
         engines: engines.into_values().collect(),
-        plugins: Vec::new(),
     }
 }
 
@@ -721,39 +716,14 @@ fn git_url_from_brand(brand: &zoeken_settings::BrandSettings) -> String {
     String::new()
 }
 
-fn plugin_infos(state: &AppState) -> Vec<PluginInfo> {
-    state
-        .search
-        .plugins()
-        .infos()
-        .into_iter()
-        .map(|info| PluginInfo {
-            id: info.id,
-            name: info.name,
-            description: info.description,
-            enabled: info.default_enabled,
-            default_enabled: info.default_enabled,
-            kind: match info.kind {
-                zoeken_plugins::PluginKind::ResultPlugin => "result_plugin".to_string(),
-                zoeken_plugins::PluginKind::Answerer => "answerer".to_string(),
-                zoeken_plugins::PluginKind::Both => "both".to_string(),
-            },
-            keywords: info.keywords,
-            preference_section: info.preference_section,
-            version: info.version,
-            api_version: info.api_version,
-            after: info.after,
-            before: info.before,
-            capabilities: info.capabilities,
-        })
-        .chain(client_feature_plugin_infos())
-        .collect()
+fn plugin_infos() -> Vec<PluginInfo> {
+    client_feature_plugin_infos().collect()
 }
 
-/// Former Lua plugins now implemented as SPA client-features or built-in
-/// Rust filters have no Lua registration anymore, but still need to appear
-/// in `/config` so `/preferences` toggles and client feature-flag gating
-/// keep working against the same plugin ids.
+/// Every plugin id `/preferences` and the SPA client-features gate on. All
+/// former Lua plugins are now SPA client-features or built-in Rust filters;
+/// these entries just keep `/config` listing the same ids with the same
+/// default-enabled state so gating keeps working.
 fn client_feature_plugin_infos() -> impl Iterator<Item = PluginInfo> {
     fn info(
         id: &str,
@@ -1005,6 +975,45 @@ mod tests {
             .unwrap();
         let value = body_json(response).await;
         assert_eq!(value["instance_name"], "BootInstance");
+    }
+
+    #[tokio::test]
+    async fn config_reflects_settings_hostnames_extra() {
+        let settings: Settings = serde_yaml_ng::from_str(
+            r#"
+hostnames:
+  remove:
+    - "(.*\\.)?facebook\\.com$"
+  high_priority:
+    - "(.*\\.)?wikipedia\\.org$"
+"#,
+        )
+        .expect("settings parse");
+        let networks = NetworkManager::from_settings(&settings.outgoing).unwrap();
+        let boot = crate::boot::Boot {
+            settings,
+            data: DataBundle::default(),
+            networks,
+        };
+        let app = app(AppState::from_boot(boot).unwrap());
+        let response = app
+            .oneshot(
+                Request::builder()
+                    .uri("/config")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        let value = body_json(response).await;
+        assert_eq!(
+            value["hostnames"]["remove"][0],
+            "(.*\\.)?facebook\\.com$"
+        );
+        assert_eq!(
+            value["hostnames"]["high_priority"][0],
+            "(.*\\.)?wikipedia\\.org$"
+        );
     }
 
     #[tokio::test]

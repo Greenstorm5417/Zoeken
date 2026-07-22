@@ -9,7 +9,6 @@ use std::time::{Duration, Instant};
 
 use zoeken_answerers::AnswererRegistry;
 use zoeken_engine_core::{EngineMeta, SearchQueryView};
-use zoeken_plugins::{PluginCtx, PluginRegistry};
 use zoeken_query::SearchQuery;
 
 pub use aggregation::{
@@ -48,7 +47,6 @@ pub struct Search {
     executor: std::sync::Arc<dyn EngineExecutor>,
     config: SearchConfig,
     answerers: AnswererRegistry,
-    plugins: PluginRegistry,
 }
 
 impl Search {
@@ -62,7 +60,6 @@ impl Search {
             executor,
             config,
             answerers: AnswererRegistry::new(),
-            plugins: PluginRegistry::new(),
         }
     }
 
@@ -73,15 +70,6 @@ impl Search {
 
     pub fn answerers(&self) -> &AnswererRegistry {
         &self.answerers
-    }
-
-    pub fn with_plugins(mut self, plugins: PluginRegistry) -> Self {
-        self.plugins = plugins;
-        self
-    }
-
-    pub fn plugins(&self) -> &PluginRegistry {
-        &self.plugins
     }
 
     pub fn registry(&self) -> &EngineRegistry {
@@ -124,84 +112,31 @@ impl Search {
         available_tokens: &HashSet<String>,
         recorder: &dyn MetricsRecorder,
     ) -> ResultContainer {
-        self.run_with_plugin_ctx(
-            query,
-            prefs,
-            available_tokens,
-            recorder,
-            &PluginCtx::all_enabled(),
-        )
-        .await
-    }
-
-    pub async fn run_with_plugin_ctx<P: EnginePreferences + ?Sized>(
-        &self,
-        query: &SearchQuery,
-        prefs: &P,
-        available_tokens: &HashSet<String>,
-        recorder: &dyn MetricsRecorder,
-        plugin_ctx: &PluginCtx,
-    ) -> ResultContainer {
-        let mut query = query.clone();
-        let proceed = self.run_pre_search_plugins(&mut query, plugin_ctx);
-
-        let mut container = if proceed {
-            let now = Instant::now();
-            let report = self.run_engines(&query, prefs, available_tokens).await;
-            let weights = self.engine_weights();
-            let mut container = aggregate(report, &weights, recorder);
-            for (engine, category, message) in
-                self.registry
-                    .suspended_for_query(&query, prefs, available_tokens, now)
+        let now = Instant::now();
+        let report = self.run_engines(query, prefs, available_tokens).await;
+        let weights = self.engine_weights();
+        let mut container = aggregate(report, &weights, recorder);
+        for (engine, category, message) in
+            self.registry
+                .suspended_for_query(query, prefs, available_tokens, now)
+        {
+            if container
+                .unresponsive_engines
+                .iter()
+                .any(|entry| entry.engine == engine)
             {
-                if container
-                    .unresponsive_engines
-                    .iter()
-                    .any(|entry| entry.engine == engine)
-                {
-                    continue;
-                }
-                container.unresponsive_engines.push(UnresponsiveEngine {
-                    engine,
-                    cause: UnresponsiveCause::Error { category, message },
-                });
+                continue;
             }
-            container
-        } else {
-            ResultContainer::default()
-        };
+            container.unresponsive_engines.push(UnresponsiveEngine {
+                engine,
+                cause: UnresponsiveCause::Error { category, message },
+            });
+        }
 
-        let answers = self.answerers.ask(&query);
+        let answers = self.answerers.ask(query);
         container.answers.extend(answers);
 
-        self.run_plugins(&query, &mut container, plugin_ctx);
-
         container
-    }
-
-    fn run_pre_search_plugins(&self, query: &mut SearchQuery, ctx: &PluginCtx) -> bool {
-        if self.plugins.is_empty() {
-            return true;
-        }
-        self.plugins.run_pre_search(query, ctx)
-    }
-
-    fn run_plugins(&self, query: &SearchQuery, container: &mut ResultContainer, ctx: &PluginCtx) {
-        if self.plugins.is_empty() {
-            return;
-        }
-
-        let plugin_answers = self.plugins.run_pre_search_answers(query, ctx);
-
-        container
-            .results
-            .retain_mut(|result| self.plugins.run_on_result(result, query, ctx));
-
-        self.plugins.run_on_results(container, query, ctx);
-        self.plugins.run_post_search(container, query, ctx);
-
-        container.answers.extend(plugin_answers);
-        container.number_of_results = container.results.len();
     }
 
     pub fn engine_weights(&self) -> EngineWeights {
@@ -451,109 +386,6 @@ mod tests {
         assert_eq!(container.answers.len(), 1);
         assert!(container.answers[0].answer.contains('6'));
         assert_eq!(container.results.len(), 1);
-    }
-
-    #[tokio::test]
-    async fn run_folds_plugin_answers_and_runs_post_search() {
-        let registry =
-            EngineRegistry::from_engines([RegisteredEngine::new(stub("alpha", &["general"]))]);
-        let plugin: std::sync::Arc<dyn zoeken_plugins::Plugin> = std::sync::Arc::new(
-            zoeken_plugins::lua::LuaPlugin::from_source(
-                "test_answerer",
-                r#"
-                return {
-                  id = "test_answerer",
-                  api_version = 1,
-                  kind = "answerer",
-                  capabilities = {"answers"},
-                  pre_search_answers = function(query, ctx)
-                    return { answer = "4", engine = "test_answerer" }
-                  end,
-                }
-                "#,
-                Arc::new(zoeken_data::DataBundle::default()),
-                zoeken_plugins::lua::LuaRuntimeConfig::default(),
-            )
-            .expect("plugin loads"),
-        );
-        let plugins = zoeken_plugins::PluginRegistry::from_plugins([plugin]);
-        let search = Search::new(
-            registry,
-            Arc::new(ImmediateExecutor),
-            SearchConfig::default(),
-        )
-        .with_plugins(plugins);
-
-        let container = search
-            .run(
-                &search_query(),
-                &AllEnginesEnabled,
-                &HashSet::new(),
-                &NoopRecorder,
-            )
-            .await;
-
-        assert!(container.answers.iter().any(|a| a.answer == "4"));
-        assert_eq!(container.results.len(), 1);
-        assert_eq!(container.number_of_results, 1);
-    }
-
-    #[tokio::test]
-    async fn run_plugins_can_remove_results_via_post_search() {
-        struct OnionExecutor;
-        impl EngineExecutor for OnionExecutor {
-            fn execute(&self, engine: Arc<dyn Engine>, _q: SearchQueryView) -> EngineFuture {
-                let name = engine.metadata().name.clone();
-                Box::pin(async move {
-                    let mut results = EngineResults::new();
-                    results.add(Result_::Main(MainResult {
-                        url: "http://blockedonionxxxx.onion/".to_string(),
-                        normalized_url: "http://blockedonionxxxx.onion/".to_string(),
-                        title: "blocked".to_string(),
-                        engine: name,
-                        ..MainResult::default()
-                    }));
-                    EngineExecResult::from_result(Ok(results))
-                })
-            }
-        }
-
-        let registry =
-            EngineRegistry::from_engines([RegisteredEngine::new(stub("alpha", &["general"]))]);
-        let plugin: std::sync::Arc<dyn zoeken_plugins::Plugin> = std::sync::Arc::new(
-            zoeken_plugins::lua::LuaPlugin::from_source(
-                "onion_filter",
-                r#"
-                return {
-                  id = "onion_filter",
-                  api_version = 1,
-                  kind = "result_plugin",
-                  capabilities = {"result"},
-                  on_result = function(result, query, ctx)
-                    return not string.find(result.url or "", "blockedonionxxxx%.onion")
-                  end,
-                }
-                "#,
-                Arc::new(zoeken_data::DataBundle::default()),
-                zoeken_plugins::lua::LuaRuntimeConfig::default(),
-            )
-            .expect("plugin loads"),
-        );
-        let plugins = zoeken_plugins::PluginRegistry::from_plugins([plugin]);
-        let search = Search::new(registry, Arc::new(OnionExecutor), SearchConfig::default())
-            .with_plugins(plugins);
-
-        let container = search
-            .run(
-                &search_query(),
-                &AllEnginesEnabled,
-                &HashSet::new(),
-                &NoopRecorder,
-            )
-            .await;
-
-        assert!(container.results.is_empty());
-        assert_eq!(container.number_of_results, 0);
     }
 
     #[tokio::test]

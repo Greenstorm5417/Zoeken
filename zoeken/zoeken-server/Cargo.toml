@@ -19,7 +19,6 @@ path = "src/lib.rs"
 [dependencies]
 zoeken-search = { workspace = true }
 zoeken-answerers = { workspace = true }
-zoeken-plugins = { workspace = true }
 zoeken-query = { workspace = true }
 zoeken-results = { workspace = true }
 zoeken-engine-core = { workspace = true }
