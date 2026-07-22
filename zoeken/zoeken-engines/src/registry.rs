@@ -20,10 +20,8 @@ use crate::engines::{
     builtin_generic_config,
 };
 
-/// Build the engine registry for the given settings: the hand-written
-/// default set when `settings.engines` is empty, otherwise one
-/// [`RegisteredEngine`] per `settings.engines[]` entry with a known built-in
-/// implementation (unknown entries are skipped with a warning).
+/// Replace, not merge: a non-empty `settings.engines` entirely replaces the
+/// default set, one [`RegisteredEngine`] per entry.
 pub fn registry_from_settings(settings: &Settings) -> EngineRegistry {
     if settings.engines.is_empty() {
         return EngineRegistry::from_engines(default_engines());

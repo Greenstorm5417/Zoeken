@@ -116,8 +116,6 @@ deployment:
   trusted_proxies: []
 
 ui:
-  static_path: ""
-  templates_path: ""
   default_theme: "simple"
   default_locale: ""
   theme_args:

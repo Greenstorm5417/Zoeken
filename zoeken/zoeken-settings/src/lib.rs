@@ -49,6 +49,7 @@ pub struct Settings {
     pub outgoing: OutgoingSettings,
     pub storage: StorageSettings,
     pub cache: CacheSettings,
+    /// Replaces, not merges, the default engine set when non-empty.
     pub engines: Vec<EngineSettings>,
     pub plugins: PluginSettings,
     pub lua_plugins: LuaPluginSettings,
@@ -427,8 +428,6 @@ pub fn secret_key_is_weak(secret: &str) -> bool {
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(default)]
 pub struct UiSettings {
-    pub static_path: String,
-    pub templates_path: String,
     pub default_theme: String,
     pub default_locale: String,
     pub theme_args: ThemeArgs,
@@ -444,8 +443,6 @@ pub struct UiSettings {
 impl Default for UiSettings {
     fn default() -> Self {
         Self {
-            static_path: String::new(),
-            templates_path: String::new(),
             default_theme: "simple".to_string(),
             default_locale: String::new(),
             theme_args: ThemeArgs::default(),

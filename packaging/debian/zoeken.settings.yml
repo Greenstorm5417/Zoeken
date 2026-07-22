@@ -131,8 +131,6 @@ deployment:
 # ui (mostly SPA / prefs cookie compatibility)
 # ---------------------------------------------------------------------------
 ui:
-  static_path: ""
-  templates_path: ""
   default_theme: "simple"
   default_locale: ""
   theme_args:

@@ -874,12 +874,7 @@ function SearchPage() {
 			) : null}
 
 			{firstPage ? (
-				<div
-					className={[
-						"mx-auto max-w-6xl px-4 pt-6 pb-20 sm:px-6",
-						config?.ui?.center_alignment ? "" : "",
-					].join(" ")}
-				>
+				<div className="mx-auto max-w-6xl px-4 pt-6 pb-20 sm:px-6">
 					{firstPage.unresponsive_engines.length > 0 ? (
 						<aside className="mb-6 max-w-[40rem] rounded-xl border border-amber-500/30 bg-amber-500/5 px-4 py-3">
 							<p className="text-sm font-medium text-ink">
