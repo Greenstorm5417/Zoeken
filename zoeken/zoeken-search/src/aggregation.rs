@@ -948,7 +948,10 @@ mod tests {
         brave.add(main_result("https://www.rust-lang.org/", "Rust"));
 
         let container = aggregate(
-            report(vec![completed("duckduckgo", ddg), completed("brave", brave)]),
+            report(vec![
+                completed("duckduckgo", ddg),
+                completed("brave", brave),
+            ]),
             &weights(&[("duckduckgo", 1.0), ("brave", 1.0)]),
             &NoopRecorder,
         );
