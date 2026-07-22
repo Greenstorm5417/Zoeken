@@ -40,7 +40,7 @@ use zoeken_search::{
 use zoeken_settings::{DeploymentConfig, LimiterSource, OutgoingSettings, Settings};
 
 use crate::executor::NetworkExecutor;
-use crate::image_proxy::{ImageProxyFetcher, WreqImageFetcher};
+use crate::image_proxy::{CachedImageFetcher, ImageProxyFetcher, WreqImageFetcher};
 use crate::readiness::ReadinessState;
 use crate::static_assets::{AssetSource, DirAssets, INDEX_HTML};
 use metrics_exporter_prometheus::PrometheusHandle;
@@ -268,7 +268,7 @@ impl AppState {
         AppState {
             search,
             recorder: Arc::new(NoopRecorder),
-            image_fetcher: Arc::new(WreqImageFetcher::new()),
+            image_fetcher: Arc::new(CachedImageFetcher::new(Arc::new(WreqImageFetcher::new()))),
             image_policy: ImageProxyPolicy::default(),
             favicons: Arc::new(FaviconService::new(
                 Arc::new(StaticResolver::empty("stub")),
@@ -338,7 +338,10 @@ impl AppState {
             recorder: Arc::new(zoeken_metrics::EngineMetricsRecorder::new()),
             // Reuse the browser-emulating `image_proxy` network client so
             // proxied image fetches look like a real browser and share a pool.
-            image_fetcher: Arc::new(WreqImageFetcher::with_networks(Arc::clone(&networks))),
+            // CachedImageFetcher adds singleflight + byte-budgeted body cache.
+            image_fetcher: Arc::new(CachedImageFetcher::new(Arc::new(
+                WreqImageFetcher::with_networks(Arc::clone(&networks)),
+            ))),
             image_policy,
             favicons: networks.coordinator().map_or_else(
                 || default_favicon_service(&settings),

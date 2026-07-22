@@ -8,13 +8,19 @@ use std::time::Duration;
 use axum::extract::{RawQuery, State};
 use axum::http::{HeaderMap, StatusCode, header};
 use axum::response::{IntoResponse, Response};
+use sha2::{Digest, Sha256};
 use zoeken_favicons::{
     DEFAULT_MAX_IMAGE_BYTES, ImageProxyDecision, ImageProxyPolicy, SafeOutboundTransport,
     image_proxy_decision, is_hmac_of, validate_proxy_url,
 };
-use zoeken_network::NetworkManager;
+use zoeken_network::{FlightCache, NetworkManager};
 
 use crate::{AppState, parse_pairs};
+
+/// In-process budget for successfully proxied image bodies (byte-weighted).
+const IMAGE_CACHE_MAX_BYTES: usize = 64 * 1024 * 1024;
+/// TTL for cached proxied images (aligned with browser Cache-Control below).
+const IMAGE_CACHE_TTL: Duration = Duration::from_secs(86_400);
 
 #[derive(Debug, Clone)]
 pub struct FetchedImage {
@@ -35,6 +41,80 @@ pub type FetchFuture<'a> =
 
 pub trait ImageProxyFetcher: Send + Sync {
     fn fetch<'a>(&'a self, url: &'a str) -> FetchFuture<'a>;
+}
+
+/// Byte-budgeted singleflight cache in front of any [`ImageProxyFetcher`].
+///
+/// Search pages hit the same thumbnail URLs repeatedly (re-renders, lightbox,
+/// concurrent result cards). Without this, every request re-walks SSRF-safe
+/// redirects and re-downloads the body through the outbound pool.
+pub struct CachedImageFetcher {
+    inner: Arc<dyn ImageProxyFetcher>,
+    cache: FlightCache<String, FetchedImage>,
+    ttl: Duration,
+}
+
+impl CachedImageFetcher {
+    #[must_use]
+    pub fn new(inner: Arc<dyn ImageProxyFetcher>) -> Self {
+        Self::with_limits(inner, IMAGE_CACHE_MAX_BYTES, IMAGE_CACHE_TTL)
+    }
+
+    #[must_use]
+    pub fn with_limits(
+        inner: Arc<dyn ImageProxyFetcher>,
+        max_bytes: usize,
+        ttl: Duration,
+    ) -> Self {
+        Self {
+            inner,
+            cache: FlightCache::new(max_bytes.max(1), |img: &FetchedImage| {
+                img.body.len().saturating_add(
+                    img.content_type.as_ref().map_or(0, String::len).saturating_add(32),
+                )
+            }),
+            ttl,
+        }
+    }
+}
+
+impl ImageProxyFetcher for CachedImageFetcher {
+    fn fetch<'a>(&'a self, url: &'a str) -> FetchFuture<'a> {
+        let key = url.to_string();
+        Box::pin(async move {
+            if let Some(hit) = self.cache.get(&key) {
+                metrics::counter!("image_proxy_cache_total", "outcome" => "hit").increment(1);
+                return Ok(hit);
+            }
+
+            let Some(flight) = self.cache.flight(&key) else {
+                return self.inner.fetch(&key).await;
+            };
+            let _guard = flight.lock().await;
+
+            if let Some(hit) = self.cache.get(&key) {
+                metrics::counter!("image_proxy_cache_total", "outcome" => "shared").increment(1);
+                return Ok(hit);
+            }
+
+            let fetched = match self.inner.fetch(&key).await {
+                Ok(fetched) => fetched,
+                Err(error) => {
+                    self.cache.finish_flight(&key);
+                    return Err(error);
+                }
+            };
+
+            if fetched.status == 200 && !fetched.body.is_empty() {
+                self.cache.put(key.clone(), fetched.clone(), self.ttl);
+                metrics::counter!("image_proxy_cache_total", "outcome" => "store").increment(1);
+            } else {
+                metrics::counter!("image_proxy_cache_total", "outcome" => "skip").increment(1);
+            }
+            self.cache.finish_flight(&key);
+            Ok(fetched)
+        })
+    }
 }
 
 pub struct WreqImageFetcher {
@@ -118,6 +198,11 @@ pub(crate) fn image_proxy_enabled(
     state.settings.server.image_proxy || resolved.image_proxy
 }
 
+fn image_etag(body: &[u8]) -> String {
+    let digest = Sha256::digest(body);
+    format!("\"{}\"", hex::encode(&digest[..16]))
+}
+
 /// `GET /image_proxy?url=...&h=...`: HMAC + prefs gate, then content-type/size policy.
 pub async fn image_proxy_get(
     State(state): State<Arc<AppState>>,
@@ -171,12 +256,29 @@ pub async fn image_proxy_get(
 
     match image_proxy_decision(fetched.content_type.as_deref(), size, &state.image_policy) {
         ImageProxyDecision::Serve => {
+            let etag = image_etag(&fetched.body);
+            if headers
+                .get(header::IF_NONE_MATCH)
+                .and_then(|v| v.to_str().ok())
+                .is_some_and(|v| v.split(',').any(|tag| tag.trim() == etag))
+            {
+                return (
+                    StatusCode::NOT_MODIFIED,
+                    [
+                        (header::ETAG, etag),
+                        (header::CACHE_CONTROL, "public, max-age=86400".to_string()),
+                    ],
+                )
+                    .into_response();
+            }
+
             let content_type = fetched
                 .content_type
                 .unwrap_or_else(|| "application/octet-stream".to_string());
             (
                 [
                     (header::CONTENT_TYPE, content_type),
+                    (header::ETAG, etag),
                     // Proxied URLs are HMAC-stable per image; let the browser
                     // cache them instead of re-proxying on every render.
                     (header::CACHE_CONTROL, "public, max-age=86400".to_string()),
@@ -201,6 +303,7 @@ mod tests {
     use crate::app;
     use axum::body::{Body, to_bytes};
     use axum::http::Request;
+    use std::sync::atomic::{AtomicUsize, Ordering};
     use tower::ServiceExt;
     use zoeken_favicons::{DEFAULT_MAX_IMAGE_BYTES, new_hmac};
     use zoeken_settings::Settings;
@@ -219,6 +322,19 @@ mod tests {
     impl ImageProxyFetcher for FailingFetcher {
         fn fetch<'a>(&'a self, _url: &'a str) -> FetchFuture<'a> {
             Box::pin(async { Err(ImageFetchError::Upstream("boom".into())) })
+        }
+    }
+
+    struct CountingFetcher {
+        calls: AtomicUsize,
+        image: FetchedImage,
+    }
+
+    impl ImageProxyFetcher for CountingFetcher {
+        fn fetch<'a>(&'a self, _url: &'a str) -> FetchFuture<'a> {
+            self.calls.fetch_add(1, Ordering::SeqCst);
+            let image = self.image.clone();
+            Box::pin(async move { Ok(image) })
         }
     }
 
@@ -270,8 +386,51 @@ mod tests {
             response.headers().get(header::CONTENT_TYPE).unwrap(),
             "image/png"
         );
+        assert!(response.headers().get(header::ETAG).is_some());
         let body = to_bytes(response.into_body(), usize::MAX).await.unwrap();
         assert_eq!(body.to_vec(), vec![1, 2, 3]);
+    }
+
+    #[tokio::test]
+    async fn cache_dedupes_identical_upstream_fetches() {
+        let inner = Arc::new(CountingFetcher {
+            calls: AtomicUsize::new(0),
+            image: FetchedImage {
+                status: 200,
+                content_type: Some("image/png".into()),
+                content_length: Some(3),
+                body: vec![1, 2, 3],
+            },
+        });
+        let cached: Arc<dyn ImageProxyFetcher> =
+            Arc::new(CachedImageFetcher::new(Arc::clone(&inner) as Arc<dyn ImageProxyFetcher>));
+
+        let first = cached.fetch("https://cdn.example.com/a.png").await.unwrap();
+        let second = cached.fetch("https://cdn.example.com/a.png").await.unwrap();
+        assert_eq!(first.body, second.body);
+        assert_eq!(inner.calls.load(Ordering::SeqCst), 1);
+    }
+
+    #[tokio::test]
+    async fn not_modified_when_etag_matches() {
+        let fetcher = Arc::new(StubFetcher(FetchedImage {
+            status: 200,
+            content_type: Some("image/png".into()),
+            content_length: Some(3),
+            body: vec![1, 2, 3],
+        }));
+        let etag = image_etag(&[1, 2, 3]);
+        let response = app(enabled_state(fetcher))
+            .oneshot(
+                Request::builder()
+                    .uri(signed("https://example.com/a.png"))
+                    .header(header::IF_NONE_MATCH, etag)
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::NOT_MODIFIED);
     }
 
     #[tokio::test]
