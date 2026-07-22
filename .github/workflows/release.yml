@@ -63,13 +63,13 @@ jobs:
           for df in Dockerfile Dockerfile.runtime; do
             ARG_VER="$(sed -n 's/^ARG VERSION=//p' "${df}" | head -n1)"
             if [ "${ARG_VER}" != "${VERSION}" ]; then
-              echo "::error::${df} ARG VERSION=${ARG_VER} does not match ${VERSION} (run tools/sync_versions.py)"
+              echo "::error::${df} ARG VERSION=${ARG_VER} does not match ${VERSION} (run ./tools/sync_versions.sh)"
               exit 1
             fi
           done
           COMPOSE_VER="$(sed -n 's/.*VERSION: ${VERSION:-\([^}]*\)}.*/\1/p' docker-compose.yml | head -n1)"
           if [ "${COMPOSE_VER}" != "${VERSION}" ]; then
-            echo "::error::docker-compose.yml VERSION default ${COMPOSE_VER} does not match ${VERSION} (run tools/sync_versions.py)"
+            echo "::error::docker-compose.yml VERSION default ${COMPOSE_VER} does not match ${VERSION} (run ./tools/sync_versions.sh)"
             exit 1
           fi
           IMAGE_NAME="$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')"

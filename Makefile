@@ -2,7 +2,7 @@ ASSETS_DIR := zoeken/zoeken-server/assets
 VERSION ?= $(shell ./packaging/scripts/package-version.sh)
 OUT_DIR ?= dist
 
-.PHONY: help clean-assets build client package deb deb-amd64 deb-arm64 docker native-types check-native-types
+.PHONY: help clean-assets build client package deb deb-amd64 deb-arm64 docker native-types check-native-types sync-versions
 
 help:
 	@echo "make targets:"
@@ -15,6 +15,8 @@ help:
 	@echo "  docker            docker build -t zoeken:local ."
 	@echo "  native-types      regenerate SPA types from Rust wire DTOs"
 	@echo "  check-native-types fail if generated native.ts drifts"
+	@echo "  sync-versions     sync package.json / lock / Docker VERSION to Cargo.toml"
+	@echo "                    (optional BUMP=X.Y.Z; CHECK=1 for drift gate)"
 	@echo "  clean-assets      Remove built assets, keeping .gitkeep / rss.xsl / logo"
 
 native-types:     ## regenerate SPA types from Rust wire DTOs
@@ -22,6 +24,16 @@ native-types:     ## regenerate SPA types from Rust wire DTOs
 
 check-native-types: native-types
 	git diff --exit-code -- zoeken-client/src/lib/generated/native.ts
+
+# Sync package.json, Cargo.lock zoeken-*, and Docker VERSION defaults to Cargo.toml.
+# Examples: make sync-versions | make sync-versions BUMP=1.4.0 | make sync-versions CHECK=1
+sync-versions:
+	@chmod +x tools/sync_versions.sh
+	@args=""; \
+	  if [ -n "$(BUMP)" ]; then args="$$args --bump $(BUMP)"; fi; \
+	  if [ "$(CHECK)" = "1" ]; then args="$$args --check"; fi; \
+	  if [ "$(DRY_RUN)" = "1" ]; then args="$$args --dry-run"; fi; \
+	  ./tools/sync_versions.sh $$args
 
 clean-assets:
 	@find $(ASSETS_DIR) -mindepth 1 ! -name '.gitkeep' ! -name 'rss.xsl' ! -name 'zoeken-logo.svg' -exec rm -rf {} +

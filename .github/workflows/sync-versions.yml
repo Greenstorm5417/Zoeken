@@ -6,7 +6,8 @@
 #   3. Bot commits "chore: sync package versions to X.Y.Z" if anything changed.
 #   4. Update CHANGELOG.md, then tag: git tag vX.Y.Z && git push origin vX.Y.Z
 #
-# Local: uv run --no-project --python 3.13 tools/sync_versions.py [--dry-run] [--bump X.Y.Z]
+# Local: ./tools/sync_versions.sh [--dry-run] [--bump X.Y.Z] [--check]
+#        make sync-versions [BUMP=X.Y.Z]
 #
 # Caveat: pushing to a protected branch may need a PAT with contents:write
 # (GITHUB_TOKEN cannot bypass branch protection). Forks/PRs are not auto-committed.
@@ -30,6 +31,7 @@ on:
       - Dockerfile
       - Dockerfile.runtime
       - docker-compose.yml
+      - tools/sync_versions.sh
       - tools/sync_versions.py
 
 permissions:
@@ -47,13 +49,6 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
-      - name: Set up uv
-        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
-        with:
-          version: "0.11.8"
-          # No pyproject/uv.lock — scripts run with `uv run --no-project`.
-          enable-cache: false
-
       - name: Sync versions
         id: sync
         env:
@@ -64,7 +59,7 @@ jobs:
           if [ -n "${BUMP:-}" ]; then
             ARGS+=(--bump "${BUMP}")
           fi
-          uv run --no-project --python 3.13 tools/sync_versions.py "${ARGS[@]}"
+          ./tools/sync_versions.sh "${ARGS[@]}"
           VERSION="$(sed -n '/^\[workspace\.package\]/,/^\[/{s/^version *= *"\([^"]*\)".*/\1/p;}' Cargo.toml | head -n1)"
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 

@@ -220,7 +220,7 @@ deployment:
 
 1. Bump `[workspace.package].version` in `Cargo.toml` (source of truth), then sync
    dependents via **Actions → Sync versions** (or locally:
-   `uv run --no-project --python 3.13 tools/sync_versions.py [--bump X.Y.Z]`).
+   `./tools/sync_versions.sh [--bump X.Y.Z]` / `make sync-versions BUMP=X.Y.Z`).
    The workflow commits `chore: sync package versions to X.Y.Z` when needed.
    Update `CHANGELOG.md`.
 2. Commit remaining release notes if needed, then tag and push:
