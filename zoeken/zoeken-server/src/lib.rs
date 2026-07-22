@@ -32,7 +32,7 @@ use zoeken_engine_core::SuspendConfig;
 use zoeken_network::{NetworkError, NetworkManager};
 use zoeken_plugins::{PluginCtx, PluginGating};
 use zoeken_prefs::Preferences;
-use zoeken_query::{FormParams, StaticPreferences};
+use zoeken_query::FormParams;
 use zoeken_search::{
     EnabledEngineSet, EngineExecutor, EnginePreferences, MetricsRecorder, NoopRecorder, Search,
     SearchConfig, SuspensionPolicy,
@@ -64,7 +64,6 @@ fn default_assets_dir() -> DirAssets {
 pub struct AppState {
     search: Search,
     recorder: Arc<dyn MetricsRecorder>,
-    prefs: StaticPreferences,
     image_fetcher: Arc<dyn ImageProxyFetcher>,
     image_policy: ImageProxyPolicy,
     favicons: Arc<AppFaviconService>,
@@ -370,7 +369,6 @@ impl AppState {
         AppState {
             search,
             recorder: Arc::new(NoopRecorder),
-            prefs: StaticPreferences::default(),
             image_fetcher: Arc::new(WreqImageFetcher::new()),
             image_policy: ImageProxyPolicy::default(),
             favicons: Arc::new(FaviconService::new(
@@ -443,7 +441,6 @@ impl AppState {
         Ok(AppState {
             search,
             recorder: Arc::new(zoeken_metrics::EngineMetricsRecorder::new()),
-            prefs: StaticPreferences::default(),
             // Reuse the browser-emulating `image_proxy` network client so
             // proxied image fetches look like a real browser and share a pool.
             image_fetcher: Arc::new(WreqImageFetcher::with_networks(Arc::clone(&networks))),
@@ -468,11 +465,6 @@ impl AppState {
 
     pub fn with_recorder(mut self, recorder: Arc<dyn MetricsRecorder>) -> Self {
         self.recorder = recorder;
-        self
-    }
-
-    pub fn with_prefs(mut self, prefs: StaticPreferences) -> Self {
-        self.prefs = prefs;
         self
     }
 

@@ -23,9 +23,6 @@ pub enum Processor {
     #[default]
     Online,
     Offline,
-    OnlineCurrency,
-    OnlineDictionary,
-    OnlineUrlSearch,
 }
 
 impl Processor {
@@ -33,9 +30,6 @@ impl Processor {
         match self {
             Processor::Online => "online",
             Processor::Offline => "offline",
-            Processor::OnlineCurrency => "online_currency",
-            Processor::OnlineDictionary => "online_dictionary",
-            Processor::OnlineUrlSearch => "online_url_search",
         }
     }
 }
