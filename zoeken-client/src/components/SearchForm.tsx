@@ -413,7 +413,6 @@ export function SearchForm({
 												width={32}
 												height={32}
 												className="size-8 shrink-0 rounded-md object-cover bg-surface"
-												loading="lazy"
 												decoding="async"
 											/>
 										) : (

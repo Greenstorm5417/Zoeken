@@ -912,6 +912,12 @@ impl NetworkManager {
     }
 
     pub async fn request(&self, net: &str, req: NetworkRequest) -> Result<Response, NetworkError> {
+        // Favicon CDN fetches share one origin (e.g. icons.duckduckgo.com). Search-engine
+        // origin_limits (≈1 rps / max 2) would serialize a whole SERP of icons.
+        if net == "favicon" {
+            return self.get(net).request(net, req).await;
+        }
+
         let Some(storage) = &self.coordinator else {
             return self.get(net).request(net, req).await;
         };

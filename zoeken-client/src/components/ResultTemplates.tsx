@@ -437,7 +437,7 @@ export function ResultItem({
 							width={20}
 							height={20}
 							className="size-5 rounded-[5px] bg-surface-raised ring-1 ring-line/80"
-							loading="lazy"
+							decoding="async"
 							onError={(event) => {
 								event.currentTarget.hidden = true;
 							}}
