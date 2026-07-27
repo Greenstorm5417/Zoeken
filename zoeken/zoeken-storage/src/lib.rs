@@ -5,6 +5,7 @@
 //! through this interface.
 
 mod postgres;
+mod shared;
 mod sqlite;
 
 use std::path::PathBuf;
