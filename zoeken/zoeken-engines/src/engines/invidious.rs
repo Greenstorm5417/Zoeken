@@ -8,7 +8,7 @@ use zoeken_engine_core::{
     About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod, Processor,
     RequestParams, SearchQueryView, TimeRange,
 };
-use zoeken_results::{MainResult, Result_, Template};
+use zoeken_results::{MainResult, Result_};
 
 /// Engine name / identifier.
 pub const NAME: &str = "invidious";
@@ -156,7 +156,6 @@ impl Engine for Invidious {
                 title,
                 content,
                 engine: NAME.to_string(),
-                template: Template::Videos,
                 thumbnail,
                 iframe_src,
                 length,
@@ -227,7 +226,6 @@ mod tests {
             title: title.to_string(),
             content: content.to_string(),
             engine: NAME.to_string(),
-            template: Template::Videos,
             thumbnail: "https://i.ytimg.com/vi/abc123/hqdefault.jpg".to_string(),
             iframe_src: "https://invidious.example/embed/abc123".to_string(),
             length: "1:40".to_string(),

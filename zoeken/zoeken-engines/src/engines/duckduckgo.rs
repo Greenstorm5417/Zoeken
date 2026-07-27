@@ -7,7 +7,7 @@ use zoeken_engine_core::{
     About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod, Processor,
     RequestParams, SearchQueryView, TimeRange,
 };
-use zoeken_results::{Answer, MainResult, Result_, Template};
+use zoeken_results::{Answer, MainResult, Result_};
 
 pub const NAME: &str = "duckduckgo";
 
@@ -239,7 +239,6 @@ impl Engine for DuckDuckGo {
                     answer,
                     url,
                     engine: NAME.to_string(),
-                    template: Template::Answer,
                     ..Answer::default()
                 }));
             }
@@ -389,7 +388,6 @@ mod tests {
             answer: "Rust is a multi-paradigm, general-purpose programming language that emphasizes performance, type safety, and concurrency. More at Wikipedia".to_string(),
             url: Some("https://en.wikipedia.org/wiki/Rust_(programming_language)".to_string()),
             engine: NAME.to_string(),
-            template: Template::Answer,
             ..Answer::default()
         }));
         Fixture::capture(

@@ -1,7 +1,7 @@
 use proptest::prelude::*;
 use zoeken_results::{
     Answer, Code, Correction, FileResult, Image, Infobox, InfoboxAttribute, InfoboxImage,
-    InfoboxUrl, KeyValue, MainResult, Paper, Result_, Suggestion, Template,
+    InfoboxUrl, KeyValue, MainResult, Paper, Result_, Suggestion,
 };
 use zoeken_search::{ResultContainer, UnresponsiveCause, UnresponsiveEngine};
 use zoeken_server::serialize::{JsonResponse, format_json};
@@ -22,22 +22,6 @@ fn opt_text() -> impl Strategy<Value = Option<String>> {
     prop_oneof![Just(None), ".*".prop_map(Some)]
 }
 
-fn template() -> impl Strategy<Value = Template> {
-    prop_oneof![
-        Just(Template::Default),
-        Just(Template::Answer),
-        Just(Template::Images),
-        Just(Template::Videos),
-        Just(Template::Paper),
-        Just(Template::Code),
-        Just(Template::File),
-        Just(Template::KeyValue),
-        Just(Template::Infobox),
-        Just(Template::Suggestion),
-        Just(Template::Correction),
-    ]
-}
-
 fn main_result() -> impl Strategy<Value = MainResult> {
     (
         ".*",
@@ -48,7 +32,6 @@ fn main_result() -> impl Strategy<Value = MainResult> {
         engines(),
         score(),
         positions(),
-        template(),
         ".*",
         ".*",
     )
@@ -62,7 +45,6 @@ fn main_result() -> impl Strategy<Value = MainResult> {
                 engines,
                 score,
                 positions,
-                template,
                 thumbnail,
                 iframe_src,
             )| {
@@ -76,7 +58,6 @@ fn main_result() -> impl Strategy<Value = MainResult> {
                     score,
                     positions,
                     priority: String::new(),
-                    template,
                     thumbnail,
                     iframe_src,
                     ..MainResult::default()
@@ -258,11 +239,10 @@ fn main_area_result() -> impl Strategy<Value = Result_> {
 }
 
 fn answer() -> impl Strategy<Value = Answer> {
-    (".*", opt_text(), ".*", template()).prop_map(|(answer, url, engine, template)| Answer {
+    (".*", opt_text(), ".*").prop_map(|(answer, url, engine)| Answer {
         answer,
         url,
         engine,
-        template,
         ..Answer::default()
     })
 }

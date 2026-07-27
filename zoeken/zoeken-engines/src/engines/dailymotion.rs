@@ -8,7 +8,7 @@ use zoeken_engine_core::{
     About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod, Processor,
     RequestParams, SafeSearch, SearchQueryView,
 };
-use zoeken_results::{MainResult, Result_, Template};
+use zoeken_results::{MainResult, Result_};
 
 use super::util::encode_query;
 
@@ -189,7 +189,6 @@ impl Engine for Dailymotion {
                 title,
                 content,
                 engine: NAME.to_string(),
-                template: Template::Videos,
                 thumbnail,
                 iframe_src,
                 length,

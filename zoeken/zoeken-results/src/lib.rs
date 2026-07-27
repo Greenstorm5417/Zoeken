@@ -3,40 +3,6 @@
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize)]
-pub enum Template {
-    #[default]
-    Default,
-    Answer,
-    Images,
-    Videos,
-    Paper,
-    Code,
-    File,
-    KeyValue,
-    Infobox,
-    Suggestion,
-    Correction,
-}
-
-impl Template {
-    pub fn as_str(&self) -> &'static str {
-        match self {
-            Template::Default => "default.html",
-            Template::Answer => "answer/legacy.html",
-            Template::Images => "images.html",
-            Template::Videos => "videos.html",
-            Template::Paper => "paper.html",
-            Template::Code => "code.html",
-            Template::File => "file.html",
-            Template::KeyValue => "keyvalue.html",
-            Template::Infobox => "infobox.html",
-            Template::Suggestion => "suggestion.html",
-            Template::Correction => "correction.html",
-        }
-    }
-}
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum ResultKind {
     Main,
@@ -91,7 +57,6 @@ pub struct MainResult {
     pub positions: Vec<usize>,
     #[serde(default)]
     pub priority: String,
-    pub template: Template,
     /// Preview image for video / rich results (SearXNG `thumbnail`).
     #[serde(default)]
     pub thumbnail: String,
@@ -116,8 +81,6 @@ pub struct Answer {
     pub url: Option<String>,
     #[serde(default)]
     pub engine: String,
-    #[serde(default)]
-    pub template: Template,
     /// Structured payload for interactive SPA widgets (unit/currency/calculator).
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub interactive: Option<InteractiveAnswer>,
@@ -220,8 +183,6 @@ pub struct Image {
     pub positions: Vec<usize>,
     #[serde(default)]
     pub priority: String,
-    #[serde(default)]
-    pub template: Template,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, Default)]
@@ -265,8 +226,6 @@ pub struct Paper {
     pub positions: Vec<usize>,
     #[serde(default)]
     pub priority: String,
-    #[serde(default)]
-    pub template: Template,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, Default)]
@@ -290,8 +249,6 @@ pub struct Code {
     pub positions: Vec<usize>,
     #[serde(default)]
     pub priority: String,
-    #[serde(default)]
-    pub template: Template,
 }
 
 fn guess_language() -> String {
@@ -336,8 +293,6 @@ pub struct FileResult {
     pub positions: Vec<usize>,
     #[serde(default)]
     pub priority: String,
-    #[serde(default)]
-    pub template: Template,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, Default)]
@@ -365,8 +320,6 @@ pub struct KeyValue {
     pub positions: Vec<usize>,
     #[serde(default)]
     pub priority: String,
-    #[serde(default)]
-    pub template: Template,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]
@@ -449,21 +402,6 @@ pub fn normalize_url(raw: &str) -> Result<String, ResultError> {
     }
 
     Ok(parsed.as_str().to_string())
-}
-
-pub fn assign_template(kind: ResultKind) -> Template {
-    match kind {
-        ResultKind::Main => Template::Default,
-        ResultKind::Answer => Template::Answer,
-        ResultKind::Image => Template::Images,
-        ResultKind::Paper => Template::Paper,
-        ResultKind::Code => Template::Code,
-        ResultKind::File => Template::File,
-        ResultKind::KeyValue => Template::KeyValue,
-        ResultKind::Suggestion => Template::Suggestion,
-        ResultKind::Correction => Template::Correction,
-        ResultKind::Infobox => Template::Infobox,
-    }
 }
 
 pub fn validate(result: &Result_) -> Result<(), ResultError> {
@@ -630,26 +568,6 @@ mod tests {
     }
 
     #[test]
-    fn assign_template_maps_each_kind() {
-        assert_eq!(assign_template(ResultKind::Main), Template::Default);
-        assert_eq!(assign_template(ResultKind::Answer), Template::Answer);
-        assert_eq!(assign_template(ResultKind::Image), Template::Images);
-        assert_eq!(assign_template(ResultKind::Paper), Template::Paper);
-        assert_eq!(assign_template(ResultKind::Code), Template::Code);
-        assert_eq!(assign_template(ResultKind::File), Template::File);
-        assert_eq!(assign_template(ResultKind::KeyValue), Template::KeyValue);
-        assert_eq!(
-            assign_template(ResultKind::Suggestion),
-            Template::Suggestion
-        );
-        assert_eq!(
-            assign_template(ResultKind::Correction),
-            Template::Correction
-        );
-        assert_eq!(assign_template(ResultKind::Infobox), Template::Infobox);
-    }
-
-    #[test]
     fn validate_accepts_complete_main_result() {
         let r = Result_::Main(MainResult {
             url: "http://example.com/".to_string(),
@@ -716,19 +634,6 @@ mod prop_tests {
     use super::*;
     use proptest::prelude::*;
 
-    const ALL_KINDS: [ResultKind; 10] = [
-        ResultKind::Main,
-        ResultKind::Answer,
-        ResultKind::Image,
-        ResultKind::Paper,
-        ResultKind::Code,
-        ResultKind::File,
-        ResultKind::KeyValue,
-        ResultKind::Suggestion,
-        ResultKind::Correction,
-        ResultKind::Infobox,
-    ];
-
     prop_compose! {
         fn arb_url_like()(
             scheme in prop::option::of(prop_oneof!["http", "https", "HTTP", "ftp"]),
@@ -776,13 +681,6 @@ mod prop_tests {
                 let twice = normalize_url(&once)
                     .expect("normalized url must itself normalize");
                 prop_assert_eq!(&twice, &once);
-
-                for kind in ALL_KINDS {
-                    let _template = assign_template(kind);
-                    let after = normalize_url(&raw)
-                        .expect("normalization is deterministic and template-independent");
-                    prop_assert_eq!(&after, &once);
-                }
             }
         }
 
@@ -792,13 +690,6 @@ mod prop_tests {
                 let twice = normalize_url(&once)
                     .expect("normalized url must itself normalize");
                 prop_assert_eq!(&twice, &once);
-
-                for kind in ALL_KINDS {
-                    let _template = assign_template(kind);
-                    let again = normalize_url(&once)
-                        .expect("normalized url must itself normalize");
-                    prop_assert_eq!(&again, &once);
-                }
             }
         }
     }

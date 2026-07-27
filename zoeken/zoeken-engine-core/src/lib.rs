@@ -16,7 +16,7 @@ pub use error_category::ErrorCategory;
 pub use zoeken_query::{SafeSearch, TimeRange};
 pub use zoeken_results::{
     Answer, Code, Correction, FileResult, Image, Infobox, KeyValue, MainResult, Paper, Result_,
-    ResultItem, ResultKind, Suggestion, Template,
+    ResultItem, ResultKind, Suggestion,
 };
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize)]
