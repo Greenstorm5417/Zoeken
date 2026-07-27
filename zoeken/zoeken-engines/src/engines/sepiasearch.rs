@@ -7,7 +7,7 @@ use zoeken_engine_core::{
     About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod, Processor,
     RequestParams, SafeSearch, SearchQueryView, TimeRange,
 };
-use zoeken_results::{MainResult, Result_, Template};
+use zoeken_results::{MainResult, Result_};
 
 use super::util::encode_query;
 
@@ -146,7 +146,6 @@ impl Engine for SepiaSearch {
                 title,
                 content,
                 engine: NAME.to_string(),
-                template: Template::Videos,
                 thumbnail,
                 iframe_src,
                 length,
@@ -263,7 +262,6 @@ mod tests {
             title: title.to_string(),
             content: content.to_string(),
             engine: NAME.to_string(),
-            template: Template::Videos,
             iframe_src: iframe_src.to_string(),
             length: length.to_string(),
             published_date: Some(published.to_string()),

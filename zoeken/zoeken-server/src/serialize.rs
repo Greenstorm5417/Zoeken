@@ -2,7 +2,7 @@
 
 use serde::{Deserialize, Serialize};
 use serde_json::{Map, Value, json};
-use zoeken_results::{Answer, Infobox, Result_, Template};
+use zoeken_results::{Answer, Infobox, Result_};
 use zoeken_search::{ResultContainer, UnresponsiveCause};
 
 #[derive(Debug, Clone, Copy)]
@@ -234,13 +234,18 @@ fn host(raw: &str) -> String {
 fn result_json(result: &Result_) -> Value {
     match result {
         Result_::Main(result) => {
+            let template = if !result.iframe_src.is_empty() || !result.length.is_empty() {
+                "videos.html"
+            } else {
+                "default.html"
+            };
             let mut obj = base_result_json(
                 &result.url,
                 &result.title,
                 &result.content,
                 &result.engine,
                 result.score,
-                result.template,
+                template,
             );
             insert_engines(&mut obj, &result.engine, &result.engines);
             insert_array(
@@ -260,7 +265,7 @@ fn result_json(result: &Result_) -> Value {
                 &result.content,
                 &result.engine,
                 result.score,
-                result.template,
+                "images.html",
             );
             insert_engines(&mut obj, &result.engine, &[]);
             insert_str(&mut obj, "img_src", &result.img_src);
@@ -280,7 +285,7 @@ fn result_json(result: &Result_) -> Value {
                 &result.content,
                 &result.engine,
                 result.score,
-                result.template,
+                "paper.html",
             );
             insert_array(
                 &mut obj,
@@ -312,7 +317,7 @@ fn result_json(result: &Result_) -> Value {
                 &result.content,
                 &result.engine,
                 result.score,
-                result.template,
+                "code.html",
             );
             if let Some(repository) = &result.repository {
                 insert_str(&mut obj, "repository", repository);
@@ -337,7 +342,7 @@ fn result_json(result: &Result_) -> Value {
                 &result.content,
                 &result.engine,
                 result.score,
-                result.template,
+                "file.html",
             );
             insert_str(&mut obj, "filename", &result.filename);
             insert_str(&mut obj, "size", &result.size);
@@ -367,7 +372,7 @@ fn result_json(result: &Result_) -> Value {
                 &result.content,
                 &result.engine,
                 result.score,
-                result.template,
+                "keyvalue.html",
             );
             obj.insert("kvmap".to_string(), json!(result.kvmap));
             insert_str(&mut obj, "caption", &result.caption);
@@ -393,7 +398,7 @@ fn base_result_json(
     content: &str,
     engine: &str,
     score: f64,
-    template: Template,
+    template: &'static str,
 ) -> Map<String, Value> {
     let mut obj = Map::new();
     insert_str(&mut obj, "url", url);
@@ -401,7 +406,7 @@ fn base_result_json(
     insert_str(&mut obj, "content", content);
     insert_str(&mut obj, "engine", engine);
     obj.insert("score".to_string(), json!(score));
-    obj.insert("template".to_string(), json!(template.as_str()));
+    obj.insert("template".to_string(), json!(template));
     obj
 }
 
@@ -412,7 +417,7 @@ fn answer_json(answer: &Answer) -> Value {
         insert_str(&mut obj, "url", url);
     }
     insert_str(&mut obj, "engine", &answer.engine);
-    obj.insert("template".to_string(), json!(answer.template.as_str()));
+    obj.insert("template".to_string(), json!("answer/legacy.html"));
     if let Some(interactive) = &answer.interactive {
         obj.insert("interactive".to_string(), json!(interactive));
     }
@@ -606,6 +611,41 @@ mod tests {
         assert!(value["corrections"].is_array());
         assert!(value["infoboxes"].is_array());
         assert!(value["unresponsive_engines"].is_array());
+    }
+
+    #[test]
+    fn json_synthesizes_videos_template_from_main_video_fields() {
+        let container = ResultContainer {
+            results: vec![Result_::Main(MainResult {
+                url: "https://example.test/v".to_string(),
+                normalized_url: "https://example.test/v".to_string(),
+                title: "Clip".to_string(),
+                content: "A video.".to_string(),
+                engine: "invidious".to_string(),
+                iframe_src: "https://example.test/embed/v".to_string(),
+                length: "1:40".to_string(),
+                ..MainResult::default()
+            })],
+            number_of_results: 1,
+            ..ResultContainer::default()
+        };
+        let value: serde_json::Value =
+            serde_json::from_str(&format_json_for_query("rust", &container)).unwrap();
+        assert_eq!(value["results"][0]["template"], "videos.html");
+    }
+
+    #[test]
+    fn json_synthesizes_answer_template() {
+        let container = ResultContainer {
+            answers: vec![zoeken_results::Answer {
+                answer: "42".to_string(),
+                engine: "duckduckgo".to_string(),
+                ..zoeken_results::Answer::default()
+            }],
+            ..ResultContainer::default()
+        };
+        let value: serde_json::Value = serde_json::from_str(&format_json(&container)).unwrap();
+        assert_eq!(value["answers"][0]["template"], "answer/legacy.html");
     }
 
     #[test]
