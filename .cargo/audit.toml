@@ -1,4 +1,7 @@
 # Project-local cargo-audit config (see https://docs.rs/cargo-audit)
 [advisories]
-# Transitive via unused sqlx-mysql; Marvin Attack has no fixed rsa release.
+# RUSTSEC-2023-0071 (rsa Marvin Attack): no fixed rsa release yet.
+# sqlx's `migrate` feature uses weak deps that pull unused sqlx-mysql into
+# Cargo.lock even with only sqlite+postgres enabled (sqlx#3211 / cargo#10801).
+# cargo tree -i sqlx-mysql: not compiled; audit still sees lockfile rsa.
 ignore = ["RUSTSEC-2023-0071"]

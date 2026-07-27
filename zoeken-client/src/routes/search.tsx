@@ -1,13 +1,11 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { Settings2 } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { InstantAnswerCard } from "#/components/answers/InstantAnswerCard";
 import { ImageLightbox } from "#/components/ImageLightbox";
 import { InfoboxCard } from "#/components/InfoboxCard";
-import { SearchForm } from "#/components/SearchForm";
 import { SearchResultList } from "#/components/SearchResultList";
-import { SelectMenu } from "#/components/SelectMenu";
+import { SearchSerpHeader } from "#/components/SearchSerpHeader";
 import {
 	ApiError,
 	autocomplete,
@@ -20,7 +18,6 @@ import { pickDidYouMean } from "#/lib/didYouMean";
 import { stringsFor } from "#/lib/i18n";
 import {
 	correctionText,
-	DEFAULT_CATEGORIES,
 	formatEngineLabel,
 	pageNumbers,
 	searchLink,
@@ -37,7 +34,6 @@ export const Route = createFileRoute("/search")({
 
 function SearchPage() {
 	const params = Route.useSearch();
-	const navigate = useNavigate();
 	const {
 		q,
 		pageno = 1,
@@ -233,216 +229,24 @@ function SearchPage() {
 		query.fetchNextPage,
 	]);
 
-	const available = new Set(
-		(config?.engines ?? [])
-			.filter((engine) => engine.enabled)
-			.flatMap((engine) => engine.categories.map((c) => c.toLowerCase())),
-	);
-	available.add("general");
-	const configuredCategories = config?.categories_as_tabs?.length
-		? config.categories_as_tabs
-		: DEFAULT_CATEGORIES;
-	const categoriesList = configuredCategories.filter((category) =>
-		available.has(category),
-	);
-
-	// Hide filters the active category's engines don't support.
-	const categoryEngines = (config?.engines ?? []).filter(
-		(engine) =>
-			engine.enabled &&
-			(activeCategory === "general" ||
-				engine.categories.map((c) => c.toLowerCase()).includes(activeCategory)),
-	);
-	const showTimeRange = categoryEngines.some((e) => e.time_range_support);
-	const showSafesearch = categoryEngines.some((e) => e.safesearch);
-	// Locale codes (en-US, nl-BE, …) are the region control — no separate region param.
-	const showLanguage = categoryEngines.some((e) => e.language_support);
-
-	const languageOptions = [
-		{ value: "", label: "Any language / region" },
-		...Object.entries(config?.locales ?? {}).map(([code, name]) => ({
-			value: code,
-			label: name,
-		})),
-	];
-	const onLanguageChange = (next: string) =>
-		void navigate({
-			to: "/search",
-			search: searchLink(params, {
-				language: next || undefined,
-				pageno: undefined,
-			}),
-		});
-	const onSafesearchChange = (next: string) =>
-		void navigate({
-			to: "/search",
-			search: searchLink(params, {
-				safesearch: Number(next) as 0 | 1 | 2,
-				pageno: undefined,
-			}),
-		});
-	const onTimeRangeChange = (next: string) =>
-		void navigate({
-			to: "/search",
-			search: searchLink(params, {
-				time_range: next || undefined,
-				pageno: undefined,
-			}),
-		});
-
 	const t = stringsFor(language);
-	const timeRangeOptions = [
-		{ value: "", label: t.anyTime },
-		{ value: "day", label: t.pastDay },
-		{ value: "week", label: t.pastWeek },
-		{ value: "month", label: t.pastMonth },
-		{ value: "year", label: t.pastYear },
-	];
-	const safesearchOptions = [
-		{ value: "0", label: t.safeSearchOff },
-		{ value: "1", label: t.moderate },
-		{ value: "2", label: t.strict },
-	];
-
-	const filterMenus = (
-		<>
-			{showTimeRange ? (
-				<SelectMenu
-					label="Time range"
-					value={time_range}
-					options={timeRangeOptions}
-					onChange={onTimeRangeChange}
-				/>
-			) : null}
-			{showLanguage ? (
-				<SelectMenu
-					label="Language / region"
-					value={language ?? ""}
-					options={languageOptions}
-					onChange={onLanguageChange}
-				/>
-			) : null}
-			{showSafesearch ? (
-				<SelectMenu
-					label="Safe search"
-					value={String(safesearch)}
-					options={safesearchOptions}
-					onChange={onSafesearchChange}
-				/>
-			) : null}
-		</>
-	);
-
 	const resultCount =
 		firstPage?.number_of_results ??
 		(results.length > 0 ? results.length : undefined);
 
 	return (
 		<div className="zoeken-serp min-h-dvh text-ink">
-			<header className="sticky top-0 z-20 border-b border-line bg-surface">
-				<div className="mx-auto flex max-w-6xl items-center gap-2 px-3 pt-3 pb-2.5 sm:gap-4 sm:px-6">
-					<Link
-						to="/"
-						className="shrink-0 no-underline"
-						aria-label="Zoeken home"
-					>
-						<img src="/zoeken-logo.svg" alt="" width={32} height={32} />
-					</Link>
-					<div className="w-full min-w-0 max-w-[40rem] flex-1">
-						<SearchForm key={q} initialQuery={q} compact baseSearch={params} />
-					</div>
-					<div className="ml-auto flex shrink-0 items-center gap-1">
-						{q.trim() ? (
-							<div className="hidden items-center gap-2 lg:flex">
-								{filterMenus}
-							</div>
-						) : null}
-						<nav className="flex items-center text-sm">
-							<Link
-								to="/preferences"
-								className="hidden rounded-lg px-3 py-1.5 text-ink-muted no-underline transition-colors hover:bg-accent-soft hover:text-ink md:block"
-							>
-								Preferences
-							</Link>
-							<Link
-								to="/about"
-								className="hidden rounded-lg px-3 py-1.5 text-ink-muted no-underline transition-colors hover:bg-accent-soft hover:text-ink md:block"
-							>
-								About
-							</Link>
-							<Link
-								to="/preferences"
-								aria-label="Preferences"
-								className="rounded-lg p-2 text-ink-muted transition-colors hover:bg-accent-soft hover:text-ink md:hidden"
-							>
-								<Settings2 className="size-5" aria-hidden />
-							</Link>
-						</nav>
-					</div>
-				</div>
-
-				{q.trim() ? (
-					<div className="mx-auto flex max-w-6xl items-end gap-1 overflow-x-auto px-3 sm:px-6">
-						{categoriesList.map((category) => {
-							const active =
-								(config?.ui?.search_on_category_select === false
-									? pendingCategory
-									: activeCategory) === category;
-							return (
-								<Link
-									key={category}
-									to="/search"
-									search={searchLink(params, {
-										categories: category === "general" ? undefined : category,
-										pageno: undefined,
-									})}
-									onClick={(event) => {
-										if (config?.ui?.search_on_category_select === false) {
-											event.preventDefault();
-											setPendingCategory(category);
-										}
-									}}
-									className={[
-										"shrink-0 border-b-2 px-3 pb-2.5 text-sm capitalize no-underline transition-colors duration-100",
-										active
-											? "border-accent font-medium text-accent"
-											: "border-transparent text-ink-muted hover:text-ink",
-									].join(" ")}
-								>
-									{category === "general" ? "All" : category}
-								</Link>
-							);
-						})}
-						{config?.ui?.search_on_category_select === false &&
-						pendingCategory !== activeCategory ? (
-							<button
-								type="button"
-								className="mb-2 ml-2 shrink-0 text-sm font-medium text-accent"
-								onClick={() =>
-									void navigate({
-										to: "/search",
-										search: searchLink(params, {
-											categories:
-												pendingCategory === "general"
-													? undefined
-													: pendingCategory,
-											pageno: undefined,
-										}),
-									})
-								}
-							>
-								Search
-							</button>
-						) : null}
-					</div>
-				) : null}
-
-				{q.trim() && (showTimeRange || showLanguage || showSafesearch) ? (
-					<div className="mx-auto flex max-w-6xl items-center gap-2 overflow-x-auto border-t border-line/60 px-3 py-2 sm:px-6 lg:hidden">
-						{filterMenus}
-					</div>
-				) : null}
-			</header>
+			<SearchSerpHeader
+				params={params}
+				config={config}
+				q={q}
+				activeCategory={activeCategory}
+				pendingCategory={pendingCategory}
+				setPendingCategory={setPendingCategory}
+				time_range={time_range}
+				language={language}
+				safesearch={safesearch}
+			/>
 
 			{!q.trim() ? (
 				<p className="mt-16 text-center text-ink-muted">

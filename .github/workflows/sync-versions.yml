@@ -32,7 +32,6 @@ on:
       - Dockerfile.runtime
       - docker-compose.yml
       - tools/sync_versions.sh
-      - tools/sync_versions.py
 
 permissions:
   contents: write
