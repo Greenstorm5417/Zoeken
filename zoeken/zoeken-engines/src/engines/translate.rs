@@ -181,7 +181,6 @@ impl Engine for Translate {
                 target_lang: target.clone(),
                 translated: translated.to_string(),
             }),
-            ..Answer::default()
         }));
 
         Ok(res)

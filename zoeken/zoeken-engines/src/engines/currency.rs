@@ -302,7 +302,6 @@ impl Engine for Currency {
                 result: converted,
                 rate,
             }),
-            ..Answer::default()
         }));
 
         Ok(res)

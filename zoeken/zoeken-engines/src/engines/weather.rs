@@ -243,7 +243,6 @@ impl Engine for Weather {
                 wind_dir,
                 humidity,
             }),
-            ..Answer::default()
         }));
 
         Ok(res)

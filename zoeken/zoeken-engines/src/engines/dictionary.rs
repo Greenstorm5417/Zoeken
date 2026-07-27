@@ -184,7 +184,6 @@ impl Engine for Dictionary {
                 term: term.clone(),
                 definitions: defs,
             }),
-            ..Answer::default()
         }));
 
         Ok(res)

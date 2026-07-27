@@ -1426,7 +1426,6 @@ mod tests {
                 attributes: Vec::new(),
                 related_topics: Vec::new(),
             }),
-            ..Answer::default()
         }));
 
         let mut wd = EngineResults::new();

@@ -240,7 +240,6 @@ impl Engine for Wikipedia {
                     attributes: Vec::new(),
                     related_topics: Vec::new(),
                 }),
-                ..Answer::default()
             }));
         }
 
@@ -328,7 +327,6 @@ mod tests {
                 attributes: Vec::new(),
                 related_topics: Vec::new(),
             }),
-            ..Answer::default()
         }));
         Fixture::capture(
             NAME,
