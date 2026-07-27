@@ -122,10 +122,11 @@ Deliberate compatibility gaps between Zoeken and SearXNG.
 
 ## UI theme (SPA)
 
-- **Behavior**: `/config` still exposes `themes` / `default_theme`, and the prefs
-  cookie still stores `theme` for SearXNG cookie compatibility. The SPA has its
-  own light/dark/system picker (`zoeken-client` theme helper) stored in
-  `localStorage`, independent of the SearXNG theme cookie.
+- **Behavior**: Theme is SPA-only via `localStorage` (`zoeken-client` theme helper:
+  light/dark/system). `/config` does not expose `themes` / `default_theme`, and
+  settings no longer ship SearXNG `ui.default_theme` / `theme_args`. The prefs
+  cookie still accepts and round-trips a `theme` field for SearXNG client
+  compatibility; Zoeken does not use it for UI.
 
 ## Zoeken-only engines
 

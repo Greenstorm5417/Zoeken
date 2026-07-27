@@ -23,7 +23,6 @@ struct Overrides {
     public_instance: Option<bool>,
     image_proxy: Option<bool>,
     secret_key: Option<String>,
-    default_theme: Option<String>,
     results_on_new_tab: Option<bool>,
     request_timeout: Option<f64>,
     pool_connections: Option<u32>,
@@ -60,7 +59,6 @@ fn overrides_strategy() -> impl Strategy<Value = Overrides> {
             proptest::option::of(safe_string()),
         ),
         (
-            proptest::option::of(safe_string()),
             proptest::option::of(any::<bool>()),
             proptest::option::of(finite_f64()),
             proptest::option::of(0u32..=100_000),
@@ -81,7 +79,6 @@ fn overrides_strategy() -> impl Strategy<Value = Overrides> {
                 ),
                 (bind_address, limiter, public_instance, image_proxy, secret_key),
                 (
-                    default_theme,
                     results_on_new_tab,
                     request_timeout,
                     pool_connections,
@@ -101,7 +98,6 @@ fn overrides_strategy() -> impl Strategy<Value = Overrides> {
                 public_instance,
                 image_proxy,
                 secret_key,
-                default_theme,
                 results_on_new_tab,
                 request_timeout,
                 pool_connections,
@@ -165,7 +161,6 @@ fn build_file_yaml(ov: &Overrides) -> String {
     put(&mut server, "secret_key", &ov.secret_key, |v| str_val(v));
 
     let mut ui = Mapping::new();
-    put(&mut ui, "default_theme", &ov.default_theme, |v| str_val(v));
     put(&mut ui, "results_on_new_tab", &ov.results_on_new_tab, |v| {
         bool_val(*v)
     });
@@ -273,10 +268,6 @@ proptest! {
             ov.secret_key.as_ref().unwrap_or(&defaults.server.secret_key)
         );
 
-        prop_assert_eq!(
-            &merged.ui.default_theme,
-            ov.default_theme.as_ref().unwrap_or(&defaults.ui.default_theme)
-        );
         prop_assert_eq!(
             merged.ui.results_on_new_tab,
             ov.results_on_new_tab.unwrap_or(defaults.ui.results_on_new_tab)

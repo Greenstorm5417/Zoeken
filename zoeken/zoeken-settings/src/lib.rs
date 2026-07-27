@@ -438,9 +438,7 @@ pub fn secret_key_is_weak(secret: &str) -> bool {
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(default)]
 pub struct UiSettings {
-    pub default_theme: String,
     pub default_locale: String,
-    pub theme_args: ThemeArgs,
     pub results_on_new_tab: bool,
     pub query_in_title: bool,
     pub cache_url: String,
@@ -452,29 +450,13 @@ pub struct UiSettings {
 impl Default for UiSettings {
     fn default() -> Self {
         Self {
-            default_theme: "simple".to_string(),
             default_locale: String::new(),
-            theme_args: ThemeArgs::default(),
             results_on_new_tab: false,
             query_in_title: false,
             cache_url: String::new(),
             search_on_category_select: true,
             hotkeys: "default".to_string(),
             url_formatting: "pretty".to_string(),
-        }
-    }
-}
-
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(default)]
-pub struct ThemeArgs {
-    pub simple_style: String,
-}
-
-impl Default for ThemeArgs {
-    fn default() -> Self {
-        Self {
-            simple_style: "auto".to_string(),
         }
     }
 }
@@ -1291,15 +1273,6 @@ pub fn validate_settings(s: &Settings) -> Result<(), SettingsError> {
             ));
         }
     }
-    match s.ui.theme_args.simple_style.as_str() {
-        "auto" | "light" | "dark" | "black" => {}
-        other => {
-            return Err(invalid(
-                "ui.theme_args.simple_style",
-                format!("must be one of auto, light, dark, black (got '{other}')"),
-            ));
-        }
-    }
     match s.ui.hotkeys.as_str() {
         "default" | "vim" => {}
         other => {
@@ -1524,8 +1497,6 @@ search:
         assert_eq!(s.server.base_url, Some(BoolOrString::Bool(false)));
         assert_eq!(s.server.http_protocol_version, "1.0");
         assert_eq!(s.server.method, "POST");
-        assert_eq!(s.ui.default_theme, "simple");
-        assert_eq!(s.ui.theme_args.simple_style, "auto");
         assert_eq!(s.ui.cache_url, "");
         assert!(s.ui.search_on_category_select);
         assert_eq!(s.ui.hotkeys, "default");
@@ -1578,7 +1549,6 @@ search:
         let parsed: Settings = serde_yaml_ng::from_str("{}").expect("deserialize empty document");
         assert_eq!(parsed.general.instance_name, "Search");
         assert_eq!(parsed.outgoing.request_timeout, 3.0);
-        assert_eq!(parsed.ui.default_theme, "simple");
         assert_eq!(parsed, Settings::defaults());
     }
 

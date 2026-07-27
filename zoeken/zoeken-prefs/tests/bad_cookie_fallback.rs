@@ -9,7 +9,7 @@ use zoeken_settings::Settings;
 
 fn customized_settings() -> Settings {
     let mut settings = Settings::default();
-    settings.ui.default_theme = "settings-theme".to_string();
+    settings.ui.default_locale = "settings-loc".to_string();
     settings.search.safe_search = 1; // Moderate
     settings
 }
@@ -50,7 +50,7 @@ fn bad_cookie_fallback_still_applies_settings_layer() {
         &FormParams::default(),
     );
 
-    assert_eq!(resolved.theme, "settings-theme");
+    assert_eq!(resolved.locale, "settings-loc");
     assert_eq!(resolved.safesearch, SafeSearch::Moderate);
 }
 
@@ -87,5 +87,6 @@ fn params_still_apply_on_top_of_bad_cookie() {
     let expected = resolve(&defaults, &settings, None, &params);
     assert_eq!(resolved, expected);
 
-    assert_eq!(resolved.theme, "settings-theme");
+    assert_eq!(resolved.locale, "es");
+    assert_eq!(resolved.theme, defaults.theme);
 }

@@ -42,11 +42,9 @@ struct ConfigResponse {
     default_locale: String,
     locales: BTreeMap<String, String>,
     safe_search: u8,
-    default_theme: String,
     autocomplete: String,
     autocomplete_min: u32,
     autocomplete_backends: Vec<String>,
-    themes: Vec<String>,
     brand: BrandInfo,
     limiter: LimiterInfo,
     doi_resolvers: Vec<String>,
@@ -200,14 +198,7 @@ pub async fn config(
         autocomplete: state.settings.search.autocomplete.clone(),
         autocomplete_min: state.settings.search.autocomplete_min,
         autocomplete_backends: state.data.autocomplete.backends.clone(),
-        themes: vec![
-            "simple".to_string(),
-            "system".to_string(),
-            "light".to_string(),
-            "dark".to_string(),
-        ],
         safe_search: state.settings.search.safe_search,
-        default_theme: state.settings.ui.default_theme.clone(),
         version: env!("CARGO_PKG_VERSION").to_string(),
         brand: BrandInfo {
             PRIVACYPOLICY_URL: serde_json::to_value(&state.settings.general.privacypolicy_url)

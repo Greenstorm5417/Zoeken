@@ -59,7 +59,7 @@ fn use_default_settings_true_merges_file_over_defaults() {
     assert_eq!(settings.search.autocomplete_min, 1);
     assert_eq!(settings.search.ban_time_on_fail, 5.0);
     assert_eq!(settings.server.port, Some(IntOrString::Int(8888)));
-    assert_eq!(settings.ui.default_theme, "simple");
+    assert_eq!(settings.ui.hotkeys, "default");
 }
 
 #[test]
@@ -107,7 +107,6 @@ fn use_default_settings_mapping_form_is_honored_as_merge() {
     .expect("mapping form merges");
 
     assert_eq!(settings.general.instance_name, "Filtered");
-    assert_eq!(settings.ui.default_theme, "simple");
     assert_eq!(settings.server.method, "POST");
 }
 
@@ -118,7 +117,6 @@ fn absent_use_default_settings_replaces_but_backfills_omitted_sections() {
 
     assert_eq!(settings.general.instance_name, "Replaced");
     assert_eq!(settings.server.port, Some(IntOrString::Int(8888)));
-    assert_eq!(settings.ui.default_theme, "simple");
     assert_eq!(settings.outgoing.request_timeout, 3.0);
 }
 
@@ -163,14 +161,6 @@ fn validation_names_invalid_http_protocol_version() {
 #[test]
 fn validation_names_invalid_method() {
     assert_validation_setting("server:\n  method: PUT\n", "server.method");
-}
-
-#[test]
-fn validation_names_invalid_simple_style() {
-    assert_validation_setting(
-        "ui:\n  theme_args:\n    simple_style: neon\n",
-        "ui.theme_args.simple_style",
-    );
 }
 
 #[test]
@@ -226,11 +216,8 @@ server:
   http_protocol_version: "1.1"
   method: "GET"
 ui:
-  default_theme: "simple"
   hotkeys: "vim"
   url_formatting: "full"
-  theme_args:
-    simple_style: "dark"
 outgoing:
   request_timeout: 4.5
   enable_http2: false
@@ -291,10 +278,8 @@ fn full_schema_load_populates_general_brand_search_server_ui() {
     assert_eq!(s.server.http_protocol_version, "1.1");
     assert_eq!(s.server.method, "GET");
 
-    assert_eq!(s.ui.default_theme, "simple");
     assert_eq!(s.ui.hotkeys, "vim");
     assert_eq!(s.ui.url_formatting, "full");
-    assert_eq!(s.ui.theme_args.simple_style, "dark");
 }
 
 #[test]
@@ -362,7 +347,7 @@ fn full_schema_load_covers_every_top_level_section() {
     assert_eq!(s.brand.docs_url, "https://example.test/docs");
     assert_eq!(s.search.autocomplete, "google");
     assert_eq!(s.server.bind_address, "0.0.0.0");
-    assert_eq!(s.ui.default_theme, "simple");
+    assert_eq!(s.ui.hotkeys, "vim");
     assert_eq!(s.outgoing.request_timeout, 4.5);
     assert!(!s.outgoing.networks.is_empty());
     assert!(!s.engines.is_empty());

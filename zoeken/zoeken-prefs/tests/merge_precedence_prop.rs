@@ -18,7 +18,6 @@ const KEYS: &[&str] = &[
 
 #[derive(Debug, Clone)]
 struct SettingsSpec {
-    theme: String,
     default_locale: String,
     default_lang: String,
     safe_search: u8,
@@ -111,7 +110,6 @@ fn arb_prefs() -> impl Strategy<Value = Preferences> {
 
 fn arb_settings_spec() -> impl Strategy<Value = SettingsSpec> {
     (
-        prop::sample::select(vec!["", "simple", "settings-theme", "dark"]).prop_map(String::from),
         prop::sample::select(vec!["", "es", "it", "settings-loc"]).prop_map(String::from),
         prop::sample::select(vec!["", "pt", "nl"]).prop_map(String::from),
         0u8..=4,
@@ -127,9 +125,8 @@ fn arb_settings_spec() -> impl Strategy<Value = SettingsSpec> {
         ),
     )
         .prop_map(
-            |(theme, default_locale, default_lang, safe_search, image_proxy, method, engines)| {
+            |(default_locale, default_lang, safe_search, image_proxy, method, engines)| {
                 SettingsSpec {
-                    theme,
                     default_locale,
                     default_lang,
                     safe_search,
@@ -184,7 +181,6 @@ fn arb_locked() -> impl Strategy<Value = Vec<String>> {
 
 fn build_settings(spec: &SettingsSpec, locked: &[String]) -> Settings {
     let mut settings = Settings::defaults();
-    settings.ui.default_theme = spec.theme.clone();
     settings.ui.default_locale = spec.default_locale.clone();
     settings.search.default_lang = spec.default_lang.clone();
     settings.search.safe_search = spec.safe_search;
@@ -247,9 +243,6 @@ proptest! {
         let locked: HashSet<&str> = locked_vec.iter().map(String::as_str).collect();
 
         let mut theme = defaults.theme.clone();
-        if !settings_spec.theme.is_empty() {
-            theme = settings_spec.theme.clone();
-        }
         if !locked.contains("theme")
             && let Some(c) = &cookie_prefs
         {

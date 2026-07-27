@@ -49,7 +49,8 @@ impl RequestMethod {
     }
 }
 
-/// Typed user preferences: theme, locale, categories, engines, safesearch, autocomplete, image_proxy, method.
+/// Typed user preferences: locale, categories, engines, safesearch, autocomplete, image_proxy, method.
+/// `theme` is kept only for SearXNG prefs-cookie round-trip; the SPA uses localStorage.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Preferences {
     pub theme: String,
@@ -257,10 +258,6 @@ fn apply_cookie(prefs: &mut Preferences, decoded: Preferences, locked: &HashSet<
 }
 
 fn apply_settings(prefs: &mut Preferences, settings: &Settings) {
-    if !settings.ui.default_theme.is_empty() {
-        prefs.theme = settings.ui.default_theme.clone();
-    }
-
     if !settings.ui.default_locale.is_empty() {
         prefs.locale = settings.ui.default_locale.clone();
     }
@@ -539,7 +536,6 @@ mod tests {
     fn resolve_uses_settings_over_defaults() {
         let defaults = Preferences::defaults();
         let mut settings = Settings::defaults();
-        settings.ui.default_theme = "custom".to_string();
         settings.ui.default_locale = "de".to_string();
         settings.search.default_lang = "de-DE".to_string();
         settings.search.safe_search = 2;
@@ -547,7 +543,7 @@ mod tests {
         settings.server.method = "GET".to_string();
 
         let resolved = resolve(&defaults, &settings, None, &FormParams::default());
-        assert_eq!(resolved.theme, "custom");
+        assert_eq!(resolved.theme, defaults.theme);
         assert_eq!(resolved.locale, "de");
         assert_eq!(resolved.language, "de-DE");
         assert_eq!(resolved.safesearch, SafeSearch::Strict);
@@ -556,10 +552,9 @@ mod tests {
     }
 
     #[test]
-    fn resolve_cookie_overrides_settings() {
+    fn resolve_cookie_overrides_defaults_for_theme() {
         let defaults = Preferences::defaults();
-        let mut settings = Settings::defaults();
-        settings.ui.default_theme = "custom".to_string();
+        let settings = Settings::defaults();
 
         let cookie_prefs = Preferences {
             theme: "from-cookie".to_string(),
@@ -695,7 +690,7 @@ mod tests {
     fn resolve_bad_cookie_falls_back_to_defaults_and_settings() {
         let defaults = Preferences::defaults();
         let mut settings = Settings::defaults();
-        settings.ui.default_theme = "settings-theme".to_string();
+        settings.ui.default_locale = "settings-loc".to_string();
         settings.search.safe_search = 1;
 
         let resolved = resolve(
@@ -707,7 +702,8 @@ mod tests {
 
         let expected = resolve(&defaults, &settings, None, &FormParams::default());
         assert_eq!(resolved, expected);
-        assert_eq!(resolved.theme, "settings-theme");
+        assert_eq!(resolved.theme, defaults.theme);
+        assert_eq!(resolved.locale, "settings-loc");
         assert_eq!(resolved.safesearch, SafeSearch::Moderate);
     }
 
