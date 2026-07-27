@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.2] - 2026-07-27
+
+### Fixed
+
+- Result favicons load in parallel: SPA drops `loading="lazy"` on result/suggestion
+  icons, and favicon outbound fetches skip search-engine origin rate limits that
+  were serializing cold resolves through a single CDN origin.
+
 ## [1.3.1] - 2026-07-22
 
 ### Changed
@@ -275,6 +283,7 @@ with Debian packages, systemd unit, and multi-arch Docker images on GHCR.
 - Command engines and several API-key / bespoke engines remain intentionally unsupported
 - See `docs/compatibility/intentional-differences.md` and `docs/security/audit.md`
 
+[1.3.2]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.3.2
 [1.3.1]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.3.1
 [1.3.0]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.3.0
 [1.2.2]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.2.2
