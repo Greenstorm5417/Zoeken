@@ -2,14 +2,17 @@ use std::str::FromStr;
 use std::time::Duration;
 
 use async_trait::async_trait;
-use sha2::{Digest, Sha256};
 use sqlx::postgres::{PgConnectOptions, PgPoolOptions};
-use sqlx::{FromRow, PgPool};
+use sqlx::PgPool;
 
+use crate::shared::{
+    BudgetRow, FaviconJoinRow, HealthRow, PrunableBlob, blocked_retry_after, concurrency_limited,
+    favicon_digest, granted, health_retention_bucket, health_snapshot, lookup_from_join, new_lease,
+    pg, rate_limited, refill_tokens, reject_if_newer, sql, supported_version, token_retry_after,
+};
 use crate::{
-    EngineHealthSnapshot, EngineHealthUpdate, FaviconData, FaviconLookup, FaviconPolicy,
-    OriginLease, OriginPolicy, PermitDecision, PermitResult, Storage, StorageError, new_lease_id,
-    now_ms,
+    EngineHealthSnapshot, EngineHealthUpdate, FaviconData, FaviconLookup, FaviconPolicy, OriginLease,
+    OriginPolicy, PermitResult, Storage, StorageError, now_ms,
 };
 
 static MIGRATOR: sqlx::migrate::Migrator = sqlx::migrate!("./migrations/postgres");
@@ -17,37 +20,6 @@ static MIGRATOR: sqlx::migrate::Migrator = sqlx::migrate!("./migrations/postgres
 #[derive(Clone)]
 pub struct PostgresStorage {
     pool: PgPool,
-}
-
-#[derive(FromRow)]
-struct BudgetRow {
-    tokens: f64,
-    last_refill_ms: i64,
-    blocked_until_ms: Option<i64>,
-}
-
-#[derive(FromRow)]
-struct FaviconRow {
-    is_negative: bool,
-    data: Option<Vec<u8>>,
-    mime: Option<String>,
-}
-
-#[derive(FromRow)]
-struct HealthRow {
-    bucket: i64,
-    successes: i64,
-    timeouts: i64,
-    errors: i64,
-    circuit_status: String,
-    cooldown_until_ms: Option<i64>,
-    last_error_category: Option<String>,
-}
-
-#[derive(FromRow)]
-struct PrunableBlob {
-    digest: String,
-    size_bytes: i64,
 }
 
 impl PostgresStorage {
@@ -79,24 +51,16 @@ async fn reject_newer_schema(pool: &PgPool) -> Result<(), StorageError> {
     if !exists {
         return Ok(());
     }
-    let found: i64 = sqlx::query_scalar("SELECT COALESCE(MAX(version), 0) FROM _sqlx_migrations")
+    let found: i64 = sqlx::query_scalar(&pg(sql::MAX_MIGRATION_VERSION))
         .fetch_one(pool)
         .await?;
-    let supported = MIGRATOR
-        .iter()
-        .map(|migration| migration.version)
-        .max()
-        .unwrap_or(0);
-    if found > supported {
-        return Err(StorageError::UnsupportedSchema { found, supported });
-    }
-    Ok(())
+    reject_if_newer(found, supported_version(&MIGRATOR))
 }
 
 #[async_trait]
 impl Storage for PostgresStorage {
     async fn healthcheck(&self) -> Result<(), StorageError> {
-        sqlx::query_scalar::<_, i32>("SELECT 1")
+        sqlx::query_scalar::<_, i32>(sql::HEALTHCHECK)
             .fetch_one(&self.pool)
             .await?;
         Ok(())
@@ -112,109 +76,61 @@ impl Storage for PostgresStorage {
 
         // One transactional lock per origin coordinates all replicas while
         // allowing unrelated origins to proceed independently.
-        sqlx::query("SELECT pg_advisory_xact_lock(hashtextextended($1, 0))")
+        sqlx::query(&pg(sql::ADVISORY_LOCK))
             .bind(origin)
             .execute(&mut *transaction)
             .await?;
-        sqlx::query("DELETE FROM origin_leases WHERE expires_at_ms <= $1")
+        sqlx::query(&pg(sql::DELETE_EXPIRED_LEASES))
             .bind(now)
             .execute(&mut *transaction)
             .await?;
 
-        let active: i64 =
-            sqlx::query_scalar("SELECT COUNT(*) FROM origin_leases WHERE origin = $1")
-                .bind(origin)
-                .fetch_one(&mut *transaction)
-                .await?;
+        let active: i64 = sqlx::query_scalar(&pg(sql::COUNT_ACTIVE_LEASES))
+            .bind(origin)
+            .fetch_one(&mut *transaction)
+            .await?;
         if active >= i64::from(policy.max_concurrent) {
             transaction.commit().await?;
-            return Ok(PermitResult {
-                decision: PermitDecision::ConcurrencyLimited,
-                lease: None,
-                retry_after: Duration::from_millis(50),
-            });
+            return Ok(concurrency_limited());
         }
 
-        let budget = sqlx::query_as::<_, BudgetRow>(
-            r#"
-            SELECT tokens, last_refill_ms, blocked_until_ms
-            FROM origin_budgets
-            WHERE origin = $1
-            FOR UPDATE
-            "#,
-        )
-        .bind(origin)
-        .fetch_optional(&mut *transaction)
-        .await?;
-        if let Some(blocked_until) = budget.as_ref().and_then(|row| row.blocked_until_ms)
-            && blocked_until > now
-        {
+        let budget = sqlx::query_as::<_, BudgetRow>(&pg(sql::SELECT_BUDGET_FOR_UPDATE))
+            .bind(origin)
+            .fetch_optional(&mut *transaction)
+            .await?;
+        if let Some(retry_after) = blocked_retry_after(budget.as_ref(), now) {
             transaction.commit().await?;
-            return Ok(PermitResult {
-                decision: PermitDecision::RateLimited,
-                lease: None,
-                retry_after: Duration::from_millis((blocked_until - now) as u64),
-            });
+            return Ok(rate_limited(retry_after));
         }
-        let (old_tokens, last_refill) = budget.map_or((f64::from(policy.burst), now), |row| {
-            (row.tokens, row.last_refill_ms)
-        });
-        let elapsed_seconds = (now - last_refill).max(0) as f64 / 1000.0;
-        let tokens = (old_tokens + elapsed_seconds * policy.requests_per_second)
-            .min(f64::from(policy.burst));
-        let stored_tokens = if tokens >= 1.0 { tokens - 1.0 } else { tokens };
+        let (tokens, stored_tokens) = refill_tokens(budget, policy, now);
 
-        sqlx::query(
-            r#"
-            INSERT INTO origin_budgets (origin, tokens, last_refill_ms, blocked_until_ms)
-            VALUES ($1, $2, $3, NULL)
-            ON CONFLICT (origin) DO UPDATE SET
-                tokens = excluded.tokens,
-                last_refill_ms = excluded.last_refill_ms,
-                blocked_until_ms = NULL
-            "#,
-        )
-        .bind(origin)
-        .bind(stored_tokens)
-        .bind(now)
-        .execute(&mut *transaction)
-        .await?;
+        sqlx::query(&pg(sql::UPSERT_BUDGET))
+            .bind(origin)
+            .bind(stored_tokens)
+            .bind(now)
+            .execute(&mut *transaction)
+            .await?;
         if tokens < 1.0 {
             transaction.commit().await?;
-            return Ok(PermitResult {
-                decision: PermitDecision::RateLimited,
-                lease: None,
-                retry_after: Duration::from_secs_f64((1.0 - tokens) / policy.requests_per_second),
-            });
+            return Ok(rate_limited(token_retry_after(
+                tokens,
+                policy.requests_per_second,
+            )));
         }
 
-        let lease = OriginLease {
-            id: new_lease_id(),
-            origin: origin.to_string(),
-            expires_at_ms: now + policy.lease_duration.as_millis() as i64,
-        };
-        sqlx::query(
-            r#"
-            INSERT INTO origin_leases (lease_id, origin, expires_at_ms)
-            VALUES ($1, $2, $3)
-            "#,
-        )
-        .bind(&lease.id)
-        .bind(&lease.origin)
-        .bind(lease.expires_at_ms)
-        .execute(&mut *transaction)
-        .await?;
+        let lease = new_lease(origin, now, policy.lease_duration);
+        sqlx::query(&pg(sql::INSERT_LEASE))
+            .bind(&lease.id)
+            .bind(&lease.origin)
+            .bind(lease.expires_at_ms)
+            .execute(&mut *transaction)
+            .await?;
         transaction.commit().await?;
-
-        Ok(PermitResult {
-            decision: PermitDecision::Granted,
-            lease: Some(lease),
-            retry_after: Duration::ZERO,
-        })
+        Ok(granted(lease))
     }
 
     async fn release_origin(&self, lease: &OriginLease) -> Result<(), StorageError> {
-        sqlx::query("DELETE FROM origin_leases WHERE lease_id = $1")
+        sqlx::query(&pg(sql::DELETE_LEASE))
             .bind(&lease.id)
             .execute(&self.pool)
             .await?;
@@ -226,20 +142,19 @@ impl Storage for PostgresStorage {
         lease: &OriginLease,
         lease_duration: Duration,
     ) -> Result<bool, StorageError> {
-        let updated = sqlx::query(
-            "UPDATE origin_leases SET expires_at_ms = $1 WHERE lease_id = $2 AND origin = $3",
-        )
-        .bind(now_ms().saturating_add(lease_duration.as_millis() as i64))
-        .bind(&lease.id)
-        .bind(&lease.origin)
-        .execute(&self.pool)
-        .await?;
+        let updated = sqlx::query(&pg(sql::RENEW_LEASE))
+            .bind(now_ms().saturating_add(lease_duration.as_millis() as i64))
+            .bind(&lease.id)
+            .bind(&lease.origin)
+            .execute(&self.pool)
+            .await?;
         Ok(updated.rows_affected() == 1)
     }
 
     async fn defer_origin(&self, origin: &str, delay: Duration) -> Result<(), StorageError> {
         let now = now_ms();
         let until = now.saturating_add(delay.as_millis() as i64);
+        // Postgres: GREATEST(...); SQLite uses MAX(...).
         sqlx::query(
             r#"
             INSERT INTO origin_budgets
@@ -267,30 +182,13 @@ impl Storage for PostgresStorage {
         resolver: &str,
         authority: &str,
     ) -> Result<FaviconLookup, StorageError> {
-        let row = sqlx::query_as::<_, FaviconRow>(
-            r#"
-            SELECT mapping.is_negative, blob.data, blob.mime
-            FROM favicon_mappings AS mapping
-            LEFT JOIN favicon_blobs AS blob ON blob.digest = mapping.digest
-            WHERE mapping.resolver = $1
-              AND mapping.authority = $2
-              AND mapping.expires_at_ms > $3
-            "#,
-        )
-        .bind(resolver)
-        .bind(authority)
-        .bind(now_ms())
-        .fetch_optional(&self.pool)
-        .await?;
-
-        Ok(match row {
-            None => FaviconLookup::Absent,
-            Some(row) if row.is_negative => FaviconLookup::KnownMissing,
-            Some(row) => match (row.data, row.mime) {
-                (Some(data), Some(mime)) => FaviconLookup::Hit(FaviconData { data, mime }),
-                _ => FaviconLookup::Absent,
-            },
-        })
+        let row = sqlx::query_as::<_, FaviconJoinRow>(&pg(sql::SELECT_FAVICON_JOIN))
+            .bind(resolver)
+            .bind(authority)
+            .bind(now_ms())
+            .fetch_optional(&self.pool)
+            .await?;
+        Ok(lookup_from_join(row))
     }
 
     async fn favicon_put(
@@ -307,7 +205,7 @@ impl Storage for PostgresStorage {
         let now = now_ms();
         let mut transaction = self.pool.begin().await?;
         let (digest, is_negative, ttl) = if let Some(favicon) = value {
-            let digest = hex::encode(Sha256::digest(&favicon.data));
+            let digest = favicon_digest(&favicon.data);
             sqlx::query(
                 r#"
                 INSERT INTO favicon_blobs
@@ -327,57 +225,31 @@ impl Storage for PostgresStorage {
         } else {
             (None, true, policy.negative_ttl)
         };
-        sqlx::query(
-            r#"
-            INSERT INTO favicon_mappings
-                (resolver, authority, digest, is_negative, expires_at_ms)
-            VALUES ($1, $2, $3, $4, $5)
-            ON CONFLICT (resolver, authority) DO UPDATE SET
-                digest = excluded.digest,
-                is_negative = excluded.is_negative,
-                expires_at_ms = excluded.expires_at_ms
-            "#,
-        )
-        .bind(resolver)
-        .bind(authority)
-        .bind(digest)
-        .bind(is_negative)
-        .bind(now + ttl.as_millis() as i64)
-        .execute(&mut *transaction)
-        .await?;
+        sqlx::query(&pg(sql::UPSERT_MAPPING))
+            .bind(resolver)
+            .bind(authority)
+            .bind(digest)
+            .bind(is_negative)
+            .bind(now + ttl.as_millis() as i64)
+            .execute(&mut *transaction)
+            .await?;
         transaction.commit().await?;
         Ok(true)
     }
 
     async fn record_engine_health(&self, update: &EngineHealthUpdate) -> Result<(), StorageError> {
-        sqlx::query(
-            r#"
-            INSERT INTO engine_health (
-                engine, bucket, latency_ms_sum, successes, timeouts, errors,
-                circuit_status, cooldown_until_ms, last_error_category
-            )
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-            ON CONFLICT (engine, bucket) DO UPDATE SET
-                latency_ms_sum = engine_health.latency_ms_sum + excluded.latency_ms_sum,
-                successes = engine_health.successes + excluded.successes,
-                timeouts = engine_health.timeouts + excluded.timeouts,
-                errors = engine_health.errors + excluded.errors,
-                circuit_status = excluded.circuit_status,
-                cooldown_until_ms = excluded.cooldown_until_ms,
-                last_error_category = excluded.last_error_category
-            "#,
-        )
-        .bind(&update.engine)
-        .bind(update.bucket)
-        .bind(update.latency_ms as i64)
-        .bind(update.success as i64)
-        .bind(update.timed_out as i64)
-        .bind((!update.success) as i64)
-        .bind(&update.circuit_status)
-        .bind(update.cooldown_until_ms)
-        .bind(&update.error_category)
-        .execute(&self.pool)
-        .await?;
+        sqlx::query(&pg(sql::UPSERT_ENGINE_HEALTH))
+            .bind(&update.engine)
+            .bind(update.bucket)
+            .bind(update.latency_ms as i64)
+            .bind(update.success as i64)
+            .bind(update.timed_out as i64)
+            .bind((!update.success) as i64)
+            .bind(&update.circuit_status)
+            .bind(update.cooldown_until_ms)
+            .bind(&update.error_category)
+            .execute(&self.pool)
+            .await?;
         Ok(())
     }
 
@@ -385,59 +257,30 @@ impl Storage for PostgresStorage {
         &self,
         engine: &str,
     ) -> Result<Option<EngineHealthSnapshot>, StorageError> {
-        let row = sqlx::query_as::<_, HealthRow>(
-            r#"
-            SELECT
-                bucket,
-                successes,
-                timeouts,
-                errors,
-                circuit_status,
-                cooldown_until_ms,
-                last_error_category
-            FROM engine_health
-            WHERE engine = $1
-            ORDER BY bucket DESC
-            LIMIT 1
-            "#,
-        )
-        .bind(engine)
-        .fetch_optional(&self.pool)
-        .await?;
-        Ok(row.map(|row| EngineHealthSnapshot {
-            bucket: row.bucket,
-            successes: row.successes.max(0) as u64,
-            timeouts: row.timeouts.max(0) as u64,
-            errors: row.errors.max(0) as u64,
-            circuit_status: row.circuit_status,
-            cooldown_until_ms: row.cooldown_until_ms,
-            last_error_category: row.last_error_category,
-        }))
+        let row = sqlx::query_as::<_, HealthRow>(&pg(sql::LATEST_ENGINE_HEALTH))
+            .bind(engine)
+            .fetch_optional(&self.pool)
+            .await?;
+        Ok(row.map(health_snapshot))
     }
 
     async fn maintenance(&self, max_total_bytes: usize) -> Result<(), StorageError> {
         let now = now_ms();
         let mut transaction = self.pool.begin().await?;
-        sqlx::query("DELETE FROM origin_leases WHERE expires_at_ms <= $1")
+        sqlx::query(&pg(sql::DELETE_EXPIRED_LEASES))
             .bind(now)
             .execute(&mut *transaction)
             .await?;
-        sqlx::query("DELETE FROM favicon_mappings WHERE expires_at_ms <= $1")
+        sqlx::query(&pg(sql::DELETE_EXPIRED_MAPPINGS))
             .bind(now)
             .execute(&mut *transaction)
             .await?;
-        sqlx::query(
-            r#"
-            UPDATE engine_health
-            SET cooldown_until_ms = NULL
-            WHERE circuit_status = 'open' AND cooldown_until_ms <= $1
-            "#,
-        )
-        .bind(now)
-        .execute(&mut *transaction)
-        .await?;
-        sqlx::query("DELETE FROM engine_health WHERE bucket < $1")
-            .bind(now / 3_600_000 - 24 * 7)
+        sqlx::query(&pg(sql::CLEAR_EXPIRED_COOLDOWNS))
+            .bind(now)
+            .execute(&mut *transaction)
+            .await?;
+        sqlx::query(&pg(sql::DELETE_OLD_HEALTH))
+            .bind(health_retention_bucket(now))
             .execute(&mut *transaction)
             .await?;
         sqlx::query(
@@ -453,27 +296,24 @@ impl Storage for PostgresStorage {
         .execute(&mut *transaction)
         .await?;
 
-        let mut total: i64 =
-            sqlx::query_scalar("SELECT COALESCE(SUM(size_bytes), 0) FROM favicon_blobs")
-                .fetch_one(&mut *transaction)
-                .await?;
-        if total > max_total_bytes as i64 {
-            let blobs = sqlx::query_as::<_, PrunableBlob>(
-                "SELECT digest, size_bytes FROM favicon_blobs ORDER BY created_at_ms ASC",
-            )
-            .fetch_all(&mut *transaction)
+        let mut total: i64 = sqlx::query_scalar(sql::SUM_BLOB_BYTES)
+            .fetch_one(&mut *transaction)
             .await?;
+        if total > max_total_bytes as i64 {
+            let blobs = sqlx::query_as::<_, PrunableBlob>(sql::LIST_BLOBS_BY_AGE)
+                .fetch_all(&mut *transaction)
+                .await?;
             for blob in blobs {
                 if total <= max_total_bytes as i64 {
                     break;
                 }
                 // Deleting mappings fires the orphan-cleanup trigger. The
                 // explicit blob delete is idempotent and covers unmapped rows.
-                sqlx::query("DELETE FROM favicon_mappings WHERE digest = $1")
+                sqlx::query(&pg(sql::DELETE_MAPPINGS_BY_DIGEST))
                     .bind(&blob.digest)
                     .execute(&mut *transaction)
                     .await?;
-                sqlx::query("DELETE FROM favicon_blobs WHERE digest = $1")
+                sqlx::query(&pg(sql::DELETE_BLOB))
                     .bind(&blob.digest)
                     .execute(&mut *transaction)
                     .await?;
