@@ -2,8 +2,8 @@ use std::str::FromStr;
 use std::time::Duration;
 
 use async_trait::async_trait;
-use sqlx::postgres::{PgConnectOptions, PgPoolOptions};
 use sqlx::PgPool;
+use sqlx::postgres::{PgConnectOptions, PgPoolOptions};
 
 use crate::shared::{
     BudgetRow, FaviconJoinRow, HealthRow, PrunableBlob, blocked_retry_after, concurrency_limited,
@@ -11,8 +11,8 @@ use crate::shared::{
     pg, rate_limited, refill_tokens, reject_if_newer, sql, supported_version, token_retry_after,
 };
 use crate::{
-    EngineHealthSnapshot, EngineHealthUpdate, FaviconData, FaviconLookup, FaviconPolicy, OriginLease,
-    OriginPolicy, PermitResult, Storage, StorageError, now_ms,
+    EngineHealthSnapshot, EngineHealthUpdate, FaviconData, FaviconLookup, FaviconPolicy,
+    OriginLease, OriginPolicy, PermitResult, Storage, StorageError, now_ms,
 };
 
 static MIGRATOR: sqlx::migrate::Migrator = sqlx::migrate!("./migrations/postgres");

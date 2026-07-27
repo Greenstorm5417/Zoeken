@@ -3,8 +3,8 @@ use std::str::FromStr;
 use std::time::Duration;
 
 use async_trait::async_trait;
-use sqlx::sqlite::{SqliteConnectOptions, SqliteJournalMode, SqlitePoolOptions};
 use sqlx::SqlitePool;
+use sqlx::sqlite::{SqliteConnectOptions, SqliteJournalMode, SqlitePoolOptions};
 
 use crate::shared::{
     BlobRow, BudgetRow, HealthRow, MappingRow, PrunableBlob, blocked_retry_after,
@@ -13,8 +13,8 @@ use crate::shared::{
     token_retry_after,
 };
 use crate::{
-    EngineHealthSnapshot, EngineHealthUpdate, FaviconData, FaviconLookup, FaviconPolicy, OriginLease,
-    OriginPolicy, PermitResult, Storage, StorageError, now_ms,
+    EngineHealthSnapshot, EngineHealthUpdate, FaviconData, FaviconLookup, FaviconPolicy,
+    OriginLease, OriginPolicy, PermitResult, Storage, StorageError, now_ms,
 };
 
 static MIGRATOR: sqlx::migrate::Migrator = sqlx::migrate!("./migrations/sqlite");

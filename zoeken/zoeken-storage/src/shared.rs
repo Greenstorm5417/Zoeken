@@ -83,8 +83,7 @@ pub(crate) mod sql {
     pub const DELETE_LEASE: &str = "DELETE FROM origin_leases WHERE lease_id = ?";
     pub const RENEW_LEASE: &str =
         "UPDATE origin_leases SET expires_at_ms = ? WHERE lease_id = ? AND origin = ?";
-    pub const SELECT_MAPPING: &str =
-        "SELECT digest, is_negative, expires_at_ms FROM favicon_mappings WHERE resolver = ? AND authority = ?";
+    pub const SELECT_MAPPING: &str = "SELECT digest, is_negative, expires_at_ms FROM favicon_mappings WHERE resolver = ? AND authority = ?";
     pub const SELECT_BLOB: &str = "SELECT data, mime FROM favicon_blobs WHERE digest = ?";
     pub const SELECT_FAVICON_JOIN: &str = "SELECT mapping.is_negative, blob.data, blob.mime FROM favicon_mappings AS mapping LEFT JOIN favicon_blobs AS blob ON blob.digest = mapping.digest WHERE mapping.resolver = ? AND mapping.authority = ? AND mapping.expires_at_ms > ?";
     pub const UPSERT_MAPPING: &str = "INSERT INTO favicon_mappings (resolver, authority, digest, is_negative, expires_at_ms) VALUES (?, ?, ?, ?, ?) ON CONFLICT (resolver, authority) DO UPDATE SET digest = excluded.digest, is_negative = excluded.is_negative, expires_at_ms = excluded.expires_at_ms";
@@ -139,8 +138,9 @@ pub(crate) fn refill_tokens(
     policy: &OriginPolicy,
     now: i64,
 ) -> (f64, f64) {
-    let (old_tokens, last_refill) =
-        budget.map_or((f64::from(policy.burst), now), |row| (row.tokens, row.last_refill_ms));
+    let (old_tokens, last_refill) = budget.map_or((f64::from(policy.burst), now), |row| {
+        (row.tokens, row.last_refill_ms)
+    });
     let elapsed = (now - last_refill).max(0) as f64 / 1000.0;
     let tokens = (old_tokens + elapsed * policy.requests_per_second).min(f64::from(policy.burst));
     let stored = if tokens >= 1.0 { tokens - 1.0 } else { tokens };

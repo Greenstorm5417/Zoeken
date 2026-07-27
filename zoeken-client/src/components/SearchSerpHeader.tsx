@@ -137,7 +137,9 @@ export function SearchSerpHeader({
 									to: "/search",
 									search: searchLink(params, {
 										categories:
-											pendingCategory === "general" ? undefined : pendingCategory,
+											pendingCategory === "general"
+												? undefined
+												: pendingCategory,
 										pageno: undefined,
 									}),
 								})
