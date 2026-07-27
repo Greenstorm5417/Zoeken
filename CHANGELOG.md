@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.3] - 2026-07-27
+
+### Changed
+
+- Drop dead SearXNG theme config: SPA uses localStorage only; prefs-cookie theme
+  is still accepted for SearXNG round-trip.
+- Drop domain `Template` enum; compat JSON synthesizes template names from
+  kind/fields.
+- Share SQLite/Postgres storage query helpers (row types, `?`→`$n` rewriting,
+  pure helpers); dialect-only paths stay backend-local.
+- Remove `sync_versions.py` shim (bash `tools/sync_versions.sh` only); split SERP
+  chrome from `search.tsx`.
+- Clarify `sqlx-mysql` RUSTSEC-2023-0071 audit ignore (migrate weak-deps pull).
+
 ## [1.3.2] - 2026-07-27
 
 ### Fixed
@@ -283,6 +297,7 @@ with Debian packages, systemd unit, and multi-arch Docker images on GHCR.
 - Command engines and several API-key / bespoke engines remain intentionally unsupported
 - See `docs/compatibility/intentional-differences.md` and `docs/security/audit.md`
 
+[1.3.3]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.3.3
 [1.3.2]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.3.2
 [1.3.1]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.3.1
 [1.3.0]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.3.0

@@ -39,7 +39,7 @@ RUN cargo build --release --bin zoeken-server --locked
 
 FROM debian:bookworm-slim AS runtime
 
-ARG VERSION=1.3.2
+ARG VERSION=1.3.3
 ARG REVISION=unknown
 ARG CREATED=unknown
 
