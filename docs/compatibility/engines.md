@@ -2,6 +2,10 @@
 
 Upstream engines: 289. Rust engines: 59. Ported: 249. Generic candidates: 0. Missing: 0. Intentionally skipped: 40.
 
+**Product stance (1.4.0):** Zoeken does not ship first-party YouTube or Google
+Images engines. Prefer Bing Images for images and Invidious / Piped / PeerTube
+for videos. See `intentional-differences.md`.
+
 | Upstream module | Status | Rust module | Categories | Processor | Paging | Safe | Time | Lang | API key | Network | Fixtures | Known gaps |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1337x | ported | generic | files | online | yes | no | no | no | no | no | present |  |
@@ -28,7 +32,7 @@ Upstream engines: 289. Rust engines: 59. Ported: 249. Generic candidates: 0. Mis
 | bandcamp | ported | bandcamp | music | online | yes | no | no | no | no | no | present |  |
 | base | ported | generic | science | online | yes | no | no | no | no | no | present |  |
 | bilibili | ported | generic | videos | online | yes | no | yes | no | no | no | present |  |
-| bing | ported | bing | general, web | online | no | yes | no | no | no | no | present | verify engine-traits parity |
+| bing | ported | bing | general, web | online | yes | yes | no | yes | no | no | present |  |
 | bing_images | ported | generic | images, web | online | yes | yes | yes | no | no | no | present | verify engine-traits parity |
 | bing_news | ported | generic | news | online | yes | no | yes | no | no | no | present | verify engine-traits parity |
 | bing_videos | ported | generic | videos, web | online | yes | yes | yes | no | no | no | present | verify engine-traits parity |

@@ -17,6 +17,8 @@ const BASE_URL: &str = "https://www.bing.com";
 
 const CK_PREFIX: &str = "https://www.bing.com/ck/a?";
 
+const PAGE_SIZE: u32 = 10;
+
 #[derive(Debug, Clone)]
 pub struct Bing {
     meta: EngineMeta,
@@ -29,7 +31,7 @@ impl Bing {
                 name: NAME.to_string(),
                 engine_type: Processor::Online,
                 categories: vec!["general".to_string(), "web".to_string()],
-                paging: false,
+                paging: true,
                 max_page: 0,
                 time_range_support: false,
                 safesearch: true,
@@ -154,8 +156,10 @@ impl Engine for Bing {
     fn request(&self, q: &SearchQueryView, p: &mut RequestParams) {
         p.method = HttpMethod::Get;
 
+        let first = (q.pageno.saturating_sub(1)) * PAGE_SIZE + 1;
         let mut args: Vec<(&str, String)> = vec![
             ("q", q.query.clone()),
+            ("first", first.to_string()),
             ("adlt", safesearch_adlt(q.safesearch).to_string()),
         ];
 
@@ -353,7 +357,7 @@ mod tests {
         let mut golden = prepopulated(&q);
         golden.method = HttpMethod::Get;
         golden.url = Some(format!(
-            "{BASE_URL}/search?q=rust+programming&adlt=off&mkt=en-us"
+            "{BASE_URL}/search?q=rust+programming&first=1&adlt=off&mkt=en-us"
         ));
         golden
             .headers
@@ -399,6 +403,18 @@ mod tests {
         assert_eq!(
             resolve_ck_redirect("https://www.rust-lang.org/"),
             "https://www.rust-lang.org/"
+        );
+    }
+
+    #[test]
+    fn builds_paged_request() {
+        let engine = Bing::new();
+        let q = query("cats", "all", 2);
+        let mut params = prepopulated(&q);
+        engine.request(&q, &mut params);
+        assert_eq!(
+            params.url.as_deref(),
+            Some("https://www.bing.com/search?q=cats&first=11&adlt=off")
         );
     }
 

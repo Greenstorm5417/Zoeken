@@ -502,12 +502,10 @@
       ],
       "engine_traits": true,
       "fixture_status": "present",
-      "known_gaps": [
-        "verify engine-traits parity"
-      ],
-      "language_support": false,
+      "known_gaps": [],
+      "language_support": true,
       "network_required": false,
-      "paging": false,
+      "paging": true,
       "processor_type": "online",
       "rust_module": "bing",
       "safe_search": true,

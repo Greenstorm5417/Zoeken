@@ -19,7 +19,7 @@
     "locale_key": "all",
     "engine_data": {},
     "method": "Get",
-    "url": "https://www.bing.com/search?q=rust+programming&adlt=off",
+    "url": "https://www.bing.com/search?q=rust+programming&first=1&adlt=off",
     "headers": {},
     "cookies": {},
     "data": {},

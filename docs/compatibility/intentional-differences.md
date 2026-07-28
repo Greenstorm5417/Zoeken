@@ -138,11 +138,13 @@ Deliberate compatibility gaps between Zoeken and SearXNG.
 ## Stats / metrics Basic auth
 
 - **Behavior**: `general.open_metrics` is the HTTP Basic password for `/metrics`,
-  `/stats`, and `/stats/errors`. Empty hides `/metrics` (404) and leaves `/stats`
-  open. The SPA `/stats` shell stays public and shows a configure-auth message on 401.
-- **Why**: one existing knob gates both operator endpoints without a second secret.
-- **Impact**: public instances should set `open_metrics`; browsers without Basic
-  credentials see the SPA message instead of live stats JSON.
+  `/stats`, and `/stats/errors`. Empty hides `/metrics` (404) and **denies**
+  `/stats` JSON (401). The SPA `/stats` shell stays public and shows a
+  configure-auth message on 401.
+- **Why**: safer default for public instances — empty password must not expose
+  engine timing/error aggregates.
+- **Impact**: operators must set `open_metrics` to use stats/metrics; browsers
+  without Basic credentials see the SPA message instead of live stats JSON.
 
 ## No CORS middleware
 
@@ -151,16 +153,45 @@ Deliberate compatibility gaps between Zoeken and SearXNG.
 
 ## Native search API (Zoeken-only)
 
-- **Behavior**: The SPA consumes `POST /api/v1/search` (MessagePack by default) with a typed, tagged
-  result schema (`schema_version`, `kind` unions). This is **not** SearXNG-
-  compatible. External clients keep `/search?format=json|csv|rss`.
+- **Behavior**: The SPA consumes `POST /api/v1/search` (MessagePack by default)
+  with a typed, tagged result schema. **Public stability:**
+  `NATIVE_SCHEMA_VERSION` / response field `schema_version` is currently **`2`**.
+  Breaking wire changes bump that constant; additive fields may appear within
+  the same major schema version when documented.
 - **Why**: Preserve a frozen-ish compat layer while giving the SPA full field
   parity (paper citations, torrent `time`, `hl_lines`, corrections/suggestions
   with engines, etc.) without polluting the legacy bag-of-fields JSON.
 - **Impact**: Third-party JSON clients must continue using `/search?format=json`.
-- **Revisit when**: a public native API version is documented as stable.
+  Native API consumers should reject unknown `schema_version` values they do
+  not implement.
+- **Revisit when**: `schema_version` needs a breaking bump (document in CHANGELOG).
 
 ## Image / favicon proxy redirects
 
 - **Behavior**: Both fetchers use `redirect::Policy::none()`. Bodies are size-capped.
-- **Residual**: DNS rebinding remains documented in `docs/security/audit.md`.
+  Each hop also runs `validate_resolved_url` (DNS resolve + private/link-local IP
+  block) before connect.
+- **Residual**: A TOCTOU race between lookup and connect remains; see
+  `docs/security/audit.md`.
+
+## No first-party YouTube / Google Images engines (1.4.0)
+
+- **Behavior**: Zoeken does **not** ship dedicated YouTube or Google Images
+  engines. Images use Bing Images (and other image engines). Videos use
+  Invidious / Piped / PeerTube / etc.
+- **Why**: Avoid brittle Google/YouTube scraping and API-key surface for 1.4.0.
+- **Impact**: Prefer `bing images`, `invidious`, `piped` in settings; see
+  `docs/compatibility/engines.md` for skipped upstream modules.
+
+## Engine trait inventory vs Rust ports (majors)
+
+- **Behavior**: For google / startpage / wikipedia, Rust traits match the
+  compatibility inventory. Bing web paging is **enabled** in Rust (`first=`
+  offset) even when older inventory rows said `paging: false`. DuckDuckGo and
+  Brave Rust ports advertise paging / safesearch / time / lang where the HTML
+  request path implements them; inventory rows that still say `false` are
+  stale upstream-export noise — treat the Rust `EngineMeta` as source of truth
+  until the next inventory refresh.
+- **Why**: Inventory flags are scraped from SearXNG modules and can lag ports.
+- **Impact**: Prefer live engine metadata from `/config` over `engines.json`
+  for operator UX.
