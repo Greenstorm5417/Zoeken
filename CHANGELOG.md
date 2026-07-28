@@ -7,6 +7,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-07-28
+
+### Security
+
+- Wire `github code` `api_key` into real `Authorization: Bearer …` headers; skip
+  the request when no key is configured (no more junk `placeholder` token).
+- Preferences cookie sets `Secure` behind HSTS, https `base_url`, or trusted
+  `X-Forwarded-Proto` (local HTTP unchanged).
+- Image/favicon proxy resolve-time IP checks block private/link-local/metadata
+  addresses (DNS-rebinding mitigation).
+- Empty `general.open_metrics` now denies `/stats` JSON (401) instead of leaving
+  it public; `/metrics` still 404s without a password.
+
+### Fixed
+
+- Enable Bing web paging via `first=` offsets (parity with Bing Images).
+- SERP chrome strings (empty query, Did you mean, Retry, error hints) go through
+  `stringsFor` i18n.
+
+### Changed
+
+- Expose `storage.sqlite.max_connections` / `APP_SQLITE_MAX_CONNECTIONS` (default 4).
+- Compose postgres profile: shared network, optional `depends_on`, clearer env
+  docs; placeholder password called out for production.
+- Stronger `APP_DATA_DIR` boot error when the directory is missing (no merge with
+  the embedded bundle).
+- Clarify dual timeouts: `outgoing.request_timeout` vs
+  `deployment.request_timeout_seconds`.
+- Document no first-party YouTube / Google Images stance; freeze native
+  `/api/v1/search` at `schema_version` **2**.
+- CI: compat inventory + tracker-pattern refreshes open PRs; release workflow
+  opens a PR for `packaging/nix/generated.nix`; add `./tools/pre_release.sh` /
+  `make pre-release`.
+- SPA answer cards and paint polish (LH ~90) from the 1.4.0 prep commits.
+
 ## [1.3.3] - 2026-07-27
 
 ### Changed
@@ -297,6 +332,7 @@ with Debian packages, systemd unit, and multi-arch Docker images on GHCR.
 - Command engines and several API-key / bespoke engines remain intentionally unsupported
 - See `docs/compatibility/intentional-differences.md` and `docs/security/audit.md`
 
+[1.4.0]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.4.0
 [1.3.3]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.3.3
 [1.3.2]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.3.2
 [1.3.1]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.3.1

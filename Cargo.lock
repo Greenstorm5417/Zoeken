@@ -4419,7 +4419,7 @@ checksum = "b8848ee67ecc8aedbaf3e4122217aff892639231befc6a1b58d29fff4c2cabaa"
 
 [[package]]
 name = "zoeken-autocomplete"
-version = "1.3.3"
+version = "1.4.0"
 dependencies = [
  "hex",
  "hmac 0.13.0",
@@ -4437,7 +4437,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-botdetect"
-version = "1.3.3"
+version = "1.4.0"
 dependencies = [
  "ipnet",
  "moka",
@@ -4450,7 +4450,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-data"
-version = "1.3.3"
+version = "1.4.0"
 dependencies = [
  "phf 0.14.0",
  "phf_codegen 0.14.0",
@@ -4465,7 +4465,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-engine-core"
-version = "1.3.3"
+version = "1.4.0"
 dependencies = [
  "chrono",
  "ego-tree",
@@ -4486,7 +4486,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-engines"
-version = "1.3.3"
+version = "1.4.0"
 dependencies = [
  "base64 0.23.0",
  "chrono",
@@ -4512,7 +4512,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-favicons"
-version = "1.3.3"
+version = "1.4.0"
 dependencies = [
  "async-trait",
  "futures-util",
@@ -4532,7 +4532,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-metrics"
-version = "1.3.3"
+version = "1.4.0"
 dependencies = [
  "metrics",
  "proptest",
@@ -4543,7 +4543,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-network"
-version = "1.3.3"
+version = "1.4.0"
 dependencies = [
  "async-trait",
  "httpdate",
@@ -4563,7 +4563,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-prefs"
-version = "1.3.3"
+version = "1.4.0"
 dependencies = [
  "base64 0.23.0",
  "flate2",
@@ -4578,7 +4578,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-query"
-version = "1.3.3"
+version = "1.4.0"
 dependencies = [
  "proptest",
  "serde",
@@ -4590,7 +4590,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-results"
-version = "1.3.3"
+version = "1.4.0"
 dependencies = [
  "proptest",
  "serde",
@@ -4600,7 +4600,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-search"
-version = "1.3.3"
+version = "1.4.0"
 dependencies = [
  "criterion",
  "metrics",
@@ -4616,7 +4616,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-server"
-version = "1.3.3"
+version = "1.4.0"
 dependencies = [
  "axum",
  "base64 0.23.0",
@@ -4664,7 +4664,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-settings"
-version = "1.3.3"
+version = "1.4.0"
 dependencies = [
  "http",
  "proptest",
@@ -4675,7 +4675,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-storage"
-version = "1.3.3"
+version = "1.4.0"
 dependencies = [
  "async-trait",
  "hex",
