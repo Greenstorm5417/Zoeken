@@ -23,7 +23,8 @@ pub struct SafeOutboundBody {
 
 /// GET `url` with `client`, following up to `max_hops` redirects manually so
 /// that every hop (not just the first URL) passes the SSRF policy in
-/// [`crate::validate_proxy_url`]. Client-level redirect following is disabled
+/// [`crate::validate_proxy_url`] and a DNS resolve-time IP check via
+/// [`crate::validate_resolved_url`]. Client-level redirect following is disabled
 /// per request; a redirect without a usable `Location` is returned as-is.
 pub async fn get_following_safe_redirects(
     client: &wreq::Client,
@@ -32,7 +33,9 @@ pub async fn get_following_safe_redirects(
 ) -> Result<wreq::Response, String> {
     let mut current = url.to_string();
     for _ in 0..=max_hops {
-        crate::validate_proxy_url(&current).map_err(|rejection| rejection.reason().to_string())?;
+        crate::validate_resolved_url(&current)
+            .await
+            .map_err(|rejection| rejection.reason().to_string())?;
         let resp = client
             .get(&current)
             .redirect(wreq::redirect::Policy::none())
@@ -66,7 +69,9 @@ pub async fn get_following_safe_redirects_coordinated(
 ) -> Result<wreq::Response, String> {
     let mut current = url.to_string();
     for _ in 0..=max_hops {
-        crate::validate_proxy_url(&current).map_err(|rejection| rejection.reason().to_string())?;
+        crate::validate_resolved_url(&current)
+            .await
+            .map_err(|rejection| rejection.reason().to_string())?;
         let mut headers = http::HeaderMap::new();
         headers.insert(
             http::header::ACCEPT,

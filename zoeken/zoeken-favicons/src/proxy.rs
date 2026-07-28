@@ -39,6 +39,42 @@ pub fn validate_proxy_url(raw: &str) -> Result<(), ProxyUrlRejection> {
     Ok(())
 }
 
+/// Resolve `url`'s host and reject if any address is private/link-local/metadata.
+///
+/// Call this at connect/request time so DNS-rebinding hosts that pass
+/// [`validate_proxy_url`] (hostname string OK) but later resolve to a blocked
+/// IP are still refused. Literal IP hosts are checked without a DNS lookup.
+pub async fn validate_resolved_url(raw: &str) -> Result<(), ProxyUrlRejection> {
+    validate_proxy_url(raw)?;
+    let parsed = url::Url::parse(raw).map_err(|_| ProxyUrlRejection::InvalidUrl)?;
+    let Some(host) = parsed.host_str() else {
+        return Err(ProxyUrlRejection::InvalidUrl);
+    };
+    let host = host.trim_matches(['[', ']']);
+    if let Ok(ip) = host.parse::<IpAddr>() {
+        return if is_blocked_ip(ip) {
+            Err(ProxyUrlRejection::DisallowedHost)
+        } else {
+            Ok(())
+        };
+    }
+    let port = parsed.port_or_known_default().unwrap_or(80);
+    let addrs = tokio::net::lookup_host((host, port))
+        .await
+        .map_err(|_| ProxyUrlRejection::DisallowedHost)?;
+    let mut saw_any = false;
+    for addr in addrs {
+        saw_any = true;
+        if is_blocked_ip(addr.ip()) {
+            return Err(ProxyUrlRejection::DisallowedHost);
+        }
+    }
+    if !saw_any {
+        return Err(ProxyUrlRejection::DisallowedHost);
+    }
+    Ok(())
+}
+
 /// Reject favicon authorities that would resolve to loopback/private/metadata hosts.
 pub fn validate_proxy_authority(authority: &str) -> Result<(), ProxyUrlRejection> {
     let authority = authority.trim();
@@ -77,7 +113,9 @@ fn is_blocked_host(host: &str) -> bool {
     false
 }
 
-fn is_blocked_ip(ip: IpAddr) -> bool {
+/// True for loopback, private, link-local, CGNAT, and unspecified addresses.
+#[must_use]
+pub fn is_blocked_ip(ip: IpAddr) -> bool {
     match ip {
         IpAddr::V4(v4) => {
             v4.is_loopback()
@@ -340,5 +378,30 @@ mod tests {
         }
         assert!(validate_proxy_authority("example.com").is_ok());
         assert!(validate_proxy_authority("example.com:443").is_ok());
+    }
+
+    #[tokio::test]
+    async fn resolve_check_rejects_literal_private_ip() {
+        assert_eq!(
+            validate_resolved_url("http://10.0.0.1/a.png").await,
+            Err(ProxyUrlRejection::DisallowedHost)
+        );
+    }
+
+    #[tokio::test]
+    async fn resolve_check_accepts_public_literal_ip() {
+        // TEST-NET-1 (documentation) is not in the blocked ranges.
+        assert!(
+            validate_resolved_url("http://192.0.2.1/a.png")
+                .await
+                .is_ok()
+        );
+    }
+
+    #[test]
+    fn blocked_ip_helper_covers_cgnat_and_metadata() {
+        assert!(is_blocked_ip("169.254.169.254".parse().unwrap()));
+        assert!(is_blocked_ip("100.64.1.1".parse().unwrap()));
+        assert!(!is_blocked_ip("8.8.8.8".parse().unwrap()));
     }
 }

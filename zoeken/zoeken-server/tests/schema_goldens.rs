@@ -216,13 +216,18 @@ async fn stats_and_errors_shape_with_forced_failure() {
         engine_metrics.record_error("stub", ErrorCategory::Parse);
     });
 
-    let router = app(AppState::from_search(stub_search()).with_metrics_handle(handle));
+    let mut settings = zoeken_settings::Settings::defaults();
+    settings.general.open_metrics = "secret".to_string();
+    let router = app(AppState::from_search(stub_search())
+        .with_metrics_handle(handle)
+        .with_settings(settings));
 
     let stats = router
         .clone()
         .oneshot(
             Request::builder()
                 .uri("/stats")
+                .header(axum::http::header::AUTHORIZATION, "Basic dXNlcjpzZWNyZXQ=")
                 .body(Body::empty())
                 .unwrap(),
         )
@@ -236,6 +241,7 @@ async fn stats_and_errors_shape_with_forced_failure() {
         .oneshot(
             Request::builder()
                 .uri("/stats/errors")
+                .header(axum::http::header::AUTHORIZATION, "Basic dXNlcjpzZWNyZXQ=")
                 .body(Body::empty())
                 .unwrap(),
         )
@@ -254,6 +260,19 @@ async fn stats_and_errors_shape_with_forced_failure() {
     assert_eq!(stub["errors"]["access_denied"], 1);
     assert_eq!(stub["errors"]["rate_limited"], 1);
     assert_eq!(stub["errors"]["parse"], 1);
+}
+
+#[tokio::test]
+async fn stats_unauthorized_without_open_metrics() {
+    let router = app(AppState::from_search(stub_search()));
+    for path in ["/stats", "/stats/errors"] {
+        let response = router
+            .clone()
+            .oneshot(Request::builder().uri(path).body(Body::empty()).unwrap())
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::UNAUTHORIZED, "{path}");
+    }
 }
 
 #[tokio::test]

@@ -70,12 +70,34 @@ fn stub_search() -> Search {
 
 fn test_app() -> Router {
     let data = zoeken_data::load_embedded_bundle().expect("embedded data");
+    let mut settings = Settings::defaults();
+    settings.general.open_metrics = "secret".to_string();
+    app(AppState::from_search(stub_search())
+        .with_data(Arc::new(data))
+        .with_settings(settings))
+}
+
+fn test_app_unauthenticated() -> Router {
+    let data = zoeken_data::load_embedded_bundle().expect("embedded data");
     app(AppState::from_search(stub_search()).with_data(Arc::new(data)))
 }
 
 async fn get(router: Router, uri: &str) -> Response {
     router
         .oneshot(Request::builder().uri(uri).body(Body::empty()).unwrap())
+        .await
+        .unwrap()
+}
+
+async fn get_stats(router: Router, uri: &str) -> Response {
+    router
+        .oneshot(
+            Request::builder()
+                .uri(uri)
+                .header(header::AUTHORIZATION, "Basic dXNlcjpzZWNyZXQ=")
+                .body(Body::empty())
+                .unwrap(),
+        )
         .await
         .unwrap()
 }
@@ -185,7 +207,7 @@ async fn information_pages_fall_back_to_the_catalog_default_locale() {
 
 #[tokio::test]
 async fn stats_returns_json_with_engines_array() {
-    let response = get(test_app(), "/stats").await;
+    let response = get_stats(test_app(), "/stats").await;
 
     assert_eq!(response.status(), StatusCode::OK);
     assert_eq!(content_type(&response), "application/json");
@@ -200,7 +222,7 @@ async fn stats_returns_json_with_engines_array() {
 
 #[tokio::test]
 async fn stats_errors_returns_json_with_engines_array() {
-    let response = get(test_app(), "/stats/errors").await;
+    let response = get_stats(test_app(), "/stats/errors").await;
 
     assert_eq!(response.status(), StatusCode::OK);
     assert_eq!(content_type(&response), "application/json");
@@ -211,6 +233,14 @@ async fn stats_errors_returns_json_with_engines_array() {
         serde_json::json!([]),
         "no handle wired => empty engines array"
     );
+}
+
+#[tokio::test]
+async fn stats_denied_without_open_metrics_password() {
+    for path in ["/stats", "/stats/errors"] {
+        let response = get(test_app_unauthenticated(), path).await;
+        assert_eq!(response.status(), StatusCode::UNAUTHORIZED, "{path}");
+    }
 }
 
 #[tokio::test]
@@ -275,9 +305,13 @@ async fn metrics_renders_injected_handle_exposition() {
 #[tokio::test]
 async fn stats_derives_engine_timing_from_injected_handle() {
     let handle = handle_with_recorded_samples();
-    let router = app(AppState::from_search(stub_search()).with_metrics_handle(handle));
+    let mut settings = Settings::defaults();
+    settings.general.open_metrics = "secret".to_string();
+    let router = app(AppState::from_search(stub_search())
+        .with_metrics_handle(handle)
+        .with_settings(settings));
 
-    let response = get(router, "/stats").await;
+    let response = get_stats(router, "/stats").await;
 
     assert_eq!(response.status(), StatusCode::OK);
     assert_eq!(content_type(&response), "application/json");
@@ -301,9 +335,13 @@ async fn stats_derives_engine_timing_from_injected_handle() {
 #[tokio::test]
 async fn stats_errors_derives_counts_from_injected_handle() {
     let handle = handle_with_recorded_samples();
-    let router = app(AppState::from_search(stub_search()).with_metrics_handle(handle));
+    let mut settings = Settings::defaults();
+    settings.general.open_metrics = "secret".to_string();
+    let router = app(AppState::from_search(stub_search())
+        .with_metrics_handle(handle)
+        .with_settings(settings));
 
-    let response = get(router, "/stats/errors").await;
+    let response = get_stats(router, "/stats/errors").await;
 
     assert_eq!(response.status(), StatusCode::OK);
     assert_eq!(content_type(&response), "application/json");

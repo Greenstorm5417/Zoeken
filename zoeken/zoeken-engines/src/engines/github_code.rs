@@ -3,6 +3,9 @@
 //! Queries the GitHub REST code-search API and maps each hit into a code
 //! result, relabeling matched code lines from 1 (GitHub does not return
 //! original line numbers) and marking which lines contain a text-match hit.
+//!
+//! Requires a GitHub personal access token (`api_key`). Without a key the
+//! engine skips the request (no URL) instead of sending a junk Authorization.
 
 use serde::Deserialize;
 use zoeken_engine_core::{
@@ -23,11 +26,17 @@ const SEARCH_URL: &str = "https://api.github.com/search/code";
 #[derive(Debug, Clone)]
 pub struct GithubCode {
     meta: EngineMeta,
+    api_key: String,
 }
 
 impl GithubCode {
-    /// Create the engine with its reference metadata.
+    /// Create the engine with its reference metadata and no API key.
     pub fn new() -> Self {
+        Self::with_api_key(String::new())
+    }
+
+    /// Create the engine configured with a GitHub token.
+    pub fn with_api_key(api_key: String) -> Self {
         GithubCode {
             meta: EngineMeta {
                 name: NAME.to_string(),
@@ -52,6 +61,7 @@ impl GithubCode {
                     results: "JSON".to_string(),
                 },
             },
+            api_key,
         }
     }
 }
@@ -126,6 +136,11 @@ impl Engine for GithubCode {
 
     fn request(&self, q: &SearchQueryView, p: &mut RequestParams) {
         p.method = HttpMethod::Get;
+        // Without a token, leave `url` unset so the executor skips cleanly.
+        let token = self.api_key.trim();
+        if token.is_empty() {
+            return;
+        }
         let args: Vec<(&str, String)> = vec![
             ("q", q.query.clone()),
             ("sort", "indexed".to_string()),
@@ -139,11 +154,14 @@ impl Engine for GithubCode {
         p.headers
             .insert("X-GitHub-Api-Version".to_string(), "2022-11-28".to_string());
         p.headers
-            .insert("Authorization".to_string(), "placeholder".to_string());
+            .insert("Authorization".to_string(), format!("Bearer {token}"));
         p.raise_for_httperror = false;
     }
 
     fn response(&self, resp: &EngineResponse) -> Result<EngineResults, EngineError> {
+        if matches!(resp.status, 401 | 403) {
+            return Err(EngineError::AccessDenied(NAME.to_string()));
+        }
         if resp.status == 422 {
             // Invalid search term (e.g. "user: foo" instead of "user:foo").
             return Ok(EngineResults::new());
@@ -296,5 +314,33 @@ mod tests {
         let engine = GithubCode::new();
         let res = engine.response(&response(422, "{}")).unwrap();
         assert!(res.is_empty());
+    }
+
+    #[test]
+    fn skips_request_without_api_key() {
+        let engine = GithubCode::new();
+        let mut params = RequestParams::default();
+        engine.request(&query("println", 1), &mut params);
+        assert!(params.url.is_none());
+        assert!(!params.headers.contains_key("Authorization"));
+    }
+
+    #[test]
+    fn sends_bearer_token_when_configured() {
+        let engine = GithubCode::with_api_key("ghp_test_token".to_string());
+        let mut params = RequestParams::default();
+        engine.request(&query("println", 1), &mut params);
+        assert!(params.url.is_some());
+        assert_eq!(
+            params.headers.get("Authorization").map(String::as_str),
+            Some("Bearer ghp_test_token")
+        );
+    }
+
+    #[test]
+    fn maps_unauthorized_to_access_denied() {
+        let engine = GithubCode::with_api_key("bad".to_string());
+        let err = engine.response(&response(401, "{}")).unwrap_err();
+        assert!(matches!(err, EngineError::AccessDenied(_)));
     }
 }

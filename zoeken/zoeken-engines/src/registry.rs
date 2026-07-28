@@ -277,7 +277,12 @@ fn engine_from_settings(cfg: &zoeken_settings::EngineSettings) -> Option<Registe
                 .unwrap_or_default();
             std::sync::Arc::new(engine)
         }
-        "github code" | "github_code" => std::sync::Arc::new(GithubCode::new()),
+        "github code" | "github_code" => {
+            let engine = engine_extra_string(cfg, "api_key")
+                .map(GithubCode::with_api_key)
+                .unwrap_or_default();
+            std::sync::Arc::new(engine)
+        }
         "piratebay" => std::sync::Arc::new(Piratebay::new()),
         "nyaa" => std::sync::Arc::new(Nyaa::new()),
         "solidtorrents" => {

@@ -36,6 +36,7 @@ pub async fn preferences_get(State(state): State<Arc<AppState>>, headers: Header
 pub async fn preferences_post(
     State(state): State<Arc<AppState>>,
     headers: HeaderMap,
+    peer: crate::middleware::OptionalPeer,
     RawQuery(query): RawQuery,
     body: String,
 ) -> Response {
@@ -53,7 +54,7 @@ pub async fn preferences_post(
     );
 
     let encoded = encode_cookie(&prefs);
-    let secure = if secure_cookie(&state) {
+    let secure = if secure_cookie(&state, &headers, peer.0) {
         "; Secure"
     } else {
         ""
@@ -75,8 +76,12 @@ pub async fn preferences_post(
 }
 
 /// `GET /clear_cookies`: expire every cookie supplied by the browser and return home.
-pub async fn clear_cookies(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Response {
-    let secure = if secure_cookie(&state) {
+pub async fn clear_cookies(
+    State(state): State<Arc<AppState>>,
+    headers: HeaderMap,
+    peer: crate::middleware::OptionalPeer,
+) -> Response {
+    let secure = if secure_cookie(&state, &headers, peer.0) {
         "; Secure"
     } else {
         ""
@@ -121,12 +126,41 @@ pub(crate) fn prefers_html(headers: &HeaderMap) -> bool {
     }
 }
 
-fn secure_cookie(state: &AppState) -> bool {
-    state.deployment.hsts
-        || matches!(
-            state.settings.server.base_url.as_ref(),
-            Some(zoeken_settings::BoolOrString::Str(url)) if url.starts_with("https://")
-        )
+/// Whether the preferences cookie should include `Secure`.
+///
+/// Secure when any of:
+/// - `deployment.hsts` is on
+/// - `server.base_url` is `https://…`
+/// - a trusted proxy sent `X-Forwarded-Proto: https`
+///
+/// Local plain HTTP (no TLS signals) stays without Secure so cookies work on
+/// `http://127.0.0.1`. `public_instance` alone does not force Secure — many
+/// compose setups expose HTTP on localhost with that flag set.
+fn secure_cookie(
+    state: &AppState,
+    headers: &HeaderMap,
+    peer: Option<std::net::SocketAddr>,
+) -> bool {
+    if state.deployment.hsts {
+        return true;
+    }
+    if matches!(
+        state.settings.server.base_url.as_ref(),
+        Some(zoeken_settings::BoolOrString::Str(url)) if url.starts_with("https://")
+    ) {
+        return true;
+    }
+    let trusted = crate::middleware::is_trusted_proxy(
+        peer.map(|addr| addr.ip()),
+        &state.bot_detector.config().trusted_proxies,
+    );
+    let xfp = headers
+        .get("x-forwarded-proto")
+        .and_then(|value| value.to_str().ok());
+    matches!(
+        crate::middleware::forwarded_scheme(trusted, xfp, crate::middleware::Scheme::Http),
+        crate::middleware::Scheme::Https
+    )
 }
 
 fn json_response(prefs: &Preferences) -> Response {
@@ -276,6 +310,10 @@ mod tests {
             raw.contains("HttpOnly"),
             "preferences cookie must be HttpOnly: {raw}"
         );
+        assert!(
+            !raw.contains("Secure"),
+            "default local HTTP must not set Secure: {raw}"
+        );
         let cookie = set_cookie_value(&post).expect("Set-Cookie carries the preferences cookie");
 
         // The cookie decodes to the saved preferences.
@@ -394,6 +432,10 @@ mod tests {
             raw.contains("HttpOnly"),
             "clear cookie should remain HttpOnly: {raw}"
         );
+        assert!(
+            !raw.contains("Secure"),
+            "default local clear cookie must not set Secure: {raw}"
+        );
         assert_eq!(
             response
                 .headers()
@@ -401,6 +443,35 @@ mod tests {
                 .iter()
                 .count(),
             2
+        );
+    }
+
+    #[tokio::test]
+    async fn preferences_cookie_is_secure_when_hsts_enabled() {
+        let state = AppState::new().expect("build app state").with_deployment(
+            zoeken_settings::DeploymentConfig {
+                hsts: true,
+                ..zoeken_settings::DeploymentConfig::default()
+            },
+        );
+        let app = app(state);
+
+        let post = app
+            .oneshot(
+                Request::builder()
+                    .method("POST")
+                    .uri("/preferences")
+                    .header(header::CONTENT_TYPE, "application/x-www-form-urlencoded")
+                    .body(Body::from("locale=en"))
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        let raw = raw_set_cookie(&post).expect("Set-Cookie");
+        assert!(
+            raw.split(';').any(|part| part.trim() == "Secure"),
+            "HSTS deployments must set Secure: {raw}"
         );
     }
 }

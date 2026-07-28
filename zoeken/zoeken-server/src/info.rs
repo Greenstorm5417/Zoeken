@@ -437,11 +437,18 @@ fn error_stats(rendered: &str) -> ErrorStatsResponse {
 const METRICS_CONTENT_TYPE: &str = "text/plain; version=0.0.4; charset=utf-8";
 
 /// When `general.open_metrics` is set, require HTTP Basic with that password.
-/// Empty password: no gate (stats stay open; `/metrics` uses a separate 404 path).
+/// Empty password: deny `/stats` JSON (401) — same safer default as hiding
+/// `/metrics`. SPA HTML for `/stats` stays public so the page can prompt.
 fn open_metrics_unauthorized(state: &AppState, headers: &HeaderMap) -> Option<Response> {
     let password = state.settings.general.open_metrics.as_str();
     if password.is_empty() {
-        return None;
+        return Some(
+            (
+                StatusCode::UNAUTHORIZED,
+                [(header::WWW_AUTHENTICATE, "Basic realm=\"metrics\"")],
+            )
+                .into_response(),
+        );
     }
     let authorized = headers
         .get(header::AUTHORIZATION)
@@ -1071,7 +1078,19 @@ hostnames:
 
     #[tokio::test]
     async fn stats_returns_empty_engines_without_handle() {
-        let response = get("/stats").await;
+        let mut state = AppState::new().expect("build app state");
+        state.settings.general.open_metrics = "secret".to_string();
+        let app = app(state);
+        let response = app
+            .oneshot(
+                Request::builder()
+                    .uri("/stats")
+                    .header(header::AUTHORIZATION, "Basic dXNlcjpzZWNyZXQ=")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
         assert_eq!(response.status(), StatusCode::OK);
         assert_eq!(content_type(&response), "application/json");
         let value = body_json(response).await;
@@ -1081,11 +1100,31 @@ hostnames:
 
     #[tokio::test]
     async fn stats_errors_returns_empty_engines_without_handle() {
-        let response = get("/stats/errors").await;
+        let mut state = AppState::new().expect("build app state");
+        state.settings.general.open_metrics = "secret".to_string();
+        let app = app(state);
+        let response = app
+            .oneshot(
+                Request::builder()
+                    .uri("/stats/errors")
+                    .header(header::AUTHORIZATION, "Basic dXNlcjpzZWNyZXQ=")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
         assert_eq!(response.status(), StatusCode::OK);
         assert_eq!(content_type(&response), "application/json");
         let value = body_json(response).await;
         assert_eq!(value["engines"], serde_json::json!([]));
+    }
+
+    #[tokio::test]
+    async fn stats_denied_when_open_metrics_empty() {
+        for path in ["/stats", "/stats/errors"] {
+            let response = get(path).await;
+            assert_eq!(response.status(), StatusCode::UNAUTHORIZED, "{path}");
+        }
     }
 
     #[tokio::test]
