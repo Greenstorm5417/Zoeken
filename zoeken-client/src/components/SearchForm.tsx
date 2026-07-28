@@ -275,8 +275,8 @@ export function SearchForm({
 							"transition-[border-color,box-shadow] duration-100",
 							"focus:border-accent focus:shadow-[0_0_0_3px_var(--accent-soft)]",
 							compact
-								? "h-11 rounded-xl px-5 pr-12 text-[0.95rem]"
-								: "h-14 rounded-2xl px-6 pr-14 text-lg shadow-[0_1px_3px_rgba(20,32,24,0.06),0_8px_24px_rgba(20,32,24,0.06)]",
+								? "h-11 rounded-xl px-4 pr-11 text-[0.95rem] sm:px-5 sm:pr-12"
+								: "h-12 rounded-2xl px-5 pr-12 text-base shadow-[0_1px_3px_rgba(20,32,24,0.06),0_8px_24px_rgba(20,32,24,0.06)] sm:h-14 sm:px-6 sm:pr-14 sm:text-lg",
 						].join(" ")}
 					/>
 					<button
@@ -291,7 +291,7 @@ export function SearchForm({
 							setBangHits([]);
 						}}
 						className={[
-							"absolute top-1/2 right-2 -translate-y-1/2 rounded-lg px-2 py-1 font-mono text-sm",
+							"absolute top-1/2 right-1.5 flex size-9 -translate-y-1/2 items-center justify-center rounded-lg font-mono text-sm sm:right-2",
 							"text-ink-subtle transition-colors hover:bg-accent-soft hover:text-accent",
 							bangHelpOpen ? "bg-accent-soft text-accent" : "",
 						].join(" ")}

@@ -430,14 +430,14 @@ export function ResultItem({
 				rel={newTab ? "noopener noreferrer" : undefined}
 				className="group block no-underline"
 			>
-				<div className="flex items-center gap-2.5">
+				<div className="flex items-center gap-2 sm:gap-2.5">
 					{favicon ? (
 						<img
 							src={favicon}
 							alt=""
 							width={20}
 							height={20}
-							className="size-5 rounded-[5px] bg-surface-raised ring-1 ring-line/80"
+							className="size-5 shrink-0 rounded-[5px] bg-surface-raised ring-1 ring-line/80"
 							decoding="async"
 							fetchPriority={faviconPriority ? "high" : undefined}
 							onError={(event) => {
@@ -446,15 +446,15 @@ export function ResultItem({
 						/>
 					) : null}
 					<div className="min-w-0">
-						<p className="truncate text-[0.875rem] leading-tight text-ink">
+						<p className="truncate text-[0.8125rem] leading-tight text-ink sm:text-[0.875rem]">
 							{host}
 						</p>
-						<p className="truncate text-[0.75rem] leading-tight text-ink-subtle">
+						<p className="truncate text-[0.7rem] leading-tight text-ink-subtle sm:text-[0.75rem]">
 							{displayUrl}
 						</p>
 					</div>
 				</div>
-				<h2 className="mt-1.5 text-[1.25rem] leading-snug font-medium tracking-tight text-accent transition-colors group-hover:underline">
+				<h2 className="mt-1.5 text-[1.125rem] leading-snug font-medium tracking-tight text-accent transition-colors group-hover:underline sm:text-[1.25rem]">
 					{result.title}
 				</h2>
 			</a>

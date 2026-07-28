@@ -280,8 +280,8 @@ body {
 	align-items: center;
 	justify-content: space-between;
 	gap: 0.5rem;
-	min-height: 2.125rem;
-	padding: 0.375rem 0.75rem;
+	min-height: 2.75rem;
+	padding: 0.5rem 0.75rem;
 	border: 1px solid var(--line);
 	border-radius: 0.625rem;
 	background: var(--surface-raised);
@@ -300,10 +300,20 @@ body {
 
 .zoeken-menu--full .zoeken-menu-trigger {
 	width: 100%;
-	min-height: 2.75rem;
-	padding: 0.625rem 0.875rem;
 	font-size: 0.9375rem;
 	color: var(--ink);
+}
+
+@media (min-width: 640px) {
+	.zoeken-menu-trigger {
+		min-height: 2.125rem;
+		padding: 0.375rem 0.75rem;
+	}
+
+	.zoeken-menu--full .zoeken-menu-trigger {
+		min-height: 2.75rem;
+		padding: 0.625rem 0.875rem;
+	}
 }
 
 .zoeken-menu-trigger:hover {

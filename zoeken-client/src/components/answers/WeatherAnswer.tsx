@@ -1,4 +1,5 @@
 import { CloudSun } from "lucide-react";
+import { AnswerShell } from "#/components/answers/AnswerShell";
 import type { InteractiveAnswer, SearchAnswer } from "#/lib/api";
 
 export function WeatherAnswer({
@@ -20,11 +21,22 @@ export function WeatherAnswer({
 	const humidity = initial.humidity ? `Humidity ${initial.humidity}%` : null;
 
 	return (
-		<section className="mb-6 max-w-[40rem] rounded-2xl border border-line bg-surface-raised px-5 py-4">
-			<p className="mb-2 flex items-center gap-2 text-[0.7rem] font-semibold tracking-wide text-ink-subtle uppercase">
-				<CloudSun className="size-4 text-accent" aria-hidden />
-				Weather
-			</p>
+		<AnswerShell
+			title="Weather"
+			icon={CloudSun}
+			footer={
+				answer.url ? (
+					<a
+						href={answer.url}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="inline-block text-sm text-accent hover:underline"
+					>
+						wttr.in
+					</a>
+				) : null
+			}
+		>
 			<p className="text-[1.35rem] leading-snug tracking-tight text-ink">
 				{place}
 			</p>
@@ -32,25 +44,17 @@ export function WeatherAnswer({
 				<p className="mt-1 text-base text-ink-muted">{initial.description}</p>
 			) : null}
 			{temp ? (
-				<p className="mt-3 text-[1.6rem] font-semibold tabular-nums tracking-tight text-ink">
+				<p className="mt-3 text-[1.75rem] font-semibold tabular-nums tracking-tight text-ink sm:text-[1.85rem]">
 					{temp}
 				</p>
 			) : null}
-			<div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-muted">
-				{feels ? <span>{feels}</span> : null}
-				{wind ? <span>{wind}</span> : null}
-				{humidity ? <span>{humidity}</span> : null}
-			</div>
-			{answer.url ? (
-				<a
-					href={answer.url}
-					target="_blank"
-					rel="noopener noreferrer"
-					className="mt-3 inline-block text-sm text-accent hover:underline"
-				>
-					wttr.in
-				</a>
-			) : null}
-		</section>
+			{(feels || wind || humidity) && (
+				<div className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-sm text-ink-muted">
+					{feels ? <span>{feels}</span> : null}
+					{wind ? <span>{wind}</span> : null}
+					{humidity ? <span>{humidity}</span> : null}
+				</div>
+			)}
+		</AnswerShell>
 	);
 }

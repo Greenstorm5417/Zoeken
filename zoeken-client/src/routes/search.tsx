@@ -313,7 +313,7 @@ function SearchPage() {
 
 			{query.isLoading ? (
 				<div
-					className="mx-auto max-w-6xl px-4 pt-8 sm:px-6"
+					className="mx-auto max-w-6xl px-3 pt-6 sm:px-6 sm:pt-8"
 					role="status"
 					aria-label="Loading results"
 				>
@@ -334,8 +334,8 @@ function SearchPage() {
 			) : null}
 
 			{query.isError ? (
-				<div className="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
-					<div className="max-w-[40rem] rounded-2xl border border-line bg-surface-raised px-5 py-4">
+				<div className="mx-auto max-w-6xl px-3 pt-6 sm:px-6 sm:pt-8">
+					<div className="max-w-[40rem] rounded-2xl border border-line bg-surface-raised px-4 py-4 sm:px-5">
 						<p className="font-medium text-ink">
 							{errorStatus === 429 ? t.tooManySearches : t.searchUnavailable}
 						</p>
@@ -347,7 +347,7 @@ function SearchPage() {
 						<button
 							type="button"
 							onClick={() => void query.refetch()}
-							className="mt-3 rounded-lg border border-line px-3 py-1.5 text-sm text-ink transition-colors hover:border-accent hover:text-accent"
+							className="mt-3 min-h-11 rounded-xl border border-line px-4 text-sm text-ink transition-colors hover:border-accent hover:text-accent"
 						>
 							Retry
 						</button>
@@ -356,7 +356,7 @@ function SearchPage() {
 			) : null}
 
 			{firstPage ? (
-				<div className="mx-auto max-w-6xl px-4 pt-6 pb-20 sm:px-6">
+				<div className="mx-auto max-w-6xl px-3 pt-5 pb-20 sm:px-6 sm:pt-6">
 					{firstPage.unresponsive_engines.length > 0 ? (
 						<aside className="mb-6 max-w-[40rem] rounded-xl border border-amber-500/30 bg-amber-500/5 px-4 py-3">
 							<p className="text-sm font-medium text-ink">

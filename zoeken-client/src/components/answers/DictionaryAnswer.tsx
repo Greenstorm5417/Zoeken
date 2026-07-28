@@ -1,5 +1,6 @@
 import { BookOpen } from "lucide-react";
 import { useEffect, useState } from "react";
+import { AnswerShell } from "#/components/answers/AnswerShell";
 import type { InteractiveAnswer, SearchAnswer } from "#/lib/api";
 import { search } from "#/lib/searchApi";
 
@@ -53,13 +54,23 @@ export function DictionaryAnswer({
 	}
 
 	return (
-		<section className="mb-6 max-w-[40rem] rounded-2xl border border-line bg-surface-raised px-5 py-4">
-			<p className="mb-3 flex items-center gap-2 text-[0.7rem] font-semibold tracking-wide text-ink-subtle uppercase">
-				<BookOpen className="size-4 text-accent" aria-hidden />
-				Dictionary
-			</p>
-
-			<div className="flex gap-2">
+		<AnswerShell
+			title="Dictionary"
+			icon={BookOpen}
+			footer={
+				sourceUrl ? (
+					<a
+						href={sourceUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="inline-block text-sm text-accent hover:underline"
+					>
+						Wiktionary
+					</a>
+				) : null
+			}
+		>
+			<div className="flex flex-col gap-2 sm:flex-row sm:gap-2">
 				<input
 					type="text"
 					value={term}
@@ -71,35 +82,24 @@ export function DictionaryAnswer({
 						}
 					}}
 					disabled={busy}
-					className="min-w-0 flex-1 rounded-[0.625rem] border border-line bg-surface px-3 py-2 text-[1.2rem] font-semibold text-ink outline-none focus:border-accent focus:shadow-[0_0_0_3px_var(--accent-soft)]"
+					className="min-h-11 min-w-0 flex-1 rounded-[0.625rem] border border-line bg-surface px-3 text-[1.2rem] font-semibold text-ink outline-none focus:border-accent focus:shadow-[0_0_0_3px_var(--accent-soft)] disabled:opacity-60"
 					aria-label="Word to define"
 				/>
 				<button
 					type="button"
 					disabled={busy || !term.trim()}
 					onClick={() => void lookup(term)}
-					className="rounded-lg border border-line px-3 py-2 text-sm text-accent transition-colors hover:bg-accent-soft disabled:opacity-50"
+					className="min-h-11 shrink-0 rounded-xl border border-line bg-surface px-4 text-sm font-medium text-accent transition-colors hover:bg-accent-soft disabled:opacity-50"
 				>
 					{busy ? "…" : "Define"}
 				</button>
 			</div>
 
-			<ol className="mt-4 list-decimal space-y-2 pl-5 text-base leading-relaxed text-ink">
+			<ol className="mt-4 list-decimal space-y-2.5 pl-5 text-base leading-relaxed text-ink">
 				{definitions.map((def) => (
 					<li key={def}>{def}</li>
 				))}
 			</ol>
-
-			{sourceUrl ? (
-				<a
-					href={sourceUrl}
-					target="_blank"
-					rel="noopener noreferrer"
-					className="mt-3 inline-block text-sm text-accent hover:underline"
-				>
-					Wiktionary
-				</a>
-			) : null}
-		</section>
+		</AnswerShell>
 	);
 }

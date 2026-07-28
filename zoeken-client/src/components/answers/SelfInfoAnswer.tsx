@@ -1,5 +1,6 @@
 import { Check, Copy, Fingerprint } from "lucide-react";
 import { useState } from "react";
+import { AnswerShell } from "#/components/answers/AnswerShell";
 import type { InteractiveAnswer, SearchAnswer } from "#/lib/api";
 
 export function SelfInfoAnswer({
@@ -25,20 +26,16 @@ export function SelfInfoAnswer({
 	}
 
 	return (
-		<section className="mb-6 max-w-[40rem] rounded-2xl border border-line bg-surface-raised px-5 py-4">
-			<p className="mb-2 flex items-center gap-2 text-[0.7rem] font-semibold tracking-wide text-ink-subtle uppercase">
-				<Fingerprint className="size-4 text-accent" aria-hidden />
-				{label}
-			</p>
-			<div className="flex items-start gap-3">
-				<p className="min-w-0 flex-1 break-all font-mono text-[1.1rem] leading-snug text-ink">
+		<AnswerShell title={label} icon={Fingerprint}>
+			<div className="flex flex-col gap-3 sm:flex-row sm:items-start">
+				<p className="min-w-0 flex-1 break-all font-mono text-[1.05rem] leading-snug text-ink sm:text-[1.1rem]">
 					{value}
 				</p>
 				{canCopy ? (
 					<button
 						type="button"
 						onClick={() => void copy()}
-						className="inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-line bg-surface px-2.5 py-1.5 text-xs font-medium text-ink-muted hover:bg-accent-soft hover:text-accent"
+						className="inline-flex min-h-11 shrink-0 items-center justify-center gap-1.5 self-start rounded-xl border border-line bg-surface px-3 text-sm font-medium text-ink-muted hover:bg-accent-soft hover:text-accent"
 						aria-label="Copy value"
 					>
 						{copied ? (
@@ -50,6 +47,6 @@ export function SelfInfoAnswer({
 					</button>
 				) : null}
 			</div>
-		</section>
+		</AnswerShell>
 	);
 }

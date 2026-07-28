@@ -18,17 +18,17 @@ export function WikipediaAnswer({
 	const topics = (initial.related_topics ?? []).filter(Boolean);
 
 	return (
-		<section className="mb-6 max-w-[40rem] overflow-hidden rounded-2xl border border-line bg-surface-raised">
+		<section className="zoeken-answer mb-6 max-w-[40rem] overflow-hidden rounded-2xl border border-line bg-surface-raised">
 			{img ? (
 				<img
 					src={img}
 					alt=""
-					className="max-h-48 w-full object-cover"
+					className="max-h-44 w-full object-cover sm:max-h-48"
 					decoding="async"
 					loading="lazy"
 				/>
 			) : null}
-			<div className="px-5 py-4">
+			<div className="px-4 py-4 sm:px-5">
 				<p className="mb-2 flex items-center gap-2 text-[0.7rem] font-semibold tracking-wide text-ink-subtle uppercase">
 					<Library className="size-4 text-accent" aria-hidden />
 					Wikipedia
@@ -68,7 +68,7 @@ export function WikipediaAnswer({
 					</p>
 				) : null}
 				{attributes.length > 0 ? (
-					<dl className="mt-3 space-y-2 border-t border-line pt-3">
+					<dl className="mt-3 space-y-2.5 border-t border-line pt-3">
 						{attributes.map((attr) => (
 							<div key={`${attr.label}:${attr.value ?? ""}`}>
 								<dt className="text-[0.7rem] font-medium tracking-wide text-ink-subtle uppercase">
@@ -94,7 +94,7 @@ export function WikipediaAnswer({
 				) : null}
 				{topics.length > 0 ? (
 					<div className="mt-3 border-t border-line pt-3">
-						<p className="mb-1.5 text-[0.7rem] font-medium tracking-wide text-ink-subtle uppercase">
+						<p className="mb-2 text-[0.7rem] font-medium tracking-wide text-ink-subtle uppercase">
 							Related
 						</p>
 						<ul className="flex flex-wrap gap-1.5">
@@ -103,7 +103,7 @@ export function WikipediaAnswer({
 									<Link
 										to="/search"
 										search={{ q: topic }}
-										className="inline-block rounded-lg border border-line px-2 py-0.5 text-xs text-ink no-underline hover:border-accent hover:text-accent"
+										className="inline-flex min-h-9 items-center rounded-lg border border-line px-2.5 py-1 text-xs text-ink no-underline hover:border-accent hover:text-accent"
 									>
 										{topic}
 									</Link>

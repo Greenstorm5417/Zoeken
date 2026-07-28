@@ -1,5 +1,6 @@
 import { ArrowLeftRight } from "lucide-react";
 import { useEffect, useId, useMemo, useState } from "react";
+import { AnswerShell } from "#/components/answers/AnswerShell";
 import { SelectMenu } from "#/components/SelectMenu";
 import type { InteractiveAnswer, SearchAnswer } from "#/lib/api";
 import { search } from "#/lib/searchApi";
@@ -58,6 +59,9 @@ function pickCurrencyAnswer(
 	}
 	return null;
 }
+
+const fieldClass =
+	"min-h-11 min-w-0 flex-1 rounded-[0.625rem] border border-line bg-surface px-3 text-[1.1rem] font-semibold tabular-nums text-ink outline-none focus:border-accent focus:shadow-[0_0_0_3px_var(--accent-soft)] disabled:opacity-60";
 
 export function CurrencyAnswer({
 	answer,
@@ -167,19 +171,36 @@ export function CurrencyAnswer({
 	}
 
 	return (
-		<section className="mb-6 max-w-[40rem] rounded-2xl border border-line bg-surface-raised px-5 py-4">
-			<p className="mb-3 flex items-center gap-2 text-[0.7rem] font-semibold tracking-wide text-ink-subtle uppercase">
-				<ArrowLeftRight className="size-4 text-accent" aria-hidden />
-				Currency
-			</p>
-
+		<AnswerShell
+			title="Currency"
+			icon={ArrowLeftRight}
+			footer={
+				<>
+					<p className="text-xs text-ink-muted">
+						{busy
+							? "Updating rate…"
+							: `1 ${from} = ${formatAmount(rate)} ${to}`}
+					</p>
+					{sourceUrl ? (
+						<a
+							href={sourceUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="mt-1 inline-block text-sm text-accent hover:underline"
+						>
+							European Central Bank
+						</a>
+					) : null}
+				</>
+			}
+		>
 			<div className="flex flex-col gap-3 sm:flex-row sm:items-end">
 				<div className="min-w-0 flex-1">
 					<label
 						htmlFor={amountId}
-						className="mb-1 block text-xs text-ink-muted"
+						className="mb-1 block text-xs font-medium text-ink-muted"
 					>
-						Amount
+						From
 					</label>
 					<div className="flex gap-2">
 						<input
@@ -189,7 +210,7 @@ export function CurrencyAnswer({
 							value={amountStr}
 							onChange={(e) => onFromAmountChange(e.target.value)}
 							disabled={busy}
-							className="min-w-0 flex-1 rounded-[0.625rem] border border-line bg-surface px-3 py-2 text-[1.1rem] font-semibold text-ink outline-none focus:border-accent focus:shadow-[0_0_0_3px_var(--accent-soft)]"
+							className={fieldClass}
 							aria-label="From amount"
 						/>
 						<div className="w-[5.5rem] shrink-0">
@@ -208,7 +229,7 @@ export function CurrencyAnswer({
 					type="button"
 					onClick={swap}
 					disabled={busy}
-					className="mx-auto flex size-9 shrink-0 items-center justify-center rounded-full border border-line text-ink-muted transition-colors hover:border-accent hover:text-accent sm:mb-1"
+					className="mx-auto flex size-11 shrink-0 items-center justify-center rounded-full border border-line bg-surface text-ink-muted transition-colors hover:border-accent hover:text-accent disabled:opacity-50 sm:mb-0.5"
 					aria-label="Swap currencies"
 				>
 					<ArrowLeftRight className="size-4" />
@@ -217,9 +238,9 @@ export function CurrencyAnswer({
 				<div className="min-w-0 flex-1">
 					<label
 						htmlFor={resultId}
-						className="mb-1 block text-xs text-ink-muted"
+						className="mb-1 block text-xs font-medium text-ink-muted"
 					>
-						Converted
+						To
 					</label>
 					<div className="flex gap-2">
 						<input
@@ -229,7 +250,7 @@ export function CurrencyAnswer({
 							value={resultStr}
 							onChange={(e) => onToAmountChange(e.target.value)}
 							disabled={busy}
-							className="min-w-0 flex-1 rounded-[0.625rem] border border-line bg-surface px-3 py-2 text-[1.1rem] font-semibold text-ink outline-none focus:border-accent focus:shadow-[0_0_0_3px_var(--accent-soft)]"
+							className={fieldClass}
 							aria-label="To amount"
 						/>
 						<div className="w-[5.5rem] shrink-0">
@@ -244,21 +265,6 @@ export function CurrencyAnswer({
 					</div>
 				</div>
 			</div>
-
-			<p className="mt-3 text-xs text-ink-muted">
-				{busy ? "Updating rate…" : `1 ${from} = ${formatAmount(rate)} ${to}`}
-			</p>
-
-			{sourceUrl ? (
-				<a
-					href={sourceUrl}
-					target="_blank"
-					rel="noopener noreferrer"
-					className="mt-1 inline-block text-sm text-accent hover:underline"
-				>
-					European Central Bank
-				</a>
-			) : null}
-		</section>
+		</AnswerShell>
 	);
 }

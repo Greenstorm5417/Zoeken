@@ -81,10 +81,10 @@ function splitEquation(text: string): [string, string] | null {
 function InteractiveFallback() {
 	return (
 		<section
-			className="mb-6 max-w-[40rem] animate-pulse rounded-2xl border border-line bg-surface-raised px-5 py-4"
+			className="zoeken-answer mb-6 max-w-[40rem] animate-pulse rounded-2xl border border-line bg-surface-raised px-4 py-4 sm:px-5"
 			aria-hidden
 		>
-			<p className="mb-2 text-[0.7rem] font-semibold tracking-wide text-ink-subtle uppercase">
+			<p className="mb-3 text-[0.7rem] font-semibold tracking-wide text-ink-subtle uppercase">
 				…
 			</p>
 			<div className="h-8 w-3/5 rounded bg-line/60" />
@@ -162,19 +162,19 @@ export function InstantAnswerCard({ answer }: { answer: SearchAnswer }) {
 	const { Icon, label } = answerKind(answer.engine);
 	const equation = splitEquation(answer.answer);
 	return (
-		<section className="mb-6 max-w-[40rem] rounded-2xl border border-line bg-surface-raised px-5 py-4">
-			<p className="mb-2 flex items-center gap-2 text-[0.7rem] font-semibold tracking-wide text-ink-subtle uppercase">
+		<section className="zoeken-answer mb-6 max-w-[40rem] rounded-2xl border border-line bg-surface-raised px-4 py-4 sm:px-5">
+			<p className="mb-3 flex items-center gap-2 text-[0.7rem] font-semibold tracking-wide text-ink-subtle uppercase">
 				<Icon className="size-4 text-accent" aria-hidden />
 				{label}
 			</p>
 			{equation ? (
-				<p className="text-[1.6rem] leading-snug tracking-tight break-words">
+				<p className="text-[1.5rem] leading-snug tracking-tight break-words sm:text-[1.6rem]">
 					<span className="text-ink-muted">{equation[0]}</span>
 					<span className="text-ink-muted"> = </span>
 					<span className="font-semibold text-ink">{equation[1]}</span>
 				</p>
 			) : (
-				<p className="text-[1.35rem] leading-snug tracking-tight break-words text-ink">
+				<p className="text-[1.25rem] leading-snug tracking-tight break-words text-ink sm:text-[1.35rem]">
 					{answer.answer}
 				</p>
 			)}
@@ -183,7 +183,7 @@ export function InstantAnswerCard({ answer }: { answer: SearchAnswer }) {
 					href={answer.url}
 					target="_blank"
 					rel="noopener noreferrer"
-					className="mt-2 inline-block text-sm text-accent hover:underline"
+					className="mt-3 inline-block text-sm text-accent hover:underline"
 				>
 					{hostnameOf(answer.url)}
 				</a>

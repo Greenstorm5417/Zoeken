@@ -68,7 +68,8 @@
       type="font/woff2"
       crossorigin
     />
-    <!-- Critical faces so text paints without waiting on the CSS chunk. -->
+    <link rel="preload" href="/zoeken-logo.svg" as="image" type="image/svg+xml" />
+    <!-- Critical faces + boot shell so LCP paints before the JS chunk. -->
     <style>
       @font-face {
         font-family: "Source Sans 3";
@@ -90,10 +91,152 @@
           U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
           U+2212, U+2215, U+FEFF, U+FFFD;
       }
+      :root {
+        color-scheme: light dark;
+        --surface: #f2f5ee;
+        --surface-raised: #ffffff;
+        --ink: #0b140e;
+        --ink-subtle: #445548;
+        --line: #b4c4b2;
+        --accent: #246018;
+        --atmosphere: radial-gradient(
+            ellipse 90% 60% at 50% -10%,
+            rgba(36, 96, 24, 0.12),
+            transparent 55%
+          ),
+          linear-gradient(180deg, #f2f5ee 0%, #e6ede1 100%);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --surface: #0f1410;
+          --surface-raised: #171d18;
+          --ink: #e8efe6;
+          --ink-subtle: #7a8a7c;
+          --line: #2a342c;
+          --accent: #7cbc4a;
+          --atmosphere: radial-gradient(
+              ellipse 90% 60% at 50% -10%,
+              rgba(124, 188, 74, 0.14),
+              transparent 55%
+            ),
+            linear-gradient(180deg, #0f1410 0%, #121812 100%);
+        }
+      }
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: var(--atmosphere);
+        background-color: var(--surface);
+        color: var(--ink);
+        font-family: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+      }
+      #boot-shell {
+        min-height: 100dvh;
+      }
+      #boot-shell[hidden] {
+        display: none !important;
+      }
+      .boot-home {
+        display: flex;
+        min-height: 100dvh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 1.5rem 16vh;
+        box-sizing: border-box;
+      }
+      .boot-brand {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+      }
+      .boot-brand img {
+        width: 3.5rem;
+        height: 3.5rem;
+      }
+      .boot-brand h1 {
+        margin: 0;
+        font-size: clamp(2.5rem, 8vw, 3.75rem);
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        line-height: 1;
+      }
+      .boot-bar {
+        width: min(100%, 40rem);
+        height: 3.5rem;
+        border-radius: 1rem;
+        border: 1px solid var(--line);
+        background: var(--surface-raised);
+        box-shadow:
+          0 1px 3px rgba(20, 32, 24, 0.06),
+          0 8px 24px rgba(20, 32, 24, 0.06);
+      }
+      .boot-serp {
+        min-height: 100dvh;
+        background: var(--surface);
+      }
+      .boot-serp-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--line);
+      }
+      .boot-serp-header img {
+        width: 2rem;
+        height: 2rem;
+        flex-shrink: 0;
+      }
+      .boot-serp-bar {
+        flex: 1;
+        max-width: 40rem;
+        height: 2.75rem;
+        border-radius: 0.75rem;
+        border: 1px solid var(--line);
+        background: var(--surface-raised);
+      }
+      .boot-serp-body {
+        max-width: 40rem;
+        padding: 1.5rem 1rem;
+        color: var(--ink-subtle);
+        font-size: 0.95rem;
+      }
     </style>
   </head>
   <body>
-    <div id="app"></div>
+    <!-- Static first paint inside #app; React createRoot replaces it on mount. -->
+    <div id="app">
+      <div id="boot-shell" aria-hidden="true">
+        <div class="boot-home" id="boot-home">
+          <div class="boot-brand">
+            <img src="/zoeken-logo.svg" alt="" width="56" height="56" />
+            <h1>Zoeken</h1>
+          </div>
+          <div class="boot-bar"></div>
+        </div>
+        <div class="boot-serp" id="boot-serp" hidden>
+          <div class="boot-serp-header">
+            <img src="/zoeken-logo.svg" alt="" width="32" height="32" />
+            <div class="boot-serp-bar"></div>
+          </div>
+          <div class="boot-serp-body">Loading results…</div>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var path = location.pathname;
+        if (path === "/search" || path.indexOf("/search/") === 0) {
+          var home = document.getElementById("boot-home");
+          var serp = document.getElementById("boot-serp");
+          if (home) home.hidden = true;
+          if (serp) serp.hidden = false;
+          document.title = "Search — Zoeken";
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

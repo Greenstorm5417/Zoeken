@@ -35,10 +35,9 @@ if (!rootElement) {
 	throw new Error("missing #app root");
 }
 
-if (!rootElement.innerHTML) {
-	createRoot(rootElement).render(
-		<QueryClientProvider client={queryClient}>
-			<RouterProvider router={router} />
-		</QueryClientProvider>,
-	);
-}
+// Always mount — replaces the static boot shell in index.html.
+createRoot(rootElement).render(
+	<QueryClientProvider client={queryClient}>
+		<RouterProvider router={router} />
+	</QueryClientProvider>,
+);

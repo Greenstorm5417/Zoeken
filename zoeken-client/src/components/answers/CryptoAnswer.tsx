@@ -1,5 +1,6 @@
 import { Binary } from "lucide-react";
 import { useEffect, useId, useState } from "react";
+import { AnswerShell } from "#/components/answers/AnswerShell";
 import { SelectMenu } from "#/components/SelectMenu";
 import type { InteractiveAnswer, SearchAnswer } from "#/lib/api";
 import { runCrypto } from "#/lib/clientCrypto";
@@ -65,25 +66,26 @@ export function CryptoAnswer({
 	}, [mode, algorithm, input]);
 
 	return (
-		<section className="mb-6 max-w-[40rem] rounded-2xl border border-line bg-surface-raised px-5 py-4">
-			<p className="mb-3 flex items-center gap-2 text-[0.7rem] font-semibold tracking-wide text-ink-subtle uppercase">
-				<Binary className="size-4 text-accent" aria-hidden />
-				Hash / encode
-			</p>
-
-			<div className="mb-3 flex flex-wrap gap-2">
-				<SelectMenu
-					label="Mode"
-					value={mode}
-					options={MODES}
-					onChange={setMode}
-				/>
-				<SelectMenu
-					label="Algorithm"
-					value={algorithm}
-					options={algOptions}
-					onChange={setAlgorithm}
-				/>
+		<AnswerShell title="Hash / encode" icon={Binary}>
+			<div className="mb-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+				<div className="min-w-0 flex-1 sm:min-w-[8rem] sm:flex-none">
+					<SelectMenu
+						label="Mode"
+						value={mode}
+						options={MODES}
+						onChange={setMode}
+						fullWidth
+					/>
+				</div>
+				<div className="min-w-0 flex-1 sm:min-w-[8rem] sm:flex-none">
+					<SelectMenu
+						label="Algorithm"
+						value={algorithm}
+						options={algOptions}
+						onChange={setAlgorithm}
+						fullWidth
+					/>
+				</div>
 			</div>
 
 			<label htmlFor={inputId} className="sr-only">
@@ -95,20 +97,20 @@ export function CryptoAnswer({
 				onChange={(e) => setInput(e.target.value)}
 				rows={2}
 				spellCheck={false}
-				className="mb-3 w-full resize-y rounded-xl border border-line bg-surface px-3 py-2 font-mono text-sm text-ink outline-none focus:border-accent"
+				className="mb-3 w-full resize-y rounded-xl border border-line bg-surface px-3 py-2.5 font-mono text-sm text-ink outline-none focus:border-accent focus:shadow-[0_0_0_3px_var(--accent-soft)]"
 				placeholder="Text to hash or encode"
 			/>
 
-			<p className="mb-1 text-[0.7rem] font-semibold tracking-wide text-ink-subtle uppercase">
+			<p className="mb-1.5 text-[0.7rem] font-semibold tracking-wide text-ink-subtle uppercase">
 				Result
 			</p>
 			{error ? (
 				<p className="break-all font-mono text-sm text-red-600">{error}</p>
 			) : (
-				<p className="break-all font-mono text-sm leading-relaxed text-ink">
+				<p className="break-all rounded-xl border border-line/60 bg-surface px-3 py-2.5 font-mono text-sm leading-relaxed text-ink">
 					{result || "\u00a0"}
 				</p>
 			)}
-		</section>
+		</AnswerShell>
 	);
 }

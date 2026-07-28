@@ -58,13 +58,18 @@ export function SearchSerpHeader({
 
 	return (
 		<header className="sticky top-0 z-20 border-b border-line bg-surface">
-			<div className="mx-auto flex max-w-6xl items-center gap-2 px-3 pt-3 pb-2.5 sm:gap-4 sm:px-6">
-				<Link to="/" className="shrink-0 no-underline" aria-label="Zoeken home">
+			<div className="mx-auto flex max-w-6xl items-center gap-2 px-2.5 pt-2.5 pb-2 sm:gap-4 sm:px-6 sm:pt-3 sm:pb-2.5">
+				<Link
+					to="/"
+					className="inline-flex size-11 shrink-0 items-center justify-center no-underline sm:size-auto"
+					aria-label="Zoeken home"
+				>
 					<img
 						src="/zoeken-logo.svg"
 						alt=""
 						width={32}
 						height={32}
+						className="size-7 sm:size-8"
 						decoding="async"
 						fetchPriority="high"
 					/>
@@ -72,7 +77,7 @@ export function SearchSerpHeader({
 				<div className="w-full min-w-0 max-w-[40rem] flex-1">
 					<SearchForm initialQuery={q} compact baseSearch={params} />
 				</div>
-				<div className="ml-auto flex shrink-0 items-center gap-1">
+				<div className="ml-auto flex shrink-0 items-center gap-0.5 sm:gap-1">
 					{q.trim() ? (
 						<div className="hidden items-center gap-2 lg:flex">
 							<SearchFilterMenus {...filterProps} />
@@ -94,7 +99,7 @@ export function SearchSerpHeader({
 						<Link
 							to="/preferences"
 							aria-label="Preferences"
-							className="rounded-lg p-2 text-ink-muted transition-colors hover:bg-accent-soft hover:text-ink md:hidden"
+							className="inline-flex size-11 items-center justify-center rounded-lg text-ink-muted transition-colors hover:bg-accent-soft hover:text-ink md:hidden"
 						>
 							<Settings2 className="size-5" aria-hidden />
 						</Link>
@@ -103,7 +108,7 @@ export function SearchSerpHeader({
 			</div>
 
 			{q.trim() ? (
-				<div className="mx-auto flex max-w-6xl items-end gap-1 overflow-x-auto px-3 sm:px-6">
+				<div className="-mx-0 flex max-w-6xl items-stretch gap-0.5 overflow-x-auto overscroll-x-contain px-2.5 sm:mx-auto sm:gap-1 sm:px-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 					{categoriesList.map((category) => {
 						const active =
 							(config?.ui?.search_on_category_select === false
@@ -124,7 +129,7 @@ export function SearchSerpHeader({
 									}
 								}}
 								className={[
-									"shrink-0 border-b-2 px-3 pb-2.5 text-sm capitalize no-underline transition-colors duration-100",
+									"inline-flex min-h-11 shrink-0 items-center border-b-2 px-3 text-sm capitalize no-underline transition-colors duration-100",
 									active
 										? "border-accent font-medium text-accent"
 										: "border-transparent text-ink-muted hover:text-ink",
@@ -138,7 +143,7 @@ export function SearchSerpHeader({
 					pendingCategory !== activeCategory ? (
 						<button
 							type="button"
-							className="mb-2 ml-2 shrink-0 text-sm font-medium text-accent"
+							className="mb-1 ml-1 inline-flex min-h-11 shrink-0 items-center px-2 text-sm font-medium text-accent"
 							onClick={() =>
 								void navigate({
 									to: "/search",
@@ -159,7 +164,7 @@ export function SearchSerpHeader({
 			) : null}
 
 			{q.trim() && filtersVisible ? (
-				<div className="mx-auto flex max-w-6xl items-center gap-2 overflow-x-auto border-t border-line/60 px-3 py-2 sm:px-6 lg:hidden">
+				<div className="mx-auto flex max-w-6xl items-center gap-2 overflow-x-auto overscroll-x-contain border-t border-line/60 px-2.5 py-2 sm:px-6 lg:hidden">
 					<SearchFilterMenus {...filterProps} />
 				</div>
 			) : null}

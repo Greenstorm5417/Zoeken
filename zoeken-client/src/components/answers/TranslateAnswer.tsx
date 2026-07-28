@@ -1,5 +1,6 @@
 import { Languages } from "lucide-react";
 import { useEffect, useId, useMemo, useState } from "react";
+import { AnswerShell } from "#/components/answers/AnswerShell";
 import { SelectMenu } from "#/components/SelectMenu";
 import type { InteractiveAnswer, SearchAnswer } from "#/lib/api";
 import { search } from "#/lib/searchApi";
@@ -86,13 +87,26 @@ export function TranslateAnswer({
 	}
 
 	return (
-		<section className="mb-6 max-w-[40rem] rounded-2xl border border-line bg-surface-raised px-5 py-4">
-			<p className="mb-3 flex items-center gap-2 text-[0.7rem] font-semibold tracking-wide text-ink-subtle uppercase">
-				<Languages className="size-4 text-accent" aria-hidden />
-				Translate
-			</p>
-
-			<label htmlFor={sourceId} className="mb-1 block text-xs text-ink-muted">
+		<AnswerShell
+			title="Translate"
+			icon={Languages}
+			footer={
+				sourceUrl ? (
+					<a
+						href={sourceUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="inline-block text-sm text-accent hover:underline"
+					>
+						MyMemory
+					</a>
+				) : null
+			}
+		>
+			<label
+				htmlFor={sourceId}
+				className="mb-1 block text-xs font-medium text-ink-muted"
+			>
 				Text
 			</label>
 			<textarea
@@ -106,11 +120,11 @@ export function TranslateAnswer({
 				}}
 				disabled={busy}
 				rows={2}
-				className="w-full resize-y rounded-[0.625rem] border border-line bg-surface px-3 py-2 text-base text-ink outline-none focus:border-accent focus:shadow-[0_0_0_3px_var(--accent-soft)]"
+				className="w-full resize-y rounded-[0.625rem] border border-line bg-surface px-3 py-2.5 text-base text-ink outline-none focus:border-accent focus:shadow-[0_0_0_3px_var(--accent-soft)] disabled:opacity-60"
 			/>
 
 			<div className="mt-3 flex flex-wrap items-end gap-3">
-				<div className="w-[10rem]">
+				<div className="min-w-[10rem] flex-1 sm:flex-none sm:w-[10rem]">
 					<SelectMenu
 						label="To"
 						value={target}
@@ -126,7 +140,7 @@ export function TranslateAnswer({
 					type="button"
 					disabled={busy || !source.trim()}
 					onClick={() => void refresh(source, target)}
-					className="rounded-lg border border-line px-3 py-2 text-sm text-accent transition-colors hover:bg-accent-soft disabled:opacity-50"
+					className="min-h-11 rounded-xl border border-line bg-surface px-4 text-sm font-medium text-accent transition-colors hover:bg-accent-soft disabled:opacity-50"
 				>
 					{busy ? "Translating…" : "Translate"}
 				</button>
@@ -135,17 +149,6 @@ export function TranslateAnswer({
 			<p className="mt-4 text-[1.35rem] leading-snug tracking-tight break-words text-ink">
 				{translated}
 			</p>
-
-			{sourceUrl ? (
-				<a
-					href={sourceUrl}
-					target="_blank"
-					rel="noopener noreferrer"
-					className="mt-2 inline-block text-sm text-accent hover:underline"
-				>
-					MyMemory
-				</a>
-			) : null}
-		</section>
+		</AnswerShell>
 	);
 }

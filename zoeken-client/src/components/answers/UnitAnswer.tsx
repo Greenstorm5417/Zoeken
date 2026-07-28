@@ -1,5 +1,6 @@
 import { ArrowLeftRight } from "lucide-react";
-import { useState } from "react";
+import { useId, useState } from "react";
+import { AnswerShell } from "#/components/answers/AnswerShell";
 import { SelectMenu } from "#/components/SelectMenu";
 import type { InteractiveAnswer, SearchAnswer } from "#/lib/api";
 import {
@@ -23,6 +24,9 @@ function parseAmount(raw: string): number | null {
 	return Number.isFinite(n) ? n : null;
 }
 
+const fieldClass =
+	"min-h-11 w-full rounded-[0.625rem] border border-line bg-surface px-3 text-[1.25rem] font-semibold tabular-nums text-ink outline-none focus:border-accent focus:shadow-[0_0_0_3px_var(--accent-soft)]";
+
 /** Interactive unit converter — converts locally from units.json. */
 export function UnitAnswer({
 	initial,
@@ -30,6 +34,8 @@ export function UnitAnswer({
 	answer: SearchAnswer; // kept for InstantAnswerCard API parity
 	initial: Extract<InteractiveAnswer, { type: "unit" }>;
 }) {
+	const fromAmountId = useId();
+	const toAmountId = useId();
 	const dimension =
 		initial.dimension || unitById(initial.from)?.dimension || "length";
 	const options = unitsForDimension(dimension).map((u) => ({
@@ -100,22 +106,26 @@ export function UnitAnswer({
 	}
 
 	return (
-		<section className="mb-6 max-w-[40rem] rounded-2xl border border-line bg-surface-raised px-5 py-4">
-			<p className="mb-3 flex items-center gap-2 text-[0.7rem] font-semibold tracking-wide text-ink-subtle uppercase">
-				<ArrowLeftRight className="size-4 text-accent" aria-hidden />
-				Unit converter
-			</p>
-
-			<div className="flex flex-col gap-2">
-				<div className="grid grid-cols-[minmax(0,1fr)_minmax(9rem,11rem)] gap-2">
-					<input
-						type="text"
-						inputMode="decimal"
-						aria-label="From amount"
-						value={fromText}
-						onChange={(e) => syncFromAmount(e.target.value)}
-						className="min-h-11 rounded-[0.625rem] border border-line bg-surface px-3 text-[1.25rem] font-semibold text-ink outline-none focus:border-accent focus:shadow-[0_0_0_3px_var(--accent-soft)]"
-					/>
+		<AnswerShell title="Unit converter" icon={ArrowLeftRight}>
+			<div className="flex flex-col gap-3">
+				<div className="grid gap-2 sm:grid-cols-[minmax(0,1fr)_minmax(10rem,13rem)] sm:items-end sm:gap-3">
+					<div className="min-w-0">
+						<label
+							htmlFor={fromAmountId}
+							className="mb-1 block text-xs font-medium text-ink-muted"
+						>
+							From
+						</label>
+						<input
+							id={fromAmountId}
+							type="text"
+							inputMode="decimal"
+							aria-label="From amount"
+							value={fromText}
+							onChange={(e) => syncFromAmount(e.target.value)}
+							className={fieldClass}
+						/>
+					</div>
 					<SelectMenu
 						label="From unit"
 						value={fromId}
@@ -125,26 +135,35 @@ export function UnitAnswer({
 					/>
 				</div>
 
-				<div className="flex justify-center">
+				<div className="flex justify-center sm:justify-start sm:pl-[calc(50%-1.25rem)]">
 					<button
 						type="button"
 						aria-label="Swap units"
 						onClick={swap}
-						className="inline-flex size-9 items-center justify-center rounded-full border border-line text-ink-muted transition hover:border-accent hover:text-accent"
+						className="inline-flex size-11 items-center justify-center rounded-full border border-line bg-surface text-ink-muted transition hover:border-accent hover:text-accent"
 					>
 						<ArrowLeftRight className="size-4" aria-hidden />
 					</button>
 				</div>
 
-				<div className="grid grid-cols-[minmax(0,1fr)_minmax(9rem,11rem)] gap-2">
-					<input
-						type="text"
-						inputMode="decimal"
-						aria-label="To amount"
-						value={toText}
-						onChange={(e) => syncToAmount(e.target.value)}
-						className="min-h-11 rounded-[0.625rem] border border-line bg-surface px-3 text-[1.25rem] font-semibold text-ink outline-none focus:border-accent focus:shadow-[0_0_0_3px_var(--accent-soft)]"
-					/>
+				<div className="grid gap-2 sm:grid-cols-[minmax(0,1fr)_minmax(10rem,13rem)] sm:items-end sm:gap-3">
+					<div className="min-w-0">
+						<label
+							htmlFor={toAmountId}
+							className="mb-1 block text-xs font-medium text-ink-muted"
+						>
+							To
+						</label>
+						<input
+							id={toAmountId}
+							type="text"
+							inputMode="decimal"
+							aria-label="To amount"
+							value={toText}
+							onChange={(e) => syncToAmount(e.target.value)}
+							className={fieldClass}
+						/>
+					</div>
 					<SelectMenu
 						label="To unit"
 						value={toId}
@@ -154,6 +173,6 @@ export function UnitAnswer({
 					/>
 				</div>
 			</div>
-		</section>
+		</AnswerShell>
 	);
 }
