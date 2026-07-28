@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { Settings2 } from "lucide-react";
+import { useEffect, useState } from "react";
 import {
 	hasSearchFilters,
 	SearchFilterMenus,
@@ -14,8 +15,6 @@ type Props = {
 	config: Config | undefined;
 	q: string;
 	activeCategory: string;
-	pendingCategory: string;
-	setPendingCategory: (category: string) => void;
 	time_range: string;
 	language: string | undefined;
 	safesearch: 0 | 1 | 2;
@@ -27,13 +26,14 @@ export function SearchSerpHeader({
 	config,
 	q,
 	activeCategory,
-	pendingCategory,
-	setPendingCategory,
 	time_range,
 	language,
 	safesearch,
 }: Props) {
 	const navigate = useNavigate();
+	// Category-tab preview lives here so tab clicks don't re-render the full SERP.
+	const [pendingCategory, setPendingCategory] = useState(activeCategory);
+	useEffect(() => setPendingCategory(activeCategory), [activeCategory]);
 	const available = new Set(
 		(config?.engines ?? [])
 			.filter((engine) => engine.enabled)
@@ -60,10 +60,17 @@ export function SearchSerpHeader({
 		<header className="sticky top-0 z-20 border-b border-line bg-surface">
 			<div className="mx-auto flex max-w-6xl items-center gap-2 px-3 pt-3 pb-2.5 sm:gap-4 sm:px-6">
 				<Link to="/" className="shrink-0 no-underline" aria-label="Zoeken home">
-					<img src="/zoeken-logo.svg" alt="" width={32} height={32} />
+					<img
+						src="/zoeken-logo.svg"
+						alt=""
+						width={32}
+						height={32}
+						decoding="async"
+						fetchPriority="high"
+					/>
 				</Link>
 				<div className="w-full min-w-0 max-w-[40rem] flex-1">
-					<SearchForm key={q} initialQuery={q} compact baseSearch={params} />
+					<SearchForm initialQuery={q} compact baseSearch={params} />
 				</div>
 				<div className="ml-auto flex shrink-0 items-center gap-1">
 					{q.trim() ? (

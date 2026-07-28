@@ -1,9 +1,14 @@
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 import { mainResult, paperResult } from "./fixtures";
 import {
 	applyTrackerUrlRemover,
+	ensureTrackerRules,
 	stripTrackerParams,
 } from "./trackerUrlRemover";
+
+beforeAll(async () => {
+	await ensureTrackerRules();
+});
 
 describe("stripTrackerParams", () => {
 	it("strips global utm_source while keeping other params", () => {

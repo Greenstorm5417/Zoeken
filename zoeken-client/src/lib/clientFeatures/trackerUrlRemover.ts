@@ -1,8 +1,5 @@
 /** Strip ClearURLs-style tracker query params from result URLs. */
 import type { SearchResult } from "../api";
-import trackerPatterns from "../generated/tracker_patterns.json" with {
-	type: "json",
-};
 
 type TrackerRule = {
 	url: string;
@@ -16,12 +13,11 @@ type CompiledRule = {
 	params: RegExp[];
 };
 
-const PATTERNS = trackerPatterns as TrackerRule[];
 let compiled: CompiledRule[] | null = null;
+let loadPromise: Promise<CompiledRule[]> | null = null;
 
-function compileRules(): CompiledRule[] {
-	if (compiled) return compiled;
-	compiled = PATTERNS.flatMap((rule) => {
+function compilePatterns(patterns: TrackerRule[]): CompiledRule[] {
+	return patterns.flatMap((rule) => {
 		try {
 			return [
 				{
@@ -46,13 +42,28 @@ function compileRules(): CompiledRule[] {
 			return [];
 		}
 	});
-	return compiled;
+}
+
+/** Load + compile tracker JSON (separate chunk; ~40KB out of the SERP entry). */
+export function ensureTrackerRules(): Promise<CompiledRule[]> {
+	if (compiled) return Promise.resolve(compiled);
+	if (!loadPromise) {
+		loadPromise = import("../generated/tracker_patterns.json").then((mod) => {
+			compiled = compilePatterns(mod.default as TrackerRule[]);
+			return compiled;
+		});
+	}
+	return loadPromise;
+}
+
+function rulesOrEmpty(): CompiledRule[] {
+	return compiled ?? [];
 }
 
 /** Remove matching tracker query args from a single URL. */
 export function stripTrackerParams(
 	raw: string,
-	rules: CompiledRule[] = compileRules(),
+	rules: CompiledRule[] = rulesOrEmpty(),
 ): string {
 	let parsed: URL;
 	try {
@@ -88,7 +99,8 @@ function clean(value: string, rules: CompiledRule[]): string {
 export function applyTrackerUrlRemover(
 	results: SearchResult[],
 ): SearchResult[] {
-	const rules = compileRules();
+	const rules = rulesOrEmpty();
+	if (rules.length === 0) return results;
 	return results.map((result) => {
 		const url = clean(result.url, rules);
 		switch (result.kind) {

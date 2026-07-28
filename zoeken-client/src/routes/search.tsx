@@ -1,8 +1,7 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { InstantAnswerCard } from "#/components/answers/InstantAnswerCard";
-import { ImageLightbox } from "#/components/ImageLightbox";
 import { InfoboxCard } from "#/components/InfoboxCard";
 import { SearchResultList } from "#/components/SearchResultList";
 import { SearchSerpHeader } from "#/components/SearchSerpHeader";
@@ -11,11 +10,12 @@ import {
 	autocomplete,
 	preferencesGet,
 	type SearchResult,
-	search,
 } from "#/lib/api";
 import { applyClientFeatures, pluginEnabled } from "#/lib/clientFeatures";
+import { ensureTrackerRules } from "#/lib/clientFeatures/trackerUrlRemover";
 import { pickDidYouMean } from "#/lib/didYouMean";
 import { stringsFor } from "#/lib/i18n";
+import { search } from "#/lib/searchApi";
 import {
 	correctionText,
 	formatEngineLabel,
@@ -31,6 +31,54 @@ export const Route = createFileRoute("/search")({
 	validateSearch: parseSearchParams,
 	component: SearchPage,
 });
+
+/** Owns elapsed-time state so timer updates don't re-render the full SERP. */
+function SearchResultStats({
+	resultCount,
+	hasResults,
+	resetKey,
+	isSuccess,
+	isFetching,
+	dataUpdatedAt,
+}: {
+	resultCount: number | undefined;
+	hasResults: boolean;
+	resetKey: string;
+	isSuccess: boolean;
+	isFetching: boolean;
+	dataUpdatedAt: number;
+}) {
+	const [elapsedSec, setElapsedSec] = useState<number | null>(null);
+	const fetchStarted = useRef(0);
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: reset timer when search params change
+	useEffect(() => {
+		fetchStarted.current = performance.now();
+		setElapsedSec(null);
+	}, [resetKey]);
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: dataUpdatedAt re-runs when a fresh page lands
+	useEffect(() => {
+		if (isSuccess && !isFetching && fetchStarted.current) {
+			setElapsedSec((performance.now() - fetchStarted.current) / 1000);
+		}
+	}, [isSuccess, isFetching, dataUpdatedAt]);
+
+	if ((resultCount == null && elapsedSec == null) || !hasResults) return null;
+
+	return (
+		<p className="mb-4 max-w-[40rem] text-sm text-ink-subtle">
+			{resultCount != null ? (
+				<>
+					About {resultCount.toLocaleString()} result
+					{resultCount === 1 ? "" : "s"}
+				</>
+			) : null}
+			{resultCount != null && elapsedSec != null ? " · " : null}
+			{elapsedSec != null ? `${elapsedSec.toFixed(2)}s` : null}
+		</p>
+	);
+}
 
 function SearchPage() {
 	const params = Route.useSearch();
@@ -49,8 +97,6 @@ function SearchPage() {
 	});
 	const prefs = prefsQuery.data;
 	const activeCategory = categories || "general";
-	const [pendingCategory, setPendingCategory] = useState(activeCategory);
-	useEffect(() => setPendingCategory(activeCategory), [activeCategory]);
 	useEffect(() => {
 		if (!config) return;
 		const original = document.title;
@@ -93,6 +139,22 @@ function SearchPage() {
 	}, [config?.ui?.hotkeys]);
 	// Infinite scroll is opt-in via the `infinite_scroll` feature preference.
 	const infiniteScroll = pluginEnabled(config, "infinite_scroll", prefs);
+	const trackerOn = pluginEnabled(config, "tracker_url_remover", prefs);
+	const [trackerReady, setTrackerReady] = useState(!trackerOn);
+	useEffect(() => {
+		if (!trackerOn) {
+			setTrackerReady(true);
+			return;
+		}
+		let cancelled = false;
+		setTrackerReady(false);
+		void ensureTrackerRules().then(() => {
+			if (!cancelled) setTrackerReady(true);
+		});
+		return () => {
+			cancelled = true;
+		};
+	}, [trackerOn]);
 	const query = useInfiniteQuery({
 		queryKey: ["search", { ...params, categories: activeCategory }],
 		initialPageParam: pageno,
@@ -111,8 +173,8 @@ function SearchPage() {
 	// Flatten all loaded pages into a single view, de-duplicating by URL so a
 	// result that recurs on a later page isn't shown twice.
 	const firstPage = query.data?.pages[0];
-	const results = (() => {
-		if (!query.data) return [];
+	const results = useMemo(() => {
+		if (!query.data) return [] as SearchResult[];
 		const seen = new Set<string>();
 		const merged: SearchResult[] = [];
 		for (const page of query.data.pages) {
@@ -122,27 +184,16 @@ function SearchPage() {
 				merged.push(result);
 			}
 		}
+		// trackerReady: module-level rule cache fills after ensureTrackerRules();
+		// keep it in deps so strip re-runs once the lazy JSON chunk loads.
+		void trackerReady;
 		return applyClientFeatures(merged, config, prefs);
-	})();
+	}, [query.data, config, prefs, trackerReady]);
 
 	const localAnswers = useLocalAnswers(q, language, pageno, config, prefs);
 	const answers = [...localAnswers, ...(firstPage?.answers ?? [])];
 
-	const [lightbox, setLightbox] = useState<SearchResult | null>(null);
-	const [elapsedSec, setElapsedSec] = useState<number | null>(null);
 	const [clientCorrection, setClientCorrection] = useState<string | null>(null);
-	const fetchStarted = useRef(0);
-	// biome-ignore lint/correctness/useExhaustiveDependencies: reset timer when search params change; deps are intentional triggers
-	useEffect(() => {
-		fetchStarted.current = performance.now();
-		setElapsedSec(null);
-	}, [q, activeCategory, language, safesearch, time_range, pageno]);
-	// biome-ignore lint/correctness/useExhaustiveDependencies: dataUpdatedAt re-runs when a fresh page lands
-	useEffect(() => {
-		if (query.isSuccess && !query.isFetching && fetchStarted.current) {
-			setElapsedSec((performance.now() - fetchStarted.current) / 1000);
-		}
-	}, [query.isSuccess, query.isFetching, query.dataUpdatedAt]);
 
 	// Fallback “Did you mean?” when engines return no corrections and results look weak.
 	// ponytail: autocomplete-only hint, no dictionary — skip if autocomplete is off.
@@ -233,6 +284,14 @@ function SearchPage() {
 	const resultCount =
 		firstPage?.number_of_results ??
 		(results.length > 0 ? results.length : undefined);
+	const statsResetKey = [
+		q,
+		activeCategory,
+		language,
+		safesearch,
+		time_range,
+		pageno,
+	].join("\0");
 
 	return (
 		<div className="zoeken-serp min-h-dvh text-ink">
@@ -241,8 +300,6 @@ function SearchPage() {
 				config={config}
 				q={q}
 				activeCategory={activeCategory}
-				pendingCategory={pendingCategory}
-				setPendingCategory={setPendingCategory}
 				time_range={time_range}
 				language={language}
 				safesearch={safesearch}
@@ -323,18 +380,14 @@ function SearchPage() {
 						</aside>
 					) : null}
 
-					{(resultCount != null || elapsedSec != null) && results.length > 0 ? (
-						<p className="mb-4 max-w-[40rem] text-sm text-ink-subtle">
-							{resultCount != null ? (
-								<>
-									About {resultCount.toLocaleString()} result
-									{resultCount === 1 ? "" : "s"}
-								</>
-							) : null}
-							{resultCount != null && elapsedSec != null ? " · " : null}
-							{elapsedSec != null ? `${elapsedSec.toFixed(2)}s` : null}
-						</p>
-					) : null}
+					<SearchResultStats
+						resultCount={resultCount}
+						hasResults={results.length > 0}
+						resetKey={statsResetKey}
+						isSuccess={query.isSuccess}
+						isFetching={query.isFetching}
+						dataUpdatedAt={query.dataUpdatedAt}
+					/>
 
 					{firstPage.corrections.length > 0 ? (
 						<p className="mb-6 text-ink-muted">
@@ -399,7 +452,6 @@ function SearchPage() {
 								newTab={config?.ui?.results_on_new_tab}
 								urlFormatting={config?.ui?.url_formatting}
 								cacheUrl={config?.ui?.cache_url}
-								onOpenImage={setLightbox}
 								empty={
 									results.length === 0 &&
 									answers.length === 0 &&
@@ -513,10 +565,6 @@ function SearchPage() {
 						) : null}
 					</div>
 				</div>
-			) : null}
-
-			{lightbox ? (
-				<ImageLightbox result={lightbox} onClose={() => setLightbox(null)} />
 			) : null}
 		</div>
 	);

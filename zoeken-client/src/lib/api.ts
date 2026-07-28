@@ -13,12 +13,7 @@ export type {
 	NativeUnresponsiveEngine,
 } from "./generated/native";
 
-import { decode } from "@msgpack/msgpack";
-import type {
-	NativeResult,
-	NativeSearchRequest,
-	NativeSearchResponse,
-} from "./generated/native";
+import type { NativeResult } from "./generated/native";
 
 export class ApiError extends Error {
 	status: number;
@@ -43,30 +38,6 @@ async function getJson<T>(path: string, init?: RequestInit): Promise<T> {
 	}
 	return res.json() as Promise<T>;
 }
-
-async function getMsgpack<T>(path: string, init?: RequestInit): Promise<T> {
-	const res = await fetch(path, {
-		...init,
-		headers: {
-			Accept: "application/msgpack",
-			...init?.headers,
-		},
-	});
-	if (!res.ok) {
-		throw new ApiError(res.status, await res.text());
-	}
-	return decode(new Uint8Array(await res.arrayBuffer())) as T;
-}
-
-export type SearchParams = {
-	q: string;
-	pageno?: number;
-	language?: string;
-	safesearch?: 0 | 1 | 2;
-	categories?: string;
-	time_range?: string;
-	engines?: string;
-};
 
 export type EngineInfo = {
 	name: string;
@@ -155,24 +126,6 @@ export type Preferences = {
 	method: "GET" | "POST";
 	plugins: Record<string, boolean>;
 };
-
-/** Native typed search (`POST /api/v1/search`, MessagePack response). */
-export function search(params: SearchParams) {
-	const body: NativeSearchRequest = {
-		q: params.q,
-		pageno: params.pageno ?? 1,
-		language: params.language ?? null,
-		safesearch: params.safesearch ?? null,
-		categories: params.categories ?? null,
-		time_range: params.time_range ?? null,
-		engines: params.engines ?? null,
-	};
-	return getMsgpack<NativeSearchResponse>("/api/v1/search", {
-		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify(body),
-	});
-}
 
 export type Suggestion = {
 	text: string;

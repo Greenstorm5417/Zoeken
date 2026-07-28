@@ -1,4 +1,4 @@
-import { Download, ExternalLink, FileText, Magnet } from "lucide-react";
+import { ExternalLink, FileText, Magnet } from "lucide-react";
 import type { ComponentType } from "react";
 import type { SearchResult } from "#/lib/api";
 import { resultFavicon } from "#/lib/api";
@@ -383,19 +383,20 @@ export function specializedTemplate(
 	}
 }
 
-export { Download };
-
 /** Default (non-specialized) result: favicon, host/path breadcrumb, title, snippet. */
 export function ResultItem({
 	result,
 	newTab = false,
 	urlFormatting = "pretty",
 	cacheUrl = "",
+	faviconPriority = false,
 }: {
 	result: SearchResult;
 	newTab?: boolean;
 	urlFormatting?: string;
 	cacheUrl?: string;
+	/** Bump fetch priority for above-fold SERP favicons (desktop parallel paint). */
+	faviconPriority?: boolean;
 }) {
 	const host = hostnameOf(result.url);
 	const crumbs = pathOf(result.url)
@@ -438,6 +439,7 @@ export function ResultItem({
 							height={20}
 							className="size-5 rounded-[5px] bg-surface-raised ring-1 ring-line/80"
 							decoding="async"
+							fetchPriority={faviconPriority ? "high" : undefined}
 							onError={(event) => {
 								event.currentTarget.hidden = true;
 							}}

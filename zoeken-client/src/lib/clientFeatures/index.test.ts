@@ -1,7 +1,12 @@
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 import type { Config } from "../api";
 import { mainResult } from "./fixtures";
 import { applyClientFeatures } from "./index";
+import { ensureTrackerRules } from "./trackerUrlRemover";
+
+beforeAll(async () => {
+	await ensureTrackerRules();
+});
 
 function result(url: string) {
 	return mainResult({ url });

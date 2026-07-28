@@ -19,6 +19,8 @@ function Home() {
 						width={56}
 						height={56}
 						className="size-12 sm:size-14"
+						decoding="async"
+						fetchPriority="high"
 					/>
 					<h1 className="text-5xl font-bold tracking-tight text-ink sm:text-6xl">
 						Zoeken

@@ -1,6 +1,7 @@
 import { BookOpen } from "lucide-react";
 import { useEffect, useState } from "react";
-import { type InteractiveAnswer, type SearchAnswer, search } from "#/lib/api";
+import type { InteractiveAnswer, SearchAnswer } from "#/lib/api";
+import { search } from "#/lib/searchApi";
 
 function pickDictionary(
 	answers: SearchAnswer[],

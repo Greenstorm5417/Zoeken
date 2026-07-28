@@ -1,7 +1,8 @@
 import { ArrowLeftRight } from "lucide-react";
 import { useEffect, useId, useMemo, useState } from "react";
 import { SelectMenu } from "#/components/SelectMenu";
-import { type InteractiveAnswer, type SearchAnswer, search } from "#/lib/api";
+import type { InteractiveAnswer, SearchAnswer } from "#/lib/api";
+import { search } from "#/lib/searchApi";
 
 /** Common ECB / major codes — merged with whatever came from the answer. */
 const COMMON_CODES = [

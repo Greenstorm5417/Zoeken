@@ -64,6 +64,13 @@ export function SearchForm({
 	const autocompleteEnabled = Boolean(config?.autocomplete);
 	const recentOn = recentSearchesEnabled();
 
+	// Sync from route without remounting (avoids throwing away autocomplete state).
+	useEffect(() => {
+		setQ(initialQuery);
+		setSuggestions([]);
+		setActiveSuggestion(-1);
+	}, [initialQuery]);
+
 	useEffect(() => {
 		const trimmed = q.trim();
 		if (!autocompleteEnabled || !focused || trimmed.length < minChars) {

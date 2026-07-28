@@ -1,7 +1,8 @@
 import { Languages } from "lucide-react";
 import { useEffect, useId, useMemo, useState } from "react";
 import { SelectMenu } from "#/components/SelectMenu";
-import { type InteractiveAnswer, type SearchAnswer, search } from "#/lib/api";
+import type { InteractiveAnswer, SearchAnswer } from "#/lib/api";
+import { search } from "#/lib/searchApi";
 
 const LANGS: Array<{ code: string; label: string }> = [
 	{ code: "en", label: "English" },

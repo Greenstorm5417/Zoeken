@@ -7,16 +7,36 @@ import {
 	Sigma,
 	Sparkles,
 } from "lucide-react";
+import { lazy, Suspense } from "react";
 import type { SearchAnswer } from "#/lib/api";
-import { CalculatorAnswer } from "./CalculatorAnswer";
-import { CryptoAnswer } from "./CryptoAnswer";
-import { CurrencyAnswer } from "./CurrencyAnswer";
-import { DictionaryAnswer } from "./DictionaryAnswer";
-import { SelfInfoAnswer } from "./SelfInfoAnswer";
-import { TranslateAnswer } from "./TranslateAnswer";
-import { UnitAnswer } from "./UnitAnswer";
-import { WeatherAnswer } from "./WeatherAnswer";
-import { WikipediaAnswer } from "./WikipediaAnswer";
+
+const UnitAnswer = lazy(() =>
+	import("./UnitAnswer").then((m) => ({ default: m.UnitAnswer })),
+);
+const CryptoAnswer = lazy(() =>
+	import("./CryptoAnswer").then((m) => ({ default: m.CryptoAnswer })),
+);
+const CurrencyAnswer = lazy(() =>
+	import("./CurrencyAnswer").then((m) => ({ default: m.CurrencyAnswer })),
+);
+const CalculatorAnswer = lazy(() =>
+	import("./CalculatorAnswer").then((m) => ({ default: m.CalculatorAnswer })),
+);
+const WeatherAnswer = lazy(() =>
+	import("./WeatherAnswer").then((m) => ({ default: m.WeatherAnswer })),
+);
+const SelfInfoAnswer = lazy(() =>
+	import("./SelfInfoAnswer").then((m) => ({ default: m.SelfInfoAnswer })),
+);
+const TranslateAnswer = lazy(() =>
+	import("./TranslateAnswer").then((m) => ({ default: m.TranslateAnswer })),
+);
+const DictionaryAnswer = lazy(() =>
+	import("./DictionaryAnswer").then((m) => ({ default: m.DictionaryAnswer })),
+);
+const WikipediaAnswer = lazy(() =>
+	import("./WikipediaAnswer").then((m) => ({ default: m.WikipediaAnswer })),
+);
 
 function formatEngineLabel(name: string): string {
 	return name
@@ -58,35 +78,85 @@ function splitEquation(text: string): [string, string] | null {
 	return [text.slice(0, index), text.slice(index + 3)];
 }
 
+function InteractiveFallback() {
+	return (
+		<section
+			className="mb-6 max-w-[40rem] animate-pulse rounded-2xl border border-line bg-surface-raised px-5 py-4"
+			aria-hidden
+		>
+			<p className="mb-2 text-[0.7rem] font-semibold tracking-wide text-ink-subtle uppercase">
+				…
+			</p>
+			<div className="h-8 w-3/5 rounded bg-line/60" />
+		</section>
+	);
+}
+
 /** Instant answer card — interactive widgets when `interactive` is present. */
 export function InstantAnswerCard({ answer }: { answer: SearchAnswer }) {
 	const interactive = answer.interactive;
 	if (interactive?.type === "unit") {
-		return <UnitAnswer answer={answer} initial={interactive} />;
+		return (
+			<Suspense fallback={<InteractiveFallback />}>
+				<UnitAnswer answer={answer} initial={interactive} />
+			</Suspense>
+		);
 	}
 	if (interactive?.type === "currency") {
-		return <CurrencyAnswer answer={answer} initial={interactive} />;
+		return (
+			<Suspense fallback={<InteractiveFallback />}>
+				<CurrencyAnswer answer={answer} initial={interactive} />
+			</Suspense>
+		);
 	}
 	if (interactive?.type === "calculator") {
-		return <CalculatorAnswer answer={answer} initial={interactive} />;
+		return (
+			<Suspense fallback={<InteractiveFallback />}>
+				<CalculatorAnswer answer={answer} initial={interactive} />
+			</Suspense>
+		);
 	}
 	if (interactive?.type === "weather") {
-		return <WeatherAnswer answer={answer} initial={interactive} />;
+		return (
+			<Suspense fallback={<InteractiveFallback />}>
+				<WeatherAnswer answer={answer} initial={interactive} />
+			</Suspense>
+		);
 	}
 	if (interactive?.type === "self_info") {
-		return <SelfInfoAnswer answer={answer} initial={interactive} />;
+		return (
+			<Suspense fallback={<InteractiveFallback />}>
+				<SelfInfoAnswer answer={answer} initial={interactive} />
+			</Suspense>
+		);
 	}
 	if (interactive?.type === "crypto") {
-		return <CryptoAnswer answer={answer} initial={interactive} />;
+		return (
+			<Suspense fallback={<InteractiveFallback />}>
+				<CryptoAnswer answer={answer} initial={interactive} />
+			</Suspense>
+		);
 	}
 	if (interactive?.type === "translate") {
-		return <TranslateAnswer answer={answer} initial={interactive} />;
+		return (
+			<Suspense fallback={<InteractiveFallback />}>
+				<TranslateAnswer answer={answer} initial={interactive} />
+			</Suspense>
+		);
 	}
 	if (interactive?.type === "dictionary") {
-		return <DictionaryAnswer answer={answer} initial={interactive} />;
+		return (
+			<Suspense fallback={<InteractiveFallback />}>
+				<DictionaryAnswer answer={answer} initial={interactive} />
+			</Suspense>
+		);
 	}
 	if (interactive?.type === "wikipedia") {
-		return <WikipediaAnswer answer={answer} initial={interactive} />;
+		return (
+			<Suspense fallback={<InteractiveFallback />}>
+				<WikipediaAnswer answer={answer} initial={interactive} />
+			</Suspense>
+		);
 	}
 
 	const { Icon, label } = answerKind(answer.engine);
