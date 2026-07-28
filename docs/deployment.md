@@ -55,7 +55,7 @@ Useful env vars (see `zoeken-settings`):
 | `APP_SQLITE_MAX_CONNECTIONS` | SQLite pool size (default `4`) |
 | `APP_POSTGRES_URL` | PostgreSQL connection URL (never logged) |
 | `APP_LOG_LEVEL` | Tracing filter (`info`, `debug`, …) |
-| `APP_METRICS_ENABLED` | Expose `/metrics` when true |
+| `APP_METRICS_ENABLED` | Sets `general.enable_metrics` (gates `/metrics`) |
 | `APP_DISABLE_UI` | Skip SPA `index.html` boot check (JSON-only; also `server.disable_ui`) |
 | `APP_DEBUG` | `general.debug` |
 

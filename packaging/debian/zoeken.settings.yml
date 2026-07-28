@@ -21,6 +21,8 @@ general:
   privacypolicy_url: false
   contact_url: false
   donation_url: false
+  # Sole flag gating the /metrics endpoint (also requires open_metrics below,
+  # also APP_METRICS_ENABLED).
   enable_metrics: true
   # Empty disables /metrics and leaves /stats open. Non-empty = HTTP Basic
   # password for /metrics, /stats, and /stats/errors (any username).
@@ -120,7 +122,6 @@ deployment:
   hsts: false
   # null = built-in CSP; or set a custom policy string
   content_security_policy: null
-  metrics_enabled: true
   # Unioned into limiter.toml trusted_proxies at boot (X-Forwarded-For trust).
   # Add your nginx/Caddy / Docker bridge CIDRs when terminating TLS upstream.
   trusted_proxies: []
@@ -134,11 +135,7 @@ deployment:
 # ui (mostly SPA / prefs cookie compatibility)
 # ---------------------------------------------------------------------------
 ui:
-  default_theme: "simple"
   default_locale: ""
-  theme_args:
-    # auto | light | dark | black  (SPA still follows OS prefers-color-scheme)
-    simple_style: "auto"
   results_on_new_tab: false
   query_in_title: false
   cache_url: "https://web.archive.org/web/"

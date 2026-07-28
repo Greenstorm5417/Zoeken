@@ -68,7 +68,7 @@ pub struct Settings {
     pub default_doi_resolver: Option<String>,
     pub hostnames: HostnamesSettings,
     pub limiter: ExtraMap,
-    pub favicons: ExtraMap,
+    pub favicons: FaviconsSettings,
 }
 
 impl Settings {
@@ -76,6 +76,17 @@ impl Settings {
     pub fn defaults() -> Self {
         Self::default()
     }
+}
+
+/// Top-level `favicons:` block (SearXNG image-proxy sizing knob).
+#[derive(Debug, Clone, PartialEq, Default, Serialize, Deserialize)]
+#[serde(default)]
+pub struct FaviconsSettings {
+    /// Max bytes for proxied images. SearXNG also accepts `max_bytes` for the
+    /// same setting; both YAML keys map onto this one field.
+    #[serde(alias = "max_bytes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub max_image_bytes: Option<u64>,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -284,7 +295,6 @@ pub struct DeploymentConfig {
     pub hsts: bool,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub content_security_policy: Option<String>,
-    pub metrics_enabled: bool,
     pub trusted_proxies: Vec<String>,
 }
 
@@ -297,7 +307,6 @@ impl Default for DeploymentConfig {
             request_timeout_seconds: DEFAULT_REQUEST_TIMEOUT_SECONDS,
             hsts: false,
             content_security_policy: Some(default_content_security_policy()),
-            metrics_enabled: true,
             trusted_proxies: Vec::new(),
         }
     }
@@ -1134,7 +1143,7 @@ fn apply_env_overrides(merged: &mut Value, env: &EnvMap) -> Result<(), SettingsE
         ("APP_LOG_LEVEL", &["deployment", "log_level"], Kind::String),
         (
             "APP_METRICS_ENABLED",
-            &["deployment", "metrics_enabled"],
+            &["general", "enable_metrics"],
             Kind::Bool,
         ),
     ];
@@ -1533,6 +1542,27 @@ search:
     }
 
     #[test]
+    fn favicons_max_bytes_alias_maps_to_max_image_bytes() {
+        let s: Settings =
+            serde_yaml_ng::from_str("favicons:\n  max_bytes: 42\n").expect("alias yaml");
+        assert_eq!(s.favicons.max_image_bytes, Some(42));
+        let named: Settings =
+            serde_yaml_ng::from_str("favicons:\n  max_image_bytes: 99\n").expect("named yaml");
+        assert_eq!(named.favicons.max_image_bytes, Some(99));
+    }
+
+    #[test]
+    fn legacy_deployment_metrics_enabled_is_ignored() {
+        // SearXNG / older Zoeken YAML may still ship deployment.metrics_enabled;
+        // sole gate is general.enable_metrics.
+        let s: Settings = serde_yaml_ng::from_str(
+            "deployment:\n  metrics_enabled: false\ngeneral:\n  enable_metrics: true\n",
+        )
+        .expect("legacy key ignored");
+        assert!(s.general.enable_metrics);
+    }
+
+    #[test]
     fn defaults_populate_categories_as_tabs() {
         let s = Settings::defaults();
         let expected = [
@@ -1688,7 +1718,6 @@ recaptcha_SearxEngineCaptcha: 66
         assert_eq!(d.request_timeout_seconds, 30);
         assert!(d.request_timeout_seconds > 0);
         assert!(!d.hsts);
-        assert!(d.metrics_enabled);
         assert!(d.trusted_proxies.is_empty());
         assert_eq!(
             d.effective_content_security_policy(),
@@ -1716,13 +1745,10 @@ recaptcha_SearxEngineCaptcha: 66
 
     #[test]
     fn partial_deployment_file_overlays_only_named_fields() {
-        let path = write_temp_yaml(
-            "deployment:\n  metrics_enabled: false\n  max_request_body_bytes: 2048\n  hsts: true\n",
-        );
+        let path = write_temp_yaml("deployment:\n  max_request_body_bytes: 2048\n  hsts: true\n");
         let settings = load_settings(Some(&path), &EnvMap::new()).expect("load partial deployment");
         std::fs::remove_file(&path).ok();
 
-        assert!(!settings.deployment.metrics_enabled);
         assert_eq!(settings.deployment.max_request_body_bytes, 2048);
         assert!(settings.deployment.hsts);
         assert_eq!(settings.deployment.log_level, "info");
@@ -1983,7 +2009,8 @@ recaptcha_SearxEngineCaptcha: 66
 
     #[test]
     fn deployment_env_overrides_win_over_file_and_defaults() {
-        let path = write_temp_yaml("deployment:\n  log_level: warn\n  metrics_enabled: true\n");
+        let path =
+            write_temp_yaml("deployment:\n  log_level: warn\ngeneral:\n  enable_metrics: true\n");
         let env = EnvMap::new()
             .with("APP_LOG_LEVEL", "debug")
             .with("APP_METRICS_ENABLED", "false");
@@ -1991,7 +2018,7 @@ recaptcha_SearxEngineCaptcha: 66
         std::fs::remove_file(&path).ok();
 
         assert_eq!(settings.deployment.log_level, "debug");
-        assert!(!settings.deployment.metrics_enabled);
+        assert!(!settings.general.enable_metrics);
     }
 
     #[test]

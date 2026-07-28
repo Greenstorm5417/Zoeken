@@ -1,7 +1,6 @@
 import { encode } from "@msgpack/msgpack";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { SearchResponse } from "./api";
-import { search } from "./searchApi";
+import { type SearchResponse, search } from "./api";
 
 const originalFetch = globalThis.fetch;
 

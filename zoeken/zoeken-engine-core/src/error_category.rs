@@ -1,8 +1,5 @@
 //! One error-category vocabulary shared by metrics, engine health (storage
-//! circuit), and user-facing serialization. Replaces the previously separate
-//! `zoeken-metrics::ErrorCategory` enum, `engine_health.rs`'s ad-hoc `&str`
-//! categories, and `translated_cause`'s substring matching over stringified
-//! errors.
+//! circuit), and user-facing serialization.
 
 use crate::EngineError;
 

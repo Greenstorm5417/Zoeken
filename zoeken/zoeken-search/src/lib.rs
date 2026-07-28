@@ -17,11 +17,12 @@ pub use execution::{
     EngineExecResult, EngineExecutor, EngineFuture, EngineRunOutcome, EngineRunStatus,
     ExecutionReport, UnresponsiveReason, run_engines,
 };
-pub use metrics::{EngineOutcome, EngineSample, MetricsRecorder, NoopRecorder};
-pub use selection::{
-    AllEnginesEnabled, EnabledEngineSet, EnginePreferences, EngineRegistry, RegisteredEngine,
-    SelectedEngine, SuspensionPolicy,
+pub use metrics::{
+    CATEGORY_LABEL, ENGINE_ERRORS_TOTAL, ENGINE_LABEL, ENGINE_RESPONSE_TIME_HTTP,
+    ENGINE_RESPONSE_TIME_TOTAL, EngineMetricsRecorder, EngineOutcome, EngineSample,
+    MetricsRecorder, NoopRecorder,
 };
+pub use selection::{EngineRegistry, RegisteredEngine, SelectedEngine, SuspensionPolicy};
 
 #[derive(Debug, Clone, Copy)]
 pub struct SearchConfig {
@@ -68,14 +69,16 @@ impl Search {
         &mut self.registry
     }
 
-    pub async fn run_engines<P: EnginePreferences + ?Sized>(
+    pub async fn run_engines(
         &self,
         query: &SearchQuery,
-        prefs: &P,
+        enabled_engines: Option<&HashSet<String>>,
         available_tokens: &HashSet<String>,
     ) -> ExecutionReport {
         let now = Instant::now();
-        let selected = self.registry.select(query, prefs, available_tokens);
+        let selected = self
+            .registry
+            .select(query, enabled_engines, available_tokens);
 
         let view = search_query_view(query);
         let deadline = now + self.request_timeout(query);
@@ -90,14 +93,16 @@ impl Search {
         .await
     }
 
-    pub async fn run<P: EnginePreferences + ?Sized>(
+    pub async fn run(
         &self,
         query: &SearchQuery,
-        prefs: &P,
+        enabled_engines: Option<&HashSet<String>>,
         available_tokens: &HashSet<String>,
         recorder: &dyn MetricsRecorder,
     ) -> ResultContainer {
-        let report = self.run_engines(query, prefs, available_tokens).await;
+        let report = self
+            .run_engines(query, enabled_engines, available_tokens)
+            .await;
         let weights = self.engine_weights();
         aggregate(report, &weights, recorder)
     }
@@ -301,7 +306,7 @@ mod tests {
         );
 
         let report = search
-            .run_engines(&search_query(), &AllEnginesEnabled, &HashSet::new())
+            .run_engines(&search_query(), None, &HashSet::new())
             .await;
 
         assert_eq!(report.outcomes.len(), 1);

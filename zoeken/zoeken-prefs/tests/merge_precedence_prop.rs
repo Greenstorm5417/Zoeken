@@ -7,14 +7,7 @@ use zoeken_prefs::{Preferences, RequestMethod, encode_cookie, resolve};
 use zoeken_query::{FormParams, SafeSearch};
 use zoeken_settings::{EngineSettings, Settings};
 
-const KEYS: &[&str] = &[
-    "theme",
-    "locale",
-    "safesearch",
-    "engines",
-    "image_proxy",
-    "method",
-];
+const KEYS: &[&str] = &["locale", "safesearch", "engines", "image_proxy", "method"];
 
 #[derive(Debug, Clone)]
 struct SettingsSpec {
@@ -28,7 +21,6 @@ struct SettingsSpec {
 
 #[derive(Debug, Clone)]
 struct ParamSpec {
-    theme: Option<String>,
     locale: Option<(bool, String)>,
     safesearch: Option<String>,
     engines: Option<String>,
@@ -52,10 +44,6 @@ fn parse_bool(value: &str) -> Option<bool> {
         "0" | "false" | "off" | "no" => Some(false),
         _ => None,
     }
-}
-
-fn arb_theme() -> impl Strategy<Value = String> {
-    prop::sample::select(vec!["simple", "dark", "light", "custom"]).prop_map(String::from)
 }
 
 fn arb_locale() -> impl Strategy<Value = String> {
@@ -84,7 +72,6 @@ fn arb_engine_names() -> impl Strategy<Value = Vec<String>> {
 
 fn arb_prefs() -> impl Strategy<Value = Preferences> {
     (
-        arb_theme(),
         arb_locale(),
         arb_engine_names(),
         arb_safesearch(),
@@ -92,8 +79,7 @@ fn arb_prefs() -> impl Strategy<Value = Preferences> {
         arb_method(),
     )
         .prop_map(
-            |(theme, locale, engines, safesearch, image_proxy, method)| Preferences {
-                theme,
+            |(locale, engines, safesearch, image_proxy, method)| Preferences {
                 language: locale.clone(),
                 locale,
                 categories: vec!["general".to_string()],
@@ -140,7 +126,6 @@ fn arb_settings_spec() -> impl Strategy<Value = SettingsSpec> {
 
 fn arb_param_spec() -> impl Strategy<Value = ParamSpec> {
     (
-        prop::option::of(prop::sample::select(vec!["dark", "light", ""]).prop_map(String::from)),
         prop::option::of((
             any::<bool>(),
             prop::sample::select(vec!["en", "fr", "de", "en-US", ""]).prop_map(String::from),
@@ -161,8 +146,7 @@ fn arb_param_spec() -> impl Strategy<Value = ParamSpec> {
         ),
     )
         .prop_map(
-            |(theme, locale, safesearch, engines, image_proxy, method)| ParamSpec {
-                theme,
+            |(locale, safesearch, engines, image_proxy, method)| ParamSpec {
                 locale,
                 safesearch,
                 engines,
@@ -201,9 +185,6 @@ fn build_settings(spec: &SettingsSpec, locked: &[String]) -> Settings {
 
 fn build_params(spec: &ParamSpec) -> FormParams {
     let mut entries: Vec<(String, String)> = Vec::new();
-    if let Some(v) = &spec.theme {
-        entries.push(("theme".to_string(), v.clone()));
-    }
     if let Some((use_language, v)) = &spec.locale {
         let key = if *use_language { "language" } else { "locale" };
         entries.push((key.to_string(), v.clone()));
@@ -241,20 +222,6 @@ proptest! {
         let resolved = resolve(&defaults, &settings, cookie_string.as_deref(), &params);
 
         let locked: HashSet<&str> = locked_vec.iter().map(String::as_str).collect();
-
-        let mut theme = defaults.theme.clone();
-        if !locked.contains("theme")
-            && let Some(c) = &cookie_prefs
-        {
-            theme = c.theme.clone();
-        }
-        if !locked.contains("theme")
-            && let Some(v) = &param_spec.theme
-            && !v.is_empty()
-        {
-            theme = v.clone();
-        }
-        prop_assert_eq!(&resolved.theme, &theme, "theme precedence mismatch");
 
         let mut locale = defaults.locale.clone();
         if !settings_spec.default_locale.is_empty() {

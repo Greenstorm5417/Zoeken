@@ -10,7 +10,6 @@ description.workspace = true
 
 [dependencies]
 tokio = { workspace = true }
-async-trait = { workspace = true }
 zoeken-storage = { workspace = true }
 zoeken-network = { workspace = true }
 metrics = { workspace = true }

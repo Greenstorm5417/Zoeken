@@ -9,7 +9,7 @@ use zoeken_engine_core::{
     Engine, EngineError, EngineMeta, EngineResponse, EngineResults, RequestParams, SearchQueryView,
 };
 use zoeken_query::SearchQuery;
-use zoeken_search::{EnabledEngineSet, EngineRegistry, RegisteredEngine, SelectedEngine};
+use zoeken_search::{EngineRegistry, RegisteredEngine, SelectedEngine};
 
 struct StubEngine {
     meta: EngineMeta,
@@ -168,11 +168,10 @@ proptest! {
             engines: scenario.query_engines.clone(),
             ..SearchQuery::default()
         };
-        let prefs = EnabledEngineSet::new(scenario.enabled_prefs.clone());
         let enabled_set: HashSet<String> = scenario.enabled_prefs.iter().cloned().collect();
         let tokens: HashSet<String> = scenario.available_tokens.iter().cloned().collect();
 
-        let actual = selected_names(&registry.select(&query, &prefs, &tokens));
+        let actual = selected_names(&registry.select(&query, Some(&enabled_set), &tokens));
         let expected = reference_selection(
             &scenario.universe,
             &scenario.query_categories,

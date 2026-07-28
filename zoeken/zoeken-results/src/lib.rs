@@ -42,8 +42,6 @@ pub enum Result_ {
     Infobox(Infobox),
 }
 
-pub type ResultItem = Result_;
-
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, Default)]
 pub struct MainResult {
     pub url: String,

@@ -14,7 +14,6 @@ members = [
     "zoeken/zoeken-botdetect",
     "zoeken/zoeken-prefs",
     "zoeken/zoeken-server",
-    "zoeken/zoeken-metrics",
     "zoeken/zoeken-storage",
 ]
 
@@ -55,7 +54,6 @@ zoeken-autocomplete = { path = "zoeken/zoeken-autocomplete" }
 zoeken-favicons = { path = "zoeken/zoeken-favicons" }
 zoeken-botdetect = { path = "zoeken/zoeken-botdetect" }
 zoeken-prefs = { path = "zoeken/zoeken-prefs" }
-zoeken-metrics = { path = "zoeken/zoeken-metrics" }
 zoeken-storage = { path = "zoeken/zoeken-storage", default-features = false }
 
 # Async runtime
@@ -83,7 +81,6 @@ tower-http = { version = "0.7.0", features = [
 serde = { version = "1.0.228", features = ["derive"] }
 serde_json = { version = "1.0.150", features = ["float_roundtrip"] }
 serde_yaml_ng = "0.10.0"
-anyhow = "1.0.100"
 scraper = "0.27.0"
 ego-tree = "0.11.0"
 sxd-document = "0.3.2"
@@ -110,11 +107,11 @@ metrics-exporter-prometheus = { version = "0.18.3", default-features = false }
 whatlang = "0.18.0"
 rand = "0.9.4"
 proptest = "1.11.0"
-regex = "1.13.1"
 phf = "0.14.0"
 phf_codegen = "0.14.0"
 indexmap = { version = "2.12.0", features = ["serde"] }
 url = "2.5.8"
+percent-encoding = "2.3.2"
 base64 = "0.23.0"
 flate2 = "1.1.9"
 http = "1.4.2"
@@ -122,7 +119,6 @@ httpdate = "1.0.3"
 ipnet = "2.12.0"
 toml = "1.1.3"
 md5 = { package = "md-5", version = "0.10.6" }
-sha1 = "0.11.0"
 sha2 = "0.11.0"
 hmac = "0.13.0"
 hex = "0.4.3"

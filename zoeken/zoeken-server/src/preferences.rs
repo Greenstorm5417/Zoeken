@@ -380,7 +380,10 @@ mod tests {
             &zoeken_data::DataBundle::default(),
         );
         assert_eq!(value["locale"], expected.locale);
-        assert_eq!(value["theme"], expected.theme);
+        assert_eq!(
+            value["safesearch"],
+            serde_json::to_value(expected.safesearch).unwrap()
+        );
     }
 
     /// A `GET` with no cookie returns the defaults+settings preferences.
@@ -401,7 +404,8 @@ mod tests {
         assert_eq!(response.status(), StatusCode::OK);
         let value = body_json(response).await;
         let defaults = Preferences::defaults();
-        assert_eq!(value["theme"], defaults.theme);
+        assert_eq!(value["locale"], defaults.locale);
+        assert!(!value.as_object().unwrap().contains_key("theme"));
     }
 
     /// `/clear_cookies` emits a `Set-Cookie` that expires the preferences cookie

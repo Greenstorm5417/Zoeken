@@ -378,5 +378,5 @@ fn packaged_debian_settings_yml_loads() {
     assert!(settings.plugins.0.contains_key("calculator"));
     assert_eq!(settings.search.safe_search, 0);
     assert_eq!(settings.outgoing.request_timeout, 3.0);
-    assert!(settings.deployment.metrics_enabled);
+    assert!(settings.general.enable_metrics);
 }

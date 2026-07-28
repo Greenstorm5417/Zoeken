@@ -2,7 +2,7 @@ import { BookOpen } from "lucide-react";
 import { useEffect, useState } from "react";
 import { AnswerShell } from "#/components/answers/AnswerShell";
 import type { InteractiveAnswer, SearchAnswer } from "#/lib/api";
-import { search } from "#/lib/searchApi";
+import { search } from "#/lib/api";
 
 function pickDictionary(
 	answers: SearchAnswer[],

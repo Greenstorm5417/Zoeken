@@ -8,11 +8,12 @@ use axum::response::Response;
 use tower::ServiceExt;
 
 use metrics_exporter_prometheus::{PrometheusBuilder, PrometheusHandle};
+use zoeken_engine_core::ErrorCategory;
 use zoeken_engine_core::{
     Engine, EngineError, EngineMeta, EngineResponse, EngineResults, RequestParams, SearchQueryView,
 };
-use zoeken_metrics::{EngineMetricsRecorder, ErrorCategory};
 use zoeken_results::{MainResult, Result_};
+use zoeken_search::EngineMetricsRecorder;
 use zoeken_search::{
     EngineExecResult, EngineExecutor, EngineFuture, EngineRegistry, RegisteredEngine, Search,
     SearchConfig,

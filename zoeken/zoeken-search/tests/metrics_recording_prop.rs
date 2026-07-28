@@ -9,12 +9,11 @@ use metrics::{
 };
 use proptest::prelude::*;
 use zoeken_engine_core::EngineError;
-use zoeken_metrics::{
+use zoeken_search::{
     CATEGORY_LABEL, ENGINE_ERRORS_TOTAL, ENGINE_LABEL, ENGINE_RESPONSE_TIME_TOTAL,
-    EngineMetricsRecorder, categorize_error,
+    EngineMetricsRecorder,
 };
 
-/// Metric emission captured for test assertion.
 #[derive(Debug, Clone, PartialEq)]
 struct Emission {
     name: String,
@@ -101,14 +100,12 @@ fn has_label(labels: &[(String, String)], key: &str, value: &str) -> bool {
     labels.iter().any(|(k, v)| k == key && v == value)
 }
 
-/// Test outcome: completion or failure.
 #[derive(Debug, Clone)]
 enum OutcomeKind {
     Completed,
     Failed(EngineError),
 }
 
-/// Arbitrary EngineError strategy.
 fn error_strategy() -> impl Strategy<Value = EngineError> {
     let msg = "[a-zA-Z0-9 :/_-]{0,24}";
     prop_oneof![
@@ -121,7 +118,6 @@ fn error_strategy() -> impl Strategy<Value = EngineError> {
     ]
 }
 
-/// Completion or failure outcome strategy.
 fn outcome_strategy() -> impl Strategy<Value = OutcomeKind> {
     prop_oneof![
         Just(OutcomeKind::Completed),
@@ -129,7 +125,6 @@ fn outcome_strategy() -> impl Strategy<Value = OutcomeKind> {
     ]
 }
 
-/// Drive recorder and collect emissions.
 fn drive(engine: &str, duration: Duration, outcome: &OutcomeKind) -> Captured {
     let recorder = CapturingRecorder::default();
     let captured = recorder.inner.clone();
@@ -137,7 +132,9 @@ fn drive(engine: &str, duration: Duration, outcome: &OutcomeKind) -> Captured {
         let backend = EngineMetricsRecorder::new();
         match outcome {
             OutcomeKind::Completed => backend.record_timing(engine, duration, None),
-            OutcomeKind::Failed(error) => backend.record_error(engine, categorize_error(error)),
+            OutcomeKind::Failed(error) => {
+                backend.record_error(engine, zoeken_engine_core::ErrorCategory::from(error))
+            }
         }
     });
     let captured = captured.lock().unwrap();
@@ -182,7 +179,7 @@ proptest! {
                 );
                 prop_assert_eq!(&captured.counters[0].name, ENGINE_ERRORS_TOTAL);
                 prop_assert!(has_label(&captured.counters[0].labels, ENGINE_LABEL, &engine));
-                let expected_category = categorize_error(error).as_str();
+                let expected_category = zoeken_engine_core::ErrorCategory::from(error).as_str();
                 prop_assert!(has_label(
                     &captured.counters[0].labels,
                     CATEGORY_LABEL,

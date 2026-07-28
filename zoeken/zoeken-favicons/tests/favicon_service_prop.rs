@@ -6,8 +6,7 @@ use std::sync::atomic::{AtomicUsize, Ordering};
 use proptest::prelude::*;
 
 use zoeken_favicons::{
-    CacheLookup, Favicon, FaviconCache, FaviconOutcome, FaviconResolver, FaviconService,
-    InMemoryFaviconCache, ResolveFuture, StaticResolver,
+    Favicon, FaviconOutcome, FaviconResolver, FaviconService, ResolveFuture, StaticResolver,
 };
 
 struct CountingResolver {
@@ -65,31 +64,21 @@ proptest! {
         authority in authority_strategy(),
         favicon in favicon_strategy(),
     ) {
-        let cache = InMemoryFaviconCache::new();
         let resolver = Arc::new(CountingResolver::new(StaticResolver::serving(
-            resolver_name.clone(),
+            resolver_name,
             favicon.clone(),
         )));
         let counter = resolver.clone();
-        let service = FaviconService::new(resolver, cache);
+        let service = FaviconService::memory(resolver);
 
         let runtime = tokio::runtime::Builder::new_current_thread()
             .build()
             .expect("build current-thread runtime");
 
         runtime.block_on(async {
-            prop_assert_eq!(
-                service.cache().get(&resolver_name, &authority).await,
-                CacheLookup::Absent
-            );
             let first = service.get_favicon(&authority).await;
             prop_assert_eq!(first, FaviconOutcome::Serve(favicon.clone()));
             prop_assert_eq!(counter.calls(), 1, "resolver invoked once on miss");
-
-            prop_assert_eq!(
-                service.cache().get(&resolver_name, &authority).await,
-                CacheLookup::Hit(favicon.clone())
-            );
 
             let second = service.get_favicon(&authority).await;
             prop_assert_eq!(second, FaviconOutcome::Serve(favicon.clone()));

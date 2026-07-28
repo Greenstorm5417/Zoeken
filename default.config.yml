@@ -29,6 +29,7 @@ general:
   privacypolicy_url: null
   contact_url: null
   donation_url: null
+  # Sole flag gating the /metrics endpoint (also requires open_metrics below).
   enable_metrics: true
   # Empty disables /metrics and leaves /stats open. A non-empty value is the
   # HTTP Basic password for /metrics, /stats, and /stats/errors (any username).
@@ -118,15 +119,10 @@ deployment:
   request_timeout_seconds: 30
   hsts: false
   content_security_policy: "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
-  metrics_enabled: true
   trusted_proxies: []
 
 ui:
-  default_theme: "simple"
   default_locale: ""
-  theme_args:
-    # auto, light, dark, or black
-    simple_style: "auto"
   results_on_new_tab: false
   query_in_title: false
   # Empty by default (no "archive" link on results). Set to a Wayback
@@ -251,7 +247,7 @@ cache:
     max_total_bytes: 268435456
 
 preferences:
-  # Supported lock names: theme, locale, language, categories, engines,
+  # Supported lock names: locale, language, categories, engines,
   # safesearch, autocomplete, image_proxy, method, plugins.
   lock: []
 

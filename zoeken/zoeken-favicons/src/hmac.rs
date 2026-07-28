@@ -5,18 +5,19 @@ use sha2::Sha256;
 
 type HmacSha256 = Hmac<Sha256>;
 
-/// Hex-encoded HMAC-SHA256 of `value` under UTF-8 `secret_key`.
+/// Hex-encoded HMAC-SHA256 of `value` under `secret_key` (a UTF-8 string or
+/// raw key bytes, e.g. a random per-process key).
 #[must_use]
-pub fn new_hmac(secret_key: &str, value: &[u8]) -> String {
+pub fn new_hmac(secret_key: impl AsRef<[u8]>, value: &[u8]) -> String {
     let mut mac =
-        HmacSha256::new_from_slice(secret_key.as_bytes()).expect("HMAC accepts any key length");
+        HmacSha256::new_from_slice(secret_key.as_ref()).expect("HMAC accepts any key length");
     mac.update(value);
     hex::encode(mac.finalize().into_bytes())
 }
 
 /// Constant-time equality check against `new_hmac(secret_key, value)`.
 #[must_use]
-pub fn is_hmac_of(secret_key: &str, value: &[u8], hmac_to_check: &str) -> bool {
+pub fn is_hmac_of(secret_key: impl AsRef<[u8]>, value: &[u8], hmac_to_check: &str) -> bool {
     let expected = new_hmac(secret_key, value);
     expected.len() == hmac_to_check.len()
         && expected

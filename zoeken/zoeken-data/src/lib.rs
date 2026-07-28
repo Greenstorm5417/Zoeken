@@ -4,7 +4,7 @@
 //! generation and language detection.
 
 use std::collections::{BTreeMap, HashMap, HashSet};
-use std::path::{Path, PathBuf};
+use std::path::Path;
 use std::sync::OnceLock;
 
 use rand::Rng;
@@ -655,6 +655,97 @@ pub struct EngineTraits {
     pub custom: serde_json::Value,
 }
 
+fn locale_language(tag: &str) -> &str {
+    let end = tag.find(['-', '_']).unwrap_or(tag.len());
+    &tag[..end]
+}
+
+fn locale_territory(tag: &str) -> Option<&str> {
+    tag.split(['-', '_'])
+        .find(|part| part.len() == 2 && part.chars().all(|c| c.is_ascii_uppercase()))
+}
+
+/// Resolve `locale_key` against a bundled per-engine locale table, mirroring
+/// upstream's `EngineTraits.get_language`/`get_region`: exact match, then
+/// narrowing by language, then by territory, then a preferred `lang-TERRITORY`
+/// guess, finally `default`.
+pub fn get_engine_locale(
+    locale_key: &str,
+    engine_locales: &HashMap<String, String>,
+    default: Option<&str>,
+) -> Option<String> {
+    if let Some(value) = engine_locales.get(locale_key) {
+        return Some(value.clone());
+    }
+
+    let normalized = locale_key.replace('_', "-");
+    let language = locale_language(&normalized);
+    let territory = locale_territory(&normalized);
+
+    if !language.is_empty()
+        && let Some(value) = engine_locales.get(language)
+    {
+        return Some(value.clone());
+    }
+
+    if let Some(terr) = territory {
+        let mut keys: Vec<&String> = engine_locales
+            .keys()
+            .filter(|k| locale_territory(k) == Some(terr))
+            .collect();
+        keys.sort();
+        if let Some(key) = keys.first() {
+            return engine_locales.get(*key).cloned();
+        }
+    }
+
+    if !language.is_empty() {
+        let preferred_territory = if language.eq_ignore_ascii_case("en") {
+            "US".to_string()
+        } else {
+            language.to_ascii_uppercase()
+        };
+        let preferred_key = format!("{language}-{preferred_territory}");
+        if let Some(value) = engine_locales.get(&preferred_key) {
+            return Some(value.clone());
+        }
+        let mut keys: Vec<&String> = engine_locales
+            .keys()
+            .filter(|k| locale_language(k) == language)
+            .collect();
+        keys.sort();
+        if let Some(key) = keys.first() {
+            return engine_locales.get(*key).cloned();
+        }
+    }
+
+    default.map(str::to_string)
+}
+
+impl EngineTraits {
+    /// Translate a resolved SearXNG `locale_key` into this engine's language
+    /// parameter (e.g. `"lang_en"`), falling back to `default`.
+    pub fn get_language(&self, locale_key: &str, default: Option<&str>) -> Option<String> {
+        if locale_key == "all"
+            && let Some(all_locale) = &self.all_locale
+        {
+            return Some(all_locale.clone());
+        }
+        get_engine_locale(locale_key, &self.languages, default)
+    }
+
+    /// Translate a resolved SearXNG `locale_key` into this engine's region
+    /// parameter (e.g. `"US"`), falling back to `default`.
+    pub fn get_region(&self, locale_key: &str, default: Option<&str>) -> Option<String> {
+        if locale_key == "all"
+            && let Some(all_locale) = &self.all_locale
+        {
+            return Some(all_locale.clone());
+        }
+        get_engine_locale(locale_key, &self.regions, default)
+    }
+}
+
 /// Engine traits keyed by engine name.
 #[derive(Debug, Default)]
 pub struct EngineTraitsMap {
@@ -1062,37 +1153,21 @@ mod generated_data {
 }
 pub use generated_data::*;
 
-trait DataSource {
-    fn read(&self, file: &str) -> Result<String, DataError>;
-
-    fn read_optional(&self, file: &str) -> Result<Option<String>, DataError> {
-        match self.read(file) {
-            Ok(contents) => Ok(Some(contents)),
-            Err(DataError::Read { source, .. })
-                if source.kind() == std::io::ErrorKind::NotFound =>
-            {
-                Ok(None)
-            }
-            Err(error) => Err(error),
-        }
-    }
-}
-
-struct DirSource<'a> {
-    dir: &'a Path,
-}
-
-impl DataSource for DirSource<'_> {
-    fn read(&self, file: &str) -> Result<String, DataError> {
-        read_required(&data_path(self.dir, file), file)
-    }
-}
-
-fn read_required(path: &Path, file: &str) -> Result<String, DataError> {
-    std::fs::read_to_string(path).map_err(|source| DataError::Read {
+fn read_data_file(dir: &Path, file: &str) -> Result<String, DataError> {
+    std::fs::read_to_string(dir.join(file)).map_err(|source| DataError::Read {
         file: file.to_string(),
         source,
     })
+}
+
+fn read_data_file_optional(dir: &Path, file: &str) -> Result<Option<String>, DataError> {
+    match read_data_file(dir, file) {
+        Ok(contents) => Ok(Some(contents)),
+        Err(DataError::Read { source, .. }) if source.kind() == std::io::ErrorKind::NotFound => {
+            Ok(None)
+        }
+        Err(error) => Err(error),
+    }
 }
 
 fn parse_json<T: for<'de> Deserialize<'de>>(contents: &str, file: &str) -> Result<T, DataError> {
@@ -1100,10 +1175,6 @@ fn parse_json<T: for<'de> Deserialize<'de>>(contents: &str, file: &str) -> Resul
         file: file.to_string(),
         source,
     })
-}
-
-fn data_path(data_dir: &Path, file: &str) -> PathBuf {
-    data_dir.join(file)
 }
 
 pub fn load_embedded_bundle() -> Result<DataBundle, DataError> {
@@ -1124,18 +1195,18 @@ pub fn load_bundle(data_dir: &Path) -> Result<DataBundle, DataError> {
             ),
         });
     }
-    load_from_source(&DirSource { dir: data_dir })
+    load_from_dir(data_dir)
 }
 
-fn load_from_source(source: &dyn DataSource) -> Result<DataBundle, DataError> {
-    let bangs = load_bangs(source)?;
-    let currencies = load_currencies(source)?;
-    let units = load_units(source)?;
-    let engine_traits = load_engine_traits(source)?;
-    let useragents = load_useragents(source)?;
-    let locales = load_locales(source)?;
+fn load_from_dir(dir: &Path) -> Result<DataBundle, DataError> {
+    let bangs = load_bangs(dir)?;
+    let currencies = load_currencies(dir)?;
+    let units = load_units(dir)?;
+    let engine_traits = load_engine_traits(dir)?;
+    let useragents = load_useragents(dir)?;
+    let locales = load_locales(dir)?;
     // ponytail: prefer json list; fall back to SearXNG's line-oriented txt
-    let ahmia_blacklist = match load_optional_string_list(source, "ahmia_blacklist.json")? {
+    let ahmia_blacklist = match load_optional_string_list(dir, "ahmia_blacklist.json")? {
         list if !list.is_empty() => {
             let mut set = AhmiaBlacklist::default();
             for hash in list {
@@ -1145,7 +1216,7 @@ fn load_from_source(source: &dyn DataSource) -> Result<DataBundle, DataError> {
         }
         _ => {
             let mut set = AhmiaBlacklist::default();
-            if let Some(contents) = source.read_optional("ahmia_blacklist.txt")? {
+            if let Some(contents) = read_data_file_optional(dir, "ahmia_blacklist.txt")? {
                 for line in contents.lines() {
                     let hash = line.trim();
                     if !hash.is_empty() && !hash.starts_with('#') {
@@ -1156,13 +1227,16 @@ fn load_from_source(source: &dyn DataSource) -> Result<DataBundle, DataError> {
             set
         }
     };
-    let doi_resolvers = parse_json(&source.read("doi_resolvers.json")?, "doi_resolvers.json")?;
+    let doi_resolvers = parse_json(
+        &read_data_file(dir, "doi_resolvers.json")?,
+        "doi_resolvers.json",
+    )?;
     let autocomplete = parse_json(
-        &source.read("autocomplete_backends.json")?,
+        &read_data_file(dir, "autocomplete_backends.json")?,
         "autocomplete_backends.json",
     )?;
-    let limiter_toml = source.read("limiter.toml")?;
-    let info_pages = parse_json(&source.read("info_pages.json")?, "info_pages.json")?;
+    let limiter_toml = read_data_file(dir, "limiter.toml")?;
+    let info_pages = parse_json(&read_data_file(dir, "info_pages.json")?, "info_pages.json")?;
 
     Ok(DataBundle {
         bangs,
@@ -1238,35 +1312,32 @@ fn load_precompiled_bundle() -> DataBundle {
     }
 }
 
-fn load_optional_string_list(
-    source: &dyn DataSource,
-    file: &str,
-) -> Result<Vec<String>, DataError> {
-    let Some(contents) = source.read_optional(file)? else {
+fn load_optional_string_list(dir: &Path, file: &str) -> Result<Vec<String>, DataError> {
+    let Some(contents) = read_data_file_optional(dir, file)? else {
         return Ok(Vec::new());
     };
     parse_json(&contents, file)
 }
 
-fn load_bangs(source: &dyn DataSource) -> Result<BangTrie, DataError> {
+fn load_bangs(dir: &Path) -> Result<BangTrie, DataError> {
     const FILE: &str = "external_bangs.json";
-    let contents = source.read(FILE)?;
+    let contents = read_data_file(dir, FILE)?;
     let raw: ExternalBangsRaw = parse_json(&contents, FILE)?;
     let mut trie = BangTrie::new();
     flatten_bang_trie(&raw.trie, "", &mut trie);
     Ok(trie)
 }
 
-fn load_currencies(source: &dyn DataSource) -> Result<CurrencyTable, DataError> {
+fn load_currencies(dir: &Path) -> Result<CurrencyTable, DataError> {
     const FILE: &str = "currencies.json";
-    let contents = source.read(FILE)?;
+    let contents = read_data_file(dir, FILE)?;
     let raw: CurrenciesRaw = parse_json(&contents, FILE)?;
     Ok(CurrencyTable::from(raw))
 }
 
-fn load_units(source: &dyn DataSource) -> Result<UnitTable, DataError> {
+fn load_units(dir: &Path) -> Result<UnitTable, DataError> {
     const FILE: &str = "wikidata_units.json";
-    let contents = source.read(FILE)?;
+    let contents = read_data_file(dir, FILE)?;
     let units: HashMap<String, UnitEntry> = parse_json(&contents, FILE)?;
     Ok(UnitTable {
         units,
@@ -1274,21 +1345,21 @@ fn load_units(source: &dyn DataSource) -> Result<UnitTable, DataError> {
     })
 }
 
-fn load_engine_traits(source: &dyn DataSource) -> Result<EngineTraitsMap, DataError> {
+fn load_engine_traits(dir: &Path) -> Result<EngineTraitsMap, DataError> {
     const FILE: &str = "engine_traits.json";
-    let contents = source.read(FILE)?;
+    let contents = read_data_file(dir, FILE)?;
     let engines: HashMap<String, EngineTraits> = parse_json(&contents, FILE)?;
     Ok(EngineTraitsMap::from_engines(engines))
 }
 
-fn load_useragents(source: &dyn DataSource) -> Result<UserAgentPool, DataError> {
+fn load_useragents(dir: &Path) -> Result<UserAgentPool, DataError> {
     const UA_FILE: &str = "useragents.json";
     const GSA_FILE: &str = "gsa_useragents.txt";
 
-    let ua_contents = source.read(UA_FILE)?;
+    let ua_contents = read_data_file(dir, UA_FILE)?;
     let raw: UserAgentsRaw = parse_json(&ua_contents, UA_FILE)?;
 
-    let gsa_contents = source.read(GSA_FILE)?;
+    let gsa_contents = read_data_file(dir, GSA_FILE)?;
     let gsa: Vec<String> = gsa_contents
         .lines()
         .map(str::trim)
@@ -1304,9 +1375,9 @@ fn load_useragents(source: &dyn DataSource) -> Result<UserAgentPool, DataError> 
     })
 }
 
-fn load_locales(source: &dyn DataSource) -> Result<LocaleMap, DataError> {
+fn load_locales(dir: &Path) -> Result<LocaleMap, DataError> {
     const FILE: &str = "locales.json";
-    let contents = source.read(FILE)?;
+    let contents = read_data_file(dir, FILE)?;
     let raw: LocalesRaw = parse_json(&contents, FILE)?;
     Ok(LocaleMap::from_owned(raw.locale_names, raw.rtl_locales))
 }
@@ -1404,6 +1475,88 @@ mod tests {
     #[test]
     fn detect_language_empty_text_is_none() {
         assert!(detect_language("").is_none());
+    }
+
+    fn sample_locales() -> HashMap<String, String> {
+        let mut map = HashMap::new();
+        map.insert("fr".to_string(), "fr_FR".to_string());
+        map.insert("fr-BE".to_string(), "fr_BE".to_string());
+        map.insert("en-US".to_string(), "en_US".to_string());
+        map.insert("zh".to_string(), "zh".to_string());
+        map
+    }
+
+    #[test]
+    fn get_engine_locale_prefers_exact_then_narrows() {
+        let map = sample_locales();
+        assert_eq!(
+            get_engine_locale("fr-BE", &map, None).as_deref(),
+            Some("fr_BE")
+        );
+        assert_eq!(
+            get_engine_locale("fr", &map, None).as_deref(),
+            Some("fr_FR")
+        );
+        assert_eq!(
+            get_engine_locale("en", &map, None).as_deref(),
+            Some("en_US")
+        );
+        assert_eq!(
+            get_engine_locale("de-DE", &map, Some("fallback")).as_deref(),
+            Some("fallback")
+        );
+    }
+
+    #[test]
+    fn get_engine_locale_result_is_always_supported_or_default() {
+        let map = sample_locales();
+        let supported: HashSet<&String> = map.values().collect();
+        for locale in ["fr", "fr-BE", "fr-CA", "en", "en-GB", "zh-HK", "xx-YY"] {
+            if let Some(result) = get_engine_locale(locale, &map, None) {
+                assert!(
+                    supported.contains(&result),
+                    "locale {locale} resolved to unsupported {result}"
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn engine_traits_translate_language_and_region() {
+        let mut languages = HashMap::new();
+        languages.insert("fr".to_string(), "fr_FR".to_string());
+        let mut regions = HashMap::new();
+        regions.insert("fr-BE".to_string(), "fr_BE".to_string());
+        let traits = EngineTraits {
+            all_locale: Some("xx-all".to_string()),
+            data_type: Some("traits_v1".to_string()),
+            languages,
+            regions,
+            custom: serde_json::Value::Null,
+        };
+
+        assert_eq!(traits.get_language("fr", None).as_deref(), Some("fr_FR"));
+        assert_eq!(traits.get_region("fr-BE", None).as_deref(), Some("fr_BE"));
+        assert_eq!(traits.get_language("all", None).as_deref(), Some("xx-all"));
+        assert_eq!(traits.get_region("all", None).as_deref(), Some("xx-all"));
+    }
+
+    #[test]
+    fn engine_traits_bundle_serves_known_engines() {
+        let bundle = load_embedded_bundle().expect("precompiled data");
+        let wikipedia = bundle
+            .engine_traits
+            .get("wikipedia")
+            .expect("wikipedia traits are bundled");
+        assert_eq!(wikipedia.get_language("de-DE", None).as_deref(), Some("de"));
+
+        let google = bundle
+            .engine_traits
+            .get("google")
+            .expect("google traits are bundled");
+        assert_eq!(google.get_region("en-US", None).as_deref(), Some("US"));
+
+        assert!(bundle.engine_traits.get("not-a-real-engine").is_none());
     }
 }
 

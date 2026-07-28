@@ -10,12 +10,12 @@ import {
 	autocomplete,
 	preferencesGet,
 	type SearchResult,
+	search,
 } from "#/lib/api";
 import { applyClientFeatures, pluginEnabled } from "#/lib/clientFeatures";
 import { ensureTrackerRules } from "#/lib/clientFeatures/trackerUrlRemover";
 import { pickDidYouMean } from "#/lib/didYouMean";
 import { stringsFor } from "#/lib/i18n";
-import { search } from "#/lib/searchApi";
 import {
 	correctionText,
 	formatEngineLabel,

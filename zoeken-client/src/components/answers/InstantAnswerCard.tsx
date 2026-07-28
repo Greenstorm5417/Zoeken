@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { lazy, Suspense } from "react";
 import type { SearchAnswer } from "#/lib/api";
+import { formatEngineLabel } from "#/lib/searchDisplay";
 
 const UnitAnswer = lazy(() =>
 	import("./UnitAnswer").then((m) => ({ default: m.UnitAnswer })),
@@ -37,14 +38,6 @@ const DictionaryAnswer = lazy(() =>
 const WikipediaAnswer = lazy(() =>
 	import("./WikipediaAnswer").then((m) => ({ default: m.WikipediaAnswer })),
 );
-
-function formatEngineLabel(name: string): string {
-	return name
-		.split(/[_:\s-]+/)
-		.filter(Boolean)
-		.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-		.join(" ");
-}
 
 function hostnameOf(url: string): string {
 	try {

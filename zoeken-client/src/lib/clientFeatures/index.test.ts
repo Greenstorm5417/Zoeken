@@ -68,11 +68,10 @@ describe("applyClientFeatures", () => {
 		expect(applyClientFeatures(results, undefined)).toEqual(results);
 	});
 
-	it("applies default-on tracker stripping when config is missing", () => {
+	it("skips tracker stripping when config is missing", () => {
 		const results = [result("https://example.com/?utm_source=x&keep=1")];
 		const out = applyClientFeatures(results, undefined);
-		expect(out[0].url).not.toContain("utm_source");
-		expect(out[0].url).toContain("keep=1");
+		expect(out[0].url).toContain("utm_source");
 	});
 
 	it("skips hostname rules when the plugin is disabled", () => {

@@ -1,4 +1,4 @@
-import type { SearchParams } from "./searchApi";
+import type { SearchParams } from "./api";
 
 export type SearchRouteParams = Pick<
 	SearchParams,

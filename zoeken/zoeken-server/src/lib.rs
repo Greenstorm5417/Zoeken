@@ -34,10 +34,11 @@ use zoeken_network::{NetworkError, NetworkManager};
 use zoeken_prefs::Preferences;
 use zoeken_query::FormParams;
 use zoeken_search::{
-    EnabledEngineSet, EngineExecutor, EnginePreferences, MetricsRecorder, NoopRecorder, Search,
-    SearchConfig, SuspensionPolicy,
+    EngineExecutor, MetricsRecorder, NoopRecorder, Search, SearchConfig, SuspensionPolicy,
 };
-use zoeken_settings::{DeploymentConfig, LimiterSource, OutgoingSettings, Settings};
+use zoeken_settings::{
+    DeploymentConfig, GeneralSettings, LimiterSource, OutgoingSettings, Settings,
+};
 
 use crate::executor::NetworkExecutor;
 use crate::image_proxy::{CachedImageFetcher, ImageProxyFetcher, WreqImageFetcher};
@@ -47,14 +48,8 @@ use metrics_exporter_prometheus::PrometheusHandle;
 use zoeken_autocomplete::AutocompleteService;
 use zoeken_botdetect::{Detector, LimiterConfig};
 use zoeken_data::DataBundle;
-use zoeken_favicons::{
-    FaviconProvider, FaviconService, HttpFaviconResolver, ImageProxyPolicy, InMemoryFaviconCache,
-    StaticResolver, StorageFaviconService,
-};
+use zoeken_favicons::{FaviconService, HttpFaviconResolver, ImageProxyPolicy, StaticResolver};
 use zoeken_storage::FaviconPolicy;
-
-/// Type-erased favicon service held on [`AppState`].
-pub type AppFaviconService = dyn FaviconProvider;
 
 fn default_assets_dir() -> DirAssets {
     DirAssets::new(PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("assets"))
@@ -66,7 +61,7 @@ pub struct AppState {
     recorder: Arc<dyn MetricsRecorder>,
     image_fetcher: Arc<dyn ImageProxyFetcher>,
     image_policy: ImageProxyPolicy,
-    favicons: Arc<AppFaviconService>,
+    favicons: Arc<FaviconService>,
     autocomplete: AutocompleteService,
     pref_defaults: Preferences,
     settings: Settings,
@@ -82,12 +77,7 @@ pub struct AppState {
 
 fn image_policy_from_settings(settings: &Settings) -> ImageProxyPolicy {
     let mut policy = ImageProxyPolicy::default();
-    if let Some(max) = settings
-        .favicons
-        .get("max_image_bytes")
-        .and_then(|v| v.as_u64())
-        .or_else(|| settings.favicons.get("max_bytes").and_then(|v| v.as_u64()))
-    {
+    if let Some(max) = settings.favicons.max_image_bytes {
         policy.max_bytes = max;
     }
     policy
@@ -156,21 +146,18 @@ fn limiter_from_settings(
     )))
 }
 
-fn default_favicon_service(settings: &Settings) -> Arc<AppFaviconService> {
-    Arc::new(FaviconService::new(
-        Arc::new(HttpFaviconResolver::for_provider(
-            &settings.search.favicon_resolver,
-        )),
-        InMemoryFaviconCache::new(),
-    ))
+fn default_favicon_service(settings: &Settings) -> Arc<FaviconService> {
+    Arc::new(FaviconService::memory(Arc::new(
+        HttpFaviconResolver::for_provider(&settings.search.favicon_resolver),
+    )))
 }
 
 fn persistent_favicon_service(
     settings: &Settings,
     storage: Arc<dyn zoeken_storage::Storage>,
     networks: Arc<NetworkManager>,
-) -> Arc<AppFaviconService> {
-    Arc::new(StorageFaviconService::new(
+) -> Arc<FaviconService> {
+    Arc::new(FaviconService::storage(
         Arc::new(HttpFaviconResolver::for_provider_with_network(
             &settings.search.favicon_resolver,
             networks,
@@ -270,10 +257,9 @@ impl AppState {
             recorder: Arc::new(NoopRecorder),
             image_fetcher: Arc::new(CachedImageFetcher::new(Arc::new(WreqImageFetcher::new()))),
             image_policy: ImageProxyPolicy::default(),
-            favicons: Arc::new(FaviconService::new(
-                Arc::new(StaticResolver::empty("stub")),
-                InMemoryFaviconCache::new(),
-            )),
+            favicons: Arc::new(FaviconService::memory(Arc::new(StaticResolver::empty(
+                "stub",
+            )))),
             autocomplete: AutocompleteService::disabled(),
             pref_defaults: Preferences::defaults(),
             settings: Settings::default(),
@@ -282,7 +268,7 @@ impl AppState {
             assets: Arc::new(default_assets_dir()),
             readiness: ReadinessState::new_not_ready(),
             deployment: DeploymentConfig::default(),
-            metrics_enabled: DeploymentConfig::default().metrics_enabled,
+            metrics_enabled: GeneralSettings::default().enable_metrics,
             limiter_enabled: true,
             data: Arc::new(DataBundle::default()),
         }
@@ -329,13 +315,13 @@ impl AppState {
         );
 
         let deployment = settings.deployment.clone();
-        let metrics_enabled = deployment.metrics_enabled && settings.general.enable_metrics;
+        let metrics_enabled = settings.general.enable_metrics;
         let image_policy = image_policy_from_settings(&settings);
         let bot_detector = limiter_from_settings(&settings, &data)?;
 
         Ok(AppState {
             search,
-            recorder: Arc::new(zoeken_metrics::EngineMetricsRecorder::new()),
+            recorder: Arc::new(zoeken_search::EngineMetricsRecorder::new()),
             // Reuse the browser-emulating `image_proxy` network client so
             // proxied image fetches look like a real browser and share a pool.
             // CachedImageFetcher adds singleflight + byte-budgeted body cache.
@@ -376,7 +362,7 @@ impl AppState {
         self
     }
 
-    pub fn with_favicons(mut self, favicons: Arc<AppFaviconService>) -> Self {
+    pub fn with_favicons(mut self, favicons: Arc<FaviconService>) -> Self {
         self.favicons = favicons;
         self
     }
@@ -431,7 +417,6 @@ impl AppState {
     }
 
     pub fn with_deployment(mut self, cfg: DeploymentConfig) -> Self {
-        self.metrics_enabled = cfg.metrics_enabled;
         self.deployment = cfg;
         self
     }
@@ -595,7 +580,8 @@ async fn native_search_post(
         &state.data,
     );
 
-    let search_query = match zoeken_query::from_params(&params, &resolved_prefs, &state.data) {
+    let query_prefs = zoeken_query::StaticPreferences::from(&resolved_prefs);
+    let search_query = match zoeken_query::from_params(&params, &query_prefs, &state.data) {
         Ok(query) => query,
         Err(error) => {
             let message = serde_json::to_string(&error.to_string())
@@ -629,7 +615,7 @@ async fn native_search_post(
         .search
         .run(
             &search_query,
-            &engine_preferences(&resolved_prefs),
+            engine_preferences(&resolved_prefs).as_ref(),
             &tokens,
             state.recorder.as_ref(),
         )
@@ -719,7 +705,8 @@ async fn run_search(state: &AppState, headers: &HeaderMap, params: FormParams) -
         &state.data,
     );
 
-    let query = match zoeken_query::from_params(&params, &resolved_prefs, &state.data) {
+    let query_prefs = zoeken_query::StaticPreferences::from(&resolved_prefs);
+    let query = match zoeken_query::from_params(&params, &query_prefs, &state.data) {
         Ok(query) => query,
         Err(error) => return (StatusCode::BAD_REQUEST, error.to_string()).into_response(),
     };
@@ -743,7 +730,7 @@ async fn run_search(state: &AppState, headers: &HeaderMap, params: FormParams) -
         .search
         .run(
             &query,
-            &engine_preferences(&resolved_prefs),
+            engine_preferences(&resolved_prefs).as_ref(),
             &tokens,
             state.recorder.as_ref(),
         )
@@ -812,26 +799,12 @@ async fn run_search(state: &AppState, headers: &HeaderMap, params: FormParams) -
     }
 }
 
-#[derive(Debug, Clone)]
-enum RequestEnginePreferences {
-    All,
-    Enabled(EnabledEngineSet),
-}
-
-impl EnginePreferences for RequestEnginePreferences {
-    fn is_engine_enabled(&self, engine: &str) -> bool {
-        match self {
-            RequestEnginePreferences::All => true,
-            RequestEnginePreferences::Enabled(enabled) => enabled.is_engine_enabled(engine),
-        }
-    }
-}
-
-fn engine_preferences(prefs: &Preferences) -> RequestEnginePreferences {
+/// `None` means all engines are enabled; matches `Search::run`'s convention.
+fn engine_preferences(prefs: &Preferences) -> Option<HashSet<String>> {
     if prefs.engines.is_empty() {
-        RequestEnginePreferences::All
+        None
     } else {
-        RequestEnginePreferences::Enabled(EnabledEngineSet::new(prefs.engines.clone()))
+        Some(prefs.engines.iter().cloned().collect())
     }
 }
 

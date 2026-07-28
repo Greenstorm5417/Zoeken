@@ -1,47 +1,42 @@
 //! Shared helpers: URL encoding, HTML entities, Markdown to text, and bot-wall detection.
 
+use url::form_urlencoded;
+
 /// Percent-encode a query component (spaces → `+`, others %XX-escaped like Python's quote_plus).
 pub fn encode_component(value: &str) -> String {
-    let mut out = String::with_capacity(value.len());
-    for byte in value.as_bytes() {
-        match byte {
-            b'A'..=b'Z' | b'a'..=b'z' | b'0'..=b'9' | b'-' | b'_' | b'.' | b'~' => {
-                out.push(*byte as char)
-            }
-            b' ' => out.push('+'),
-            other => {
-                out.push('%');
-                out.push_str(&format!("{other:02X}"));
-            }
-        }
-    }
-    out
+    form_urlencoded::byte_serialize(value.as_bytes()).collect()
 }
 
 /// Build a form-urlencoded query string; order is preserved for deterministic output.
 pub fn encode_query(pairs: &[(&str, String)]) -> String {
-    pairs
-        .iter()
-        .map(|(k, v)| format!("{}={}", encode_component(k), encode_component(v)))
-        .collect::<Vec<_>>()
-        .join("&")
+    let mut ser = form_urlencoded::Serializer::new(String::new());
+    for (k, v) in pairs {
+        ser.append_pair(k, v);
+    }
+    ser.finish()
 }
 
-/// Percent-encode a URL path component (like Python's quote with safe='/').
+/// Percent-encode a URL path (like Python's quote with safe='/'): `/` stays literal, space → `%20`.
 pub fn encode_path(value: &str) -> String {
-    let mut out = String::with_capacity(value.len());
-    for byte in value.as_bytes() {
-        match byte {
-            b'A'..=b'Z' | b'a'..=b'z' | b'0'..=b'9' | b'-' | b'_' | b'.' | b'~' | b'/' => {
-                out.push(*byte as char)
-            }
-            other => {
-                out.push('%');
-                out.push_str(&format!("{other:02X}"));
-            }
-        }
-    }
-    out
+    value
+        .split('/')
+        .map(|seg| {
+            form_urlencoded::byte_serialize(seg.as_bytes())
+                .collect::<String>()
+                .replace('+', "%20")
+        })
+        .collect::<Vec<_>>()
+        .join("/")
+}
+
+/// Decode %XX percent-escapes (like Python's unquote; `+` stays literal, not space).
+pub fn percent_decode(value: &str) -> String {
+    // form_urlencoded::parse treats `+` as space and `&` as a pair break — neutralize both.
+    let safe = value.replace('+', "%2B").replace('&', "%26");
+    form_urlencoded::parse(format!("x={safe}").as_bytes())
+        .next()
+        .map(|(_, v)| v.into_owned())
+        .unwrap_or_default()
 }
 
 /// Extract substring between start and end markers; returns empty if not found.
@@ -54,27 +49,6 @@ pub fn extr<'a>(text: &'a str, start: &str, end: &str) -> &'a str {
         Some(rel) => &text[after..after + rel],
         None => "",
     }
-}
-
-/// Decode %XX percent-escapes in a string (like Python's unquote; + is literal).
-pub fn percent_decode(value: &str) -> String {
-    let bytes = value.as_bytes();
-    let mut out: Vec<u8> = Vec::with_capacity(bytes.len());
-    let mut i = 0;
-    while i < bytes.len() {
-        if bytes[i] == b'%' && i + 2 < bytes.len() {
-            let hi = (bytes[i + 1] as char).to_digit(16);
-            let lo = (bytes[i + 2] as char).to_digit(16);
-            if let (Some(hi), Some(lo)) = (hi, lo) {
-                out.push((hi * 16 + lo) as u8);
-                i += 3;
-                continue;
-            }
-        }
-        out.push(bytes[i]);
-        i += 1;
-    }
-    String::from_utf8_lossy(&out).into_owned()
 }
 
 /// Decode HTML character references (&amp;, &#NN;, &#xNN;, etc.) leniently.
@@ -280,6 +254,19 @@ mod tests {
     fn encode_query_preserves_order() {
         let q = encode_query(&[("q", "a b".to_string()), ("p", "2".to_string())]);
         assert_eq!(q, "q=a+b&p=2");
+    }
+
+    #[test]
+    fn encode_path_keeps_slashes_literal() {
+        assert_eq!(encode_path("/a b/c"), "/a%20b/c");
+        assert_eq!(encode_path("rust-lang.org/docs"), "rust-lang.org/docs");
+    }
+
+    #[test]
+    fn percent_decode_reverses_encoding_and_keeps_plus_literal() {
+        assert_eq!(percent_decode("a%2Bb"), "a+b");
+        assert_eq!(percent_decode("a+b"), "a+b");
+        assert_eq!(percent_decode("%E6%97%A5"), "日");
     }
 
     #[test]

@@ -88,5 +88,4 @@ fn params_still_apply_on_top_of_bad_cookie() {
     assert_eq!(resolved, expected);
 
     assert_eq!(resolved.locale, "es");
-    assert_eq!(resolved.theme, defaults.theme);
 }

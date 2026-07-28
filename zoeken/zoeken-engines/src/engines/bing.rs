@@ -4,8 +4,8 @@
 
 use scraper::{Html, Selector};
 use zoeken_engine_core::{
-    About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod,
-    LocaleTranslate, Processor, RequestParams, SafeSearch, SearchQueryView,
+    About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod, Processor,
+    RequestParams, SafeSearch, SearchQueryView,
 };
 use zoeken_results::{MainResult, Result_};
 

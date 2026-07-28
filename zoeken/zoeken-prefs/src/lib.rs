@@ -13,7 +13,7 @@ use flate2::write::ZlibEncoder;
 use serde::{Deserialize, Serialize};
 use zoeken_data::{DataBundle, LocaleMap, detect_language};
 
-use zoeken_query::{FormParams, PreferencesView, SafeSearch};
+use zoeken_query::{FormParams, SafeSearch};
 use zoeken_settings::Settings;
 
 const MAX_COMPRESSED_COOKIE_BYTES: usize = 16 * 1024;
@@ -50,10 +50,9 @@ impl RequestMethod {
 }
 
 /// Typed user preferences: locale, categories, engines, safesearch, autocomplete, image_proxy, method.
-/// `theme` is kept only for SearXNG prefs-cookie round-trip; the SPA uses localStorage.
+/// Theme is a client-only concern (SPA uses localStorage), not tracked here.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Preferences {
-    pub theme: String,
     pub locale: String,
     pub language: String,
     pub categories: Vec<String>,
@@ -70,7 +69,6 @@ pub struct Preferences {
 impl Default for Preferences {
     fn default() -> Self {
         Preferences {
-            theme: "simple".to_string(),
             locale: "all".to_string(),
             language: "all".to_string(),
             categories: vec!["general".to_string()],
@@ -93,26 +91,22 @@ impl Preferences {
     }
 }
 
-impl PreferencesView for Preferences {
-    fn is_locked(&self, key: &str) -> bool {
-        self.locked.contains(key)
-    }
-    fn default_language(&self) -> String {
-        self.language.clone()
-    }
-    fn default_safesearch(&self) -> u8 {
-        self.safesearch.as_u8()
-    }
-    fn default_categories(&self) -> Vec<String> {
-        self.categories.clone()
-    }
-}
-
 impl Preferences {
     /// Whether `engine` is enabled.
     #[must_use]
     pub fn is_engine_enabled(&self, engine: &str) -> bool {
         self.engines.iter().any(|e| e == engine)
+    }
+}
+
+impl From<&Preferences> for zoeken_query::StaticPreferences {
+    fn from(prefs: &Preferences) -> Self {
+        zoeken_query::StaticPreferences {
+            locked: prefs.locked.clone(),
+            language: prefs.language.clone(),
+            safesearch: prefs.safesearch.as_u8(),
+            categories: prefs.categories.clone(),
+        }
     }
 }
 
@@ -225,9 +219,6 @@ fn resolve_inner(
 }
 
 fn apply_cookie(prefs: &mut Preferences, decoded: Preferences, locked: &HashSet<&str>) {
-    if !locked.contains("theme") {
-        prefs.theme = decoded.theme;
-    }
     if !locked.contains("locale") {
         prefs.locale = decoded.locale;
     }
@@ -295,13 +286,6 @@ fn apply_settings(prefs: &mut Preferences, settings: &Settings) {
 }
 
 fn apply_params(prefs: &mut Preferences, params: &FormParams, locked: &HashSet<&str>) {
-    if !locked.contains("theme")
-        && let Some(v) = params.get("theme")
-        && !v.is_empty()
-    {
-        prefs.theme = v.to_string();
-    }
-
     if !locked.contains("locale")
         && let Some(v) = params.get("locale")
         && !v.is_empty()
@@ -481,7 +465,6 @@ mod tests {
 
     fn sample() -> Preferences {
         Preferences {
-            theme: "simple".to_string(),
             locale: "en-US".to_string(),
             language: "en".to_string(),
             categories: vec!["general".to_string(), "images".to_string()],
@@ -543,7 +526,6 @@ mod tests {
         settings.server.method = "GET".to_string();
 
         let resolved = resolve(&defaults, &settings, None, &FormParams::default());
-        assert_eq!(resolved.theme, defaults.theme);
         assert_eq!(resolved.locale, "de");
         assert_eq!(resolved.language, "de-DE");
         assert_eq!(resolved.safesearch, SafeSearch::Strict);
@@ -552,19 +534,17 @@ mod tests {
     }
 
     #[test]
-    fn resolve_cookie_overrides_defaults_for_theme() {
+    fn resolve_cookie_overrides_defaults_for_locale() {
         let defaults = Preferences::defaults();
         let settings = Settings::defaults();
 
         let cookie_prefs = Preferences {
-            theme: "from-cookie".to_string(),
             locale: "fr".to_string(),
             ..Preferences::default()
         };
         let cookie = encode_cookie(&cookie_prefs);
 
         let resolved = resolve(&defaults, &settings, Some(&cookie), &FormParams::default());
-        assert_eq!(resolved.theme, "from-cookie");
         assert_eq!(resolved.locale, "fr");
     }
 
@@ -702,7 +682,6 @@ mod tests {
 
         let expected = resolve(&defaults, &settings, None, &FormParams::default());
         assert_eq!(resolved, expected);
-        assert_eq!(resolved.theme, defaults.theme);
         assert_eq!(resolved.locale, "settings-loc");
         assert_eq!(resolved.safesearch, SafeSearch::Moderate);
     }

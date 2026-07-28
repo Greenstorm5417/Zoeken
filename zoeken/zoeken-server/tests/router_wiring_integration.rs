@@ -264,13 +264,9 @@ async fn metrics_enabled_exposes_endpoint() {
 
 #[tokio::test]
 async fn metrics_disabled_returns_not_found() {
-    let deployment = DeploymentConfig {
-        metrics_enabled: false,
-        ..DeploymentConfig::default()
-    };
     let router = app(AppState::from_search(stub_search())
         .with_assets(mock_assets())
-        .with_deployment(deployment));
+        .with_metrics_enabled(false));
 
     let response = router.oneshot(get("/metrics")).await.unwrap();
     assert_eq!(response.status(), StatusCode::NOT_FOUND);

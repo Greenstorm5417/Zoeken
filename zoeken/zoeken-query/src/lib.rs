@@ -466,13 +466,9 @@ impl FormParams {
     }
 }
 
-pub trait PreferencesView {
-    fn is_locked(&self, key: &str) -> bool;
-    fn default_language(&self) -> String;
-    fn default_safesearch(&self) -> u8;
-    fn default_categories(&self) -> Vec<String>;
-}
-
+/// Minimal preference inputs `from_params` needs. `zoeken-prefs` cannot be a
+/// dependency here (it depends on this crate), so callers map their richer
+/// `Preferences` type into this concrete struct at the call site.
 #[derive(Debug, Clone)]
 pub struct StaticPreferences {
     pub locked: HashSet<String>,
@@ -492,7 +488,7 @@ impl Default for StaticPreferences {
     }
 }
 
-impl PreferencesView for StaticPreferences {
+impl StaticPreferences {
     fn is_locked(&self, key: &str) -> bool {
         self.locked.contains(key)
     }
@@ -507,9 +503,9 @@ impl PreferencesView for StaticPreferences {
     }
 }
 
-pub fn from_params<P: PreferencesView + ?Sized>(
+pub fn from_params(
     params: &FormParams,
-    prefs: &P,
+    prefs: &StaticPreferences,
     data: &DataBundle,
 ) -> Result<SearchQuery, QueryError> {
     let raw_text = match params.get("q") {
@@ -635,9 +631,9 @@ fn parse_pageno(params: &FormParams) -> Result<u32, QueryError> {
     Ok(pageno)
 }
 
-fn parse_safesearch<P: PreferencesView + ?Sized>(
+fn parse_safesearch(
     params: &FormParams,
-    prefs: &P,
+    prefs: &StaticPreferences,
 ) -> Result<SafeSearch, QueryError> {
     if prefs.is_locked("safesearch") {
         return Ok(SafeSearch::from_u8(prefs.default_safesearch()).unwrap_or_default());
@@ -698,10 +694,7 @@ fn parse_timeout(params: &FormParams) -> Result<Option<Duration>, QueryError> {
     }
 }
 
-fn parse_lang<P: PreferencesView + ?Sized>(
-    params: &FormParams,
-    prefs: &P,
-) -> Result<Locale, QueryError> {
+fn parse_lang(params: &FormParams, prefs: &StaticPreferences) -> Result<Locale, QueryError> {
     if prefs.is_locked("language") {
         return Ok(Locale::new(prefs.default_language()));
     }
@@ -722,7 +715,7 @@ fn parse_lang<P: PreferencesView + ?Sized>(
     Ok(Locale::new(normalized))
 }
 
-fn parse_categories<P: PreferencesView + ?Sized>(params: &FormParams, prefs: &P) -> Vec<String> {
+fn parse_categories(params: &FormParams, prefs: &StaticPreferences) -> Vec<String> {
     let mut categories: Vec<String> = Vec::new();
     if !prefs.is_locked("categories") {
         for (name, value) in params.iter() {

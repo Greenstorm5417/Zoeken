@@ -10,11 +10,12 @@ use axum::http::{Request, StatusCode};
 use metrics_exporter_prometheus::PrometheusBuilder;
 use serde_json::Value;
 use tower::ServiceExt;
+use zoeken_engine_core::ErrorCategory;
 use zoeken_engine_core::{
     Engine, EngineError, EngineMeta, EngineResponse, EngineResults, RequestParams, SearchQueryView,
 };
-use zoeken_metrics::{EngineMetricsRecorder, ErrorCategory};
 use zoeken_results::{Answer, MainResult, Result_};
+use zoeken_search::EngineMetricsRecorder;
 use zoeken_search::{
     EngineExecResult, EngineExecutor, EngineFuture, EngineRegistry, RegisteredEngine,
     ResultContainer, Search, SearchConfig, UnresponsiveCause, UnresponsiveEngine,

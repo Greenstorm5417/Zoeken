@@ -16,7 +16,7 @@ pub use error_category::ErrorCategory;
 pub use zoeken_query::{SafeSearch, TimeRange};
 pub use zoeken_results::{
     Answer, Code, Correction, FileResult, Image, Infobox, KeyValue, MainResult, Paper, Result_,
-    ResultItem, ResultKind, Suggestion,
+    ResultKind, Suggestion,
 };
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize)]
@@ -308,8 +308,6 @@ impl Default for SuspendConfig {
         }
     }
 }
-
-use std::collections::HashMap as StdHashMap;
 
 use chrono::{DateTime, NaiveDate, NaiveDateTime};
 use ego_tree::NodeRef;
@@ -675,74 +673,6 @@ pub fn json_get_str<'a>(value: &'a serde_json::Value, path: &str) -> Option<&'a 
     json_get(value, path).and_then(serde_json::Value::as_str)
 }
 
-fn locale_language(tag: &str) -> &str {
-    let end = tag.find(['-', '_']).unwrap_or(tag.len());
-    &tag[..end]
-}
-
-fn locale_territory(tag: &str) -> Option<&str> {
-    tag.split(['-', '_'])
-        .find(|part| part.len() == 2 && part.chars().all(|c| c.is_ascii_uppercase()))
-}
-
-pub fn get_engine_locale(
-    locale_key: &str,
-    engine_locales: &StdHashMap<String, String>,
-    default: Option<&str>,
-) -> Option<String> {
-    if let Some(value) = engine_locales.get(locale_key) {
-        return Some(value.clone());
-    }
-
-    let normalized = locale_key.replace('_', "-");
-    let language = locale_language(&normalized);
-    let territory = locale_territory(&normalized);
-
-    if !language.is_empty()
-        && let Some(value) = engine_locales.get(language)
-    {
-        return Some(value.clone());
-    }
-
-    if let Some(terr) = territory {
-        let mut keys: Vec<&String> = engine_locales
-            .keys()
-            .filter(|k| locale_territory(k) == Some(terr))
-            .collect();
-        keys.sort();
-        if let Some(key) = keys.first() {
-            return engine_locales.get(*key).cloned();
-        }
-    }
-
-    if !language.is_empty() {
-        let preferred_territory = if language.eq_ignore_ascii_case("en") {
-            "US".to_string()
-        } else {
-            language.to_ascii_uppercase()
-        };
-        let preferred_key = format!("{language}-{preferred_territory}");
-        if let Some(value) = engine_locales.get(&preferred_key) {
-            return Some(value.clone());
-        }
-        let mut keys: Vec<&String> = engine_locales
-            .keys()
-            .filter(|k| locale_language(k) == language)
-            .collect();
-        keys.sort();
-        if let Some(key) = keys.first() {
-            return engine_locales.get(*key).cloned();
-        }
-    }
-
-    default.map(str::to_string)
-}
-
-pub trait LocaleTranslate {
-    fn get_language(&self, locale_key: &str, default: Option<&str>) -> Option<String>;
-    fn get_region(&self, locale_key: &str, default: Option<&str>) -> Option<String>;
-}
-
 /// Bundled per-engine language/region traits (`engine_traits.json`), loaded
 /// once from the embedded data asset. Engines consult this via
 /// [`engine_traits`] to translate a resolved SearXNG locale into the
@@ -767,26 +697,6 @@ fn engine_traits_bundle() -> &'static zoeken_data::EngineTraitsMap {
 /// entry in `engine_traits.json`.
 pub fn engine_traits(name: &str) -> Option<&'static zoeken_data::EngineTraits> {
     engine_traits_bundle().get(name)
-}
-
-impl LocaleTranslate for zoeken_data::EngineTraits {
-    fn get_language(&self, locale_key: &str, default: Option<&str>) -> Option<String> {
-        if locale_key == "all"
-            && let Some(all_locale) = &self.all_locale
-        {
-            return Some(all_locale.clone());
-        }
-        get_engine_locale(locale_key, &self.languages, default)
-    }
-
-    fn get_region(&self, locale_key: &str, default: Option<&str>) -> Option<String> {
-        if locale_key == "all"
-            && let Some(all_locale) = &self.all_locale
-        {
-            return Some(all_locale.clone());
-        }
-        get_engine_locale(locale_key, &self.regions, default)
-    }
 }
 
 #[cfg(test)]
@@ -889,69 +799,8 @@ mod helper_tests {
         assert_eq!(json_get(&value, "missing"), None);
     }
 
-    fn sample_locales() -> StdHashMap<String, String> {
-        let mut map = StdHashMap::new();
-        map.insert("fr".to_string(), "fr_FR".to_string());
-        map.insert("fr-BE".to_string(), "fr_BE".to_string());
-        map.insert("en-US".to_string(), "en_US".to_string());
-        map.insert("zh".to_string(), "zh".to_string());
-        map
-    }
-
-    #[test]
-    fn get_engine_locale_prefers_exact_then_narrows() {
-        let map = sample_locales();
-        assert_eq!(
-            get_engine_locale("fr-BE", &map, None).as_deref(),
-            Some("fr_BE")
-        );
-        assert_eq!(
-            get_engine_locale("fr", &map, None).as_deref(),
-            Some("fr_FR")
-        );
-        assert_eq!(
-            get_engine_locale("en", &map, None).as_deref(),
-            Some("en_US")
-        );
-        assert_eq!(
-            get_engine_locale("de-DE", &map, Some("fallback")).as_deref(),
-            Some("fallback")
-        );
-    }
-
-    #[test]
-    fn get_engine_locale_result_is_always_supported_or_default() {
-        let map = sample_locales();
-        let supported: std::collections::HashSet<&String> = map.values().collect();
-        for locale in ["fr", "fr-BE", "fr-CA", "en", "en-GB", "zh-HK", "xx-YY"] {
-            if let Some(result) = get_engine_locale(locale, &map, None) {
-                assert!(
-                    supported.contains(&result),
-                    "locale {locale} resolved to unsupported {result}"
-                );
-            }
-        }
-    }
-
-    #[test]
-    fn engine_traits_translate_language_and_region() {
-        let mut languages = StdHashMap::new();
-        languages.insert("fr".to_string(), "fr_FR".to_string());
-        let mut regions = StdHashMap::new();
-        regions.insert("fr-BE".to_string(), "fr_BE".to_string());
-        let traits = zoeken_data::EngineTraits {
-            all_locale: Some("xx-all".to_string()),
-            data_type: Some("traits_v1".to_string()),
-            languages,
-            regions,
-            custom: serde_json::Value::Null,
-        };
-
-        assert_eq!(traits.get_language("fr", None).as_deref(), Some("fr_FR"));
-        assert_eq!(traits.get_region("fr-BE", None).as_deref(), Some("fr_BE"));
-        assert_eq!(traits.get_language("all", None).as_deref(), Some("xx-all"));
-        assert_eq!(traits.get_region("all", None).as_deref(), Some("xx-all"));
-    }
+    // `get_engine_locale` / `EngineTraits::get_language`/`get_region` behavior
+    // is covered by `zoeken_data::tests` (single source of truth).
 
     #[test]
     fn engine_traits_bundle_serves_known_engines() {

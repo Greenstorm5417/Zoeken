@@ -3,8 +3,8 @@
 //! Queries the page summary API and maps standard pages to infoboxes.
 
 use zoeken_engine_core::{
-    About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod,
-    LocaleTranslate, Processor, RequestParams, SearchQueryView,
+    About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod, Processor,
+    RequestParams, SearchQueryView,
 };
 use zoeken_results::{Answer, InteractiveAnswer, MainResult, Result_};
 

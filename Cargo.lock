@@ -4421,17 +4421,15 @@ checksum = "b8848ee67ecc8aedbaf3e4122217aff892639231befc6a1b58d29fff4c2cabaa"
 name = "zoeken-autocomplete"
 version = "1.4.0"
 dependencies = [
- "hex",
- "hmac 0.13.0",
  "http",
  "metrics",
  "rand 0.9.4",
  "serde",
  "serde_json",
- "sha2 0.11.0",
  "thiserror",
  "tokio",
  "url",
+ "zoeken-favicons",
  "zoeken-network",
 ]
 
@@ -4514,7 +4512,6 @@ dependencies = [
 name = "zoeken-favicons"
 version = "1.4.0"
 dependencies = [
- "async-trait",
  "futures-util",
  "hex",
  "hmac 0.13.0",
@@ -4528,17 +4525,6 @@ dependencies = [
  "wreq",
  "zoeken-network",
  "zoeken-storage",
-]
-
-[[package]]
-name = "zoeken-metrics"
-version = "1.4.0"
-dependencies = [
- "metrics",
- "proptest",
- "thiserror",
- "tokio",
- "zoeken-engine-core",
 ]
 
 [[package]]
@@ -4609,7 +4595,6 @@ dependencies = [
  "tracing",
  "url",
  "zoeken-engine-core",
- "zoeken-metrics",
  "zoeken-query",
  "zoeken-results",
 ]
@@ -4624,7 +4609,6 @@ dependencies = [
  "flate2",
  "futures-util",
  "hex",
- "hmac 0.13.0",
  "ipnet",
  "md-5",
  "metrics",
@@ -4652,7 +4636,6 @@ dependencies = [
  "zoeken-engine-core",
  "zoeken-engines",
  "zoeken-favicons",
- "zoeken-metrics",
  "zoeken-network",
  "zoeken-prefs",
  "zoeken-query",

@@ -1,11 +1,26 @@
-//! Metrics recording hooks for engine outcomes.
+//! Per-engine timing/error metrics via the `metrics` facade.
 
 use std::time::Duration;
 
-use zoeken_engine_core::EngineError;
-use zoeken_metrics::{EngineMetricsRecorder, ErrorCategory, categorize_error};
+use metrics::{counter, histogram};
+use zoeken_engine_core::{EngineError, ErrorCategory};
 
 use crate::execution::UnresponsiveReason;
+
+/// Histogram name for engine total wall-clock response time (seconds).
+pub const ENGINE_RESPONSE_TIME_TOTAL: &str = "zoeken_engine_response_time_total_seconds";
+
+/// Histogram name for engine HTTP response time (seconds).
+pub const ENGINE_RESPONSE_TIME_HTTP: &str = "zoeken_engine_response_time_http_seconds";
+
+/// Counter name for categorized per-engine errors.
+pub const ENGINE_ERRORS_TOTAL: &str = "zoeken_engine_errors_total";
+
+/// Label key for the engine name.
+pub const ENGINE_LABEL: &str = "engine";
+
+/// Label key for [`ErrorCategory`] on the error counter.
+pub const CATEGORY_LABEL: &str = "category";
 
 /// What happened to an engine during a search run.
 #[derive(Debug)]
@@ -42,12 +57,34 @@ impl<R: MetricsRecorder + ?Sized> MetricsRecorder for &R {
     }
 }
 
-const fn unresponsive_category(_reason: UnresponsiveReason) -> ErrorCategory {
-    ErrorCategory::Unresponsive
+/// Records per-engine timing and categorized errors via `metrics` facade.
+#[derive(Debug, Clone, Copy, Default)]
+pub struct EngineMetricsRecorder;
+
+impl EngineMetricsRecorder {
+    pub const fn new() -> Self {
+        EngineMetricsRecorder
+    }
+
+    pub fn record_timing(&self, engine: &str, total: Duration, http: Option<Duration>) {
+        histogram!(ENGINE_RESPONSE_TIME_TOTAL, ENGINE_LABEL => engine.to_owned())
+            .record(total.as_secs_f64());
+        if let Some(http) = http {
+            histogram!(ENGINE_RESPONSE_TIME_HTTP, ENGINE_LABEL => engine.to_owned())
+                .record(http.as_secs_f64());
+        }
+    }
+
+    pub fn record_error(&self, engine: &str, category: ErrorCategory) {
+        counter!(
+            ENGINE_ERRORS_TOTAL,
+            ENGINE_LABEL => engine.to_owned(),
+            CATEGORY_LABEL => category.as_str(),
+        )
+        .increment(1);
+    }
 }
 
-/// Adapts [`zoeken_metrics::EngineMetricsRecorder`] to the `zoeken-search`
-/// [`MetricsRecorder`] trait.
 impl MetricsRecorder for EngineMetricsRecorder {
     fn record_engine(&self, sample: EngineSample<'_>) {
         let EngineSample {
@@ -57,17 +94,14 @@ impl MetricsRecorder for EngineMetricsRecorder {
             outcome,
         } = sample;
 
+        self.record_timing(engine, duration, http_duration);
         match outcome {
-            EngineOutcome::Completed { .. } => {
-                self.record_timing(engine, duration, http_duration);
-            }
+            EngineOutcome::Completed { .. } => {}
             EngineOutcome::Failed { error } => {
-                self.record_timing(engine, duration, http_duration);
-                self.record_error(engine, categorize_error(error));
+                self.record_error(engine, ErrorCategory::from(error));
             }
-            EngineOutcome::Unresponsive { reason } => {
-                self.record_timing(engine, duration, http_duration);
-                self.record_error(engine, unresponsive_category(reason));
+            EngineOutcome::Unresponsive { reason: _ } => {
+                self.record_error(engine, ErrorCategory::Unresponsive);
             }
         }
     }
@@ -82,9 +116,6 @@ mod tests {
     use metrics::{
         Counter, CounterFn, Gauge, Histogram, HistogramFn, Key, KeyName, Metadata, Recorder,
         SharedString, Unit,
-    };
-    use zoeken_metrics::{
-        CATEGORY_LABEL, ENGINE_ERRORS_TOTAL, ENGINE_LABEL, ENGINE_RESPONSE_TIME_TOTAL,
     };
 
     #[derive(Debug, Clone, PartialEq)]
@@ -194,11 +225,7 @@ mod tests {
             EngineOutcome::Completed { results: 7 },
         );
 
-        assert_eq!(
-            captured.counters.len(),
-            0,
-            "completed must not record an error"
-        );
+        assert_eq!(captured.counters.len(), 0);
         assert_eq!(captured.histograms.len(), 1);
         assert_eq!(captured.histograms[0].name, ENGINE_RESPONSE_TIME_TOTAL);
         assert!(has_label(
@@ -217,10 +244,7 @@ mod tests {
             EngineOutcome::Failed { error: &error },
         );
 
-        assert!(
-            !captured.histograms.is_empty(),
-            "failed records timing as well as an error"
-        );
+        assert!(!captured.histograms.is_empty());
         assert_eq!(captured.histograms[0].name, ENGINE_RESPONSE_TIME_TOTAL);
         assert!(has_label(
             &captured.histograms[0].labels,
@@ -253,30 +277,48 @@ mod tests {
                 EngineOutcome::Unresponsive { reason },
             );
 
-            assert_eq!(
-                captured.histograms.len(),
-                1,
-                "unresponsive still records timing"
-            );
+            assert_eq!(captured.histograms.len(), 1);
             assert_eq!(captured.histograms[0].name, ENGINE_RESPONSE_TIME_TOTAL);
             assert!(has_label(
                 &captured.histograms[0].labels,
                 ENGINE_LABEL,
                 "google"
             ));
-
             assert_eq!(captured.counters.len(), 1);
             assert_eq!(captured.counters[0].name, ENGINE_ERRORS_TOTAL);
-            assert!(has_label(
-                &captured.counters[0].labels,
-                ENGINE_LABEL,
-                "google"
-            ));
             assert!(has_label(
                 &captured.counters[0].labels,
                 CATEGORY_LABEL,
                 "unresponsive"
             ));
         }
+    }
+
+    #[test]
+    fn error_category_from_maps_variants() {
+        let cases = [
+            (EngineError::Timeout, ErrorCategory::Timeout),
+            (
+                EngineError::AccessDenied("blocked".into()),
+                ErrorCategory::AccessDenied,
+            ),
+            (
+                EngineError::TooManyRequests("429".into()),
+                ErrorCategory::RateLimited,
+            ),
+            (
+                EngineError::Captcha("solve me".into()),
+                ErrorCategory::Captcha,
+            ),
+            (EngineError::Parse("bad html".into()), ErrorCategory::Parse),
+            (
+                EngineError::Unexpected("boom".into()),
+                ErrorCategory::Unexpected,
+            ),
+        ];
+        for (error, expected) in cases {
+            assert_eq!(ErrorCategory::from(&error), expected);
+        }
+        assert_eq!(ErrorCategory::Unresponsive.as_str(), "unresponsive");
     }
 }

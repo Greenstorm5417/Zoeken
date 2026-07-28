@@ -3,7 +3,7 @@ import { useEffect, useId, useMemo, useState } from "react";
 import { AnswerShell } from "#/components/answers/AnswerShell";
 import { SelectMenu } from "#/components/SelectMenu";
 import type { InteractiveAnswer, SearchAnswer } from "#/lib/api";
-import { search } from "#/lib/searchApi";
+import { search } from "#/lib/api";
 
 /** Common ECB / major codes — merged with whatever came from the answer. */
 const COMMON_CODES = [

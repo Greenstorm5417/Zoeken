@@ -5,8 +5,8 @@
 
 use scraper::{Html, Selector};
 use zoeken_engine_core::{
-    About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod,
-    LocaleTranslate, Processor, RequestParams, SearchQueryView, TimeRange, normalize_whitespace,
+    About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod, Processor,
+    RequestParams, SearchQueryView, TimeRange, normalize_whitespace,
 };
 use zoeken_results::{Image, Result_};
 

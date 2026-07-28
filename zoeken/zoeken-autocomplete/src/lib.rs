@@ -190,15 +190,12 @@ impl AutocompleteService {
 }
 
 fn autocomplete_key(secret: &[u8], backend: &str, query: &str, locale: &str) -> String {
-    use hmac::{KeyInit, Mac};
-
-    let mut mac = <hmac::Hmac<sha2::Sha256> as KeyInit>::new_from_slice(secret)
-        .expect("HMAC accepts keys of any size");
+    let mut value = Vec::new();
     for component in [backend, locale, query] {
-        mac.update(component.as_bytes());
-        mac.update(&[0]);
+        value.extend_from_slice(component.as_bytes());
+        value.push(0);
     }
-    hex::encode(mac.finalize().into_bytes())
+    zoeken_favicons::new_hmac(secret, &value)
 }
 
 impl Default for AutocompleteService {

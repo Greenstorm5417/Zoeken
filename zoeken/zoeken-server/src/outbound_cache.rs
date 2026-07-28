@@ -63,28 +63,25 @@ pub(crate) fn cache_key(
     request: &NetworkRequest,
     query: &SearchQueryView,
 ) -> String {
-    use hmac::{KeyInit, Mac};
-
-    let mut mac = <hmac::Hmac<sha2::Sha256> as KeyInit>::new_from_slice(secret)
-        .expect("HMAC accepts keys of any size");
+    let mut value = Vec::new();
     for component in [
         engine.as_bytes(),
         request.method.as_str().as_bytes(),
         request.url.as_bytes(),
     ] {
-        mac.update(component);
-        mac.update(&[0]);
+        value.extend_from_slice(component);
+        value.push(0);
     }
-    mac.update(request.body.as_deref().unwrap_or_default());
-    mac.update(&[0]);
-    mac.update(query.query.as_bytes());
-    mac.update(&[0]);
-    mac.update(query.locale.as_bytes());
-    mac.update(&[0]);
-    mac.update(&query.pageno.to_be_bytes());
-    mac.update(format!("{:?}", query.safesearch).as_bytes());
-    mac.update(format!("{:?}", query.time_range).as_bytes());
-    hex::encode(mac.finalize().into_bytes())
+    value.extend_from_slice(request.body.as_deref().unwrap_or_default());
+    value.push(0);
+    value.extend_from_slice(query.query.as_bytes());
+    value.push(0);
+    value.extend_from_slice(query.locale.as_bytes());
+    value.push(0);
+    value.extend_from_slice(&query.pageno.to_be_bytes());
+    value.extend_from_slice(format!("{:?}", query.safesearch).as_bytes());
+    value.extend_from_slice(format!("{:?}", query.time_range).as_bytes());
+    zoeken_favicons::new_hmac(secret, &value)
 }
 
 fn response_header<'a>(response: &'a EngineResponse, name: &str) -> Option<&'a str> {

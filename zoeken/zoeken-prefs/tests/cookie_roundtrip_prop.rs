@@ -31,7 +31,6 @@ fn preferences_strategy() -> impl Strategy<Value = Preferences> {
     (
         any::<String>(),
         any::<String>(),
-        any::<String>(),
         prop::collection::vec(any::<String>(), 0..8),
         prop::collection::vec(any::<String>(), 0..8),
         safesearch_strategy(),
@@ -42,7 +41,6 @@ fn preferences_strategy() -> impl Strategy<Value = Preferences> {
     )
         .prop_map(
             |(
-                theme,
                 locale,
                 language,
                 categories,
@@ -54,7 +52,6 @@ fn preferences_strategy() -> impl Strategy<Value = Preferences> {
                 plugins,
             )| {
                 Preferences {
-                    theme,
                     locale,
                     language,
                     categories,

@@ -9,7 +9,7 @@ use axum::response::{IntoResponse, Response};
 use base64::Engine as _;
 use serde::{Deserialize, Serialize};
 
-use zoeken_metrics::{
+use zoeken_search::{
     CATEGORY_LABEL, ENGINE_ERRORS_TOTAL, ENGINE_LABEL, ENGINE_RESPONSE_TIME_HTTP,
     ENGINE_RESPONSE_TIME_TOTAL,
 };

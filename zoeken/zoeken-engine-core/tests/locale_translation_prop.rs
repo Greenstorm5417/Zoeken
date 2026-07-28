@@ -7,7 +7,6 @@ use std::collections::{HashMap, HashSet};
 
 use proptest::prelude::*;
 use zoeken_data::EngineTraits;
-use zoeken_engine_core::LocaleTranslate;
 
 const LANGS: &[&str] = &["en", "fr", "de", "zh", "es", "pt", "xx"];
 const TERRS: &[&str] = &["US", "GB", "FR", "BE", "CA", "HK", "YY"];

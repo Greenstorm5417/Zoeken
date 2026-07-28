@@ -7,39 +7,6 @@ use std::time::Duration;
 use zoeken_engine_core::{Engine, EngineError, SuspendConfig};
 use zoeken_query::SearchQuery;
 
-/// Check if an engine is enabled in user preferences.
-pub trait EnginePreferences {
-    fn is_engine_enabled(&self, engine: &str) -> bool;
-}
-
-#[derive(Debug, Clone, Copy, Default)]
-pub struct AllEnginesEnabled;
-
-impl EnginePreferences for AllEnginesEnabled {
-    fn is_engine_enabled(&self, _engine: &str) -> bool {
-        true
-    }
-}
-
-#[derive(Debug, Clone, Default)]
-pub struct EnabledEngineSet {
-    pub enabled: HashSet<String>,
-}
-
-impl EnabledEngineSet {
-    pub fn new(names: impl IntoIterator<Item = impl Into<String>>) -> Self {
-        EnabledEngineSet {
-            enabled: names.into_iter().map(Into::into).collect(),
-        }
-    }
-}
-
-impl EnginePreferences for EnabledEngineSet {
-    fn is_engine_enabled(&self, engine: &str) -> bool {
-        self.enabled.contains(engine)
-    }
-}
-
 #[derive(Clone)]
 pub struct RegisteredEngine {
     pub engine: Arc<dyn Engine>,
@@ -142,15 +109,17 @@ impl EngineRegistry {
         self.engines.iter_mut().find(|e| e.name() == name)
     }
 
-    pub fn select<P: EnginePreferences + ?Sized>(
+    /// `enabled_engines`: `None` means all engines are enabled; `Some(set)`
+    /// restricts selection to engines named in the set.
+    pub fn select(
         &self,
         query: &SearchQuery,
-        prefs: &P,
+        enabled_engines: Option<&HashSet<String>>,
         available_tokens: &HashSet<String>,
     ) -> Vec<SelectedEngine> {
         self.engines
             .iter()
-            .filter(|re| self.is_eligible(re, query, prefs, available_tokens))
+            .filter(|re| self.is_eligible(re, query, enabled_engines, available_tokens))
             .map(|re| SelectedEngine {
                 name: re.name().to_string(),
                 engine: re.engine.clone(),
@@ -159,11 +128,11 @@ impl EngineRegistry {
             .collect()
     }
 
-    fn is_eligible<P: EnginePreferences + ?Sized>(
+    fn is_eligible(
         &self,
         re: &RegisteredEngine,
         query: &SearchQuery,
-        prefs: &P,
+        enabled_engines: Option<&HashSet<String>>,
         available_tokens: &HashSet<String>,
     ) -> bool {
         let meta = re.engine.metadata();
@@ -196,7 +165,7 @@ impl EngineRegistry {
             .unwrap_or(meta.categories.as_slice());
         category_match(categories, &query.categories)
             && bang_match(&meta.name, &meta.shortcut, &re.shortcuts, &query.engines)
-            && prefs.is_engine_enabled(&meta.name)
+            && enabled_engines.is_none_or(|enabled| enabled.contains(&meta.name))
     }
 }
 
@@ -353,7 +322,7 @@ mod tests {
     fn selects_by_category() {
         let reg = registry();
         let q = query_with(&["general"], &[]);
-        let selected = reg.select(&q, &AllEnginesEnabled, &HashSet::new());
+        let selected = reg.select(&q, None, &HashSet::new());
         assert_eq!(names(&selected), vec!["alpha", "gamma"]);
     }
 
@@ -361,7 +330,7 @@ mod tests {
     fn bang_intersects_with_category() {
         let reg = registry();
         let q = query_with(&["general"], &["alpha", "beta"]);
-        let selected = reg.select(&q, &AllEnginesEnabled, &HashSet::new());
+        let selected = reg.select(&q, None, &HashSet::new());
         assert_eq!(names(&selected), vec!["alpha"]);
     }
 
@@ -369,7 +338,7 @@ mod tests {
     fn empty_categories_impose_no_restriction() {
         let reg = registry();
         let q = query_with(&[], &["beta"]);
-        let selected = reg.select(&q, &AllEnginesEnabled, &HashSet::new());
+        let selected = reg.select(&q, None, &HashSet::new());
         assert_eq!(names(&selected), vec!["beta"]);
     }
 
@@ -377,8 +346,8 @@ mod tests {
     fn preferences_filter_out_disabled_engines() {
         let reg = registry();
         let q = query_with(&["general"], &[]);
-        let prefs = EnabledEngineSet::new(["alpha"]);
-        let selected = reg.select(&q, &prefs, &HashSet::new());
+        let enabled = HashSet::from(["alpha".to_string()]);
+        let selected = reg.select(&q, Some(&enabled), &HashSet::new());
         assert_eq!(names(&selected), vec!["alpha"]);
     }
 
@@ -389,7 +358,7 @@ mod tests {
             RegisteredEngine::new(StubEngine::arc("gamma", &["general"])),
         ]);
         let q = query_with(&["general"], &[]);
-        let selected = reg.select(&q, &AllEnginesEnabled, &HashSet::new());
+        let selected = reg.select(&q, None, &HashSet::new());
         assert_eq!(names(&selected), vec!["gamma"]);
     }
 
@@ -401,11 +370,11 @@ mod tests {
         ]);
         let q = query_with(&["general"], &[]);
 
-        let selected = reg.select(&q, &AllEnginesEnabled, &HashSet::new());
+        let selected = reg.select(&q, None, &HashSet::new());
         assert_eq!(names(&selected), vec!["gamma"]);
 
         let tokens = HashSet::from(["secret".to_string()]);
-        let selected = reg.select(&q, &AllEnginesEnabled, &tokens);
+        let selected = reg.select(&q, None, &tokens);
         assert_eq!(names(&selected), vec!["alpha", "gamma"]);
     }
 

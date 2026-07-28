@@ -59,9 +59,7 @@ mod tests {
     use axum::body::Body;
     use axum::http::Request;
     use tower::ServiceExt;
-    use zoeken_favicons::{
-        Favicon, FaviconCache, FaviconService, InMemoryFaviconCache, StaticResolver, new_hmac,
-    };
+    use zoeken_favicons::{Favicon, FaviconService, StaticResolver, new_hmac};
     use zoeken_settings::Settings;
 
     fn signed_uri(authority: &str, secret: &str) -> String {
@@ -91,13 +89,11 @@ mod tests {
         let secret = "secret";
         let mut settings = Settings::default();
         settings.server.secret_key = secret.into();
-        let cache = InMemoryFaviconCache::new();
         let fav = Favicon::new(vec![1, 2, 3], "image/png");
-        cache.set("stub", "example.com", Some(&fav)).await;
-        let favicons = Arc::new(FaviconService::new(
-            Arc::new(StaticResolver::failing("stub", "unused")),
-            cache,
-        ));
+        let favicons = Arc::new(FaviconService::memory(Arc::new(StaticResolver::failing(
+            "stub", "unused",
+        ))));
+        favicons.seed("example.com", Some(&fav));
         let app = app(AppState::new()
             .unwrap()
             .with_settings(settings)
@@ -137,10 +133,9 @@ mod tests {
         let secret = "secret";
         let mut settings = Settings::default();
         settings.server.secret_key = secret.into();
-        let favicons = Arc::new(FaviconService::new(
-            Arc::new(StaticResolver::empty("stub")),
-            InMemoryFaviconCache::new(),
-        ));
+        let favicons = Arc::new(FaviconService::memory(Arc::new(StaticResolver::empty(
+            "stub",
+        ))));
         let app = app(AppState::new()
             .unwrap()
             .with_settings(settings)

@@ -7,8 +7,8 @@ use std::time::Duration;
 
 use zoeken_network::NetworkManager;
 
-use crate::cache::Favicon;
 use crate::safe_outbound::SafeOutboundTransport;
+use crate::service::Favicon;
 
 #[derive(Debug, thiserror::Error)]
 pub enum ResolveError {
