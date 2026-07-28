@@ -65,20 +65,34 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 max_connections: 4,
             },
         },
-        "postgres" => StorageConfig {
-            backend: BackendConfig::Postgres {
-                url: settings
-                    .storage
-                    .postgres
-                    .url
-                    .clone()
-                    .expect("validated PostgreSQL URL"),
-                max_connections: settings.storage.postgres.max_connections,
-                acquire_timeout: std::time::Duration::from_secs(
-                    settings.storage.postgres.acquire_timeout_seconds,
-                ),
-            },
-        },
+        "postgres" => {
+            #[cfg(feature = "postgres")]
+            {
+                StorageConfig {
+                    backend: BackendConfig::Postgres {
+                        url: settings
+                            .storage
+                            .postgres
+                            .url
+                            .clone()
+                            .expect("validated PostgreSQL URL"),
+                        max_connections: settings.storage.postgres.max_connections,
+                        acquire_timeout: std::time::Duration::from_secs(
+                            settings.storage.postgres.acquire_timeout_seconds,
+                        ),
+                    },
+                }
+            }
+            #[cfg(not(feature = "postgres"))]
+            {
+                return Err(
+                    "this zoeken-server binary was built without the `postgres` feature; \
+                     rebuild with default features (or `--features postgres`) or set \
+                     storage.backend=sqlite"
+                        .into(),
+                );
+            }
+        }
         _ => unreachable!("storage backend was validated while loading settings"),
     };
     let storage = zoeken_storage::connect(&storage_config).await?;

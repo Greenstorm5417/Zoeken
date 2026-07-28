@@ -18,6 +18,13 @@
 .env
 .env.local
 
+# Frontend perf artifacts
+/zoeken-client/lighthouse-report.html
+/zoeken-client/sitespeed-result/
+/target/perf/
+flamegraph.svg
+perf.data*
+
 # Local runtime SQLite DB (verify / APP_DATA_DIR default cwd)
 zoeken.sqlite3
 zoeken.sqlite3-*

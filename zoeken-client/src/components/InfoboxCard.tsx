@@ -19,6 +19,8 @@ export function InfoboxCard({ box }: { box: Infobox }) {
 					src={box.img_src}
 					alt=""
 					className="max-h-44 w-full object-cover"
+					decoding="async"
+					loading="lazy"
 				/>
 			) : null}
 			<div className="p-4">
@@ -62,6 +64,8 @@ export function InfoboxCard({ box }: { box: Infobox }) {
 											src={attr.image.src}
 											alt={attr.image.alt || attr.label}
 											className="max-h-24 rounded-lg object-contain"
+											decoding="async"
+											loading="lazy"
 										/>
 									</dd>
 								) : null}

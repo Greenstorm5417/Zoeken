@@ -328,12 +328,12 @@ fn score_of(
 /// Score ↓, then engine consensus ↓, best position ↑, URL ↑.
 /// Equal scores are common when redirect wrappers block merge; without
 /// tie-breakers, ingest order (engine finish order) decides the top hit.
-fn sort_results(results: &mut [Result_]) {
+pub fn sort_results(results: &mut [Result_]) {
     results.sort_by(|a, b| {
         score_of_field(b)
             .partial_cmp(&score_of_field(a))
             .unwrap_or(std::cmp::Ordering::Equal)
-            .then_with(|| engines_of(b).len().cmp(&engines_of(a).len()))
+            .then_with(|| engine_count(b).cmp(&engine_count(a)))
             .then_with(|| min_position(a).cmp(&min_position(b)))
             .then_with(|| url_of(a).cmp(url_of(b)))
     });
@@ -347,24 +347,16 @@ fn min_position(result: &Result_) -> usize {
         .unwrap_or(usize::MAX)
 }
 
-fn engines_of(result: &Result_) -> Vec<String> {
+fn engine_count(result: &Result_) -> usize {
     match result {
-        Result_::Main(r) if !r.engines.is_empty() => r.engines.clone(),
-        Result_::Main(r) => non_empty_engine(&r.engine),
-        Result_::Image(r) => non_empty_engine(&r.engine),
-        Result_::Paper(r) => non_empty_engine(&r.engine),
-        Result_::Code(r) => non_empty_engine(&r.engine),
-        Result_::File(r) => non_empty_engine(&r.engine),
-        Result_::KeyValue(r) => non_empty_engine(&r.engine),
-        _ => Vec::new(),
-    }
-}
-
-fn non_empty_engine(engine: &str) -> Vec<String> {
-    if engine.is_empty() {
-        Vec::new()
-    } else {
-        vec![engine.to_string()]
+        Result_::Main(r) if !r.engines.is_empty() => r.engines.len(),
+        Result_::Main(r) => usize::from(!r.engine.is_empty()),
+        Result_::Image(r) => usize::from(!r.engine.is_empty()),
+        Result_::Paper(r) => usize::from(!r.engine.is_empty()),
+        Result_::Code(r) => usize::from(!r.engine.is_empty()),
+        Result_::File(r) => usize::from(!r.engine.is_empty()),
+        Result_::KeyValue(r) => usize::from(!r.engine.is_empty()),
+        _ => 0,
     }
 }
 

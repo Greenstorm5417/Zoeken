@@ -464,6 +464,7 @@ export function ResultItem({
 					src={thumb}
 					alt=""
 					className="mt-2 max-h-28 rounded-lg object-cover"
+					decoding="async"
 					loading="lazy"
 				/>
 			) : null}

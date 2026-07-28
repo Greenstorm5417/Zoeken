@@ -4,6 +4,7 @@
 //! client identifiers, cookies, and other per-request data cannot be stored
 //! through this interface.
 
+#[cfg(feature = "postgres")]
 mod postgres;
 mod shared;
 mod sqlite;
@@ -14,6 +15,7 @@ use std::time::Duration;
 
 use async_trait::async_trait;
 
+#[cfg(feature = "postgres")]
 pub use postgres::PostgresStorage;
 pub use sqlite::SqliteStorage;
 
@@ -53,6 +55,7 @@ pub enum BackendConfig {
         busy_timeout: Duration,
         max_connections: usize,
     },
+    #[cfg(feature = "postgres")]
     Postgres {
         url: String,
         max_connections: usize,
@@ -73,6 +76,7 @@ impl std::fmt::Debug for BackendConfig {
                 .field("busy_timeout", busy_timeout)
                 .field("max_connections", max_connections)
                 .finish(),
+            #[cfg(feature = "postgres")]
             Self::Postgres {
                 max_connections,
                 acquire_timeout,
@@ -208,6 +212,7 @@ pub async fn connect(config: &StorageConfig) -> Result<Arc<dyn Storage>, Storage
         } => Ok(Arc::new(
             SqliteStorage::connect(path, *busy_timeout, *max_connections).await?,
         )),
+        #[cfg(feature = "postgres")]
         BackendConfig::Postgres {
             url,
             max_connections,
@@ -241,6 +246,7 @@ pub(crate) fn new_lease_id() -> String {
 mod tests {
     use super::*;
 
+    #[cfg(feature = "postgres")]
     #[test]
     fn postgres_url_is_redacted_from_debug_output() {
         let config = BackendConfig::Postgres {

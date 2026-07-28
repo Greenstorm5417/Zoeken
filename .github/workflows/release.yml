@@ -16,25 +16,57 @@ env:
   REGISTRY: ghcr.io
 
 jobs:
+  # Gate tags before the heavy verify job. Sync must pass on the tagged tree
+  # (do not rely only on the separate Sync versions workflow on main pushes).
+  sync-versions:
+    name: Sync versions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Sync version metadata (must already be committed)
+        run: |
+          set -euo pipefail
+          ./tools/sync_versions.sh
+          if ! git diff --quiet -- \
+            Cargo.toml \
+            zoeken-client/package.json \
+            Cargo.lock \
+            Dockerfile \
+            Dockerfile.runtime \
+            docker-compose.yml
+          then
+            echo "::error::Version metadata out of sync on this tag. Run ./tools/sync_versions.sh, commit, retag."
+            git diff -- \
+              Cargo.toml \
+              zoeken-client/package.json \
+              Cargo.lock \
+              Dockerfile \
+              Dockerfile.runtime \
+              docker-compose.yml
+            exit 1
+          fi
+          echo "ok: version metadata synced"
+
   verify:
     name: Verify version + backend
     runs-on: ubuntu-latest
+    needs: [sync-versions]
     outputs:
       version: ${{ steps.version.outputs.version }}
       image_name: ${{ steps.version.outputs.image_name }}
-    container:
-      image: rust:1-bookworm
-    defaults:
-      run:
-        shell: bash
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Install native build dependencies
         run: |
-          apt-get update
-          apt-get install -y --no-install-recommends cmake clang curl libclang-dev
-          rm -rf /var/lib/apt/lists/*
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends cmake clang libclang-dev pkg-config
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@4cda84d5c5c54efe2404f9d843567869ab1699d4 # stable
+        with:
+          components: clippy, rustfmt
 
       - name: Resolve and gate version
         id: version
@@ -77,9 +109,6 @@ jobs:
           echo "image_name=${IMAGE_NAME}" >> "$GITHUB_OUTPUT"
           echo "Publishing Zoeken ${VERSION} → ghcr.io/${IMAGE_NAME}"
 
-      - name: Ensure clippy and rustfmt
-        run: rustup component add clippy rustfmt
-
       - name: Cache Rust build
         uses: Swatinem/rust-cache@c19371144df3bb44fab255c43d04cbc2ab54d1c4 # v2.9.1
         with:
@@ -89,9 +118,7 @@ jobs:
       - name: Format check
         run: cargo fmt --all --check
 
-      - name: Build workspace
-        run: cargo build --workspace --locked
-
+      # Clippy + test compile the workspace; skip a separate cargo build.
       - name: Clippy
         run: cargo clippy --workspace --all-targets --locked -- -D warnings
 
@@ -179,6 +206,8 @@ jobs:
           shared-key: release-bin-${{ matrix.rust_target }}
           cache-all-crates: true
 
+      # Default features: SQLite + Postgres (zoeken-server default = ["postgres"]).
+      # Do not pass --no-default-features on release binaries.
       - name: Build zoeken-server (${{ matrix.rust_target }})
         run: cargo build --release --locked --bin zoeken-server --target ${{ matrix.rust_target }}
 
@@ -300,12 +329,61 @@ jobs:
           tar -C dist -czf "dist/zoeken_${VERSION}_${NIX_SYSTEM}.tar.gz" "${ARCHIVE_ROOT}"
           rm -rf "dist/${ARCHIVE_ROOT}"
           tar -tzf "dist/zoeken_${VERSION}_${NIX_SYSTEM}.tar.gz" >/dev/null
+          # SRI hash for packaging/nix/generated.nix consumers (uploaded as release asset).
+          nix hash file "dist/zoeken_${VERSION}_${NIX_SYSTEM}.tar.gz" \
+            >"dist/zoeken_${VERSION}_${NIX_SYSTEM}.tar.gz.sri"
 
       - name: Upload Nix package
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: nix-${{ matrix.deb_arch }}
           path: dist/*
+          retention-days: 30
+          if-no-files-found: error
+
+  nix-generated:
+    name: Assemble packaging/nix/generated.nix
+    runs-on: ubuntu-latest
+    needs: [verify, nix]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Download Nix packages
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          pattern: nix-*
+          path: dist
+          merge-multiple: true
+
+      - name: Write generated.nix from SRI sidecars
+        env:
+          VERSION: ${{ needs.verify.outputs.version }}
+        run: |
+          set -euo pipefail
+          x86="$(cat "dist/zoeken_${VERSION}_x86_64-linux.tar.gz.sri")"
+          arm="$(cat "dist/zoeken_${VERSION}_aarch64-linux.tar.gz.sri")"
+          {
+            echo "# Auto-updated from GitHub release assets (see tools/update_nix_generated.sh)."
+            echo "{"
+            echo "  version = \"${VERSION}\";"
+            echo "  sources = {"
+            echo "    \"x86_64-linux\" = {"
+            echo "      url = \"https://github.com/${{ github.repository }}/releases/download/v${VERSION}/zoeken_${VERSION}_x86_64-linux.tar.gz\";"
+            echo "      hash = \"${x86}\";"
+            echo "    };"
+            echo "    \"aarch64-linux\" = {"
+            echo "      url = \"https://github.com/${{ github.repository }}/releases/download/v${VERSION}/zoeken_${VERSION}_aarch64-linux.tar.gz\";"
+            echo "      hash = \"${arm}\";"
+            echo "    };"
+            echo "  };"
+            echo "}"
+          } | tee "dist/zoeken_${VERSION}_generated.nix"
+
+      - name: Upload generated.nix
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: nix-generated
+          path: dist/zoeken_*_generated.nix
           retention-days: 30
           if-no-files-found: error
 
@@ -442,7 +520,7 @@ jobs:
   github-release:
     name: GitHub Release
     runs-on: ubuntu-latest
-    needs: [verify, deb, nix, docker-manifest]
+    needs: [verify, deb, nix, nix-generated, docker-manifest]
     permissions:
       contents: write
     steps:
@@ -467,6 +545,12 @@ jobs:
           path: dist
           merge-multiple: true
 
+      - name: Download generated.nix
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: nix-generated
+          path: dist
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3
         with:
@@ -476,6 +560,7 @@ jobs:
           files: |
             dist/*.deb
             dist/*.tar.gz
+            dist/*_generated.nix
           body: |
             Release notes: [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/v${{ needs.verify.outputs.version }}/CHANGELOG.md)
 
@@ -492,14 +577,52 @@ jobs:
 
             Assets live under `/usr/share/zoeken/assets`. Unit: `zoeken.service`.
 
-            ### Nix (`x86_64-linux` / `aarch64-linux`)
+            ### Nix / NixOS (`x86_64-linux` / `aarch64-linux`)
+
+            Prebuilt release archive (no local Rust/SPA build). Imperative:
 
             ```sh
+            nix run github:${{ github.repository }}
+            nix profile install github:${{ github.repository }}
+            # rolling mirror:
             nix run github:Greenstorm5417/nixos-pkgs#zoeken
             ```
 
-            The rolling package automatically selects the current release for the host
-            system. A flake-based NixOS/Home Manager configuration is optional.
+            **NixOS** — add the package to the system (SQLite + Postgres support is built in):
+
+            ```nix
+            # flake-based NixOS config
+            {
+              inputs.zoeken.url = "github:${{ github.repository }}/v${{ needs.verify.outputs.version }}";
+              # or rolling: inputs.nixos-pkgs.url = "github:Greenstorm5417/nixos-pkgs";
+
+              outputs = { nixpkgs, zoeken, ... }: {
+                nixosConfigurations.myhost = nixpkgs.lib.nixosSystem {
+                  system = "x86_64-linux"; # or aarch64-linux
+                  modules = [{
+                    environment.systemPackages = [
+                      zoeken.packages.x86_64-linux.zoeken
+                    ];
+                    # Optional: simple systemd unit
+                    systemd.services.zoeken = {
+                      description = "Zoeken metasearch";
+                      after = [ "network-online.target" ];
+                      wantedBy = [ "multi-user.target" ];
+                      serviceConfig = {
+                        ExecStart = "${zoeken.packages.x86_64-linux.zoeken}/bin/zoeken-server";
+                        Restart = "on-failure";
+                        # Set APP_SECRET_KEY / APP_BIND_ADDRESS via Environment= or EnvironmentFile=
+                      };
+                    };
+                  }];
+                };
+              };
+            }
+            ```
+
+            After each release, copy `zoeken_${{ needs.verify.outputs.version }}_generated.nix`
+            into `packaging/nix/generated.nix` (or run `./tools/update_nix_generated.sh`)
+            so the Zoeken flake tracks this version.
 
             ### Docker (GHCR)
 

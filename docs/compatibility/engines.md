@@ -1,6 +1,6 @@
 # Engine Compatibility Matrix
 
-Upstream engines: 289. Rust engines: 58. Ported: 249. Generic candidates: 0. Missing: 0. Intentionally skipped: 40.
+Upstream engines: 289. Rust engines: 59. Ported: 249. Generic candidates: 0. Missing: 0. Intentionally skipped: 40.
 
 | Upstream module | Status | Rust module | Categories | Processor | Paging | Safe | Time | Lang | API key | Network | Fixtures | Known gaps |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -29,7 +29,7 @@ Upstream engines: 289. Rust engines: 58. Ported: 249. Generic candidates: 0. Mis
 | base | ported | generic | science | online | yes | no | no | no | no | no | present |  |
 | bilibili | ported | generic | videos | online | yes | no | yes | no | no | no | present |  |
 | bing | ported | bing | general, web | online | no | yes | no | no | no | no | present | verify engine-traits parity |
-| bing_images | ported | bing_images | images, web | online | yes | yes | yes | no | no | no | present |  |
+| bing_images | ported | generic | images, web | online | yes | yes | yes | no | no | no | present | verify engine-traits parity |
 | bing_news | ported | generic | news | online | yes | no | yes | no | no | no | present | verify engine-traits parity |
 | bing_videos | ported | generic | videos, web | online | yes | yes | yes | no | no | no | present | verify engine-traits parity |
 | bitchute | ported | generic | videos | online | yes | no | no | no | no | no | present |  |
@@ -50,7 +50,7 @@ Upstream engines: 289. Rust engines: 58. Ported: 249. Generic candidates: 0. Mis
 | core | ported | core | science, scientific publications | online | yes | no | no | no | no | no | present |  |
 | crates | ported | crates | it, packages, cargo | online | yes | no | no | no | no | no | present |  |
 | crossref | ported | crossref | science, scientific publications | online | yes | no | no | no | no | no | present |  |
-| currency_convert | intentionally-skipped |  | currency, general | online_currency | no | no | no | no | no | no | not-applicable | online_currency processor specialization deferred |
+| currency_convert | intentionally-skipped |  | currency, general | online_currency | no | no | no | no | no | no | not-applicable | online_currency processor specialization removed; use Zoeken currency engine |
 | dailymotion | ported | dailymotion | videos | online | yes | yes | yes | yes | no | no | present | verify engine-traits parity |
 | deepl | ported | generic | general, translate | online_dictionary | no | no | no | no | no | no | present |  |
 | deezer | intentionally-skipped |  | music | online | yes | no | no | no | no | no | not-applicable | requires Deezer API credentials / bespoke media flow |
@@ -301,3 +301,7 @@ Upstream engines: 289. Rust engines: 58. Ported: 249. Generic candidates: 0. Mis
 - `translate` — Zoeken-only translation instant answer (MyMemory); no distinct SearXNG engine module
 - `weather` — Zoeken-only weather instant answer (wttr.in), gated to weather-shaped queries; no distinct SearXNG engine module
 - `wikibooks` — Zoeken-only MediaWiki books engine; no distinct SearXNG module
+
+## Rust Engines Not Matched To Upstream
+
+- `bing_images`

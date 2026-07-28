@@ -42,6 +42,7 @@ export function VideoCard({
 								src={thumb}
 								alt=""
 								className="size-full object-cover transition-transform duration-150 group-hover:scale-[1.01]"
+								decoding="async"
 								loading="lazy"
 							/>
 						) : (

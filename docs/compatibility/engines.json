@@ -532,7 +532,7 @@
       "network_required": false,
       "paging": true,
       "processor_type": "online",
-      "rust_module": "bing_images",
+      "rust_module": "generic",
       "safe_search": true,
       "status": "ported",
       "time_range": true,
@@ -959,7 +959,7 @@
       "engine_traits": false,
       "fixture_status": "not-applicable",
       "known_gaps": [
-        "online_currency processor specialization deferred"
+        "online_currency processor specialization removed; use Zoeken currency engine"
       ],
       "language_support": false,
       "network_required": false,
@@ -5882,14 +5882,16 @@
       "upstream_path": "searx/settings.yml"
     }
   ],
-  "orphaned_rust_engines": [],
+  "orphaned_rust_engines": [
+    "bing_images"
+  ],
   "summary": {
     "generic_candidates": 0,
     "intentionally_skipped": 40,
     "missing": 0,
-    "orphaned_rust_engines": 0,
+    "orphaned_rust_engines": 1,
     "ported": 249,
-    "rust_engines": 58,
+    "rust_engines": 59,
     "upstream_engines": 289,
     "zoeken_only_engines": 5
   },

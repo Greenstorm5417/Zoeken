@@ -17,29 +17,25 @@ jobs:
   backend:
     name: Backend (build, test, clippy, fmt)
     runs-on: ubuntu-latest
-    container:
-      image: rust:1-bookworm
-    defaults:
-      run:
-        shell: bash
     steps:
       - name: Check out sources
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Install native build dependencies (cmake, clang)
         run: |
-          apt-get update
-          apt-get install -y --no-install-recommends cmake clang curl libclang-dev
-          rm -rf /var/lib/apt/lists/*
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends cmake clang libclang-dev pkg-config
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@4cda84d5c5c54efe2404f9d843567869ab1699d4 # stable
+        with:
+          components: clippy, rustfmt
 
       - name: Install uv
         uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
         with:
           version: "0.11.8"
           enable-cache: false
-
-      - name: Ensure clippy and rustfmt are installed
-        run: rustup component add clippy rustfmt
 
       - name: Cache Rust build
         uses: Swatinem/rust-cache@c19371144df3bb44fab255c43d04cbc2ab54d1c4 # v2.9.1
@@ -56,9 +52,6 @@ jobs:
       - name: SearXNG compare fixtures
         run: uv run --no-project --python 3.13 tools/compare_searxng.py fixtures
 
-      - name: Build workspace
-        run: cargo build --workspace --locked
-
       - name: Install cargo-audit
         uses: taiki-e/install-action@41049aa56687c35e0afa74eed4f09cec4f9afabf # v2.85.2
         with:
@@ -67,6 +60,7 @@ jobs:
       - name: Audit Rust dependencies
         run: cargo audit
 
+      # Clippy + test compile the workspace; skip a separate cargo build.
       - name: Clippy (deny warnings)
         run: cargo clippy --workspace --all-targets --locked -- -D warnings
 
@@ -79,15 +73,11 @@ jobs:
           tmp="$(mktemp)"
           trap 'rm -f "$tmp"' EXIT
           cargo run --locked -p zoeken-server --bin export-native-ts -- "$tmp"
-          # Prefer plain diff over `git diff`: container jobs often lack a usable
-          # safe.directory for the mounted workspace, so git treats it as non-repo.
           diff -u zoeken-client/src/lib/generated/native.ts "$tmp"
 
   postgres-storage:
     name: PostgreSQL storage contract
     runs-on: ubuntu-latest
-    container:
-      image: rust:1-bookworm
     services:
       postgres:
         image: postgres:17-alpine
@@ -95,16 +85,21 @@ jobs:
           POSTGRES_DB: zoeken_test
           POSTGRES_USER: zoeken
           POSTGRES_PASSWORD: zoeken_test
+        ports:
+          - 5432:5432
         options: >-
           --health-cmd "pg_isready --username=zoeken --dbname=zoeken_test"
           --health-interval 5s
           --health-timeout 5s
           --health-retries 12
     env:
-      TEST_POSTGRES_URL: postgres://zoeken:zoeken_test@postgres:5432/zoeken_test
+      TEST_POSTGRES_URL: postgres://zoeken:zoeken_test@127.0.0.1:5432/zoeken_test
     steps:
       - name: Check out sources
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@4cda84d5c5c54efe2404f9d843567869ab1699d4 # stable
 
       - name: Cache Rust build
         uses: Swatinem/rust-cache@c19371144df3bb44fab255c43d04cbc2ab54d1c4 # v2.9.1

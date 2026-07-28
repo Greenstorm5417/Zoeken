@@ -62,6 +62,10 @@ md5 = { workspace = true }
 ts-rs = { workspace = true }
 rmp-serde = { workspace = true }
 
+[features]
+default = ["postgres"]
+postgres = ["zoeken-storage/postgres"]
+
 [dev-dependencies]
 tokio = { workspace = true }
 proptest = { workspace = true }

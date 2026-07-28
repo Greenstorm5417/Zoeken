@@ -9,7 +9,8 @@
 #   - docker-compose.yml `${VERSION:-…}` build-arg default
 #
 # Debian/Nix packaging already substitute version at build time.
-# Pure bash + awk/sed — no Python (works on NixOS without stub-ld CPython).
+# Pure bash + portable awk/sed — no Python, no gawk-only match(..., arr).
+# (Ubuntu Actions ships mawk as `awk`; gawk's 3-arg match is not portable.)
 #
 # Examples:
 #   ./tools/sync_versions.sh --dry-run
@@ -32,7 +33,7 @@ DRY_RUN=0
 CHECK=0
 
 usage() {
-  sed -n '2,21p' "$0" | sed 's/^# \{0,1\}//'
+  sed -n '2,22p' "$0" | sed 's/^# \{0,1\}//'
   exit "${1:-0}"
 }
 
@@ -126,15 +127,11 @@ sync_package_json() {
   if [[ "${old}" == "${version}" ]]; then
     return 0
   fi
+  # Portable: first "version" line only (GNU sed address; Ubuntu/macOS fine).
   new="$(
-    awk -v ver="${version}" '
-      !done && match($0, /^([[:space:]]*"version"[[:space:]]*:[[:space:]]*")[^"]*(".*)$/, a) {
-        print a[1] ver a[2]
-        done = 1
-        next
-      }
-      { print }
-    ' "${CLIENT_PKG}"
+    sed '0,/^[[:space:]]*"version"[[:space:]]*:/{
+      s/^\([[:space:]]*"version"[[:space:]]*:[[:space:]]*"\)[^"]*\(".*\)$/\1'"${version}"'\2/
+    }' "${CLIENT_PKG}"
   )"
   plan_write "${CLIENT_PKG}" "${old} -> ${version}" "${new}"
 }
@@ -164,8 +161,11 @@ sync_cargo_lock() {
           old = ver_line
           sub(/^version = "/, "", old)
           sub(/"$/, "", old)
-          if (match(name_line, /^name = "(zoeken-[^"]+)"/, m) && old != ver) {
-            printf "%s\t%s\n", m[1], old >> chg
+          name = name_line
+          sub(/^name = "/, "", name)
+          sub(/"$/, "", name)
+          if (old != ver) {
+            printf "%s\t%s\n", name, old >> chg
             ver_line = "version = \"" ver "\""
           }
         }
@@ -247,10 +247,9 @@ sync_compose_default() {
   fi
   new="$(
     awk -v ver="${version}" '
-      !done && match($0, /^([[:space:]]*VERSION: \$\{VERSION:-)[^}]+(\}[[:space:]]*)$/, a) {
-        print a[1] ver a[2]
+      !done && /VERSION: \$\{VERSION:-/ {
+        sub(/VERSION: \$\{VERSION:-[^}]+\}/, "VERSION: ${VERSION:-" ver "}")
         done = 1
-        next
       }
       { print }
     ' "${COMPOSE}"

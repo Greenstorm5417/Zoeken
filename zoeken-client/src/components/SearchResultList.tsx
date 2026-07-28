@@ -77,6 +77,7 @@ export function SearchResultList({
 									src={resultThumbnail(result) || resultImgSrc(result)}
 									alt={result.title || ""}
 									className="aspect-square w-full bg-surface-raised object-cover transition-transform duration-150 group-hover:scale-[1.01]"
+									decoding="async"
 									loading="lazy"
 								/>
 								<p className="mt-1.5 truncate text-xs text-ink-muted group-hover:text-accent">

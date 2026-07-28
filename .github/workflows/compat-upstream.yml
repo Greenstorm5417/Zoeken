@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   compare:
@@ -23,5 +23,16 @@ jobs:
       - name: Refresh compatibility inventory from upstream
         run: uv run --no-project --python 3.13 tools/compat_inventory.py --fetch-upstream
 
-      - name: Fail when checked-in compatibility data is stale
-        run: git diff --exit-code -- docs/compatibility
+      - name: Commit refreshed inventory if needed
+        run: |
+          set -euo pipefail
+          git config user.name "Greenstorm5417"
+          git config user.email "130579625+Greenstorm5417@users.noreply.github.com"
+          git add -- docs/compatibility
+          if git diff --staged --quiet; then
+            echo "Compatibility inventory already up to date."
+            exit 0
+          fi
+          git commit --author="Greenstorm5417 <130579625+Greenstorm5417@users.noreply.github.com>" \
+            -m "chore: refresh SearXNG compatibility inventory"
+          git push

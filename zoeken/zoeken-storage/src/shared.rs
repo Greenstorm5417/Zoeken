@@ -6,11 +6,14 @@ use sha2::{Digest, Sha256};
 use sqlx::FromRow;
 
 use crate::{
-    EngineHealthSnapshot, FaviconData, FaviconLookup, OriginLease, OriginPolicy, PermitDecision,
-    PermitResult, StorageError, new_lease_id,
+    EngineHealthSnapshot, OriginLease, OriginPolicy, PermitDecision, PermitResult, StorageError,
+    new_lease_id,
 };
+#[cfg(feature = "postgres")]
+use crate::{FaviconData, FaviconLookup};
 
 /// Rewrite SQLite-style `?` placeholders to Postgres `$1`, `$2`, …
+#[cfg(feature = "postgres")]
 pub(crate) fn pg(sql: &str) -> String {
     let mut n = 0u32;
     let mut out = String::with_capacity(sql.len() + 16);
@@ -46,6 +49,7 @@ pub(crate) struct BlobRow {
     pub mime: String,
 }
 
+#[cfg(feature = "postgres")]
 #[derive(FromRow)]
 pub(crate) struct FaviconJoinRow {
     pub is_negative: bool,
@@ -76,6 +80,7 @@ pub(crate) mod sql {
     pub const COUNT_ACTIVE_LEASES: &str = "SELECT COUNT(*) FROM origin_leases WHERE origin = ?";
     pub const SELECT_BUDGET: &str =
         "SELECT tokens, last_refill_ms, blocked_until_ms FROM origin_budgets WHERE origin = ?";
+    #[cfg(feature = "postgres")]
     pub const SELECT_BUDGET_FOR_UPDATE: &str = "SELECT tokens, last_refill_ms, blocked_until_ms FROM origin_budgets WHERE origin = ? FOR UPDATE";
     pub const UPSERT_BUDGET: &str = "INSERT INTO origin_budgets (origin, tokens, last_refill_ms, blocked_until_ms) VALUES (?, ?, ?, NULL) ON CONFLICT (origin) DO UPDATE SET tokens = excluded.tokens, last_refill_ms = excluded.last_refill_ms, blocked_until_ms = NULL";
     pub const INSERT_LEASE: &str =
@@ -85,6 +90,7 @@ pub(crate) mod sql {
         "UPDATE origin_leases SET expires_at_ms = ? WHERE lease_id = ? AND origin = ?";
     pub const SELECT_MAPPING: &str = "SELECT digest, is_negative, expires_at_ms FROM favicon_mappings WHERE resolver = ? AND authority = ?";
     pub const SELECT_BLOB: &str = "SELECT data, mime FROM favicon_blobs WHERE digest = ?";
+    #[cfg(feature = "postgres")]
     pub const SELECT_FAVICON_JOIN: &str = "SELECT mapping.is_negative, blob.data, blob.mime FROM favicon_mappings AS mapping LEFT JOIN favicon_blobs AS blob ON blob.digest = mapping.digest WHERE mapping.resolver = ? AND mapping.authority = ? AND mapping.expires_at_ms > ?";
     pub const UPSERT_MAPPING: &str = "INSERT INTO favicon_mappings (resolver, authority, digest, is_negative, expires_at_ms) VALUES (?, ?, ?, ?, ?) ON CONFLICT (resolver, authority) DO UPDATE SET digest = excluded.digest, is_negative = excluded.is_negative, expires_at_ms = excluded.expires_at_ms";
     pub const UPSERT_ENGINE_HEALTH: &str = "INSERT INTO engine_health (engine, bucket, latency_ms_sum, successes, timeouts, errors, circuit_status, cooldown_until_ms, last_error_category) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (engine, bucket) DO UPDATE SET latency_ms_sum = engine_health.latency_ms_sum + excluded.latency_ms_sum, successes = engine_health.successes + excluded.successes, timeouts = engine_health.timeouts + excluded.timeouts, errors = engine_health.errors + excluded.errors, circuit_status = excluded.circuit_status, cooldown_until_ms = excluded.cooldown_until_ms, last_error_category = excluded.last_error_category";
@@ -100,6 +106,7 @@ pub(crate) mod sql {
     pub const DELETE_BLOB: &str = "DELETE FROM favicon_blobs WHERE digest = ?";
     pub const MAX_MIGRATION_VERSION: &str =
         "SELECT COALESCE(MAX(version), 0) FROM _sqlx_migrations";
+    #[cfg(feature = "postgres")]
     pub const ADVISORY_LOCK: &str = "SELECT pg_advisory_xact_lock(hashtextextended(?, 0))";
 }
 
@@ -163,6 +170,7 @@ pub(crate) fn favicon_digest(data: &[u8]) -> String {
     hex::encode(Sha256::digest(data))
 }
 
+#[cfg(feature = "postgres")]
 pub(crate) fn lookup_from_join(row: Option<FaviconJoinRow>) -> FaviconLookup {
     match row {
         None => FaviconLookup::Absent,
@@ -206,7 +214,7 @@ pub(crate) fn health_retention_bucket(now_ms: i64) -> i64 {
     now_ms / 3_600_000 - 24 * 7
 }
 
-#[cfg(test)]
+#[cfg(all(test, feature = "postgres"))]
 mod tests {
     use super::*;
 

@@ -2,21 +2,21 @@
   "systems": [
     {
       "rust": "zoeken/zoeken-engines",
-      "rust_count": 381,
+      "rust_count": 390,
       "system": "engines",
       "upstream": "searx/engines",
       "upstream_count": 248
     },
     {
       "rust": "zoeken-client/src/lib/clientFeatures",
-      "rust_count": 15,
+      "rust_count": 27,
       "system": "plugins",
       "upstream": "searx/plugins",
       "upstream_count": 12
     },
     {
       "rust": "zoeken/zoeken-search",
-      "rust_count": 14,
+      "rust_count": 16,
       "system": "search",
       "upstream": "searx/search",
       "upstream_count": 2
@@ -30,7 +30,7 @@
     },
     {
       "rust": "zoeken/zoeken-settings",
-      "rust_count": 9,
+      "rust_count": 10,
       "system": "settings",
       "upstream": "searx/settings*.py, searx/settings.yml",
       "upstream_count": 3
@@ -58,14 +58,14 @@
     },
     {
       "rust": "zoeken/zoeken-network",
-      "rust_count": 9,
+      "rust_count": 11,
       "system": "network",
       "upstream": "searx/network",
       "upstream_count": 3
     },
     {
       "rust": "zoeken/zoeken-botdetect",
-      "rust_count": 15,
+      "rust_count": 14,
       "system": "limiter",
       "upstream": "searx/limiter.py, searx/botdetection",
       "upstream_count": 14
@@ -99,5 +99,5 @@
       "upstream_count": 0
     }
   ],
-  "upstream": "C:\\tmp\\zoeken-searxng-tree"
+  "upstream": "/tmp/nix-shell-144538-2313516411/zoeken-searxng-h6nre1uo"
 }

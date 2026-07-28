@@ -42,6 +42,7 @@ todo = "deny"
 unimplemented = "deny"
 
 [workspace.dependencies]
+criterion = { version = "0.7", features = ["html_reports"] }
 zoeken-settings = { path = "zoeken/zoeken-settings" }
 zoeken-data = { path = "zoeken/zoeken-data" }
 zoeken-network = { path = "zoeken/zoeken-network" }
@@ -55,7 +56,7 @@ zoeken-favicons = { path = "zoeken/zoeken-favicons" }
 zoeken-botdetect = { path = "zoeken/zoeken-botdetect" }
 zoeken-prefs = { path = "zoeken/zoeken-prefs" }
 zoeken-metrics = { path = "zoeken/zoeken-metrics" }
-zoeken-storage = { path = "zoeken/zoeken-storage" }
+zoeken-storage = { path = "zoeken/zoeken-storage", default-features = false }
 
 # Async runtime
 tokio = { version = "1.52.3", features = [
@@ -73,7 +74,7 @@ axum = "0.8.9"
 tower = { version = "0.5.3", features = ["util", "timeout", "limit"] }
 tower-http = { version = "0.7.0", features = [
     "trace",
-    "compression-full",
+    "compression-gzip",
     "timeout",
     "fs",
     "set-header",
@@ -98,7 +99,6 @@ async-trait = "0.1.89"
 sqlx = { version = "0.8.6", default-features = false, features = [
     "runtime-tokio-rustls",
     "sqlite",
-    "postgres",
     "migrate",
     "macros",
 ] }

@@ -171,6 +171,69 @@ Zoeken fails startup when the selected database cannot connect or migrate;
 after startup, `/readyz` becomes unhealthy and uncached outbound requests fail
 closed if storage coordination is unavailable.
 
+## Nix / NixOS
+
+Release tags ship `zoeken_<version>_<x86_64-linux|aarch64-linux>.tar.gz` plus a
+`zoeken_<version>_generated.nix` SRI hash file. The Zoeken flake wraps those
+archives (no local Rust/SPA build). Release binaries include **SQLite and
+Postgres** (default Cargo features).
+
+```sh
+nix run github:Greenstorm5417/Zoeken
+nix profile install github:Greenstorm5417/Zoeken
+# rolling auto-updater mirror:
+nix run github:Greenstorm5417/nixos-pkgs#zoeken
+```
+
+### NixOS system install
+
+Pin the Zoeken flake (or the `nixos-pkgs` overlay) and put the package on PATH:
+
+```nix
+# flake.nix (excerpt)
+{
+  inputs.zoeken.url = "github:Greenstorm5417/Zoeken"; # or .../Zoeken/vX.Y.Z
+
+  outputs = { nixpkgs, zoeken, ... }: {
+    nixosConfigurations.myhost = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux"; # or aarch64-linux
+      modules = [{
+        environment.systemPackages = [ zoeken.packages.x86_64-linux.zoeken ];
+        # Optional systemd unit — set APP_SECRET_KEY via EnvironmentFile=
+        systemd.services.zoeken = {
+          description = "Zoeken metasearch";
+          after = [ "network-online.target" ];
+          wantedBy = [ "multi-user.target" ];
+          serviceConfig.ExecStart =
+            "${zoeken.packages.x86_64-linux.zoeken}/bin/zoeken-server";
+          serviceConfig.Restart = "on-failure";
+        };
+      }];
+    };
+  };
+}
+```
+
+Rolling mirror via [nixos-pkgs](https://github.com/Greenstorm5417/nixos-pkgs):
+
+```nix
+environment.systemPackages = [ nixos-pkgs.packages.${pkgs.system}.zoeken ];
+```
+
+After publishing a release, refresh the in-repo hashes (so the next `main` /
+tag consumers get the new version):
+
+```sh
+./tools/update_nix_generated.sh
+```
+
+Low-power / single-node **from-source** builds can omit PostgreSQL (release
+artifacts keep both backends):
+
+```sh
+cargo build --release --locked --bin zoeken-server --no-default-features
+```
+
 ## Production checklist
 
 1. **Bind + secret**: `0.0.0.0` (or LAN IP) with a random `APP_SECRET_KEY` ≥16 chars

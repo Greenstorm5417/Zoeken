@@ -6,9 +6,9 @@ Upstream routes: 22. Rust routes: 26. Matching paths: 22. Missing upstream paths
 | --- | --- | --- | --- | --- |
 | / | ported | GET, POST | GET, POST | implemented path; status/header/body parity needs route tests |
 | /about | ported | GET | GET | implemented path; status/header/body parity needs route tests |
-| /api/v1/search | rust-only |  | POST | Zoeken native typed search (SPA msgpack default; JSON + `?format=` also) |
+| /api/v1/search | rust-only |  | POST | Zoeken health/readiness or implementation-specific route |
 | /autocompleter | ported | GET, POST | GET, POST | implemented path; status/header/body parity needs route tests |
-| /bangs | rust-only |  | GET | External bang discovery (`?q=` filter); SPA help panel |
+| /bangs | rust-only |  | GET | Zoeken health/readiness or implementation-specific route |
 | /clear_cookies | ported | GET | GET | implemented path; status/header/body parity needs route tests |
 | /client<token>.css | ported | GET, POST | GET, POST | implemented path; status/header/body parity needs route tests |
 | /config | ported | GET | GET | implemented; schema parity needs golden tests |
@@ -27,6 +27,6 @@ Upstream routes: 22. Rust routes: 26. Matching paths: 22. Missing upstream paths
 | /robots.txt | ported | GET | GET | implemented path; status/header/body parity needs route tests |
 | /rss.xsl | ported | GET, POST | GET, POST | implemented path; status/header/body parity needs route tests |
 | /search | ported | GET, POST | GET, POST | schema/content negotiation parity still needs conformance fixtures |
-| /sitemap.xml | rust-only |  | GET | SPA SEO sitemap; Zoeken-only |
+| /sitemap.xml | rust-only |  | GET | Zoeken health/readiness or implementation-specific route |
 | /stats | ported | GET | GET | implemented; schema parity needs golden tests |
 | /stats/errors | ported | GET | GET | implemented; schema parity needs golden tests |

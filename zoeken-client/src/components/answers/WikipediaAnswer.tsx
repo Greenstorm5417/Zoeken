@@ -20,7 +20,13 @@ export function WikipediaAnswer({
 	return (
 		<section className="mb-6 max-w-[40rem] overflow-hidden rounded-2xl border border-line bg-surface-raised">
 			{img ? (
-				<img src={img} alt="" className="max-h-48 w-full object-cover" />
+				<img
+					src={img}
+					alt=""
+					className="max-h-48 w-full object-cover"
+					decoding="async"
+					loading="lazy"
+				/>
 			) : null}
 			<div className="px-5 py-4">
 				<p className="mb-2 flex items-center gap-2 text-[0.7rem] font-semibold tracking-wide text-ink-subtle uppercase">
@@ -74,6 +80,8 @@ export function WikipediaAnswer({
 											src={attr.image.src}
 											alt={attr.image.alt || attr.label}
 											className="max-h-24 rounded-lg object-contain"
+											decoding="async"
+											loading="lazy"
 										/>
 									</dd>
 								) : null}

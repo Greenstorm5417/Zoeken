@@ -12,6 +12,7 @@ use zoeken_query::SearchQuery;
 
 pub use aggregation::{
     EngineWeights, ResultContainer, UnresponsiveCause, UnresponsiveEngine, aggregate,
+    sort_results,
 };
 pub use execution::{
     EngineExecResult, EngineExecutor, EngineFuture, EngineRunOutcome, EngineRunStatus,

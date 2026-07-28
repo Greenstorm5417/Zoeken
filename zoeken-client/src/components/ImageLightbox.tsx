@@ -110,6 +110,7 @@ export function ImageLightbox({
 						src={full}
 						alt={result.title}
 						className="max-h-[70vh] max-w-full rounded-lg object-contain"
+						decoding="async"
 					/>
 				) : null}
 				<div className="w-full max-w-2xl rounded-xl bg-surface-raised p-4">

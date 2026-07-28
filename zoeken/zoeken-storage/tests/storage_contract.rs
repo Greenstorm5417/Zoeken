@@ -1,9 +1,10 @@
 use std::time::Duration;
 
 use zoeken_storage::{
-    FaviconData, FaviconLookup, FaviconPolicy, OriginPolicy, PermitDecision, PostgresStorage,
-    SqliteStorage, Storage,
+    FaviconData, FaviconLookup, FaviconPolicy, OriginPolicy, PermitDecision, SqliteStorage, Storage,
 };
+#[cfg(feature = "postgres")]
+use zoeken_storage::PostgresStorage;
 
 async fn run_contract(storage: &dyn Storage, namespace: &str) {
     storage.healthcheck().await.unwrap();
@@ -70,6 +71,7 @@ async fn sqlite_migrations_are_idempotent_and_concurrent_safe() {
     second.unwrap().healthcheck().await.unwrap();
 }
 
+#[cfg(feature = "postgres")]
 #[tokio::test]
 async fn postgres_implements_storage_contract_when_configured() {
     let Some(url) = std::env::var("TEST_POSTGRES_URL")

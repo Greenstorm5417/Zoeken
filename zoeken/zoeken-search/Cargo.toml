@@ -21,6 +21,13 @@ url = { workspace = true }
 tokio = { workspace = true, features = ["test-util", "rt", "macros"] }
 proptest = { workspace = true }
 metrics = { workspace = true }
+criterion = { workspace = true }
+zoeken-results = { workspace = true }
+zoeken-engine-core = { workspace = true }
+
+[[bench]]
+name = "aggregation"
+harness = false
 
 [lints]
 workspace = true
