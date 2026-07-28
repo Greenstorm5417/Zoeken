@@ -298,5 +298,5 @@ deployment:
    `git tag v1.0.0 && git push origin v1.0.0`.
 4. GitHub Actions verifies Cargo + client versions match the tag, builds `.deb`s
    on native amd64/arm64 runners, pushes GHCR via `Dockerfile.runtime`, and opens
-   the GitHub Release. A follow-up job opens a PR to refresh
-   `packaging/nix/generated.nix` when hashes change.
+   the GitHub Release. A follow-up job commits refreshed
+   `packaging/nix/generated.nix` hashes to `main` when they change.
