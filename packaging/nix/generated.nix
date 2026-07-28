@@ -4,11 +4,11 @@
   sources = {
     "x86_64-linux" = {
       url = "https://github.com/Greenstorm5417/Zoeken/releases/download/v1.4.0/zoeken_1.4.0_x86_64-linux.tar.gz";
-      hash = "sha256-yqOO7frUs6JZ6FAz1j/yvuLBqLl72hYbnX81WYUgPDM=";
+      hash = "sha256-ccHqIkSSSVCMtWQ8D+i6+zXmVsckjklc4o35ojsRfp0=";
     };
     "aarch64-linux" = {
       url = "https://github.com/Greenstorm5417/Zoeken/releases/download/v1.4.0/zoeken_1.4.0_aarch64-linux.tar.gz";
-      hash = "sha256-zIduZNRGFnBBxX9prNC5ma1tFNurOtOggD2yjoVS14E=";
+      hash = "sha256-SQiQyXIC0nPf3ltXCLSdXIQJ9RoMQOip8IJJIx2EpDg=";
     };
   };
 }
