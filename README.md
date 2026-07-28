@@ -90,10 +90,11 @@ nix profile install github:Greenstorm5417/Zoeken
 ```
 
 On **NixOS**, add `zoeken.packages.<system>.zoeken` to `environment.systemPackages`
-(see [docs/deployment.md](docs/deployment.md#nix--nixos)). Release binaries include
-SQLite and Postgres.
+(see [docs/deployment.md](docs/deployment.md#nix--nixos)). Use a version-less flake
+URL and pin with your `flake.lock`. Release binaries include SQLite and Postgres.
 
-After each GitHub Release, refresh flake hashes:
+After each GitHub Release, refresh prebuilt pointers on `main` (optional if you
+only consume a locked git rev):
 
 ```sh
 ./tools/update_nix_generated.sh

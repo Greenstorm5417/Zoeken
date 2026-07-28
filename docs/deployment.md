@@ -176,10 +176,12 @@ closed if storage coordination is unavailable.
 
 ## Nix / NixOS
 
-Release tags ship `zoeken_<version>_<x86_64-linux|aarch64-linux>.tar.gz` plus a
-`zoeken_<version>_generated.nix` SRI hash file. The Zoeken flake wraps those
-archives (no local Rust/SPA build). Release binaries include **SQLite and
-Postgres** (default Cargo features).
+Release tags ship `zoeken_<version>_<x86_64-linux|aarch64-linux>.tar.gz`. The
+Zoeken flake wraps those archives (no local Rust/SPA build). **Do not put a
+version in the flake URL** — depend on `github:Greenstorm5417/Zoeken` and let
+**your** `flake.lock` pin the revision (and thus the prebuilt pointed at by
+`packaging/nix/generated.nix` on that rev). Release binaries include **SQLite
+and Postgres** (default Cargo features).
 
 ```sh
 nix run github:Greenstorm5417/Zoeken
@@ -190,12 +192,10 @@ nix run github:Greenstorm5417/nixos-pkgs#zoeken
 
 ### NixOS system install
 
-Pin the Zoeken flake (or the `nixos-pkgs` overlay) and put the package on PATH:
-
 ```nix
 # flake.nix (excerpt)
 {
-  inputs.zoeken.url = "github:Greenstorm5417/Zoeken"; # or .../Zoeken/vX.Y.Z
+  inputs.zoeken.url = "github:Greenstorm5417/Zoeken";
 
   outputs = { nixpkgs, zoeken, ... }: {
     nixosConfigurations.myhost = nixpkgs.lib.nixosSystem {
@@ -217,14 +217,16 @@ Pin the Zoeken flake (or the `nixos-pkgs` overlay) and put the package on PATH:
 }
 ```
 
+Then `nix flake lock` (or `nix flake update zoeken`) to refresh the pin.
+
 Rolling mirror via [nixos-pkgs](https://github.com/Greenstorm5417/nixos-pkgs):
 
 ```nix
 environment.systemPackages = [ nixos-pkgs.packages.${pkgs.system}.zoeken ];
 ```
 
-After publishing a release, refresh the in-repo hashes (so the next `main` /
-tag consumers get the new version):
+After publishing a release, refresh in-repo prebuilt pointers (so `main`
+consumers see the new binary; their locks still pin a git rev):
 
 ```sh
 ./tools/update_nix_generated.sh

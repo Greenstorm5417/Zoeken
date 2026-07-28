@@ -1,8 +1,8 @@
 {
   description = "Zoeken — privacy-respecting metasearch (Rust + SPA)";
 
-  # Same pin as packaging/nix (NixOS 26.05).
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/fd1462031fdee08f65fd0b4c6b64e22239a77870";
+  # Track a channel/branch here; flake.lock pins the exact nixpkgs revision.
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
   outputs =
     { self, nixpkgs }:
@@ -44,6 +44,10 @@
         zoeken = self.packages.${system}.zoeken;
       });
 
+      # Consumers should depend on github:Greenstorm5417/Zoeken (no /vX.Y.Z in the
+      # flake URL). Their flake.lock pins the Zoeken revision — and with it the
+      # prebuilt release pointed at by packaging/nix/generated.nix on that rev.
+      #
       #   nix run github:Greenstorm5417/Zoeken
       #   nix profile install github:Greenstorm5417/Zoeken
 
