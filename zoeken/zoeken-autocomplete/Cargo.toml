@@ -19,6 +19,7 @@ url = { workspace = true }
 http = { workspace = true }
 rand = { workspace = true }
 metrics = { workspace = true }
+moka = { workspace = true }
 
 [dev-dependencies]
 tokio = { workspace = true }

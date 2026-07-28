@@ -22,6 +22,7 @@ import {
 	pageNumbers,
 	searchLink,
 	suggestionText,
+	wallClockSeconds,
 } from "#/lib/searchDisplay";
 import { parseSearchParams } from "#/lib/searchParams";
 import { useLocalAnswers } from "#/lib/useLocalAnswers";
@@ -32,37 +33,43 @@ export const Route = createFileRoute("/search")({
 	component: SearchPage,
 });
 
-/** Owns elapsed-time state so timer updates don't re-render the full SERP. */
+/** Owns elapsed-time state so timer updates don't re-render the full SERP.
+ *
+ * `searchStartedAt` must come from the parent: this component only mounts once
+ * `firstPage` exists, so starting the clock here would always read ~0s.
+ */
 function SearchResultStats({
 	resultCount,
 	hasResults,
-	resetKey,
+	searchStartedAt,
 	isSuccess,
 	isFetching,
 	dataUpdatedAt,
 }: {
 	resultCount: number | undefined;
 	hasResults: boolean;
-	resetKey: string;
+	searchStartedAt: number;
 	isSuccess: boolean;
 	isFetching: boolean;
 	dataUpdatedAt: number;
 }) {
 	const [elapsedSec, setElapsedSec] = useState<number | null>(null);
-	const fetchStarted = useRef(0);
 
-	// biome-ignore lint/correctness/useExhaustiveDependencies: reset timer when search params change
+	// biome-ignore lint/correctness/useExhaustiveDependencies: reset clock when search identity changes
 	useEffect(() => {
-		fetchStarted.current = performance.now();
 		setElapsedSec(null);
-	}, [resetKey]);
+	}, [searchStartedAt]);
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: dataUpdatedAt re-runs when a fresh page lands
 	useEffect(() => {
-		if (isSuccess && !isFetching && fetchStarted.current) {
-			setElapsedSec((performance.now() - fetchStarted.current) / 1000);
-		}
-	}, [isSuccess, isFetching, dataUpdatedAt]);
+		if (!isSuccess || isFetching || searchStartedAt <= 0) return;
+		// Freeze first-page wall time; don't grow on infinite-scroll fetches.
+		setElapsedSec((prev) =>
+			prev != null
+				? prev
+				: wallClockSeconds(searchStartedAt, performance.now()),
+		);
+	}, [isSuccess, isFetching, dataUpdatedAt, searchStartedAt]);
 
 	if ((resultCount == null && elapsedSec == null) || !hasResults) return null;
 
@@ -292,6 +299,16 @@ function SearchPage() {
 		time_range,
 		pageno,
 	].join("\0");
+	// Parent stays mounted across loading → results; stats only mounts after
+	// firstPage exists, so the wall clock must start here.
+	const [searchStartedAt, setSearchStartedAt] = useState(() =>
+		performance.now(),
+	);
+	const [trackedStatsKey, setTrackedStatsKey] = useState(statsResetKey);
+	if (trackedStatsKey !== statsResetKey) {
+		setTrackedStatsKey(statsResetKey);
+		setSearchStartedAt(performance.now());
+	}
 
 	return (
 		<div className="zoeken-serp min-h-dvh text-ink">
@@ -379,7 +396,7 @@ function SearchPage() {
 					<SearchResultStats
 						resultCount={resultCount}
 						hasResults={results.length > 0}
-						resetKey={statsResetKey}
+						searchStartedAt={searchStartedAt}
 						isSuccess={query.isSuccess}
 						isFetching={query.isFetching}
 						dataUpdatedAt={query.dataUpdatedAt}

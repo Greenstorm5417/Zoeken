@@ -98,8 +98,6 @@ pub struct GeneralSettings {
     pub privacypolicy_url: Option<BoolOrString>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub contact_url: Option<BoolOrString>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub donation_url: Option<BoolOrString>,
     pub enable_metrics: bool,
     pub open_metrics: String,
 }
@@ -111,7 +109,6 @@ impl Default for GeneralSettings {
             instance_name: "Search".to_string(),
             privacypolicy_url: None,
             contact_url: None,
-            donation_url: None,
             enable_metrics: true,
             open_metrics: String::new(),
         }
@@ -491,7 +488,6 @@ pub struct OutgoingSettings {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub source_ips: Option<StringOrVec>,
     pub using_tor_proxy: bool,
-    pub extra_proxy_timeout: u32,
     pub networks: BTreeMap<String, NetworkSettings>,
     pub origin_limits: OriginLimitSettings,
 }
@@ -513,7 +509,6 @@ impl Default for OutgoingSettings {
             proxies: None,
             source_ips: None,
             using_tor_proxy: false,
-            extra_proxy_timeout: 0,
             networks: BTreeMap::new(),
             origin_limits: OriginLimitSettings::default(),
         }
@@ -693,8 +688,6 @@ pub struct NetworkSettings {
     pub source_ips: Option<StringOrVec>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub using_tor_proxy: Option<bool>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub extra_proxy_timeout: Option<u32>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub network: Option<String>,
 }
@@ -1483,7 +1476,7 @@ search:
         assert_eq!(s.general.instance_name, "Search");
         assert!(!s.general.debug);
         assert!(s.general.enable_metrics);
-        assert_eq!(s.general.donation_url, None);
+        assert_eq!(s.general.contact_url, None);
         assert_eq!(s.general.privacypolicy_url, None);
         assert_eq!(s.general.contact_url, None);
         assert_eq!(s.brand.issue_url, "");
@@ -1532,7 +1525,7 @@ search:
         assert_eq!(s.outgoing.keepalive_expiry, 5.0);
         assert_eq!(s.outgoing.max_redirects, 30);
         assert_eq!(s.outgoing.retries, 0);
-        assert_eq!(s.outgoing.extra_proxy_timeout, 0);
+        assert!(!s.outgoing.using_tor_proxy);
         assert!(!s.outgoing.using_tor_proxy);
         assert_eq!(s.storage.backend, "sqlite");
         assert_eq!(s.storage.sqlite.path, "./zoeken.sqlite3");

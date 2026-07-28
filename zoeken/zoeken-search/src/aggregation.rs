@@ -6,7 +6,7 @@ use zoeken_results::{
 };
 
 use crate::execution::{EngineRunStatus, ExecutionReport, UnresponsiveReason};
-use crate::metrics::{EngineOutcome, EngineSample, MetricsRecorder};
+use crate::metrics::{EngineMetricsRecorder, EngineOutcome, EngineSample};
 
 #[derive(Debug, Clone, Default)]
 pub struct EngineWeights {
@@ -76,12 +76,9 @@ struct Merged {
     engines: Vec<String>,
 }
 
-pub fn aggregate(
-    report: ExecutionReport,
-    weights: &EngineWeights,
-    recorder: &dyn MetricsRecorder,
-) -> ResultContainer {
+pub fn aggregate(report: ExecutionReport, weights: &EngineWeights) -> ResultContainer {
     let mut builder = ContainerBuilder::default();
+    let metrics = EngineMetricsRecorder::new();
 
     for outcome in report.outcomes {
         let sample_outcome = match &outcome.status {
@@ -93,7 +90,7 @@ pub fn aggregate(
                 EngineOutcome::Unresponsive { reason: *reason }
             }
         };
-        recorder.record_engine(EngineSample {
+        metrics.record_engine(EngineSample {
             engine: &outcome.engine,
             duration: outcome.duration,
             http_duration: outcome.http_duration,
@@ -878,7 +875,6 @@ const EMPTY_POSITIONS: &[usize] = &[];
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::sync::atomic::{AtomicUsize, Ordering};
     use std::time::Duration;
 
     use zoeken_engine_core::{EngineError, EngineResults};
@@ -888,18 +884,6 @@ mod tests {
     };
 
     use crate::execution::{EngineRunOutcome, EngineRunStatus, ExecutionReport};
-    use crate::metrics::NoopRecorder;
-
-    #[derive(Default)]
-    struct CountingRecorder {
-        count: AtomicUsize,
-    }
-
-    impl MetricsRecorder for CountingRecorder {
-        fn record_engine(&self, _sample: EngineSample<'_>) {
-            self.count.fetch_add(1, Ordering::SeqCst);
-        }
-    }
 
     fn main_result(url: &str, title: &str) -> Result_ {
         Result_::Main(MainResult {
@@ -962,7 +946,6 @@ mod tests {
         let container = aggregate(
             report(vec![completed("alpha", alpha), completed("beta", beta)]),
             &weights(&[("alpha", 1.0), ("beta", 1.0)]),
-            &NoopRecorder,
         );
 
         let merged = container
@@ -997,7 +980,6 @@ mod tests {
         let container = aggregate(
             report(vec![completed("alpha", alpha), completed("beta", beta)]),
             &weights(&[("alpha", 1.0), ("beta", 1.0)]),
-            &NoopRecorder,
         );
 
         let merged = container
@@ -1021,7 +1003,6 @@ mod tests {
         let container = aggregate(
             report(vec![completed("alpha", alpha), completed("beta", beta)]),
             &weights(&[("alpha", 1.0), ("beta", 1.0)]),
-            &NoopRecorder,
         );
 
         assert_eq!(container.results.len(), 2);
@@ -1057,7 +1038,6 @@ mod tests {
         let container = aggregate(
             report(vec![completed("alpha", alpha), completed("beta", beta)]),
             &weights(&[("alpha", 1.0), ("beta", 1.0)]),
-            &NoopRecorder,
         );
 
         assert_eq!(container.results.len(), 1);
@@ -1082,7 +1062,6 @@ mod tests {
         let container = aggregate(
             report(vec![completed("alpha", alpha), completed("beta", beta)]),
             &weights(&[("alpha", 1.0), ("beta", 1.0)]),
-            &NoopRecorder,
         );
 
         assert_eq!(container.results.len(), 1);
@@ -1101,7 +1080,6 @@ mod tests {
         let container = aggregate(
             report(vec![completed("alpha", alpha)]),
             &weights(&[("alpha", 1.0)]),
-            &NoopRecorder,
         );
         assert_eq!(container.results.len(), 2);
     }
@@ -1115,16 +1093,11 @@ mod tests {
         let multi = aggregate(
             report(vec![completed("a", a), completed("b", b)]),
             &weights(&[("a", 1.0), ("b", 1.0)]),
-            &NoopRecorder,
         );
 
         let mut c = EngineResults::new();
         c.add(main_result("https://x.test/", "x"));
-        let single = aggregate(
-            report(vec![completed("a", c)]),
-            &weights(&[("a", 1.0)]),
-            &NoopRecorder,
-        );
+        let single = aggregate(report(vec![completed("a", c)]), &weights(&[("a", 1.0)]));
 
         let multi_score = as_main(&multi.results[0]).score;
         let single_score = as_main(&single.results[0]).score;
@@ -1138,11 +1111,7 @@ mod tests {
     fn scoring_matches_reference_formula() {
         let mut a = EngineResults::new();
         a.add(main_result("https://x.test/", "x"));
-        let container = aggregate(
-            report(vec![completed("a", a)]),
-            &weights(&[("a", 2.0)]),
-            &NoopRecorder,
-        );
+        let container = aggregate(report(vec![completed("a", a)]), &weights(&[("a", 2.0)]));
         assert_eq!(as_main(&container.results[0]).score, 2.0);
     }
 
@@ -1158,7 +1127,6 @@ mod tests {
         let container = aggregate(
             report(vec![completed("a", a), completed("b", b)]),
             &weights(&[("a", 1.0), ("b", 1.0)]),
-            &NoopRecorder,
         );
 
         let titles: Vec<&str> = container
@@ -1187,7 +1155,6 @@ mod tests {
                 completed("brave", brave),
             ]),
             &weights(&[("duckduckgo", 1.0), ("brave", 1.0)]),
-            &NoopRecorder,
         );
 
         assert_eq!(container.results.len(), 1);
@@ -1212,7 +1179,6 @@ mod tests {
         let container = aggregate(
             report(vec![completed("first", first), completed("second", second)]),
             &weights(&[("first", 1.0), ("second", 1.0)]),
-            &NoopRecorder,
         );
 
         let titles: Vec<&str> = container
@@ -1240,11 +1206,7 @@ mod tests {
             ..Suggestion::default()
         }));
 
-        let container = aggregate(
-            report(vec![completed("a", a)]),
-            &weights(&[("a", 1.0)]),
-            &NoopRecorder,
-        );
+        let container = aggregate(report(vec![completed("a", a)]), &weights(&[("a", 1.0)]));
 
         assert_eq!(container.results.len(), 1);
         assert_eq!(container.answers.len(), 1);
@@ -1269,7 +1231,6 @@ mod tests {
         let container = aggregate(
             report(vec![completed("a", a), completed("b", b)]),
             &weights(&[("a", 1.0), ("b", 1.0)]),
-            &NoopRecorder,
         );
         assert_eq!(container.suggestions.len(), 1);
     }
@@ -1303,7 +1264,6 @@ mod tests {
                 completed("c", c),
             ]),
             &weights(&[("a", 1.0), ("b", 1.0), ("c", 5.0)]),
-            &NoopRecorder,
         );
 
         let texts: Vec<&str> = container
@@ -1338,7 +1298,7 @@ mod tests {
             },
         ];
 
-        let container = aggregate(report(outcomes), &EngineWeights::default(), &NoopRecorder);
+        let container = aggregate(report(outcomes), &EngineWeights::default());
 
         assert!(container.results.is_empty());
         assert_eq!(container.number_of_results, 0);
@@ -1364,40 +1324,10 @@ mod tests {
     }
 
     #[test]
-    fn records_one_metric_sample_per_engine_outcome() {
-        let mut a = EngineResults::new();
-        a.add(main_result("https://x.test/", "x"));
-        let recorder = CountingRecorder::default();
-
-        let outcomes = vec![
-            completed("a", a),
-            EngineRunOutcome {
-                engine: "b".to_string(),
-                status: EngineRunStatus::Failed(EngineError::Timeout),
-                duration: Duration::from_millis(1),
-                http_duration: None,
-            },
-            EngineRunOutcome {
-                engine: "c".to_string(),
-                status: EngineRunStatus::Unresponsive(UnresponsiveReason::EngineTimeout),
-                duration: Duration::from_secs(1),
-                http_duration: None,
-            },
-        ];
-
-        let _ = aggregate(report(outcomes), &weights(&[("a", 1.0)]), &recorder);
-        assert_eq!(recorder.count.load(Ordering::SeqCst), 3);
-    }
-
-    #[test]
     fn unknown_engine_weight_defaults_to_one() {
         let mut a = EngineResults::new();
         a.add(main_result("https://x.test/", "x"));
-        let container = aggregate(
-            report(vec![completed("a", a)]),
-            &EngineWeights::default(),
-            &NoopRecorder,
-        );
+        let container = aggregate(report(vec![completed("a", a)]), &EngineWeights::default());
         assert_eq!(as_main(&container.results[0]).score, 1.0);
     }
 
@@ -1445,7 +1375,6 @@ mod tests {
                 completed("wikidata", wd),
             ]),
             &weights(&[("wikipedia", 1.0), ("wikidata", 1.0)]),
-            &NoopRecorder,
         );
 
         assert_eq!(container.answers.len(), 1);
@@ -1515,7 +1444,6 @@ mod tests {
         let container = aggregate(
             report(vec![completed("wikidata", a), completed("wikipedia", b)]),
             &weights(&[("wikidata", 1.0), ("wikipedia", 1.0)]),
-            &NoopRecorder,
         );
 
         assert_eq!(container.infoboxes.len(), 1);

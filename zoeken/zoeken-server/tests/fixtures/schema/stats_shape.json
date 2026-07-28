@@ -7,7 +7,10 @@
       "total_avg_seconds": 0.1,
       "http_count": 0,
       "http_sum_seconds": 0.0,
-      "http_avg_seconds": 0.0
+      "http_avg_seconds": 0.0,
+      "disabled": false,
+      "suspended": false,
+      "cooldown_until_ms": null
     }
   ]
 }

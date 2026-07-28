@@ -310,9 +310,8 @@ impl Default for SuspendConfig {
 }
 
 use chrono::{DateTime, NaiveDate, NaiveDateTime};
-use ego_tree::NodeRef;
 use scraper::node::Node as DomNode;
-use scraper::{Html, Selector};
+use scraper::{ElementRef, Html, Selector};
 use url::Url;
 
 pub fn normalize_whitespace(text: &str) -> String {
@@ -359,52 +358,58 @@ fn push_escaped_attr(value: &str, out: &mut String) {
     }
 }
 
-fn serialize_node_xml(node: NodeRef<'_, DomNode>, out: &mut String) {
-    match node.value() {
-        DomNode::Text(text) => push_escaped_text(text, out),
-        DomNode::Element(el) => {
-            let name = el.name();
-            if !is_serializable_xml_name(name) {
-                for child in node.children() {
-                    serialize_node_xml(child, out);
+fn serialize_element(el: ElementRef<'_>, out: &mut String) {
+    let name = el.value().name();
+    if !is_serializable_xml_name(name) {
+        for child in el.children() {
+            match child.value() {
+                DomNode::Text(text) => push_escaped_text(text, out),
+                DomNode::Element(_) => {
+                    if let Some(child_el) = ElementRef::wrap(child) {
+                        serialize_element(child_el, out);
+                    }
                 }
-                return;
+                _ => {}
             }
-            out.push('<');
-            out.push_str(name);
-            for (attr_name, attr_value) in el.attrs() {
-                if attr_name.eq_ignore_ascii_case("xmlns")
-                    || attr_name.contains(':')
-                    || !is_serializable_xml_name(attr_name)
-                {
-                    continue;
-                }
-                out.push(' ');
-                out.push_str(attr_name);
-                out.push_str("=\"");
-                push_escaped_attr(attr_value, out);
-                out.push('"');
-            }
-            out.push('>');
-            for child in node.children() {
-                serialize_node_xml(child, out);
-            }
-            out.push_str("</");
-            out.push_str(name);
-            out.push('>');
         }
-        _ => {
-            for child in node.children() {
-                serialize_node_xml(child, out);
+        return;
+    }
+    out.push('<');
+    out.push_str(name);
+    for (attr_name, attr_value) in el.value().attrs() {
+        if attr_name.eq_ignore_ascii_case("xmlns")
+            || attr_name.contains(':')
+            || !is_serializable_xml_name(attr_name)
+        {
+            continue;
+        }
+        out.push(' ');
+        out.push_str(attr_name);
+        out.push_str("=\"");
+        push_escaped_attr(attr_value, out);
+        out.push('"');
+    }
+    out.push('>');
+    for child in el.children() {
+        match child.value() {
+            DomNode::Text(text) => push_escaped_text(text, out),
+            DomNode::Element(_) => {
+                if let Some(child_el) = ElementRef::wrap(child) {
+                    serialize_element(child_el, out);
+                }
             }
+            _ => {}
         }
     }
+    out.push_str("</");
+    out.push_str(name);
+    out.push('>');
 }
 
 fn html_to_xml(html: &str) -> String {
     let document = Html::parse_document(html);
     let mut out = String::with_capacity(html.len() + 16);
-    serialize_node_xml(document.tree.root(), &mut out);
+    serialize_element(document.root_element(), &mut out);
     out
 }
 
@@ -575,22 +580,20 @@ pub fn extract_url(raw: &str, base_url: &str) -> Result<String, EngineError> {
     normalize_url(&url, base_url)
 }
 
-fn collect_visible_text(node: NodeRef<'_, DomNode>, out: &mut String) {
-    match node.value() {
-        DomNode::Text(text) => out.push_str(text),
-        DomNode::Element(el) => {
-            let name = el.name();
-            if name.eq_ignore_ascii_case("script") || name.eq_ignore_ascii_case("style") {
-                return;
+fn collect_visible_text(el: ElementRef<'_>, out: &mut String) {
+    let name = el.value().name();
+    if name.eq_ignore_ascii_case("script") || name.eq_ignore_ascii_case("style") {
+        return;
+    }
+    for child in el.children() {
+        match child.value() {
+            DomNode::Text(text) => out.push_str(text),
+            DomNode::Element(_) => {
+                if let Some(child_el) = ElementRef::wrap(child) {
+                    collect_visible_text(child_el, out);
+                }
             }
-            for child in node.children() {
-                collect_visible_text(child, out);
-            }
-        }
-        _ => {
-            for child in node.children() {
-                collect_visible_text(child, out);
-            }
+            _ => {}
         }
     }
 }
@@ -602,7 +605,7 @@ pub fn html_to_text(html_str: &str) -> String {
     let collapsed = normalize_whitespace(&html_str.replace(['\n', '\r'], " "));
     let fragment = Html::parse_fragment(&collapsed);
     let mut text = String::new();
-    collect_visible_text(fragment.tree.root(), &mut text);
+    collect_visible_text(fragment.root_element(), &mut text);
     normalize_whitespace(&text)
 }
 

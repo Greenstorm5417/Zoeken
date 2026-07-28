@@ -6,9 +6,7 @@ use std::time::Duration;
 use proptest::prelude::*;
 use zoeken_engine_core::EngineResults;
 use zoeken_results::{MainResult, Result_};
-use zoeken_search::{
-    EngineRunOutcome, EngineRunStatus, EngineWeights, ExecutionReport, NoopRecorder, aggregate,
-};
+use zoeken_search::{EngineRunOutcome, EngineRunStatus, EngineWeights, ExecutionReport, aggregate};
 
 const POOL: usize = 4;
 
@@ -50,7 +48,7 @@ proptest! {
         }
 
         let weights = EngineWeights::new((0..engines.len()).map(|i| (engine_name(i), 1.0)));
-        let container = aggregate(ExecutionReport { outcomes }, &weights, &NoopRecorder);
+        let container = aggregate(ExecutionReport { outcomes }, &weights);
 
         let mut expected: HashMap<String, (Vec<String>, Vec<usize>)> = HashMap::new();
         for (ei, urls) in engines.iter().enumerate() {

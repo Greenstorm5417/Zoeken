@@ -110,6 +110,20 @@ The unit enables on install but does **not** start automatically. Default bind
 is loopback; set `APP_BIND_ADDRESS=0.0.0.0` and a strong `APP_SECRET_KEY` for
 a public instance, then `systemctl restart zoeken`.
 
+### Logs (journald)
+
+Tracing goes to stdout/stderr and is captured by the systemd unit. Useful
+filters (raw query text is not logged on search start/complete):
+
+```sh
+journalctl -u zoeken -f
+journalctl -u zoeken | grep 'search completed'
+journalctl -u zoeken | grep 'engine blocked'
+journalctl -u zoeken | grep 'circuit opened'
+```
+
+Log level: `deployment.log_level` or `APP_LOG_LEVEL` (`info` default).
+
 Local package build (amd64 host):
 
 ```sh
@@ -254,7 +268,7 @@ cargo build --release --locked --bin zoeken-server --no-default-features
 5. **Storage**: keep SQLite for one process. For multiple replicas, start the optional `postgres` Compose profile and set `APP_STORAGE_BACKEND=postgres` plus `APP_POSTGRES_URL`. Startup fails if connection or migration fails.
 6. **Probes**: liveness `/healthz`, readiness `/readyz` (returns not-ready while draining or while operational storage is unavailable).
 7. **Image proxy**: leave off unless you need it; when on, URLs stay HMAC-gated and redirects are not followed.
-8. **Metrics**: set `general.open_metrics` to a password so `/metrics` and `/stats` require HTTP Basic auth; empty hides `/metrics` and denies `/stats` JSON (401).
+8. **Metrics**: `/stats` is always public. Empty `general.open_metrics` hides `/metrics` (404); set a password so `/metrics` requires HTTP Basic auth.
 9. Read [`docs/security/audit.md`](security/audit.md) before go-live.
 
 ## Reverse proxy
@@ -262,7 +276,7 @@ cargo build --release --locked --bin zoeken-server --no-default-features
 Terminate TLS at nginx/Caddy. Trust only the proxy CIDRs via
 `deployment.trusted_proxies` and/or `trusted_proxies` in `limiter.toml` so
 `X-Forwarded-For` / scheme forwarding is honored. Do not trust the open
-internet as a proxy. Prefer `general.open_metrics`; optionally also block those paths at the edge.
+internet as a proxy. Prefer `general.open_metrics` for `/metrics`; optionally also block that path at the edge.
 
 Example (`settings.yml`):
 

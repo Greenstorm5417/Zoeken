@@ -5,8 +5,8 @@ use criterion::{BenchmarkId, Criterion, Throughput, criterion_group, criterion_m
 use zoeken_engine_core::{EngineError, EngineResults};
 use zoeken_results::{MainResult, Result_};
 use zoeken_search::{
-    EngineRunOutcome, EngineRunStatus, EngineWeights, ExecutionReport, NoopRecorder,
-    UnresponsiveReason, aggregate, sort_results,
+    EngineRunOutcome, EngineRunStatus, EngineWeights, ExecutionReport, UnresponsiveReason,
+    aggregate, sort_results,
 };
 
 fn main_result(url: &str, title: &str) -> Result_ {
@@ -91,7 +91,7 @@ fn bench_aggregate(c: &mut Criterion) {
         group.bench_function(label, |b| {
             b.iter(|| {
                 let report = report_for(engines, urls, overlap);
-                let container = aggregate(black_box(report), black_box(&weights), &NoopRecorder);
+                let container = aggregate(black_box(report), black_box(&weights));
                 black_box(container.number_of_results)
             });
         });
@@ -115,11 +115,7 @@ fn bench_aggregate_failures(c: &mut Criterion) {
                     http_duration: None,
                 })
                 .collect();
-            let container = aggregate(
-                black_box(ExecutionReport { outcomes }),
-                black_box(&weights),
-                &NoopRecorder,
-            );
+            let container = aggregate(black_box(ExecutionReport { outcomes }), black_box(&weights));
             black_box(container.unresponsive_engines.len())
         });
     });

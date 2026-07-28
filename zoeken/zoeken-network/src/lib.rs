@@ -1,9 +1,5 @@
 //! Outbound HTTP network pools with browser fingerprinting, request routing, and Tor checks.
 
-mod flight_cache;
-
-pub use flight_cache::FlightCache;
-
 use std::collections::BTreeMap;
 use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};
 use std::sync::Arc;

@@ -135,16 +135,15 @@ Deliberate compatibility gaps between Zoeken and SearXNG.
   `engines.json` / `engines.md`, not as an accidental orphan.
 - **Revisit when**: upstream adds a matching module or the engine is retired.
 
-## Stats / metrics Basic auth
+## Stats always public; `/metrics` Basic auth
 
-- **Behavior**: `general.open_metrics` is the HTTP Basic password for `/metrics`,
-  `/stats`, and `/stats/errors`. Empty hides `/metrics` (404) and **denies**
-  `/stats` JSON (401). The SPA `/stats` shell stays public and shows a
-  configure-auth message on 401.
-- **Why**: safer default for public instances — empty password must not expose
-  engine timing/error aggregates.
-- **Impact**: operators must set `open_metrics` to use stats/metrics; browsers
-  without Basic credentials see the SPA message instead of live stats JSON.
+- **Behavior**: `/stats` and `/stats/errors` are always reachable without
+  credentials. `general.open_metrics` is the HTTP Basic password for `/metrics`
+  only; empty hides `/metrics` (404).
+- **Why**: engine timing/error aggregates are operator-facing instance health,
+  not treated as private; Prometheus exposition stays opt-in behind a password.
+- **Impact**: out of the box `/stats` works without credentials; set
+  `open_metrics` (and/or edge-block `/metrics`) when scraping should be locked.
 
 ## No CORS middleware
 

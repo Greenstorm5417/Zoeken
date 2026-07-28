@@ -20,7 +20,6 @@ pub use execution::{
 pub use metrics::{
     CATEGORY_LABEL, ENGINE_ERRORS_TOTAL, ENGINE_LABEL, ENGINE_RESPONSE_TIME_HTTP,
     ENGINE_RESPONSE_TIME_TOTAL, EngineMetricsRecorder, EngineOutcome, EngineSample,
-    MetricsRecorder, NoopRecorder,
 };
 pub use selection::{EngineRegistry, RegisteredEngine, SelectedEngine, SuspensionPolicy};
 
@@ -98,13 +97,34 @@ impl Search {
         query: &SearchQuery,
         enabled_engines: Option<&HashSet<String>>,
         available_tokens: &HashSet<String>,
-        recorder: &dyn MetricsRecorder,
     ) -> ResultContainer {
+        let started = Instant::now();
+        let category = query
+            .categories
+            .first()
+            .map(String::as_str)
+            .unwrap_or("general");
+        // Privacy: do not log the raw query string (may contain secrets / PII).
+        tracing::info!(category, pageno = query.pageno, "search started");
+
         let report = self
             .run_engines(query, enabled_engines, available_tokens)
             .await;
+        let engines = report.outcomes.len();
         let weights = self.engine_weights();
-        aggregate(report, &weights, recorder)
+        let container = aggregate(report, &weights);
+
+        let elapsed_ms = u64::try_from(started.elapsed().as_millis()).unwrap_or(u64::MAX);
+        tracing::info!(
+            category,
+            pageno = query.pageno,
+            elapsed_ms,
+            engines,
+            results = container.results.len(),
+            unresponsive = container.unresponsive_engines.len(),
+            "search completed"
+        );
+        container
     }
 
     pub fn engine_weights(&self) -> EngineWeights {

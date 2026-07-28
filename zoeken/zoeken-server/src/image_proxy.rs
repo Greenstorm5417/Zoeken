@@ -8,12 +8,13 @@ use std::time::Duration;
 use axum::extract::{RawQuery, State};
 use axum::http::{HeaderMap, StatusCode, header};
 use axum::response::{IntoResponse, Response};
+use moka::future::Cache;
 use sha2::{Digest, Sha256};
 use zoeken_favicons::{
     DEFAULT_MAX_IMAGE_BYTES, ImageProxyDecision, ImageProxyPolicy, SafeOutboundTransport,
     image_proxy_decision, is_hmac_of, validate_proxy_url,
 };
-use zoeken_network::{FlightCache, NetworkManager};
+use zoeken_network::NetworkManager;
 
 use crate::{AppState, parse_pairs};
 
@@ -30,7 +31,7 @@ pub struct FetchedImage {
     pub body: Vec<u8>,
 }
 
-#[derive(Debug, thiserror::Error)]
+#[derive(Debug, Clone, thiserror::Error)]
 pub enum ImageFetchError {
     #[error("failed to fetch image: {0}")]
     Upstream(String),
@@ -50,8 +51,17 @@ pub trait ImageProxyFetcher: Send + Sync {
 /// redirects and re-downloads the body through the outbound pool.
 pub struct CachedImageFetcher {
     inner: Arc<dyn ImageProxyFetcher>,
-    cache: FlightCache<String, FetchedImage>,
-    ttl: Duration,
+    cache: Cache<String, FetchedImage>,
+}
+
+fn image_weight(img: &FetchedImage) -> u32 {
+    let bytes = img.body.len().saturating_add(
+        img.content_type
+            .as_ref()
+            .map_or(0, String::len)
+            .saturating_add(32),
+    );
+    u32::try_from(bytes).unwrap_or(u32::MAX).max(1)
 }
 
 impl CachedImageFetcher {
@@ -64,15 +74,11 @@ impl CachedImageFetcher {
     pub fn with_limits(inner: Arc<dyn ImageProxyFetcher>, max_bytes: usize, ttl: Duration) -> Self {
         Self {
             inner,
-            cache: FlightCache::new(max_bytes.max(1), |img: &FetchedImage| {
-                img.body.len().saturating_add(
-                    img.content_type
-                        .as_ref()
-                        .map_or(0, String::len)
-                        .saturating_add(32),
-                )
-            }),
-            ttl,
+            cache: Cache::builder()
+                .max_capacity(max_bytes.max(1) as u64)
+                .time_to_live(ttl)
+                .weigher(|_key, img: &FetchedImage| image_weight(img))
+                .build(),
         }
     }
 }
@@ -81,37 +87,42 @@ impl ImageProxyFetcher for CachedImageFetcher {
     fn fetch<'a>(&'a self, url: &'a str) -> FetchFuture<'a> {
         let key = url.to_string();
         Box::pin(async move {
-            if let Some(hit) = self.cache.get(&key) {
+            if let Some(hit) = self.cache.get(&key).await {
                 metrics::counter!("image_proxy_cache_total", "outcome" => "hit").increment(1);
                 return Ok(hit);
             }
 
-            let Some(flight) = self.cache.flight(&key) else {
-                return self.inner.fetch(&key).await;
-            };
-            let _guard = flight.lock().await;
-
-            if let Some(hit) = self.cache.get(&key) {
-                metrics::counter!("image_proxy_cache_total", "outcome" => "shared").increment(1);
-                return Ok(hit);
+            #[derive(Clone)]
+            enum LoadErr {
+                Skip(FetchedImage),
+                Fetch(ImageFetchError),
             }
 
-            let fetched = match self.inner.fetch(&key).await {
-                Ok(fetched) => fetched,
-                Err(error) => {
-                    self.cache.finish_flight(&key);
-                    return Err(error);
-                }
-            };
-
-            if fetched.status == 200 && !fetched.body.is_empty() {
-                self.cache.put(key.clone(), fetched.clone(), self.ttl);
-                metrics::counter!("image_proxy_cache_total", "outcome" => "store").increment(1);
-            } else {
-                metrics::counter!("image_proxy_cache_total", "outcome" => "skip").increment(1);
+            match self
+                .cache
+                .try_get_with(key.clone(), async {
+                    match self.inner.fetch(&key).await {
+                        Ok(fetched) if fetched.status == 200 && !fetched.body.is_empty() => {
+                            metrics::counter!("image_proxy_cache_total", "outcome" => "store")
+                                .increment(1);
+                            Ok(fetched)
+                        }
+                        Ok(fetched) => {
+                            metrics::counter!("image_proxy_cache_total", "outcome" => "skip")
+                                .increment(1);
+                            Err(LoadErr::Skip(fetched))
+                        }
+                        Err(error) => Err(LoadErr::Fetch(error)),
+                    }
+                })
+                .await
+            {
+                Ok(hit) => Ok(hit),
+                Err(error) => match Arc::unwrap_or_clone(error) {
+                    LoadErr::Skip(fetched) => Ok(fetched),
+                    LoadErr::Fetch(error) => Err(error),
+                },
             }
-            self.cache.finish_flight(&key);
-            Ok(fetched)
         })
     }
 }

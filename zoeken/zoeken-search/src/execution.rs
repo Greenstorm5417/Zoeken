@@ -109,9 +109,13 @@ pub async fn run_engines(
     }
 
     let mut by_name: HashMap<String, EngineRunOutcome> = HashMap::new();
+    // Wait for every selected engine to finish (or hit its per-engine /
+    // remaining-to-deadline timeout inside `run_one`). Do not abort the
+    // JoinSet early on the global deadline — callers want all engine outcomes.
     while let Some(joined) = join_set.join_next().await {
         match joined {
             Ok(outcome) => {
+                log_engine_outcome(&outcome);
                 by_name.insert(outcome.engine.clone(), outcome);
             }
             Err(join_err) => {
@@ -133,6 +137,66 @@ pub async fn run_engines(
         .collect();
 
     ExecutionReport { outcomes }
+}
+
+/// Log operational engine outcomes (blocked / rate-limited / timeout / etc.).
+fn log_engine_outcome(outcome: &EngineRunOutcome) {
+    let engine = outcome.engine.as_str();
+    let elapsed_ms = u64::try_from(outcome.duration.as_millis()).unwrap_or(u64::MAX);
+    match &outcome.status {
+        EngineRunStatus::Completed(results) => {
+            tracing::debug!(
+                engine,
+                elapsed_ms,
+                results = results.results.len(),
+                "engine completed"
+            );
+        }
+        EngineRunStatus::Failed(error) => {
+            let category = zoeken_engine_core::ErrorCategory::from(error);
+            let level_is_block = category.is_captcha()
+                || matches!(
+                    category,
+                    zoeken_engine_core::ErrorCategory::AccessDenied
+                        | zoeken_engine_core::ErrorCategory::RateLimited
+                );
+            if level_is_block {
+                tracing::warn!(
+                    engine,
+                    category = category.as_str(),
+                    elapsed_ms,
+                    error = %error,
+                    "engine blocked or rate-limited"
+                );
+            } else if matches!(
+                category,
+                zoeken_engine_core::ErrorCategory::Timeout
+                    | zoeken_engine_core::ErrorCategory::QueueExpired
+            ) {
+                tracing::warn!(
+                    engine,
+                    category = category.as_str(),
+                    elapsed_ms,
+                    "engine outbound failure"
+                );
+            } else {
+                tracing::warn!(
+                    engine,
+                    category = category.as_str(),
+                    elapsed_ms,
+                    error = %error,
+                    "engine failed"
+                );
+            }
+        }
+        EngineRunStatus::Unresponsive(reason) => {
+            let reason = match reason {
+                UnresponsiveReason::EngineTimeout => "engine_timeout",
+                UnresponsiveReason::GlobalDeadline => "global_deadline",
+            };
+            tracing::info!(engine, reason, elapsed_ms, "engine unresponsive");
+        }
+    }
 }
 
 async fn run_one(
@@ -383,7 +447,7 @@ mod tests {
         ));
     }
 
-    #[tokio::test]
+    #[tokio::test(start_paused = true)]
     async fn outcomes_follow_selection_order() {
         let executor = Arc::new(TestExecutor {
             behaviors: HashMap::from([

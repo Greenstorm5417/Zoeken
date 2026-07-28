@@ -20,12 +20,11 @@ general:
   # false | "https://example.com/privacy"
   privacypolicy_url: false
   contact_url: false
-  donation_url: false
   # Sole flag gating the /metrics endpoint (also requires open_metrics below,
   # also APP_METRICS_ENABLED).
   enable_metrics: true
-  # Empty disables /metrics and leaves /stats open. Non-empty = HTTP Basic
-  # password for /metrics, /stats, and /stats/errors (any username).
+  # Empty disables /metrics (404). Non-empty = HTTP Basic password for /metrics
+  # only (any username). /stats and /stats/errors are always public.
   open_metrics: ""
 
 # ---------------------------------------------------------------------------
@@ -154,6 +153,8 @@ ui:
 # ---------------------------------------------------------------------------
 outgoing:
   useragent_suffix: ""
+  # Engines run in parallel; search waits for all selected engines up to this
+  # ceiling (or max_request_timeout). One slow engine stretches wall time here.
   request_timeout: 3.0
   enable_http2: true
   # true only — verify: false and custom CA paths are rejected at boot
@@ -171,7 +172,6 @@ outgoing:
   # null | "1.2.3.4" | ["1.2.3.4", "2001:db8::1"]
   source_ips: null
   using_tor_proxy: false
-  extra_proxy_timeout: 0
   origin_limits:
     requests_per_second: 1.0
     burst: 2
@@ -195,7 +195,6 @@ outgoing:
   #     keepalive_expiry: 5.0
   #     max_redirects: 10
   #     source_ips: null
-  #     extra_proxy_timeout: 0
   #     network: null
 
 # ---------------------------------------------------------------------------

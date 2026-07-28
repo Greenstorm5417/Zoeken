@@ -175,6 +175,7 @@ pub(crate) async fn record_health(
         }
     };
     let transition = circuit_status.to_string();
+    let category_label = category.clone();
     let update = EngineHealthUpdate {
         engine: engine.to_string(),
         bucket: now / 3_600_000,
@@ -189,6 +190,21 @@ pub(crate) async fn record_health(
         metrics::counter!("storage_operations_total", "operation" => "engine_health", "outcome" => "error")
             .increment(1);
     } else if previous.map(|health| health.circuit_status.as_str()) != Some(transition.as_str()) {
-        metrics::counter!("engine_circuit_total", "transition" => transition).increment(1);
+        metrics::counter!("engine_circuit_total", "transition" => transition.clone()).increment(1);
+        if transition == "open" {
+            let cooldown_ms = cooldown_until_ms.map(|until| until.saturating_sub(now));
+            tracing::warn!(
+                engine,
+                category = category_label.as_deref().unwrap_or("unknown"),
+                cooldown_ms,
+                "engine circuit opened (suspended)"
+            );
+        } else {
+            tracing::info!(
+                engine,
+                circuit = transition.as_str(),
+                "engine circuit transition"
+            );
+        }
     }
 }

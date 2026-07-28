@@ -33,10 +33,14 @@ export function useLocalAnswers(
 			pluginEnabled(config, "unit_converter", prefs)
 				? computeUnitConverterAnswer(q, pageno)
 				: null,
-			computeStatisticsAnswer(q),
-			computeRandomAnswer(q),
-			computeDateTimeAnswer(q),
-			computeCryptoAnswer(q),
+			pluginEnabled(config, "statistics", prefs)
+				? computeStatisticsAnswer(q)
+				: null,
+			pluginEnabled(config, "random", prefs) ? computeRandomAnswer(q) : null,
+			pluginEnabled(config, "date_time", prefs)
+				? computeDateTimeAnswer(q)
+				: null,
+			pluginEnabled(config, "crypto", prefs) ? computeCryptoAnswer(q) : null,
 		].filter((answer) => answer !== null);
 	}, [q, language, pageno, config, prefs]);
 }

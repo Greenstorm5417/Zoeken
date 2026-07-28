@@ -26,4 +26,4 @@ Before exposing an instance publicly, follow:
 - [`docs/security/audit.md`](docs/security/audit.md) — controls and residual risk
 - [`docs/deployment.md`](docs/deployment.md) — production checklist (secret key, limiter, TLS, metrics)
 
-Known residual risks (DNS rebinding after URL validation; `/stats` open when `general.open_metrics` is empty) are documented in the security audit; set `open_metrics` and/or restrict at the edge on public instances.
+Known residual risks (DNS rebinding after URL validation) are documented in the security audit. Set `general.open_metrics` and/or restrict `/metrics` at the edge on public instances.

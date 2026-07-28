@@ -13,7 +13,6 @@ zoeken-results = { workspace = true }
 zoeken-query = { workspace = true }
 zoeken-data = { workspace = true }
 scraper = { workspace = true }
-ego-tree = { workspace = true }
 sxd-document = { workspace = true }
 sxd-xpath = { workspace = true }
 chrono = { workspace = true }

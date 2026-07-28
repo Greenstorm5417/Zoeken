@@ -1,59 +1,148 @@
 //! Privacy-preserving, bounded in-process cache for outbound engine responses.
 
-use std::sync::Arc;
-use std::time::Duration;
+use std::sync::{Arc, Mutex};
+use std::time::{Duration, Instant};
 
+use moka::Expiry;
+use moka::future::Cache;
 use zoeken_engine_core::{EngineResponse, SearchQueryView};
-use zoeken_network::{FlightCache, NetworkRequest};
+use zoeken_network::NetworkRequest;
 
-fn response_weight(response: &EngineResponse) -> usize {
-    response.body.len()
+fn response_weight(response: &EngineResponse) -> u32 {
+    let bytes = response.body.len()
         + response.url.len()
         + response
             .headers
             .iter()
             .map(|(name, value)| name.len() + value.len())
-            .sum::<usize>()
+            .sum::<usize>();
+    u32::try_from(bytes).unwrap_or(u32::MAX).max(1)
+}
+
+#[derive(Clone)]
+struct CachedResponse {
+    response: EngineResponse,
+    structured: bool,
+}
+
+struct ResponseExpiry {
+    html_ttl: Duration,
+    structured_ttl: Duration,
+}
+
+impl Expiry<String, CachedResponse> for ResponseExpiry {
+    fn expire_after_create(
+        &self,
+        _key: &String,
+        value: &CachedResponse,
+        _now: Instant,
+    ) -> Option<Duration> {
+        Some(if value.structured {
+            self.structured_ttl
+        } else {
+            self.html_ttl
+        })
+    }
+}
+
+/// Load outcome for [`ResponseCache::get_or_load`]: successes that must not be retained
+/// travel as [`LoadError::Uncached`] so moka skips storage while callers still get the body.
+#[derive(Clone)]
+enum LoadError<E> {
+    Uncached {
+        response: EngineResponse,
+        http_duration: Duration,
+    },
+    Failed {
+        error: E,
+        http_duration: Option<Duration>,
+    },
 }
 
 /// Keys are opaque HMAC digests; raw queries, bodies, and responses never
 /// enter persistent storage.
 pub(crate) struct ResponseCache {
-    cache: FlightCache<String, EngineResponse>,
+    cache: Cache<String, CachedResponse>,
     pub(crate) hmac_key: [u8; 32],
-    html_ttl: Duration,
-    structured_ttl: Duration,
 }
 
 impl ResponseCache {
     pub(crate) fn new(html_ttl: Duration, structured_ttl: Duration, max_bytes: usize) -> Self {
-        Self {
-            cache: FlightCache::new(max_bytes.max(1), response_weight),
-            hmac_key: rand::random(),
+        let expiry = ResponseExpiry {
             html_ttl,
             structured_ttl,
+        };
+        Self {
+            cache: Cache::builder()
+                .max_capacity(max_bytes.max(1) as u64)
+                .weigher(|_key, value: &CachedResponse| response_weight(&value.response))
+                .expire_after(expiry)
+                .build(),
+            hmac_key: rand::random(),
         }
     }
 
-    pub(crate) fn get(&self, key: &str) -> Option<EngineResponse> {
-        self.cache.get(&key.to_string())
+    pub(crate) async fn get(&self, key: &str) -> Option<EngineResponse> {
+        self.cache.get(key).await.map(|cached| cached.response)
     }
 
-    pub(crate) fn put(&self, key: String, response: EngineResponse, structured: bool) {
-        let ttl = if structured {
-            self.structured_ttl
-        } else {
-            self.html_ttl
-        };
-        self.cache.put(key, response, ttl);
-    }
-
-    pub(crate) fn flight(&self, key: &str) -> Option<Arc<tokio::sync::Mutex<()>>> {
-        self.cache.flight(&key.to_string())
-    }
-
-    pub(crate) fn finish_flight(&self, key: &str) {
-        self.cache.finish_flight(&key.to_string());
+    /// Singleflight load. Cacheable successes are stored; uncacheable successes and
+    /// failures are not. `http_duration` is set for the producer (and uncached/error
+    /// paths); pure cache hits / shared waiters see `None`.
+    pub(crate) async fn get_or_load<F, E>(
+        &self,
+        key: String,
+        init: F,
+    ) -> Result<(EngineResponse, Option<Duration>), (E, Option<Duration>)>
+    where
+        F: std::future::Future<
+                Output = Result<(EngineResponse, bool, Duration), (E, Option<Duration>)>,
+            >,
+        E: Clone + Send + Sync + 'static,
+    {
+        let produced = Arc::new(Mutex::new(None));
+        let produced_for_init = Arc::clone(&produced);
+        match self
+            .cache
+            .try_get_with(key, async move {
+                match init.await {
+                    Ok((response, true, http_duration)) => {
+                        if let Ok(mut guard) = produced_for_init.lock() {
+                            *guard = Some(http_duration);
+                        }
+                        let structured = response_is_structured(&response);
+                        Ok(CachedResponse {
+                            response,
+                            structured,
+                        })
+                    }
+                    Ok((response, false, http_duration)) => Err(LoadError::Uncached {
+                        response,
+                        http_duration,
+                    }),
+                    Err((error, http_duration)) => Err(LoadError::Failed {
+                        error,
+                        http_duration,
+                    }),
+                }
+            })
+            .await
+        {
+            Ok(cached) => {
+                let http_duration = produced.lock().ok().and_then(|mut guard| guard.take());
+                Ok((cached.response, http_duration))
+            }
+            Err(error) => match Arc::unwrap_or_clone(error) {
+                LoadError::Uncached {
+                    response,
+                    http_duration,
+                } => Ok((response, Some(http_duration))),
+                LoadError::Failed {
+                    error,
+                    http_duration,
+                } => Err((error, http_duration)),
+            },
+        }
     }
 }
 

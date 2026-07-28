@@ -10,11 +10,12 @@ use url::Url;
 use zoeken_engine_core::{
     About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod, MainResult,
     Processor, RequestParams, SafeSearch, SearchQueryView, Suggestion, TimeRange, extract_text,
-    html_to_text, json_get, json_get_str, normalize_url, xpath_select_relative,
+    html_to_text, json_get, json_get_str, looks_like_bot_wall, normalize_url,
+    xpath_select_relative,
 };
 use zoeken_results::Result_;
 
-use super::util::{encode_component, encode_query, looks_like_bot_wall};
+use super::util::{encode_component, encode_query};
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(default)]

@@ -18,7 +18,7 @@ members = [
 ]
 
 [workspace.package]
-version = "1.4.0"
+version = "1.4.1"
 edition = "2024"
 license = "AGPL-3.0-or-later"
 authors = ["Greenstorm <sdussinger1007@gmail.com>"]
@@ -82,7 +82,7 @@ serde = { version = "1.0.228", features = ["derive"] }
 serde_json = { version = "1.0.150", features = ["float_roundtrip"] }
 serde_yaml_ng = "0.10.0"
 scraper = "0.27.0"
-ego-tree = "0.11.0"
+html-escape = "0.2.13"
 sxd-document = "0.3.2"
 sxd-xpath = "0.4.2"
 chrono = { version = "0.4.45", default-features = false, features = [
@@ -111,7 +111,6 @@ phf = "0.14.0"
 phf_codegen = "0.14.0"
 indexmap = { version = "2.12.0", features = ["serde"] }
 url = "2.5.8"
-percent-encoding = "2.3.2"
 base64 = "0.23.0"
 flate2 = "1.1.9"
 http = "1.4.2"

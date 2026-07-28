@@ -4,10 +4,11 @@ import { applyDoiRewrite } from "./doiRewrite";
 import { applyHostnames, sortByPriority } from "./hostnames";
 import { applyTrackerUrlRemover } from "./trackerUrlRemover";
 
-export {
-	type ClientFeatureInfo,
-	featureCatalog,
-} from "./catalog";
+/** Prefs UI fields from `/config.plugins` (no remap layer). */
+export type ClientFeatureInfo = Pick<
+	Config["plugins"][number],
+	"id" | "name" | "description" | "default_enabled"
+>;
 
 /** Prefer cookie/settings prefs; fall back to `/config` plugin defaults. */
 export function pluginEnabled(

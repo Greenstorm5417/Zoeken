@@ -1228,6 +1228,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "html-escape"
+version = "0.2.14"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "46c1ff2d1cbf39efe5af0900ced8a069b5e61557a17544eb0c4a50239937389e"
+
+[[package]]
 name = "html5ever"
 version = "0.39.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4419,10 +4425,11 @@ checksum = "b8848ee67ecc8aedbaf3e4122217aff892639231befc6a1b58d29fff4c2cabaa"
 
 [[package]]
 name = "zoeken-autocomplete"
-version = "1.4.0"
+version = "1.4.1"
 dependencies = [
  "http",
  "metrics",
+ "moka",
  "rand 0.9.4",
  "serde",
  "serde_json",
@@ -4435,7 +4442,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-botdetect"
-version = "1.4.0"
+version = "1.4.1"
 dependencies = [
  "ipnet",
  "moka",
@@ -4448,7 +4455,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-data"
-version = "1.4.0"
+version = "1.4.1"
 dependencies = [
  "phf 0.14.0",
  "phf_codegen 0.14.0",
@@ -4463,10 +4470,9 @@ dependencies = [
 
 [[package]]
 name = "zoeken-engine-core"
-version = "1.4.0"
+version = "1.4.1"
 dependencies = [
  "chrono",
- "ego-tree",
  "indexmap",
  "proptest",
  "scraper",
@@ -4484,11 +4490,11 @@ dependencies = [
 
 [[package]]
 name = "zoeken-engines"
-version = "1.4.0"
+version = "1.4.1"
 dependencies = [
  "base64 0.23.0",
  "chrono",
- "ego-tree",
+ "html-escape",
  "quick-xml",
  "scraper",
  "serde",
@@ -4510,7 +4516,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-favicons"
-version = "1.4.0"
+version = "1.4.1"
 dependencies = [
  "futures-util",
  "hex",
@@ -4529,7 +4535,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-network"
-version = "1.4.0"
+version = "1.4.1"
 dependencies = [
  "async-trait",
  "httpdate",
@@ -4549,7 +4555,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-prefs"
-version = "1.4.0"
+version = "1.4.1"
 dependencies = [
  "base64 0.23.0",
  "flate2",
@@ -4564,7 +4570,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-query"
-version = "1.4.0"
+version = "1.4.1"
 dependencies = [
  "proptest",
  "serde",
@@ -4576,7 +4582,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-results"
-version = "1.4.0"
+version = "1.4.1"
 dependencies = [
  "proptest",
  "serde",
@@ -4586,7 +4592,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-search"
-version = "1.4.0"
+version = "1.4.1"
 dependencies = [
  "criterion",
  "metrics",
@@ -4601,7 +4607,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-server"
-version = "1.4.0"
+version = "1.4.1"
 dependencies = [
  "axum",
  "base64 0.23.0",
@@ -4613,6 +4619,7 @@ dependencies = [
  "md-5",
  "metrics",
  "metrics-exporter-prometheus",
+ "moka",
  "proptest",
  "quick-xml",
  "rand 0.9.4",
@@ -4647,7 +4654,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-settings"
-version = "1.4.0"
+version = "1.4.1"
 dependencies = [
  "http",
  "proptest",
@@ -4658,7 +4665,7 @@ dependencies = [
 
 [[package]]
 name = "zoeken-storage"
-version = "1.4.0"
+version = "1.4.1"
 dependencies = [
  "async-trait",
  "hex",

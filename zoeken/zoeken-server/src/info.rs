@@ -105,11 +105,6 @@ struct PluginInfo {
     kind: String,
     keywords: Vec<String>,
     preference_section: String,
-    version: String,
-    api_version: u32,
-    after: Vec<String>,
-    before: Vec<String>,
-    capabilities: Vec<String>,
 }
 
 #[derive(Debug, Serialize)]
@@ -118,7 +113,6 @@ struct BrandInfo {
     PRIVACYPOLICY_URL: serde_json::Value,
     CONTACT_URL: serde_json::Value,
     GIT_URL: String,
-    GIT_BRANCH: String,
     DOCS_URL: String,
 }
 
@@ -206,7 +200,6 @@ pub async fn config(
             CONTACT_URL: serde_json::to_value(&state.settings.general.contact_url)
                 .unwrap_or(serde_json::Value::Null),
             GIT_URL: git_url_from_brand(&state.settings.brand),
-            GIT_BRANCH: String::new(),
             DOCS_URL: state.settings.brand.docs_url.clone(),
         },
         limiter: LimiterInfo {
@@ -313,6 +306,12 @@ struct EngineTiming {
     http_count: u64,
     http_sum_seconds: f64,
     http_avg_seconds: f64,
+    /// Operator-disabled in settings (`engines[].disabled` / inactive).
+    disabled: bool,
+    /// Circuit open with a future cooldown (temporary ban/suspension).
+    suspended: bool,
+    /// Unix ms when the suspension ends; null when not suspended.
+    cooldown_until_ms: Option<i64>,
 }
 
 #[derive(Debug, Default, Serialize)]
@@ -334,27 +333,21 @@ struct ErrorStatsResponse {
 
 /// `GET /stats` timing summaries (JSON), or SPA document for browser navigations.
 pub async fn stats(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Response {
-    // SPA shell stays public so the page can show a configure-auth message on 401.
     if crate::preferences::prefers_html(&headers) {
         return crate::frontend_index_response(&state, &headers);
-    }
-    if let Some(denied) = open_metrics_unauthorized(&state, &headers) {
-        return denied;
     }
     let rendered = state
         .metrics_handle
         .as_ref()
         .map(|h| h.render())
         .unwrap_or_default();
-    let response = timing_stats(&rendered);
+    let mut response = timing_stats(&rendered);
+    enrich_engine_status(&state, &mut response).await;
     json(&response)
 }
 
 /// `GET /stats/errors` error counts.
-pub async fn stats_errors(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Response {
-    if let Some(denied) = open_metrics_unauthorized(&state, &headers) {
-        return denied;
-    }
+pub async fn stats_errors(State(state): State<Arc<AppState>>) -> Response {
     let rendered = state
         .metrics_handle
         .as_ref()
@@ -405,6 +398,54 @@ fn timing_stats(rendered: &str) -> StatsResponse {
     }
 }
 
+/// Merge registry disabled flags and storage circuit cooldowns into timing rows.
+async fn enrich_engine_status(state: &AppState, stats: &mut StatsResponse) {
+    let mut engines: BTreeMap<String, EngineTiming> = stats
+        .engines
+        .drain(..)
+        .map(|row| (row.engine.clone(), row))
+        .collect();
+
+    for re in state.search.registry().engines() {
+        let name = re.engine.metadata().name.clone();
+        let entry = engines.entry(name.clone()).or_insert_with(|| EngineTiming {
+            engine: name,
+            ..EngineTiming::default()
+        });
+        entry.disabled = re.disabled;
+    }
+
+    if let Some(storage) = state.storage.as_ref() {
+        let names: Vec<String> = engines.keys().cloned().collect();
+        for name in names {
+            match storage.latest_engine_health(&name).await {
+                Ok(Some(health)) => {
+                    let suspended = crate::engine_health::circuit_is_open(Some(&health));
+                    if let Some(entry) = engines.get_mut(&name) {
+                        entry.suspended = suspended;
+                        entry.cooldown_until_ms = if suspended {
+                            health.cooldown_until_ms
+                        } else {
+                            None
+                        };
+                    }
+                }
+                Ok(None) => {}
+                Err(_) => {
+                    metrics::counter!(
+                        "storage_operations_total",
+                        "operation" => "engine_health",
+                        "outcome" => "error"
+                    )
+                    .increment(1);
+                }
+            }
+        }
+    }
+
+    stats.engines = engines.into_values().collect();
+}
+
 fn error_stats(rendered: &str) -> ErrorStatsResponse {
     let with_suffix = format!("{ENGINE_ERRORS_TOTAL}_total");
 
@@ -436,19 +477,13 @@ fn error_stats(rendered: &str) -> ErrorStatsResponse {
 
 const METRICS_CONTENT_TYPE: &str = "text/plain; version=0.0.4; charset=utf-8";
 
-/// When `general.open_metrics` is set, require HTTP Basic with that password.
-/// Empty password: deny `/stats` JSON (401) — same safer default as hiding
-/// `/metrics`. SPA HTML for `/stats` stays public so the page can prompt.
+/// When `general.open_metrics` is set, require HTTP Basic with that password
+/// for `/metrics`. Empty password hides `/metrics` entirely (see [`metrics`]).
+/// `/stats` and `/stats/errors` are always public.
 fn open_metrics_unauthorized(state: &AppState, headers: &HeaderMap) -> Option<Response> {
     let password = state.settings.general.open_metrics.as_str();
     if password.is_empty() {
-        return Some(
-            (
-                StatusCode::UNAUTHORIZED,
-                [(header::WWW_AUTHENTICATE, "Basic realm=\"metrics\"")],
-            )
-                .into_response(),
-        );
+        return None;
     }
     let authorized = headers
         .get(header::AUTHORIZATION)
@@ -757,11 +792,6 @@ fn client_feature_plugin_infos() -> impl Iterator<Item = PluginInfo> {
             kind: kind.to_string(),
             keywords: keywords.iter().map(|s| s.to_string()).collect(),
             preference_section: preference_section.to_string(),
-            version: "1".to_string(),
-            api_version: 1,
-            after: Vec::new(),
-            before: Vec::new(),
-            capabilities: Vec::new(),
         }
     }
     [
@@ -834,6 +864,42 @@ fn client_feature_plugin_infos() -> impl Iterator<Item = PluginInfo> {
             "Convert between units (\"10 km to miles\", \"how many cups in a gallon\").",
             "answerer",
             "general",
+            true,
+            &[],
+        ),
+        info(
+            "statistics",
+            "Statistics",
+            "Compute basic statistics over a list of numbers.",
+            "answerer",
+            "query",
+            true,
+            &[],
+        ),
+        info(
+            "random",
+            "Random",
+            "Generate a random number, string, or UUID.",
+            "answerer",
+            "query",
+            true,
+            &[],
+        ),
+        info(
+            "date_time",
+            "Date and time",
+            "Answer date and time arithmetic queries.",
+            "answerer",
+            "query",
+            true,
+            &[],
+        ),
+        info(
+            "crypto",
+            "Hash and encode",
+            "Hash, encode, or decode text in the browser (SHA-1/256/384/512, base64, hex, URL).",
+            "answerer",
+            "query",
             true,
             &[],
         ),
@@ -1077,42 +1143,27 @@ hostnames:
     }
 
     #[tokio::test]
-    async fn stats_returns_empty_engines_without_handle() {
-        let mut state = AppState::new().expect("build app state");
-        state.settings.general.open_metrics = "secret".to_string();
-        let app = app(state);
-        let response = app
-            .oneshot(
-                Request::builder()
-                    .uri("/stats")
-                    .header(header::AUTHORIZATION, "Basic dXNlcjpzZWNyZXQ=")
-                    .body(Body::empty())
-                    .unwrap(),
-            )
-            .await
-            .unwrap();
+    async fn stats_returns_registry_engines_without_handle() {
+        let response = get("/stats").await;
         assert_eq!(response.status(), StatusCode::OK);
         assert_eq!(content_type(&response), "application/json");
         let value = body_json(response).await;
-        // No handle wired in the default state => empty, not fabricated.
-        assert_eq!(value["engines"], serde_json::json!([]));
+        let engines = value["engines"].as_array().expect("engines array");
+        assert!(
+            !engines.is_empty(),
+            "registry engines appear even without metrics samples"
+        );
+        let first = &engines[0];
+        assert!(first["engine"].is_string());
+        assert!(first["disabled"].is_boolean());
+        assert_eq!(first["suspended"], false);
+        assert!(first["cooldown_until_ms"].is_null());
+        assert_eq!(first["total_count"], 0);
     }
 
     #[tokio::test]
     async fn stats_errors_returns_empty_engines_without_handle() {
-        let mut state = AppState::new().expect("build app state");
-        state.settings.general.open_metrics = "secret".to_string();
-        let app = app(state);
-        let response = app
-            .oneshot(
-                Request::builder()
-                    .uri("/stats/errors")
-                    .header(header::AUTHORIZATION, "Basic dXNlcjpzZWNyZXQ=")
-                    .body(Body::empty())
-                    .unwrap(),
-            )
-            .await
-            .unwrap();
+        let response = get("/stats/errors").await;
         assert_eq!(response.status(), StatusCode::OK);
         assert_eq!(content_type(&response), "application/json");
         let value = body_json(response).await;
@@ -1120,10 +1171,18 @@ hostnames:
     }
 
     #[tokio::test]
-    async fn stats_denied_when_open_metrics_empty() {
+    async fn stats_public_even_when_open_metrics_set() {
+        let mut state = AppState::new().expect("build app state");
+        state.settings.general.open_metrics = "secret".to_string();
+        let app = app(state);
         for path in ["/stats", "/stats/errors"] {
-            let response = get(path).await;
-            assert_eq!(response.status(), StatusCode::UNAUTHORIZED, "{path}");
+            let response = app
+                .clone()
+                .oneshot(Request::builder().uri(path).body(Body::empty()).unwrap())
+                .await
+                .unwrap();
+            assert_eq!(response.status(), StatusCode::OK, "{path}");
+            assert_eq!(content_type(&response), "application/json", "{path}");
         }
     }
 
@@ -1162,36 +1221,6 @@ hostnames:
             .unwrap();
         assert_eq!(authorized.status(), StatusCode::OK);
         assert_eq!(content_type(&authorized), METRICS_CONTENT_TYPE);
-    }
-
-    #[tokio::test]
-    async fn stats_requires_basic_auth_when_open_metrics_set() {
-        let mut state = AppState::new().expect("build app state");
-        state.settings.general.open_metrics = "secret".to_string();
-        let app = app(state);
-
-        for path in ["/stats", "/stats/errors"] {
-            let unauthorized = app
-                .clone()
-                .oneshot(Request::builder().uri(path).body(Body::empty()).unwrap())
-                .await
-                .unwrap();
-            assert_eq!(unauthorized.status(), StatusCode::UNAUTHORIZED, "{path}");
-
-            let authorized = app
-                .clone()
-                .oneshot(
-                    Request::builder()
-                        .uri(path)
-                        .header(header::AUTHORIZATION, "Basic dXNlcjpzZWNyZXQ=")
-                        .body(Body::empty())
-                        .unwrap(),
-                )
-                .await
-                .unwrap();
-            assert_eq!(authorized.status(), StatusCode::OK, "{path}");
-            assert_eq!(content_type(&authorized), "application/json", "{path}");
-        }
     }
 
     #[tokio::test]

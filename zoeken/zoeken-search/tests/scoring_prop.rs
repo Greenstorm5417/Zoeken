@@ -7,7 +7,7 @@ use proptest::prelude::*;
 use zoeken_engine_core::EngineResults;
 use zoeken_results::{MainResult, Result_};
 use zoeken_search::execution::{EngineRunOutcome, EngineRunStatus, ExecutionReport};
-use zoeken_search::{EngineWeights, NoopRecorder, aggregate};
+use zoeken_search::{EngineWeights, aggregate};
 
 fn main_result(url: &str) -> Result_ {
     Result_::Main(MainResult {
@@ -127,7 +127,7 @@ proptest! {
 
         let weight_pairs: Vec<(String, f64)> =
             weight_of.iter().map(|(k, v)| (k.clone(), *v)).collect();
-        let container = aggregate(report(outcomes), &weights(&weight_pairs), &NoopRecorder);
+        let container = aggregate(report(outcomes), &weights(&weight_pairs));
 
         let expected = reference_scores(&engines, &weight_of);
 
@@ -176,8 +176,8 @@ proptest! {
             report(outcomes)
         };
 
-        let fewer = aggregate(make_report(n), &table, &NoopRecorder);
-        let more = aggregate(make_report(n_plus_1), &table, &NoopRecorder);
+        let fewer = aggregate(make_report(n), &table);
+        let more = aggregate(make_report(n_plus_1), &table);
 
         prop_assert_eq!(fewer.results.len(), 1);
         prop_assert_eq!(more.results.len(), 1);

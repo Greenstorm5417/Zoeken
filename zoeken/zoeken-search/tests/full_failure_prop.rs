@@ -5,8 +5,8 @@ use std::time::Duration;
 use proptest::prelude::*;
 use zoeken_engine_core::{EngineError, EngineResults, ErrorCategory};
 use zoeken_search::{
-    EngineRunOutcome, EngineRunStatus, EngineWeights, ExecutionReport, NoopRecorder,
-    UnresponsiveCause, UnresponsiveEngine, UnresponsiveReason, aggregate,
+    EngineRunOutcome, EngineRunStatus, EngineWeights, ExecutionReport, UnresponsiveCause,
+    UnresponsiveEngine, UnresponsiveReason, aggregate,
 };
 
 #[derive(Debug, Clone)]
@@ -85,7 +85,7 @@ fn assert_total_on_full_failure(
     weights: &EngineWeights,
 ) -> Result<(), TestCaseError> {
     let report = ExecutionReport { outcomes };
-    let container = aggregate(report, weights, &NoopRecorder);
+    let container = aggregate(report, weights);
 
     prop_assert!(container.results.is_empty());
     prop_assert_eq!(container.number_of_results, 0);

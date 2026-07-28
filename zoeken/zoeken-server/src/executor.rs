@@ -17,9 +17,7 @@ use zoeken_network::{DEFAULT_NETWORK, NetworkError, NetworkManager, NetworkReque
 use zoeken_search::{EngineExecResult, EngineExecutor, EngineFuture, SuspensionPolicy};
 
 use crate::engine_health::{PendingHealth, circuit_is_open, record_health};
-use crate::outbound_cache::{
-    ResponseCache, cache_key, response_is_cacheable, response_is_structured,
-};
+use crate::outbound_cache::{ResponseCache, cache_key, response_is_cacheable};
 
 #[derive(Clone)]
 pub struct NetworkExecutor {
@@ -137,7 +135,7 @@ impl EngineExecutor for NetworkExecutor {
             };
 
             let key = cache_key(&response_cache.hmac_key, &engine_name, &request, &query);
-            if let Some(cached) = response_cache.get(&key) {
+            if let Some(cached) = response_cache.get(&key).await {
                 metrics::counter!("engine_response_cache_total", "outcome" => "hit").increment(1);
                 return EngineExecResult {
                     result: engine.response(&cached),
@@ -145,115 +143,116 @@ impl EngineExecutor for NetworkExecutor {
                 };
             }
 
-            let Some(flight) = response_cache.flight(&key) else {
-                return EngineExecResult::from_result(Err(EngineError::Unexpected(
-                    "response cache coordination unavailable".to_string(),
-                )));
-            };
-            let _flight_guard = flight.lock().await;
-            if let Some(cached) = response_cache.get(&key) {
-                metrics::counter!("engine_singleflight_total", "outcome" => "shared").increment(1);
-                return EngineExecResult {
-                    result: engine.response(&cached),
-                    http_duration: None,
-                };
-            }
-
-            let storage = networks.coordinator();
-            let previous_health = if let Some(storage) = storage.as_ref() {
-                match storage.latest_engine_health(&engine_name).await {
-                    Ok(snapshot) => snapshot,
-                    Err(_) => {
-                        response_cache.finish_flight(&key);
-                        return EngineExecResult::from_result(Err(EngineError::Unexpected(
-                            "outbound coordination storage is unavailable".to_string(),
-                        )));
+            let loaded = response_cache
+                .get_or_load::<_, EngineError>(key, async {
+                    let storage = networks.coordinator();
+                    let previous_health = if let Some(storage) = storage.as_ref() {
+                        match storage.latest_engine_health(&engine_name).await {
+                            Ok(snapshot) => snapshot,
+                            Err(_) => {
+                                return Err((
+                                    EngineError::Unexpected(
+                                        "outbound coordination storage is unavailable".to_string(),
+                                    ),
+                                    None,
+                                ));
+                            }
+                        }
+                    } else {
+                        None
+                    };
+                    if circuit_is_open(previous_health.as_ref()) {
+                        metrics::counter!("engine_circuit_total", "transition" => "rejected")
+                            .increment(1);
+                        tracing::warn!(
+                            engine = engine_name.as_str(),
+                            "engine request rejected; circuit cooling down"
+                        );
+                        return Err((
+                            EngineError::AccessDenied(format!(
+                                "{engine_name} circuit is cooling down"
+                            )),
+                            None,
+                        ));
                     }
-                }
-            } else {
-                None
-            };
-            if circuit_is_open(previous_health.as_ref()) {
-                metrics::counter!("engine_circuit_total", "transition" => "rejected").increment(1);
-                response_cache.finish_flight(&key);
-                return EngineExecResult::from_result(Err(EngineError::AccessDenied(format!(
-                    "{engine_name} circuit is cooling down"
-                ))));
-            }
 
-            let http_started = Instant::now();
-            let mut pending_health = PendingHealth::new(
-                storage.clone(),
-                engine_name.clone(),
-                previous_health.clone(),
-                health_policy,
-            );
-            let response = match networks.request(&network_name, request).await {
-                Ok(response) => response,
-                Err(error) => {
+                    let http_started = Instant::now();
+                    let mut pending_health = PendingHealth::new(
+                        storage.clone(),
+                        engine_name.clone(),
+                        previous_health.clone(),
+                        health_policy,
+                    );
+                    let response = match networks.request(&network_name, request).await {
+                        Ok(response) => response,
+                        Err(error) => {
+                            pending_health.complete();
+                            let mapped = map_network_error(error);
+                            record_health(
+                                storage.as_deref(),
+                                &engine_name,
+                                http_started.elapsed(),
+                                &Err(mapped.clone()),
+                                previous_health.as_ref(),
+                                &health_policy,
+                            )
+                            .await;
+                            return Err((mapped, Some(http_started.elapsed())));
+                        }
+                    };
+                    let engine_response = match adapt_response(response, max_response_bytes).await {
+                        Ok(response) => response,
+                        Err(error) => {
+                            pending_health.complete();
+                            record_health(
+                                storage.as_deref(),
+                                &engine_name,
+                                http_started.elapsed(),
+                                &Err(error.clone()),
+                                previous_health.as_ref(),
+                                &health_policy,
+                            )
+                            .await;
+                            return Err((error, Some(http_started.elapsed())));
+                        }
+                    };
+                    let result = engine.response(&engine_response);
                     pending_health.complete();
-                    let mapped = map_network_error(error);
                     record_health(
                         storage.as_deref(),
                         &engine_name,
                         http_started.elapsed(),
-                        &Err(mapped.clone()),
+                        &result,
                         previous_health.as_ref(),
                         &health_policy,
                     )
                     .await;
-                    response_cache.finish_flight(&key);
-                    return EngineExecResult {
-                        result: Err(mapped),
-                        http_duration: Some(http_started.elapsed()),
+                    let Err(error) = result else {
+                        let cacheable = response_is_cacheable(&engine_response);
+                        if cacheable {
+                            metrics::counter!("engine_response_cache_total", "outcome" => "stored")
+                                .increment(1);
+                        } else {
+                            metrics::counter!("engine_response_cache_total", "outcome" => "rejected")
+                                .increment(1);
+                        }
+                        return Ok((engine_response, cacheable, http_started.elapsed()));
                     };
-                }
-            };
-            let engine_response = match adapt_response(response, max_response_bytes).await {
-                Ok(response) => response,
-                Err(error) => {
-                    pending_health.complete();
-                    record_health(
-                        storage.as_deref(),
-                        &engine_name,
-                        http_started.elapsed(),
-                        &Err(error.clone()),
-                        previous_health.as_ref(),
-                        &health_policy,
-                    )
-                    .await;
-                    response_cache.finish_flight(&key);
-                    return EngineExecResult {
-                        result: Err(error),
-                        http_duration: Some(http_started.elapsed()),
-                    };
-                }
-            };
-            let result = engine.response(&engine_response);
-            pending_health.complete();
-            record_health(
-                storage.as_deref(),
-                &engine_name,
-                http_started.elapsed(),
-                &result,
-                previous_health.as_ref(),
-                &health_policy,
-            )
-            .await;
-            if result.is_ok() && response_is_cacheable(&engine_response) {
-                let structured = response_is_structured(&engine_response);
-                response_cache.put(key.clone(), engine_response, structured);
-                metrics::counter!("engine_response_cache_total", "outcome" => "stored")
-                    .increment(1);
-            } else {
-                metrics::counter!("engine_response_cache_total", "outcome" => "rejected")
-                    .increment(1);
-            }
-            response_cache.finish_flight(&key);
-            let http_duration = Some(http_started.elapsed());
-            EngineExecResult {
-                result,
-                http_duration,
+                    metrics::counter!("engine_response_cache_total", "outcome" => "rejected")
+                        .increment(1);
+                    Err((error, Some(http_started.elapsed())))
+                })
+                .await;
+
+            match loaded {
+                Ok((engine_response, http_duration)) => EngineExecResult {
+                    result: engine.response(&engine_response),
+                    http_duration,
+                },
+                Err((error, http_duration)) => EngineExecResult {
+                    result: Err(error),
+                    http_duration,
+                },
             }
         })
     }
@@ -459,13 +458,13 @@ mod tests {
         assert_eq!(body, r#"{"q":"rust"}"#);
     }
 
-    #[test]
-    fn response_cache_serves_within_ttl_and_keys_on_body() {
+    #[tokio::test]
+    async fn response_cache_serves_within_ttl_and_keys_on_body() {
         let cache = ResponseCache::new(Duration::from_secs(60), Duration::from_secs(300), 4096);
         let secret = [7_u8; 32];
         let request_a = NetworkRequest::post("https://wdqs/sparql").with_body(b"query=A".to_vec());
         let key = cache_key(&secret, "wikidata", &request_a, &SearchQueryView::default());
-        assert!(cache.get(&key).is_none(), "cold cache misses");
+        assert!(cache.get(&key).await.is_none(), "cold cache misses");
 
         let response = EngineResponse {
             status: 200,
@@ -473,54 +472,73 @@ mod tests {
             body: b"cached body".to_vec(),
             ..EngineResponse::default()
         };
-        cache.put(key.clone(), response.clone(), true);
-        assert_eq!(cache.get(&key), Some(response));
+        let cached = response.clone();
+        let (loaded, _) = cache
+            .get_or_load::<_, EngineError>(key.clone(), async {
+                Ok((cached, true, Duration::from_millis(1)))
+            })
+            .await
+            .expect("store");
+        assert_eq!(loaded.body, response.body);
+        assert_eq!(cache.get(&key).await.map(|r| r.body), Some(response.body));
 
         // A different request body is a different cache key (a cache miss).
         let request_b = NetworkRequest::post("https://wdqs/sparql").with_body(b"query=B".to_vec());
         let other = cache_key(&secret, "wikidata", &request_b, &SearchQueryView::default());
-        assert!(cache.get(&other).is_none());
-    }
-
-    #[test]
-    fn response_cache_evicts_oldest_to_stay_within_byte_limit() {
-        let cache = ResponseCache::new(Duration::from_secs(60), Duration::from_secs(300), 24);
-        for i in 0..4 {
-            cache.put(
-                format!("k{i}"),
-                EngineResponse {
-                    status: 200,
-                    body: vec![i; 12],
-                    ..EngineResponse::default()
-                },
-                false,
-            );
-        }
-        // Only room for ~2 entries at 12 bytes each within a 24 byte budget;
-        // the oldest keys must have been evicted to make room for the newest.
-        assert!(cache.get("k0").is_none());
-        assert!(cache.get("k3").is_some());
+        assert!(cache.get(&other).await.is_none());
     }
 
     #[tokio::test]
-    async fn identical_cache_keys_share_one_in_flight_lock() {
+    async fn identical_cache_keys_share_one_load() {
         let cache = Arc::new(ResponseCache::new(
             Duration::from_secs(60),
             Duration::from_secs(300),
             4096,
         ));
-        let first = cache.flight("digest").unwrap();
-        let second = cache.flight("digest").unwrap();
-        assert!(Arc::ptr_eq(&first, &second));
+        let loads = Arc::new(std::sync::atomic::AtomicUsize::new(0));
+        let loads_a = Arc::clone(&loads);
+        let loads_b = Arc::clone(&loads);
+        let cache_a = Arc::clone(&cache);
+        let cache_b = Arc::clone(&cache);
 
-        let guard = first.lock().await;
-        let follower = tokio::spawn(async move {
-            let _guard = second.lock().await;
+        let a = tokio::spawn(async move {
+            cache_a
+                .get_or_load::<_, EngineError>("digest".into(), async move {
+                    loads_a.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+                    tokio::time::sleep(Duration::from_millis(50)).await;
+                    Ok((
+                        EngineResponse {
+                            status: 200,
+                            body: b"shared".to_vec(),
+                            ..EngineResponse::default()
+                        },
+                        true,
+                        Duration::from_millis(50),
+                    ))
+                })
+                .await
         });
-        tokio::task::yield_now().await;
-        assert!(!follower.is_finished());
-        drop(guard);
-        follower.await.unwrap();
+        let b = tokio::spawn(async move {
+            cache_b
+                .get_or_load::<_, EngineError>("digest".into(), async move {
+                    loads_b.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+                    tokio::time::sleep(Duration::from_millis(50)).await;
+                    Ok((
+                        EngineResponse {
+                            status: 200,
+                            body: b"shared".to_vec(),
+                            ..EngineResponse::default()
+                        },
+                        true,
+                        Duration::from_millis(50),
+                    ))
+                })
+                .await
+        });
+        let (ra, rb) = tokio::join!(a, b);
+        assert_eq!(ra.unwrap().unwrap().0.body, b"shared");
+        assert_eq!(rb.unwrap().unwrap().0.body, b"shared");
+        assert_eq!(loads.load(std::sync::atomic::Ordering::SeqCst), 1);
     }
 
     #[test]

@@ -1,12 +1,36 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav } from "#/components/SiteNav";
-import { preferencesGet, stats, statsErrors } from "#/lib/api";
-import { stringsFor } from "#/lib/i18n";
+import {
+	type EngineTiming,
+	preferencesGet,
+	stats,
+	statsErrors,
+} from "#/lib/api";
+import { stringsFor, type UiStrings } from "#/lib/i18n";
 
 export const Route = createFileRoute("/stats")({
 	component: StatsPage,
 });
+
+function engineStatusLabel(
+	row: EngineTiming,
+	t: UiStrings,
+	locale: string | undefined,
+): string {
+	if (row.disabled) return t.statsDisabled;
+	if (row.suspended && row.cooldown_until_ms != null) {
+		return `${t.statsSuspendedUntil} ${new Date(row.cooldown_until_ms).toLocaleString(locale)}`;
+	}
+	if (row.suspended) return t.statsSuspended;
+	return t.statsEnabled;
+}
+
+function statusClass(row: EngineTiming): string {
+	if (row.disabled) return "text-red-700";
+	if (row.suspended) return "text-amber-800";
+	return "text-ink-muted";
+}
 
 function StatsPage() {
 	const prefs = useQuery({
@@ -42,10 +66,11 @@ function StatsPage() {
 					<p className="mt-3 text-sm text-ink-muted">{t.statsNoSamples}</p>
 				) : (
 					<div className="mt-3 overflow-x-auto rounded-xl border border-line">
-						<table className="w-full min-w-[36rem] text-left text-sm">
+						<table className="w-full min-w-[42rem] text-left text-sm">
 							<thead className="border-b border-line bg-surface-raised text-ink-muted">
 								<tr>
 									<th className="px-3 py-2 font-medium">{t.statsEngine}</th>
+									<th className="px-3 py-2 font-medium">{t.statsStatus}</th>
 									<th className="px-3 py-2 font-medium">{t.statsRequests}</th>
 									<th className="px-3 py-2 font-medium">{t.statsAvgMs}</th>
 									<th className="px-3 py-2 font-medium">{t.statsHttpAvgMs}</th>
@@ -60,14 +85,21 @@ function StatsPage() {
 										<td className="px-3 py-2 font-medium text-ink">
 											{row.engine}
 										</td>
+										<td className={`px-3 py-2 ${statusClass(row)}`}>
+											{engineStatusLabel(row, t, prefs.data?.locale)}
+										</td>
 										<td className="px-3 py-2 text-ink-muted">
 											{row.total_count}
 										</td>
 										<td className="px-3 py-2 text-ink-muted">
-											{(row.total_avg_seconds * 1000).toFixed(0)}
+											{row.total_count > 0
+												? (row.total_avg_seconds * 1000).toFixed(0)
+												: "—"}
 										</td>
 										<td className="px-3 py-2 text-ink-muted">
-											{(row.http_avg_seconds * 1000).toFixed(0)}
+											{row.http_count > 0
+												? (row.http_avg_seconds * 1000).toFixed(0)
+												: "—"}
 										</td>
 									</tr>
 								))}

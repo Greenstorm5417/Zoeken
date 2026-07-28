@@ -30,31 +30,13 @@ pub enum EngineOutcome<'a> {
     Unresponsive { reason: UnresponsiveReason },
 }
 
-/// A single per-engine measurement passed to the MetricsRecorder.
+/// A single per-engine measurement.
 #[derive(Debug)]
 pub struct EngineSample<'a> {
     pub engine: &'a str,
     pub duration: Duration,
     pub http_duration: Option<Duration>,
     pub outcome: EngineOutcome<'a>,
-}
-
-pub trait MetricsRecorder: Send + Sync {
-    fn record_engine(&self, sample: EngineSample<'_>);
-}
-
-/// A MetricsRecorder that discards every sample.
-#[derive(Debug, Clone, Copy, Default)]
-pub struct NoopRecorder;
-
-impl MetricsRecorder for NoopRecorder {
-    fn record_engine(&self, _sample: EngineSample<'_>) {}
-}
-
-impl<R: MetricsRecorder + ?Sized> MetricsRecorder for &R {
-    fn record_engine(&self, sample: EngineSample<'_>) {
-        (**self).record_engine(sample);
-    }
 }
 
 /// Records per-engine timing and categorized errors via `metrics` facade.
@@ -83,10 +65,8 @@ impl EngineMetricsRecorder {
         )
         .increment(1);
     }
-}
 
-impl MetricsRecorder for EngineMetricsRecorder {
-    fn record_engine(&self, sample: EngineSample<'_>) {
+    pub fn record_engine(&self, sample: EngineSample<'_>) {
         let EngineSample {
             engine,
             duration,

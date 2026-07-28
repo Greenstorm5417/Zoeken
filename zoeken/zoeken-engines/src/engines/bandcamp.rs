@@ -5,11 +5,11 @@
 use scraper::{Html, Selector};
 use zoeken_engine_core::{
     About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod, Processor,
-    RequestParams, SearchQueryView,
+    RequestParams, SearchQueryView, looks_like_bot_wall,
 };
 use zoeken_results::{MainResult, Result_};
 
-use super::util::{encode_query, looks_like_bot_wall};
+use super::util::encode_query;
 
 /// Engine name / identifier.
 pub const NAME: &str = "bandcamp";

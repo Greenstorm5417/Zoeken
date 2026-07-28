@@ -15,10 +15,12 @@ describe("computeCryptoAnswer", () => {
 			algorithm: "sha256",
 			input: "hello",
 		});
-		expect(computeCryptoAnswer("hash the fox with md5")?.interactive).toEqual({
+		expect(
+			computeCryptoAnswer("hash the fox with sha256")?.interactive,
+		).toEqual({
 			type: "crypto",
 			mode: "hash",
-			algorithm: "md5",
+			algorithm: "sha256",
 			input: "the fox",
 		});
 	});

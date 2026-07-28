@@ -1,6 +1,3 @@
-import { md5Hex } from "./md5";
-import { sha224Hex } from "./sha224";
-
 const WEB_HASH: Record<string, AlgorithmIdentifier> = {
 	sha1: "SHA-1",
 	sha256: "SHA-256",
@@ -53,8 +50,6 @@ export async function runCrypto(
 ): Promise<string> {
 	const alg = algorithm.toLowerCase();
 	if (mode === "hash") {
-		if (alg === "md5") return md5Hex(input);
-		if (alg === "sha224") return sha224Hex(input);
 		const web = WEB_HASH[alg];
 		if (!web) throw new Error(`unsupported hash: ${alg}`);
 		return digestHex(web, input);

@@ -53,60 +53,7 @@ pub fn extr<'a>(text: &'a str, start: &str, end: &str) -> &'a str {
 
 /// Decode HTML character references (&amp;, &#NN;, &#xNN;, etc.) leniently.
 pub fn html_unescape(input: &str) -> String {
-    let bytes = input.as_bytes();
-    let mut out = String::with_capacity(input.len());
-    let mut i = 0;
-    while i < bytes.len() {
-        if bytes[i] != b'&' {
-            out.push(bytes[i] as char);
-            i += 1;
-            continue;
-        }
-        // Find the terminating ';' within a reasonable window.
-        let Some(rel) = input[i..].find(';') else {
-            out.push('&');
-            i += 1;
-            continue;
-        };
-        let entity = &input[i + 1..i + rel];
-        let decoded: Option<String> = match entity {
-            "amp" => Some("&".to_string()),
-            "lt" => Some("<".to_string()),
-            "gt" => Some(">".to_string()),
-            "quot" => Some("\"".to_string()),
-            "apos" | "#39" => Some("'".to_string()),
-            "nbsp" => Some("\u{00A0}".to_string()),
-            _ => {
-                if let Some(hex) = entity
-                    .strip_prefix("#x")
-                    .or_else(|| entity.strip_prefix("#X"))
-                {
-                    u32::from_str_radix(hex, 16)
-                        .ok()
-                        .and_then(char::from_u32)
-                        .map(|c| c.to_string())
-                } else if let Some(dec) = entity.strip_prefix('#') {
-                    dec.parse::<u32>()
-                        .ok()
-                        .and_then(char::from_u32)
-                        .map(|c| c.to_string())
-                } else {
-                    None
-                }
-            }
-        };
-        match decoded {
-            Some(text) => {
-                out.push_str(&text);
-                i += rel + 1;
-            }
-            None => {
-                out.push('&');
-                i += 1;
-            }
-        }
-    }
-    out
+    html_escape::decode_html_entities(input).into_owned()
 }
 
 /// Reduce Markdown to plain text: strips links, headings, emphasis, and normalizes whitespace.
@@ -186,6 +133,9 @@ fn parse_markdown_link(chars: &[char], start: usize) -> Option<(String, usize)> 
 
 /// Extract normalized text from an element, skipping specified classes and script/style tags.
 pub fn text_content_skipping(el: scraper::ElementRef<'_>, skip_classes: &[&str]) -> String {
+    use scraper::ElementRef;
+    use scraper::node::Node;
+
     fn has_skipped_class(el: &scraper::node::Element, skip_classes: &[&str]) -> bool {
         match el.attr("class") {
             Some(class_attr) => class_attr
@@ -195,31 +145,30 @@ pub fn text_content_skipping(el: scraper::ElementRef<'_>, skip_classes: &[&str])
         }
     }
 
-    fn walk(node: ego_tree::NodeRef<'_, scraper::node::Node>, skip: &[&str], out: &mut String) {
-        match node.value() {
-            scraper::node::Node::Text(text) => out.push_str(text),
-            scraper::node::Node::Element(element) => {
-                let name = element.name();
-                if name.eq_ignore_ascii_case("script")
-                    || name.eq_ignore_ascii_case("style")
-                    || has_skipped_class(element, skip)
-                {
-                    return;
+    fn walk_element(el: ElementRef<'_>, skip: &[&str], out: &mut String) {
+        let element = el.value();
+        let name = element.name();
+        if name.eq_ignore_ascii_case("script")
+            || name.eq_ignore_ascii_case("style")
+            || has_skipped_class(element, skip)
+        {
+            return;
+        }
+        for child in el.children() {
+            match child.value() {
+                Node::Text(text) => out.push_str(text),
+                Node::Element(_) => {
+                    if let Some(child_el) = ElementRef::wrap(child) {
+                        walk_element(child_el, skip, out);
+                    }
                 }
-                for child in node.children() {
-                    walk(child, skip, out);
-                }
-            }
-            _ => {
-                for child in node.children() {
-                    walk(child, skip, out);
-                }
+                _ => {}
             }
         }
     }
 
     let mut out = String::new();
-    walk(*el, skip_classes, &mut out);
+    walk_element(el, skip_classes, &mut out);
     zoeken_engine_core::normalize_whitespace(&out)
 }
 
@@ -234,9 +183,6 @@ pub fn format_duration_secs(secs: u64) -> String {
         format!("{minutes}:{seconds:02}")
     }
 }
-
-/// Detect anti-bot JavaScript gates or captcha walls in HTML body.
-pub use zoeken_engine_core::looks_like_bot_wall;
 
 #[cfg(test)]
 mod tests {
@@ -289,9 +235,6 @@ mod tests {
             "alt text"
         );
     }
-
-    // `looks_like_bot_wall` behavior is covered by
-    // `zoeken_engine_core::challenge::tests` (single source of truth).
 
     #[test]
     fn text_content_skips_marked_classes_and_scripts() {

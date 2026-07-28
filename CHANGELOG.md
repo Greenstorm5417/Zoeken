@@ -7,6 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.1] - 2026-07-28
+
+### Fixed
+
+- SERP search timing showed ~0.00s because the clock started after results
+  mounted; wall time now starts when the search identity changes.
+- Search JoinSet no longer hard-aborts on the global deadline mid-drain so
+  selected engines can still finish within their per-engine budgets.
+
+### Changed
+
+- `/stats` and `/stats/errors` are always public (no Basic auth).
+  `general.open_metrics` only gates `/metrics` (empty → 404; set → Basic auth).
+- `/stats` includes per-engine `disabled` / `suspended` / `cooldown_until_ms`
+  (circuit resume time); the stats page Status column shows Enabled / Disabled /
+  Suspended until a local datetime.
+- Journald-friendly `tracing` for search start/complete, engine
+  blocked/rate-limited/failures, and circuit open/transitions.
+- Replace hand-rolled `FlightCache` with `moka`; drop unused `percent-encoding`
+  and direct `ego-tree` deps; use `html-escape` instead of a hand-rolled
+  unescape.
+- Drop dead settings (`general.donation_url`, `extra_proxy_timeout`), SPA MD5 /
+  SHA-224 novelty digests, `featureCatalog` remap, InstantAnswerCard `lazy()`
+  wrappers, MetricsRecorder/NoopRecorder trait, and empty `/config` PluginInfo
+  ghost fields (`after`/`before`/`capabilities`/`version`/`api_version`) plus
+  always-empty `GIT_BRANCH`.
+- Gate local `statistics` / `random` / `date_time` / `crypto` answerers via
+  `/config` plugins like the other client features.
+
 ## [1.4.0] - 2026-07-28
 
 ### Security

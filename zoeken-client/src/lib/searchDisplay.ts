@@ -75,3 +75,8 @@ export function pageNumbers(pageno: number): number[] {
 	const start = pageno > 5 ? pageno - 4 : 1;
 	return Array.from({ length: 10 }, (_, i) => start + i);
 }
+
+/** Wall-clock seconds between two `performance.now()` marks; never negative. */
+export function wallClockSeconds(startedAt: number, endedAt: number): number {
+	return Math.max(0, (endedAt - startedAt) / 1000);
+}

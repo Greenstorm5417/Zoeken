@@ -33,9 +33,7 @@ use url::form_urlencoded;
 use zoeken_network::{NetworkError, NetworkManager};
 use zoeken_prefs::Preferences;
 use zoeken_query::FormParams;
-use zoeken_search::{
-    EngineExecutor, MetricsRecorder, NoopRecorder, Search, SearchConfig, SuspensionPolicy,
-};
+use zoeken_search::{EngineExecutor, Search, SearchConfig, SuspensionPolicy};
 use zoeken_settings::{
     DeploymentConfig, GeneralSettings, LimiterSource, OutgoingSettings, Settings,
 };
@@ -58,7 +56,6 @@ fn default_assets_dir() -> DirAssets {
 #[derive(Clone)]
 pub struct AppState {
     search: Search,
-    recorder: Arc<dyn MetricsRecorder>,
     image_fetcher: Arc<dyn ImageProxyFetcher>,
     image_policy: ImageProxyPolicy,
     favicons: Arc<FaviconService>,
@@ -67,6 +64,8 @@ pub struct AppState {
     settings: Settings,
     bot_detector: Arc<Detector>,
     metrics_handle: Option<PrometheusHandle>,
+    /// Optional storage for engine health / circuit lookups on `/stats`.
+    storage: Option<Arc<dyn zoeken_storage::Storage>>,
     assets: Arc<dyn AssetSource>,
     readiness: ReadinessState,
     deployment: DeploymentConfig,
@@ -254,7 +253,6 @@ impl AppState {
     pub fn from_search(search: Search) -> Self {
         AppState {
             search,
-            recorder: Arc::new(NoopRecorder),
             image_fetcher: Arc::new(CachedImageFetcher::new(Arc::new(WreqImageFetcher::new()))),
             image_policy: ImageProxyPolicy::default(),
             favicons: Arc::new(FaviconService::memory(Arc::new(StaticResolver::empty(
@@ -265,6 +263,7 @@ impl AppState {
             settings: Settings::default(),
             bot_detector: Arc::new(Detector::new(LimiterConfig::default(), String::new())),
             metrics_handle: None,
+            storage: None,
             assets: Arc::new(default_assets_dir()),
             readiness: ReadinessState::new_not_ready(),
             deployment: DeploymentConfig::default(),
@@ -321,7 +320,6 @@ impl AppState {
 
         Ok(AppState {
             search,
-            recorder: Arc::new(zoeken_search::EngineMetricsRecorder::new()),
             // Reuse the browser-emulating `image_proxy` network client so
             // proxied image fetches look like a real browser and share a pool.
             // CachedImageFetcher adds singleflight + byte-budgeted body cache.
@@ -338,6 +336,7 @@ impl AppState {
             settings,
             bot_detector,
             metrics_handle: None,
+            storage: networks.coordinator(),
             assets: Arc::new(default_assets_dir()),
             readiness: ReadinessState::new_not_ready(),
             deployment,
@@ -345,11 +344,6 @@ impl AppState {
             limiter_enabled: true,
             data,
         })
-    }
-
-    pub fn with_recorder(mut self, recorder: Arc<dyn MetricsRecorder>) -> Self {
-        self.recorder = recorder;
-        self
     }
 
     pub fn with_image_fetcher(mut self, fetcher: Arc<dyn ImageProxyFetcher>) -> Self {
@@ -403,6 +397,11 @@ impl AppState {
 
     pub fn with_metrics_handle(mut self, handle: PrometheusHandle) -> Self {
         self.metrics_handle = Some(handle);
+        self
+    }
+
+    pub fn with_storage(mut self, storage: Arc<dyn zoeken_storage::Storage>) -> Self {
+        self.storage = Some(storage);
         self
     }
 
@@ -617,7 +616,6 @@ async fn native_search_post(
             &search_query,
             engine_preferences(&resolved_prefs).as_ref(),
             &tokens,
-            state.recorder.as_ref(),
         )
         .await;
     if resolved_prefs
@@ -732,7 +730,6 @@ async fn run_search(state: &AppState, headers: &HeaderMap, params: FormParams) -
             &query,
             engine_preferences(&resolved_prefs).as_ref(),
             &tokens,
-            state.recorder.as_ref(),
         )
         .await;
     if resolved_prefs

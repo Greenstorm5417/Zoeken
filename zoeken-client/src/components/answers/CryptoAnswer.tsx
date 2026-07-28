@@ -5,7 +5,7 @@ import { SelectMenu } from "#/components/SelectMenu";
 import type { InteractiveAnswer, SearchAnswer } from "#/lib/api";
 import { runCrypto } from "#/lib/clientCrypto";
 
-const HASH_ALGS = ["md5", "sha1", "sha224", "sha256", "sha384", "sha512"];
+const HASH_ALGS = ["sha1", "sha256", "sha384", "sha512"];
 const CODEC_ALGS = ["base64", "hex", "url"];
 const MODES = [
 	{ value: "hash", label: "Hash" },
@@ -40,7 +40,7 @@ export function CryptoAnswer({
 	useEffect(() => {
 		const allowed = mode === "hash" ? HASH_ALGS : CODEC_ALGS;
 		if (!allowed.includes(algorithm)) {
-			setAlgorithm(allowed[0] ?? "md5");
+			setAlgorithm(allowed[0] ?? "sha256");
 		}
 	}, [mode, algorithm]);
 

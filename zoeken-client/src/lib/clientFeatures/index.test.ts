@@ -28,7 +28,6 @@ function config(overrides: Partial<Config> = {}): Config {
 			PRIVACYPOLICY_URL: null,
 			CONTACT_URL: null,
 			GIT_URL: "",
-			GIT_BRANCH: "",
 			DOCS_URL: "",
 		},
 		limiter: {
@@ -54,11 +53,6 @@ function plugin(id: string, enabled: boolean) {
 		kind: "result_plugin",
 		keywords: [],
 		preference_section: "",
-		version: "1",
-		api_version: 1,
-		after: [],
-		before: [],
-		capabilities: [],
 	};
 }
 

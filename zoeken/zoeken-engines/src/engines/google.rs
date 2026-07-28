@@ -5,11 +5,11 @@
 use scraper::{ElementRef, Html, Selector};
 use zoeken_engine_core::{
     About, Engine, EngineError, EngineMeta, EngineResponse, EngineResults, HttpMethod, Processor,
-    RequestParams, SafeSearch, SearchQueryView, TimeRange,
+    RequestParams, SafeSearch, SearchQueryView, TimeRange, looks_like_bot_wall,
 };
 use zoeken_results::{MainResult, Result_, Suggestion};
 
-use super::util::{encode_query, looks_like_bot_wall, percent_decode, text_content_skipping};
+use super::util::{encode_query, percent_decode, text_content_skipping};
 
 /// Engine name / identifier.
 pub const NAME: &str = "google";

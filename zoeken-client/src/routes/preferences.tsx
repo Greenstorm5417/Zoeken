@@ -10,7 +10,6 @@ import {
 	preferencesGet,
 	preferencesPost,
 } from "#/lib/api";
-import { featureCatalog } from "#/lib/clientFeatures";
 import { stringsFor } from "#/lib/i18n";
 import {
 	clearRecentSearches,
@@ -91,7 +90,7 @@ function PreferencesPage() {
 	const engines = config?.engines ?? [];
 	const selectedEngines = new Set(current.engines);
 	const t = stringsFor(current.locale);
-	const features = featureCatalog(config?.plugins);
+	const features = config?.plugins ?? [];
 
 	return (
 		<Page>

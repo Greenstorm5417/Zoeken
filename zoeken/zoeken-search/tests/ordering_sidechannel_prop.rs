@@ -9,7 +9,6 @@ use zoeken_results::{
     Suggestion,
 };
 use zoeken_search::execution::{EngineRunOutcome, EngineRunStatus, ExecutionReport};
-use zoeken_search::metrics::NoopRecorder;
 use zoeken_search::{EngineWeights, aggregate};
 
 use proptest::collection::{hash_set, vec};
@@ -136,7 +135,7 @@ proptest! {
             .collect();
         let report = ExecutionReport { outcomes };
 
-        let container = aggregate(report, &EngineWeights::default(), &NoopRecorder);
+        let container = aggregate(report, &EngineWeights::default());
 
         let scores: Vec<f64> = container.results.iter().map(score_of).collect();
         prop_assert!(

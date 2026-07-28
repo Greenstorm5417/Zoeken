@@ -20,6 +20,7 @@ use zoeken_search::{
 };
 use zoeken_server::{AppState, app};
 use zoeken_settings::Settings;
+use zoeken_storage::Storage;
 
 const STUB_ENGINE: &str = "stub";
 
@@ -71,34 +72,12 @@ fn stub_search() -> Search {
 
 fn test_app() -> Router {
     let data = zoeken_data::load_embedded_bundle().expect("embedded data");
-    let mut settings = Settings::defaults();
-    settings.general.open_metrics = "secret".to_string();
-    app(AppState::from_search(stub_search())
-        .with_data(Arc::new(data))
-        .with_settings(settings))
-}
-
-fn test_app_unauthenticated() -> Router {
-    let data = zoeken_data::load_embedded_bundle().expect("embedded data");
     app(AppState::from_search(stub_search()).with_data(Arc::new(data)))
 }
 
 async fn get(router: Router, uri: &str) -> Response {
     router
         .oneshot(Request::builder().uri(uri).body(Body::empty()).unwrap())
-        .await
-        .unwrap()
-}
-
-async fn get_stats(router: Router, uri: &str) -> Response {
-    router
-        .oneshot(
-            Request::builder()
-                .uri(uri)
-                .header(header::AUTHORIZATION, "Basic dXNlcjpzZWNyZXQ=")
-                .body(Body::empty())
-                .unwrap(),
-        )
         .await
         .unwrap()
 }
@@ -208,22 +187,26 @@ async fn information_pages_fall_back_to_the_catalog_default_locale() {
 
 #[tokio::test]
 async fn stats_returns_json_with_engines_array() {
-    let response = get_stats(test_app(), "/stats").await;
+    let response = get(test_app(), "/stats").await;
 
     assert_eq!(response.status(), StatusCode::OK);
     assert_eq!(content_type(&response), "application/json");
 
     let value = body_json(response).await;
-    assert_eq!(
-        value["engines"],
-        serde_json::json!([]),
-        "no handle wired => empty engines array"
-    );
+    let engines = value["engines"].as_array().expect("engines array");
+    let stub = engines
+        .iter()
+        .find(|e| e["engine"] == STUB_ENGINE)
+        .expect("stub engine from registry");
+    assert_eq!(stub["disabled"], false);
+    assert_eq!(stub["suspended"], false);
+    assert!(stub["cooldown_until_ms"].is_null());
+    assert_eq!(stub["total_count"], 0, "no metrics samples yet");
 }
 
 #[tokio::test]
 async fn stats_errors_returns_json_with_engines_array() {
-    let response = get_stats(test_app(), "/stats/errors").await;
+    let response = get(test_app(), "/stats/errors").await;
 
     assert_eq!(response.status(), StatusCode::OK);
     assert_eq!(content_type(&response), "application/json");
@@ -237,10 +220,16 @@ async fn stats_errors_returns_json_with_engines_array() {
 }
 
 #[tokio::test]
-async fn stats_denied_without_open_metrics_password() {
+async fn stats_public_even_when_open_metrics_set() {
+    let mut settings = Settings::defaults();
+    settings.general.open_metrics = "secret".to_string();
+    let data = zoeken_data::load_embedded_bundle().expect("embedded data");
+    let router = app(AppState::from_search(stub_search())
+        .with_data(Arc::new(data))
+        .with_settings(settings));
     for path in ["/stats", "/stats/errors"] {
-        let response = get(test_app_unauthenticated(), path).await;
-        assert_eq!(response.status(), StatusCode::UNAUTHORIZED, "{path}");
+        let response = get(router.clone(), path).await;
+        assert_eq!(response.status(), StatusCode::OK, "{path}");
     }
 }
 
@@ -306,13 +295,9 @@ async fn metrics_renders_injected_handle_exposition() {
 #[tokio::test]
 async fn stats_derives_engine_timing_from_injected_handle() {
     let handle = handle_with_recorded_samples();
-    let mut settings = Settings::defaults();
-    settings.general.open_metrics = "secret".to_string();
-    let router = app(AppState::from_search(stub_search())
-        .with_metrics_handle(handle)
-        .with_settings(settings));
+    let router = app(AppState::from_search(stub_search()).with_metrics_handle(handle));
 
-    let response = get_stats(router, "/stats").await;
+    let response = get(router, "/stats").await;
 
     assert_eq!(response.status(), StatusCode::OK);
     assert_eq!(content_type(&response), "application/json");
@@ -331,18 +316,74 @@ async fn stats_derives_engine_timing_from_injected_handle() {
     );
     // The HTTP leg (150ms) was recorded too.
     assert_eq!(stub["http_count"], 1, "one http observation recorded");
+    assert_eq!(stub["disabled"], false);
+    assert_eq!(stub["suspended"], false);
+}
+
+#[tokio::test]
+async fn stats_exposes_disabled_and_suspension_expiry() {
+    use zoeken_storage::{EngineHealthUpdate, SqliteStorage};
+
+    let storage = Arc::new(SqliteStorage::in_memory().await.expect("sqlite"));
+    let cooldown_until_ms = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .unwrap()
+        .as_millis() as i64
+        + 3_600_000;
+    storage
+        .record_engine_health(&EngineHealthUpdate {
+            engine: STUB_ENGINE.into(),
+            bucket: cooldown_until_ms / 3_600_000,
+            latency_ms: 10,
+            success: false,
+            timed_out: false,
+            error_category: Some("captcha".into()),
+            circuit_status: "open".into(),
+            cooldown_until_ms: Some(cooldown_until_ms),
+        })
+        .await
+        .expect("record health");
+
+    let engine = StubEngine {
+        meta: EngineMeta {
+            name: STUB_ENGINE.to_string(),
+            categories: vec!["general".to_string()],
+            ..EngineMeta::default()
+        },
+    };
+    let registry =
+        EngineRegistry::from_engines([RegisteredEngine::new(Arc::new(engine)).disabled()]);
+    let search = Search::new(
+        registry,
+        Arc::new(ImmediateExecutor),
+        SearchConfig::default(),
+    );
+    let router = app(AppState::from_search(search)
+        .with_storage(storage)
+        .with_data(Arc::new(
+            zoeken_data::load_embedded_bundle().expect("embedded data"),
+        )));
+
+    let response = get(router, "/stats").await;
+    assert_eq!(response.status(), StatusCode::OK);
+    let value = body_json(response).await;
+    let stub = value["engines"]
+        .as_array()
+        .expect("engines")
+        .iter()
+        .find(|e| e["engine"] == STUB_ENGINE)
+        .expect("stub");
+    assert_eq!(stub["disabled"], true);
+    assert_eq!(stub["suspended"], true);
+    assert_eq!(stub["cooldown_until_ms"], cooldown_until_ms);
 }
 
 #[tokio::test]
 async fn stats_errors_derives_counts_from_injected_handle() {
     let handle = handle_with_recorded_samples();
-    let mut settings = Settings::defaults();
-    settings.general.open_metrics = "secret".to_string();
-    let router = app(AppState::from_search(stub_search())
-        .with_metrics_handle(handle)
-        .with_settings(settings));
+    let router = app(AppState::from_search(stub_search()).with_metrics_handle(handle));
 
-    let response = get_stats(router, "/stats/errors").await;
+    let response = get(router, "/stats/errors").await;
 
     assert_eq!(response.status(), StatusCode::OK);
     assert_eq!(content_type(&response), "application/json");

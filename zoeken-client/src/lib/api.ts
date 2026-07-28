@@ -114,11 +114,6 @@ export type Config = {
 		kind: string;
 		keywords: string[];
 		preference_section: string;
-		version: string;
-		api_version: number;
-		after: string[];
-		before: string[];
-		capabilities: string[];
 	}>;
 	categories: string[];
 	default_locale: string;
@@ -131,7 +126,6 @@ export type Config = {
 		PRIVACYPOLICY_URL: string | null;
 		CONTACT_URL: string | null;
 		GIT_URL: string;
-		GIT_BRANCH: string;
 		DOCS_URL: string;
 	};
 	limiter: {
@@ -244,6 +238,12 @@ export type EngineTiming = {
 	http_count: number;
 	http_sum_seconds: number;
 	http_avg_seconds: number;
+	/** Operator-disabled in settings. */
+	disabled: boolean;
+	/** Circuit open with a future cooldown. */
+	suspended: boolean;
+	/** Unix ms when suspension ends; null when not suspended. */
+	cooldown_until_ms: number | null;
 };
 
 export type StatsResponse = {

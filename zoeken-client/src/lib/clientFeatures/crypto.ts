@@ -4,7 +4,7 @@
  */
 import type { InteractiveAnswer, SearchAnswer } from "../api";
 
-const HASH_ALGS = ["md5", "sha1", "sha224", "sha256", "sha384", "sha512"];
+const HASH_ALGS = ["sha1", "sha256", "sha384", "sha512"];
 const CODEC_ALGS = ["base64", "hex", "url"];
 
 type ParsedCrypto = { mode: string; algorithm: string; input: string };
@@ -17,11 +17,9 @@ function normalizeAlg(raw: string): string | null {
 		.replaceAll(" ", "");
 	switch (n) {
 		case "sha1":
-		case "sha224":
 		case "sha256":
 		case "sha384":
 		case "sha512":
-		case "md5":
 			return n;
 		case "base64":
 		case "b64":

@@ -8,8 +8,9 @@ use std::pin::Pin;
 use std::sync::Arc;
 use std::time::Duration;
 
+use moka::future::Cache;
 use serde::Serialize;
-use zoeken_network::{DEFAULT_NETWORK, FlightCache, NetworkManager, NetworkRequest};
+use zoeken_network::{DEFAULT_NETWORK, NetworkManager, NetworkRequest};
 
 use backends::{
     BaiduBackend, BingBackend, DbpediaBackend, MwmblBackend, NaverBackend, PrivacywallBackend,
@@ -84,17 +85,23 @@ pub trait AutocompleteBackend: Send + Sync {
 }
 
 /// The autocomplete dispatch point: holds a backend and timeout, returning
-/// empty lists on error/timeout. Results are cached in memory for
-/// [`CACHE_TTL`] so repeated prefixes (backspacing, retyping) skip the
-/// upstream round-trip entirely. Entries are weighted as one each so
-/// `cache_capacity` bounds entry count.
+/// empty lists on error/timeout. Results are cached in memory so repeated
+/// prefixes (backspacing, retyping) skip the upstream round-trip. Entries are
+/// weighted as one each so `max_entries` bounds entry count.
 #[derive(Clone)]
 pub struct AutocompleteService {
     backend: Option<Arc<dyn AutocompleteBackend>>,
     timeout: Duration,
-    cache: Arc<FlightCache<String, Vec<Suggestion>>>,
-    cache_ttl: Duration,
+    cache: Cache<String, Vec<Suggestion>>,
     hmac_key: Arc<[u8; 32]>,
+}
+
+fn suggestion_cache(ttl: Duration, max_entries: usize) -> Cache<String, Vec<Suggestion>> {
+    Cache::builder()
+        .max_capacity(max_entries.max(1) as u64)
+        .time_to_live(ttl)
+        .weigher(|_key, _value: &Vec<Suggestion>| 1)
+        .build()
 }
 
 impl AutocompleteService {
@@ -103,8 +110,7 @@ impl AutocompleteService {
         Self {
             backend: None,
             timeout: DEFAULT_AUTOCOMPLETE_TIMEOUT,
-            cache: Arc::new(FlightCache::new(2048, |_: &Vec<Suggestion>| 1)),
-            cache_ttl: Duration::from_secs(300),
+            cache: suggestion_cache(Duration::from_secs(300), 2048),
             hmac_key: Arc::new(rand::random()),
         }
     }
@@ -114,8 +120,7 @@ impl AutocompleteService {
         Self {
             backend: Some(backend),
             timeout: DEFAULT_AUTOCOMPLETE_TIMEOUT,
-            cache: Arc::new(FlightCache::new(2048, |_: &Vec<Suggestion>| 1)),
-            cache_ttl: Duration::from_secs(300),
+            cache: suggestion_cache(Duration::from_secs(300), 2048),
             hmac_key: Arc::new(rand::random()),
         }
     }
@@ -130,11 +135,7 @@ impl AutocompleteService {
     /// Configure the bounded, process-memory-only suggestion cache.
     #[must_use]
     pub fn with_cache(mut self, ttl: Duration, max_entries: usize) -> Self {
-        self.cache_ttl = ttl;
-        self.cache = Arc::new(FlightCache::new(
-            max_entries.max(1),
-            |_: &Vec<Suggestion>| 1,
-        ));
+        self.cache = suggestion_cache(ttl, max_entries);
         self
     }
 
@@ -156,36 +157,21 @@ impl AutocompleteService {
         };
 
         let key = autocomplete_key(&self.hmac_key[..], backend.name(), query, locale);
-        if let Some(suggestions) = self.cache.get(&key) {
+        if let Some(suggestions) = self.cache.get(&key).await {
             metrics::counter!("autocomplete_cache_total", "outcome" => "hit").increment(1);
             return suggestions;
         }
 
-        let Some(flight) = self.cache.flight(&key) else {
-            return Vec::new();
-        };
-        let _guard = flight.lock().await;
-
-        // The leader populates the cache while followers wait on the key lock.
-        if let Some(suggestions) = self.cache.get(&key) {
-            metrics::counter!("autocomplete_singleflight_total", "outcome" => "shared")
-                .increment(1);
-            return suggestions;
-        }
-
-        let suggestions =
-            match tokio::time::timeout(self.timeout, backend.suggest(query, locale)).await {
-                Ok(Ok(suggestions)) => suggestions,
-                Ok(Err(_)) | Err(_) => {
-                    self.cache.finish_flight(&key);
-                    return Vec::new();
-                }
-            };
-
+        let timeout = self.timeout;
         self.cache
-            .put(key.clone(), suggestions.clone(), self.cache_ttl);
-        self.cache.finish_flight(&key);
-        suggestions
+            .try_get_with(key, async {
+                match tokio::time::timeout(timeout, backend.suggest(query, locale)).await {
+                    Ok(Ok(suggestions)) => Ok(suggestions),
+                    Ok(Err(_)) | Err(_) => Err(()),
+                }
+            })
+            .await
+            .unwrap_or_default()
     }
 }
 

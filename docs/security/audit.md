@@ -25,9 +25,9 @@ arbitrary queries, forge headers, and try to turn zoeken into an open proxy.
 - **DNS rebinding TOCTOU**: resolve-time IP checks run before each hop connect; a
   race between lookup and connect remains theoretically possible. Mitigate by
   keeping image/favicon proxy off when untrusted, or front with an egress firewall.
-- **`/metrics` and `/stats` auth**: set `general.open_metrics` (HTTP Basic
-  password) on public instances; empty password denies `/stats` JSON and hides
-  `/metrics`. Edge restriction remains optional defense in depth.
+- **`/metrics` auth**: `/stats` and `/stats/errors` are always public.
+  Empty `general.open_metrics` hides `/metrics` (404); set a Basic-auth password
+  to expose it. Edge restriction of `/metrics` remains optional defense in depth.
 - **TLS verify disable / custom CA**: rejected at network build
   (`intentional-differences.md`). Verification is always on.
 - **No CORS layer**: SPA is same-origin. Do not enable open CORS without review.
@@ -40,5 +40,5 @@ arbitrary queries, forge headers, and try to turn zoeken into an open proxy.
 2. Leave `image_proxy` off unless needed; HMAC URLs come from result rendering.
 3. Configure `trusted_proxies` only for real reverse proxies.
 4. Enable the limiter for public instances (`public_instance` / limiter config).
-5. Set `general.open_metrics` (Basic auth for `/metrics` and `/stats`); optionally also block them at the edge.
+5. Optionally set `general.open_metrics` (Basic auth for `/metrics`) if Prometheus scraping should not be open; optionally also block `/metrics` at the edge.
 6. Keep `command` engines unsupported; do not add shell-out without a sandbox.
