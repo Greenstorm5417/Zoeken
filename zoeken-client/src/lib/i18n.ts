@@ -27,6 +27,10 @@ export type UiStrings = {
 	retry: string;
 	tooManySearches: string;
 	searchUnavailable: string;
+	typeAQuery: string;
+	rateLimitedHint: string;
+	searchErrorHint: string;
+	loadingResults: string;
 	enginesDidntRespond: string;
 	didYouMean: string;
 	// Preferences chrome
@@ -95,6 +99,11 @@ const EN: UiStrings = {
 	retry: "Retry",
 	tooManySearches: "Too many searches",
 	searchUnavailable: "Search is unavailable",
+	typeAQuery: "Type a query to search.",
+	rateLimitedHint: "Please wait a moment and try again.",
+	searchErrorHint:
+		"Something went wrong reaching the search backend. Try again in a moment.",
+	loadingResults: "Loading results",
 	enginesDidntRespond: "didn’t respond",
 	didYouMean: "Did you mean",
 	prefsSavedLocally: "Changes are saved to this browser.",

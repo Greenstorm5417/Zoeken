@@ -1,10 +1,10 @@
 use std::time::Duration;
 
+#[cfg(feature = "postgres")]
+use zoeken_storage::PostgresStorage;
 use zoeken_storage::{
     FaviconData, FaviconLookup, FaviconPolicy, OriginPolicy, PermitDecision, SqliteStorage, Storage,
 };
-#[cfg(feature = "postgres")]
-use zoeken_storage::PostgresStorage;
 
 async fn run_contract(storage: &dyn Storage, namespace: &str) {
     storage.healthcheck().await.unwrap();

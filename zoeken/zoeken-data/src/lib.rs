@@ -1113,6 +1113,17 @@ pub fn load_embedded_bundle() -> Result<DataBundle, DataError> {
 
 pub fn load_bundle(data_dir: &Path) -> Result<DataBundle, DataError> {
     tracing::debug!(dir = %data_dir.display(), "loading bundled data from directory");
+    if !data_dir.is_dir() {
+        return Err(DataError::Read {
+            file: data_dir.display().to_string(),
+            source: std::io::Error::new(
+                std::io::ErrorKind::NotFound,
+                "APP_DATA_DIR must be an existing directory containing the full JSON data \
+                 bundle (no merge with the embedded defaults). Leave APP_DATA_DIR unset to \
+                 use the precompiled bundle.",
+            ),
+        });
+    }
     load_from_source(&DirSource { dir: data_dir })
 }
 

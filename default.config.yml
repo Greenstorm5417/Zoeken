@@ -113,6 +113,8 @@ deployment:
   log_level: "info"
   shutdown_grace_seconds: 30
   max_request_body_bytes: 1048576
+  # Incoming HTTP request timeout (Tower layer). Separate from
+  # outgoing.request_timeout, which caps each engine HTTP call.
   request_timeout_seconds: 30
   hsts: false
   content_security_policy: "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
@@ -138,6 +140,9 @@ ui:
 
 outgoing:
   useragent_suffix: ""
+  # Per-engine upstream HTTP timeout (seconds). Keep short so one slow engine
+  # does not block the whole search. Distinct from deployment.request_timeout_seconds
+  # (client → Zoeken HTTP timeout).
   request_timeout: 3.0
   enable_http2: true
   # true only — verify: false and custom CA paths are rejected at boot
@@ -225,6 +230,7 @@ storage:
   sqlite:
     path: "./zoeken.sqlite3"
     busy_timeout_ms: 5000
+    max_connections: 4
   postgres:
     url: null
     max_connections: 16

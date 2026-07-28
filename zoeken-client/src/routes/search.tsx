@@ -306,16 +306,14 @@ function SearchPage() {
 			/>
 
 			{!q.trim() ? (
-				<p className="mt-16 text-center text-ink-muted">
-					Type a query to search.
-				</p>
+				<p className="mt-16 text-center text-ink-muted">{t.typeAQuery}</p>
 			) : null}
 
 			{query.isLoading ? (
 				<div
 					className="mx-auto max-w-6xl px-3 pt-6 sm:px-6 sm:pt-8"
 					role="status"
-					aria-label="Loading results"
+					aria-label={t.loadingResults}
 				>
 					<div className="flex max-w-[40rem] flex-col gap-8">
 						{[0, 1, 2, 3].map((i) => (
@@ -340,16 +338,14 @@ function SearchPage() {
 							{errorStatus === 429 ? t.tooManySearches : t.searchUnavailable}
 						</p>
 						<p className="mt-1 text-sm text-ink-muted">
-							{errorStatus === 429
-								? "Please wait a moment and try again."
-								: "Something went wrong reaching the search backend. Try again in a moment."}
+							{errorStatus === 429 ? t.rateLimitedHint : t.searchErrorHint}
 						</p>
 						<button
 							type="button"
 							onClick={() => void query.refetch()}
 							className="mt-3 min-h-11 rounded-xl border border-line px-4 text-sm text-ink transition-colors hover:border-accent hover:text-accent"
 						>
-							Retry
+							{t.retry}
 						</button>
 					</div>
 				</div>
@@ -391,7 +387,7 @@ function SearchPage() {
 
 					{firstPage.corrections.length > 0 ? (
 						<p className="mb-6 text-ink-muted">
-							Did you mean{" "}
+							{t.didYouMean}{" "}
 							{firstPage.corrections.map((c, i) => {
 								const text = correctionText(c);
 								const className =
@@ -422,7 +418,7 @@ function SearchPage() {
 						</p>
 					) : clientCorrection ? (
 						<p className="mb-6 text-ink-muted">
-							Did you mean{" "}
+							{t.didYouMean}{" "}
 							<Link
 								to="/search"
 								search={searchLink(params, {

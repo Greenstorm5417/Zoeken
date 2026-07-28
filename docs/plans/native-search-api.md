@@ -86,15 +86,18 @@ Legacy `/search` keeps accepting the same form params. Native route reuses the s
 
 ---
 
-## Sample schema (v1)
+### Sample schema (v1 — historical)
 
-Naming: snake_case on the wire (serde default). Tagged enums use `#[serde(tag = "kind")]` for results and existing `#[serde(tag = "type")]` for interactive answers.
+> **Stable wire version today is `schema_version: 2`**
+> (`NATIVE_SCHEMA_VERSION` in `zoeken-server`). The sample below is the original
+> plan sketch; treat `docs/compatibility/intentional-differences.md` and the
+> Rust DTOs as source of truth.
 
 ### Top-level response
 
 ```json
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "query": "rust lang",
   "number_of_results": 42,
   "results": [ /* NativeResult */ ],

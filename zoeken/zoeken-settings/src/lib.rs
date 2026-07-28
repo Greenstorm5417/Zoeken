@@ -554,6 +554,7 @@ impl Default for StorageSettings {
 pub struct SqliteStorageSettings {
     pub path: String,
     pub busy_timeout_ms: u64,
+    pub max_connections: usize,
 }
 
 impl Default for SqliteStorageSettings {
@@ -561,6 +562,7 @@ impl Default for SqliteStorageSettings {
         Self {
             path: "./zoeken.sqlite3".into(),
             busy_timeout_ms: 5000,
+            max_connections: 4,
         }
     }
 }
@@ -1120,6 +1122,11 @@ fn apply_env_overrides(merged: &mut Value, env: &EnvMap) -> Result<(), SettingsE
             Kind::String,
         ),
         (
+            "APP_SQLITE_MAX_CONNECTIONS",
+            &["storage", "sqlite", "max_connections"],
+            Kind::IntOrString,
+        ),
+        (
             "APP_POSTGRES_URL",
             &["storage", "postgres", "url"],
             Kind::String,
@@ -1176,6 +1183,12 @@ pub fn validate_settings(s: &Settings) -> Result<(), SettingsError> {
         "sqlite" if s.storage.sqlite.busy_timeout_ms == 0 => {
             return Err(invalid(
                 "storage.sqlite.busy_timeout_ms",
+                "must be greater than zero".into(),
+            ));
+        }
+        "sqlite" if s.storage.sqlite.max_connections == 0 => {
+            return Err(invalid(
+                "storage.sqlite.max_connections",
                 "must be greater than zero".into(),
             ));
         }

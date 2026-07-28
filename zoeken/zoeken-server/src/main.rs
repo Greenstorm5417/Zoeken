@@ -62,7 +62,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 busy_timeout: std::time::Duration::from_millis(
                     settings.storage.sqlite.busy_timeout_ms,
                 ),
-                max_connections: 4,
+                max_connections: settings.storage.sqlite.max_connections,
             },
         },
         "postgres" => {
