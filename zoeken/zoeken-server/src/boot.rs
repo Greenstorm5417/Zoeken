@@ -227,9 +227,11 @@ mod tests {
 
     #[test]
     fn data_failure_aborts_naming_data_and_skips_network() {
-        // Point the data loader at a directory with no bundled assets; boot must
-        // tag the failure as the data component and not run network.
-        let missing_data_dir = std::env::temp_dir().join("zoeken-boot-nonexistent-data-dir-xyz");
+        // Empty existing directory: boot must name a missing bundle file and not run network.
+        // (A non-existent APP_DATA_DIR fails earlier with a directory message — covered below.)
+        let missing_data_dir = std::env::temp_dir().join("zoeken-boot-empty-data-dir-xyz");
+        let _ = std::fs::remove_dir_all(&missing_data_dir);
+        std::fs::create_dir_all(&missing_data_dir).expect("create empty data dir");
         let network_ran = Cell::new(false);
 
         let result = boot_with(
@@ -240,6 +242,8 @@ mod tests {
                 NetworkManager::from_settings(&settings.outgoing)
             },
         );
+
+        let _ = std::fs::remove_dir_all(&missing_data_dir);
 
         let error = result.expect_err("missing data files should abort boot");
         assert_eq!(error.component(), BootComponent::Data);
@@ -255,6 +259,27 @@ mod tests {
             "underlying cause should name the affected data file, got: {cause}"
         );
         assert!(error.to_string().contains("data"));
+    }
+
+    #[test]
+    fn data_failure_missing_dir_names_app_data_dir() {
+        let missing_data_dir = std::env::temp_dir().join("zoeken-boot-nonexistent-data-dir-xyz");
+        let _ = std::fs::remove_dir_all(&missing_data_dir);
+        let result = boot_with(
+            || Ok(Settings::default()),
+            |_settings| load_bundle(&missing_data_dir),
+            |_settings| {
+                panic!("network must not run");
+            },
+        );
+        let error = result.expect_err("missing APP_DATA_DIR should abort boot");
+        assert_eq!(error.component(), BootComponent::Data);
+        let cause = error.to_string();
+        assert!(
+            cause.contains("APP_DATA_DIR")
+                && cause.contains(&missing_data_dir.display().to_string()),
+            "missing-dir error should name APP_DATA_DIR and path, got: {cause}"
+        );
     }
 
     #[test]

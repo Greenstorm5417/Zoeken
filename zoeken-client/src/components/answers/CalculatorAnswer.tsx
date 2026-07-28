@@ -166,8 +166,7 @@ export function CalculatorAnswer({
 
 				<div className="grid w-full grid-cols-5 gap-1.5 sm:max-w-[22rem] sm:shrink-0 sm:gap-2">
 					{KEYS.map((key) => {
-						const disabled =
-							advancedFallback && key.action !== "clear";
+						const disabled = advancedFallback && key.action !== "clear";
 						const tone =
 							key.tone === "accent"
 								? "bg-accent text-white hover:opacity-90"

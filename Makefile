@@ -17,7 +17,7 @@ help:
 	@echo "  check-native-types fail if generated native.ts drifts"
 	@echo "  sync-versions     sync package.json / lock / Docker VERSION to Cargo.toml"
 	@echo "                    (optional BUMP=X.Y.Z; CHECK=1 for drift gate)"
-	@echo "  pre-release       fmt + clippy + sync_versions --check"
+	@echo "  pre-release       fmt + clippy + client biome + sync_versions --check"
 	@echo "  clean-assets      Remove built assets, keeping .gitkeep / rss.xsl / logo"
 
 native-types:     ## regenerate SPA types from Rust wire DTOs

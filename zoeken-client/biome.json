@@ -14,6 +14,7 @@
 			"**/vite.config.ts",
 			"!**/src/routeTree.gen.ts",
 			"!**/src/lib/generated/native.ts",
+			"!**/src/lib/generated/tracker_patterns.json",
 			"!**/src/styles.css"
 		]
 	},

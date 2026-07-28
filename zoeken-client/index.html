@@ -134,9 +134,6 @@
       #boot-shell {
         min-height: 100dvh;
       }
-      #boot-shell[hidden] {
-        display: none !important;
-      }
       .boot-home {
         display: flex;
         min-height: 100dvh;
@@ -226,11 +223,11 @@
       </div>
     </div>
     <script>
-      (function () {
+      (() => {
         var path = location.pathname;
+        var home = document.getElementById("boot-home");
+        var serp = document.getElementById("boot-serp");
         if (path === "/search" || path.indexOf("/search/") === 0) {
-          var home = document.getElementById("boot-home");
-          var serp = document.getElementById("boot-serp");
           if (home) home.hidden = true;
           if (serp) serp.hidden = false;
           document.title = "Search — Zoeken";
