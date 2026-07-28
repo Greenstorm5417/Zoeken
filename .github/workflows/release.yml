@@ -577,54 +577,54 @@ jobs:
 
             Assets live under `/usr/share/zoeken/assets`. Unit: `zoeken.service`.
 
-### Nix / NixOS (`x86_64-linux` / `aarch64-linux`)
+            ### Nix / NixOS (`x86_64-linux` / `aarch64-linux`)
 
-Prebuilt release archive (no local Rust/SPA build). Imperative:
+            Prebuilt release archive (no local Rust/SPA build). Imperative:
 
-```sh
-nix run github:${{ github.repository }}
-nix profile install github:${{ github.repository }}
-# rolling mirror:
-nix run github:Greenstorm5417/nixos-pkgs#zoeken
-```
+            ```sh
+            nix run github:${{ github.repository }}
+            nix profile install github:${{ github.repository }}
+            # rolling mirror:
+            nix run github:Greenstorm5417/nixos-pkgs#zoeken
+            ```
 
-**NixOS** — depend on the flake without a version in the URL; pin via your
-`flake.lock` (or follow `main` / a tag ref only if you choose to):
+            **NixOS** — depend on the flake without a version in the URL; pin via your
+            `flake.lock` (or follow `main` / a tag ref only if you choose to):
 
-```nix
-# flake.nix (excerpt)
-{
-  inputs.zoeken.url = "github:${{ github.repository }}";
+            ```nix
+            # flake.nix (excerpt)
+            {
+              inputs.zoeken.url = "github:${{ github.repository }}";
 
-  outputs = { nixpkgs, zoeken, ... }: {
-    nixosConfigurations.myhost = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux"; # or aarch64-linux
-      modules = [{
-        environment.systemPackages = [
-          zoeken.packages.x86_64-linux.zoeken
-        ];
-        # Optional: simple systemd unit
-        systemd.services.zoeken = {
-          description = "Zoeken metasearch";
-          after = [ "network-online.target" ];
-          wantedBy = [ "multi-user.target" ];
-          serviceConfig = {
-            ExecStart = "${zoeken.packages.x86_64-linux.zoeken}/bin/zoeken-server";
-            Restart = "on-failure";
-            # Set APP_SECRET_KEY / APP_BIND_ADDRESS via Environment= or EnvironmentFile=
-          };
-        };
-      }];
-    };
-  };
-}
-```
+              outputs = { nixpkgs, zoeken, ... }: {
+                nixosConfigurations.myhost = nixpkgs.lib.nixosSystem {
+                  system = "x86_64-linux"; # or aarch64-linux
+                  modules = [{
+                    environment.systemPackages = [
+                      zoeken.packages.x86_64-linux.zoeken
+                    ];
+                    # Optional: simple systemd unit
+                    systemd.services.zoeken = {
+                      description = "Zoeken metasearch";
+                      after = [ "network-online.target" ];
+                      wantedBy = [ "multi-user.target" ];
+                      serviceConfig = {
+                        ExecStart = "${zoeken.packages.x86_64-linux.zoeken}/bin/zoeken-server";
+                        Restart = "on-failure";
+                        # Set APP_SECRET_KEY / APP_BIND_ADDRESS via Environment= or EnvironmentFile=
+                      };
+                    };
+                  }];
+                };
+              };
+            }
+            ```
 
-After each release, `packaging/nix/generated.nix` is refreshed (PR from the
-release workflow) so following the flake tracks the latest prebuilt. Your
-`flake.lock` pins which Zoeken revision — and thus which release binary — you get.
+            After each release, `packaging/nix/generated.nix` is refreshed (PR from the
+            release workflow) so following the flake tracks the latest prebuilt. Your
+            `flake.lock` pins which Zoeken revision — and thus which release binary — you get.
 
-### Docker (GHCR)
+            ### Docker (GHCR)
 
             ```sh
             docker pull ghcr.io/${{ needs.verify.outputs.image_name }}:${{ needs.verify.outputs.version }}
