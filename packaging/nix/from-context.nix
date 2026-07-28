@@ -2,6 +2,7 @@
 # (zoeken-server + assets/ + settings.yml + …) without fetching GitHub.
 {
   lib,
+  stdenv,
   stdenvNoCC,
   autoPatchelfHook,
   makeWrapper,
@@ -18,7 +19,8 @@ stdenvNoCC.mkDerivation {
     autoPatchelfHook
     makeWrapper
   ];
-  buildInputs = [ stdenvNoCC.cc.cc.lib ];
+  # Need the full stdenv compiler lib for autoPatchelf (stdenvNoCC.cc is null).
+  buildInputs = [ stdenv.cc.cc.lib ];
 
   installPhase = ''
     runHook preInstall
