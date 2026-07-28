@@ -2,7 +2,7 @@ ASSETS_DIR := zoeken/zoeken-server/assets
 VERSION ?= $(shell ./packaging/scripts/package-version.sh)
 OUT_DIR ?= dist
 
-.PHONY: help clean-assets build client package deb deb-amd64 deb-arm64 docker native-types check-native-types sync-versions
+.PHONY: help clean-assets build client package deb deb-amd64 deb-arm64 docker native-types check-native-types sync-versions pre-release
 
 help:
 	@echo "make targets:"
@@ -17,6 +17,7 @@ help:
 	@echo "  check-native-types fail if generated native.ts drifts"
 	@echo "  sync-versions     sync package.json / lock / Docker VERSION to Cargo.toml"
 	@echo "                    (optional BUMP=X.Y.Z; CHECK=1 for drift gate)"
+	@echo "  pre-release       fmt + clippy + sync_versions --check"
 	@echo "  clean-assets      Remove built assets, keeping .gitkeep / rss.xsl / logo"
 
 native-types:     ## regenerate SPA types from Rust wire DTOs
@@ -34,6 +35,10 @@ sync-versions:
 	  if [ "$(CHECK)" = "1" ]; then args="$$args --check"; fi; \
 	  if [ "$(DRY_RUN)" = "1" ]; then args="$$args --dry-run"; fi; \
 	  ./tools/sync_versions.sh $$args
+
+pre-release:
+	@chmod +x tools/pre_release.sh
+	./tools/pre_release.sh
 
 clean-assets:
 	@find $(ASSETS_DIR) -mindepth 1 ! -name '.gitkeep' ! -name 'rss.xsl' ! -name 'zoeken-logo.svg' -exec rm -rf {} +

@@ -1,8 +1,8 @@
-name: Upstream compatibility refresh
+name: Tracker patterns refresh
 
 on:
   schedule:
-    - cron: "23 7 * * 1"
+    - cron: "41 8 * * 1"
   workflow_dispatch:
 
 permissions:
@@ -10,7 +10,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  compare:
+  refresh:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -21,28 +21,28 @@ jobs:
         with:
           enable-cache: false
 
-      - name: Refresh compatibility inventory from upstream
-        run: uv run --no-project --python 3.13 tools/compat_inventory.py --fetch-upstream
+      - name: Fetch ClearURLs tracker patterns
+        run: uv run --no-project --python 3.13 tools/fetch_tracker_patterns.py
 
-      - name: Open PR if inventory changed
+      - name: Open PR if patterns changed
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          if git diff --quiet -- docs/compatibility; then
-            echo "Compatibility inventory already up to date."
+          if git diff --quiet -- zoeken/zoeken-data/data/tracker_patterns.json; then
+            echo "Tracker patterns already up to date."
             exit 0
           fi
-          branch="chore/compat-inventory-$(date -u +%Y%m%d)"
+          branch="chore/tracker-patterns-$(date -u +%Y%m%d)"
           git config user.name "Greenstorm5417"
           git config user.email "130579625+Greenstorm5417@users.noreply.github.com"
           git checkout -b "$branch"
-          git add -- docs/compatibility
+          git add -- zoeken/zoeken-data/data/tracker_patterns.json
           git commit --author="Greenstorm5417 <130579625+Greenstorm5417@users.noreply.github.com>" \
-            -m "chore: refresh SearXNG compatibility inventory"
+            -m "chore: refresh ClearURLs tracker patterns"
           git push -u origin HEAD
           gh pr create \
-            --title "chore: refresh SearXNG compatibility inventory" \
-            --body "Automated weekly refresh of \`docs/compatibility\` from upstream SearXNG." \
+            --title "chore: refresh ClearURLs tracker patterns" \
+            --body "Automated refresh via \`tools/fetch_tracker_patterns.py\`." \
             --base main \
             --head "$branch"

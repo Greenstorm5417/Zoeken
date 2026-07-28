@@ -9,6 +9,8 @@ Maintainer scripts. Python helpers use [`uv`](https://docs.astral.sh/uv/);
 | `compare_searxng.py` | Fixture / live API comparison vs SearXNG (`fixtures` in CI) |
 | `fetch_tracker_patterns.py` | Refresh ClearURLs rules → `zoeken-data/data/tracker_patterns.json` |
 | `sync_versions.sh` | Sync package.json, lockfile zoeken-*, and Docker VERSION defaults to Cargo.toml |
+| `pre_release.sh` | Pre-tag gate: `cargo fmt --check`, clippy `-D warnings`, sync_versions `--check` |
+| `update_nix_generated.sh` | Refresh `packaging/nix/generated.nix` hashes from a published release |
 
 ```sh
 uv run --no-project --python 3.13 tools/compat_inventory.py --check

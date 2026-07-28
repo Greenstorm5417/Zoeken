@@ -49,9 +49,10 @@ Useful env vars (see `zoeken-settings`):
 | `APP_METHOD` | Default HTTP method for search forms |
 | `APP_ASSETS_DIR` | SPA directory override |
 | `APP_SETTINGS_PATH` | `settings.yml` path |
-| `APP_DATA_DIR` | Optional JSON data directory (must contain the full bundle; defaults are precompiled) |
+| `APP_DATA_DIR` | Optional JSON data directory (**full bundle only**, no merge with embedded defaults; missing files fail boot). Leave unset to use the precompiled bundle. |
 | `APP_STORAGE_BACKEND` | `sqlite` (default) or `postgres` |
 | `APP_SQLITE_PATH` | SQLite database path |
+| `APP_SQLITE_MAX_CONNECTIONS` | SQLite pool size (default `4`) |
 | `APP_POSTGRES_URL` | PostgreSQL connection URL (never logged) |
 | `APP_LOG_LEVEL` | Tracing filter (`info`, `debug`, …) |
 | `APP_METRICS_ENABLED` | Expose `/metrics` when true |
@@ -160,13 +161,15 @@ multi-replica development, start the optional PostgreSQL profile and point
 every replica at the same database:
 
 ```sh
-docker compose --profile postgres up -d postgres
-APP_STORAGE_BACKEND=postgres \
-APP_POSTGRES_URL='postgres://zoeken:change-me-before-production@postgres/zoeken' \
-docker compose --profile postgres up -d zoeken
+# .env must set POSTGRES_PASSWORD (replace change-me-before-production)
+# and APP_STORAGE_BACKEND=postgres
+docker compose --profile postgres up -d
 ```
 
-Set `POSTGRES_PASSWORD` and use the matching URL outside local development.
+Zoeken joins the compose network, waits for healthy postgres when the profile
+is active, and uses `APP_POSTGRES_URL` (default
+`postgres://zoeken:$POSTGRES_PASSWORD@postgres:5432/zoeken`). Set
+`POSTGRES_PASSWORD` and use the matching URL outside local development.
 Zoeken fails startup when the selected database cannot connect or migrate;
 after startup, `/readyz` becomes unhealthy and uncached outbound requests fail
 closed if storage coordination is unavailable.
@@ -249,7 +252,7 @@ cargo build --release --locked --bin zoeken-server --no-default-features
 5. **Storage**: keep SQLite for one process. For multiple replicas, start the optional `postgres` Compose profile and set `APP_STORAGE_BACKEND=postgres` plus `APP_POSTGRES_URL`. Startup fails if connection or migration fails.
 6. **Probes**: liveness `/healthz`, readiness `/readyz` (returns not-ready while draining or while operational storage is unavailable).
 7. **Image proxy**: leave off unless you need it; when on, URLs stay HMAC-gated and redirects are not followed.
-8. **Metrics**: set `general.open_metrics` to a password so `/metrics` and `/stats` require HTTP Basic auth; empty hides `/metrics` and leaves `/stats` open.
+8. **Metrics**: set `general.open_metrics` to a password so `/metrics` and `/stats` require HTTP Basic auth; empty hides `/metrics` and denies `/stats` JSON (401).
 9. Read [`docs/security/audit.md`](security/audit.md) before go-live.
 
 ## Reverse proxy
@@ -281,13 +284,17 @@ deployment:
 
 ## Cutting a release
 
-1. Bump `[workspace.package].version` in `Cargo.toml` (source of truth), then sync
+1. Run the pre-tag gate: `./tools/pre_release.sh` (or
+   `make pre-release`) — `cargo fmt --check`, clippy `-D warnings`, and
+   `./tools/sync_versions.sh --check`.
+2. Bump `[workspace.package].version` in `Cargo.toml` (source of truth), then sync
    dependents via **Actions → Sync versions** (or locally:
    `./tools/sync_versions.sh [--bump X.Y.Z]` / `make sync-versions BUMP=X.Y.Z`).
    The workflow commits `chore: sync package versions to X.Y.Z` when needed.
    Update `CHANGELOG.md`.
-2. Commit remaining release notes if needed, then tag and push:
+3. Commit remaining release notes if needed, then tag and push:
    `git tag v1.0.0 && git push origin v1.0.0`.
-3. GitHub Actions verifies Cargo + client versions match the tag, builds `.deb`s
+4. GitHub Actions verifies Cargo + client versions match the tag, builds `.deb`s
    on native amd64/arm64 runners, pushes GHCR via `Dockerfile.runtime`, and opens
-   the GitHub Release.
+   the GitHub Release. A follow-up job opens a PR to refresh
+   `packaging/nix/generated.nix` when hashes change.
