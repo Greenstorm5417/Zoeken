@@ -9,14 +9,14 @@
     },
     {
       "rust": "zoeken-client/src/lib/clientFeatures",
-      "rust_count": 27,
+      "rust_count": 25,
       "system": "plugins",
       "upstream": "searx/plugins",
       "upstream_count": 12
     },
     {
       "rust": "zoeken/zoeken-search",
-      "rust_count": 16,
+      "rust_count": 17,
       "system": "search",
       "upstream": "searx/search",
       "upstream_count": 2
@@ -58,7 +58,7 @@
     },
     {
       "rust": "zoeken/zoeken-network",
-      "rust_count": 11,
+      "rust_count": 10,
       "system": "network",
       "upstream": "searx/network",
       "upstream_count": 3
@@ -99,5 +99,5 @@
       "upstream_count": 0
     }
   ],
-  "upstream": "/tmp/nix-shell-144538-2313516411/zoeken-searxng-h6nre1uo"
+  "upstream": "/tmp/zoeken-searxng-task7w6f"
 }
