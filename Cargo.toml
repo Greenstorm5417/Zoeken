@@ -41,7 +41,7 @@ todo = "deny"
 unimplemented = "deny"
 
 [workspace.dependencies]
-criterion = { version = "0.7", features = ["html_reports"] }
+criterion = { version = "0.8", features = ["html_reports"] }
 zoeken-settings = { path = "zoeken/zoeken-settings" }
 zoeken-data = { path = "zoeken/zoeken-data" }
 zoeken-network = { path = "zoeken/zoeken-network" }
