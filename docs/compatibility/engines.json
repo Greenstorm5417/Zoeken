@@ -502,10 +502,12 @@
       ],
       "engine_traits": true,
       "fixture_status": "present",
-      "known_gaps": [],
-      "language_support": true,
+      "known_gaps": [
+        "verify engine-traits parity"
+      ],
+      "language_support": false,
       "network_required": false,
-      "paging": true,
+      "paging": false,
       "processor_type": "online",
       "rust_module": "bing",
       "safe_search": true,
@@ -1484,6 +1486,29 @@
     {
       "api_key_required": false,
       "categories": [
+        "general",
+        "web"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "candidate for xpath/json generic engine framework"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": true,
+      "status": "generic-candidate",
+      "time_range": false,
+      "upstream_module": "exaapi",
+      "upstream_name": "exaapi",
+      "upstream_path": "searx/engines/exaapi.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
         "files",
         "apps"
       ],
@@ -2346,6 +2371,28 @@
       "upstream_module": "kagi",
       "upstream_name": "kagi",
       "upstream_path": "searx/engines/kagi.py"
+    },
+    {
+      "api_key_required": false,
+      "categories": [
+        "general"
+      ],
+      "engine_traits": false,
+      "fixture_status": "not-applicable",
+      "known_gaps": [
+        "candidate for xpath/json generic engine framework"
+      ],
+      "language_support": false,
+      "network_required": false,
+      "paging": false,
+      "processor_type": "online",
+      "rust_module": null,
+      "safe_search": false,
+      "status": "generic-candidate",
+      "time_range": false,
+      "upstream_module": "keenable",
+      "upstream_name": "keenable",
+      "upstream_path": "searx/engines/keenable.py"
     },
     {
       "api_key_required": false,
@@ -3467,29 +3514,6 @@
     },
     {
       "api_key_required": false,
-      "categories": [
-        "general",
-        "web"
-      ],
-      "engine_traits": false,
-      "fixture_status": "not-applicable",
-      "known_gaps": [
-        "requires a live request-id preflight before search requests"
-      ],
-      "language_support": false,
-      "network_required": false,
-      "paging": true,
-      "processor_type": "online",
-      "rust_module": null,
-      "safe_search": true,
-      "status": "intentionally-skipped",
-      "time_range": true,
-      "upstream_module": "presearch",
-      "upstream_name": "presearch",
-      "upstream_path": "searx/engines/presearch.py"
-    },
-    {
-      "api_key_required": false,
       "categories": [],
       "engine_traits": true,
       "fixture_status": "present",
@@ -3650,26 +3674,6 @@
       "upstream_module": "recoll",
       "upstream_name": "recoll",
       "upstream_path": "searx/engines/recoll.py"
-    },
-    {
-      "api_key_required": false,
-      "categories": [
-        "social media"
-      ],
-      "engine_traits": false,
-      "fixture_status": "present",
-      "known_gaps": [],
-      "language_support": false,
-      "network_required": false,
-      "paging": false,
-      "processor_type": "online",
-      "rust_module": "reddit",
-      "safe_search": false,
-      "status": "ported",
-      "time_range": false,
-      "upstream_module": "reddit",
-      "upstream_name": "reddit",
-      "upstream_path": "searx/engines/reddit.py"
     },
     {
       "api_key_required": false,
@@ -5881,14 +5885,15 @@
     }
   ],
   "orphaned_rust_engines": [
-    "bing_images"
+    "bing_images",
+    "reddit"
   ],
   "summary": {
-    "generic_candidates": 0,
-    "intentionally_skipped": 40,
+    "generic_candidates": 2,
+    "intentionally_skipped": 39,
     "missing": 0,
-    "orphaned_rust_engines": 1,
-    "ported": 249,
+    "orphaned_rust_engines": 2,
+    "ported": 248,
     "rust_engines": 59,
     "upstream_engines": 289,
     "zoeken_only_engines": 5
