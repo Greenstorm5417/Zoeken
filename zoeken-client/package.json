@@ -60,5 +60,9 @@
     "typescript": "^7.0.2",
     "vite": "^8.2.1",
     "vitest": "^4.1.10"
+  },
+  "overrides": {
+    "postcss": ">=8.5.23",
+    "nanoid": ">=3.3.16"
   }
 }

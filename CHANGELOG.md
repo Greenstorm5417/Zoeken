@@ -9,12 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.4.3] - 2026-08-10
 
+### Fixed
+
+- Client `bun audit` fails on transitive `postcss` / `nanoid` via vite/vitest;
+  pin patched floors with package `overrides` and refresh the lockfile.
+
 ### Changed
 
 - Dependabot bumps: criterion 0.8.2, http 1.5.0, docker/login-action 4.6.0,
   taiki-e/install-action 2.85.10, Swatinem/rust-cache 2.9.2, @biomejs/biome 2.5.6,
   and the rust-patches Cargo group.
-- Sync `zoeken-client/bun.lock` after the biome version bump.
+- Sync `zoeken-client/bun.lock` after the biome version bump; bump vite to
+  `^8.2.1`.
 
 ## [1.4.2] - 2026-08-10
 
