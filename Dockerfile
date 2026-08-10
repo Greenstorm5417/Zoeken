@@ -37,9 +37,9 @@ COPY . .
 COPY --from=client /src/zoeken/zoeken-server/assets ./zoeken/zoeken-server/assets
 RUN cargo build --release --bin zoeken-server --locked
 
-FROM debian:slim AS runtime
+FROM debian:stable-slim AS runtime
 
-ARG VERSION=1.4.3
+ARG VERSION=1.4.4
 ARG REVISION=unknown
 ARG CREATED=unknown
 
