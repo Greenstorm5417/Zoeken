@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.3] - 2026-08-10
+
+### Changed
+
+- Dependabot bumps: criterion 0.8.2, http 1.5.0, docker/login-action 4.6.0,
+  taiki-e/install-action 2.85.10, Swatinem/rust-cache 2.9.2, @biomejs/biome 2.5.6,
+  and the rust-patches Cargo group.
+- Sync `zoeken-client/bun.lock` after the biome version bump.
+
 ## [1.4.2] - 2026-08-10
 
 ### Fixed
@@ -374,6 +383,7 @@ with Debian packages, systemd unit, and multi-arch Docker images on GHCR.
 - Command engines and several API-key / bespoke engines remain intentionally unsupported
 - See `docs/compatibility/intentional-differences.md` and `docs/security/audit.md`
 
+[1.4.3]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.4.3
 [1.4.2]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.4.2
 [1.4.1]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.4.1
 [1.4.0]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.4.0

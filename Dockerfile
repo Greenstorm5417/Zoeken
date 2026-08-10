@@ -39,7 +39,7 @@ RUN cargo build --release --bin zoeken-server --locked
 
 FROM debian:slim AS runtime
 
-ARG VERSION=1.4.2
+ARG VERSION=1.4.3
 ARG REVISION=unknown
 ARG CREATED=unknown
 
