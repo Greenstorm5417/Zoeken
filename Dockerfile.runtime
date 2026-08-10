@@ -1,8 +1,8 @@
 # Runtime image from a prebuilt zoeken-server + assets/ + config + LICENSE.
 
-FROM debian:bookworm-slim AS runtime
+FROM debian:slim AS runtime
 
-ARG VERSION=1.4.1
+ARG VERSION=1.4.2
 ARG REVISION=unknown
 ARG CREATED=unknown
 

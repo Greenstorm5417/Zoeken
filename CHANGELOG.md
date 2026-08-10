@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.2] - 2026-08-10
+
+### Fixed
+
+- Docker runtime base moved from `debian:bookworm-slim` to `debian:slim` so
+  release binaries built on current Ubuntu runners are not blocked by older
+  Bookworm glibc.
+
+### Changed
+
+- From-source image builder stage uses `rust:1` (current Debian) instead of
+  `rust:1-bookworm`.
+
 ## [1.4.1] - 2026-07-28
 
 ### Fixed
@@ -361,6 +374,8 @@ with Debian packages, systemd unit, and multi-arch Docker images on GHCR.
 - Command engines and several API-key / bespoke engines remain intentionally unsupported
 - See `docs/compatibility/intentional-differences.md` and `docs/security/audit.md`
 
+[1.4.2]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.4.2
+[1.4.1]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.4.1
 [1.4.0]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.4.0
 [1.3.3]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.3.3
 [1.3.2]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.3.2

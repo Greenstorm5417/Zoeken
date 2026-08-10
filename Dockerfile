@@ -18,7 +18,7 @@ RUN bun run build \
        '  <xsl:template match="/"><html><body><xsl:apply-templates/></body></html></xsl:template>' \
        '</xsl:stylesheet>' > /src/zoeken/zoeken-server/assets/rss.xsl
 
-FROM rust:1-bookworm AS chef
+FROM rust:1 AS chef
 WORKDIR /src
 RUN cargo install cargo-chef --locked --version 0.1.77
 
@@ -37,9 +37,9 @@ COPY . .
 COPY --from=client /src/zoeken/zoeken-server/assets ./zoeken/zoeken-server/assets
 RUN cargo build --release --bin zoeken-server --locked
 
-FROM debian:bookworm-slim AS runtime
+FROM debian:slim AS runtime
 
-ARG VERSION=1.4.1
+ARG VERSION=1.4.2
 ARG REVISION=unknown
 ARG CREATED=unknown
 
