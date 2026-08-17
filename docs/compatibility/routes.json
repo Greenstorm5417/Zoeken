@@ -40,10 +40,9 @@
         "GET",
         "POST"
       ],
-      "status": "ported",
+      "status": "partial",
       "upstream_methods": [
-        "GET",
-        "POST"
+        "GET"
       ]
     },
     {
