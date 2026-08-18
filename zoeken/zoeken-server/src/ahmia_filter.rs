@@ -6,13 +6,7 @@ use zoeken_results::Result_;
 use zoeken_search::ResultContainer;
 
 fn md5_hex(value: &str) -> String {
-    let digest = Md5::digest(value.as_bytes());
-    let mut out = String::with_capacity(digest.len() * 2);
-    for byte in digest {
-        use std::fmt::Write as _;
-        let _ = std::write!(out, "{byte:02x}");
-    }
-    out
+    hex::encode(Md5::digest(value.as_bytes()))
 }
 
 fn onion_host(url: &str) -> Option<String> {

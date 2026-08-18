@@ -1,6 +1,5 @@
 //! Dogpile JSON search engine.
 
-use chrono::{DateTime, Utc};
 use serde::Deserialize;
 use serde_json::{Value, json};
 use zoeken_engine_core::{
@@ -177,11 +176,6 @@ fn resolution(item: &Value) -> String {
     } else {
         String::new()
     }
-}
-
-#[allow(dead_code)]
-fn unix_date(value: i64) -> Option<String> {
-    DateTime::<Utc>::from_timestamp(value, 0).map(|dt| dt.to_rfc3339())
 }
 
 #[cfg(test)]

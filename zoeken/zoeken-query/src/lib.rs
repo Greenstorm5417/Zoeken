@@ -177,8 +177,6 @@ impl Default for SearchQuery {
     }
 }
 
-pub const REDIRECT_FIRST_RESULT: &str = "first_result";
-
 #[derive(Debug, Clone, PartialEq)]
 pub enum ParseOutcome {
     Query(SearchQuery),

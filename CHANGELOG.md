@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.5] - 2026-08-18
+
+### Fixed
+
+- Result ranking: score each engine as `weight / position` (no n² engine-count
+  boost) and prefer titles/hosts that match the query, so a three-engine #1 is
+  not buried by Wikipedia or mid-page spam.
+- Merge equivalent pages across engines: mobile Wikipedia hosts,
+  trailing `index.html`, shuffled query params, and Google `/url?url=`.
+
 ## [1.4.4] - 2026-08-10
 
 ### Fixed
@@ -396,6 +406,7 @@ with Debian packages, systemd unit, and multi-arch Docker images on GHCR.
 - Command engines and several API-key / bespoke engines remain intentionally unsupported
 - See `docs/compatibility/intentional-differences.md` and `docs/security/audit.md`
 
+[1.4.5]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.4.5
 [1.4.4]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.4.4
 [1.4.3]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.4.3
 [1.4.2]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.4.2

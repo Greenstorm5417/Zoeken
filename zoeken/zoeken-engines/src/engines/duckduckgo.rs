@@ -84,7 +84,7 @@ impl Default for DuckDuckGo {
 }
 
 fn quote_ddg_bangs(query: &str) -> String {
-    query.split_whitespace().collect::<Vec<_>>().join(" ")
+    zoeken_engine_core::normalize_whitespace(query)
 }
 
 fn ddg_region(locale: &str) -> String {

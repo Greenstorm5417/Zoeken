@@ -64,10 +64,6 @@ impl Search {
         &self.registry
     }
 
-    pub fn registry_mut(&mut self) -> &mut EngineRegistry {
-        &mut self.registry
-    }
-
     pub async fn run_engines(
         &self,
         query: &SearchQuery,
@@ -112,7 +108,7 @@ impl Search {
             .await;
         let engines = report.outcomes.len();
         let weights = self.engine_weights();
-        let container = aggregate(report, &weights);
+        let container = crate::aggregation::aggregate_query(report, &weights, &query.query);
 
         let elapsed_ms = u64::try_from(started.elapsed().as_millis()).unwrap_or(u64::MAX);
         tracing::info!(

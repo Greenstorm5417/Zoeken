@@ -56,10 +56,12 @@ proptest! {
             for (idx, &u) in urls.iter().enumerate() {
                 let position = idx + 1;
                 let entry = expected.entry(url_for(u)).or_default();
-                if !entry.0.iter().any(|e| e == &name) {
+                if let Some(i) = entry.0.iter().position(|e| e == &name) {
+                    entry.1[i] = entry.1[i].min(position);
+                } else {
                     entry.0.push(name.clone());
+                    entry.1.push(position);
                 }
-                entry.1.push(position);
             }
         }
 

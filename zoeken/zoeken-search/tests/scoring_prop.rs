@@ -57,31 +57,26 @@ fn reference_scores(
     engines: &[(String, Vec<String>)],
     weight_of: &HashMap<String, f64>,
 ) -> HashMap<String, f64> {
-    let mut positions: HashMap<String, Vec<usize>> = HashMap::new();
-    let mut contributors: HashMap<String, Vec<String>> = HashMap::new();
+    let mut contributors: HashMap<String, Vec<(String, usize)>> = HashMap::new();
 
     for (engine, urls) in engines {
         for (idx, url) in urls.iter().enumerate() {
             let position = idx + 1;
-            positions.entry(url.clone()).or_default().push(position);
             let engs = contributors.entry(url.clone()).or_default();
-            if !engs.iter().any(|e| e == engine) {
-                engs.push(engine.clone());
+            if let Some((_, existing)) = engs.iter_mut().find(|(name, _)| name == engine) {
+                *existing = (*existing).min(position);
+            } else {
+                engs.push((engine.clone(), position));
             }
         }
     }
 
     let mut scores = HashMap::new();
-    for (url, pos) in &positions {
-        let mut weight = 1.0_f64;
-        for engine in &contributors[url] {
-            weight *= weight_of.get(engine).copied().unwrap_or(1.0);
-        }
-        weight *= pos.len() as f64;
-
+    for (url, contribs) in &contributors {
         let mut score = 0.0_f64;
-        for &p in pos {
-            score += weight / (p.max(1) as f64);
+        for (engine, position) in contribs {
+            let weight = weight_of.get(engine).copied().unwrap_or(1.0);
+            score += weight / (*position).max(1) as f64;
         }
         scores.insert(url.clone(), score);
     }

@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 use zoeken_engine_core::{EngineResults, ErrorCategory};
 use zoeken_results::{
@@ -76,7 +76,17 @@ struct Merged {
     engines: Vec<String>,
 }
 
+/// Merge engine outcomes and score each URL as `sum(weight / position)`.
 pub fn aggregate(report: ExecutionReport, weights: &EngineWeights) -> ResultContainer {
+    aggregate_query(report, weights, "")
+}
+
+/// Same as [`aggregate`], with a query so matching titles and hosts rank higher.
+pub(crate) fn aggregate_query(
+    report: ExecutionReport,
+    weights: &EngineWeights,
+    query: &str,
+) -> ResultContainer {
     let mut builder = ContainerBuilder::default();
     let metrics = EngineMetricsRecorder::new();
 
@@ -120,7 +130,7 @@ pub fn aggregate(report: ExecutionReport, weights: &EngineWeights) -> ResultCont
         }
     }
 
-    builder.finish(weights)
+    builder.finish(weights, query)
 }
 
 #[derive(Default)]
@@ -128,13 +138,13 @@ struct ContainerBuilder {
     merged: Vec<Merged>,
     by_key: HashMap<String, usize>,
     answers: Vec<Answer>,
-    seen_answers: std::collections::HashSet<String>,
+    seen_answers: HashSet<String>,
     /// Case-insensitive key → (display suggestion, engine-weight sum, hit count).
     suggestion_rank: HashMap<String, (Suggestion, f64, usize)>,
     corrections: Vec<Correction>,
-    seen_corrections: std::collections::HashSet<String>,
+    seen_corrections: HashSet<String>,
     infoboxes: Vec<Infobox>,
-    seen_infoboxes: std::collections::HashSet<String>,
+    seen_infoboxes: HashSet<String>,
     unresponsive_engines: Vec<UnresponsiveEngine>,
     engine_data: HashMap<String, String>,
 }
@@ -211,11 +221,7 @@ impl ContainerBuilder {
                 Some(existing) => {
                     let merged = &mut self.merged[existing];
                     maybe_upgrade_content(&mut merged.result, &result);
-                    push_position(&mut merged.result, position);
-                    if !merged.engines.iter().any(|e| e == engine) {
-                        merged.engines.push(engine.to_string());
-                    }
-                    set_engines(&mut merged.result, &merged.engines);
+                    record_engine_position(merged, engine, position);
                 }
                 None => {
                     self.by_key.insert(key, self.merged.len());
@@ -238,17 +244,12 @@ impl ContainerBuilder {
             .push(UnresponsiveEngine { engine, cause });
     }
 
-    fn finish(self, weights: &EngineWeights) -> ResultContainer {
+    fn finish(self, weights: &EngineWeights, query: &str) -> ResultContainer {
         let mut results: Vec<Result_> = self
             .merged
             .into_iter()
             .map(|merged| {
-                let score = score_of(
-                    positions_of(&merged.result),
-                    &merged.engines,
-                    priority_of(&merged.result),
-                    weights,
-                );
+                let score = score_of(&merged, weights, query);
                 let mut result = merged.result;
                 set_score(&mut result, score);
                 result
@@ -292,34 +293,102 @@ impl ContainerBuilder {
     }
 }
 
-fn score_of(
-    positions: &[usize],
-    engines: &[String],
-    priority: &str,
-    weights: &EngineWeights,
-) -> f64 {
+/// One contribution per engine: `weight / position`.
+/// ponytail: title/host overlap, not BM25. Revisit if SEO junk still wins live.
+fn score_of(merged: &Merged, weights: &EngineWeights, query: &str) -> f64 {
+    let positions = positions_of(&merged.result);
     if positions.is_empty() {
         return 0.0;
     }
-    let mut weight = 1.0;
-    for engine in engines {
-        weight *= weights.weight_of(engine);
+    let priority = priority_of(&merged.result);
+    if priority == "low" {
+        return 0.0;
     }
-    weight *= positions.len() as f64;
-
-    let mut score = 0.0;
-    for &position in positions {
-        if priority == "low" {
-            continue;
-        }
+    let mut rank_score = 0.0;
+    for (i, &position) in positions.iter().enumerate() {
+        let engine = merged.engines.get(i).map(String::as_str).unwrap_or("");
+        let weight = weights.weight_of(engine);
         if priority == "high" {
-            score += weight;
-            continue;
+            rank_score += weight;
+        } else {
+            rank_score += weight / (position.max(1) as f64);
         }
-        let position = position.max(1);
-        score += weight / position as f64;
     }
-    score
+    rank_score
+        * relevance(
+            query,
+            title_of(&merged.result),
+            content_of(&merged.result),
+            url_of(&merged.result),
+        )
+}
+
+fn record_engine_position(merged: &mut Merged, engine: &str, position: usize) {
+    if let Some(i) = merged.engines.iter().position(|e| e == engine) {
+        keep_best_position(&mut merged.result, i, position);
+        return;
+    }
+    merged.engines.push(engine.to_string());
+    push_position(&mut merged.result, position);
+    set_engines(&mut merged.result, &merged.engines);
+}
+
+const QUERY_STOPWORDS: &[&str] = &[
+    "a", "an", "the", "of", "and", "or", "in", "on", "to", "for", "is", "at", "by", "from",
+];
+
+const SKIP_HOST_LABELS: &[&str] = &[
+    "www", "com", "org", "net", "io", "edu", "gov", "co", "uk", "html", "https", "http",
+];
+
+fn contains_term(haystack: &str, term: &str) -> bool {
+    tokenize(haystack).any(|word| word == term)
+}
+
+fn tokenize(text: &str) -> impl Iterator<Item = &str> {
+    text.split(|c: char| !(c.is_ascii_alphanumeric() || c == '+'))
+        .filter(|token| !token.is_empty())
+}
+
+fn host_boost(url: &str, terms: &[&str]) -> f64 {
+    let Ok(parsed) = url::Url::parse(url) else {
+        return 0.0;
+    };
+    let Some(host) = parsed.host_str() else {
+        return 0.0;
+    };
+    let host = host.to_ascii_lowercase();
+    let host = host.strip_prefix("www.").unwrap_or(&host);
+    let hit = host.split(['.', '-']).any(|label| {
+        label.len() >= 3 && !SKIP_HOST_LABELS.contains(&label) && terms.contains(&label)
+    });
+    if hit { 0.75 } else { 0.0 }
+}
+
+fn relevance(query: &str, title: &str, content: &str, url: &str) -> f64 {
+    let q = query.trim().to_ascii_lowercase();
+    if q.is_empty() {
+        return 1.0;
+    }
+    let title_l = title.to_ascii_lowercase();
+    let content_l = content.to_ascii_lowercase();
+    let mut terms: Vec<&str> = tokenize(&q)
+        .filter(|term| !QUERY_STOPWORDS.contains(term))
+        .filter(|term| term.len() >= 2 || term.contains('+'))
+        .collect();
+    if terms.is_empty() && q.len() == 1 && q.chars().all(|c| c.is_ascii_alphabetic()) {
+        terms.push(&q);
+    }
+    let n = terms.len() as f64;
+    if n == 0.0 {
+        return 1.0;
+    }
+    let title_hits = terms.iter().filter(|t| contains_term(&title_l, t)).count();
+    let content_hits = terms
+        .iter()
+        .filter(|t| contains_term(&content_l, t))
+        .count();
+    1.0 + 0.5 * (title_hits as f64 / n) + 0.15 * (content_hits as f64 / n) + host_boost(url, &terms)
 }
 
 /// Score ↓, then engine consensus ↓, best position ↑, URL ↑.
@@ -406,20 +475,37 @@ fn canonical_merge_key(raw: &str) -> String {
     }
 
     if let Some(host) = url.host_str() {
-        let host = host.to_ascii_lowercase();
-        let host = host.strip_prefix("www.").unwrap_or(&host).to_string();
+        let host = canonical_host(host);
         let _ = url.set_host(Some(&host));
     }
 
-    let path = url.path().trim_end_matches('/').to_string();
-    let canonical_path = if path.is_empty() || is_locale_root_path(&path) {
+    let path = strip_index_file(url.path().trim_end_matches('/'));
+    let canonical_path = if path.is_empty() || is_locale_root_path(path) {
         "/".to_string()
     } else {
-        path
+        path.to_string()
     };
     url.set_path(&canonical_path);
 
     url.to_string()
+}
+
+fn canonical_host(host: &str) -> String {
+    let host = host.to_ascii_lowercase();
+    let host = host.strip_prefix("www.").unwrap_or(&host);
+    if let Some((lang, rest)) = host.split_once(".m.")
+        && (rest == "wikipedia.org" || rest.ends_with(".wikipedia.org"))
+        && !lang.is_empty()
+    {
+        return format!("{lang}.{rest}");
+    }
+    host.strip_prefix("m.").unwrap_or(host).to_string()
+}
+
+fn strip_index_file(path: &str) -> &str {
+    path.strip_suffix("/index.html")
+        .or_else(|| path.strip_suffix("/index.htm"))
+        .unwrap_or(path)
 }
 
 /// Peel common engine click-wrappers so the same page merges across engines.
@@ -446,7 +532,10 @@ fn unwrap_engine_redirect(raw: &str) -> String {
     }
 
     if host.ends_with("google.com") && url.path() == "/url" {
-        if let Some((_, value)) = url.query_pairs().find(|(key, _)| key == "q") {
+        for (key, value) in url.query_pairs() {
+            if key != "q" && key != "url" {
+                continue;
+            }
             let dest = value.into_owned();
             if dest.starts_with("http://") || dest.starts_with("https://") {
                 return dest;
@@ -467,19 +556,20 @@ fn strip_tracking_params(url: &mut url::Url) {
     if url.query().is_none() {
         return;
     }
-    let kept: Vec<(String, String)> = url
+    let mut kept: Vec<(String, String)> = url
         .query_pairs()
         .filter(|(key, _)| !key.starts_with("utm_") && !TRACKING_PARAMS.contains(&key.as_ref()))
         .map(|(k, v)| (k.into_owned(), v.into_owned()))
         .collect();
     if kept.is_empty() {
         url.set_query(None);
-    } else {
-        let query = url::form_urlencoded::Serializer::new(String::new())
-            .extend_pairs(kept)
-            .finish();
-        url.set_query(Some(&query));
+        return;
     }
+    kept.sort_by(|a, b| a.0.cmp(&b.0).then_with(|| a.1.cmp(&b.1)));
+    let query = url::form_urlencoded::Serializer::new(String::new())
+        .extend_pairs(kept)
+        .finish();
+    url.set_query(Some(&query));
 }
 
 fn is_locale_root_path(path: &str) -> bool {
@@ -610,6 +700,25 @@ fn push_position(result: &mut Result_, position: usize) {
         Result_::Code(r) => push!(r),
         Result_::File(r) => push!(r),
         Result_::KeyValue(r) => push!(r),
+        _ => {}
+    }
+}
+
+fn keep_best_position(result: &mut Result_, index: usize, position: usize) {
+    macro_rules! keep {
+        ($r:expr) => {
+            if let Some(existing) = $r.positions.get_mut(index) {
+                *existing = (*existing).min(position);
+            }
+        };
+    }
+    match result {
+        Result_::Main(r) => keep!(r),
+        Result_::Image(r) => keep!(r),
+        Result_::Paper(r) => keep!(r),
+        Result_::Code(r) => keep!(r),
+        Result_::File(r) => keep!(r),
+        Result_::KeyValue(r) => keep!(r),
         _ => {}
     }
 }
@@ -1191,6 +1300,249 @@ mod tests {
             vec!["a-second", "z-first", "m-third"],
             "equal #1 scores must order by URL, not engine ingest order"
         );
+    }
+
+    #[test]
+    fn mid_page_multi_engine_hit_does_not_beat_unique_first_result() {
+        // Four engines listing the same URL at rank 10 used to score n²/10 = 1.6
+        // and bury a unique #1. Linear sum is 0.4.
+        let mut top = EngineResults::new();
+        top.add(main_result("https://relevant.test/", "Relevant"));
+
+        let junk_url = "https://seo-farm.test/spam";
+        let mut farm = Vec::new();
+        for name in ["a", "b", "c", "d"] {
+            let mut results = EngineResults::new();
+            for i in 0..9 {
+                results.add(main_result(&format!("https://{name}.test/{i}"), "pad"));
+            }
+            results.add(main_result(junk_url, "Spam"));
+            farm.push(completed(name, results));
+        }
+
+        let mut outcomes = vec![completed("top", top)];
+        outcomes.extend(farm);
+        let container = aggregate(
+            report(outcomes),
+            &weights(&[("top", 1.0), ("a", 1.0), ("b", 1.0), ("c", 1.0), ("d", 1.0)]),
+        );
+
+        let relevant = container
+            .results
+            .iter()
+            .map(as_main)
+            .find(|m| m.title == "Relevant")
+            .expect("relevant hit present");
+        let junk = container
+            .results
+            .iter()
+            .map(as_main)
+            .find(|m| m.normalized_url == junk_url)
+            .expect("junk still present");
+        assert!(
+            junk.score < relevant.score,
+            "rank-10 consensus {} must stay below unique #1 {}",
+            junk.score,
+            relevant.score
+        );
+    }
+
+    #[test]
+    fn query_prefers_official_host_over_unrelated_equal_rank_hit() {
+        // Typical failure: Wikipedia #1 and the official site #1 both score 1.0,
+        // then URL sort puts en.wikipedia.org first.
+        let mut wiki = EngineResults::new();
+        wiki.add(main_result("https://en.wikipedia.org/wiki/Rust", "Rust"));
+        let mut ddg = EngineResults::new();
+        ddg.add(main_result(
+            "https://www.rust-lang.org/",
+            "Rust Programming Language",
+        ));
+
+        let container = aggregate_query(
+            report(vec![
+                completed("wikipedia", wiki),
+                completed("duckduckgo", ddg),
+            ]),
+            &weights(&[("wikipedia", 1.0), ("duckduckgo", 1.0)]),
+            "rust",
+        );
+
+        assert_eq!(
+            as_main(&container.results[0]).normalized_url,
+            "https://www.rust-lang.org/",
+            "official host matching the query must outrank a same-position Wikipedia hit"
+        );
+    }
+
+    #[test]
+    fn query_does_not_boost_title_or_content_substrings() {
+        let mut email = EngineResults::new();
+        email.add(main_result_with_content(
+            "https://a.test/email",
+            "Email",
+            "Tickets available now.",
+        ));
+        let mut docs = EngineResults::new();
+        docs.add(main_result("https://b.test/docs", "Docs"));
+        let mut ai = EngineResults::new();
+        ai.add(main_result("https://c.test/about", "AI"));
+
+        let container = aggregate_query(
+            report(vec![
+                completed("email", email),
+                completed("docs", docs),
+                completed("ai", ai),
+            ]),
+            &weights(&[("email", 1.0), ("docs", 1.0), ("ai", 1.0)]),
+            "ai",
+        );
+
+        assert_eq!(as_main(&container.results[0]).title, "AI");
+        let email_score = container
+            .results
+            .iter()
+            .map(as_main)
+            .find(|m| m.title == "Email")
+            .expect("email")
+            .score;
+        let docs_score = container
+            .results
+            .iter()
+            .map(as_main)
+            .find(|m| m.title == "Docs")
+            .expect("docs")
+            .score;
+        assert!(
+            (email_score - docs_score).abs() < 1e-9,
+            "substring 'ai' in Email / crust must not outrank Docs: {email_score} vs {docs_score}"
+        );
+    }
+
+    #[test]
+    fn merges_be_tarask_mobile_wikipedia_with_desktop() {
+        let mut a = EngineResults::new();
+        a.add(main_result(
+            "https://be-tarask.m.wikipedia.org/wiki/Foo",
+            "Foo",
+        ));
+        let mut b = EngineResults::new();
+        b.add(main_result(
+            "https://be-tarask.wikipedia.org/wiki/Foo",
+            "Foo",
+        ));
+
+        let container = aggregate(
+            report(vec![completed("a", a), completed("b", b)]),
+            &weights(&[("a", 1.0), ("b", 1.0)]),
+        );
+        assert_eq!(container.results.len(), 1);
+        assert_eq!(as_main(&container.results[0]).engines.len(), 2);
+    }
+
+    #[test]
+    fn unwraps_google_url_param_when_q_is_not_http() {
+        let mut google = EngineResults::new();
+        google.add(main_result(
+            "https://www.google.com/url?q=foo&url=https%3A%2F%2Frust-lang.org%2F",
+            "Rust",
+        ));
+        let mut brave = EngineResults::new();
+        brave.add(main_result("https://www.rust-lang.org/", "Rust"));
+
+        let container = aggregate(
+            report(vec![completed("google", google), completed("brave", brave)]),
+            &weights(&[("google", 1.0), ("brave", 1.0)]),
+        );
+        assert_eq!(container.results.len(), 1);
+    }
+
+    #[test]
+    fn three_engine_number_one_is_the_top_result() {
+        let mut ddg = EngineResults::new();
+        ddg.add(main_result(
+            "https://www.python.org/",
+            "Welcome to Python.org",
+        ));
+        let mut brave = EngineResults::new();
+        brave.add(main_result("https://python.org/", "Python"));
+        let mut bing = EngineResults::new();
+        bing.add(main_result(
+            "https://www.python.org/index.html",
+            "Python.org",
+        ));
+        let mut wiki = EngineResults::new();
+        wiki.add(main_result(
+            "https://en.wikipedia.org/wiki/Python",
+            "Python",
+        ));
+
+        let container = aggregate_query(
+            report(vec![
+                completed("duckduckgo", ddg),
+                completed("brave", brave),
+                completed("bing", bing),
+                completed("wikipedia", wiki),
+            ]),
+            &weights(&[
+                ("duckduckgo", 1.0),
+                ("brave", 1.0),
+                ("bing", 1.0),
+                ("wikipedia", 1.0),
+            ]),
+            "python",
+        );
+
+        let top = as_main(&container.results[0]);
+        assert!(
+            canonical_merge_key(&top.normalized_url) == canonical_merge_key("https://python.org/"),
+            "consensus #1 must surface, got {}",
+            top.normalized_url
+        );
+        assert_eq!(top.engines.len(), 3);
+    }
+
+    #[test]
+    fn same_engine_duplicate_keeps_best_position_only() {
+        let mut a = EngineResults::new();
+        a.add(main_result("https://a.test/", "First"));
+        a.add(main_result("http://www.a.test/", "Alias"));
+
+        let container = aggregate(report(vec![completed("a", a)]), &weights(&[("a", 1.0)]));
+        assert_eq!(container.results.len(), 1);
+        let merged = as_main(&container.results[0]);
+        assert_eq!(merged.positions, vec![1]);
+        assert_eq!(merged.engines, vec!["a".to_string()]);
+        assert_eq!(merged.score, 1.0);
+    }
+
+    #[test]
+    fn merges_mobile_wikipedia_with_desktop() {
+        let mut a = EngineResults::new();
+        a.add(main_result("https://en.m.wikipedia.org/wiki/Rust", "Rust"));
+        let mut b = EngineResults::new();
+        b.add(main_result("https://en.wikipedia.org/wiki/Rust", "Rust"));
+
+        let container = aggregate(
+            report(vec![completed("a", a), completed("b", b)]),
+            &weights(&[("a", 1.0), ("b", 1.0)]),
+        );
+        assert_eq!(container.results.len(), 1);
+        assert_eq!(as_main(&container.results[0]).engines.len(), 2);
+    }
+
+    #[test]
+    fn merges_query_params_regardless_of_order() {
+        let mut a = EngineResults::new();
+        a.add(main_result("https://example.com/watch?v=abc&t=1", "A"));
+        let mut b = EngineResults::new();
+        b.add(main_result("https://example.com/watch?t=1&v=abc", "A"));
+
+        let container = aggregate(
+            report(vec![completed("a", a), completed("b", b)]),
+            &weights(&[("a", 1.0), ("b", 1.0)]),
+        );
+        assert_eq!(container.results.len(), 1);
     }
 
     #[test]

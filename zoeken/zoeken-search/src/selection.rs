@@ -105,10 +105,6 @@ impl EngineRegistry {
         &self.engines
     }
 
-    pub fn get_mut(&mut self, name: &str) -> Option<&mut RegisteredEngine> {
-        self.engines.iter_mut().find(|e| e.name() == name)
-    }
-
     /// `enabled_engines`: `None` means all engines are enabled; `Some(set)`
     /// restricts selection to engines named in the set.
     pub fn select(
