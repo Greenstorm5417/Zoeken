@@ -1,6 +1,6 @@
 # From-source image. Release CI uses Dockerfile.runtime with prebuilt binaries.
 
-FROM oven/bun:1.3.14-debian AS client
+FROM oven/bun:1.4.2-debian AS client
 WORKDIR /src
 COPY logo ./logo
 RUN mkdir -p zoeken/zoeken-server/assets \
