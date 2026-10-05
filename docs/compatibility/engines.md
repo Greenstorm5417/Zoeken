@@ -1,26 +1,21 @@
 # Engine Compatibility Matrix
 
-Upstream engines: 289. Rust engines: 59. Ported: 249. Generic candidates: 0. Missing: 0. Intentionally skipped: 40.
-
-**Product stance (1.4.0):** Zoeken does not ship first-party YouTube or Google
-Images engines. Prefer Bing Images for images and Invidious / Piped / PeerTube
-for videos. See `intentional-differences.md`.
+Upstream engines: 293. Rust engines: 59. Ported: 244. Generic candidates: 8. Missing: 3. Intentionally skipped: 38.
 
 | Upstream module | Status | Rust module | Categories | Processor | Paging | Safe | Time | Lang | API key | Network | Fixtures | Known gaps |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1337x | ported | generic | files | online | yes | no | no | no | no | no | present |  |
 | 360search | ported | generic | general | online | yes | no | yes | no | no | no | present |  |
 | 360search_videos | ported | generic | videos | online | yes | no | no | no | no | no | present |  |
-| 500px | ported | generic | images | online | yes | no | no | no | no | no | present |  |
+| 500px | ported | generic | stock images | online | yes | no | no | no | no | no | present |  |
 | 9gag | ported | ninegag | social media | online | yes | no | no | no | no | no | present |  |
 | acfun | ported | generic | videos | online | yes | no | no | no | no | no | present |  |
-| adobe_stock | ported | generic |  | online | yes | no | no | no | no | no | present |  |
 | ahmia | ported | generic | onions | online | yes | no | yes | no | no | no | present |  |
 | alpinelinux | ported | generic | packages, it | online | yes | no | no | no | no | no | present |  |
 | annas_archive | ported | generic | files, books | online | no | no | no | yes | no | no | present | verify engine-traits parity |
 | ansa | ported | generic | news | online | yes | no | yes | no | no | no | present |  |
-| apkmirror | ported | generic | files, apps | online | yes | no | no | no | no | no | present |  |
-| apple_app_store | ported | apple_app_store | files, apps | online | no | yes | no | no | no | no | present |  |
+| apkmirror | ported | generic | it, apps | online | yes | no | no | no | no | no | present |  |
+| apple_app_store | ported | apple_app_store | it, apps | online | no | yes | no | no | no | no | present |  |
 | apple_maps | intentionally-skipped |  | map | online | no | no | no | no | no | no | not-applicable | requires Apple Maps token/bootstrap not yet supported |
 | archlinux | ported | generic | it, software wikis | online | yes | no | no | yes | no | no | present | verify engine-traits parity |
 | artic | intentionally-skipped |  | images | online | yes | no | no | no | no | no | not-applicable | bespoke API engine not supported |
@@ -32,7 +27,7 @@ for videos. See `intentional-differences.md`.
 | bandcamp | ported | bandcamp | music | online | yes | no | no | no | no | no | present |  |
 | base | ported | generic | science | online | yes | no | no | no | no | no | present |  |
 | bilibili | ported | generic | videos | online | yes | no | yes | no | no | no | present |  |
-| bing | ported | bing | general, web | online | yes | yes | no | yes | no | no | present |  |
+| bing | ported | bing | general, web | online | no | yes | no | no | no | no | present | verify engine-traits parity |
 | bing_images | ported | generic | images, web | online | yes | yes | yes | no | no | no | present | verify engine-traits parity |
 | bing_news | ported | generic | news | online | yes | no | yes | no | no | no | present | verify engine-traits parity |
 | bing_videos | ported | generic | videos, web | online | yes | yes | yes | no | no | no | present | verify engine-traits parity |
@@ -44,7 +39,6 @@ for videos. See `intentional-differences.md`.
 | bt4g | ported | generic | files | online | yes | no | yes | no | no | no | present |  |
 | btdigg | ported | generic | files | online | yes | no | no | no | no | no | present |  |
 | cachy_os | ported | generic | packages, it | online | yes | no | no | no | no | no | present |  |
-| cara | ported | generic | images | online | yes | no | no | no | no | no | present |  |
 | ccc_media | ported | generic | videos | online | yes | no | no | no | no | no | present |  |
 | chatnoir | ported | generic | general | online | yes | no | no | no | no | no | present |  |
 | chefkoch | ported | generic |  | online | yes | no | no | no | no | no | present |  |
@@ -80,12 +74,15 @@ for videos. See `intentional-differences.md`.
 | ebay | ported | generic | shopping | online | yes | no | no | no | no | no | present |  |
 | elasticsearch | ported | elasticsearch | general | online | yes | no | no | no | no | no | present |  |
 | emojipedia | ported | generic |  | online | no | no | no | no | no | no | present |  |
-| fdroid | ported | generic | files, apps | online | yes | no | no | no | no | no | present |  |
+| europepmc | generic-candidate |  | science, scientific publications | online | yes | no | no | no | no | no | not-applicable | candidate for xpath/json generic engine framework |
+| exaapi | generic-candidate |  | general, web | online | no | yes | no | no | no | no | not-applicable | candidate for xpath/json generic engine framework |
+| fdroid | ported | generic | it, apps | online | yes | no | no | no | no | no | present |  |
+| findborg | generic-candidate |  |  | online | no | no | yes | no | no | no | not-applicable | candidate for xpath/json generic engine framework |
 | findfiles | ported | generic | files | online | yes | no | no | no | no | no | present |  |
 | findthatmeme | ported | generic | images | online | yes | no | no | no | no | no | present |  |
 | fireball | ported | generic | general | online | no | yes | no | no | no | no | present |  |
 | flaticon | ported | generic | images, icons | online | yes | no | no | no | no | no | present |  |
-| flickr | intentionally-skipped |  | images | online | yes | no | no | no | no | no | not-applicable | requires Flickr API key / bespoke media flow |
+| flickr | intentionally-skipped |  | stock images | online | yes | no | no | no | no | no | not-applicable | requires Flickr API key / bespoke media flow |
 | flickr_noapi | intentionally-skipped |  | images | online | yes | no | yes | no | no | no | not-applicable | bespoke HTML scraper not supported |
 | freesound | intentionally-skipped |  |  | online | yes | no | no | no | no | no | not-applicable | requires Freesound API key |
 | frinkiac | intentionally-skipped |  | images | online | no | no | no | no | no | no | not-applicable | bespoke media engine not supported |
@@ -102,15 +99,15 @@ for videos. See `intentional-differences.md`.
 | google | ported | google | general, web | online | yes | yes | yes | yes | no | no | present | verify engine-traits parity |
 | google_cse | intentionally-skipped |  | general, web | online | yes | yes | yes | yes | no | no | not-applicable | requires Google CSE API key |
 | google_images | intentionally-skipped |  | images, web | online | yes | yes | yes | yes | no | no | not-applicable | bespoke Google images flow not supported |
-| google_news | ported | generic | news | online | no | yes | no | yes | no | no | present | verify engine-traits parity |
+| google_news | ported | generic | news | online | yes | no | no | yes | no | no | present | verify engine-traits parity |
 | google_play | ported | generic |  | online | no | no | no | no | no | no | present |  |
 | google_scholar | ported | generic | science, scientific publications | online | yes | no | yes | yes | no | no | present | verify engine-traits parity |
 | google_videos | ported | generic | videos, web | online | yes | yes | yes | yes | no | no | present | verify engine-traits parity |
 | grokipedia | ported | generic | general | online | yes | no | no | no | no | no | present |  |
 | hackernews | ported | hackernews | it | online | yes | no | yes | no | no | no | present |  |
-| heexy | ported | generic | general | online | yes | yes | no | no | no | no | present |  |
 | hex | ported | generic | it, packages | online | yes | no | no | no | no | no | present |  |
 | huggingface | ported | generic | it, repos | online | no | no | no | no | no | no | present |  |
+| iconify | generic-candidate |  | images, icons | online | yes | no | no | no | no | no | not-applicable | candidate for xpath/json generic engine framework |
 | il_post | ported | generic | news | online | yes | no | yes | no | no | no | present |  |
 | imdb | ported | imdb | movies | online | no | no | no | no | no | no | present |  |
 | imgur | ported | generic | images | online | yes | no | yes | no | no | no | present |  |
@@ -119,18 +116,19 @@ for videos. See `intentional-differences.md`.
 | ipernity | ported | generic | images | online | yes | no | no | no | no | no | present |  |
 | iqiyi | ported | generic | videos | online | yes | no | yes | no | no | no | present |  |
 | iseek | ported | generic | general | online | yes | no | no | no | no | no | present |  |
+| jina | generic-candidate |  | general | online | yes | no | no | no | no | no | not-applicable | candidate for xpath/json generic engine framework |
 | jisho | ported | generic | dictionaries | online | no | no | no | no | no | no | present |  |
 | json_engine | intentionally-skipped |  |  | online | no | no | no | no | no | no | not-applicable | generic framework helper, not a standalone engine |
 | kagi | ported | generic | general | online | yes | yes | yes | no | no | no | present |  |
+| keenable | generic-candidate |  | general | online | no | no | no | no | no | no | not-applicable | candidate for xpath/json generic engine framework |
 | kickass | ported | generic | files | online | yes | no | no | no | no | no | present |  |
 | lemmy | ported | lemmy | social media | online | yes | no | no | no | no | no | present |  |
 | lib_rs | ported | generic | it, packages | online | no | no | no | no | no | no | present |  |
 | libretranslate | ported | generic | general, translate | online_dictionary | no | no | no | no | no | no | present |  |
 | lingva | ported | generic |  | online_dictionary | no | no | no | no | no | no | present |  |
-| loc | ported | generic | images | online | yes | no | no | no | no | no | present |  |
 | lucide | ported | generic | images, icons | online | no | no | no | no | no | no | present |  |
-| luxxle | ported | generic |  | online | no | no | no | no | no | no | present |  |
-| magnific | ported | generic | images | online | yes | no | no | no | no | no | present |  |
+| luxxle | ported | generic |  | online | no | yes | no | no | no | no | present |  |
+| magnific | ported | generic | stock images | online | yes | no | no | no | no | no | present |  |
 | marginalia | ported | marginalia | general, blogs | online | yes | yes | no | no | no | no | present |  |
 | mariadb_server | intentionally-skipped |  |  | offline | yes | no | no | no | no | no | not-applicable | database engines require explicit safe execution semantics |
 | mastodon | ported | mastodon | social media | online | no | no | no | no | no | no | present |  |
@@ -166,9 +164,9 @@ for videos. See `intentional-differences.md`.
 | openverse | ported | openverse | images | online | yes | no | no | no | no | no | present |  |
 | pdbe | intentionally-skipped |  | science | online | no | no | no | no | no | no | not-applicable | bespoke science engine not supported |
 | peertube | ported | peertube | videos | online | yes | yes | yes | yes | no | no | present | verify engine-traits parity |
-| pexels | ported | generic | images | online | yes | no | yes | no | no | no | present |  |
+| pexels | ported | generic | stock images | online | yes | no | yes | no | no | no | present |  |
 | photon | ported | photon | map | online | no | no | no | no | no | no | present |  |
-| picjumbo | ported | generic | images | online | yes | no | no | no | no | no | present |  |
+| picjumbo | ported | generic | stock images | online | yes | no | no | no | no | no | present |  |
 | pinterest | ported | generic | images | online | yes | no | no | no | no | no | present |  |
 | piped | ported | piped |  | online | yes | no | no | no | no | no | present |  |
 | piratebay | ported | piratebay | files | online | no | no | no | no | no | no | present |  |
@@ -177,7 +175,6 @@ for videos. See `intentional-differences.md`.
 | pkg_go_dev | ported | generic | packages, it | online | no | no | no | no | no | no | present |  |
 | podchaser | ported | generic |  | online | yes | no | no | no | no | no | present |  |
 | postgresql | intentionally-skipped |  |  | offline | yes | no | no | no | no | no | not-applicable | database engines require explicit safe execution semantics |
-| presearch | intentionally-skipped |  | general, web | online | yes | yes | yes | no | no | no | not-applicable | requires a live request-id preflight before search requests |
 | privacywall | ported | generic |  | online | yes | yes | yes | no | no | no | present | verify engine-traits parity |
 | public_domain_image_archive | ported | generic | images | online | yes | no | no | no | no | no | present |  |
 | pubmed | ported | generic | science, scientific publications | online | no | no | no | no | no | no | present |  |
@@ -186,23 +183,23 @@ for videos. See `intentional-differences.md`.
 | qwant | ported | qwant |  | online | yes | yes | no | no | no | no | present | verify engine-traits parity |
 | radio_browser | ported | generic | music, radio | online | yes | no | no | yes | no | no | present | verify engine-traits parity |
 | recoll | ported | generic |  | online | yes | no | yes | no | no | no | present |  |
-| reddit | ported | reddit | social media | online | no | no | no | no | no | no | present |  |
 | repology | ported | generic |  | online | no | no | no | no | no | no | present |  |
 | resulthunter | ported | generic |  | online | yes | yes | yes | no | no | no | present | verify engine-traits parity |
 | reuters | ported | generic | news | online | yes | no | yes | no | no | no | present |  |
 | rottentomatoes | ported | generic | movies | online | no | no | no | no | no | no | present |  |
 | rumble | ported | generic | videos | online | yes | no | no | no | no | no | present |  |
 | s1search | ported | generic | general | online | yes | no | no | no | no | no | present |  |
+| s1search_rampjs | missing |  | general | online | yes | no | no | no | no | no | not-applicable | not ported |
 | scanr_structures | intentionally-skipped |  | science | online | yes | no | no | no | no | no | not-applicable | bespoke science engine not supported |
+| searchrockit | generic-candidate |  | general | online | yes | no | no | no | no | no | not-applicable | candidate for xpath/json generic engine framework |
 | searchzee | ported | generic |  | online | yes | no | no | no | no | no | present |  |
-| searx_engine | intentionally-skipped |  |  | online | no | no | no | no | no | no | not-applicable | upstream engine base class, not a standalone engine |
 | seekninja | intentionally-skipped |  | general | online | no | yes | no | no | no | no | not-applicable | bespoke engine not supported |
 | selfhst | ported | generic | images, icons | online | no | no | no | no | no | no | present |  |
 | semantic_scholar | ported | semantic_scholar | science, scientific publications | online | yes | no | no | no | no | no | present |  |
 | senscritique | ported | senscritique | movies | online | yes | no | no | no | no | no | present |  |
 | sepiasearch | ported | sepiasearch | videos | online | yes | yes | yes | yes | no | no | present | verify engine-traits parity |
 | seznam | ported | generic | general, web | online | no | no | no | no | no | no | present |  |
-| shopify_stock | ported | generic | images | online | yes | no | no | no | no | no | present |  |
+| shopify_stock | ported | generic | stock images | online | yes | no | no | no | no | no | present |  |
 | sogou | ported | generic | general | online | yes | no | yes | no | no | no | present |  |
 | sogou_images | intentionally-skipped |  | images | online | yes | no | no | no | no | no | not-applicable | bespoke regional images engine not supported |
 | sogou_videos | ported | generic | videos | online | yes | no | no | no | no | no | present |  |
@@ -218,7 +215,7 @@ for videos. See `intentional-differences.md`.
 | startpage | ported | startpage | general, web | online | yes | yes | yes | yes | no | no | present | verify engine-traits parity |
 | startpagina | ported | generic | general | online | yes | yes | no | no | no | no | present |  |
 | steam | ported | generic |  | online | no | no | no | no | no | no | present |  |
-| stocksnap | ported | generic | images | online | yes | no | no | no | no | no | present |  |
+| stocksnap | ported | generic | stock images | online | yes | no | no | no | no | no | present |  |
 | swisscows | ported | swisscows | general | online | yes | no | yes | no | no | no | present |  |
 | swisscows_news | ported | swisscows | news | online | yes | no | yes | no | no | no | present |  |
 | tagesschau | ported | generic | general, news | online | yes | no | no | no | no | no | present |  |
@@ -231,7 +228,7 @@ for videos. See `intentional-differences.md`.
 | translated | ported | generic | general, translate | online_dictionary | no | no | no | no | no | no | present |  |
 | tubearchivist | ported | generic | videos | online | yes | no | no | no | no | no | present |  |
 | tusksearch | ported | generic | general | online | yes | no | no | no | no | no | present |  |
-| unsplash | ported | unsplash | images | online | yes | no | no | no | no | no | present |  |
+| unsplash | ported | unsplash | stock images | online | yes | no | no | no | no | no | present |  |
 | uxwing | ported | generic | images, icons | online | no | no | no | no | no | no | present |  |
 | valkey_server | intentionally-skipped |  |  | offline | no | no | no | no | no | no | not-applicable | database engines require explicit safe execution semantics |
 | vimeo | ported | vimeo | videos | online | yes | no | no | no | no | no | present |  |
@@ -245,12 +242,14 @@ for videos. See `intentional-differences.md`.
 | wolframalpha_noapi | ported | generic |  | online | no | no | no | no | no | no | present |  |
 | wordnik | ported | generic | dictionaries, define | online | no | no | no | no | no | no | present |  |
 | wttr | ported | generic | weather | online | no | no | no | no | no | no | present |  |
-| www1x | ported | generic | images | online | no | no | no | no | no | no | present |  |
+| www1x | ported | generic | stock images | online | no | no | no | no | no | no | present |  |
 | xpath | ported | generic |  | online | no | no | no | no | no | no | present |  |
+| xprivo | missing |  | general | online | yes | no | yes | no | no | no | not-applicable | not ported |
 | yacy | ported | yacy | general | online | yes | no | no | no | no | no | present |  |
-| yahoo | ported | generic | general, web | online | yes | no | yes | no | no | no | present |  |
+| yahoo | ported | generic | general, web | online | yes | yes | yes | no | no | no | present |  |
 | yahoo_news | ported | generic | news | online | yes | no | no | no | no | no | present |  |
-| yandex | ported | generic |  | online | yes | no | no | no | no | no | present |  |
+| yandex | ported | generic |  | online | yes | no | yes | no | no | no | present |  |
+| yandex_api | generic-candidate |  | general, web | online | yes | yes | no | no | no | no | not-applicable | candidate for xpath/json generic engine framework |
 | yandex_music | ported | generic | music | online | yes | no | no | no | no | no | present |  |
 | yep | ported | generic |  | online | no | yes | no | yes | no | no | present | verify engine-traits parity |
 | youtube_api | intentionally-skipped |  | videos, music | online | no | no | no | no | no | no | not-applicable | requires YouTube Data API key |
@@ -275,6 +274,7 @@ for videos. See `intentional-differences.md`.
 | kozmonavt | ported | generic |  | online | no | no | no | no | no | no | present |  |
 | kukei | ported | generic | general, blogs | online | no | no | no | no | no | no | present |  |
 | library_genesis | ported | generic | files | online | no | no | no | no | no | no | present |  |
+| littlelayer | missing |  | general, blogs | online | no | no | no | no | no | no | not-applicable | not ported |
 | lobste_rs | ported | generic | it | online | no | no | no | no | no | no | present |  |
 | mdn | ported | generic | it | online | yes | no | no | no | no | no | present |  |
 | mankier | ported | generic | it | online | no | no | no | no | no | no | present |  |
@@ -309,3 +309,4 @@ for videos. See `intentional-differences.md`.
 ## Rust Engines Not Matched To Upstream
 
 - `bing_images`
+- `reddit`
