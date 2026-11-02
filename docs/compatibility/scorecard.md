@@ -7,8 +7,8 @@ CI validates this file exists via `--check`.
 
 | Area | Status |
 | --- | --- |
-| Engines | intentionally-skipped=40, ported=249 (total 289) |
-| Routes | ported=22, rust-only=4 (total 26) |
+| Engines | generic-candidate=8, intentionally-skipped=38, missing=3, ported=244 (total 293) |
+| Routes | missing=1, partial=1, ported=20, rust-only=5 (total 27) |
 | Data assets | present=12, unknown-upstream=1 (total 13) |
 | SPA client-features | 12 (`calculator, crypto, dateTime, doiRewrite, fixtures, hostnames, random, selfInfo, statistics, timeZone, trackerUrlRemover, unitConverter`) |
 | Frontend | SPA (zoeken-client → zoeken-server/assets) |
