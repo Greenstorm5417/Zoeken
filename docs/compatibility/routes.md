@@ -1,13 +1,13 @@
 # Route And Schema Parity Matrix
 
-Upstream routes: 22. Rust routes: 26. Matching paths: 22. Missing upstream paths: 0.
+Upstream routes: 22. Rust routes: 26. Matching paths: 21. Missing upstream paths: 1.
 
 | Path | Status | Upstream methods | Rust methods | Notes |
 | --- | --- | --- | --- | --- |
 | / | ported | GET, POST | GET, POST | implemented path; status/header/body parity needs route tests |
 | /about | ported | GET | GET | implemented path; status/header/body parity needs route tests |
 | /api/v1/search | rust-only |  | POST | Zoeken health/readiness or implementation-specific route |
-| /autocompleter | ported | GET, POST | GET, POST | implemented path; status/header/body parity needs route tests |
+| /autocompleter | partial | GET | GET, POST | implemented path; status/header/body parity needs route tests |
 | /bangs | rust-only |  | GET | Zoeken health/readiness or implementation-specific route |
 | /clear_cookies | ported | GET | GET | implemented path; status/header/body parity needs route tests |
 | /client<token>.css | ported | GET, POST | GET, POST | implemented path; status/header/body parity needs route tests |
@@ -16,7 +16,8 @@ Upstream routes: 22. Rust routes: 26. Matching paths: 22. Missing upstream paths
 | /favicon.ico | ported | GET | GET | implemented path; status/header/body parity needs route tests |
 | /favicon_proxy | ported | GET | GET | implemented path; status/header/body parity needs route tests |
 | /healthz | ported | GET | GET | implemented path; status/header/body parity needs route tests |
-| /image_proxy | ported | GET | GET | implemented path; status/header/body parity needs route tests |
+| /image | missing | GET |  | route not present in Axum router |
+| /image_proxy | rust-only |  | GET | Zoeken health/readiness or implementation-specific route |
 | /info/<locale>/<pagename> | ported | GET | GET | implemented path; status/header/body parity needs route tests |
 | /logo/<resolution> | ported | GET | GET | implemented path; status/header/body parity needs route tests |
 | /manifest.json | ported | GET | GET | implemented path; status/header/body parity needs route tests |
