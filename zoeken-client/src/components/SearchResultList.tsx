@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useRef, useState } from "react";
 import {
 	MapResult,
 	ResultItem,
@@ -7,6 +7,8 @@ import {
 import { VideoCard } from "#/components/VideoCard";
 import type { SearchResult } from "#/lib/api";
 import { resultImgSrc, resultThumbnail } from "#/lib/api";
+import { coordsFromResult } from "#/lib/coords";
+import { activeStrings } from "#/lib/i18n";
 import { engineNames } from "#/lib/searchDisplay";
 
 const ImageLightbox = lazy(() =>
@@ -18,22 +20,6 @@ const MapCanvas = lazy(() =>
 	import("#/components/MapCanvas").then((m) => ({ default: m.MapCanvas })),
 );
 
-function coordsFromResult(result: SearchResult) {
-	try {
-		const u = new URL(result.url);
-		const lat = Number(
-			u.searchParams.get("mlat") ?? u.searchParams.get("lat") ?? "",
-		);
-		const lon = Number(
-			u.searchParams.get("mlon") ?? u.searchParams.get("lon") ?? "",
-		);
-		if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
-		return { lat, lon, title: result.title, url: result.url };
-	} catch {
-		return null;
-	}
-}
-
 type Props = {
 	results: SearchResult[];
 	activeCategory: string;
@@ -43,6 +29,9 @@ type Props = {
 	newTab?: boolean;
 	urlFormatting?: string;
 	cacheUrl?: string;
+	query?: string;
+	onHideSite?: (domain: string) => void;
+	onPreferSite?: (domain: string) => void;
 	empty: boolean;
 	emptyTitle: string;
 	emptyHint: string;
@@ -58,11 +47,15 @@ export function SearchResultList({
 	newTab,
 	urlFormatting,
 	cacheUrl,
+	query = "",
+	onHideSite,
+	onPreferSite,
 	empty,
 	emptyTitle,
 	emptyHint,
 }: Props) {
-	const [lightbox, setLightbox] = useState<SearchResult | null>(null);
+	const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+	const openerRef = useRef<HTMLButtonElement | null>(null);
 
 	if (empty) {
 		return (
@@ -87,46 +80,81 @@ export function SearchResultList({
 	}
 
 	if (imageMode) {
+		const images = results.filter((r) => resultThumbnail(r) || resultImgSrc(r));
 		return (
 			<>
 				<ul className="grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
-					{results
-						.filter((r) => resultThumbnail(r) || resultImgSrc(r))
-						.map((result, index) => (
+					{images.map((result, index) => {
+						const ratio = imageRatio(result);
+						return (
 							<li key={result.url} className="zoeken-result">
 								<button
 									type="button"
-									onClick={() => setLightbox(result)}
-									className="group block w-full overflow-hidden rounded-xl text-left"
+									onClick={(event) => {
+										openerRef.current = event.currentTarget;
+										setLightboxIndex(index);
+									}}
+									className="group block w-full overflow-hidden rounded-xl text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
 								>
 									<img
 										src={resultThumbnail(result) || resultImgSrc(result)}
 										alt={result.title || ""}
-										className="aspect-square w-full bg-surface-raised object-cover transition-transform duration-150 group-hover:scale-[1.01]"
+										style={ratio ? { aspectRatio: ratio } : undefined}
+										className="max-h-56 w-full bg-surface-raised object-contain"
 										decoding="async"
 										loading={index < 8 ? "eager" : "lazy"}
 										fetchPriority={index < 2 ? "high" : undefined}
+										onError={(event) => {
+											event.currentTarget.replaceWith(imageFallback());
+										}}
 									/>
 									<p className="mt-1.5 truncate text-xs text-ink-muted group-hover:text-accent">
 										{result.title || "Image"}
 									</p>
-									{result.kind === "image" &&
-									result.resolution &&
-									result.resolution !== "unknown" ? (
-										<p className="truncate text-[0.65rem] text-ink-subtle">
-											{result.resolution}
-											{result.img_format ? ` · ${result.img_format}` : ""}
-										</p>
-									) : null}
+									<p className="truncate text-[0.65rem] text-ink-subtle">
+										{result.kind === "image" && result.source
+											? result.source
+											: ""}
+										{result.kind === "image" &&
+										result.resolution &&
+										result.resolution !== "unknown"
+											? `${result.source ? " · " : ""}${result.resolution}`
+											: ""}
+									</p>
 								</button>
+								{onHideSite ? (
+									<button
+										type="button"
+										className="mt-1 min-h-11 text-xs text-ink-muted hover:text-accent"
+										onClick={() => {
+											try {
+												const host = new URL(result.url).hostname.replace(
+													/^www\./,
+													"",
+												);
+												if (host) onHideSite(host);
+											} catch {
+												/* ignore unparseable image urls */
+											}
+										}}
+									>
+										{activeStrings().hideThisSite}
+									</button>
+								) : null}
 							</li>
-						))}
+						);
+					})}
 				</ul>
-				{lightbox ? (
+				{lightboxIndex != null ? (
 					<Suspense fallback={null}>
 						<ImageLightbox
-							result={lightbox}
-							onClose={() => setLightbox(null)}
+							results={images}
+							index={lightboxIndex}
+							onIndex={setLightboxIndex}
+							onClose={() => {
+								setLightboxIndex(null);
+								openerRef.current?.focus();
+							}}
 						/>
 					</Suspense>
 				) : null}
@@ -135,23 +163,34 @@ export function SearchResultList({
 	}
 
 	if (mapMode) {
+		const points = results
+			.map(coordsFromResult)
+			.filter((p): p is NonNullable<typeof p> => p != null);
 		return (
 			<div className="flex flex-col gap-4">
-				<Suspense
-					fallback={
-						<div className="h-64 animate-pulse rounded-2xl bg-surface-raised" />
-					}
-				>
-					<MapCanvas
-						points={results
-							.map(coordsFromResult)
-							.filter((p): p is NonNullable<typeof p> => p != null)}
-					/>
-				</Suspense>
+				{points.length === 0 ? (
+					<p className="max-w-[40rem] text-sm text-ink-muted" role="status">
+						{activeStrings().mapNoCoords}
+					</p>
+				) : (
+					<Suspense
+						fallback={
+							<div className="h-64 animate-pulse rounded-2xl bg-surface-raised" />
+						}
+					>
+						<MapCanvas points={points} />
+					</Suspense>
+				)}
 				<ul className="flex flex-col gap-4">
 					{results.map((result) => (
 						<li key={result.url}>
-							<MapResult result={result} newTab={newTab} />
+							<MapResult
+								result={result}
+								newTab={newTab}
+								query={query}
+								onHideSite={onHideSite}
+								onPreferSite={onPreferSite}
+							/>
 						</li>
 					))}
 				</ul>
@@ -169,14 +208,23 @@ export function SearchResultList({
 						className="zoeken-result"
 					>
 						{Template ? (
-							<Template result={result} newTab={newTab} />
+							<Template
+								result={result}
+								newTab={newTab}
+								query={query}
+								onHideSite={onHideSite}
+								onPreferSite={onPreferSite}
+							/>
 						) : (
 							<ResultItem
 								result={result}
+								query={query}
 								newTab={newTab}
 								urlFormatting={urlFormatting}
 								cacheUrl={cacheUrl}
 								faviconPriority={index < 2}
+								onHideSite={onHideSite}
+								onPreferSite={onPreferSite}
 							/>
 						)}
 					</li>
@@ -184,4 +232,22 @@ export function SearchResultList({
 			})}
 		</ul>
 	);
+}
+
+function imageRatio(result: SearchResult): string | undefined {
+	if (result.kind !== "image" || !result.resolution) return undefined;
+	const match = /^(\d+)\s*[x×]\s*(\d+)$/i.exec(result.resolution.trim());
+	if (!match) return undefined;
+	const width = Number(match[1]);
+	const height = Number(match[2]);
+	if (!width || !height) return undefined;
+	return `${width} / ${height}`;
+}
+
+function imageFallback() {
+	const node = document.createElement("p");
+	node.className =
+		"flex h-28 items-center justify-center text-xs text-ink-subtle";
+	node.textContent = activeStrings().imageUnavailable;
+	return node;
 }

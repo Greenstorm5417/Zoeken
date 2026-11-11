@@ -46,6 +46,13 @@ export function SearchSerpHeader({
 	const categoriesList = configuredCategories.filter((category) =>
 		available.has(category),
 	);
+	const primaryNames = new Set(["general", "images", "videos", "news", "map"]);
+	const primaryCategories = categoriesList.filter((category) =>
+		primaryNames.has(category),
+	);
+	const secondaryCategories = categoriesList.filter(
+		(category) => !primaryNames.has(category),
+	);
 	const filtersVisible = hasSearchFilters(config, activeCategory);
 	const filterProps = {
 		params,
@@ -108,37 +115,67 @@ export function SearchSerpHeader({
 			</div>
 
 			{q.trim() ? (
-				<div className="-mx-0 flex max-w-6xl items-stretch gap-0.5 overflow-x-auto overscroll-x-contain px-2.5 sm:mx-auto sm:gap-1 sm:px-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-					{categoriesList.map((category) => {
-						const active =
-							(config?.ui?.search_on_category_select === false
-								? pendingCategory
-								: activeCategory) === category;
-						return (
-							<Link
-								key={category}
-								to="/search"
-								search={searchLink(params, {
-									categories: category === "general" ? undefined : category,
-									pageno: undefined,
-								})}
-								onClick={(event) => {
-									if (config?.ui?.search_on_category_select === false) {
-										event.preventDefault();
-										setPendingCategory(category);
-									}
-								}}
-								className={[
-									"inline-flex min-h-11 shrink-0 items-center border-b-2 px-3 text-sm capitalize no-underline transition-colors duration-100",
-									active
-										? "border-accent font-medium text-accent"
-										: "border-transparent text-ink-muted hover:text-ink",
-								].join(" ")}
-							>
-								{category === "general" ? "All" : category}
-							</Link>
-						);
-					})}
+				<div className="flex max-w-6xl items-stretch sm:mx-auto sm:px-6">
+					<div className="flex min-w-0 flex-1 items-stretch gap-0.5 overflow-x-auto overscroll-x-contain px-2.5 sm:gap-1 sm:px-0 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+						{primaryCategories.map((category) => {
+							const active =
+								(config?.ui?.search_on_category_select === false
+									? pendingCategory
+									: activeCategory) === category;
+							return (
+								<Link
+									key={category}
+									to="/search"
+									search={searchLink(params, {
+										categories: category === "general" ? undefined : category,
+										pageno: undefined,
+									})}
+									onClick={(event) => {
+										if (config?.ui?.search_on_category_select === false) {
+											event.preventDefault();
+											setPendingCategory(category);
+										}
+									}}
+									className={[
+										"inline-flex min-h-11 shrink-0 items-center border-b-2 px-3 text-sm capitalize no-underline transition-colors duration-100",
+										active
+											? "border-accent font-medium text-accent"
+											: "border-transparent text-ink-muted hover:text-ink",
+									].join(" ")}
+								>
+									{category === "general" ? "All" : category}
+								</Link>
+							);
+						})}
+					</div>
+					{secondaryCategories.length > 0 ? (
+						<details className="relative shrink-0">
+							<summary className="inline-flex min-h-11 cursor-pointer list-none items-center px-3 text-sm text-ink-muted marker:content-none">
+								More
+							</summary>
+							<div className="absolute right-0 z-30 mt-1 flex min-w-40 flex-col rounded-xl border border-line bg-surface-raised p-1 shadow-sm">
+								{secondaryCategories.map((category) => (
+									<Link
+										key={category}
+										to="/search"
+										search={searchLink(params, {
+											categories: category,
+											pageno: undefined,
+										})}
+										onClick={(event) => {
+											if (config?.ui?.search_on_category_select === false) {
+												event.preventDefault();
+												setPendingCategory(category);
+											}
+										}}
+										className="inline-flex min-h-11 items-center rounded-lg px-3 text-sm capitalize text-ink no-underline hover:bg-accent-soft"
+									>
+										{category}
+									</Link>
+								))}
+							</div>
+						</details>
+					) : null}
 					{config?.ui?.search_on_category_select === false &&
 					pendingCategory !== activeCategory ? (
 						<button

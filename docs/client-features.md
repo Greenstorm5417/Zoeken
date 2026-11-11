@@ -35,3 +35,35 @@ Wikipedia/Wikidata) stay as engines on the server.
 
 `infinite_scroll` remains a UI preference only. `tor_check` is not ported.
 Unknown settings keys such as legacy `lua_plugins` are ignored.
+
+## Query reading and results
+
+`zoeken-query` owns `site:`, `filetype:`, quotes, and excluded terms, plus
+intent. The string sent to engines is not rewritten. The SPA mirrors that
+parse for chips and local answers (`src/lib/queryInterpretation.ts`). Chips
+remove one operator and keep the rest of the query in the URL.
+
+SafeSearch, time range, and language stay on the query. Engines that cannot
+honor them are left out; the UI counts that reduction. General is a category,
+not every enabled engine. Personal hide/prefer rules live in
+`localStorage` (`zoeken.source-prefs.v1`), match a domain and its subdomains,
+and are not sent to providers. Instance hostname rules stay separate.
+
+Pagination uses `continuation`. `exhausted` stops. `more` means paging engines
+returned a page, including a duplicate-only page; infinite scroll gives up
+only after two such pages in a row. `unknown` allows one empty or duplicate
+page so a later page is not discarded, then stops. Numbered next uses the
+same rule. Counts are retrieved results. Local answers render even when the
+predicted intent has no matching card, and before network search finishes.
+A weather classification requests wttr.in. Tomorrow shows forecast fields
+when the response has them, and does not substitute current conditions.
+
+Title/snippet reranking is off by default. The representative evaluation did
+not raise MRR, so `semantic_rerank_enabled()` is false. `ZOEK_SEMANTIC_RERANK=1`
+turns it on for at most the top 40 titles and snippets. It does not fetch
+documents. Init and each candidate score share a 5 ms budget; a timeout or an
+empty embedding leaves the aggregated order. The daily-search fixture
+(`cargo test -p zoeken-search --test daily_quality`) is a regression check,
+not a live-quality score. Browser journeys are `bun run test:e2e` in
+`zoeken-client` (Playwright, mocked providers). `ZOEK_LIVE_URL` opts into
+the live smoke.

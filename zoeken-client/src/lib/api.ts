@@ -69,7 +69,7 @@ export type SearchParams = {
 };
 
 /** Native search (`POST /api/v1/search`, MessagePack response). */
-export function search(params: SearchParams) {
+export function search(params: SearchParams, signal?: AbortSignal) {
 	const body: NativeSearchRequest = {
 		q: params.q,
 		pageno: params.pageno ?? 1,
@@ -83,6 +83,7 @@ export function search(params: SearchParams) {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(body),
+		signal,
 	});
 }
 
@@ -175,10 +176,16 @@ export type Suggestion = {
 };
 
 /** Query autocomplete (`GET /autocompleter`). XHR returns rich objects. */
-export function autocomplete(q: string) {
+export function autocomplete(
+	q: string,
+	signal?: AbortSignal,
+	language?: string,
+) {
 	const qs = new URLSearchParams({ q });
+	if (language) qs.set("language", language);
 	return getJson<Suggestion[]>(`/autocompleter?${qs}`, {
 		headers: { "X-Requested-With": "XMLHttpRequest" },
+		signal,
 	});
 }
 

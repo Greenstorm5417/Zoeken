@@ -49,6 +49,8 @@ pub fn export_typescript() -> String {
     for decl in [
         NativeSearchRequest::decl(&cfg),
         NativeSearchResponse::decl(&cfg),
+        schema::NativeEntity::decl(&cfg),
+        schema::NativeInterpretation::decl(&cfg),
         NativeResult::decl(&cfg),
         NativeAnswer::decl(&cfg),
         NativeInteractiveAnswer::decl(&cfg),
@@ -61,8 +63,11 @@ pub fn export_typescript() -> String {
         NativeUnresponsiveEngine::decl(&cfg),
     ] {
         out.push_str("export ");
-        out.push_str(&decl);
-        out.push_str("\n\n");
+        for line in decl.lines() {
+            out.push_str(line.trim_end());
+            out.push('\n');
+        }
+        out.push('\n');
     }
     out
 }

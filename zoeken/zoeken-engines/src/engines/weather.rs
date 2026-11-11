@@ -14,10 +14,6 @@ pub const NAME: &str = "weather";
 
 const BASE_URL: &str = "https://wttr.in";
 
-const KEYWORDS: &[&str] = &["weather", "forecast", "wetter"];
-const PREPS: &[&str] = &["in", "for", "at"];
-const FILLERS: &[&str] = &["what", "is", "the", "whats", "what's", "like", "a", "an"];
-
 /// The wttr.in weather engine.
 #[derive(Debug, Clone)]
 pub struct Weather {
@@ -59,65 +55,8 @@ impl Default for Weather {
     }
 }
 
-fn is_filler(word: &str) -> bool {
-    FILLERS.contains(&word.to_ascii_lowercase().as_str())
-}
-
-/// The location part of a weather query, or `None` when this is not one.
 fn weather_location(query: &str) -> Option<String> {
-    let cleaned = query.trim().trim_end_matches('?').trim();
-    if cleaned.is_empty() {
-        return None;
-    }
-    let words: Vec<&str> = cleaned.split_whitespace().collect();
-    let lower: Vec<String> = words.iter().map(|w| w.to_ascii_lowercase()).collect();
-    let kw_idx = lower.iter().position(|w| KEYWORDS.contains(&w.as_str()))?;
-
-    let after = &words[kw_idx + 1..];
-    let after_lower = &lower[kw_idx + 1..];
-
-    // `weather in miami` / `what is the weather in jax fl` / `forecast for tokyo`
-    if let Some(prep_rel) = after_lower.iter().position(|w| PREPS.contains(&w.as_str())) {
-        let loc = after[prep_rel + 1..]
-            .iter()
-            .copied()
-            .filter(|w| !is_filler(w))
-            .collect::<Vec<_>>()
-            .join(" ");
-        if !loc.is_empty() {
-            return Some(loc);
-        }
-    }
-
-    // `weather berlin`
-    if kw_idx == 0 && !after.is_empty() {
-        let loc = after.join(" ");
-        return (!loc.is_empty()).then_some(loc);
-    }
-
-    // `berlin weather` / `what is berlin weather`
-    if kw_idx == words.len() - 1 {
-        let loc = words[..kw_idx]
-            .iter()
-            .copied()
-            .filter(|w| !is_filler(w))
-            .collect::<Vec<_>>()
-            .join(" ");
-        return (!loc.is_empty()).then_some(loc);
-    }
-
-    // Keyword mid-query with trailing location and no prep: `show weather miami`
-    if !after.is_empty() {
-        let loc = after
-            .iter()
-            .copied()
-            .filter(|w| !is_filler(w))
-            .collect::<Vec<_>>()
-            .join(" ");
-        return (!loc.is_empty()).then_some(loc);
-    }
-
-    None
+    zoeken_query::weather_request_location(query)
 }
 
 impl Engine for Weather {
@@ -167,27 +106,32 @@ impl Engine for Weather {
             .get("nearest_area")
             .and_then(|a| a.as_array())
             .and_then(|a| a.first());
+        let labeled = |obj: &serde_json::Value, key: &str| -> String {
+            obj.get(key)
+                .and_then(|value| value.as_array())
+                .and_then(|items| items.first())
+                .map(|value| str_of(value, "value"))
+                .unwrap_or_default()
+        };
         let place = area
             .map(|a| {
-                let name = a
-                    .get("areaName")
-                    .and_then(|n| n.as_array())
-                    .and_then(|n| n.first())
-                    .map(|v| str_of(v, "value"))
-                    .unwrap_or_default();
-                let country = a
-                    .get("country")
-                    .and_then(|c| c.as_array())
-                    .and_then(|c| c.first())
-                    .map(|v| str_of(v, "value"))
-                    .unwrap_or_default();
-                match (name.is_empty(), country.is_empty()) {
-                    (false, false) => format!("{name}, {country}"),
-                    (false, true) => name,
-                    _ => country,
+                let name = labeled(a, "areaName");
+                let region = labeled(a, "region");
+                let country = labeled(a, "country");
+                let mut parts = Vec::new();
+                if !name.is_empty() {
+                    parts.push(name);
                 }
+                if !region.is_empty() && parts.last().is_none_or(|part| part != &region) {
+                    parts.push(region);
+                }
+                if !country.is_empty() && parts.last().is_none_or(|part| part != &country) {
+                    parts.push(country);
+                }
+                parts.join(", ")
             })
             .unwrap_or_default();
+        let observation_time = str_of(current, "localObsDateTime");
 
         let temp_c = str_of(current, "temp_C");
         let temp_f = str_of(current, "temp_F");
@@ -196,7 +140,28 @@ impl Engine for Weather {
         let wind_dir = str_of(current, "winddir16Point");
         let humidity = str_of(current, "humidity");
 
-        if temp_c.is_empty() && desc.is_empty() {
+        let forecast = value
+            .get("weather")
+            .and_then(|days| days.as_array())
+            .and_then(|days| days.get(1));
+        let forecast_date = forecast.map(|day| str_of(day, "date")).unwrap_or_default();
+        let forecast_temp_c = forecast
+            .map(|day| str_of(day, "avgtempC"))
+            .unwrap_or_default();
+        let forecast_temp_f = forecast
+            .map(|day| str_of(day, "avgtempF"))
+            .unwrap_or_default();
+        let forecast_summary = forecast
+            .and_then(|day| day.get("hourly"))
+            .and_then(|hours| hours.as_array())
+            .and_then(|hours| hours.get(4).or_else(|| hours.first()))
+            .and_then(|hour| hour.get("weatherDesc"))
+            .and_then(|d| d.as_array())
+            .and_then(|a| a.first())
+            .map(|v| str_of(v, "value"))
+            .unwrap_or_default();
+
+        if temp_c.is_empty() && desc.is_empty() && forecast_temp_c.is_empty() {
             return Err(EngineError::Parse("empty weather payload".to_string()));
         }
 
@@ -225,8 +190,29 @@ impl Engine for Weather {
         } else {
             format!("Weather in {place}")
         };
+        let mut answer_text = format!("{prefix}: current {}", parts.join(", "));
+        if !observation_time.is_empty() {
+            answer_text.push_str(&format!(". Observed {observation_time}"));
+        }
+        if forecast_temp_c.is_empty() && forecast_summary.is_empty() {
+            answer_text.push_str(". Tomorrow’s forecast is not in this response");
+        } else {
+            let when = if forecast_date.is_empty() {
+                String::new()
+            } else {
+                format!(" {forecast_date}")
+            };
+            let summary = if forecast_summary.is_empty() {
+                String::new()
+            } else {
+                format!("{forecast_summary}, ")
+            };
+            answer_text.push_str(&format!(
+                ". Forecast{when}: {summary}{forecast_temp_c}°C ({forecast_temp_f}°F)"
+            ));
+        }
         res.add(Result_::Answer(Answer {
-            answer: format!("{prefix}: {}", parts.join(", ")),
+            answer: answer_text,
             url: resp
                 .url
                 .split_once("?")
@@ -242,6 +228,11 @@ impl Engine for Weather {
                 wind_kmph: wind,
                 wind_dir,
                 humidity,
+                observation_time,
+                forecast_date,
+                forecast_summary,
+                forecast_temp_c,
+                forecast_temp_f,
             }),
         }));
 
@@ -287,9 +278,19 @@ mod tests {
             weather_location("new york weather"),
             Some("new york".to_string())
         );
+        assert_eq!(
+            weather_location("weather tomorrow in Paris, Texas"),
+            Some("Paris, Texas".to_string())
+        );
+        assert_eq!(weather_location("weather tomorrow"), None);
         assert_eq!(weather_location("weather"), None, "no location given");
         assert_eq!(weather_location("rust programming"), None);
         assert_eq!(weather_location(""), None);
+        assert_eq!(
+            weather_location("raining in seattle tonight"),
+            Some("seattle".to_string())
+        );
+        assert_eq!(weather_location("umbrella in the logo"), None);
     }
 
     #[test]
@@ -352,8 +353,8 @@ mod tests {
         let answer = &results.answers[0];
         assert_eq!(
             answer.answer,
-            "Weather in Berlin, Germany: Partly cloudy, 18°C (64°F), feels like 17°C, \
-             wind 12 km/h SW, humidity 67%"
+            "Weather in Berlin, Germany: current Partly cloudy, 18°C (64°F), feels like 17°C, \
+             wind 12 km/h SW, humidity 67%. Tomorrow’s forecast is not in this response"
         );
         assert_eq!(answer.url.as_deref(), Some("https://wttr.in/berlin"));
         assert_eq!(answer.engine, NAME);
@@ -367,7 +368,12 @@ mod tests {
                 wind_kmph,
                 wind_dir,
                 humidity,
+                forecast_date,
+                forecast_temp_c,
+                ..
             }) => {
+                assert!(forecast_date.is_empty());
+                assert!(forecast_temp_c.is_empty());
                 assert_eq!(place, "Berlin, Germany");
                 assert_eq!(description, "Partly cloudy");
                 assert_eq!(temp_c, "18");
@@ -391,5 +397,110 @@ mod tests {
             ..EngineResponse::default()
         };
         assert!(engine.response(&resp).is_err());
+    }
+
+    #[test]
+    fn region_and_observation_time_come_from_the_provider() {
+        let engine = Weather::new();
+        let body = r#"{
+          "current_condition": [{
+            "temp_C": "20", "temp_F": "68", "FeelsLikeC": "20",
+            "windspeedKmph": "5", "winddir16Point": "N", "humidity": "40",
+            "localObsDateTime": "2026-11-11 02:00 PM",
+            "weatherDesc": [{"value": "Sunny"}]
+          }],
+          "nearest_area": [{
+            "areaName": [{"value": "Paris"}],
+            "region": [{"value": "Texas"}],
+            "country": [{"value": "United States of America"}]
+          }],
+          "weather": [
+            {"date": "2026-11-11", "avgtempC": "20", "avgtempF": "68", "hourly": [{"weatherDesc": [{"value": "Sunny"}]}]},
+            {"date": "2026-11-12", "avgtempC": "22", "avgtempF": "72", "hourly": [{"weatherDesc": [{"value": "Clear"}]}]}
+          ]
+        }"#;
+        let resp = EngineResponse {
+            status: 200,
+            url: "https://wttr.in/Paris%2C%20Texas?format=j1".to_string(),
+            body: body.as_bytes().to_vec(),
+            ..EngineResponse::default()
+        };
+        let results = engine.response(&resp).unwrap();
+        let answer = &results.answers[0];
+        assert!(
+            answer
+                .answer
+                .contains("Paris, Texas, United States of America")
+        );
+        assert!(answer.answer.contains("Observed 2026-11-11 02:00 PM"));
+        assert!(answer.answer.contains("Forecast 2026-11-12"));
+        assert!(!answer.answer.contains("Forecast tomorrow"));
+        match &answer.interactive {
+            Some(InteractiveAnswer::Weather {
+                place,
+                observation_time,
+                forecast_date,
+                ..
+            }) => {
+                assert_eq!(place, "Paris, Texas, United States of America");
+                assert_eq!(observation_time, "2026-11-11 02:00 PM");
+                assert_eq!(forecast_date, "2026-11-12");
+            }
+            other => panic!("expected weather, got {other:?}"),
+        }
+    }
+
+    #[test]
+    fn fixture_weather_labels_follow_real_requests() {
+        let raw = include_str!("../../../zoeken-search/tests/fixtures/daily_queries.json");
+        let rows: Vec<serde_json::Value> = serde_json::from_str(raw).unwrap();
+        let engine = Weather::new();
+        let mut tp = 0usize;
+        let mut fp = 0usize;
+        let mut fn_ = 0usize;
+        for row in &rows {
+            let q = row["q"].as_str().unwrap();
+            let wants = row["positive"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .any(|item| item.as_str() == Some("weather"));
+            let rejects = row["negative"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .any(|item| item.as_str() == Some("weather"));
+            let mut params = RequestParams::default();
+            engine.request(&query(q), &mut params);
+            let requested = params
+                .url
+                .as_deref()
+                .is_some_and(|url| url.starts_with("https://wttr.in/"));
+            if rejects {
+                assert!(!requested, "{q} requested weather");
+            }
+            match (requested, wants) {
+                (true, true) => tp += 1,
+                (true, false) => fp += 1,
+                (false, true) => fn_ += 1,
+                (false, false) => {}
+            }
+        }
+        let precision = if tp + fp == 0 {
+            1.0
+        } else {
+            tp as f64 / (tp + fp) as f64
+        };
+        let recall = if tp + fn_ == 0 {
+            1.0
+        } else {
+            tp as f64 / (tp + fn_) as f64
+        };
+        eprintln!(
+            "weather_dispatch tp={tp} fp={fp} fn={fn_} precision={precision:.3} recall={recall:.3}"
+        );
+        assert_eq!(fp, 0, "a non-weather fixture row requested wttr.in");
+        assert!(precision >= 0.9, "weather dispatch precision {precision}");
+        assert!(recall >= 0.9, "weather dispatch recall {recall}");
     }
 }

@@ -17,6 +17,33 @@ export default defineConfig(async ({ mode }) => {
 		plugins.unshift(devtools());
 	}
 
+	const proxy =
+		process.env.ZOEK_E2E === "1"
+			? undefined
+			: {
+					// SearXNG-compatible API surface on zoeken-server (default :8888).
+					"/api": "http://127.0.0.1:8888",
+					"/search": "http://127.0.0.1:8888",
+					"/autocompleter": "http://127.0.0.1:8888",
+					"/config": "http://127.0.0.1:8888",
+					"/bangs": "http://127.0.0.1:8888",
+					"/preferences": "http://127.0.0.1:8888",
+					"/clear_cookies": "http://127.0.0.1:8888",
+					"/stats": "http://127.0.0.1:8888",
+					"/metrics": "http://127.0.0.1:8888",
+					"/opensearch.xml": "http://127.0.0.1:8888",
+					"/engine_descriptions.json": "http://127.0.0.1:8888",
+					"/image_proxy": "http://127.0.0.1:8888",
+					"/favicon_proxy": "http://127.0.0.1:8888",
+					"/favicon.ico": "http://127.0.0.1:8888",
+					"/manifest.json": "http://127.0.0.1:8888",
+					"/robots.txt": "http://127.0.0.1:8888",
+					"/sitemap.xml": "http://127.0.0.1:8888",
+					"/info": "http://127.0.0.1:8888",
+					"/logo": "http://127.0.0.1:8888",
+					"/about": "http://127.0.0.1:8888",
+				};
+
 	return {
 		resolve: {
 			alias: {
@@ -27,29 +54,7 @@ export default defineConfig(async ({ mode }) => {
 		plugins,
 		server: {
 			port: 3000,
-			proxy: {
-				// SearXNG-compatible API surface on zoeken-server (default :8888).
-				"/api": "http://127.0.0.1:8888",
-				"/search": "http://127.0.0.1:8888",
-				"/autocompleter": "http://127.0.0.1:8888",
-				"/config": "http://127.0.0.1:8888",
-				"/bangs": "http://127.0.0.1:8888",
-				"/preferences": "http://127.0.0.1:8888",
-				"/clear_cookies": "http://127.0.0.1:8888",
-				"/stats": "http://127.0.0.1:8888",
-				"/metrics": "http://127.0.0.1:8888",
-				"/opensearch.xml": "http://127.0.0.1:8888",
-				"/engine_descriptions.json": "http://127.0.0.1:8888",
-				"/image_proxy": "http://127.0.0.1:8888",
-				"/favicon_proxy": "http://127.0.0.1:8888",
-				"/favicon.ico": "http://127.0.0.1:8888",
-				"/manifest.json": "http://127.0.0.1:8888",
-				"/robots.txt": "http://127.0.0.1:8888",
-				"/sitemap.xml": "http://127.0.0.1:8888",
-				"/info": "http://127.0.0.1:8888",
-				"/logo": "http://127.0.0.1:8888",
-				"/about": "http://127.0.0.1:8888",
-			},
+			proxy,
 		},
 		build: {
 			outDir: path.resolve(__dirname, "../zoeken/zoeken-server/assets"),

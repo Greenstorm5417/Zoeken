@@ -17,8 +17,10 @@ export function useLocalAnswers(
 	pageno: number,
 	config: Config | undefined,
 	prefs?: Preferences | null,
+	category = "general",
 ): SearchAnswer[] {
 	return useMemo(() => {
+		if (pageno > 1 || (category && category !== "general")) return [];
 		const ua = typeof navigator === "undefined" ? "" : navigator.userAgent;
 		return [
 			pluginEnabled(config, "calculator", prefs)
@@ -42,5 +44,5 @@ export function useLocalAnswers(
 				: null,
 			pluginEnabled(config, "crypto", prefs) ? computeCryptoAnswer(q) : null,
 		].filter((answer) => answer !== null);
-	}, [q, language, pageno, config, prefs]);
+	}, [q, language, pageno, config, prefs, category]);
 }

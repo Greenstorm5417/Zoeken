@@ -26,11 +26,24 @@ import { useConfig } from "#/routes/__root";
 /** Session-scoped suggestion cache (query → suggestions), capped. */
 const suggestionCache = new Map<string, Suggestion[]>();
 
-function rememberSuggestions(query: string, suggestions: Suggestion[]) {
+function cacheKey(
+	query: string,
+	language: string | undefined,
+	engines: string | undefined,
+) {
+	return `${language || "all"}\n${engines || ""}\n${query}`;
+}
+
+function rememberSuggestions(
+	query: string,
+	language: string | undefined,
+	engines: string | undefined,
+	suggestions: Suggestion[],
+) {
 	if (suggestionCache.size >= 500) {
 		suggestionCache.clear();
 	}
-	suggestionCache.set(query, suggestions);
+	suggestionCache.set(cacheKey(query, language, engines), suggestions);
 }
 
 type SearchFormProps = {
@@ -73,21 +86,24 @@ export function SearchForm({
 
 	useEffect(() => {
 		const trimmed = q.trim();
+		const language = baseSearch?.language;
+		const engines = baseSearch?.engines;
 		if (!autocompleteEnabled || !focused || trimmed.length < minChars) {
 			setSuggestions([]);
 			return;
 		}
-		const cached = suggestionCache.get(trimmed);
+		const seq = ++requestSeq.current;
+		const cached = suggestionCache.get(cacheKey(trimmed, language, engines));
 		if (cached) {
 			setSuggestions(cached);
 			return;
 		}
-		const seq = ++requestSeq.current;
+		const controller = new AbortController();
 		const timeout = window.setTimeout(() => {
-			void autocomplete(trimmed)
+			void autocomplete(trimmed, controller.signal, language)
 				.then((items) => {
 					const next = items ?? [];
-					rememberSuggestions(trimmed, next);
+					rememberSuggestions(trimmed, language, engines, next);
 					if (
 						seq === requestSeq.current &&
 						document.activeElement === inputRef.current
@@ -95,12 +111,24 @@ export function SearchForm({
 						setSuggestions(next);
 					}
 				})
-				.catch(() => {
+				.catch((error: unknown) => {
+					if (error instanceof DOMException && error.name === "AbortError")
+						return;
 					if (seq === requestSeq.current) setSuggestions([]);
 				});
 		}, 100);
-		return () => window.clearTimeout(timeout);
-	}, [autocompleteEnabled, focused, minChars, q]);
+		return () => {
+			window.clearTimeout(timeout);
+			controller.abort();
+		};
+	}, [
+		autocompleteEnabled,
+		focused,
+		minChars,
+		q,
+		baseSearch?.language,
+		baseSearch?.engines,
+	]);
 
 	useEffect(() => {
 		if (!bangHelpOpen) return;

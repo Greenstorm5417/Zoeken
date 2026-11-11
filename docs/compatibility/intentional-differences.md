@@ -154,7 +154,9 @@ Deliberate compatibility gaps between Zoeken and SearXNG.
 
 - **Behavior**: The SPA consumes `POST /api/v1/search` (MessagePack by default)
   with a typed, tagged result schema. **Public stability:**
-  `NATIVE_SCHEMA_VERSION` / response field `schema_version` is currently **`2`**.
+  `NATIVE_SCHEMA_VERSION` / response field `schema_version` is currently **`3`**
+  (continuation, outcome, operator notes, elapsed time, interpretation, and
+  weather forecast fields).
   Breaking wire changes bump that constant; additive fields may appear within
   the same major schema version when documented.
 - **Why**: Preserve a frozen-ish compat layer while giving the SPA full field

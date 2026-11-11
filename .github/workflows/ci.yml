@@ -146,6 +146,8 @@ jobs:
           bun run check
           bun run check:types
           bun run test
+          bunx playwright install --with-deps chromium
+          bun run test:e2e
           bun run build
           cd ..
           cp -f logo/zoeken-logo.svg zoeken/zoeken-server/assets/zoeken-logo.svg

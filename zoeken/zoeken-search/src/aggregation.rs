@@ -1,6 +1,8 @@
 use std::collections::{HashMap, HashSet};
 
+use psl::Psl;
 use zoeken_engine_core::{EngineResults, ErrorCategory};
+use zoeken_query::{Intent, interpret};
 use zoeken_results::{
     Answer, Correction, Infobox, InfoboxAttribute, InteractiveAnswer, Result_, Suggestion,
 };
@@ -43,6 +45,63 @@ pub struct UnresponsiveEngine {
     pub cause: UnresponsiveCause,
 }
 
+/// Whether another results page is known to exist.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum Continuation {
+    /// A paging engine returned hits, but it did not say a further page exists.
+    #[default]
+    Unknown,
+    /// An engine explicitly reported another page. Reserved; most providers never do.
+    More,
+    /// No selected engine can return a later page, or this page was empty and complete.
+    Exhausted,
+}
+
+impl Continuation {
+    #[must_use]
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Continuation::Unknown => "unknown",
+            Continuation::More => "more",
+            Continuation::Exhausted => "exhausted",
+        }
+    }
+}
+
+/// How the search ended, without weakening the user's filters to get here.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum SearchOutcome {
+    #[default]
+    Ok,
+    NoMatches,
+    NoEngines,
+    Partial,
+    Failed,
+    RateLimited,
+}
+
+impl SearchOutcome {
+    #[must_use]
+    pub fn as_str(self) -> &'static str {
+        match self {
+            SearchOutcome::Ok => "ok",
+            SearchOutcome::NoMatches => "no_matches",
+            SearchOutcome::NoEngines => "no_engines",
+            SearchOutcome::Partial => "partial",
+            SearchOutcome::Failed => "failed",
+            SearchOutcome::RateLimited => "rate_limited",
+        }
+    }
+}
+
+/// Per-engine timing captured while aggregating. Durations, not query text.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct EngineTiming {
+    pub engine: String,
+    pub elapsed_ms: u64,
+    pub status: String,
+}
+
 #[derive(Debug, Clone, Default, PartialEq)]
 pub struct ResultContainer {
     pub results: Vec<Result_>,
@@ -53,6 +112,14 @@ pub struct ResultContainer {
     pub unresponsive_engines: Vec<UnresponsiveEngine>,
     pub engine_data: HashMap<String, String>,
     pub number_of_results: usize,
+    pub continuation: Continuation,
+    pub outcome: SearchOutcome,
+    pub selected_engines: usize,
+    pub failed_engines: usize,
+    pub rate_limited_engines: usize,
+    pub operator_notes: Vec<String>,
+    pub elapsed_ms: u64,
+    pub timings: Vec<EngineTiming>,
 }
 
 impl From<EngineResults> for ResultContainer {
@@ -67,6 +134,7 @@ impl From<EngineResults> for ResultContainer {
             unresponsive_engines: Vec::new(),
             engine_data: results.engine_data,
             number_of_results: 0,
+            ..Self::default()
         }
     }
 }
@@ -82,7 +150,7 @@ pub fn aggregate(report: ExecutionReport, weights: &EngineWeights) -> ResultCont
 }
 
 /// Same as [`aggregate`], with a query so matching titles and hosts rank higher.
-pub(crate) fn aggregate_query(
+pub fn aggregate_query(
     report: ExecutionReport,
     weights: &EngineWeights,
     query: &str,
@@ -91,6 +159,7 @@ pub(crate) fn aggregate_query(
     let metrics = EngineMetricsRecorder::new();
 
     for outcome in report.outcomes {
+        builder.observe(&outcome);
         let sample_outcome = match &outcome.status {
             EngineRunStatus::Completed(results) => EngineOutcome::Completed {
                 results: results.results.len(),
@@ -147,9 +216,40 @@ struct ContainerBuilder {
     seen_infoboxes: HashSet<String>,
     unresponsive_engines: Vec<UnresponsiveEngine>,
     engine_data: HashMap<String, String>,
+    selected: usize,
+    failed: usize,
+    rate_limited: usize,
+    timings: Vec<EngineTiming>,
 }
 
 impl ContainerBuilder {
+    fn observe(&mut self, outcome: &crate::execution::EngineRunOutcome) {
+        self.selected += 1;
+        let status = match &outcome.status {
+            crate::execution::EngineRunStatus::Completed(_) => "completed",
+            crate::execution::EngineRunStatus::Failed(error) => {
+                self.failed += 1;
+                if ErrorCategory::from(error) == ErrorCategory::RateLimited {
+                    self.rate_limited += 1;
+                    "rate_limited"
+                } else {
+                    "failed"
+                }
+            }
+            crate::execution::EngineRunStatus::Unresponsive(
+                crate::execution::UnresponsiveReason::EngineTimeout,
+            ) => "timeout",
+            crate::execution::EngineRunStatus::Unresponsive(
+                crate::execution::UnresponsiveReason::GlobalDeadline,
+            ) => "deadline",
+        };
+        self.timings.push(EngineTiming {
+            engine: outcome.engine.clone(),
+            elapsed_ms: u64::try_from(outcome.duration.as_millis()).unwrap_or(u64::MAX),
+            status: status.to_string(),
+        });
+    }
+
     fn ingest(&mut self, engine: &str, results: EngineResults, weights: &EngineWeights) {
         let EngineResults {
             results,
@@ -257,6 +357,12 @@ impl ContainerBuilder {
             .collect();
 
         sort_results(&mut results);
+        let engine_names: Vec<String> = self
+            .timings
+            .iter()
+            .map(|timing| timing.engine.clone())
+            .collect();
+        let (results, operator_notes) = apply_query_policy(results, query, &engine_names);
 
         // Frequency × engine-weight sum; case-insensitive dedupe already done in ingest.
         let mut ranked: Vec<(Suggestion, f64, usize)> =
@@ -280,6 +386,24 @@ impl ContainerBuilder {
         coalesce_knowledge_panels(&mut answers, &mut infoboxes);
 
         let number_of_results = results.len();
+        let problems = self.unresponsive_engines.len();
+        let outcome = if self.selected == 0 {
+            SearchOutcome::NoEngines
+        } else if results.is_empty()
+            && problems == self.selected
+            && self.rate_limited > 0
+            && self.rate_limited * 2 >= self.selected
+        {
+            SearchOutcome::RateLimited
+        } else if results.is_empty() && problems == self.selected {
+            SearchOutcome::Failed
+        } else if results.is_empty() {
+            SearchOutcome::NoMatches
+        } else if problems > 0 {
+            SearchOutcome::Partial
+        } else {
+            SearchOutcome::Ok
+        };
         ResultContainer {
             results,
             answers,
@@ -289,6 +413,14 @@ impl ContainerBuilder {
             unresponsive_engines: self.unresponsive_engines,
             engine_data: self.engine_data,
             number_of_results,
+            continuation: Continuation::Unknown,
+            outcome,
+            selected_engines: self.selected,
+            failed_engines: self.failed,
+            rate_limited_engines: self.rate_limited,
+            operator_notes,
+            elapsed_ms: 0,
+            timings: self.timings,
         }
     }
 }
@@ -342,15 +474,12 @@ const SKIP_HOST_LABELS: &[&str] = &[
 ];
 
 fn contains_term(haystack: &str, term: &str) -> bool {
-    tokenize(haystack).any(|word| word == term)
+    crate::text::tokenize(haystack)
+        .iter()
+        .any(|word| word == term)
 }
 
-fn tokenize(text: &str) -> impl Iterator<Item = &str> {
-    text.split(|c: char| !(c.is_ascii_alphanumeric() || c == '+'))
-        .filter(|token| !token.is_empty())
-}
-
-fn host_boost(url: &str, terms: &[&str]) -> f64 {
+fn host_boost(url: &str, terms: &[String]) -> f64 {
     let Ok(parsed) = url::Url::parse(url) else {
         return 0.0;
     };
@@ -360,35 +489,55 @@ fn host_boost(url: &str, terms: &[&str]) -> f64 {
     let host = host.to_ascii_lowercase();
     let host = host.strip_prefix("www.").unwrap_or(&host);
     let hit = host.split(['.', '-']).any(|label| {
-        label.len() >= 3 && !SKIP_HOST_LABELS.contains(&label) && terms.contains(&label)
+        label.len() >= 3
+            && !SKIP_HOST_LABELS.contains(&label)
+            && terms.iter().any(|term| term == label)
     });
     if hit { 0.75 } else { 0.0 }
 }
 
-fn relevance(query: &str, title: &str, content: &str, url: &str) -> f64 {
-    let q = query.trim().to_ascii_lowercase();
+/// Title, snippet, and hostname overlap in `[1, ~2.4]`. Public for the fusion experiment.
+#[must_use]
+pub fn relevance_factor(query: &str, title: &str, content: &str, url: &str) -> f64 {
+    let q = query.trim();
     if q.is_empty() {
         return 1.0;
     }
-    let title_l = title.to_ascii_lowercase();
-    let content_l = content.to_ascii_lowercase();
-    let mut terms: Vec<&str> = tokenize(&q)
-        .filter(|term| !QUERY_STOPWORDS.contains(term))
-        .filter(|term| term.len() >= 2 || term.contains('+'))
+    let mut terms: Vec<String> = crate::text::tokenize(q)
+        .into_iter()
+        .filter(|term| !QUERY_STOPWORDS.contains(&term.as_str()))
+        .filter(|term| term.chars().count() >= 2 || term.contains('+') || term.contains('#'))
         .collect();
-    if terms.is_empty() && q.len() == 1 && q.chars().all(|c| c.is_ascii_alphabetic()) {
-        terms.push(&q);
+    if terms.is_empty() && q.chars().count() == 1 && q.chars().all(|c| c.is_alphabetic()) {
+        terms.push(q.to_lowercase());
     }
     let n = terms.len() as f64;
     if n == 0.0 {
         return 1.0;
     }
-    let title_hits = terms.iter().filter(|t| contains_term(&title_l, t)).count();
-    let content_hits = terms
+    let title_hits = terms.iter().filter(|t| contains_term(title, t)).count();
+    let content_hits = terms.iter().filter(|t| contains_term(content, t)).count();
+    let phrases = crate::text::quoted_phrases(q);
+    let phrase_hits = phrases
         .iter()
-        .filter(|t| contains_term(&content_l, t))
+        .filter(|phrase| {
+            let needle = phrase.to_lowercase();
+            title.to_lowercase().contains(&needle) || content.to_lowercase().contains(&needle)
+        })
         .count();
-    1.0 + 0.5 * (title_hits as f64 / n) + 0.15 * (content_hits as f64 / n) + host_boost(url, &terms)
+    let phrase = if phrases.is_empty() {
+        0.0
+    } else {
+        0.35 * (phrase_hits as f64 / phrases.len() as f64)
+    };
+    1.0 + 0.5 * (title_hits as f64 / n)
+        + 0.15 * (content_hits as f64 / n)
+        + host_boost(url, &terms)
+        + phrase
+}
+
+fn relevance(query: &str, title: &str, content: &str, url: &str) -> f64 {
+    relevance_factor(query, title, content, url)
 }
 
 /// Score ↓, then engine consensus ↓, best position ↑, URL ↑.
@@ -468,7 +617,10 @@ fn canonical_merge_key(raw: &str) -> String {
     url.set_fragment(None);
 
     if matches!(url.scheme(), "http" | "https") {
-        let _ = url.set_port(None);
+        // Drop only default ports. :8080 and :8443 are different services.
+        if matches!(url.port(), Some(80 | 443) | None) {
+            let _ = url.set_port(None);
+        }
         // Engines disagree on scheme for the same page; treat http == https.
         let _ = url.set_scheme("https");
         strip_tracking_params(&mut url);
@@ -480,7 +632,8 @@ fn canonical_merge_key(raw: &str) -> String {
     }
 
     let path = strip_index_file(url.path().trim_end_matches('/'));
-    let canonical_path = if path.is_empty() || is_locale_root_path(path) {
+    // `/en` and `/fr` are different pages. Only an empty path is the site root.
+    let canonical_path = if path.is_empty() {
         "/".to_string()
     } else {
         path.to_string()
@@ -492,14 +645,20 @@ fn canonical_merge_key(raw: &str) -> String {
 
 fn canonical_host(host: &str) -> String {
     let host = host.to_ascii_lowercase();
-    let host = host.strip_prefix("www.").unwrap_or(&host);
+    let host = host.strip_prefix("www.").unwrap_or(&host).to_string();
+    // Wikipedia's mobile host is the same article. Other `m.` hosts are not.
+    if let Some(rest) = host.strip_prefix("m.")
+        && (rest == "wikipedia.org" || rest.ends_with(".wikipedia.org"))
+    {
+        return rest.to_string();
+    }
     if let Some((lang, rest)) = host.split_once(".m.")
         && (rest == "wikipedia.org" || rest.ends_with(".wikipedia.org"))
         && !lang.is_empty()
     {
         return format!("{lang}.{rest}");
     }
-    host.strip_prefix("m.").unwrap_or(host).to_string()
+    host
 }
 
 fn strip_index_file(path: &str) -> &str {
@@ -570,19 +729,6 @@ fn strip_tracking_params(url: &mut url::Url) {
         .extend_pairs(kept)
         .finish();
     url.set_query(Some(&query));
-}
-
-fn is_locale_root_path(path: &str) -> bool {
-    let segment = path.strip_prefix('/').unwrap_or(path);
-    let mut parts = segment.split('-');
-    let Some(language) = parts.next() else {
-        return false;
-    };
-    let region = parts.next();
-    parts.next().is_none()
-        && language.len() == 2
-        && language.chars().all(|c| c.is_ascii_lowercase())
-        && region.is_none_or(|r| r.len() == 2 && r.chars().all(|c| c.is_ascii_uppercase()))
 }
 
 macro_rules! main_get {
@@ -981,6 +1127,207 @@ fn urls_loosely_equal(a: &str, b: &str) -> bool {
 
 const EMPTY_POSITIONS: &[usize] = &[];
 
+/// Check retrieved rows against operators, then soften domain runs.
+/// Engines that understand web operators already received the original
+/// syntax. The notes name the engines that did not.
+fn apply_query_policy(
+    mut results: Vec<Result_>,
+    query: &str,
+    engines: &[String],
+) -> (Vec<Result_>, Vec<String>) {
+    if query.trim().is_empty() {
+        return (results, Vec::new());
+    }
+    let parsed = interpret(query);
+    let mut notes = operator_dispatch_notes(&parsed.operators, engines);
+    if let Some(site) = &parsed.operators.site {
+        let before = results.len();
+        results.retain(|result| host_matches_site(url_of(result), site));
+        if results.len() != before {
+            notes.push(format!(
+                "Zoeken removed retrieved results that are not on {site}."
+            ));
+        }
+        if results.is_empty() {
+            notes.push(format!("No retrieved result is on {site}."));
+        }
+    }
+    if !parsed.operators.excluded.is_empty() {
+        let excluded = parsed.operators.excluded.clone();
+        let before = results.len();
+        results.retain(|result| !contains_excluded(result, &excluded));
+        if results.len() != before {
+            notes.push(
+                "Zoeken dropped retrieved titles, snippets, and URLs that contain an excluded term."
+                    .to_string(),
+            );
+        }
+    }
+    if let Some(filetype) = &parsed.operators.filetype {
+        let kind = filetype.clone();
+        let before = results.len();
+        results.retain(|result| filetype_keeps(url_of(result), &kind));
+        if results.len() != before {
+            notes.push(format!(
+                "Zoeken dropped retrieved URLs whose extension is not {kind}."
+            ));
+        }
+    }
+    if parsed.operators.site.is_none() && parsed.intent != Intent::Navigational {
+        diversify(&mut results);
+    }
+    (results, notes)
+}
+
+fn operator_dispatch_notes(operators: &zoeken_query::Operators, engines: &[String]) -> Vec<String> {
+    let supported: Vec<&str> = engines
+        .iter()
+        .filter(|engine| crate::supports_web_operators(engine))
+        .map(String::as_str)
+        .collect();
+    let unsupported: Vec<&str> = engines
+        .iter()
+        .filter(|engine| !crate::supports_web_operators(engine))
+        .map(String::as_str)
+        .collect();
+    let mut notes = Vec::new();
+    if let Some(site) = &operators.site {
+        push_operator_note(
+            &mut notes,
+            &format!("site:{site}"),
+            &supported,
+            &unsupported,
+        );
+    }
+    if let Some(filetype) = &operators.filetype {
+        push_operator_note(
+            &mut notes,
+            &format!("filetype:{filetype}"),
+            &supported,
+            &unsupported,
+        );
+    }
+    if !operators.phrases.is_empty() {
+        push_operator_note(&mut notes, "quoted phrases", &supported, &unsupported);
+        notes.push("Zoeken does not check quoted phrases against the retrieved pages.".to_string());
+    }
+    if !operators.excluded.is_empty() {
+        push_operator_note(&mut notes, "excluded terms", &supported, &unsupported);
+    }
+    notes
+}
+
+fn push_operator_note(
+    notes: &mut Vec<String>,
+    label: &str,
+    supported: &[&str],
+    unsupported: &[&str],
+) {
+    if !supported.is_empty() {
+        notes.push(format!("{label} was sent to {}.", supported.join(", ")));
+    }
+    if !unsupported.is_empty() {
+        let verb = if unsupported.len() == 1 { "does" } else { "do" };
+        notes.push(format!(
+            "{} {verb} not support {label}. The constraint was removed from their query.",
+            unsupported.join(", ")
+        ));
+    }
+    if supported.is_empty() && unsupported.is_empty() {
+        notes.push(format!(
+            "{label} was not sent to an engine. Zoeken applied it to retrieved results."
+        ));
+    }
+}
+
+fn host_matches_site(url: &str, site: &str) -> bool {
+    let Ok(parsed) = url::Url::parse(url) else {
+        return false;
+    };
+    let Some(host) = parsed.host_str() else {
+        return false;
+    };
+    let host = host.trim_start_matches("www.").to_ascii_lowercase();
+    let site = site
+        .trim()
+        .trim_start_matches("www.")
+        .trim_start_matches("*.")
+        .trim_end_matches('/')
+        .to_ascii_lowercase();
+    host == site || host.ends_with(&format!(".{site}"))
+}
+
+fn contains_excluded(result: &Result_, excluded: &[String]) -> bool {
+    let blob = format!(
+        "{} {} {}",
+        title_of(result),
+        content_of(result),
+        url_of(result)
+    );
+    excluded.iter().any(|term| {
+        crate::text::tokenize(&blob)
+            .iter()
+            .any(|token| token == &term.to_lowercase())
+    })
+}
+
+fn filetype_keeps(url: &str, filetype: &str) -> bool {
+    match url_extension(url) {
+        Some(ext) => ext.eq_ignore_ascii_case(filetype),
+        None => true,
+    }
+}
+
+fn url_extension(url: &str) -> Option<String> {
+    let parsed = url::Url::parse(url).ok()?;
+    let segment = parsed.path().rsplit('/').next().unwrap_or("");
+    let (_, ext) = segment.rsplit_once('.')?;
+    if ext.is_empty() || ext.len() > 8 || !ext.chars().all(|c| c.is_ascii_alphanumeric()) {
+        None
+    } else {
+        Some(ext.to_string())
+    }
+}
+
+/// Keep the first two hits per registrable domain, then the rest. Nothing is deleted.
+pub(crate) fn diversify(results: &mut Vec<Result_>) {
+    let mut counts: HashMap<String, usize> = HashMap::new();
+    let mut kept = Vec::with_capacity(results.len());
+    let mut deferred = Vec::new();
+    for result in results.drain(..) {
+        let domain = registrable_domain(url_of(&result));
+        if domain.is_empty() {
+            kept.push(result);
+            continue;
+        }
+        let count = counts.entry(domain).or_insert(0);
+        if *count < 2 {
+            *count += 1;
+            kept.push(result);
+        } else {
+            deferred.push(result);
+        }
+    }
+    kept.extend(deferred);
+    *results = kept;
+}
+
+fn registrable_domain(url: &str) -> String {
+    let Ok(parsed) = url::Url::parse(url) else {
+        return String::new();
+    };
+    let Some(host) = parsed.host_str() else {
+        return String::new();
+    };
+    let host = host.trim_start_matches("www.").to_ascii_lowercase();
+    // The public suffix list keeps github.io tenants, co.uk, and
+    // s3.amazonaws.com buckets as separate sites. Ports are not part of this key.
+    if let Some(domain) = psl::List.domain(host.as_bytes()) {
+        return String::from_utf8_lossy(domain.as_bytes()).into_owned();
+    }
+    host
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -1149,13 +1496,47 @@ mod tests {
             &weights(&[("alpha", 1.0), ("beta", 1.0)]),
         );
 
-        assert_eq!(container.results.len(), 1);
-        let result = as_main(&container.results[0]);
         assert_eq!(
-            result.engines,
-            vec!["alpha".to_string(), "beta".to_string()]
+            container.results.len(),
+            2,
+            "a locale root is a different page"
         );
-        assert_eq!(result.positions, vec![1, 1]);
+    }
+
+    #[test]
+    fn keeps_distinct_locale_ports_and_tenant_hosts() {
+        let mut alpha = EngineResults::new();
+        alpha.add(main_result("https://example.com/en", "English"));
+        alpha.add(main_result("https://example.com/fr", "French"));
+        alpha.add(main_result("https://example.com:8443/", "Other port"));
+        alpha.add(main_result("https://docs.github.io/rust", "Docs"));
+        alpha.add(main_result("https://rust-lang.github.io/", "Book"));
+        let container = aggregate(
+            report(vec![completed("alpha", alpha)]),
+            &weights(&[("alpha", 1.0)]),
+        );
+        assert_eq!(container.results.len(), 5);
+        let domains: Vec<String> = container
+            .results
+            .iter()
+            .map(|result| registrable_domain(&as_main(result).url))
+            .collect();
+        assert!(domains.iter().any(|d| d == "docs.github.io"));
+        assert!(domains.iter().any(|d| d == "rust-lang.github.io"));
+        assert_eq!(registrable_domain("https://news.bbc.co.uk/a"), "bbc.co.uk");
+        assert_eq!(registrable_domain("https://sport.bbc.co.uk/b"), "bbc.co.uk");
+        assert_eq!(
+            registrable_domain("https://bucket-a.s3.amazonaws.com/x"),
+            "bucket-a.s3.amazonaws.com"
+        );
+        assert_ne!(
+            registrable_domain("https://bucket-a.s3.amazonaws.com/x"),
+            registrable_domain("https://bucket-b.s3.amazonaws.com/y")
+        );
+        assert_eq!(
+            registrable_domain("https://www.example.com/en"),
+            registrable_domain("https://example.com/fr")
+        );
     }
 
     #[test]
@@ -1804,5 +2185,74 @@ mod tests {
         assert!(box_.img_src.is_some());
         assert_eq!(box_.urls.len(), 2);
         assert!(box_.attributes.iter().any(|a| a.label == "Instance of"));
+    }
+
+    #[test]
+    fn non_default_ports_and_mobile_hosts_stay_distinct() {
+        let mut a = EngineResults::new();
+        a.add(main_result("https://example.com/", "Root"));
+        a.add(main_result("https://example.com:8443/", "Port"));
+        a.add(main_result("https://m.example.com/", "Mobile"));
+        a.add(main_result("https://example.com/fr/docs", "French"));
+        a.add(main_result("https://example.com/docs", "Docs"));
+
+        let container = aggregate(report(vec![completed("a", a)]), &weights(&[("a", 1.0)]));
+        assert_eq!(container.results.len(), 5);
+    }
+
+    #[test]
+    fn default_https_port_still_merges() {
+        let mut a = EngineResults::new();
+        a.add(main_result("https://example.com:443/page", "A"));
+        let mut b = EngineResults::new();
+        b.add(main_result("http://example.com/page", "B"));
+        let container = aggregate(
+            report(vec![completed("a", a), completed("b", b)]),
+            &weights(&[("a", 1.0), ("b", 1.0)]),
+        );
+        assert_eq!(container.results.len(), 1);
+    }
+
+    #[test]
+    fn site_operator_drops_other_hosts_and_diversity_keeps_the_rest() {
+        let mut a = EngineResults::new();
+        a.add(main_result("https://docs.rs/tokio", "Tokio"));
+        a.add(main_result("https://docs.rs/tokio/latest", "Latest"));
+        a.add(main_result("https://docs.rs/tokio/legacy", "Legacy"));
+        a.add(main_result("https://en.wikipedia.org/wiki/Tokio", "Wiki"));
+        let kept = aggregate_query(
+            report(vec![completed("a", a)]),
+            &weights(&[("a", 1.0)]),
+            "site:docs.rs tokio -wiki",
+        );
+        assert!(kept.results.iter().all(|r| url_of(r).contains("docs.rs")));
+        assert!(!kept.operator_notes.is_empty());
+
+        let mut crowded = EngineResults::new();
+        crowded.add(main_result("https://spam.example/1", "Soup one"));
+        crowded.add(main_result("https://spam.example/2", "Soup two"));
+        crowded.add(main_result("https://spam.example/3", "Soup three"));
+        crowded.add(main_result("https://other.example/recipe", "Other soup"));
+        let diverse = aggregate_query(
+            report(vec![completed("a", crowded)]),
+            &weights(&[("a", 1.0)]),
+            "soup recipes",
+        );
+        let urls: Vec<&str> = diverse.results.iter().map(url_of).collect();
+        assert_eq!(urls.len(), 4);
+        assert!(urls.iter().position(|u| u.contains("other.example")) < Some(3));
+    }
+
+    #[test]
+    fn unicode_query_matches_accented_title() {
+        let mut a = EngineResults::new();
+        a.add(main_result("https://a.test/cafe", "Café guide"));
+        a.add(main_result("https://b.test/other", "Unrelated"));
+        let container = aggregate_query(
+            report(vec![completed("a", a)]),
+            &weights(&[("a", 1.0)]),
+            "café",
+        );
+        assert_eq!(as_main(&container.results[0]).title, "Café guide");
     }
 }

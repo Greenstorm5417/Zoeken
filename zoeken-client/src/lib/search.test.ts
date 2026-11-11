@@ -26,6 +26,21 @@ function emptyNativeResponse(
 		suggestions: [],
 		unresponsive_engines: [],
 		engine_data: {},
+		continuation: "unknown",
+		outcome: "ok",
+		operator_notes: [],
+		elapsed_ms: 0,
+		interpretation: {
+			intent: "general",
+			confidence: 0,
+			source: "rules",
+			site: null,
+			filetype: null,
+			phrases: [],
+			excluded: [],
+			residual: "rust",
+			entities: [],
+		},
 		...overrides,
 	};
 }

@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Daily-search fixture (`cargo test -p zoeken-search --test daily_quality`) plus a
+  held-out logistic weather model. The fixture is not live search quality.
+  Ranking fusion stays weight-over-position. The weather model is on because a
+  disjoint 25-row holdout moved weather recall from 0 to 0.846 at precision
+  1.000 with no trap false positives. Title/snippet reranking stays off: the
+  representative 24-candidate set stayed at MRR 0.738, while a separate synonym
+  probe (0.067 to 1.000) only shows that rank 1 can move. `ZOEK_SEMANTIC_RERANK`
+  can force it. Scoring sits inside a 5 ms budget and falls back to the
+  aggregated order.
+- Native search `schema_version` 3: continuation, outcome, operator notes,
+  elapsed time, query interpretation, and weather forecast fields.
+- Result-page constraints, retrieved-result counts, local answers during
+  search failure, and browser-local hide/prefer site rules.
+
 ## [1.4.5] - 2026-08-18
 
 ### Fixed

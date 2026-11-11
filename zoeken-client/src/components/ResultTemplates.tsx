@@ -1,13 +1,58 @@
 import { ExternalLink, FileText, Magnet } from "lucide-react";
-import type { ComponentType } from "react";
+import { type ComponentType, useState } from "react";
 import type { SearchResult } from "#/lib/api";
 import { resultFavicon } from "#/lib/api";
+import { coordsFromResult } from "#/lib/coords";
+import { highlightPieces } from "#/lib/highlight";
+import { activeStrings } from "#/lib/i18n";
 import {
 	engineNames,
 	formatEngineLabel,
 	hostnameOf,
 	pathOf,
 } from "#/lib/searchDisplay";
+import { hostOf } from "#/lib/sourcePrefs";
+
+function uiText() {
+	return activeStrings();
+}
+
+function Marked({ text, query }: { text: string; query: string }) {
+	let cursor = 0;
+	return highlightPieces(text, query).map((piece) => {
+		const start = cursor;
+		cursor += piece.text.length;
+		const key = `${start}:${piece.mark ? "m" : "t"}`;
+		return piece.mark ? (
+			<mark key={key} className="rounded-sm bg-accent-soft text-inherit">
+				{piece.text}
+			</mark>
+		) : (
+			<span key={key}>{piece.text}</span>
+		);
+	});
+}
+
+function rememberVisit(url: string) {
+	try {
+		const raw = sessionStorage.getItem("zoeken.visited") ?? "";
+		const next = new Set(raw.split("\n").filter(Boolean));
+		next.add(url);
+		sessionStorage.setItem("zoeken.visited", [...next].slice(-200).join("\n"));
+	} catch {
+		// Private mode can reject sessionStorage. The :visited style still applies.
+	}
+}
+
+function visitedAlready(url: string): boolean {
+	try {
+		return (sessionStorage.getItem("zoeken.visited") ?? "")
+			.split("\n")
+			.includes(url);
+	} catch {
+		return false;
+	}
+}
 
 function EngineLine({ result }: { result: SearchResult }) {
 	const engines = engineNames(result);
@@ -19,28 +64,100 @@ function EngineLine({ result }: { result: SearchResult }) {
 	);
 }
 
+function pathCrumbs(url: string): string {
+	return pathOf(url).split("/").filter(Boolean).slice(0, 3).join(" › ");
+}
+
+function ExpandableText({
+	text,
+	query = "",
+}: {
+	text: string;
+	query?: string;
+}) {
+	const [expanded, setExpanded] = useState(false);
+	const long = text.length > 180;
+	return (
+		<>
+			<p
+				className={`mt-1.5 text-[0.9rem] text-ink-muted ${expanded ? "" : "line-clamp-3"}`}
+			>
+				<Marked text={text} query={query} />
+			</p>
+			{long ? (
+				<button
+					type="button"
+					className="mt-1 min-h-11 rounded-lg px-1 text-sm text-accent"
+					onClick={() => setExpanded((value) => !value)}
+				>
+					{expanded ? uiText().showLess : uiText().showMore}
+				</button>
+			) : null}
+		</>
+	);
+}
+
 function ResultTitle({
 	result,
 	newTab,
+	query = "",
+	onHideSite,
+	onPreferSite,
 }: {
 	result: SearchResult;
 	newTab?: boolean;
+	query?: string;
+	onHideSite?: (domain: string) => void;
+	onPreferSite?: (domain: string) => void;
 }) {
+	const domain = hostnameOf(result.url);
+	const crumbs = pathCrumbs(result.url);
+	const [visited, setVisited] = useState(() => visitedAlready(result.url));
 	return (
-		<a
-			data-result-link
-			href={result.url}
-			target={newTab ? "_blank" : undefined}
-			rel={newTab ? "noopener noreferrer" : undefined}
-			className="group block no-underline"
-		>
-			<p className="truncate text-[0.75rem] leading-tight text-ink-subtle">
-				{hostnameOf(result.url)}
-			</p>
-			<h2 className="mt-0.5 text-[1.2rem] leading-snug font-medium tracking-tight text-accent group-hover:underline">
-				{result.title}
-			</h2>
-		</a>
+		<>
+			<a
+				data-result-link
+				data-visited={visited ? "true" : undefined}
+				href={result.url}
+				target={newTab ? "_blank" : undefined}
+				rel={newTab ? "noopener noreferrer" : undefined}
+				className="group block no-underline"
+				onClick={() => {
+					rememberVisit(result.url);
+					setVisited(true);
+				}}
+			>
+				<p className="truncate text-[0.75rem] leading-tight text-ink-subtle">
+					{domain}
+					{crumbs ? ` › ${crumbs}` : ""}
+				</p>
+				<h2 className="zoeken-result-title mt-0.5 text-[1.2rem] leading-snug font-medium tracking-tight text-accent group-hover:underline">
+					<Marked text={result.title || result.url} query={query} />
+				</h2>
+			</a>
+			{domain && (onHideSite || onPreferSite) ? (
+				<div className="mt-1 flex flex-wrap gap-2">
+					{onHideSite ? (
+						<button
+							type="button"
+							className="min-h-11 rounded-lg px-2 text-xs text-ink-muted hover:text-accent"
+							onClick={() => onHideSite(domain)}
+						>
+							{uiText().hideSite} {domain}
+						</button>
+					) : null}
+					{onPreferSite ? (
+						<button
+							type="button"
+							className="min-h-11 rounded-lg px-2 text-xs text-ink-muted hover:text-accent"
+							onClick={() => onPreferSite(domain)}
+						>
+							{uiText().preferSite} {domain}
+						</button>
+					) : null}
+				</div>
+			) : null}
+		</>
 	);
 }
 
@@ -48,9 +165,15 @@ function ResultTitle({
 export function TorrentResult({
 	result,
 	newTab,
+	query,
+	onHideSite,
+	onPreferSite,
 }: {
 	result: Extract<SearchResult, { kind: "file" }>;
 	newTab?: boolean;
+	query?: string;
+	onHideSite?: (domain: string) => void;
+	onPreferSite?: (domain: string) => void;
 }) {
 	const stats: string[] = [];
 	const size = result.filesize || result.size;
@@ -62,12 +185,14 @@ export function TorrentResult({
 	const blurb = result.abstract || result.content;
 	return (
 		<article className="max-w-[40rem]">
-			<ResultTitle result={result} newTab={newTab} />
-			{blurb ? (
-				<p className="mt-1 line-clamp-2 text-[0.9rem] text-ink-muted">
-					{blurb}
-				</p>
-			) : null}
+			<ResultTitle
+				result={result}
+				newTab={newTab}
+				query={query}
+				onHideSite={onHideSite}
+				onPreferSite={onPreferSite}
+			/>
+			{blurb ? <ExpandableText text={blurb} query={query} /> : null}
 			{stats.length > 0 ? (
 				<div className="mt-2 flex flex-wrap items-center gap-2 text-[0.8rem]">
 					{stats.map((stat) => (
@@ -98,9 +223,15 @@ export function TorrentResult({
 export function PaperResult({
 	result,
 	newTab,
+	query,
+	onHideSite,
+	onPreferSite,
 }: {
 	result: Extract<SearchResult, { kind: "paper" }>;
 	newTab?: boolean;
+	query?: string;
+	onHideSite?: (domain: string) => void;
+	onPreferSite?: (domain: string) => void;
 }) {
 	const authors = result.authors?.length
 		? result.authors.length > 4
@@ -129,7 +260,13 @@ export function PaperResult({
 	];
 	return (
 		<article className="max-w-[40rem]">
-			<ResultTitle result={result} newTab={newTab} />
+			<ResultTitle
+				result={result}
+				newTab={newTab}
+				query={query}
+				onHideSite={onHideSite}
+				onPreferSite={onPreferSite}
+			/>
 			{meta.length > 0 ? (
 				<p className="mt-1 text-[0.8rem] text-ink-subtle">{meta.join(" · ")}</p>
 			) : null}
@@ -144,9 +281,7 @@ export function PaperResult({
 				</p>
 			) : null}
 			{result.content ? (
-				<p className="mt-1.5 line-clamp-3 text-[0.9rem] text-ink-muted">
-					{result.content}
-				</p>
+				<ExpandableText text={result.content} query={query} />
 			) : null}
 			{result.comments ? (
 				<p className="mt-1 text-[0.8rem] text-ink-subtle">{result.comments}</p>
@@ -193,13 +328,25 @@ export function PaperResult({
 export function ProductResult({
 	result,
 	newTab,
+	query,
+	onHideSite,
+	onPreferSite,
 }: {
 	result: SearchResult;
 	newTab?: boolean;
+	query?: string;
+	onHideSite?: (domain: string) => void;
+	onPreferSite?: (domain: string) => void;
 }) {
 	return (
 		<article className="max-w-[40rem]">
-			<ResultTitle result={result} newTab={newTab} />
+			<ResultTitle
+				result={result}
+				newTab={newTab}
+				query={query}
+				onHideSite={onHideSite}
+				onPreferSite={onPreferSite}
+			/>
 			{result.content ? (
 				<p className="mt-1.5 text-[1.05rem] font-medium tracking-tight text-ink">
 					{result.content}
@@ -214,15 +361,27 @@ export function ProductResult({
 export function CodeResult({
 	result,
 	newTab,
+	query,
+	onHideSite,
+	onPreferSite,
 }: {
 	result: Extract<SearchResult, { kind: "code" }>;
 	newTab?: boolean;
+	query?: string;
+	onHideSite?: (domain: string) => void;
+	onPreferSite?: (domain: string) => void;
 }) {
 	const lines = result.codelines ?? [];
 	const hl = new Set(result.hl_lines ?? []);
 	return (
 		<article className="max-w-[40rem]">
-			<ResultTitle result={result} newTab={newTab} />
+			<ResultTitle
+				result={result}
+				newTab={newTab}
+				query={query}
+				onHideSite={onHideSite}
+				onPreferSite={onPreferSite}
+			/>
 			<p className="mt-1 text-[0.8rem] text-ink-subtle">
 				{[result.repository, result.code_language, result.filename]
 					.filter(Boolean)
@@ -247,9 +406,7 @@ export function CodeResult({
 					</code>
 				</pre>
 			) : result.content ? (
-				<p className="mt-1.5 line-clamp-2 text-[0.9rem] text-ink-muted">
-					{result.content}
-				</p>
+				<ExpandableText text={result.content} query={query} />
 			) : null}
 			<EngineLine result={result} />
 		</article>
@@ -260,14 +417,26 @@ export function CodeResult({
 export function KeyValueResult({
 	result,
 	newTab,
+	query,
+	onHideSite,
+	onPreferSite,
 }: {
 	result: Extract<SearchResult, { kind: "key_value" }>;
 	newTab?: boolean;
+	query?: string;
+	onHideSite?: (domain: string) => void;
+	onPreferSite?: (domain: string) => void;
 }) {
 	const entries = result.kvmap ?? [];
 	return (
 		<article className="max-w-[40rem]">
-			<ResultTitle result={result} newTab={newTab} />
+			<ResultTitle
+				result={result}
+				newTab={newTab}
+				query={query}
+				onHideSite={onHideSite}
+				onPreferSite={onPreferSite}
+			/>
 			{result.caption ? (
 				<p className="mt-1 text-[0.8rem] text-ink-subtle">{result.caption}</p>
 			) : null}
@@ -291,7 +460,7 @@ export function KeyValueResult({
 					))}
 				</dl>
 			) : result.content ? (
-				<p className="mt-1.5 text-[0.9rem] text-ink-muted">{result.content}</p>
+				<ExpandableText text={result.content} query={query} />
 			) : null}
 			<EngineLine result={result} />
 		</article>
@@ -302,32 +471,36 @@ export function KeyValueResult({
 export function MapResult({
 	result,
 	newTab,
+	query,
+	onHideSite,
+	onPreferSite,
 }: {
 	result: SearchResult;
 	newTab?: boolean;
+	query?: string;
+	onHideSite?: (domain: string) => void;
+	onPreferSite?: (domain: string) => void;
 }) {
-	let lat = "";
-	let lon = "";
-	try {
-		const u = new URL(result.url);
-		lat = u.searchParams.get("mlat") ?? u.searchParams.get("lat") ?? "";
-		lon = u.searchParams.get("mlon") ?? u.searchParams.get("lon") ?? "";
-	} catch {
-		// leave blank
-	}
+	const point = coordsFromResult(result);
+	const lat = point ? String(point.lat) : "";
+	const lon = point ? String(point.lon) : "";
 	return (
 		<article className="max-w-[40rem] rounded-xl border border-line bg-surface-raised p-4">
-			<ResultTitle result={result} newTab={newTab} />
+			<ResultTitle
+				result={result}
+				newTab={newTab}
+				query={query}
+				onHideSite={onHideSite}
+				onPreferSite={onPreferSite}
+			/>
 			{result.content ? (
-				<p className="mt-1.5 line-clamp-2 text-[0.9rem] text-ink-muted">
-					{result.content}
-				</p>
+				<ExpandableText text={result.content} query={query} />
 			) : null}
 			<div className="mt-2 flex flex-wrap items-center gap-3 text-[0.8rem]">
 				{lat && lon ? (
 					<>
 						<span className="font-mono text-ink-subtle">
-							{Number(lat).toFixed(4)}, {Number(lon).toFixed(4)}
+							{point ? `${point.lat.toFixed(4)}, ${point.lon.toFixed(4)}` : ""}
 						</span>
 						<a
 							href={`https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=15/${lat}/${lon}`}
@@ -357,6 +530,9 @@ export function MapResult({
 type Specialized = ComponentType<{
 	result: SearchResult;
 	newTab?: boolean;
+	query?: string;
+	onHideSite?: (domain: string) => void;
+	onPreferSite?: (domain: string) => void;
 }>;
 
 /** Pick the specialized template for a result, or `null` for the default. */
@@ -386,33 +562,41 @@ export function specializedTemplate(
 /** Default (non-specialized) result: favicon, host/path breadcrumb, title, snippet. */
 export function ResultItem({
 	result,
+	query = "",
 	newTab = false,
 	urlFormatting = "pretty",
 	cacheUrl = "",
 	faviconPriority = false,
+	onHideSite,
+	onPreferSite,
 }: {
 	result: SearchResult;
+	query?: string;
 	newTab?: boolean;
 	urlFormatting?: string;
 	cacheUrl?: string;
 	/** Bump fetch priority for above-fold SERP favicons (desktop parallel paint). */
 	faviconPriority?: boolean;
+	onHideSite?: (domain: string) => void;
+	onPreferSite?: (domain: string) => void;
 }) {
 	const host = hostnameOf(result.url);
+	const domain = hostOf(result.url);
 	const crumbs = pathOf(result.url)
 		.split("/")
 		.filter(Boolean)
 		.slice(0, 3)
-		.join(" > ");
+		.join(" › ");
 	const engines = engineNames(result);
 	const displayUrl =
 		urlFormatting === "full"
 			? result.url
 			: urlFormatting === "host"
 				? host
-				: result.kind === "main" && result.pretty_url
-					? result.pretty_url
-					: `${host}${crumbs ? ` > ${crumbs}` : ""}`;
+				: `${host}${crumbs ? ` › ${crumbs}` : ""}`;
+	const [expanded, setExpanded] = useState(false);
+	const [visited, setVisited] = useState(() => visitedAlready(result.url));
+	const longSnippet = result.content.length > 180;
 	const favicon = resultFavicon(result);
 	const thumb =
 		result.kind === "main" && result.thumbnail ? result.thumbnail : "";
@@ -425,10 +609,15 @@ export function ResultItem({
 		<article className="max-w-[40rem]">
 			<a
 				data-result-link
+				data-visited={visited ? "true" : undefined}
 				href={result.url}
 				target={newTab ? "_blank" : undefined}
 				rel={newTab ? "noopener noreferrer" : undefined}
 				className="group block no-underline"
+				onClick={() => {
+					rememberVisit(result.url);
+					setVisited(true);
+				}}
 			>
 				<div className="flex items-center gap-2 sm:gap-2.5">
 					{favicon ? (
@@ -445,17 +634,12 @@ export function ResultItem({
 							}}
 						/>
 					) : null}
-					<div className="min-w-0">
-						<p className="truncate text-[0.8125rem] leading-tight text-ink sm:text-[0.875rem]">
-							{host}
-						</p>
-						<p className="truncate text-[0.7rem] leading-tight text-ink-subtle sm:text-[0.75rem]">
-							{displayUrl}
-						</p>
-					</div>
+					<p className="min-w-0 truncate text-[0.8125rem] leading-tight text-ink-subtle">
+						{displayUrl}
+					</p>
 				</div>
-				<h2 className="mt-1.5 text-[1.125rem] leading-snug font-medium tracking-tight text-accent transition-colors group-hover:underline sm:text-[1.25rem]">
-					{result.title}
+				<h2 className="zoeken-result-title mt-1 text-[1.15rem] leading-snug font-medium tracking-tight text-accent group-hover:underline sm:text-[1.25rem]">
+					<Marked text={result.title || result.url} query={query} />
 				</h2>
 			</a>
 			{published ? (
@@ -465,33 +649,68 @@ export function ResultItem({
 				<img
 					src={thumb}
 					alt=""
-					className="mt-2 max-h-28 rounded-lg object-cover"
+					className="mt-2 max-h-28 rounded-lg object-contain"
 					decoding="async"
 					loading="lazy"
+					onError={(event) => {
+						event.currentTarget.hidden = true;
+					}}
 				/>
 			) : null}
 			{result.content ? (
-				<p className="mt-1.5 line-clamp-2 text-[0.9rem] leading-relaxed text-ink-muted">
-					{result.content}
+				<p
+					className={`mt-1.5 text-[0.95rem] leading-relaxed text-ink-muted ${expanded ? "" : "line-clamp-3"}`}
+				>
+					<Marked text={result.content} query={query} />
 				</p>
 			) : null}
-			{engines.length > 0 || cacheUrl ? (
-				<p className="mt-1.5 text-[0.75rem] text-ink-subtle">
-					{engines.map(formatEngineLabel).join(" · ")}
-					{cacheUrl ? (
-						<>
-							{engines.length > 0 ? <span aria-hidden> · </span> : null}
+			{longSnippet ? (
+				<button
+					type="button"
+					className="mt-1 min-h-11 text-sm text-accent"
+					onClick={() => setExpanded((open) => !open)}
+				>
+					{expanded ? uiText().showLess : uiText().showMore}
+				</button>
+			) : null}
+			{engines.length > 0 || cacheUrl || domain ? (
+				<details className="mt-1 text-[0.75rem] text-ink-subtle">
+					<summary className="cursor-pointer min-h-11 list-none py-1 marker:content-none">
+						{engines.length
+							? engines.map(formatEngineLabel).join(" · ")
+							: "Source"}
+					</summary>
+					<div className="flex flex-wrap gap-2 pb-1">
+						{domain && onHideSite ? (
+							<button
+								type="button"
+								className="min-h-11 rounded-lg px-2 text-ink-muted hover:text-accent"
+								onClick={() => onHideSite(domain)}
+							>
+								{uiText().hideSite} {domain}
+							</button>
+						) : null}
+						{domain && onPreferSite ? (
+							<button
+								type="button"
+								className="min-h-11 rounded-lg px-2 text-ink-muted hover:text-accent"
+								onClick={() => onPreferSite(domain)}
+							>
+								{uiText().preferSite} {domain}
+							</button>
+						) : null}
+						{cacheUrl ? (
 							<a
 								href={cacheUrl + encodeURIComponent(result.url)}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="text-ink-subtle underline decoration-line underline-offset-2 hover:text-accent"
+								className="inline-flex min-h-11 items-center text-ink-subtle underline decoration-line underline-offset-2 hover:text-accent"
 							>
 								archive
 							</a>
-						</>
-					) : null}
-				</p>
+						) : null}
+					</div>
+				</details>
 			) : null}
 		</article>
 	);

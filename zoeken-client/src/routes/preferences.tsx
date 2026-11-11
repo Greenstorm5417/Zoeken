@@ -10,12 +10,13 @@ import {
 	preferencesGet,
 	preferencesPost,
 } from "#/lib/api";
-import { stringsFor } from "#/lib/i18n";
+import { activeStrings, stringsFor } from "#/lib/i18n";
 import {
 	clearRecentSearches,
 	recentSearchesEnabled,
 	setRecentSearchesEnabled,
 } from "#/lib/recentSearches";
+import { loadSourcePrefs, saveSourcePrefs } from "#/lib/sourcePrefs";
 import { getStoredTheme, setTheme, type Theme } from "#/lib/theme";
 import { useConfig } from "./__root";
 
@@ -320,6 +321,8 @@ function PreferencesPage() {
 					</dl>
 				</section>
 
+				<PersonalSites />
+
 				<section className="grid gap-3">
 					<h2 className="text-lg font-medium text-ink">Categories</h2>
 					<p className="text-sm text-ink-muted">
@@ -528,6 +531,75 @@ function PreferencesPage() {
 				) : null}
 			</div>
 		</Page>
+	);
+}
+
+function PersonalSites() {
+	const [prefs, setPrefs] = useState(loadSourcePrefs);
+	function update(next: ReturnType<typeof loadSourcePrefs>) {
+		setPrefs(next);
+		saveSourcePrefs(next);
+	}
+	return (
+		<section className="grid gap-3">
+			<h2 className="text-lg font-medium text-ink">Sites</h2>
+			<p className="text-sm text-ink-muted">
+				Hide and prefer apply to a domain and its subdomains. They stay in this
+				browser and are not sent to search engines. Instance-wide hostname rules
+				are separate.
+			</p>
+			{prefs.hidden.length === 0 && prefs.preferred.length === 0 ? (
+				<p className="text-sm text-ink-subtle">
+					{activeStrings().noPersonalSites}
+				</p>
+			) : null}
+			<ul className="grid gap-2">
+				{prefs.hidden.map((domain) => (
+					<li
+						key={`h-${domain}`}
+						className="flex min-h-11 items-center justify-between gap-3 text-sm"
+					>
+						<span>
+							{activeStrings().hiddenSite} · {domain}
+						</span>
+						<button
+							type="button"
+							className="min-h-11 text-accent"
+							onClick={() =>
+								update({
+									...prefs,
+									hidden: prefs.hidden.filter((item) => item !== domain),
+								})
+							}
+						>
+							{activeStrings().removeSite}
+						</button>
+					</li>
+				))}
+				{prefs.preferred.map((domain) => (
+					<li
+						key={`p-${domain}`}
+						className="flex min-h-11 items-center justify-between gap-3 text-sm"
+					>
+						<span>
+							{activeStrings().preferredSite} · {domain}
+						</span>
+						<button
+							type="button"
+							className="min-h-11 text-accent"
+							onClick={() =>
+								update({
+									...prefs,
+									preferred: prefs.preferred.filter((item) => item !== domain),
+								})
+							}
+						>
+							{activeStrings().removeSite}
+						</button>
+					</li>
+				))}
+			</ul>
+		</section>
 	);
 }
 

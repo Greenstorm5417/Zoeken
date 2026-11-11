@@ -27,21 +27,22 @@ export function SearchFilterMenus({
 	const categoryEngines = (config?.engines ?? []).filter(
 		(engine) =>
 			engine.enabled &&
-			(activeCategory === "general" ||
-				engine.categories.map((c) => c.toLowerCase()).includes(activeCategory)),
+			engine.categories
+				.map((c) => c.toLowerCase())
+				.includes(activeCategory || "general"),
 	);
 	const showTimeRange = categoryEngines.some((e) => e.time_range_support);
 	const showSafesearch = categoryEngines.some((e) => e.safesearch);
 	const showLanguage = categoryEngines.some((e) => e.language_support);
+	const t = stringsFor(language);
 
 	const languageOptions = [
-		{ value: "", label: "Any language / region" },
+		{ value: "", label: t.anyLanguageRegion },
 		...Object.entries(config?.locales ?? {}).map(([code, name]) => ({
 			value: code,
 			label: name,
 		})),
 	];
-	const t = stringsFor(language);
 	const timeRangeOptions = [
 		{ value: "", label: t.anyTime },
 		{ value: "day", label: t.pastDay },
@@ -61,7 +62,7 @@ export function SearchFilterMenus({
 		<>
 			{showTimeRange ? (
 				<SelectMenu
-					label="Time range"
+					label={t.timeRange}
 					value={time_range}
 					options={timeRangeOptions}
 					onChange={(next) =>
@@ -119,8 +120,9 @@ export function hasSearchFilters(
 	const categoryEngines = (config?.engines ?? []).filter(
 		(engine) =>
 			engine.enabled &&
-			(activeCategory === "general" ||
-				engine.categories.map((c) => c.toLowerCase()).includes(activeCategory)),
+			engine.categories
+				.map((c) => c.toLowerCase())
+				.includes(activeCategory || "general"),
 	);
 	return (
 		categoryEngines.some((e) => e.time_range_support) ||

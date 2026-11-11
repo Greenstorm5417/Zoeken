@@ -155,6 +155,7 @@ outgoing:
   useragent_suffix: ""
   # Engines run in parallel; search waits for all selected engines up to this
   # ceiling (or max_request_timeout). One slow engine stretches wall time here.
+  # Left at 3.0s. A six-search sample (p50 856 ms, max 3008 ms) did not justify a change.
   request_timeout: 3.0
   enable_http2: true
   # true only — verify: false and custom CA paths are rejected at boot

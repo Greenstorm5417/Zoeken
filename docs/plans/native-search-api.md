@@ -88,7 +88,7 @@ Legacy `/search` keeps accepting the same form params. Native route reuses the s
 
 ### Sample schema (v1 — historical)
 
-> **Stable wire version today is `schema_version: 2`**
+> **Stable wire version today is `schema_version: 3`**
 > (`NATIVE_SCHEMA_VERSION` in `zoeken-server`). The sample below is the original
 > plan sketch; treat `docs/compatibility/intentional-differences.md` and the
 > Rust DTOs as source of truth.

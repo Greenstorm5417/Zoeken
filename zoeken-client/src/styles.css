@@ -110,6 +110,7 @@
 	--accent: #246018;
 	--accent-soft: #cfe6bf;
 	--focus: #246018;
+	--visited: #5b3d86;
 	--atmosphere: radial-gradient(
 			ellipse 90% 60% at 50% -10%,
 			rgba(36, 96, 24, 0.12),
@@ -136,6 +137,7 @@
 		--accent: #7cbc4a;
 		--accent-soft: #1a2a16;
 		--focus: #7cbc4a;
+		--visited: #d4c4ef;
 		--atmosphere: radial-gradient(
 				ellipse 90% 60% at 50% -10%,
 				rgba(124, 188, 74, 0.14),
@@ -160,6 +162,7 @@
 	--accent: #7cbc4a;
 	--accent-soft: #1a2a16;
 	--focus: #7cbc4a;
+	--visited: #d4c4ef;
 	--atmosphere: radial-gradient(
 			ellipse 90% 60% at 50% -10%,
 			rgba(124, 188, 74, 0.14),
@@ -414,4 +417,14 @@ body {
 			0 4px 6px rgba(0, 0, 0, 0.2),
 			0 16px 40px rgba(0, 0, 0, 0.35);
 	}
+}
+
+.zoeken-result-title:visited,
+a[data-visited="true"] .zoeken-result-title {
+	color: var(--visited);
+}
+
+mark {
+	background: var(--accent-soft);
+	color: inherit;
 }

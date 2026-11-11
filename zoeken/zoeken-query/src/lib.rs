@@ -1,4 +1,15 @@
 //! Raw query parsing (bangs, shortcuts, language selectors) and form-parameter mapping.
+//!
+//! [`interpretation`] owns operators, intent, and entities. [`parse_raw`] owns
+//! bangs, language tags, and timeouts. Neither rewrites the other.
+
+mod interpretation;
+
+pub use interpretation::{
+    Entity, Intent, IntentGuess, IntentHoldout, IntentSource, Interpretation, Operators,
+    intent_holdout, interpret, model_enabled, model_only, parse_operators, rules_only,
+    weather_request_location,
+};
 
 use std::collections::{HashMap, HashSet};
 use std::time::Duration;

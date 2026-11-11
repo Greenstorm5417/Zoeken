@@ -1,7 +1,9 @@
 pub mod aggregation;
 pub mod execution;
 pub mod metrics;
+pub mod ranking;
 pub mod selection;
+pub mod text;
 
 use std::collections::HashMap;
 use std::collections::HashSet;
@@ -11,8 +13,31 @@ use zoeken_engine_core::{EngineMeta, SearchQueryView};
 use zoeken_query::SearchQuery;
 
 pub use aggregation::{
-    EngineWeights, ResultContainer, UnresponsiveCause, UnresponsiveEngine, aggregate, sort_results,
+    Continuation, EngineTiming, EngineWeights, ResultContainer, SearchOutcome, UnresponsiveCause,
+    UnresponsiveEngine, aggregate, aggregate_query, sort_results,
 };
+
+/// Page continuation from how many selected engines can page and what this page held.
+/// `More` is not inferred from a non-empty page.
+#[must_use]
+pub fn continuation_for(
+    paging_capable: usize,
+    outcome: SearchOutcome,
+    result_count: usize,
+) -> Continuation {
+    if paging_capable == 0
+        || result_count == 0
+            && matches!(outcome, SearchOutcome::NoMatches | SearchOutcome::NoEngines)
+    {
+        return Continuation::Exhausted;
+    }
+    if result_count == 0 {
+        return Continuation::Unknown;
+    }
+    // Paging engines returned a page. The next page is not proven empty,
+    // and a later page can still hold new URLs after a duplicate page.
+    Continuation::More
+}
 pub use execution::{
     EngineExecResult, EngineExecutor, EngineFuture, EngineRunOutcome, EngineRunStatus,
     ExecutionReport, UnresponsiveReason, run_engines,
@@ -20,6 +45,11 @@ pub use execution::{
 pub use metrics::{
     CATEGORY_LABEL, ENGINE_ERRORS_TOTAL, ENGINE_LABEL, ENGINE_RESPONSE_TIME_HTTP,
     ENGINE_RESPONSE_TIME_TOTAL, EngineMetricsRecorder, EngineOutcome, EngineSample,
+};
+pub use ranking::{
+    Fusion, SemanticExperiment, choose_fusion, order_production, order_rrf, reciprocal_rank,
+    rerank_snippets, semantic_decision, semantic_experiment, semantic_rerank_enabled,
+    shipped_fusion,
 };
 pub use selection::{EngineRegistry, RegisteredEngine, SelectedEngine, SuspensionPolicy};
 
@@ -103,14 +133,29 @@ impl Search {
         // Privacy: do not log the raw query string (may contain secrets / PII).
         tracing::info!(category, pageno = query.pageno, "search started");
 
+        let selected = self
+            .registry
+            .select(query, enabled_engines, available_tokens);
+        let paging_capable = selected
+            .iter()
+            .filter(|engine| engine.engine.metadata().paging)
+            .count();
         let report = self
             .run_engines(query, enabled_engines, available_tokens)
             .await;
         let engines = report.outcomes.len();
         let weights = self.engine_weights();
-        let container = crate::aggregation::aggregate_query(report, &weights, &query.query);
+        let mut container = crate::aggregation::aggregate_query(report, &weights, &query.query);
+        crate::ranking::apply_semantic_rerank(&query.query, &mut container.results);
+        if container.outcome == SearchOutcome::NoEngines && query.pageno > 1 {
+            // Later pages with nobody left to ask are exhaustion, not a missing catalog.
+            container.outcome = SearchOutcome::NoMatches;
+        }
+        container.continuation =
+            continuation_for(paging_capable, container.outcome, container.results.len());
+        container.elapsed_ms = u64::try_from(started.elapsed().as_millis()).unwrap_or(u64::MAX);
 
-        let elapsed_ms = u64::try_from(started.elapsed().as_millis()).unwrap_or(u64::MAX);
+        let elapsed_ms = container.elapsed_ms;
         tracing::info!(
             category,
             pageno = query.pageno,
@@ -118,6 +163,8 @@ impl Search {
             engines,
             results = container.results.len(),
             unresponsive = container.unresponsive_engines.len(),
+            outcome = container.outcome.as_str(),
+            continuation = container.continuation.as_str(),
             "search completed"
         );
         container
@@ -158,15 +205,38 @@ pub fn search_query_view(query: &SearchQuery) -> SearchQueryView {
     }
 }
 
+/// Web engines that accept `site:`, `filetype:`, quotes, and excluded terms.
+pub fn supports_web_operators(engine: &str) -> bool {
+    matches!(
+        engine,
+        "google"
+            | "bing"
+            | "brave"
+            | "duckduckgo"
+            | "startpage"
+            | "mojeek"
+            | "qwant"
+            | "swisscows"
+            | "dogpile"
+            | "yacy"
+            | "marginalia"
+    )
+}
+
 pub fn engine_query_view(view: &SearchQueryView, meta: &EngineMeta) -> SearchQueryView {
-    let mut tailored = view.clone();
-    if !meta.safesearch {
-        tailored.safesearch = zoeken_engine_core::SafeSearch::Off;
+    // Selection refuses engines that cannot honor SafeSearch or a time range.
+    // Those filters stay on the view. Operator syntax is different: engines
+    // that do not support it receive the residual text, and the notes say so.
+    let mut next = view.clone();
+    let (operators, residual) = zoeken_query::parse_operators(&view.query);
+    let constrained = operators.site.is_some()
+        || operators.filetype.is_some()
+        || !operators.phrases.is_empty()
+        || !operators.excluded.is_empty();
+    if constrained && !supports_web_operators(&meta.name) {
+        next.query = residual;
     }
-    if !meta.time_range_support {
-        tailored.time_range = None;
-    }
-    tailored
+    next
 }
 
 #[cfg(test)]
@@ -268,6 +338,22 @@ mod tests {
     }
 
     #[test]
+    fn web_engines_keep_operators_and_others_receive_the_residual() {
+        let base = SearchQueryView {
+            query: "site:docs.rs filetype:pdf \"trait object\" -draft".to_string(),
+            ..SearchQueryView::default()
+        };
+        let mut bing = meta_with_support(true, true);
+        bing.name = "bing".to_string();
+        let mut wiki = meta_with_support(true, true);
+        wiki.name = "wikipedia".to_string();
+        assert_eq!(engine_query_view(&base, &bing).query, base.query);
+        assert_eq!(engine_query_view(&base, &wiki).query, "trait object");
+        assert!(supports_web_operators("duckduckgo"));
+        assert!(!supports_web_operators("github"));
+    }
+
+    #[test]
     fn supporting_engine_keeps_both_filters() {
         let view = engine_query_view(&filtered_view(), &meta_with_support(true, true));
         assert_eq!(view.safesearch, zoeken_engine_core::SafeSearch::Strict);
@@ -287,22 +373,23 @@ mod tests {
     }
 
     #[test]
-    fn non_supporting_engine_omits_unsupported_filters() {
+    fn non_supporting_engine_keeps_explicit_filters() {
         let view = engine_query_view(&filtered_view(), &meta_with_support(false, false));
-        assert_eq!(view.safesearch, zoeken_engine_core::SafeSearch::Off);
-        assert_eq!(view.time_range, None);
+        assert_eq!(view.safesearch, zoeken_engine_core::SafeSearch::Strict);
+        assert_eq!(view.time_range, Some(zoeken_engine_core::TimeRange::Week));
     }
 
     #[test]
-    fn each_filter_is_propagated_independently() {
-        // An engine that supports only safesearch keeps it but loses the time
-        // range; the reverse holds for a time-range-only engine.
+    fn each_filter_stays_even_when_the_engine_supports_only_one() {
         let safe_only = engine_query_view(&filtered_view(), &meta_with_support(true, false));
         assert_eq!(safe_only.safesearch, zoeken_engine_core::SafeSearch::Strict);
-        assert_eq!(safe_only.time_range, None);
+        assert_eq!(
+            safe_only.time_range,
+            Some(zoeken_engine_core::TimeRange::Week)
+        );
 
         let time_only = engine_query_view(&filtered_view(), &meta_with_support(false, true));
-        assert_eq!(time_only.safesearch, zoeken_engine_core::SafeSearch::Off);
+        assert_eq!(time_only.safesearch, zoeken_engine_core::SafeSearch::Strict);
         assert_eq!(
             time_only.time_range,
             Some(zoeken_engine_core::TimeRange::Week)

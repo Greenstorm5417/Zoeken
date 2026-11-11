@@ -2268,6 +2268,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "psl"
+version = "2.1.251"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e71c0cbc3e678885f48ceb36b859e3bf371b9db80e04ce29a0eea13697ef1c30"
+dependencies = [
+ "psl-types",
+]
+
+[[package]]
+name = "psl-types"
+version = "2.0.11"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "33cb294fe86a74cbcf50d4445b37da762029549ebeea341421c7c70370f86cac"
+
+[[package]]
 name = "quanta"
 version = "0.12.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4534,6 +4549,7 @@ dependencies = [
  "url",
  "zoeken-data",
  "zoeken-engine-core",
+ "zoeken-query",
  "zoeken-results",
  "zoeken-search",
  "zoeken-settings",
@@ -4622,8 +4638,12 @@ dependencies = [
  "criterion",
  "metrics",
  "proptest",
+ "psl",
+ "serde",
+ "serde_json",
  "tokio",
  "tracing",
+ "unicode-normalization",
  "url",
  "zoeken-engine-core",
  "zoeken-query",

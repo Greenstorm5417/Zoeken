@@ -115,6 +115,18 @@ pub enum InteractiveAnswer {
         wind_kmph: String,
         wind_dir: String,
         humidity: String,
+        /// Provider observation timestamp, when the response included one.
+        #[serde(default)]
+        observation_time: String,
+        /// Calendar date for the next daily forecast, when the provider sent one.
+        #[serde(default)]
+        forecast_date: String,
+        #[serde(default)]
+        forecast_summary: String,
+        #[serde(default)]
+        forecast_temp_c: String,
+        #[serde(default)]
+        forecast_temp_f: String,
     },
     SelfInfo {
         /// `"ip"` | `"user_agent"`

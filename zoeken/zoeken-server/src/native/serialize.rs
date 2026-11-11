@@ -1,5 +1,6 @@
 //! Map `ResultContainer` → `NativeSearchResponse` with image/favicon proxy rewriting.
 
+use zoeken_query::interpret;
 use zoeken_results::{
     Answer, Code, Correction, FileResult, Image, Infobox, InteractiveAnswer, KeyValue, MainResult,
     Paper, Result_, Suggestion,
@@ -7,9 +8,10 @@ use zoeken_results::{
 use zoeken_search::{ResultContainer, UnresponsiveCause};
 
 use super::schema::{
-    NATIVE_SCHEMA_VERSION, NativeAnswer, NativeCorrection, NativeInfobox, NativeInfoboxAttribute,
-    NativeInfoboxImage, NativeInfoboxUrl, NativeInteractiveAnswer, NativeResult,
-    NativeSearchResponse, NativeSuggestion, NativeUnresponsiveEngine,
+    NATIVE_SCHEMA_VERSION, NativeAnswer, NativeCorrection, NativeEntity, NativeInfobox,
+    NativeInfoboxAttribute, NativeInfoboxImage, NativeInfoboxUrl, NativeInteractiveAnswer,
+    NativeInterpretation, NativeResult, NativeSearchResponse, NativeSuggestion,
+    NativeUnresponsiveEngine,
 };
 use crate::serialize::{ProxySettings, signed_proxy_url};
 
@@ -48,9 +50,36 @@ impl NativeSearchResponse {
                 })
                 .collect(),
             engine_data: container.engine_data.clone(),
+            continuation: container.continuation.as_str().to_string(),
+            outcome: container.outcome.as_str().to_string(),
+            operator_notes: container.operator_notes.clone(),
+            elapsed_ms: container.elapsed_ms,
+            interpretation: map_interpretation(query),
         };
         apply_proxies(&mut response, proxies);
         response
+    }
+}
+
+fn map_interpretation(query: &str) -> NativeInterpretation {
+    let parsed = interpret(query);
+    NativeInterpretation {
+        intent: parsed.intent.as_str().to_string(),
+        confidence: f64::from(parsed.confidence),
+        source: parsed.source.as_str().to_string(),
+        site: parsed.operators.site,
+        filetype: parsed.operators.filetype,
+        phrases: parsed.operators.phrases,
+        excluded: parsed.operators.excluded,
+        residual: parsed.residual,
+        entities: parsed
+            .entities
+            .into_iter()
+            .map(|entity| NativeEntity {
+                kind: entity.kind,
+                value: entity.value,
+            })
+            .collect(),
     }
 }
 
@@ -259,6 +288,11 @@ fn map_interactive(interactive: &InteractiveAnswer) -> NativeInteractiveAnswer {
             wind_kmph,
             wind_dir,
             humidity,
+            observation_time,
+            forecast_date,
+            forecast_summary,
+            forecast_temp_c,
+            forecast_temp_f,
         } => NativeInteractiveAnswer::Weather {
             place: place.clone(),
             description: description.clone(),
@@ -268,6 +302,11 @@ fn map_interactive(interactive: &InteractiveAnswer) -> NativeInteractiveAnswer {
             wind_kmph: wind_kmph.clone(),
             wind_dir: wind_dir.clone(),
             humidity: humidity.clone(),
+            observation_time: observation_time.clone(),
+            forecast_date: forecast_date.clone(),
+            forecast_summary: forecast_summary.clone(),
+            forecast_temp_c: forecast_temp_c.clone(),
+            forecast_temp_f: forecast_temp_f.clone(),
         },
         InteractiveAnswer::SelfInfo { kind, value } => NativeInteractiveAnswer::SelfInfo {
             kind: kind.clone(),
@@ -638,7 +677,7 @@ mod tests {
                 category: "general",
             },
         );
-        assert_eq!(response.schema_version, 2);
+        assert_eq!(response.schema_version, NATIVE_SCHEMA_VERSION);
         assert_eq!(response.number_of_results, 42);
         assert_eq!(response.results.len(), 6);
         assert!(matches!(response.results[0], NativeResult::Main { .. }));
@@ -737,7 +776,7 @@ mod tests {
         );
         assert_eq!(response.schema_version, NATIVE_SCHEMA_VERSION);
         let json = serde_json::to_value(&response).unwrap();
-        assert_eq!(json["schema_version"], 2);
+        assert_eq!(json["schema_version"], NATIVE_SCHEMA_VERSION);
         assert_eq!(json["number_of_results"], 0);
     }
 }

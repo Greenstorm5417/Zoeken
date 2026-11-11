@@ -52,7 +52,13 @@ function splitEquation(text: string): [string, string] | null {
 }
 
 /** Instant answer card — interactive widgets when `interactive` is present. */
-export function InstantAnswerCard({ answer }: { answer: SearchAnswer }) {
+export function InstantAnswerCard({
+	answer,
+	query = "",
+}: {
+	answer: SearchAnswer;
+	query?: string;
+}) {
 	const interactive = answer.interactive;
 	switch (interactive?.type) {
 		case "unit":
@@ -62,7 +68,9 @@ export function InstantAnswerCard({ answer }: { answer: SearchAnswer }) {
 		case "calculator":
 			return <CalculatorAnswer answer={answer} initial={interactive} />;
 		case "weather":
-			return <WeatherAnswer answer={answer} initial={interactive} />;
+			return (
+				<WeatherAnswer answer={answer} initial={interactive} query={query} />
+			);
 		case "self_info":
 			return <SelfInfoAnswer answer={answer} initial={interactive} />;
 		case "crypto":

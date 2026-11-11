@@ -23,21 +23,49 @@ export function editDistance(a: string, b: string, max = 2): number {
 	return prev[y.length];
 }
 
+/** Quoted phrases, operators, and technical tokens are not auto-corrected. */
+export function correctionProtected(query: string): boolean {
+	const q = query.trim();
+	if (!q) return true;
+	if (
+		q.includes('"') ||
+		/\b(?:site|filetype):/i.test(q) ||
+		/(^|\s)[!][A-Za-z0-9]/.test(q)
+	) {
+		return true;
+	}
+	const tokens = q.split(/\s+/);
+	if (tokens.some((token) => /[+#_:.]|\d/.test(token))) return true;
+	return tokens.slice(1).some((token) => /^[A-Z][\p{L}'-]{2,}$/u.test(token));
+}
+
 /**
- * Pick a close autocomplete alternative. Limitation: only works when
- * autocomplete is on and returns a near neighbor — no offline dictionary.
+ * Closest autocomplete alternative, not merely the first one within distance 2.
+ * Returns null when the query should be left exactly as typed.
  */
 export function pickDidYouMean(
 	query: string,
 	suggestions: string[],
 ): string | null {
 	const q = query.trim();
-	if (!q || suggestions.length === 0) return null;
+	if (!q || suggestions.length === 0 || correctionProtected(q)) return null;
 	const lower = q.toLowerCase();
-	for (const raw of suggestions) {
-		const s = raw.trim();
-		if (!s || s.toLowerCase() === lower) continue;
-		if (editDistance(q, s, 2) <= 2) return s;
+	let bestText: string | null = null;
+	let bestDistance = 3;
+	let bestIndex = Number.POSITIVE_INFINITY;
+	for (let index = 0; index < suggestions.length; index += 1) {
+		const text = suggestions[index]?.trim() ?? "";
+		if (!text || text.toLowerCase() === lower) continue;
+		const distance = editDistance(q, text, 2);
+		if (distance > 2) continue;
+		if (
+			distance < bestDistance ||
+			(distance === bestDistance && index < bestIndex)
+		) {
+			bestText = text;
+			bestDistance = distance;
+			bestIndex = index;
+		}
 	}
-	return null;
+	return bestText;
 }

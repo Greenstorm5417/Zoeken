@@ -1,0 +1,3288 @@
+[
+  {
+    "id": "nav-01",
+    "q": "rust-lang.org",
+    "bucket": "navigation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [
+      "https://www.rust-lang.org/"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://www.rust-lang.org/",
+        "title": "The Rust Programming Language",
+        "snippet": "Official site rust-lang.org"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "nav-02",
+    "q": "github.com",
+    "bucket": "navigation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [
+      "https://github.com/"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://github.com/",
+        "title": "GitHub",
+        "snippet": "Official site github.com"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "nav-03",
+    "q": "wikipedia.org",
+    "bucket": "navigation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [
+      "https://www.wikipedia.org/"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://www.wikipedia.org/",
+        "title": "Wikipedia",
+        "snippet": "Official site wikipedia.org"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "nav-04",
+    "q": "docs.rs",
+    "bucket": "navigation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [
+      "https://docs.rs/"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://docs.rs/",
+        "title": "Docs.rs",
+        "snippet": "Official site docs.rs"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "nav-05",
+    "q": "developer.mozilla.org",
+    "bucket": "navigation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [
+      "https://developer.mozilla.org/"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://developer.mozilla.org/",
+        "title": "MDN Web Docs",
+        "snippet": "Official site developer.mozilla.org"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "nav-06",
+    "q": "python.org",
+    "bucket": "navigation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [
+      "https://www.python.org/"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://www.python.org/",
+        "title": "Python.org",
+        "snippet": "Official site python.org"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "nav-07",
+    "q": "crates.io",
+    "bucket": "navigation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [
+      "https://crates.io/"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://crates.io/",
+        "title": "crates.io",
+        "snippet": "Official site crates.io"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "nav-08",
+    "q": "news.ycombinator.com",
+    "bucket": "navigation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [
+      "https://news.ycombinator.com/"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://news.ycombinator.com/",
+        "title": "Hacker News",
+        "snippet": "Official site news.ycombinator.com"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "nav-09",
+    "q": "archlinux.org",
+    "bucket": "navigation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [
+      "https://archlinux.org/"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://archlinux.org/",
+        "title": "Arch Linux",
+        "snippet": "Official site archlinux.org"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "nav-10",
+    "q": "npmjs.com",
+    "bucket": "navigation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [
+      "https://www.npmjs.com/"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://www.npmjs.com/",
+        "title": "npm",
+        "snippet": "Official site npmjs.com"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "nav-phrase-01",
+    "q": "python official site",
+    "bucket": "navigation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "nav-phrase-02",
+    "q": "rust official website",
+    "bucket": "navigation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "nav-phrase-03",
+    "q": "debian homepage",
+    "bucket": "navigation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "nav-phrase-04",
+    "q": "login github",
+    "bucket": "navigation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "nav-phrase-05",
+    "q": "login paypal",
+    "bucket": "navigation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "prog-01",
+    "q": "cannot borrow as mutable error",
+    "bucket": "programming",
+    "intent": "technical",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [
+      "https://doc.rust-lang.org/error-codes/E0596.html"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://doc.rust-lang.org/error-codes/E0596.html",
+        "title": "cannot borrow as mutable",
+        "snippet": "cannot borrow as mutable error"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "prog-02",
+    "q": "TypeError: x is not a function",
+    "bucket": "programming",
+    "intent": "technical",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [
+      "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors",
+        "title": "TypeError is not a function",
+        "snippet": "TypeError: x is not a function"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "prog-03",
+    "q": "thread 'main' panicked at",
+    "bucket": "programming",
+    "intent": "technical",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [
+      "https://doc.rust-lang.org/book/ch09-01-unrecoverable-errors-with-panic.html"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://doc.rust-lang.org/book/ch09-01-unrecoverable-errors-with-panic.html",
+        "title": "panic",
+        "snippet": "thread 'main' panicked at"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "prog-04",
+    "q": "undefined reference to main",
+    "bucket": "programming",
+    "intent": "technical",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [
+      "https://stackoverflow.com/questions/12573816"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://stackoverflow.com/questions/12573816",
+        "title": "undefined reference",
+        "snippet": "undefined reference to main"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "prog-05",
+    "q": "cargo build failed",
+    "bucket": "programming",
+    "intent": "technical",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [
+      "https://doc.rust-lang.org/cargo/commands/cargo-build.html"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://doc.rust-lang.org/cargo/commands/cargo-build.html",
+        "title": "cargo build",
+        "snippet": "cargo build failed"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "prog-06",
+    "q": "std::vector out of range",
+    "bucket": "programming",
+    "intent": "technical",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [
+      "https://en.cppreference.com/w/cpp/container/vector"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://en.cppreference.com/w/cpp/container/vector",
+        "title": "std::vector",
+        "snippet": "std::vector out of range"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "prog-07",
+    "q": "SyntaxError unexpected token",
+    "bucket": "programming",
+    "intent": "technical",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [
+      "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors",
+        "title": "SyntaxError",
+        "snippet": "SyntaxError unexpected token"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "prog-08",
+    "q": "nullpointerexception android",
+    "bucket": "programming",
+    "intent": "technical",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [
+      "https://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html",
+        "title": "NullPointerException",
+        "snippet": "nullpointerexception android"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "prog-09",
+    "q": "errno 111 connection refused",
+    "bucket": "programming",
+    "intent": "technical",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [
+      "https://man7.org/linux/man-pages/man3/errno.3.html"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://man7.org/linux/man-pages/man3/errno.3.html",
+        "title": "errno",
+        "snippet": "errno 111 connection refused"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "prog-10",
+    "q": "npm err code e404",
+    "bucket": "programming",
+    "intent": "technical",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [
+      "https://docs.npmjs.com/cli/v10/using-npm/registry"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://docs.npmjs.com/cli/v10/using-npm/registry",
+        "title": "npm ERR",
+        "snippet": "npm err code e404"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "prog-11",
+    "q": "segfault in rust",
+    "bucket": "programming",
+    "intent": "technical",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [
+      "https://doc.rust-lang.org/nomicon/"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://doc.rust-lang.org/nomicon/",
+        "title": "segfault",
+        "snippet": "segfault in rust"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "prog-12",
+    "q": "stackoverflow rust lifetimes",
+    "bucket": "programming",
+    "intent": "technical",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [
+      "https://stackoverflow.com/questions/tagged/rust"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://stackoverflow.com/questions/tagged/rust",
+        "title": "stack overflow",
+        "snippet": "stackoverflow rust lifetimes"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/page",
+        "title": "Unrelated",
+        "snippet": "nothing matching this query"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fact-01",
+    "q": "who invented the telephone",
+    "bucket": "factual",
+    "intent": "factual",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fact-02",
+    "q": "what is the capital of france",
+    "bucket": "factual",
+    "intent": "factual",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fact-03",
+    "q": "when did the berlin wall fall",
+    "bucket": "factual",
+    "intent": "factual",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fact-04",
+    "q": "where is the eiffel tower",
+    "bucket": "factual",
+    "intent": "factual",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fact-05",
+    "q": "why is the sky blue",
+    "bucket": "factual",
+    "intent": "factual",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fact-06",
+    "q": "how do magnets work",
+    "bucket": "factual",
+    "intent": "factual",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fact-07",
+    "q": "which planet is largest",
+    "bucket": "factual",
+    "intent": "factual",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fact-08",
+    "q": "who wrote pride and prejudice",
+    "bucket": "factual",
+    "intent": "factual",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fact-09",
+    "q": "what year did the titanic sink",
+    "bucket": "factual",
+    "intent": "factual",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fact-10",
+    "q": "how tall is mount everest",
+    "bucket": "factual",
+    "intent": "factual",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fact-11",
+    "q": "qué es la capital de francia",
+    "bucket": "factual",
+    "intent": "factual",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fact-12",
+    "q": "was ist die hauptstadt von deutschland",
+    "bucket": "factual",
+    "intent": "factual",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fact-13",
+    "q": "qui a écrit les misérables",
+    "bucket": "factual",
+    "intent": "factual",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fact-14",
+    "q": "when was the moon landing?",
+    "bucket": "factual",
+    "intent": "factual",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "miss-01",
+    "q": "pythn",
+    "bucket": "misspelling",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "miss-02",
+    "q": "wikipeda",
+    "bucket": "misspelling",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "miss-03",
+    "q": "githb",
+    "bucket": "misspelling",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "miss-04",
+    "q": "recieve",
+    "bucket": "misspelling",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "miss-05",
+    "q": "seperate definition",
+    "bucket": "misspelling",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "miss-06",
+    "q": "javascrpt",
+    "bucket": "misspelling",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "miss-07",
+    "q": "linx kernel",
+    "bucket": "misspelling",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "miss-08",
+    "q": "rustlang",
+    "bucket": "misspelling",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "miss-09",
+    "q": "duckdukgo",
+    "bucket": "misspelling",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "miss-10",
+    "q": "stackoverflw",
+    "bucket": "misspelling",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "miss-11",
+    "q": "arch linx",
+    "bucket": "misspelling",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "miss-12",
+    "q": "typescirpt",
+    "bucket": "misspelling",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "multi-01",
+    "q": "wetter berlin",
+    "bucket": "multilingual",
+    "intent": "weather",
+    "role": "label",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": "berlin",
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "multi-02",
+    "q": "météo paris",
+    "bucket": "multilingual",
+    "intent": "weather",
+    "role": "label",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "multi-03",
+    "q": "meteo lyon",
+    "bucket": "multilingual",
+    "intent": "weather",
+    "role": "label",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "multi-04",
+    "q": "東京 天気",
+    "bucket": "multilingual",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "multi-05",
+    "q": "café au lait",
+    "bucket": "multilingual",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "multi-06",
+    "q": "naïve bayes classifier",
+    "bucket": "multilingual",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "multi-07",
+    "q": "¿qué hora es",
+    "bucket": "multilingual",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "multi-08",
+    "q": "straße berlin",
+    "bucket": "multilingual",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "multi-09",
+    "q": " São Paulo população",
+    "bucket": "multilingual",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "multi-10",
+    "q": "Москва погода",
+    "bucket": "multilingual",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "multi-11",
+    "q": "hello in spanish",
+    "bucket": "multilingual",
+    "intent": "translation",
+    "role": "label",
+    "positive": [
+      "translate"
+    ],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "multi-12",
+    "q": "bonjour in english",
+    "bucket": "multilingual",
+    "intent": "translation",
+    "role": "label",
+    "positive": [
+      "translate"
+    ],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "multi-13",
+    "q": "danke in french",
+    "bucket": "multilingual",
+    "intent": "translation",
+    "role": "label",
+    "positive": [
+      "translate"
+    ],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "multi-14",
+    "q": "arigato in english",
+    "bucket": "multilingual",
+    "intent": "translation",
+    "role": "label",
+    "positive": [
+      "translate"
+    ],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "punct-01",
+    "q": "C++",
+    "bucket": "punctuation",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "punct-02",
+    "q": "C#",
+    "bucket": "punctuation",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "punct-03",
+    "q": ".NET",
+    "bucket": "punctuation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "punct-04",
+    "q": "C++ vs C#",
+    "bucket": "punctuation",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "punct-05",
+    "q": "node.js",
+    "bucket": "punctuation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "punct-06",
+    "q": "foo_bar",
+    "bucket": "punctuation",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "punct-07",
+    "q": "1.84.0",
+    "bucket": "punctuation",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "punct-08",
+    "q": "\"async trait\"",
+    "bucket": "punctuation",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "punct-09",
+    "q": "std::vector",
+    "bucket": "punctuation",
+    "intent": "technical",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "punct-10",
+    "q": "error[E0308]",
+    "bucket": "punctuation",
+    "intent": "technical",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "punct-11",
+    "q": "user@example.com",
+    "bucket": "punctuation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "punct-12",
+    "q": "¿",
+    "bucket": "punctuation",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fresh-01",
+    "q": "latest rust release",
+    "bucket": "fresh",
+    "intent": "fresh",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fresh-02",
+    "q": "breaking news ukraine",
+    "bucket": "fresh",
+    "intent": "fresh",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fresh-03",
+    "q": "election results today",
+    "bucket": "fresh",
+    "intent": "fresh",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fresh-04",
+    "q": "this week in rust",
+    "bucket": "fresh",
+    "intent": "fresh",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fresh-05",
+    "q": "linux kernel news",
+    "bucket": "fresh",
+    "intent": "fresh",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fresh-06",
+    "q": "today's weather",
+    "bucket": "fresh",
+    "intent": "weather",
+    "role": "label",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fresh-07",
+    "q": "latest forecast",
+    "bucket": "fresh",
+    "intent": "weather",
+    "role": "label",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fresh-08",
+    "q": "this month in history",
+    "bucket": "fresh",
+    "intent": "fresh",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fresh-09",
+    "q": "breaking: compiler error",
+    "bucket": "fresh",
+    "intent": "technical",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "fresh-10",
+    "q": "headlines today",
+    "bucket": "fresh",
+    "intent": "fresh",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "wx-01",
+    "q": "weather in paris",
+    "bucket": "weather",
+    "intent": "weather",
+    "role": "label",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": "paris",
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "wx-02",
+    "q": "weather tomorrow in Paris, Texas",
+    "bucket": "weather",
+    "intent": "weather",
+    "role": "label",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": "Paris, Texas",
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "wx-03",
+    "q": "forecast london",
+    "bucket": "weather",
+    "intent": "weather",
+    "role": "label",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": "london",
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "wx-04",
+    "q": "weather berlin tomorrow",
+    "bucket": "weather",
+    "intent": "weather",
+    "role": "label",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": "berlin",
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "wx-05",
+    "q": "what's the weather in oslo",
+    "bucket": "weather",
+    "intent": "weather",
+    "role": "label",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": "oslo",
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "wx-06",
+    "q": "wetter münchen",
+    "bucket": "weather",
+    "intent": "weather",
+    "role": "label",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": "münchen",
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "wx-07",
+    "q": "weather",
+    "bucket": "weather",
+    "intent": "weather",
+    "role": "label",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "wx-08",
+    "q": "forecast",
+    "bucket": "weather",
+    "intent": "weather",
+    "role": "label",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "wx-09",
+    "q": "weather tonight in kyoto",
+    "bucket": "weather",
+    "intent": "weather",
+    "role": "label",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": "kyoto",
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "wx-10",
+    "q": "paris weather",
+    "bucket": "weather",
+    "intent": "weather",
+    "role": "label",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": "paris",
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "def-01",
+    "q": "define serendipity",
+    "bucket": "definition",
+    "intent": "definition",
+    "role": "label",
+    "positive": [
+      "dictionary"
+    ],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "def-02",
+    "q": "definition of idempotent",
+    "bucket": "definition",
+    "intent": "definition",
+    "role": "label",
+    "positive": [
+      "dictionary"
+    ],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "def-03",
+    "q": "what does ephemeral mean",
+    "bucket": "definition",
+    "intent": "definition",
+    "role": "label",
+    "positive": [
+      "dictionary"
+    ],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "def-04",
+    "q": "meaning of erstwhile",
+    "bucket": "definition",
+    "intent": "definition",
+    "role": "label",
+    "positive": [
+      "dictionary"
+    ],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "def-05",
+    "q": "define rustacean",
+    "bucket": "definition",
+    "intent": "definition",
+    "role": "label",
+    "positive": [
+      "dictionary"
+    ],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "def-06",
+    "q": "définition de bonjour",
+    "bucket": "definition",
+    "intent": "definition",
+    "role": "label",
+    "positive": [
+      "dictionary"
+    ],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "def-07",
+    "q": "definicion de casa",
+    "bucket": "definition",
+    "intent": "definition",
+    "role": "label",
+    "positive": [
+      "dictionary"
+    ],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "def-08",
+    "q": "what does ffi mean",
+    "bucket": "definition",
+    "intent": "definition",
+    "role": "label",
+    "positive": [
+      "dictionary"
+    ],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "tr-01",
+    "q": "translate hello to spanish",
+    "bucket": "translation",
+    "intent": "translation",
+    "role": "label",
+    "positive": [
+      "translate"
+    ],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "tr-02",
+    "q": "how do you say thanks in japanese",
+    "bucket": "translation",
+    "intent": "translation",
+    "role": "label",
+    "positive": [
+      "translate"
+    ],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "tr-03",
+    "q": "how to say goodbye in german",
+    "bucket": "translation",
+    "intent": "translation",
+    "role": "label",
+    "positive": [
+      "translate"
+    ],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "tr-04",
+    "q": "translate bonjour to english",
+    "bucket": "translation",
+    "intent": "translation",
+    "role": "label",
+    "positive": [
+      "translate"
+    ],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "tr-05",
+    "q": "how do you say please in dutch",
+    "bucket": "translation",
+    "intent": "translation",
+    "role": "label",
+    "positive": [
+      "translate"
+    ],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "tr-06",
+    "q": "translate hello",
+    "bucket": "translation",
+    "intent": "translation",
+    "role": "label",
+    "positive": [
+      "translate"
+    ],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "tr-07",
+    "q": "in italian ciao",
+    "bucket": "translation",
+    "intent": "translation",
+    "role": "label",
+    "positive": [
+      "translate"
+    ],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "tr-08",
+    "q": "say cheese in french",
+    "bucket": "translation",
+    "intent": "translation",
+    "role": "label",
+    "positive": [
+      "translate"
+    ],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "math-01",
+    "q": "2 + 2",
+    "bucket": "arithmetic",
+    "intent": "arithmetic",
+    "role": "label",
+    "positive": [
+      "calculator"
+    ],
+    "negative": [
+      "weather"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "math-02",
+    "q": "17 times 4",
+    "bucket": "arithmetic",
+    "intent": "arithmetic",
+    "role": "label",
+    "positive": [
+      "calculator"
+    ],
+    "negative": [
+      "weather"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "math-03",
+    "q": "(12*8)+3",
+    "bucket": "arithmetic",
+    "intent": "arithmetic",
+    "role": "label",
+    "positive": [
+      "calculator"
+    ],
+    "negative": [
+      "weather"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "math-04",
+    "q": "100 / 4",
+    "bucket": "arithmetic",
+    "intent": "arithmetic",
+    "role": "label",
+    "positive": [
+      "calculator"
+    ],
+    "negative": [
+      "weather"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "math-05",
+    "q": "9 - 3",
+    "bucket": "arithmetic",
+    "intent": "arithmetic",
+    "role": "label",
+    "positive": [
+      "calculator"
+    ],
+    "negative": [
+      "weather"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "math-06",
+    "q": "2 ^ 8",
+    "bucket": "arithmetic",
+    "intent": "general",
+    "role": "trap",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "math-07",
+    "q": "plus 5",
+    "bucket": "arithmetic",
+    "intent": "arithmetic",
+    "role": "label",
+    "positive": [
+      "calculator"
+    ],
+    "negative": [
+      "weather"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "math-08",
+    "q": "3 modulo 2",
+    "bucket": "arithmetic",
+    "intent": "arithmetic",
+    "role": "label",
+    "positive": [
+      "calculator"
+    ],
+    "negative": [
+      "weather"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "math-09",
+    "q": "C++ 2 + 2",
+    "bucket": "arithmetic",
+    "intent": "arithmetic",
+    "role": "label",
+    "positive": [
+      "calculator"
+    ],
+    "negative": [
+      "weather"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "math-10",
+    "q": "2 fast 2 furious",
+    "bucket": "arithmetic",
+    "intent": "general",
+    "role": "trap",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "math-11",
+    "q": "version 1.84.0",
+    "bucket": "arithmetic",
+    "intent": "general",
+    "role": "trap",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "math-12",
+    "q": "100%",
+    "bucket": "arithmetic",
+    "intent": "general",
+    "role": "trap",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "unit-01",
+    "q": "5 km in miles",
+    "bucket": "conversion",
+    "intent": "conversion",
+    "role": "label",
+    "positive": [
+      "unit"
+    ],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "unit-02",
+    "q": "32 fahrenheit to celsius",
+    "bucket": "conversion",
+    "intent": "conversion",
+    "role": "label",
+    "positive": [
+      "unit"
+    ],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "unit-03",
+    "q": "10 kg to pounds",
+    "bucket": "conversion",
+    "intent": "conversion",
+    "role": "label",
+    "positive": [
+      "unit"
+    ],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "unit-04",
+    "q": "2 liters in gallons",
+    "bucket": "conversion",
+    "intent": "conversion",
+    "role": "label",
+    "positive": [
+      "unit"
+    ],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "unit-05",
+    "q": "100 km/h in mph",
+    "bucket": "conversion",
+    "intent": "conversion",
+    "role": "label",
+    "positive": [
+      "unit"
+    ],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "unit-06",
+    "q": "6 feet in meters",
+    "bucket": "conversion",
+    "intent": "conversion",
+    "role": "label",
+    "positive": [
+      "unit"
+    ],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "unit-07",
+    "q": "3 cups in gallons",
+    "bucket": "conversion",
+    "intent": "conversion",
+    "role": "label",
+    "positive": [
+      "unit"
+    ],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "unit-08",
+    "q": "2 miles",
+    "bucket": "conversion",
+    "intent": "general",
+    "role": "trap",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "op-01",
+    "q": "site:docs.rs async trait",
+    "bucket": "operators",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": "docs.rs",
+    "filetype": null
+  },
+  {
+    "id": "op-02",
+    "q": "filetype:pdf rust book",
+    "bucket": "operators",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": "pdf"
+  },
+  {
+    "id": "op-03",
+    "q": "site:github.com filetype:md readme",
+    "bucket": "operators",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": "github.com",
+    "filetype": "md"
+  },
+  {
+    "id": "op-04",
+    "q": "site:stackoverflow.com \"cannot borrow\"",
+    "bucket": "operators",
+    "intent": "technical",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": "stackoverflow.com",
+    "filetype": null
+  },
+  {
+    "id": "op-05",
+    "q": "rust -sponsor",
+    "bucket": "operators",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "op-06",
+    "q": "-stdlib c++",
+    "bucket": "operators",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "op-07",
+    "q": "\"exact error\" site:doc.rust-lang.org",
+    "bucket": "operators",
+    "intent": "technical",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": "doc.rust-lang.org",
+    "filetype": null
+  },
+  {
+    "id": "op-08",
+    "q": "filetype:html weather",
+    "bucket": "operators",
+    "intent": "weather",
+    "role": "label",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": "html"
+  },
+  {
+    "id": "op-09",
+    "q": "site:example.com",
+    "bucket": "operators",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": "example.com",
+    "filetype": null
+  },
+  {
+    "id": "op-10",
+    "q": "python -django",
+    "bucket": "operators",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "op-11",
+    "q": "\"null pointer\" -java",
+    "bucket": "operators",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "op-12",
+    "q": "site:en.wikipedia.org paris",
+    "bucket": "operators",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": "en.wikipedia.org",
+    "filetype": null
+  },
+  {
+    "id": "para-01",
+    "q": "how's the sky in paris",
+    "bucket": "paraphrase",
+    "intent": "weather",
+    "role": "paraphrase",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "para-02",
+    "q": "raining in seattle tonight",
+    "bucket": "paraphrase",
+    "intent": "weather",
+    "role": "paraphrase",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "para-03",
+    "q": "sky in tokyo tomorrow",
+    "bucket": "paraphrase",
+    "intent": "weather",
+    "role": "paraphrase",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "para-04",
+    "q": "how's the sky in austin",
+    "bucket": "paraphrase",
+    "intent": "weather",
+    "role": "paraphrase",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "para-05",
+    "q": "raining in london",
+    "bucket": "paraphrase",
+    "intent": "weather",
+    "role": "paraphrase",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "para-06",
+    "q": "sky in oslo",
+    "bucket": "paraphrase",
+    "intent": "weather",
+    "role": "paraphrase",
+    "positive": [
+      "weather"
+    ],
+    "negative": [
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "trap-01",
+    "q": "umbrella in the logo",
+    "bucket": "trap",
+    "intent": "general",
+    "role": "trap",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "trap-02",
+    "q": "the sky's the limit in paris",
+    "bucket": "trap",
+    "intent": "general",
+    "role": "trap",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "trap-03",
+    "q": "meeting in paris tomorrow",
+    "bucket": "trap",
+    "intent": "general",
+    "role": "trap",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "trap-04",
+    "q": "sky news",
+    "bucket": "trap",
+    "intent": "fresh",
+    "role": "trap",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "trap-05",
+    "q": "2 fast 2 furious soundtrack",
+    "bucket": "trap",
+    "intent": "general",
+    "role": "trap",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "trap-06",
+    "q": "C++ reference",
+    "bucket": "trap",
+    "intent": "general",
+    "role": "trap",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "trap-07",
+    "q": "C# records",
+    "bucket": "trap",
+    "intent": "general",
+    "role": "trap",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "trap-08",
+    "q": "umbrella company in london",
+    "bucket": "trap",
+    "intent": "general",
+    "role": "trap",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator",
+      "unit"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "dup-01",
+    "q": "rust-lang.org",
+    "bucket": "navigation",
+    "intent": "navigational",
+    "role": "label",
+    "positive": [],
+    "negative": [],
+    "relevant": [
+      "https://www.rust-lang.org/"
+    ],
+    "hits": [
+      {
+        "engine": "alpha",
+        "weight": 1.0,
+        "url": "https://www.rust-lang.org/",
+        "title": "Rust",
+        "snippet": "official"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://www.rust-lang.org/",
+        "title": "Rust",
+        "snippet": "official mirror listing"
+      },
+      {
+        "engine": "beta",
+        "weight": 1.0,
+        "url": "https://unrelated.example/rust",
+        "title": "Unrelated",
+        "snippet": "not the site"
+      }
+    ],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "empty-01",
+    "q": "zzzzqqqq nonesuch token",
+    "bucket": "empty",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [
+      "weather",
+      "calculator"
+    ],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  },
+  {
+    "id": "empty-02",
+    "q": "another missing page query",
+    "bucket": "empty",
+    "intent": "general",
+    "role": "label",
+    "positive": [],
+    "negative": [],
+    "relevant": [],
+    "hits": [],
+    "place": null,
+    "site": null,
+    "filetype": null
+  }
+]

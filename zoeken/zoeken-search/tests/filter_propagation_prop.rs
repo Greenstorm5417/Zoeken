@@ -52,17 +52,11 @@ proptest! {
     ) {
         let tailored = engine_query_view(&base, &meta);
 
-        if meta.safesearch {
-            prop_assert_eq!(tailored.safesearch, base.safesearch);
-        } else {
-            prop_assert_eq!(tailored.safesearch, SafeSearch::Off);
-        }
-
-        if meta.time_range_support {
-            prop_assert_eq!(tailored.time_range, base.time_range);
-        } else {
-            prop_assert_eq!(tailored.time_range, None);
-        }
+        // Support flags do not strip the user's SafeSearch or time range.
+        prop_assert_eq!(tailored.safesearch, base.safesearch);
+        prop_assert_eq!(tailored.time_range, base.time_range);
+        let _ = meta.safesearch;
+        let _ = meta.time_range_support;
 
         prop_assert_eq!(&tailored.query, &base.query);
         prop_assert_eq!(tailored.pageno, base.pageno);

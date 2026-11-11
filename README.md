@@ -64,6 +64,22 @@ uv run --no-project --python 3.13 tools/compare_searxng.py live \
 
 ## Benchmarks
 
+Daily-search regression (fixture judgments, not live quality):
+
+```sh
+cargo test -p zoeken-search --test daily_quality -- --nocapture
+# Opt-in live latency and empty rate. Does not score relevance.
+ZOEK_LIVE_URL=http://127.0.0.1:8888 uv run --no-project --python 3.13 tools/daily_search_report.py
+```
+
+The fixture lives at `zoeken/zoeken-search/tests/fixtures/daily_queries.json`.
+Ranking fusion stays weight-over-position. Title/snippet reranking stays off
+unless `ZOEK_SEMANTIC_RERANK=1`; the representative evaluation did not raise
+MRR. The intent model stays on only while the disjoint holdout beats the rules
+without trap false positives. See
+[docs/plans/daily-search-baseline.md](docs/plans/daily-search-baseline.md)
+and [tools/README.md](tools/README.md).
+
 ```sh
 # Rust Criterion (HTML under target/criterion/)
 cargo bench -p zoeken-search

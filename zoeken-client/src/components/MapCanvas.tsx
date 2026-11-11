@@ -1,29 +1,7 @@
 import { useEffect, useRef } from "react";
-import type { SearchResult } from "#/lib/api";
+import type { MapPoint } from "#/lib/coords";
 
-export type MapPoint = {
-	lat: number;
-	lon: number;
-	title: string;
-	url: string;
-};
-
-/** Pull mlat/mlon (or lat/lon) query params from a result URL. */
-export function coordsFromResult(result: SearchResult): MapPoint | null {
-	try {
-		const u = new URL(result.url);
-		const lat = Number(
-			u.searchParams.get("mlat") ?? u.searchParams.get("lat") ?? "",
-		);
-		const lon = Number(
-			u.searchParams.get("mlon") ?? u.searchParams.get("lon") ?? "",
-		);
-		if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
-		return { lat, lon, title: result.title, url: result.url };
-	} catch {
-		return null;
-	}
-}
+export type { MapPoint };
 
 type LeafletMap = {
 	remove: () => void;

@@ -21,6 +21,8 @@
 # Frontend perf artifacts
 /zoeken-client/lighthouse-report.html
 /zoeken-client/sitespeed-result/
+/zoeken-client/test-results/
+/zoeken-client/playwright-report/
 /target/perf/
 flamegraph.svg
 perf.data*

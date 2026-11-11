@@ -5,7 +5,7 @@ use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
 use ts_rs::TS;
 
-pub const NATIVE_SCHEMA_VERSION: u32 = 2;
+pub const NATIVE_SCHEMA_VERSION: u32 = 3;
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, TS)]
 pub struct NativeSearchRequest {
@@ -41,6 +41,52 @@ pub struct NativeSearchResponse {
     pub infoboxes: Vec<NativeInfobox>,
     pub unresponsive_engines: Vec<NativeUnresponsiveEngine>,
     pub engine_data: HashMap<String, String>,
+    /// `more` when paging engines returned results, `unknown` when the next
+    /// page cannot be known, `exhausted` when nobody can page.
+    #[serde(default = "default_continuation")]
+    pub continuation: String,
+    /// `ok`, `no_matches`, `no_engines`, `partial`, `failed`, or `rate_limited`.
+    #[serde(default = "default_outcome")]
+    pub outcome: String,
+    #[serde(default)]
+    pub operator_notes: Vec<String>,
+    #[serde(default)]
+    #[ts(type = "number")]
+    pub elapsed_ms: u64,
+    #[serde(default)]
+    pub interpretation: NativeInterpretation,
+}
+
+fn default_continuation() -> String {
+    "unknown".to_string()
+}
+
+fn default_outcome() -> String {
+    "ok".to_string()
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, TS, Default)]
+pub struct NativeInterpretation {
+    pub intent: String,
+    pub confidence: f64,
+    pub source: String,
+    #[serde(default)]
+    pub site: Option<String>,
+    #[serde(default)]
+    pub filetype: Option<String>,
+    #[serde(default)]
+    pub phrases: Vec<String>,
+    #[serde(default)]
+    pub excluded: Vec<String>,
+    pub residual: String,
+    #[serde(default)]
+    pub entities: Vec<NativeEntity>,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, TS, Default)]
+pub struct NativeEntity {
+    pub kind: String,
+    pub value: String,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, TS)]
@@ -204,6 +250,16 @@ pub enum NativeInteractiveAnswer {
         wind_kmph: String,
         wind_dir: String,
         humidity: String,
+        #[serde(default)]
+        observation_time: String,
+        #[serde(default)]
+        forecast_date: String,
+        #[serde(default)]
+        forecast_summary: String,
+        #[serde(default)]
+        forecast_temp_c: String,
+        #[serde(default)]
+        forecast_temp_f: String,
     },
     SelfInfo {
         kind: String,

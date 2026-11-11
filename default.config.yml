@@ -140,7 +140,13 @@ outgoing:
   # max_request_timeout when set). One slow/hanging engine therefore stretches
   # wall time toward this value even when faster engines already returned.
   # Keep short to bound that wait. Distinct from deployment.request_timeout_seconds
-  # (client → Zoeken HTTP timeout).
+  # (client → Zoeken HTTP timeout). A 2026-11-11 sample of six searches against
+  # this default (tools/provider_latency_sample.py) measured wall p50 856 ms and
+  # max 3008 ms. Brave averaged 0.672 s, Bing 0.224 s, Wikidata 0.501 s.
+  # Captcha and access-denied failures returned in milliseconds. The 3.0 s cap
+  # already bounds the slow tail, and lowering it would cut Wikidata. Not changed.
+  # Superseded searches cancel on the client; the server still waits up to this
+  # ceiling for the engines of a request that was not dropped.
   request_timeout: 3.0
   enable_http2: true
   # true only — verify: false and custom CA paths are rejected at boot

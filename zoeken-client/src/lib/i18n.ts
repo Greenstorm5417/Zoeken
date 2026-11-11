@@ -25,6 +25,41 @@ export type UiStrings = {
 	loadMore: string;
 	endOfResults: string;
 	retry: string;
+	removeTimeFilter: string;
+	searchGeneral: string;
+	siteListUpdated: string;
+	previousPage: string;
+	nextPage: string;
+	quotedPhrases: string;
+	hideSite: string;
+	preferSite: string;
+	showMore: string;
+	showLess: string;
+	hideThisSite: string;
+	imageUnavailable: string;
+	mapNoCoords: string;
+	timeRange: string;
+	anyLanguageRegion: string;
+	pagination: string;
+	unknownPlace: string;
+	currentConditions: string;
+	forecast: string;
+	tomorrowForecastMissing: string;
+	currentNotSubstituted: string;
+	sourcesCanApply: string;
+	skippedSources: string;
+	removeSite: string;
+	hiddenSite: string;
+	preferredSite: string;
+	noPersonalSites: string;
+	previousImage: string;
+	nextImage: string;
+	resolution: string;
+	feelsLike: string;
+	wind: string;
+	humidity: string;
+	activeConstraints: string;
+	observed: string;
 	tooManySearches: string;
 	searchUnavailable: string;
 	typeAQuery: string;
@@ -33,6 +68,13 @@ export type UiStrings = {
 	loadingResults: string;
 	enginesDidntRespond: string;
 	didYouMean: string;
+	resultsRetrieved: string;
+	noEngines: string;
+	noEnginesHint: string;
+	partialSources: string;
+	hiddenAll: string;
+	undo: string;
+	showHidden: string;
 	// Preferences chrome
 	prefsSavedLocally: string;
 	prefsSearch: string;
@@ -102,6 +144,44 @@ const EN: UiStrings = {
 	loadMore: "Load more",
 	endOfResults: "End of results",
 	retry: "Retry",
+	removeTimeFilter: "Remove time filter",
+	searchGeneral: "Search the general category",
+	siteListUpdated: "Site list updated.",
+	previousPage: "Previous",
+	nextPage: "Next",
+	quotedPhrases:
+		"Quoted phrases stay in the query for engines that support them. Zoeken does not check phrase order on retrieved pages.",
+	hideSite: "Hide",
+	preferSite: "Prefer",
+	showMore: "Show more",
+	showLess: "Show less",
+	hideThisSite: "Hide site",
+	imageUnavailable: "Image unavailable",
+	mapNoCoords:
+		"These results don’t include coordinates, so the map stays empty. The list below is still the full result set.",
+	timeRange: "Time range",
+	anyLanguageRegion: "Any language / region",
+	pagination: "Pagination",
+	unknownPlace: "Unknown place",
+	currentConditions: "Current conditions",
+	forecast: "Forecast",
+	tomorrowForecastMissing: "Tomorrow’s forecast isn’t in this response",
+	currentNotSubstituted: "Current conditions are not shown in its place.",
+	sourcesCanApply:
+		"{eligible} of {total} sources in this category can apply the active filters.",
+	skippedSources: "Skipped {names} because they cannot honor them.",
+	removeSite: "Remove",
+	hiddenSite: "Hidden",
+	preferredSite: "Preferred",
+	noPersonalSites: "No personal site rules yet.",
+	previousImage: "Previous image",
+	nextImage: "Next image",
+	resolution: "Resolution",
+	feelsLike: "Feels like",
+	wind: "Wind",
+	humidity: "Humidity",
+	activeConstraints: "Active search constraints",
+	observed: "Observed",
 	tooManySearches: "Too many searches",
 	searchUnavailable: "Search is unavailable",
 	typeAQuery: "Type a query to search.",
@@ -111,6 +191,14 @@ const EN: UiStrings = {
 	loadingResults: "Loading results",
 	enginesDidntRespond: "didn’t respond",
 	didYouMean: "Did you mean",
+	resultsRetrieved: "results retrieved",
+	noEngines: "No sources can run this search",
+	noEnginesHint:
+		"The active filters leave no eligible engines. SafeSearch stays on until you change it.",
+	partialSources: "Some sources didn’t respond",
+	hiddenAll: "Hidden sites removed every result on this page.",
+	undo: "Undo",
+	showHidden: "Show hidden sites",
 	prefsSavedLocally: "Changes are saved to this browser.",
 	prefsSearch: "Search",
 	prefsAppearance: "Appearance",
@@ -182,10 +270,59 @@ const DICTS: Record<string, Partial<UiStrings>> = {
 		loadMore: "Cargar más",
 		endOfResults: "Fin de los resultados",
 		retry: "Reintentar",
+		removeTimeFilter: "Quitar el filtro de tiempo",
+		searchGeneral: "Buscar en la categoría general",
+		siteListUpdated: "Lista de sitios actualizada.",
+		previousPage: "Anterior",
+		nextPage: "Siguiente",
+		quotedPhrases:
+			"Las frases entre comillas se quedan en la consulta de los motores que las admiten. Zoeken no comprueba el orden en las páginas recuperadas.",
+		hideSite: "Ocultar",
+		preferSite: "Preferir",
+		showMore: "Mostrar más",
+		showLess: "Mostrar menos",
+		hideThisSite: "Ocultar sitio",
+		imageUnavailable: "Imagen no disponible",
+		mapNoCoords:
+			"Estos resultados no incluyen coordenadas, así que el mapa queda vacío. La lista de abajo sigue siendo el conjunto completo.",
+		timeRange: "Intervalo de tiempo",
+		anyLanguageRegion: "Cualquier idioma / región",
+		pagination: "Paginación",
+		unknownPlace: "Lugar desconocido",
+		currentConditions: "Condiciones actuales",
+		forecast: "Pronóstico",
+		tomorrowForecastMissing:
+			"El pronóstico de mañana no está en esta respuesta",
+		currentNotSubstituted:
+			"Las condiciones actuales no se muestran en su lugar.",
+		sourcesCanApply:
+			"{eligible} de {total} fuentes de esta categoría pueden aplicar los filtros activos.",
+		skippedSources: "Se omitió {names} porque no pueden respetarlos.",
+		removeSite: "Quitar",
+		hiddenSite: "Oculto",
+		preferredSite: "Preferido",
+		noPersonalSites: "Todavía no hay reglas personales de sitios.",
+		previousImage: "Imagen anterior",
+		nextImage: "Imagen siguiente",
+		resolution: "Resolución",
+		feelsLike: "Sensación",
+		wind: "Viento",
+		humidity: "Humedad",
+		activeConstraints: "Restricciones de búsqueda activas",
+		observed: "Observado",
 		tooManySearches: "Demasiadas búsquedas",
 		searchUnavailable: "Búsqueda no disponible",
 		enginesDidntRespond: "no respondieron",
 		didYouMean: "Quizás quisiste decir",
+		resultsRetrieved: "resultados obtenidos",
+		noEngines: "Ninguna fuente puede hacer esta búsqueda",
+		noEnginesHint:
+			"Los filtros activos no dejan motores válidos. La búsqueda segura sigue activa hasta que la cambies.",
+		partialSources: "Algunas fuentes no respondieron",
+		hiddenAll:
+			"Los sitios ocultos quitaron todos los resultados de esta página.",
+		undo: "Deshacer",
+		showHidden: "Mostrar sitios ocultos",
 		prefsSavedLocally: "Los cambios se guardan en este navegador.",
 		prefsSearch: "Búsqueda",
 		prefsAppearance: "Apariencia",
@@ -255,10 +392,59 @@ const DICTS: Record<string, Partial<UiStrings>> = {
 		loadMore: "Charger plus",
 		endOfResults: "Fin des résultats",
 		retry: "Réessayer",
+		removeTimeFilter: "Retirer le filtre de date",
+		searchGeneral: "Chercher dans la catégorie générale",
+		siteListUpdated: "Liste de sites mise à jour.",
+		previousPage: "Précédent",
+		nextPage: "Suivant",
+		quotedPhrases:
+			"Les phrases entre guillemets restent dans la requête des moteurs qui les acceptent. Zoeken ne vérifie pas l’ordre sur les pages récupérées.",
+		hideSite: "Masquer",
+		preferSite: "Préférer",
+		showMore: "Afficher plus",
+		showLess: "Afficher moins",
+		hideThisSite: "Masquer le site",
+		imageUnavailable: "Image indisponible",
+		mapNoCoords:
+			"Ces résultats n’incluent pas de coordonnées, donc la carte reste vide. La liste ci-dessous reste l’ensemble complet.",
+		timeRange: "Période",
+		anyLanguageRegion: "Toute langue / région",
+		pagination: "Pagination",
+		unknownPlace: "Lieu inconnu",
+		currentConditions: "Conditions actuelles",
+		forecast: "Prévision",
+		tomorrowForecastMissing:
+			"La prévision de demain n’est pas dans cette réponse",
+		currentNotSubstituted:
+			"Les conditions actuelles ne sont pas affichées à sa place.",
+		sourcesCanApply:
+			"{eligible} source(s) sur {total} dans cette catégorie peuvent appliquer les filtres actifs.",
+		skippedSources:
+			"{names} ignoré, car ces sources ne peuvent pas les respecter.",
+		removeSite: "Retirer",
+		hiddenSite: "Masqué",
+		preferredSite: "Préféré",
+		noPersonalSites: "Aucune règle personnelle de site pour l’instant.",
+		previousImage: "Image précédente",
+		nextImage: "Image suivante",
+		resolution: "Résolution",
+		feelsLike: "Ressenti",
+		wind: "Vent",
+		humidity: "Humidité",
+		activeConstraints: "Contraintes de recherche actives",
+		observed: "Observé",
 		tooManySearches: "Trop de recherches",
 		searchUnavailable: "Recherche indisponible",
 		enginesDidntRespond: "n’ont pas répondu",
 		didYouMean: "Vouliez-vous dire",
+		resultsRetrieved: "résultats récupérés",
+		noEngines: "Aucune source ne peut lancer cette recherche",
+		noEnginesHint:
+			"Les filtres actifs ne laissent aucun moteur éligible. La recherche sécurisée reste active tant que vous ne la changez pas.",
+		partialSources: "Certaines sources n’ont pas répondu",
+		hiddenAll: "Les sites masqués ont retiré tous les résultats de cette page.",
+		undo: "Annuler",
+		showHidden: "Afficher les sites masqués",
 		prefsSavedLocally:
 			"Les modifications sont enregistrées dans ce navigateur.",
 		prefsSearch: "Recherche",
@@ -329,10 +515,60 @@ const DICTS: Record<string, Partial<UiStrings>> = {
 		loadMore: "Mehr laden",
 		endOfResults: "Ende der Ergebnisse",
 		retry: "Erneut versuchen",
+		removeTimeFilter: "Zeitfilter entfernen",
+		searchGeneral: "In der allgemeinen Kategorie suchen",
+		siteListUpdated: "Seitenliste aktualisiert.",
+		previousPage: "Zurück",
+		nextPage: "Weiter",
+		quotedPhrases:
+			"Zitierte Phrasen bleiben in der Anfrage der Suchmaschinen, die sie unterstützen. Zoeken prüft die Reihenfolge nicht an den abgerufenen Seiten.",
+		hideSite: "Ausblenden",
+		preferSite: "Bevorzugen",
+		showMore: "Mehr anzeigen",
+		showLess: "Weniger anzeigen",
+		hideThisSite: "Seite ausblenden",
+		imageUnavailable: "Bild nicht verfügbar",
+		mapNoCoords:
+			"Diese Ergebnisse enthalten keine Koordinaten, daher bleibt die Karte leer. Die Liste darunter ist weiterhin die volle Trefferliste.",
+		timeRange: "Zeitraum",
+		anyLanguageRegion: "Beliebige Sprache / Region",
+		pagination: "Seiten",
+		unknownPlace: "Unbekannter Ort",
+		currentConditions: "Aktuelle Bedingungen",
+		forecast: "Vorhersage",
+		tomorrowForecastMissing:
+			"Die Vorhersage für morgen fehlt in dieser Antwort",
+		currentNotSubstituted:
+			"Die aktuellen Bedingungen werden nicht an ihrer Stelle gezeigt.",
+		sourcesCanApply:
+			"{eligible} von {total} Quellen in dieser Kategorie können die aktiven Filter anwenden.",
+		skippedSources:
+			"{names} übersprungen, weil sie die Filter nicht einhalten können.",
+		removeSite: "Entfernen",
+		hiddenSite: "Ausgeblendet",
+		preferredSite: "Bevorzugt",
+		noPersonalSites: "Noch keine persönlichen Seitenregeln.",
+		previousImage: "Vorheriges Bild",
+		nextImage: "Nächstes Bild",
+		resolution: "Auflösung",
+		feelsLike: "Gefühlt",
+		wind: "Wind",
+		humidity: "Luftfeuchtigkeit",
+		activeConstraints: "Aktive Sucheinschränkungen",
+		observed: "Beobachtet",
 		tooManySearches: "Zu viele Suchanfragen",
 		searchUnavailable: "Suche nicht verfügbar",
 		enginesDidntRespond: "haben nicht geantwortet",
 		didYouMean: "Meintest du",
+		resultsRetrieved: "abgerufene Ergebnisse",
+		noEngines: "Keine Quelle kann diese Suche ausführen",
+		noEnginesHint:
+			"Die aktiven Filter lassen keine passende Suchmaschine übrig. SafeSearch bleibt an, bis du es änderst.",
+		partialSources: "Einige Quellen haben nicht geantwortet",
+		hiddenAll:
+			"Ausgeblendete Seiten haben alle Ergebnisse dieser Seite entfernt.",
+		undo: "Rückgängig",
+		showHidden: "Ausgeblendete Seiten zeigen",
 		prefsSavedLocally: "Änderungen werden in diesem Browser gespeichert.",
 		prefsSearch: "Suche",
 		prefsAppearance: "Darstellung",
@@ -402,10 +638,60 @@ const DICTS: Record<string, Partial<UiStrings>> = {
 		loadMore: "Meer laden",
 		endOfResults: "Einde van de resultaten",
 		retry: "Opnieuw",
+		removeTimeFilter: "Tijdfilter verwijderen",
+		searchGeneral: "In de algemene categorie zoeken",
+		siteListUpdated: "Sitelijst bijgewerkt.",
+		previousPage: "Vorige",
+		nextPage: "Volgende",
+		quotedPhrases:
+			"Geciteerde zinnen blijven in de zoekopdracht van engines die ze ondersteunen. Zoeken controleert de volgorde niet op de opgehaalde pagina’s.",
+		hideSite: "Verbergen",
+		preferSite: "Voorkeur",
+		showMore: "Meer tonen",
+		showLess: "Minder tonen",
+		hideThisSite: "Site verbergen",
+		imageUnavailable: "Afbeelding niet beschikbaar",
+		mapNoCoords:
+			"Deze resultaten bevatten geen coördinaten, dus de kaart blijft leeg. De lijst eronder is nog steeds de volledige resultaatset.",
+		timeRange: "Tijdsperiode",
+		anyLanguageRegion: "Elke taal / regio",
+		pagination: "Paginering",
+		unknownPlace: "Onbekende plaats",
+		currentConditions: "Huidige omstandigheden",
+		forecast: "Verwachting",
+		tomorrowForecastMissing:
+			"De verwachting voor morgen staat niet in dit antwoord",
+		currentNotSubstituted:
+			"De huidige omstandigheden worden niet in de plaats daarvan getoond.",
+		sourcesCanApply:
+			"{eligible} van {total} bronnen in deze categorie kunnen de actieve filters toepassen.",
+		skippedSources:
+			"{names} overgeslagen omdat ze de filters niet kunnen volgen.",
+		removeSite: "Verwijderen",
+		hiddenSite: "Verborgen",
+		preferredSite: "Voorkeur",
+		noPersonalSites: "Nog geen persoonlijke siteregels.",
+		previousImage: "Vorige afbeelding",
+		nextImage: "Volgende afbeelding",
+		resolution: "Resolutie",
+		feelsLike: "Gevoelstemperatuur",
+		wind: "Wind",
+		humidity: "Luchtvochtigheid",
+		activeConstraints: "Actieve zoekbeperkingen",
+		observed: "Waargenomen",
 		tooManySearches: "Te veel zoekopdrachten",
 		searchUnavailable: "Zoeken niet beschikbaar",
 		enginesDidntRespond: "reageerden niet",
 		didYouMean: "Bedoelde je",
+		resultsRetrieved: "opgehaalde resultaten",
+		noEngines: "Geen bron kan deze zoekopdracht uitvoeren",
+		noEnginesHint:
+			"De actieve filters laten geen geschikte zoekmachines over. SafeSearch blijft aan tot je het wijzigt.",
+		partialSources: "Sommige bronnen reageerden niet",
+		hiddenAll:
+			"Verborgen sites hebben alle resultaten op deze pagina verwijderd.",
+		undo: "Ongedaan maken",
+		showHidden: "Verborgen sites tonen",
 		prefsSavedLocally: "Wijzigingen worden in deze browser opgeslagen.",
 		prefsSearch: "Zoeken",
 		prefsAppearance: "Weergave",
@@ -461,4 +747,11 @@ export function stringsFor(locale: string | undefined): UiStrings {
 	const lang = locale.toLowerCase().split(/[-_]/)[0];
 	const dict = DICTS[lang];
 	return dict ? { ...EN, ...dict } : EN;
+}
+
+/** Strings for the language currently in the page URL. */
+export function activeStrings(): UiStrings {
+	if (typeof window === "undefined") return stringsFor(undefined);
+	const language = new URLSearchParams(window.location.search).get("language");
+	return stringsFor(language ?? undefined);
 }

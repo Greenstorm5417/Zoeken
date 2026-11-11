@@ -362,6 +362,7 @@ fn result_container() -> impl Strategy<Value = ResultContainer> {
                 unresponsive_engines,
                 number_of_results,
                 engine_data: std::collections::HashMap::new(),
+                ..ResultContainer::default()
             },
         )
 }

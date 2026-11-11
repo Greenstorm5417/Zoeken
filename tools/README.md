@@ -9,6 +9,8 @@ Maintainer scripts. Python helpers use [`uv`](https://docs.astral.sh/uv/);
 | `compare_searxng.py` | Fixture / live API comparison vs SearXNG (`fixtures` in CI) |
 | `fetch_tracker_patterns.py` | Refresh ClearURLs rules → `zoeken-data/data/tracker_patterns.json` |
 | `sync_versions.sh` | Sync package.json, lockfile zoeken-*, and Docker VERSION defaults to Cargo.toml |
+| `daily_search_report.py` | Opt-in live latency and empty rate for the daily-search fixture. Skips unless `ZOEK_LIVE_URL` is set. Does not score relevance |
+| `provider_latency_sample.py` | Six-query provider timing sample plus `/stats` deltas. Requires `ZOEK_LIVE_URL`. Does not score relevance |
 | `pre_release.sh` | Pre-tag gate: `cargo fmt --check`, clippy `-D warnings`, sync_versions `--check` |
 | `update_nix_generated.sh` | Refresh `packaging/nix/generated.nix` hashes from a published release |
 

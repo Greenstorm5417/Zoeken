@@ -13,6 +13,7 @@ zoeken-engine-core = { workspace = true }
 zoeken-results = { workspace = true }
 zoeken-data = { workspace = true }
 zoeken-search = { workspace = true }
+zoeken-query = { workspace = true }
 zoeken-settings = { workspace = true }
 scraper = { workspace = true }
 html-escape = { workspace = true }

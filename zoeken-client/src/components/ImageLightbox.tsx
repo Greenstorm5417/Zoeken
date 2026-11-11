@@ -1,7 +1,8 @@
-import { ExternalLink, X } from "lucide-react";
-import { useEffect, useId, useRef } from "react";
+import { ChevronLeft, ChevronRight, ExternalLink, X } from "lucide-react";
+import { useEffect, useId, useRef, useState } from "react";
 import type { SearchResult } from "#/lib/api";
 import { resultImgSrc, resultThumbnail } from "#/lib/api";
+import { activeStrings } from "#/lib/i18n";
 
 function hostnameOf(url: string) {
 	try {
@@ -14,18 +15,25 @@ function hostnameOf(url: string) {
 const FOCUSABLE =
 	'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
 
-/** Full-screen viewer for an image result with source metadata. */
+/** Full-screen viewer. Arrow keys move between the images that opened it. */
 export function ImageLightbox({
-	result,
+	results,
+	index,
+	onIndex,
 	onClose,
 }: {
-	result: SearchResult;
+	results: SearchResult[];
+	index: number;
+	onIndex: (index: number) => void;
 	onClose: () => void;
 }) {
+	const result = results[index] ?? results[0];
 	const dialogRef = useRef<HTMLDivElement>(null);
 	const closeRef = useRef<HTMLButtonElement>(null);
 	const previouslyFocused = useRef<HTMLElement | null>(null);
 	const titleId = useId();
+	const [brokenIndex, setBrokenIndex] = useState<number | null>(null);
+	const broken = brokenIndex === index;
 
 	useEffect(() => {
 		previouslyFocused.current = document.activeElement as HTMLElement | null;
@@ -35,6 +43,16 @@ export function ImageLightbox({
 			if (event.key === "Escape") {
 				event.preventDefault();
 				onClose();
+				return;
+			}
+			if (event.key === "ArrowRight" && results.length > 1) {
+				event.preventDefault();
+				onIndex((index + 1) % results.length);
+				return;
+			}
+			if (event.key === "ArrowLeft" && results.length > 1) {
+				event.preventDefault();
+				onIndex((index - 1 + results.length) % results.length);
 				return;
 			}
 			if (event.key !== "Tab" || !dialogRef.current) return;
@@ -65,11 +83,14 @@ export function ImageLightbox({
 			document.body.style.overflow = prev;
 			previouslyFocused.current?.focus?.();
 		};
-	}, [onClose]);
+	}, [onClose, onIndex, index, results.length]);
+
+	if (!result) return null;
 
 	const meta: Array<[string, string]> = [];
 	if (result.kind === "image") {
-		if (result.resolution) meta.push(["Resolution", result.resolution]);
+		if (result.resolution)
+			meta.push([activeStrings().resolution, result.resolution]);
 		if (result.img_format) meta.push(["Format", result.img_format]);
 		if (result.filesize) meta.push(["Size", result.filesize]);
 		if (result.source) meta.push(["Source", result.source]);
@@ -87,6 +108,9 @@ export function ImageLightbox({
 			aria-labelledby={titleId}
 			onClick={onClose}
 			onKeyDown={(e) => {
+				const target = e.target as HTMLElement;
+				if ((e.key === "Enter" || e.key === " ") && target.closest("button"))
+					return;
 				if (e.key === "Enter" || e.key === " ") onClose();
 			}}
 		>
@@ -95,28 +119,64 @@ export function ImageLightbox({
 				type="button"
 				onClick={onClose}
 				aria-label="Close"
-				className="absolute top-4 right-4 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
+				className="absolute top-4 right-4 inline-flex size-11 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
 			>
 				<X className="size-5" aria-hidden />
 			</button>
+			{results.length > 1 ? (
+				<>
+					<button
+						type="button"
+						aria-label={activeStrings().previousImage}
+						className="absolute top-1/2 left-3 inline-flex size-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
+						onClick={(event) => {
+							event.stopPropagation();
+							onIndex((index - 1 + results.length) % results.length);
+						}}
+					>
+						<ChevronLeft className="size-5" aria-hidden />
+					</button>
+					<button
+						type="button"
+						aria-label={activeStrings().nextImage}
+						className="absolute top-1/2 right-3 inline-flex size-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
+						onClick={(event) => {
+							event.stopPropagation();
+							onIndex((index + 1) % results.length);
+						}}
+					>
+						<ChevronRight className="size-5" aria-hidden />
+					</button>
+				</>
+			) : null}
 			{/* biome-ignore lint/a11y/noStaticElementInteractions: event boundary only, stops clicks/keys inside the dialog panel from bubbling to the backdrop's onClose */}
 			<div
 				className="flex max-h-full w-full max-w-4xl flex-col items-center gap-4"
 				onClick={(e) => e.stopPropagation()}
 				onKeyDown={(e) => e.stopPropagation()}
 			>
-				{full ? (
+				{full && !broken ? (
 					<img
 						src={full}
 						alt={result.title}
 						className="max-h-[70vh] max-w-full rounded-lg object-contain"
 						decoding="async"
+						onError={() => setBrokenIndex(index)}
 					/>
-				) : null}
+				) : (
+					<p className="rounded-lg bg-surface-raised px-4 py-6 text-sm text-ink-muted">
+						{activeStrings().imageUnavailable}
+					</p>
+				)}
 				<div className="w-full max-w-2xl rounded-xl bg-surface-raised p-4">
 					<p id={titleId} className="font-medium text-ink">
 						{result.title || "Image"}
 					</p>
+					{results.length > 1 ? (
+						<p className="mt-1 text-xs text-ink-subtle">
+							{index + 1} / {results.length}
+						</p>
+					) : null}
 					{meta.length > 0 ? (
 						<dl className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-sm">
 							{meta.map(([label, value]) => (
@@ -132,7 +192,7 @@ export function ImageLightbox({
 							href={result.url}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="inline-flex items-center gap-1.5 font-medium text-accent hover:underline"
+							className="inline-flex min-h-11 items-center gap-1.5 font-medium text-accent hover:underline"
 						>
 							<ExternalLink className="size-3.5" aria-hidden />
 							{hostnameOf(result.url)}
@@ -142,7 +202,7 @@ export function ImageLightbox({
 								href={imgSrc}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="text-ink-subtle hover:text-accent"
+								className="inline-flex min-h-11 items-center text-ink-subtle hover:text-accent"
 							>
 								Open full image
 							</a>
