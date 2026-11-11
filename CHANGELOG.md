@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- `bun audit`: pin `postcss-selector-parser` at `6.1.5` (GHSA-rj75-hqrm-r3gf).
+- `cargo audit`: ignore `RUSTSEC-2026-0459` until sqlx accepts `libsqlite3-sys` >= 0.39.
+
 ## [1.5.0] - 2026-11-11
 
 ### Added

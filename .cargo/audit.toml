@@ -4,4 +4,9 @@
 # sqlx's `migrate` feature uses weak deps that pull unused sqlx-mysql into
 # Cargo.lock even with only sqlite+postgres enabled (sqlx#3211 / cargo#10801).
 # cargo tree -i sqlx-mysql: not compiled; audit still sees lockfile rsa.
-ignore = ["RUSTSEC-2023-0071"]
+# RUSTSEC-2026-0459 (libsqlite3-sys CVE-2026-119375): fixed in libsqlite3-sys
+# >=0.39. sqlx 0.8 pins ^0.30.1 and sqlx 0.9 (current latest) caps the range
+# at <0.38, so Cargo cannot select the patched crate. The bug needs a local
+# process to open a database together with a crafted sibling -wal file.
+# Zoeken opens SQLite files it creates itself, not files supplied in a request.
+ignore = ["RUSTSEC-2023-0071", "RUSTSEC-2026-0459"]
