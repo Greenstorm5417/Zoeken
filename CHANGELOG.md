@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-11-11
+
 ### Added
 
 - Daily-search fixture (`cargo test -p zoeken-search --test daily_quality`) plus a
@@ -422,6 +424,7 @@ with Debian packages, systemd unit, and multi-arch Docker images on GHCR.
 - Command engines and several API-key / bespoke engines remain intentionally unsupported
 - See `docs/compatibility/intentional-differences.md` and `docs/security/audit.md`
 
+[1.5.0]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.5.0
 [1.4.5]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.4.5
 [1.4.4]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.4.4
 [1.4.3]: https://github.com/Greenstorm5417/zoeken/releases/tag/v1.4.3
