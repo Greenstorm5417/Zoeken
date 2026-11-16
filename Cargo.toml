@@ -105,7 +105,7 @@ tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
 metrics = "0.24.6"
 metrics-exporter-prometheus = { version = "0.18.3", default-features = false }
 whatlang = "0.18.0"
-rand = "0.9.4"
+rand = "0.10.3"
 proptest = "1.11.0"
 phf = "0.14.0"
 phf_codegen = "0.14.0"
