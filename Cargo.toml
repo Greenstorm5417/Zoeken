@@ -89,7 +89,7 @@ chrono = { version = "0.4.45", default-features = false, features = [
     "std",
     "alloc",
 ] }
-quick-xml = { version = "0.41.0", features = ["serialize", "overlapped-lists"] }
+quick-xml = { version = "0.42.0", features = ["serialize", "overlapped-lists"] }
 csv = "1.4.0"
 moka = { version = "0.12.15", features = ["future", "sync"] }
 async-trait = "0.1.89"
