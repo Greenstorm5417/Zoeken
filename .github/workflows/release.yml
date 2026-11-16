@@ -166,7 +166,7 @@ jobs:
           test -f zoeken/zoeken-server/assets/index.html
 
       - name: Upload assets
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: spa-assets
           path: zoeken/zoeken-server/assets/
@@ -212,7 +212,7 @@ jobs:
         run: cargo build --release --locked --bin zoeken-server --target ${{ matrix.rust_target }}
 
       - name: Upload release binary
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: bin-${{ matrix.deb_arch }}
           path: target/${{ matrix.rust_target }}/release/zoeken-server
@@ -263,7 +263,7 @@ jobs:
           ./packaging/scripts/build-deb.sh
 
       - name: Upload .deb
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: deb-${{ matrix.deb_arch }}
           path: dist/*.deb
@@ -334,7 +334,7 @@ jobs:
             >"dist/zoeken_${VERSION}_${NIX_SYSTEM}.tar.gz.sri"
 
       - name: Upload Nix package
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: nix-${{ matrix.deb_arch }}
           path: dist/*
@@ -380,7 +380,7 @@ jobs:
           } | tee "dist/zoeken_${VERSION}_generated.nix"
 
       - name: Upload generated.nix
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: nix-generated
           path: dist/zoeken_*_generated.nix
@@ -467,7 +467,7 @@ jobs:
           touch "/tmp/digests/${digest#sha256:}"
 
       - name: Upload digest
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: digests-${{ matrix.deb_arch }}
           path: /tmp/digests/*
