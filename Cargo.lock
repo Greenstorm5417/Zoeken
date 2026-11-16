@@ -2361,6 +2361,7 @@ version = "0.10.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "65c9fb96cbc91e3478eaae79a69fcd3f1ae4ad052e471fe6732fff548984b4af"
 dependencies = [
+ "chacha20",
  "getrandom 0.4.3",
  "rand_core 0.10.1",
 ]
@@ -4470,7 +4471,7 @@ dependencies = [
  "http",
  "metrics",
  "moka",
- "rand 0.9.5",
+ "rand 0.10.3",
  "serde",
  "serde_json",
  "thiserror",
@@ -4500,7 +4501,7 @@ dependencies = [
  "phf 0.14.0",
  "phf_codegen 0.14.0",
  "proptest",
- "rand 0.9.5",
+ "rand 0.10.3",
  "serde",
  "serde_json",
  "thiserror",
@@ -4582,7 +4583,7 @@ dependencies = [
  "httpdate",
  "metrics",
  "proptest",
- "rand 0.9.5",
+ "rand 0.10.3",
  "serde_json",
  "thiserror",
  "tokio",
@@ -4667,7 +4668,7 @@ dependencies = [
  "moka",
  "proptest",
  "quick-xml",
- "rand 0.9.5",
+ "rand 0.10.3",
  "rmp-serde",
  "serde",
  "serde_json",
