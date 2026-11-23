@@ -40,10 +40,9 @@
         "GET",
         "POST"
       ],
-      "status": "ported",
+      "status": "partial",
       "upstream_methods": [
-        "GET",
-        "POST"
+        "GET"
       ]
     },
     {
@@ -135,15 +134,22 @@
       ]
     },
     {
-      "notes": "implemented path; status/header/body parity needs route tests",
+      "notes": "route not present in Axum router",
+      "path": "/image",
+      "rust_methods": [],
+      "status": "missing",
+      "upstream_methods": [
+        "GET"
+      ]
+    },
+    {
+      "notes": "Zoeken health/readiness or implementation-specific route",
       "path": "/image_proxy",
       "rust_methods": [
         "GET"
       ],
-      "status": "ported",
-      "upstream_methods": [
-        "GET"
-      ]
+      "status": "rust-only",
+      "upstream_methods": []
     },
     {
       "notes": "implemented path; status/header/body parity needs route tests",
@@ -292,8 +298,8 @@
     }
   ],
   "summary": {
-    "matching_paths": 22,
-    "missing": 0,
+    "matching_paths": 21,
+    "missing": 1,
     "rust_routes": 26,
     "upstream_routes": 22
   }
